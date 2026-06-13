@@ -1,0 +1,53 @@
+[project]
+name = "nepal-data-portal"
+version = "0.1.0"
+description = "A single, trustworthy, free portal for data about Nepal — ingestion, warehouse, API, and charts."
+readme = "README.md"
+requires-python = ">=3.12"
+
+# Runtime dependencies. Versions are PINNED to a compatible range (~=) so that
+# patch-level security fixes are allowed, but a surprise major/minor release of a
+# library can never silently change behaviour under us. See P1.S1 in the step file.
+dependencies = [
+    "requests~=2.32",          # HTTP client for talking to data-source APIs (World Bank, IMF, ...)
+    "psycopg[binary]~=3.2",    # PostgreSQL driver — how Python talks to our Supabase database
+    "python-dotenv~=1.0",      # loads secrets from the local .env file (never committed)
+    "yoyo-migrations~=9.0",    # applies numbered SQL migrations from db/migrations/
+]
+
+[project.optional-dependencies]
+# Tools used only while developing — not needed to run the portal in production.
+dev = [
+    "pytest~=8.3",   # test runner
+    "ruff~=0.8",     # formatter + linter (keeps code style consistent)
+    "mypy~=1.13",    # type checker (catches whole classes of bugs before running)
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# We are a project, not a library: there is no single importable package yet.
+# Declaring no packages disables auto-discovery so `pip install -e .` installs
+# only our dependencies without trying to package the source folders.
+[tool.setuptools]
+packages = []
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+# A sensible, not-overbearing starter rule set: pyflakes (F), pycodestyle (E/W),
+# isort import ordering (I), and common bug-catchers (B).
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

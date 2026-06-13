@@ -33,9 +33,31 @@ nepal-data-portal/
 
 ## How to run (updated each phase)
 
-**Phase 0 — nothing to run yet.** Accounts and repository are being set up.
+This section grows with each phase so that anyone with `.env.example` filled in can
+reproduce the system from zero.
 
-From Phase 1 onward, a complete setup sequence will be documented here so that anyone with `.env.example` filled in can reproduce the full system from zero.
+### Prerequisites
+- **Python 3.12+** — the data/backend language.
+- **Node.js LTS** — the website (used from Phase 1's frontend step onward).
+- **make** — runs the one-command shortcuts below. (On Windows it isn't built in;
+  install once with `winget install ezwinports.make`.)
+
+### First-time setup
+```
+py -3.12 -m venv .venv      # create the isolated Python environment (once)
+make setup                   # install all pinned dependencies into it
+```
+
+### Everyday commands
+| Command | What it does |
+|---|---|
+| `make setup` | Install/update all Python dependencies |
+| `make test`  | Run the test suite (pytest) |
+| `make lint`  | Check code quality (ruff lint + mypy type check) |
+| `make fmt`   | Auto-format the code (ruff) |
+
+More commands (`make check-db`, `make migrate`, `make seed`, `make ingest-wb`,
+`make api`, `make web`) are added as later Phase 1 steps build each layer.
 
 ## Data sources (planned, in integration order)
 
