@@ -14,6 +14,8 @@ dependencies = [
     "python-dotenv~=1.0",      # loads secrets from the local .env file (never committed)
     "yoyo-migrations~=9.0",    # applies numbered SQL migrations from db/migrations/
     "psycopg2-binary~=2.9",    # PostgreSQL driver used by yoyo; app code uses psycopg (v3) above
+    "fastapi~=0.115",          # the read-only public API
+    "uvicorn[standard]~=0.34", # ASGI server that runs the API locally (`make api`)
 ]
 
 [project.optional-dependencies]
@@ -22,6 +24,7 @@ dev = [
     "pytest~=8.3",   # test runner
     "ruff~=0.8",     # formatter + linter (keeps code style consistent)
     "mypy~=1.13",    # type checker (catches whole classes of bugs before running)
+    "httpx~=0.28",   # used by FastAPI's TestClient in the API tests
 ]
 
 [build-system]

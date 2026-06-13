@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed ingest-wb help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed ingest-wb api help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -58,3 +58,6 @@ seed:  ## Load reference data (geography, periods, units, World Bank indicators)
 
 ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-first, idempotent)
 	$(PY) -m ingestion.worldbank.pipeline
+
+api:  ## Run the read-only API locally at http://localhost:8000 (docs at /docs)
+	$(PY) -m uvicorn api.main:app --reload --port 8000
