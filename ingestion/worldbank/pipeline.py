@@ -31,6 +31,7 @@ import psycopg
 import requests
 from dotenv import load_dotenv
 
+from ingestion.common.quality import Candidate, run_quality_gate
 from ingestion.common.raw_lake import RawLake
 
 WB_URL = "https://api.worldbank.org/v2/country/{country}/indicator/{code}"
@@ -112,8 +113,9 @@ def run() -> int:
     cur.execute("SELECT gregorian_label, id FROM time_periods WHERE period_type = 'year'")
     year_to_period = {int(label): pid for label, pid in cur.fetchall()}
     cur.execute(
-        "SELECT code, id, unit_id, source_concept FROM indicators"
-        " WHERE source_concept IS NOT NULL ORDER BY code"
+        "SELECT i.code, i.id, i.unit_id, u.code, i.source_concept"
+        " FROM indicators i JOIN units u ON u.id = i.unit_id"
+        " WHERE i.source_concept IS NOT NULL ORDER BY i.code"
     )
     indicators = cur.fetchall()
 
@@ -139,18 +141,12 @@ def run() -> int:
     raw_refs: list[str] = []
     release_id: int | None = None
     try:
-        cur.execute(
-            "INSERT INTO releases (dataset_id, release_date)"
-            " VALUES (%s, CURRENT_DATE) RETURNING id",
-            (dataset_id,),
-        )
-        release_id = _scalar(cur)
-
-        for _code, indicator_id, unit_id, wdi_code in indicators:
+        # --- Fetch + archive raw + build candidate observations ---
+        candidates: list[Candidate] = []
+        for indicator_code, indicator_id, unit_id, unit_code, wdi_code in indicators:
             points, raw_bytes, source_url = fetch_series(wdi_code)
             stored = lake.store(f"worldbank/wdi/{wdi_code}", raw_bytes, source_url)
             raw_refs.append(stored.payload_path)
-
             for point in points:
                 rows_in += 1
                 if point.value is None:
@@ -160,19 +156,58 @@ def run() -> int:
                 if period_id is None:
                     rejected += 1
                     continue
-                new_value = Decimal(str(point.value))
-                if latest.get((indicator_id, period_id)) == new_value:
-                    unchanged += 1
-                    continue
-                cur.execute(
-                    "INSERT INTO observations"
-                    " (indicator_id, geography_id, time_period_id, dataset_id,"
-                    "  release_id, value, unit_id, status)"
-                    " VALUES (%s, %s, %s, %s, %s, %s, %s, 'final')",
-                    (indicator_id, geography_id, period_id, dataset_id,
-                     release_id, new_value, unit_id),
+                candidates.append(
+                    Candidate(
+                        indicator_id=indicator_id,
+                        indicator_code=indicator_code,
+                        unit_id=unit_id,
+                        unit_code=unit_code,
+                        period_id=period_id,
+                        year=point.year,
+                        value=Decimal(str(point.value)),
+                    )
                 )
-                loaded += 1
+
+        # --- Quality gate: must pass BEFORE any release/observation is written ---
+        result = run_quality_gate(candidates)
+        for info in result.infos:
+            print(f"  [info] {info}")
+        if not result.passed:
+            reason = f"{len(result.failures)} quality failure(s): " + "; ".join(result.failures[:5])
+            cur.execute(
+                "UPDATE ingestion_log SET status = 'failed', finished_at = now(),"
+                " rows_in = %s, rows_loaded = 0, rows_rejected = %s, error_note = %s"
+                " WHERE id = %s",
+                (rows_in, rejected, reason[:1000], log_id),
+            )
+            conn.commit()
+            conn.close()
+            print("QUALITY GATE BLOCKED THE LOAD — nothing was written. Reasons:")
+            for failure in result.failures[:10]:
+                print(f"  - {failure}")
+            return 1
+
+        # --- Gate passed: create the release and load new/changed values ---
+        cur.execute(
+            "INSERT INTO releases (dataset_id, release_date)"
+            " VALUES (%s, CURRENT_DATE) RETURNING id",
+            (dataset_id,),
+        )
+        release_id = _scalar(cur)
+        for candidate in candidates:
+            assert candidate.indicator_id is not None and candidate.period_id is not None
+            if latest.get((candidate.indicator_id, candidate.period_id)) == candidate.value:
+                unchanged += 1
+                continue
+            cur.execute(
+                "INSERT INTO observations"
+                " (indicator_id, geography_id, time_period_id, dataset_id,"
+                "  release_id, value, unit_id, status)"
+                " VALUES (%s, %s, %s, %s, %s, %s, %s, 'final')",
+                (candidate.indicator_id, geography_id, candidate.period_id, dataset_id,
+                 release_id, candidate.value, candidate.unit_id),
+            )
+            loaded += 1
 
         cur.execute(
             "UPDATE releases SET raw_file_refs = %s WHERE id = %s",
@@ -205,6 +240,7 @@ def run() -> int:
     print(f"  observations loaded: {loaded}")
     print(f"  unchanged (skipped): {unchanged}")
     print(f"  rejected (nulls etc): {rejected}")
+    print("  quality gate       : PASSED")
     print(f"  release id         : {release_id}")
     print("Done.")
     return 0
