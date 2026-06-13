@@ -1,0 +1,14 @@
+[
+  {"page": 1, "pages": 1, "per_page": 1000, "total": 3},
+  [
+    {"indicator": {"id": "NY.GDP.MKTP.KD.ZG", "value": "GDP growth (annual %)"},
+     "country": {"id": "NP", "value": "Nepal"}, "countryiso3code": "NPL",
+     "date": "2020", "value": -2.3696206292072, "unit": "", "obs_status": "", "decimal": 1},
+    {"indicator": {"id": "NY.GDP.MKTP.KD.ZG", "value": "GDP growth (annual %)"},
+     "country": {"id": "NP", "value": "Nepal"}, "countryiso3code": "NPL",
+     "date": "2019", "value": 6.65705543110467, "unit": "", "obs_status": "", "decimal": 1},
+    {"indicator": {"id": "NY.GDP.MKTP.KD.ZG", "value": "GDP growth (annual %)"},
+     "country": {"id": "NP", "value": "Nepal"}, "countryiso3code": "NPL",
+     "date": "1960", "value": null, "unit": "", "obs_status": "", "decimal": 1}
+  ]
+]
