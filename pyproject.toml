@@ -13,6 +13,7 @@ dependencies = [
     "psycopg[binary]~=3.2",    # PostgreSQL driver — how Python talks to our Supabase database
     "python-dotenv~=1.0",      # loads secrets from the local .env file (never committed)
     "yoyo-migrations~=9.0",    # applies numbered SQL migrations from db/migrations/
+    "psycopg2-binary~=2.9",    # PostgreSQL driver used by yoyo; app code uses psycopg (v3) above
 ]
 
 [project.optional-dependencies]

@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -23,6 +23,8 @@ help:  ## Show the available commands
 	@echo   make lint    Check code quality (ruff lint + mypy type check)
 	@echo   make fmt      Auto-format the code (ruff format)
 	@echo   make check-db Connect to the database and print its version
+	@echo   make migrate        Apply all pending database migrations
+	@echo   make migrate-status Show which migrations are applied
 
 setup:  ## Install all dependencies (runtime + dev) into the virtual environment
 	$(PY) -m pip install --upgrade pip
@@ -41,3 +43,12 @@ fmt:  ## Auto-format all code with ruff
 
 check-db:  ## Connect to the database and print its version (verifies .env)
 	$(PY) scripts/check_db.py
+
+migrate:  ## Apply all pending database migrations
+	$(PY) scripts/migrate.py apply
+
+migrate-status:  ## Show each migration and whether it is applied
+	$(PY) scripts/migrate.py list
+
+migrate-rollback:  ## Roll back the most recently applied migration
+	$(PY) scripts/migrate.py rollback
