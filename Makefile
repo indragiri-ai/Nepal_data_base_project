@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -52,3 +52,6 @@ migrate-status:  ## Show each migration and whether it is applied
 
 migrate-rollback:  ## Roll back the most recently applied migration
 	$(PY) scripts/migrate.py rollback
+
+seed:  ## Load reference data (geography, periods, units, World Bank indicators)
+	$(PY) scripts/seed.py
