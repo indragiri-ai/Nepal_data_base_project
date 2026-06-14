@@ -59,6 +59,23 @@ make setup                   # install all pinned dependencies into it
 More commands (`make check-db`, `make migrate`, `make seed`, `make ingest-wb`,
 `make api`, `make web`) are added as later Phase 1 steps build each layer.
 
+### Seeing the portal (the full slice, end to end)
+The website reads the API; the API reads the warehouse. Run them together:
+```
+make migrate        # create the schema (once)
+make seed           # load reference data: Nepal, years, units, 20 indicators (once)
+make ingest-wb      # fetch the World Bank data into the warehouse (once)
+make web-setup      # install the website's Node dependencies (once)
+```
+Then, in two terminals:
+```
+make api            # terminal 1 — API at http://localhost:8000 (docs at /docs)
+make web            # terminal 2 — website at http://localhost:3000
+```
+Open <http://localhost:3000>, pick an indicator (e.g. "GDP growth (annual %)"),
+and you should see an interactive, source-cited chart. The website never touches
+the database directly — only the API.
+
 ## Data sources (planned, in integration order)
 
 1. World Bank Open Data API (Nepal WDI indicators)
