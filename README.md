@@ -46,7 +46,13 @@ reproduce the system from zero.
 ```
 py -3.12 -m venv .venv      # create the isolated Python environment (once)
 make setup                   # install all pinned dependencies into it
+cp .env.example .env         # then open .env and fill in your real values
 ```
+`.env` holds your secrets (database URL, Supabase keys) and is git-ignored — it
+is never committed. Every variable the project needs is listed in `.env.example`
+with a placeholder; copy it to `.env` and paste your real values from the
+Supabase dashboard. Nothing below (`make migrate`, `make seed`, `make ingest-wb`)
+works until `.env` has a valid `DATABASE_URL`.
 
 ### Everyday commands
 | Command | What it does |
