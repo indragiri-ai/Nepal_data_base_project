@@ -1,0 +1,53 @@
+# Render Blueprint — deploys the Nepal Data Portal as two free web services:
+#   1. nepal-data-api : the FastAPI read-only API (reads Supabase Postgres)
+#   2. nepal-data-web : the Next.js site (calls the API from the browser)
+#
+# How to use:
+#   Render dashboard -> New -> Blueprint -> connect this GitHub repo.
+#   Render reads this file and creates both services. The ONLY value you must
+#   supply by hand is DATABASE_URL (marked `sync: false` below) — paste your
+#   Supabase session-pooler connection string when prompted. Everything else,
+#   including pointing the site at the API, is wired automatically.
+#
+# Notes:
+#   * Free services sleep after ~15 min idle; the first request after that is
+#     slow (~30s cold start). Fine for review/demo.
+#   * The API is READ-ONLY and serves public data, so CORS is opened to "*".
+#   * Your Supabase DEV database is what this reads — keep that in mind.
+
+services:
+  # --- The API -------------------------------------------------------------
+  - type: web
+    name: nepal-data-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -e .
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /v1/indicators
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      # Paste your Supabase connection string in the Render dashboard.
+      - key: DATABASE_URL
+        sync: false
+      # Public, read-only API: allow any browser origin to read it.
+      - key: CORS_ALLOW_ORIGINS
+        value: "*"
+
+  # --- The website ---------------------------------------------------------
+  - type: web
+    name: nepal-data-web
+    runtime: node
+    plan: free
+    rootDir: web
+    buildCommand: npm install && npm run build
+    startCommand: npm run start -- -p $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # Auto-wired to the API service's host (api.ts adds the https:// scheme).
+      - key: NEXT_PUBLIC_API_BASE
+        fromService:
+          type: web
+          name: nepal-data-api
+          property: host

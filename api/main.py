@@ -29,10 +29,19 @@ app = FastAPI(
     description="Read-only access to harmonized data about Nepal, with provenance.",
 )
 
-# Allow the local Next.js dev server (P1.S11) to call the API from the browser.
+# Which browser origins may call this API. Defaults to the local Next.js dev
+# server (P1.S11); in deployment, set CORS_ALLOW_ORIGINS to the site's origin(s),
+# comma-separated, or "*" — this is a public, read-only API with no credentials,
+# so a wildcard is acceptable for open review.
+_DEFAULT_ORIGINS = "http://localhost:3000,http://127.0.0.1:3000"
+_cors_origins = [
+    o.strip()
+    for o in os.environ.get("CORS_ALLOW_ORIGINS", _DEFAULT_ORIGINS).split(",")
+    if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=_cors_origins,
     allow_methods=["GET"],
     allow_headers=["*"],
 )

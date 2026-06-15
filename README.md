@@ -82,6 +82,24 @@ Open <http://localhost:3000>, pick an indicator (e.g. "GDP growth (annual %)"),
 and you should see an interactive, source-cited chart. The website never touches
 the database directly — only the API.
 
+## Deploying a live demo (Render)
+
+A `render.yaml` blueprint deploys the whole portal — API + website — as two free
+web services anyone can open with a link.
+
+1. Create a free account at [render.com](https://render.com) and connect your GitHub.
+2. **New → Blueprint → select this repo.** Render reads `render.yaml` and proposes
+   two services: `nepal-data-api` and `nepal-data-web`.
+3. When prompted, paste your Supabase connection string into **`DATABASE_URL`**
+   (the same value as in your local `.env`). It is the only value you set by hand.
+4. **Apply.** Render builds both. The website is auto-wired to the API, so once the
+   `nepal-data-web` service is live its `…onrender.com` URL is your public demo link.
+
+Notes: free services sleep after ~15 min idle (first hit is a slow cold start);
+the API is read-only and serves your **dev** database; CORS is open (`*`) because
+the data is public. To restrict origins later, set `CORS_ALLOW_ORIGINS` on the API
+service to a comma-separated list.
+
 ## Data sources (planned, in integration order)
 
 1. World Bank Open Data API (Nepal WDI indicators)
