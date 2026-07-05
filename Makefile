@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed ingest-wb api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar ingest-wb api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -55,6 +55,9 @@ migrate-rollback:  ## Roll back the most recently applied migration
 
 seed:  ## Load reference data (geography, periods, units, World Bank indicators)
 	$(PY) scripts/seed.py
+
+load-calendar:  ## Load the BS<->AD day-level calendar reference (idempotent)
+	$(PY) scripts/load_bs_calendar.py
 
 ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-first, idempotent)
 	$(PY) -m ingestion.worldbank.pipeline

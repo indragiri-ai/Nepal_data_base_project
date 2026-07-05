@@ -70,6 +70,7 @@ The website reads the API; the API reads the warehouse. Run them together:
 ```
 make migrate        # create the schema (once)
 make seed           # load reference data: Nepal, years, units, 20 indicators (once)
+make load-calendar  # load the BS<->AD day-level calendar reference (once)
 make ingest-wb      # fetch the World Bank data into the warehouse (once)
 make web-setup      # install the website's Node dependencies (once)
 ```

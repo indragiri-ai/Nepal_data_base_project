@@ -9,6 +9,10 @@ dimension tables) never changes for a new source. Each source gets an **adapter*
 under `ingestion/<source>/` that maps its quirks into the universal model:
 *indicator × geography × time period (× breakdowns) = value*.
 
+**UTF-8 rule (carry-forward Lesson 1):** every entrypoint script MUST call
+`configure_stdout_utf8()` from `ingestion.common.io_utf8` before it prints —
+the Windows console defaults to cp1252 and crashes on Devanagari.
+
 ---
 
 ## The layered flow every source follows
