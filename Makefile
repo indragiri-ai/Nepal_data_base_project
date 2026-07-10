@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar ingest-wb api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne ingest-wb seed-nrb nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -59,8 +59,29 @@ seed:  ## Load reference data (geography, periods, units, World Bank indicators)
 load-calendar:  ## Load the BS<->AD day-level calendar reference (idempotent)
 	$(PY) scripts/load_bs_calendar.py
 
+seed-periods-ne:  ## Seed Nepali fiscal-year time periods from bs_calendar (idempotent)
+	$(PY) scripts/seed_periods_ne.py
+
 ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-first, idempotent)
 	$(PY) -m ingestion.worldbank.pipeline
+
+seed-nrb:  ## Seed the 35 NRB Banking & Financial Statistics indicators (idempotent)
+	$(PY) scripts/seed_nrb.py
+
+nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
+	$(PY) -m ingestion.nrb.bfs_acquire
+
+nrb-bfs-extract:  ## Parse acquired BFS files (table C4) into the staging table (idempotent)
+	$(PY) -m ingestion.nrb.bfs_extract
+
+nrb-bfs-status:  ## Show the BFS staging review queue with a spot-check sample
+	$(PY) scripts/nrb_bfs.py status
+
+nrb-bfs-promote:  ## Promote APPROVED staging rows into observations (quality-gated)
+	$(PY) scripts/nrb_bfs.py promote
+# approve/reject take arguments — run directly, e.g.:
+#   .venv/Scripts/python scripts/nrb_bfs.py approve --month 2083-01   (or --all)
+#   .venv/Scripts/python scripts/nrb_bfs.py reject  --month 2083-01 --note "why"
 
 api:  ## Run the read-only API locally at http://localhost:8000 (docs at /docs)
 	$(PY) -m uvicorn api.main:app --reload --port 8000

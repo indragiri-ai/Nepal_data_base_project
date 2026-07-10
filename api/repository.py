@@ -9,7 +9,7 @@ Read-only: there are no write methods anywhere.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Protocol
 
@@ -36,6 +36,9 @@ class ObservationRow:
     status: str
     footnote: str | None
     release_date: str
+    # e.g. {"bfi_class": "commercial_banks"} for NRB banking series; {} for
+    # country-level series such as the World Bank indicators.
+    breakdowns: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -89,7 +92,7 @@ class PostgresRepository:
             cur.execute(
                 "SELECT t.gregorian_label, t.sort_key, o.value, o.status, o.footnote,"
                 " r.release_date, i.name_en, g.name_en, u.code, u.name_en,"
-                " s.name_en, d.name_en, d.license"
+                " s.name_en, d.name_en, d.license, o.breakdowns"
                 " FROM observations o"
                 " JOIN indicators i ON i.id = o.indicator_id"
                 " JOIN geographies g ON g.id = o.geography_id"
@@ -108,7 +111,7 @@ class PostgresRepository:
         observations = [
             ObservationRow(
                 period=row[0], sort_key=row[1], value=row[2], status=row[3],
-                footnote=row[4], release_date=str(row[5]),
+                footnote=row[4], release_date=str(row[5]), breakdowns=row[13] or {},
             )
             for row in rows
         ]

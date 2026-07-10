@@ -188,6 +188,31 @@ table.data thead th {
   overflow: auto;
 }
 
+/* Banking dashboard: BFI class checkboxes */
+fieldset.class-picker {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+fieldset.class-picker legend {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 0 6px;
+}
+
+label.class-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 @media (max-width: 520px) {
   .card {
     padding: 14px;

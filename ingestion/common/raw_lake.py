@@ -134,13 +134,15 @@ class RawLake:
         payload: bytes,
         source_url: str,
         content_type: str = "application/json",
+        payload_filename: str = "payload.json",
     ) -> StoredObject:
         """Store one payload immutably, with a metadata sidecar. Path looks like
-        `<dataset_code>/<utc-timestamp>/payload.json`."""
+        `<dataset_code>/<utc-timestamp>/payload.json` (filename overridable for
+        non-JSON payloads, e.g. `payload.xlsx` for NRB Excel publications)."""
         now = datetime.now(UTC)
         stamp = now.strftime("%Y-%m-%dT%H%M%S_%fZ")  # colon-free: safe on every filesystem
         prefix = f"{dataset_code.strip('/')}/{stamp}"
-        payload_path = f"{prefix}/payload.json"
+        payload_path = f"{prefix}/{payload_filename}"
         metadata_path = f"{prefix}/metadata.json"
 
         if self.backend.exists(payload_path):

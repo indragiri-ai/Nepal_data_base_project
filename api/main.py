@@ -118,6 +118,7 @@ def get_data(
             Observation(
                 period=o.period, value=float(o.value), status=o.status,
                 footnote=o.footnote, release_date=o.release_date,
+                breakdowns=o.breakdowns,
             )
             for o in series.observations
         ],

@@ -71,6 +71,7 @@ The website reads the API; the API reads the warehouse. Run them together:
 make migrate        # create the schema (once)
 make seed           # load reference data: Nepal, years, units, 20 indicators (once)
 make load-calendar  # load the BS<->AD day-level calendar reference (once)
+make seed-periods-ne # add Nepali fiscal-year periods (needs load-calendar first)
 make ingest-wb      # fetch the World Bank data into the warehouse (once)
 make web-setup      # install the website's Node dependencies (once)
 ```
@@ -82,6 +83,24 @@ make web            # terminal 2 — website at http://localhost:3000
 Open <http://localhost:3000>, pick an indicator (e.g. "GDP growth (annual %)"),
 and you should see an interactive, source-cited chart. The website never touches
 the database directly — only the API.
+
+### NRB banking statistics (monthly time series + dashboard)
+
+Nepal Rastra Bank's "Banking and Financial Statistics — Monthly" Excel files
+(2021 onward) become monthly time series through the staging-and-review flow —
+extracted rows wait in a holding table until a human approves them:
+```
+make seed-nrb          # register the 35 banking indicators (once, after make seed)
+make nrb-bfs-acquire   # download new monthly Excel files into the raw lake
+make nrb-bfs-extract   # parse table C4 into the staging table
+make nrb-bfs-status    # see what awaits review, with a spot-check sample
+.venv/Scripts/python scripts/nrb_bfs.py approve --all    # after eyeballing the sample
+make nrb-bfs-promote   # quality-gate + load into the warehouse
+```
+Then open <http://localhost:3000/banking> — the banking sector dashboard:
+every indicator by bank class, with month-over-month and year-over-year views.
+Each new month NRB publishes, re-run acquire → extract → approve → promote;
+every command is idempotent.
 
 ## Deploying a live demo (Render)
 

@@ -40,6 +40,9 @@ class Observation(BaseModel):
     status: str
     footnote: str | None
     release_date: str
+    # e.g. {"bfi_class": "commercial_banks"} for NRB banking series; empty for
+    # country-level series (World Bank). Clients group/filter by these keys.
+    breakdowns: dict[str, str] = {}
 
 
 class DataResponse(BaseModel):

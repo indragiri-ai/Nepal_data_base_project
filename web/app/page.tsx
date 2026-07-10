@@ -79,7 +79,10 @@ export default function HomePage() {
     <main>
       <header className="site">
         <h1>Nepal Data Portal</h1>
-        <p>Pick an indicator to see Nepal&rsquo;s story — with the source behind every number.</p>
+        <p>
+          Pick an indicator to see Nepal&rsquo;s story — with the source behind every
+          number. Or explore the <a href="/banking">banking sector dashboard →</a>
+        </p>
       </header>
 
       <section className="card">

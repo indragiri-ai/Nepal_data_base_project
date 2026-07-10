@@ -16,6 +16,7 @@ dependencies = [
     "psycopg2-binary~=2.9",    # PostgreSQL driver used by yoyo; app code uses psycopg (v3) above
     "fastapi~=0.115",          # the read-only public API
     "uvicorn[standard]~=0.34", # ASGI server that runs the API locally (`make api`)
+    "openpyxl~=3.1",           # reads NRB .xlsx publications (Banking & Financial Statistics)
 ]
 
 [project.optional-dependencies]

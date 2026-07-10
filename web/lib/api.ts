@@ -36,6 +36,9 @@ export interface Observation {
   status: string;
   footnote: string | null;
   release_date: string;
+  /** e.g. {"bfi_class": "commercial_banks"} for NRB banking series; empty or
+   *  absent for country-level series (World Bank). */
+  breakdowns?: Record<string, string>;
 }
 
 export interface DataResponse {
