@@ -1,0 +1,474 @@
+{
+  "Asar_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:48.156966+00:00",
+    "metadata_path": "nrb/bfs/Asar_2080_Publish/2026-07-10T081248_156966Z/metadata.json",
+    "payload_path": "nrb/bfs/Asar_2080_Publish/2026-07-10T081248_156966Z/payload.xlsx",
+    "sha256": "f7340fa2aa8665acf98faf098396530c1a91e32b750f661fc1c38fb5e57781ec",
+    "size_bytes": 819375,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/08/Asar_2080_Publish.xlsx"
+  },
+  "Asar_2081_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:06.604248+00:00",
+    "metadata_path": "nrb/bfs/Asar_2081_Publish/2026-07-10T081206_604248Z/metadata.json",
+    "payload_path": "nrb/bfs/Asar_2081_Publish/2026-07-10T081206_604248Z/payload.xlsx",
+    "sha256": "63af1abe3976a5eba7d61c117f00ac3512d0ea68b416b95ed755885c585dbd08",
+    "size_bytes": 845272,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/08/Asar_2081_Publish.xlsx"
+  },
+  "Asar_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:24.188060+00:00",
+    "metadata_path": "nrb/bfs/Asar_2082_Publish/2026-07-10T081124_188060Z/metadata.json",
+    "payload_path": "nrb/bfs/Asar_2082_Publish/2026-07-10T081124_188060Z/payload.xlsx",
+    "sha256": "52ab2b17f23d1a813cdc94beb86f709bc332a525c6b5d6ffd8bffb79e8331931",
+    "size_bytes": 870447,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/08/Asar_2082_Publish.xlsx"
+  },
+  "Ashadh-2078-2.xlsx": {
+    "fetched_at": "2026-07-10T08:14:12.122344+00:00",
+    "metadata_path": "nrb/bfs/Ashadh-2078-2/2026-07-10T081412_122344Z/metadata.json",
+    "payload_path": "nrb/bfs/Ashadh-2078-2/2026-07-10T081412_122344Z/payload.xlsx",
+    "sha256": "ad94bab0f24ffab34cf1b8b64a1e5a878f96cb289f1b44fde949be083b844b51",
+    "size_bytes": 715798,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2021/08/Ashadh-2078-2.xlsx"
+  },
+  "Ashar2079_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:27.983778+00:00",
+    "metadata_path": "nrb/bfs/Ashar2079_Publish/2026-07-10T081327_983778Z/metadata.json",
+    "payload_path": "nrb/bfs/Ashar2079_Publish/2026-07-10T081327_983778Z/payload.xlsx",
+    "sha256": "d71dcd80f5f48300f817f0af736cc59493b7481d577fd0357b74433b5f1a4fc2",
+    "size_bytes": 722672,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/08/Ashar2079_Publish.xlsx"
+  },
+  "Ashwin2078_NFRS_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:57.042598+00:00",
+    "metadata_path": "nrb/bfs/Ashwin2078_NFRS_Publish/2026-07-10T081357_042598Z/metadata.json",
+    "payload_path": "nrb/bfs/Ashwin2078_NFRS_Publish/2026-07-10T081357_042598Z/payload.xlsx",
+    "sha256": "d92e3228e4c7bf405b9d8aad1efb2ec4fa9c4b19337736e0a73bd0eb85d5e512",
+    "size_bytes": 713294,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2021/11/Ashwin2078_NFRS_Publish.xlsx"
+  },
+  "Ashwin_2081_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:11:56.944945+00:00",
+    "metadata_path": "nrb/bfs/Ashwin_2081_Publish-1/2026-07-10T081156_944945Z/metadata.json",
+    "payload_path": "nrb/bfs/Ashwin_2081_Publish-1/2026-07-10T081156_944945Z/payload.xlsx",
+    "sha256": "c59a4e93e69783516c3fb7cf116326c3e2edfd9ff031cb5b52c5754c27883688",
+    "size_bytes": 849681,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/11/Ashwin_2081_Publish-1.xlsx"
+  },
+  "Asoj_2079_PublishV1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:17.441731+00:00",
+    "metadata_path": "nrb/bfs/Asoj_2079_PublishV1/2026-07-10T081317_441731Z/metadata.json",
+    "payload_path": "nrb/bfs/Asoj_2079_PublishV1/2026-07-10T081317_441731Z/payload.xlsx",
+    "sha256": "6dc70a0354f5f252c07f56a10fa3d400f7e7a796e7873fd2fa567956f3dbf7f5",
+    "size_bytes": 730042,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/11/Asoj_2079_PublishV1.xlsx"
+  },
+  "Asoj_2080_publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:38.496717+00:00",
+    "metadata_path": "nrb/bfs/Asoj_2080_publish/2026-07-10T081238_496717Z/metadata.json",
+    "payload_path": "nrb/bfs/Asoj_2080_publish/2026-07-10T081238_496717Z/payload.xlsx",
+    "sha256": "25b623927b4cefb84ba1b970e4bb1d77cb73681226a3e6136e043bda4bf16880",
+    "size_bytes": 816496,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/11/Asoj_2080_publish.xlsx"
+  },
+  "Asoj_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:13.695596+00:00",
+    "metadata_path": "nrb/bfs/Asoj_2082_Publish/2026-07-10T081113_695596Z/metadata.json",
+    "payload_path": "nrb/bfs/Asoj_2082_Publish/2026-07-10T081113_695596Z/payload.xlsx",
+    "sha256": "e528138657a5c5a958fe2d3a045e6b1bebac833c376685fd8d853147cd8e90d1",
+    "size_bytes": 874576,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/11/Asoj_2082_Publish.xlsx"
+  },
+  "Baisakh_2080_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:12:55.101303+00:00",
+    "metadata_path": "nrb/bfs/Baisakh_2080_Publish-1/2026-07-10T081255_101303Z/metadata.json",
+    "payload_path": "nrb/bfs/Baisakh_2080_Publish-1/2026-07-10T081255_101303Z/payload.xlsx",
+    "sha256": "9de5f9104e42db15835c579904d39b5027e054cb08ce1f0781315e70fc039724",
+    "size_bytes": 815642,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/06/Baisakh_2080_Publish-1.xlsx"
+  },
+  "Baisakh_2081_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:12.966622+00:00",
+    "metadata_path": "nrb/bfs/Baisakh_2081_Publish/2026-07-10T081212_966622Z/metadata.json",
+    "payload_path": "nrb/bfs/Baisakh_2081_Publish/2026-07-10T081212_966622Z/payload.xlsx",
+    "sha256": "51b58481ba3f6613d15e022f80444ef05378c584601b754943274d5c029ae710",
+    "size_bytes": 830629,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/06/Baisakh_2081_Publish.xlsx"
+  },
+  "Baisakh_2082_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:11:31.337679+00:00",
+    "metadata_path": "nrb/bfs/Baisakh_2082_Publish-1/2026-07-10T081131_337679Z/metadata.json",
+    "payload_path": "nrb/bfs/Baisakh_2082_Publish-1/2026-07-10T081131_337679Z/payload.xlsx",
+    "sha256": "125f7c8db50fabb9b6befec50e8226f5e76df8b70374d397e8eda70d2797e18d",
+    "size_bytes": 865845,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/06/Baisakh_2082_Publish-1.xlsx"
+  },
+  "Baisakh_2083_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:10:47.808384+00:00",
+    "metadata_path": "nrb/bfs/Baisakh_2083_Publish/2026-07-10T081047_808384Z/metadata.json",
+    "payload_path": "nrb/bfs/Baisakh_2083_Publish/2026-07-10T081047_808384Z/payload.xlsx",
+    "sha256": "ece6cb652a96d8d89fcd180b82f7cd754b0bb0032f917bb3e170fef5d5c5e843",
+    "size_bytes": 888464,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/06/Baisakh_2083_Publish.xlsx"
+  },
+  "Baishakh-2079.xlsx": {
+    "fetched_at": "2026-07-10T08:13:35.052562+00:00",
+    "metadata_path": "nrb/bfs/Baishakh-2079/2026-07-10T081335_052562Z/metadata.json",
+    "payload_path": "nrb/bfs/Baishakh-2079/2026-07-10T081335_052562Z/payload.xlsx",
+    "sha256": "3b8726bd64952acbd12b1ec425cd2cf2cefe8d73678289f2976f4b0bad114e18",
+    "size_bytes": 727261,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/06/Baishakh-2079.xlsx"
+  },
+  "Bhadau_2081_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:12:00.441010+00:00",
+    "metadata_path": "nrb/bfs/Bhadau_2081_Publish-1/2026-07-10T081200_441010Z/metadata.json",
+    "payload_path": "nrb/bfs/Bhadau_2081_Publish-1/2026-07-10T081200_441010Z/payload.xlsx",
+    "sha256": "990ca416232f6a8edec051d799464b402e843d3b18d5f4938892cf191b5ff038",
+    "size_bytes": 844670,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/10/Bhadau_2081_Publish-1.xlsx"
+  },
+  "Bhadau_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:17.319175+00:00",
+    "metadata_path": "nrb/bfs/Bhadau_2082_Publish/2026-07-10T081117_319175Z/metadata.json",
+    "payload_path": "nrb/bfs/Bhadau_2082_Publish/2026-07-10T081117_319175Z/payload.xlsx",
+    "sha256": "50297720baf2947149d48588072cc8a5bc209c0d7a881718a1f4d845cda58fae",
+    "size_bytes": 869977,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/10/Bhadau_2082_Publish.xlsx"
+  },
+  "Bhadra_2078_V1.1.xlsx": {
+    "fetched_at": "2026-07-10T08:14:03.875450+00:00",
+    "metadata_path": "nrb/bfs/Bhadra_2078_V1.1/2026-07-10T081403_875450Z/metadata.json",
+    "payload_path": "nrb/bfs/Bhadra_2078_V1.1/2026-07-10T081403_875450Z/payload.xlsx",
+    "sha256": "a4f35748e7f0c274b9239901204e470047315b4c8471e9d7eef21169ec6d572c",
+    "size_bytes": 714155,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2021/10/Bhadra_2078_V1.1.xlsx"
+  },
+  "Bhadra_2079_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:20.783168+00:00",
+    "metadata_path": "nrb/bfs/Bhadra_2079_Publish/2026-07-10T081320_783168Z/metadata.json",
+    "payload_path": "nrb/bfs/Bhadra_2079_Publish/2026-07-10T081320_783168Z/payload.xlsx",
+    "sha256": "dd7670048d63a2cfb68757a5f7a0b6329fa74d47647a9149001cf444a781cdc8",
+    "size_bytes": 584401,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/10/Bhadra_2079_Publish.xlsx"
+  },
+  "Bhadra_2080_Publish-2.xlsx": {
+    "fetched_at": "2026-07-10T08:12:41.422684+00:00",
+    "metadata_path": "nrb/bfs/Bhadra_2080_Publish-2/2026-07-10T081241_422684Z/metadata.json",
+    "payload_path": "nrb/bfs/Bhadra_2080_Publish-2/2026-07-10T081241_422684Z/payload.xlsx",
+    "sha256": "fcc4d8b00e94541ce93f5f8b78be232f15a89737c9b9b5921ff4e142d0bedb94",
+    "size_bytes": 819618,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/10/Bhadra_2080_Publish-2.xlsx"
+  },
+  "Chaitra-2078.xlsx": {
+    "fetched_at": "2026-07-10T08:13:38.233263+00:00",
+    "metadata_path": "nrb/bfs/Chaitra-2078/2026-07-10T081338_233263Z/metadata.json",
+    "payload_path": "nrb/bfs/Chaitra-2078/2026-07-10T081338_233263Z/payload.xlsx",
+    "sha256": "0c88833dcaa717ab8acd6d8a70faeb68b53cea9a55e0cc907db2ac57201348a3",
+    "size_bytes": 725965,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/05/Chaitra-2078.xlsx"
+  },
+  "Chaitra_2079_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:58.261241+00:00",
+    "metadata_path": "nrb/bfs/Chaitra_2079_Publish/2026-07-10T081258_261241Z/metadata.json",
+    "payload_path": "nrb/bfs/Chaitra_2079_Publish/2026-07-10T081258_261241Z/payload.xlsx",
+    "sha256": "c84d1669c4a7bc5725c2543e687aef0cd7a16b0d4fe4c5c8358ac8a5b4a0e8b3",
+    "size_bytes": 792529,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/05/Chaitra_2079_Publish.xlsx"
+  },
+  "Chaitra_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:16.153752+00:00",
+    "metadata_path": "nrb/bfs/Chaitra_2080_Publish/2026-07-10T081216_153752Z/metadata.json",
+    "payload_path": "nrb/bfs/Chaitra_2080_Publish/2026-07-10T081216_153752Z/payload.xlsx",
+    "sha256": "f4931183a9f0b7c0ccfe84fa5ffcc0822ee29265ee9e9c793d4ec6e19dad7511",
+    "size_bytes": 836812,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/05/Chaitra_2080_Publish.xlsx"
+  },
+  "Chaitra_2081_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:34.441565+00:00",
+    "metadata_path": "nrb/bfs/Chaitra_2081_Publish/2026-07-10T081134_441565Z/metadata.json",
+    "payload_path": "nrb/bfs/Chaitra_2081_Publish/2026-07-10T081134_441565Z/payload.xlsx",
+    "sha256": "96d5d87e715a86a55812f25f4c5d089c0fae241d4221d2799ce1058e71aa1b2d",
+    "size_bytes": 863828,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/05/Chaitra_2081_Publish.xlsx"
+  },
+  "Chaitra_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:10:52.560061+00:00",
+    "metadata_path": "nrb/bfs/Chaitra_2082_Publish/2026-07-10T081052_560061Z/metadata.json",
+    "payload_path": "nrb/bfs/Chaitra_2082_Publish/2026-07-10T081052_560061Z/payload.xlsx",
+    "sha256": "6b3eb2efaae15caf66848457f33014274433ad2f5d9caa0eca8186db7cea5ee1",
+    "size_bytes": 877367,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/05/Chaitra_2082_Publish.xlsx"
+  },
+  "Falgun2078_NFRS_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:41.684719+00:00",
+    "metadata_path": "nrb/bfs/Falgun2078_NFRS_Publish/2026-07-10T081341_684719Z/metadata.json",
+    "payload_path": "nrb/bfs/Falgun2078_NFRS_Publish/2026-07-10T081341_684719Z/payload.xlsx",
+    "sha256": "b090533beef691295c2a13649305c635d10d58d1d83bd8847af5c59f30447913",
+    "size_bytes": 719170,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/04/Falgun2078_NFRS_Publish.xlsx"
+  },
+  "Falgun_2079_Publish-4.xlsx": {
+    "fetched_at": "2026-07-10T08:13:01.809662+00:00",
+    "metadata_path": "nrb/bfs/Falgun_2079_Publish-4/2026-07-10T081301_809662Z/metadata.json",
+    "payload_path": "nrb/bfs/Falgun_2079_Publish-4/2026-07-10T081301_809662Z/payload.xlsx",
+    "sha256": "a738f3ec3e84a5fa4dd019c7494509341de80a1926b2e5f682cfcdfd1eb73fd8",
+    "size_bytes": 789283,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/04/Falgun_2079_Publish-4.xlsx"
+  },
+  "Falgun_2080_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:12:19.309138+00:00",
+    "metadata_path": "nrb/bfs/Falgun_2080_Publish-1/2026-07-10T081219_309138Z/metadata.json",
+    "payload_path": "nrb/bfs/Falgun_2080_Publish-1/2026-07-10T081219_309138Z/payload.xlsx",
+    "sha256": "26f077cf268d818218c638729a9f9c8d9aa572d0b164546ffaf25a1837d05612",
+    "size_bytes": 825696,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/04/Falgun_2080_Publish-1.xlsx"
+  },
+  "Falgun_2081_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:38.086520+00:00",
+    "metadata_path": "nrb/bfs/Falgun_2081_Publish/2026-07-10T081138_086520Z/metadata.json",
+    "payload_path": "nrb/bfs/Falgun_2081_Publish/2026-07-10T081138_086520Z/payload.xlsx",
+    "sha256": "3d16c22c2bf08c8abdb436dba9d3a20f26453aeb007fb26b4c9d48cd714b0565",
+    "size_bytes": 861418,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/04/Falgun_2081_Publish.xlsx"
+  },
+  "Falgun_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:10:56.445470+00:00",
+    "metadata_path": "nrb/bfs/Falgun_2082_Publish/2026-07-10T081056_445470Z/metadata.json",
+    "payload_path": "nrb/bfs/Falgun_2082_Publish/2026-07-10T081056_445470Z/payload.xlsx",
+    "sha256": "46bbc526478a6f913c6443d55748d88a2ef380ce5bfb254cc683fd0bfe337d89",
+    "size_bytes": 874614,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/04/Falgun_2082_Publish.xlsx"
+  },
+  "Jestha2079_PublishV1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:30.927535+00:00",
+    "metadata_path": "nrb/bfs/Jestha2079_PublishV1/2026-07-10T081330_927535Z/metadata.json",
+    "payload_path": "nrb/bfs/Jestha2079_PublishV1/2026-07-10T081330_927535Z/payload.xlsx",
+    "sha256": "5d1c692b437383bd64277c8fe2eb13ae5a5d4f5d3351d919b37703040c09805e",
+    "size_bytes": 728944,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/07/Jestha2079_PublishV1.xlsx"
+  },
+  "Jestha_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:51.783832+00:00",
+    "metadata_path": "nrb/bfs/Jestha_2080_Publish/2026-07-10T081251_783832Z/metadata.json",
+    "payload_path": "nrb/bfs/Jestha_2080_Publish/2026-07-10T081251_783832Z/payload.xlsx",
+    "sha256": "744c08db2f04f1cdc64bb047d932e1ab0c93a82594ef5f7b6efbe3010224b04a",
+    "size_bytes": 811410,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/07/Jestha_2080_Publish.xlsx"
+  },
+  "Jestha_2081_Publish-2.xlsx": {
+    "fetched_at": "2026-07-10T08:12:09.614517+00:00",
+    "metadata_path": "nrb/bfs/Jestha_2081_Publish-2/2026-07-10T081209_614517Z/metadata.json",
+    "payload_path": "nrb/bfs/Jestha_2081_Publish-2/2026-07-10T081209_614517Z/payload.xlsx",
+    "sha256": "78101d9fd60168a8c206af485217e3755bbed6261319dcdafa644c96f827c439",
+    "size_bytes": 843196,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/07/Jestha_2081_Publish-2.xlsx"
+  },
+  "Jestha_2082_Publish-3.xlsx": {
+    "fetched_at": "2026-07-10T08:11:27.685030+00:00",
+    "metadata_path": "nrb/bfs/Jestha_2082_Publish-3/2026-07-10T081127_685030Z/metadata.json",
+    "payload_path": "nrb/bfs/Jestha_2082_Publish-3/2026-07-10T081127_685030Z/payload.xlsx",
+    "sha256": "ad5901c97efeccb6900b8bd3829b01fbc8b67e6d608cd59f9e0a8692268adb0b",
+    "size_bytes": 867659,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/07/Jestha_2082_Publish-3.xlsx"
+  },
+  "Kartik2078_NFRS_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:53.888374+00:00",
+    "metadata_path": "nrb/bfs/Kartik2078_NFRS_Publish-1/2026-07-10T081353_888374Z/metadata.json",
+    "payload_path": "nrb/bfs/Kartik2078_NFRS_Publish-1/2026-07-10T081353_888374Z/payload.xlsx",
+    "sha256": "c6db703de0846977fcc4050bf0bc80fae6ef99713f7f65ca34fdc21efd7c83e9",
+    "size_bytes": 714028,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2021/12/Kartik2078_NFRS_Publish-1.xlsx"
+  },
+  "Kartik2079_publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:14.358253+00:00",
+    "metadata_path": "nrb/bfs/Kartik2079_publish/2026-07-10T081314_358253Z/metadata.json",
+    "payload_path": "nrb/bfs/Kartik2079_publish/2026-07-10T081314_358253Z/payload.xlsx",
+    "sha256": "5b8afc05e41a695c77a28aba407fd437645012116e58de23055a289434c2a800",
+    "size_bytes": 731743,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/12/Kartik2079_publish.xlsx"
+  },
+  "Kartik_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:34.705839+00:00",
+    "metadata_path": "nrb/bfs/Kartik_2080_Publish/2026-07-10T081234_705839Z/metadata.json",
+    "payload_path": "nrb/bfs/Kartik_2080_Publish/2026-07-10T081234_705839Z/payload.xlsx",
+    "sha256": "cd8d876ef3f4c91d41823e5cea43741a710bb2bc66daf23ecf54ac8f783912e3",
+    "size_bytes": 826490,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/12/Kartik_2080_Publish.xlsx"
+  },
+  "Kartik_2081_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:53.697871+00:00",
+    "metadata_path": "nrb/bfs/Kartik_2081_Publish/2026-07-10T081153_697871Z/metadata.json",
+    "payload_path": "nrb/bfs/Kartik_2081_Publish/2026-07-10T081153_697871Z/payload.xlsx",
+    "sha256": "19f0da8f8db6c5bef5461dcbac65028a094bf3f9849308f9802184285476f73f",
+    "size_bytes": 851523,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/12/Kartik_2081_Publish.xlsx"
+  },
+  "Kartik_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:10.483985+00:00",
+    "metadata_path": "nrb/bfs/Kartik_2082_Publish/2026-07-10T081110_483985Z/metadata.json",
+    "payload_path": "nrb/bfs/Kartik_2082_Publish/2026-07-10T081110_483985Z/payload.xlsx",
+    "sha256": "7c40811f289543fa486d36a1761b1f38ca11cec9af25960a31c12a36634a0fc4",
+    "size_bytes": 877031,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/12/Kartik_2082_Publish.xlsx"
+  },
+  "Magh2078_NFRS_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:44.650164+00:00",
+    "metadata_path": "nrb/bfs/Magh2078_NFRS_Publish-1/2026-07-10T081344_650164Z/metadata.json",
+    "payload_path": "nrb/bfs/Magh2078_NFRS_Publish-1/2026-07-10T081344_650164Z/payload.xlsx",
+    "sha256": "7cae5d69ec54818d67c2f161a04f1a3613dceb1ea574bd5a3a42b5b31ebd181e",
+    "size_bytes": 723292,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/03/Magh2078_NFRS_Publish-1.xlsx"
+  },
+  "Magh_2079_Publish-4.xlsx": {
+    "fetched_at": "2026-07-10T08:13:05.173984+00:00",
+    "metadata_path": "nrb/bfs/Magh_2079_Publish-4/2026-07-10T081305_173984Z/metadata.json",
+    "payload_path": "nrb/bfs/Magh_2079_Publish-4/2026-07-10T081305_173984Z/payload.xlsx",
+    "sha256": "341801e1d282b550141bf18f65db06352748f7009afe45be51214ad9c4c50899",
+    "size_bytes": 782512,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/03/Magh_2079_Publish-4.xlsx"
+  },
+  "Magh_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:22.642467+00:00",
+    "metadata_path": "nrb/bfs/Magh_2080_Publish/2026-07-10T081222_642467Z/metadata.json",
+    "payload_path": "nrb/bfs/Magh_2080_Publish/2026-07-10T081222_642467Z/payload.xlsx",
+    "sha256": "24b2972e0746cc90cdd92e39caab8e8e836df01dfdc37b0c0c165132d8a988b2",
+    "size_bytes": 832698,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/03/Magh_2080_Publish.xlsx"
+  },
+  "Magh_2081_Publish-3.xlsx": {
+    "fetched_at": "2026-07-10T08:11:41.561066+00:00",
+    "metadata_path": "nrb/bfs/Magh_2081_Publish-3/2026-07-10T081141_561066Z/metadata.json",
+    "payload_path": "nrb/bfs/Magh_2081_Publish-3/2026-07-10T081141_561066Z/payload.xlsx",
+    "sha256": "6f69bd6f0a3162e1e1c378df8d9b2383bf1619c57c69d9bc135958416ba19440",
+    "size_bytes": 859680,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/03/Magh_2081_Publish-3.xlsx"
+  },
+  "Magh_2082_Publish-2.xlsx": {
+    "fetched_at": "2026-07-10T08:11:00.140296+00:00",
+    "metadata_path": "nrb/bfs/Magh_2082_Publish-2/2026-07-10T081100_140296Z/metadata.json",
+    "payload_path": "nrb/bfs/Magh_2082_Publish-2/2026-07-10T081100_140296Z/payload.xlsx",
+    "sha256": "9ead70b067ba60cbf10c2c78ad04395a975691a0c765057fac30ee1fab2578cd",
+    "size_bytes": 884096,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/03/Magh_2082_Publish-2.xlsx"
+  },
+  "Manghir-2078.xlsx": {
+    "fetched_at": "2026-07-10T08:13:50.740128+00:00",
+    "metadata_path": "nrb/bfs/Manghir-2078/2026-07-10T081350_740128Z/metadata.json",
+    "payload_path": "nrb/bfs/Manghir-2078/2026-07-10T081350_740128Z/payload.xlsx",
+    "sha256": "f7d606654e52671e0308a3dde5d8e2b5618e5afb19c1513dfaadaaf154159481",
+    "size_bytes": 747552,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/01/Manghir-2078.xlsx"
+  },
+  "Mangshir_2080_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:12:30.909801+00:00",
+    "metadata_path": "nrb/bfs/Mangshir_2080_Publish/2026-07-10T081230_909801Z/metadata.json",
+    "payload_path": "nrb/bfs/Mangshir_2080_Publish/2026-07-10T081230_909801Z/payload.xlsx",
+    "sha256": "484b2ea497415c8a3db573f36880960da85dec4f496d8c592568b8c61c1ad482",
+    "size_bytes": 828987,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/01/Mangshir_2080_Publish.xlsx"
+  },
+  "Mangshir_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:06.930708+00:00",
+    "metadata_path": "nrb/bfs/Mangshir_2082_Publish/2026-07-10T081106_930708Z/metadata.json",
+    "payload_path": "nrb/bfs/Mangshir_2082_Publish/2026-07-10T081106_930708Z/payload.xlsx",
+    "sha256": "9220709e6dfefe9123df5fdc1f110e504d2de1560d975fa977a24e2b9ab4e5f1",
+    "size_bytes": 879152,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/01/Mangshir_2082_Publish.xlsx"
+  },
+  "Mangsir_2079_Publish_V1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:11.268049+00:00",
+    "metadata_path": "nrb/bfs/Mangsir_2079_Publish_V1/2026-07-10T081311_268049Z/metadata.json",
+    "payload_path": "nrb/bfs/Mangsir_2079_Publish_V1/2026-07-10T081311_268049Z/payload.xlsx",
+    "sha256": "7ae938db743b078d57a8337a1194dc83b08328c667ef414eda17267f6e1bd3a2",
+    "size_bytes": 767844,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/01/Mangsir_2079_Publish_V1.xlsx"
+  },
+  "Mangsir_2081_Publish-V2.xlsx": {
+    "fetched_at": "2026-07-10T08:11:49.984041+00:00",
+    "metadata_path": "nrb/bfs/Mangsir_2081_Publish-V2/2026-07-10T081149_984041Z/metadata.json",
+    "payload_path": "nrb/bfs/Mangsir_2081_Publish-V2/2026-07-10T081149_984041Z/payload.xlsx",
+    "sha256": "a0b0f9bb845623fda9ad509c963c2371ef95fde4f86f668df435af28d6d292cb",
+    "size_bytes": 845289,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/01/Mangsir_2081_Publish-V2.xlsx"
+  },
+  "Poush-2078_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:13:47.849806+00:00",
+    "metadata_path": "nrb/bfs/Poush-2078_Publish/2026-07-10T081347_849806Z/metadata.json",
+    "payload_path": "nrb/bfs/Poush-2078_Publish/2026-07-10T081347_849806Z/payload.xlsx",
+    "sha256": "eb52e27fbba92a93c1c01ab5595ed04832ee6a6d4a1c58092ba1d2ee4a960096",
+    "size_bytes": 446051,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/02/Poush-2078_Publish.xlsx"
+  },
+  "Poush2079_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:08.233304+00:00",
+    "metadata_path": "nrb/bfs/Poush2079_Publish-1/2026-07-10T081308_233304Z/metadata.json",
+    "payload_path": "nrb/bfs/Poush2079_Publish-1/2026-07-10T081308_233304Z/payload.xlsx",
+    "sha256": "5f9b53a72a32d5bd29381d0198d1652dc12329c1a354d8132db83a219ca825bb",
+    "size_bytes": 760994,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/02/Poush2079_Publish-1.xlsx"
+  },
+  "Poush_2080_Publish-2.xlsx": {
+    "fetched_at": "2026-07-10T08:12:27.728256+00:00",
+    "metadata_path": "nrb/bfs/Poush_2080_Publish-2/2026-07-10T081227_728256Z/metadata.json",
+    "payload_path": "nrb/bfs/Poush_2080_Publish-2/2026-07-10T081227_728256Z/payload.xlsx",
+    "sha256": "9bdd7eff611b17634961196ba6dffa22395794d3e51f6da157d60586c98e2d76",
+    "size_bytes": 831322,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/02/Poush_2080_Publish-2.xlsx"
+  },
+  "Poush_2081_Publish_2.xlsx": {
+    "fetched_at": "2026-07-10T08:11:46.252247+00:00",
+    "metadata_path": "nrb/bfs/Poush_2081_Publish_2/2026-07-10T081146_252247Z/metadata.json",
+    "payload_path": "nrb/bfs/Poush_2081_Publish_2/2026-07-10T081146_252247Z/payload.xlsx",
+    "sha256": "f67ba47fe2d0f527c8fad55c3ae104f1a3ac58edb0828fdf36cf68f32e590081",
+    "size_bytes": 856246,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/02/Poush_2081_Publish_2.xlsx"
+  },
+  "Poush_2082_Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:03.673031+00:00",
+    "metadata_path": "nrb/bfs/Poush_2082_Publish/2026-07-10T081103_673031Z/metadata.json",
+    "payload_path": "nrb/bfs/Poush_2082_Publish/2026-07-10T081103_673031Z/payload.xlsx",
+    "sha256": "cb855b38256e21b785073952e423e2f22e3fe7f85f225e82957ee7d4367808a8",
+    "size_bytes": 881759,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2026/02/Poush_2082_Publish.xlsx"
+  },
+  "Saun-2082-Publish.xlsx": {
+    "fetched_at": "2026-07-10T08:11:20.756338+00:00",
+    "metadata_path": "nrb/bfs/Saun-2082-Publish/2026-07-10T081120_756338Z/metadata.json",
+    "payload_path": "nrb/bfs/Saun-2082-Publish/2026-07-10T081120_756338Z/payload.xlsx",
+    "sha256": "44301bc60ee6669666842cdb5167b1a06e049e2f9c9cbfd75088b20cc9b2863d",
+    "size_bytes": 867865,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2025/09/Saun-2082-Publish.xlsx"
+  },
+  "Saun_2080_Publish-3.xlsx": {
+    "fetched_at": "2026-07-10T08:12:44.744742+00:00",
+    "metadata_path": "nrb/bfs/Saun_2080_Publish-3/2026-07-10T081244_744742Z/metadata.json",
+    "payload_path": "nrb/bfs/Saun_2080_Publish-3/2026-07-10T081244_744742Z/payload.xlsx",
+    "sha256": "92fd0706be8bf33e40fa5d4ede7ef5c357e26d6081d00a98c6c1932be0ebab4f",
+    "size_bytes": 817191,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2023/09/Saun_2080_Publish-3.xlsx"
+  },
+  "Shrawan-2078-2.xlsx": {
+    "fetched_at": "2026-07-10T08:14:08.858096+00:00",
+    "metadata_path": "nrb/bfs/Shrawan-2078-2/2026-07-10T081408_858096Z/metadata.json",
+    "payload_path": "nrb/bfs/Shrawan-2078-2/2026-07-10T081408_858096Z/payload.xlsx",
+    "sha256": "83a31a8eabe716b65acb2a4299553fa05d863d37964ed3bb08f885ea2e1f6708",
+    "size_bytes": 708307,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2021/09/Shrawan-2078-2.xlsx"
+  },
+  "Shrawan_2079_PublishV1.xlsx": {
+    "fetched_at": "2026-07-10T08:13:24.388333+00:00",
+    "metadata_path": "nrb/bfs/Shrawan_2079_PublishV1/2026-07-10T081324_388333Z/metadata.json",
+    "payload_path": "nrb/bfs/Shrawan_2079_PublishV1/2026-07-10T081324_388333Z/payload.xlsx",
+    "sha256": "a1604d862e65391ee2021a5b5059cfb59e9dcbccd47de1b4c82374f88d6738e5",
+    "size_bytes": 724252,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2022/09/Shrawan_2079_PublishV1.xlsx"
+  },
+  "Shrawan_2081_Publish-1.xlsx": {
+    "fetched_at": "2026-07-10T08:12:03.389345+00:00",
+    "metadata_path": "nrb/bfs/Shrawan_2081_Publish-1/2026-07-10T081203_389345Z/metadata.json",
+    "payload_path": "nrb/bfs/Shrawan_2081_Publish-1/2026-07-10T081203_389345Z/payload.xlsx",
+    "sha256": "dccffb912f86b710b8a53c4f1c91719293a5656129785de7598e970ffa222d8f",
+    "size_bytes": 842952,
+    "source_url": "https://www.nrb.org.np/contents/uploads/2024/09/Shrawan_2081_Publish-1.xlsx"
+  }
+}

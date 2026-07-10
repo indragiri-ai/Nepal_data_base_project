@@ -83,6 +83,24 @@ def iter_source_files(from_dir: str | None, limit: int | None) -> list[SourceFil
     return files[:limit] if limit is not None else files
 
 
+def clear_stale_own_sessions(dsn: str) -> None:
+    """Terminate 'idle in transaction' sessions stuck on nrb_bfs_staging.
+
+    Only this pipeline writes to that table, so any such session is a crashed
+    previous run of this very script still holding its insert lock via the
+    pooler — left alone it blocks every following run into statement timeout."""
+    with psycopg.connect(dsn, autocommit=True) as conn, conn.cursor() as cur:
+        cur.execute(
+            "SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity"
+            " WHERE datname = current_database() AND pid <> pg_backend_pid()"
+            "   AND state = 'idle in transaction'"
+            "   AND query LIKE '%nrb_bfs_staging%'"
+        )
+        cleared = cur.fetchall()
+    if cleared:
+        print(f"cleared {len(cleared)} stale lock-holding session(s) from a crashed run")
+
+
 UPSERT_SQL = """
 INSERT INTO nrb_bfs_staging
     (raw_ref, source_url, bs_year, bs_month, period_label, sheet,
@@ -109,28 +127,30 @@ WHERE nrb_bfs_staging.value IS DISTINCT FROM EXCLUDED.value
 
 
 def stage(conn: psycopg.Connection[Any], src: SourceFile, parsed: ParsedC4) -> int:
-    """Upsert one file's parsed values; returns rows actually written."""
-    written = 0
+    """Upsert one file's parsed values; returns rows actually written.
+
+    Uses executemany (pipelined by psycopg3) — one round trip per batch, not
+    per row: the free-tier Supabase server drops connections under sustained
+    row-by-row chatter."""
+    params = [
+        {
+            "raw_ref": src.raw_ref,
+            "source_url": src.source_url,
+            "bs_year": parsed.bs_year,
+            "bs_month": parsed.bs_month,
+            "period_label": parsed.period_label,
+            "row_label": v.row_label,
+            "section": v.section,
+            "indicator_code": v.indicator_code,
+            "bfi_class": v.bfi_class,
+            "value": v.value,
+            "unit_code": v.unit_code,
+        }
+        for v in parsed.values
+    ]
     with conn.cursor() as cur:
-        for v in parsed.values:
-            cur.execute(
-                UPSERT_SQL,
-                {
-                    "raw_ref": src.raw_ref,
-                    "source_url": src.source_url,
-                    "bs_year": parsed.bs_year,
-                    "bs_month": parsed.bs_month,
-                    "period_label": parsed.period_label,
-                    "row_label": v.row_label,
-                    "section": v.section,
-                    "indicator_code": v.indicator_code,
-                    "bfi_class": v.bfi_class,
-                    "value": v.value,
-                    "unit_code": v.unit_code,
-                },
-            )
-            written += cur.rowcount
-    return written
+        cur.executemany(UPSERT_SQL, params)
+        return max(cur.rowcount, 0)
 
 
 def main() -> None:
@@ -145,38 +165,44 @@ def main() -> None:
     if not files:
         raise SystemExit("no source files found — run `make nrb-bfs-acquire` first")
 
-    conn: psycopg.Connection[Any] | None = None
+    dsn = ""
     if not args.dry_run:
         load_dotenv()
         dsn = os.environ.get("DATABASE_URL", "").strip()
         if not dsn:
             raise SystemExit("DATABASE_URL is empty — fill it in .env (or use --dry-run)")
-        conn = psycopg.connect(dsn)
+        clear_stale_own_sessions(dsn)
 
     parsed_ok, values_total, written_total = 0, 0, 0
     all_unmatched: dict[str, str] = {}   # label -> first file seen in
     failures: list[str] = []
     months: list[tuple[int, int]] = []
 
-    try:
-        for src in files:
-            try:
-                parsed = parse_c4(read_c4_matrix(src.payload))
-            except BfsParseError as exc:
-                failures.append(f"{src.name}: {exc}")
-                continue
-            parsed_ok += 1
-            values_total += len(parsed.values)
-            months.append((parsed.bs_year, parsed.bs_month))
-            for label in parsed.unmatched_labels:
-                all_unmatched.setdefault(label, src.name)
-            if conn is not None:
-                written_total += stage(conn, src, parsed)
-        if conn is not None:
-            conn.commit()
-    finally:
-        if conn is not None:
-            conn.close()
+    for src in files:
+        try:
+            parsed = parse_c4(read_c4_matrix(src.payload))
+        except BfsParseError as exc:
+            failures.append(f"{src.name}: {exc}")
+            continue
+        parsed_ok += 1
+        values_total += len(parsed.values)
+        months.append((parsed.bs_year, parsed.bs_month))
+        for label in parsed.unmatched_labels:
+            all_unmatched.setdefault(label, src.name)
+        if dsn:
+            # One short-lived connection per file (the pooler cuts idle shared
+            # connections), and one retry on a dropped connection — the free
+            # tier occasionally closes mid-write. Upserts keep all of this
+            # idempotent, so a crash between files loses nothing.
+            for attempt in (1, 2):
+                try:
+                    with psycopg.connect(dsn) as conn:
+                        written_total += stage(conn, src, parsed)
+                    break
+                except psycopg.OperationalError as exc:
+                    if attempt == 2:
+                        raise
+                    print(f"  {src.name}: connection dropped ({exc}); retrying once…")
 
     months.sort()
     span = f"{months[0]} … {months[-1]}" if months else "—"

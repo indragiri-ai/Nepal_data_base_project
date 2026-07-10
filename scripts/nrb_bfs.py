@@ -189,7 +189,27 @@ def ensure_month_period(cur: Cursor, bs_year: int, bs_month: int) -> tuple[int, 
     return int(period_id), end
 
 
+def clear_stale_pipeline_sessions(conn: psycopg.Connection[Any]) -> None:
+    """Terminate 'idle in transaction' sessions left by a crashed pipeline run.
+
+    Only our own pipelines write observations/staging, so such a session is a
+    dead predecessor still holding locks via the pooler — left alone it blocks
+    this run into statement timeout."""
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity"
+            " WHERE datname = current_database() AND pid <> pg_backend_pid()"
+            "   AND state = 'idle in transaction'"
+            "   AND (query LIKE '%nrb_bfs_staging%' OR query LIKE '%observations%')"
+        )
+        cleared = cur.fetchall()
+    conn.commit()
+    if cleared:
+        print(f"cleared {len(cleared)} stale lock-holding session(s) from a crashed run")
+
+
 def cmd_promote(conn: psycopg.Connection[Any]) -> None:  # noqa: PLR0915
+    clear_stale_pipeline_sessions(conn)
     cur = conn.cursor()
 
     # --- Resolve fixed dimensions (fail loudly if reference data is missing) ---
@@ -272,30 +292,42 @@ def cmd_promote(conn: psycopg.Connection[Any]) -> None:  # noqa: PLR0915
         )
         release_id = _scalar(cur)
 
+        # Change-aware check in ONE query (per-row round trips over a single
+        # connection get dropped by the free-tier server mid-run).
+        cur.execute(
+            "SELECT indicator_id, time_period_id, breakdowns->>'bfi_class', value"
+            " FROM observations"
+            " WHERE geography_id = %s AND is_latest AND indicator_id = ANY(%s)",
+            (geography_id, [ind[0] for ind in indicators.values()]),
+        )
+        latest = {(i, p, c): v for i, p, c, v in cur.fetchall()}
+
         promoted_ids: list[int] = []
+        to_insert: list[tuple[Any, ...]] = []
         for row, candidate in zip(staged, candidates, strict=True):
             assert candidate.indicator_id is not None
-            breakdowns = json.dumps({"bfi_class": row.bfi_class})
-            cur.execute(
-                "SELECT value FROM observations"
-                " WHERE indicator_id = %s AND geography_id = %s AND time_period_id = %s"
-                "   AND breakdowns = %s::jsonb AND is_latest",
-                (candidate.indicator_id, geography_id, candidate.period_id, breakdowns),
-            )
-            current = _scalar(cur)
+            cell = (candidate.indicator_id, candidate.period_id, row.bfi_class)
+            current = latest.get(cell)
             if current is not None and Decimal(current) == candidate.value:
                 unchanged += 1
             else:
-                cur.execute(
-                    "INSERT INTO observations"
-                    " (indicator_id, geography_id, time_period_id, dataset_id, release_id,"
-                    "  value, unit_id, breakdowns, status)"
-                    " VALUES (%s, %s, %s, %s, %s, %s, %s, %s::jsonb, 'provisional')",
-                    (candidate.indicator_id, geography_id, candidate.period_id, dataset_id,
-                     release_id, candidate.value, candidate.unit_id, breakdowns),
-                )
+                to_insert.append((
+                    candidate.indicator_id, geography_id, candidate.period_id, dataset_id,
+                    release_id, candidate.value, candidate.unit_id,
+                    json.dumps({"bfi_class": row.bfi_class}),
+                ))
                 loaded += 1
             promoted_ids.append(row.id)
+
+        # Batched inserts (pipelined): one statement per row server-side, so
+        # statement_timeout still applies per insert, but round trips collapse.
+        cur.executemany(
+            "INSERT INTO observations"
+            " (indicator_id, geography_id, time_period_id, dataset_id, release_id,"
+            "  value, unit_id, breakdowns, status)"
+            " VALUES (%s, %s, %s, %s, %s, %s, %s, %s::jsonb, 'provisional')",
+            to_insert,
+        )
 
         cur.execute(
             "UPDATE nrb_bfs_staging SET review_status = 'promoted'"
@@ -314,14 +346,19 @@ def cmd_promote(conn: psycopg.Connection[Any]) -> None:  # noqa: PLR0915
             f" {unchanged} unchanged (skipped — no spurious revision). Release {release_id}."
         )
     except Exception as exc:
-        conn.rollback()
-        with conn.cursor() as cur2:
+        # The failure may BE a dead connection — roll back and log on a fresh
+        # one so the ingestion_log always records the failure.
+        try:
+            conn.rollback()
+        except psycopg.Error:
+            pass
+        with connect() as log_conn, log_conn.cursor() as cur2:
             cur2.execute(
                 "UPDATE ingestion_log SET status = 'failed', finished_at = now(),"
                 " error_note = %s WHERE id = %s",
                 (str(exc)[:2000], log_id),
             )
-        conn.commit()
+            log_conn.commit()
         raise SystemExit(f"promotion FAILED, nothing loaded: {exc}") from exc
 
 
