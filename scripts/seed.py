@@ -29,6 +29,11 @@ import psycopg
 import requests
 from dotenv import load_dotenv
 
+# Make the repo root importable when run as `python scripts/seed.py`.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from ingestion.common.fiscal_periods import year_sort_key  # noqa: E402
+
 SEEDS_DIR = Path("db/seeds")
 WB_INDICATOR_META = "https://api.worldbank.org/v2/indicator/{code}"
 FIRST_YEAR = 1960
@@ -167,7 +172,9 @@ def seed_time_periods(cur: Cursor) -> int:
             " ON CONFLICT (period_type, gregorian_start, gregorian_end) DO UPDATE SET"
             "   gregorian_label = EXCLUDED.gregorian_label,"
             "   sort_key = EXCLUDED.sort_key",
-            (f"{year}-01-01", f"{year}-12-31", str(year), year),
+            # sort_key is the date-based YYYYMMDD scheme (docs/decisions/0002) so
+            # calendar years and fiscal years share one monotonic timeline.
+            (f"{year}-01-01", f"{year}-12-31", str(year), year_sort_key(year)),
         )
         count += 1
     return count
