@@ -56,6 +56,20 @@ def get_repository() -> Repository:
     return PostgresRepository(dsn)
 
 
+@app.get("/health", include_in_schema=False)
+def health() -> dict[str, str]:
+    """Liveness probe — deliberately does NOT touch the database.
+
+    Render's health check pings this to decide whether the service is up. It must
+    stay DB-free: if it queried Postgres, a transient database blip (or a wrong
+    DATABASE_URL) would be retried every few seconds, which both fails the whole
+    deploy and can trip Supabase's 'too many authentication failures' circuit
+    breaker — temporarily blocking even valid connections. Readiness of the data
+    is proven by the /v1 endpoints, not by liveness.
+    """
+    return {"status": "ok"}
+
+
 @app.get("/v1/indicators", response_model=list[IndicatorSummary])
 def list_indicators(
     repo: Annotated[Repository, Depends(get_repository)],

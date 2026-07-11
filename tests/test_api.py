@@ -58,6 +58,14 @@ def client() -> Iterator[TestClient]:
     app.dependency_overrides.clear()
 
 
+def test_health_is_db_free(client: TestClient) -> None:
+    # The health check must return 200 without any repository/DB access, so a
+    # DB outage or wrong DATABASE_URL never fails the deploy (see render.yaml).
+    resp = client.get("/health")
+    assert resp.status_code == 200
+    assert resp.json() == {"status": "ok"}
+
+
 def test_list_indicators(client: TestClient) -> None:
     resp = client.get("/v1/indicators")
     assert resp.status_code == 200

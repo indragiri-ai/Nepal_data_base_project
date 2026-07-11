@@ -23,7 +23,11 @@ services:
     plan: free
     buildCommand: pip install -e .
     startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /v1/indicators
+    # Liveness only — a DB-free endpoint on purpose. Pointing this at a
+    # DB-backed route (e.g. /v1/indicators) means a wrong DATABASE_URL or a
+    # sleepy Supabase gets retried every few seconds, failing the whole deploy
+    # and tripping Supabase's "too many authentication failures" circuit breaker.
+    healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.8"
