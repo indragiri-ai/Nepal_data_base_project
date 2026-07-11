@@ -49,9 +49,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "20"
-      # Auto-wired to the API service's host (api.ts adds the https:// scheme).
+      # The public API URL, baked into the site at BUILD time (NEXT_PUBLIC_*).
+      # Hardcoded to the full domain: Render's `fromService … property: host`
+      # returned only the service name ("nepal-data-api") without ".onrender.com",
+      # so the browser called a nonexistent host. If the API service is renamed,
+      # update this value and rebuild the web service.
       - key: NEXT_PUBLIC_API_BASE
-        fromService:
-          type: web
-          name: nepal-data-api
-          property: host
+        value: https://nepal-data-api.onrender.com
