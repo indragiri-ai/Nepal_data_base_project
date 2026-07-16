@@ -1,0 +1,20 @@
+# Runtime dependencies for the API when deployed to Vercel.
+#
+# WHY THIS FILE EXISTS: pyproject.toml is the single source of truth for this
+# project's dependencies (see `make setup`), but Vercel's Python builder only
+# reads requirements.txt. So this file exists solely for that deploy target.
+#
+# It lists ONLY what `api/` imports at runtime — not the ingestion pipelines,
+# migration tooling, or Excel readers, which never run in the serverless API.
+# A smaller bundle means a faster cold start for every visitor.
+#
+# Every line here must be an EXACT copy of the matching line in pyproject.toml.
+# tests/test_vercel_config.py enforces that, so the two can never drift apart.
+#
+# NOTE: uvicorn is deliberately absent. Locally `make api` uses it to serve the
+# app; on Vercel the platform itself serves the ASGI app, so shipping uvicorn
+# would just be dead weight in the bundle.
+
+fastapi~=0.115
+psycopg[binary]~=3.2
+python-dotenv~=1.0
