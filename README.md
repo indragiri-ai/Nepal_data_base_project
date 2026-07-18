@@ -102,23 +102,43 @@ every indicator by bank class, with month-over-month and year-over-year views.
 Each new month NRB publishes, re-run acquire → extract → approve → promote;
 every command is idempotent.
 
-## Deploying a live demo (Render)
+## Deploying a live demo (Vercel — current home)
 
-A `render.yaml` blueprint deploys the whole portal — API + website — as two free
-web services anyone can open with a link.
+The portal is live on **Vercel's free (Hobby) plan**, which — unlike Render's
+free tier — does **not** sleep and **cannot** bill you (exceeding a limit pauses
+the feature rather than charging). It is deployed as **two Vercel projects from
+this one repo**:
 
-1. Create a free account at [render.com](https://render.com) and connect your GitHub.
-2. **New → Blueprint → select this repo.** Render reads `render.yaml` and proposes
-   two services: `nepal-data-api` and `nepal-data-web`.
-3. When prompted, paste your Supabase connection string into **`DATABASE_URL`**
-   (the same value as in your local `.env`). It is the only value you set by hand.
-4. **Apply.** Render builds both. The website is auto-wired to the API, so once the
-   `nepal-data-web` service is live its `…onrender.com` URL is your public demo link.
+- **API** — project `nepal-data-base-project`, built from the repo root via
+  `vercel.json` (`@vercel/python`, entrypoint `api/index.py`). Public URL:
+  <https://nepal-data-base-project.vercel.app>. Needs two env vars in the Vercel
+  dashboard: `DATABASE_URL` (Supabase **pooler** string — see below) and
+  `CORS_ALLOW_ORIGINS=*`.
+- **Website** — project `nepal-data-base-project-7oru`, **Root Directory set to
+  `web`** so Vercel builds the Next.js app (also pinned via `web/vercel.json`).
+  One env var: `NEXT_PUBLIC_API_BASE` = the API URL above (inlined at build time).
+  Public URL: <https://nepal-data-base-project-7oru.vercel.app>.
 
-Notes: free services sleep after ~15 min idle (first hit is a slow cold start);
-the API is read-only and serves your **dev** database; CORS is open (`*`) because
-the data is public. To restrict origins later, set `CORS_ALLOW_ORIGINS` on the API
-service to a comma-separated list.
+Two hard-won gotchas (both cost a debug session):
+
+1. **`DATABASE_URL` must use the Supabase *pooler* host**
+   (`aws-1-…​.pooler.supabase.com:5432`, username `postgres.<project-ref>`), not
+   the direct `db.<ref>.supabase.co` host — the direct host is IPv6-only and
+   Vercel (like Render) can only reach IPv4. Importing the local `.env`, which
+   uses the direct host, deploys a broken value. Copy the *working* pooler string
+   (e.g. from the Render service's env, or Supabase → Database → Connection string).
+2. **`CORS_ALLOW_ORIGINS=*` must be set on the API**, or the browser blocks the
+   website's requests (the API defaults to `localhost` only). Changing any env var
+   requires a redeploy — pushing a commit to `master` triggers a fresh build.
+
+A **daily keep-alive** (`.github/workflows/keep-alive.yml`) pings the API so the
+free-tier Supabase DB doesn't auto-pause; a non-200 fails the run and emails you.
+
+### Legacy: Render blueprint
+
+`render.yaml` still deploys the same portal to Render (`nepal-data-api` /
+`nepal-data-web`). It works but the free tier sleeps after ~15 min idle (slow
+cold start), which is why the live link moved to Vercel. Kept as a fallback.
 
 ## Data sources (planned, in integration order)
 

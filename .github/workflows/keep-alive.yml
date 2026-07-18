@@ -1,0 +1,37 @@
+# Keep-alive — stops the free-tier Supabase database from auto-pausing.
+#
+# Supabase's free tier pauses a project after a stretch with no database
+# activity; a paused DB makes the public portal return errors until it is
+# manually restored from the dashboard. This job queries the live API's
+# DB-backed endpoint on a schedule, which counts as activity and resets the
+# timer. It also doubles as uptime monitoring: a non-200 fails the run and
+# GitHub emails the repo owner.
+#
+# Note: GitHub disables scheduled workflows after ~60 days of no repo
+# activity — normal commits keep it enabled.
+
+name: Keep-alive
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 06:00 UTC (~11:45 Nepal time)
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+jobs:
+  ping:
+    name: Ping the live API (keeps Supabase awake)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query a DB-backed endpoint
+        run: |
+          set -euo pipefail
+          URL="https://nepal-data-base-project.vercel.app/v1/indicators"
+          echo "Pinging $URL"
+          code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 60 "$URL")
+          echo "HTTP $code"
+          head -c 200 /tmp/body || true
+          echo
+          if [ "$code" != "200" ]; then
+            echo "::error::API did not return 200 — the portal or Supabase may be down."
+            exit 1
+          fi

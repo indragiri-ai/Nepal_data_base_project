@@ -45,9 +45,18 @@ Python 3.12 in `.venv`; commands run through `make` (see README for the list).
 
 ## Deployment
 
-`render.yaml` blueprint → Render (`nepal-data-web` / `nepal-data-api`,
-free tier, sleeps when idle). Deploys happen by pushing to `master` on
-GitHub (`indragiri-ai/Nepal_data_base_project`).
+**Live on Vercel (free Hobby plan — no sleep, cannot bill).** Two Vercel
+projects from this one repo: **API** `nepal-data-base-project` (repo root,
+`vercel.json` → `@vercel/python`) at
+<https://nepal-data-base-project.vercel.app>, and **website**
+`nepal-data-base-project-7oru` (Root Directory = `web`, Next.js) at
+<https://nepal-data-base-project-7oru.vercel.app> — the public link. Pushing to
+`master` (`indragiri-ai/Nepal_data_base_project`) auto-redeploys both.
+Two must-set env vars: API needs `DATABASE_URL` (Supabase **pooler** host, not
+the IPv6 direct host) + `CORS_ALLOW_ORIGINS=*`; website needs
+`NEXT_PUBLIC_API_BASE`. See README "Deploying a live demo" for the gotchas.
+A daily keep-alive workflow pings the API so Supabase doesn't auto-pause.
+`render.yaml` → Render still works but sleeps when idle; kept as a fallback.
 
 ## The founder
 
