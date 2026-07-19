@@ -290,6 +290,18 @@ session. Never pick silently.
 
 ---
 
+> **Implementation spec exists:** P2B.S5 and P2B.S6 have a full
+> implementation-grade spec at **`docs/specs/frontend-sector-portal-spec.md`**
+> (authored with Fable 5; all design decisions pre-made — exact sector
+> configs, curated chart codes, component contracts, orbit geometry and
+> animation values, a11y requirements, Playwright + screenshot protocol, and
+> the known traps). The implementing model follows the SPEC for the how; the
+> steps below remain the acceptance gates. Kickoff prompt to paste:
+> *"Read docs/specs/frontend-sector-portal-spec.md fully, then implement it
+> exactly — execute and verify, do not redesign. Acceptance gates are P2B.S5
+> and P2B.S6 in docs/steps/phase-2b-expansion-steps.md. Stop at the spec's §8
+> STOP for founder screenshot approval before deploying."*
+
 ### P2B.S5 — Sector portal: IA + dashboard-style sector pages (absorbs P3.S2)
 
 **GOAL:** Navigation reorganized by SECTOR per decision 0003. Each sector page:
