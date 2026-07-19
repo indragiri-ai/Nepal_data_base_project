@@ -5,3 +5,5 @@ PERSONS,Persons,,Count of people
 YEARS,Years,,
 PER_1000_LIVE_BIRTHS,"Per 1,000 live births",,
 COUNT,Count (number),,"Plain count of items (branches, accounts, cards, ...)"
+RATIO,Ratio,,Dimensionless ratio (e.g. males per 100 females)
+PER_KM2,Persons per square kilometre,,Population density

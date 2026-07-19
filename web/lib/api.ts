@@ -86,8 +86,33 @@ async function getJson<T>(path: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+export interface GeoValue {
+  geo_code: string;
+  name: string;
+  name_ne: string | null;
+  value: number;
+}
+
+export interface GeoDataResponse {
+  indicator: IndicatorSummary;
+  level: string;
+  period: string;
+  unit_code: string;
+  unit_name: string;
+  provenance: Provenance;
+  values: GeoValue[];
+}
+
 export function fetchIndicators(): Promise<IndicatorSummary[]> {
   return getJson<IndicatorSummary[]>("/v1/indicators");
+}
+
+export function fetchGeoValues(
+  indicatorCode: string,
+  level: "province" | "district",
+): Promise<GeoDataResponse> {
+  const params = new URLSearchParams({ indicator: indicatorCode, level });
+  return getJson<GeoDataResponse>(`/v1/data/geo?${params.toString()}`);
 }
 
 export function fetchSeries(indicatorCode: string, geo = "NP"): Promise<DataResponse> {

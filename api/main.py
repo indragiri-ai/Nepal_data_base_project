@@ -16,6 +16,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.models import (
     DataResponse,
+    GeoDataResponse,
+    GeoValue,
     IndicatorDetail,
     IndicatorSummary,
     Observation,
@@ -96,6 +98,49 @@ def get_indicator(
         unit_code=row.unit_code,
         unit_name=row.unit_name,
         source_concept=row.source_concept,
+    )
+
+
+@app.get("/v1/data/geo", response_model=GeoDataResponse)
+def get_geo_data(
+    repo: Annotated[Repository, Depends(get_repository)],
+    indicator: Annotated[str, Query(description="Indicator code, e.g. CENSUS_POP_TOTAL")],
+    level: Annotated[str, Query(description="Geography level: province or district")],
+) -> GeoDataResponse:
+    """Latest value of one indicator for EVERY geography at a level — the
+    single call a choropleth map needs."""
+    if level not in ("province", "district"):
+        raise HTTPException(
+            status_code=422, detail="level must be 'province' or 'district'"
+        )
+    indicator_row = repo.get_indicator(indicator)
+    if indicator_row is None:
+        raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
+    result = repo.get_geo_values(indicator, level)
+    if result is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No {level}-level data for indicator '{indicator}'",
+        )
+    return GeoDataResponse(
+        indicator=IndicatorSummary(
+            code=indicator_row.code, name=indicator_row.name_en,
+            topic=indicator_row.topic, unit=indicator_row.unit_code,
+        ),
+        level=result.level,
+        period=result.period,
+        unit_code=result.unit_code,
+        unit_name=result.unit_name,
+        provenance=Provenance(
+            source=result.source_name,
+            dataset=result.dataset_name,
+            license=result.license,
+            latest_release_date=result.latest_release_date,
+        ),
+        values=[
+            GeoValue(geo_code=v.geo_code, name=v.name_en, name_ne=v.name_ne, value=float(v.value))
+            for v in result.values
+        ],
     )
 
 

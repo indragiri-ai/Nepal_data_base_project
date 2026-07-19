@@ -14,7 +14,7 @@ RUFF  := $(VENV_BIN)/ruff
 MYPY  := $(VENV_BIN)/mypy
 PYTEST := $(VENV_BIN)/pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne ingest-wb seed-nrb nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne ingest-wb seed-nrb seed-census ingest-census nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -67,6 +67,12 @@ ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-fir
 
 seed-nrb:  ## Seed the 35 NRB Banking & Financial Statistics indicators (idempotent)
 	$(PY) scripts/seed_nrb.py
+
+seed-census:  ## Seed the Census 2021 indicators (idempotent)
+	$(PY) scripts/seed_census.py
+
+ingest-census:  ## Fetch Census 2021 for Nepal + 7 provinces + 77 districts (raw-first, idempotent)
+	$(PY) -m ingestion.nso.census_pipeline
 
 nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
 	$(PY) -m ingestion.nrb.bfs_acquire

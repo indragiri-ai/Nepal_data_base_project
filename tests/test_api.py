@@ -9,7 +9,13 @@ import pytest
 from fastapi.testclient import TestClient
 
 from api.main import app, get_repository
-from api.repository import IndicatorRow, ObservationRow, SeriesResult
+from api.repository import (
+    GeoValueRow,
+    GeoValuesResult,
+    IndicatorRow,
+    ObservationRow,
+    SeriesResult,
+)
 
 _GDP = IndicatorRow(
     code="GDP_GROWTH",
@@ -22,13 +28,45 @@ _GDP = IndicatorRow(
     source_concept="NY.GDP.MKTP.KD.ZG",
 )
 
+_CENSUS_POP = IndicatorRow(
+    code="CENSUS_POP_TOTAL",
+    name_en="Population (Census 2021)",
+    name_ne=None,
+    definition_en="Total enumerated population, Census 2021.",
+    topic="population",
+    unit_code="PERSONS",
+    unit_name="Persons",
+    source_concept="population/highlight:total|male|female",
+)
+
 
 class FakeRepository:
     def list_indicators(self) -> list[IndicatorRow]:
-        return [_GDP]
+        return [_GDP, _CENSUS_POP]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
-        return _GDP if code == "GDP_GROWTH" else None
+        by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP}
+        return by_code.get(code)
+
+    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None:
+        if indicator_code != "CENSUS_POP_TOTAL" or level != "province":
+            return None
+        return GeoValuesResult(
+            indicator_code="CENSUS_POP_TOTAL",
+            indicator_name="Population (Census 2021)",
+            level="province",
+            period="2021",
+            unit_code="PERSONS",
+            unit_name="Persons",
+            source_name="National Statistics Office",
+            dataset_name="National Population and Housing Census 2021",
+            license=None,
+            latest_release_date="2026-07-19",
+            values=[
+                GeoValueRow("NP01", "Koshi", "कोशी", Decimal("4961412")),
+                GeoValueRow("NP03", "Bagmati", "बागमती", Decimal("6116866")),
+            ],
+        )
 
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None:
         if indicator_code != "GDP_GROWTH" or geography_code != "NP":
@@ -91,4 +129,26 @@ def test_unknown_indicator_returns_clean_404(client: TestClient) -> None:
 
 def test_data_for_unknown_indicator_returns_404(client: TestClient) -> None:
     resp = client.get("/v1/data", params={"indicator": "NOPE"})
+    assert resp.status_code == 404
+
+
+def test_geo_data_returns_values_for_a_level(client: TestClient) -> None:
+    resp = client.get("/v1/data/geo", params={"indicator": "CENSUS_POP_TOTAL", "level": "province"})
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["level"] == "province"
+    assert body["period"] == "2021"
+    assert body["provenance"]["source"] == "National Statistics Office"
+    codes = {v["geo_code"]: v for v in body["values"]}
+    assert codes["NP03"]["value"] == 6116866
+    assert codes["NP03"]["name_ne"] == "बागमती"
+
+
+def test_geo_data_rejects_unknown_level(client: TestClient) -> None:
+    resp = client.get("/v1/data/geo", params={"indicator": "CENSUS_POP_TOTAL", "level": "ward"})
+    assert resp.status_code == 422
+
+
+def test_geo_data_404_when_no_data_at_level(client: TestClient) -> None:
+    resp = client.get("/v1/data/geo", params={"indicator": "GDP_GROWTH", "level": "district"})
     assert resp.status_code == 404

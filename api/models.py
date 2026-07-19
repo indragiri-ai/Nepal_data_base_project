@@ -53,3 +53,23 @@ class DataResponse(BaseModel):
     unit_name: str
     provenance: Provenance
     observations: list[Observation]
+
+
+class GeoValue(BaseModel):
+    geo_code: str
+    name: str
+    name_ne: str | None
+    value: float
+
+
+class GeoDataResponse(BaseModel):
+    """One indicator's latest value for every geography at a level — the shape
+    a choropleth map consumes in a single request."""
+
+    indicator: IndicatorSummary
+    level: str
+    period: str
+    unit_code: str
+    unit_name: str
+    provenance: Provenance
+    values: list[GeoValue]

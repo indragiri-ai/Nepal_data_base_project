@@ -1,0 +1,387 @@
+[
+ {
+  "label": "taplejung",
+  "value": "1",
+  "province": "1"
+ },
+ {
+  "label": "sankhuwasabha",
+  "value": "2",
+  "province": "1"
+ },
+ {
+  "label": "solukhumbu",
+  "value": "3",
+  "province": "1"
+ },
+ {
+  "label": "okhaldhunga",
+  "value": "4",
+  "province": "1"
+ },
+ {
+  "label": "khotang",
+  "value": "5",
+  "province": "1"
+ },
+ {
+  "label": "bhojpur",
+  "value": "6",
+  "province": "1"
+ },
+ {
+  "label": "dhankuta",
+  "value": "7",
+  "province": "1"
+ },
+ {
+  "label": "terhathum",
+  "value": "8",
+  "province": "1"
+ },
+ {
+  "label": "panchthar",
+  "value": "9",
+  "province": "1"
+ },
+ {
+  "label": "ilam",
+  "value": "10",
+  "province": "1"
+ },
+ {
+  "label": "jhapa",
+  "value": "11",
+  "province": "1"
+ },
+ {
+  "label": "morang",
+  "value": "12",
+  "province": "1"
+ },
+ {
+  "label": "sunsari",
+  "value": "13",
+  "province": "1"
+ },
+ {
+  "label": "udayapur",
+  "value": "14",
+  "province": "1"
+ },
+ {
+  "label": "saptari",
+  "value": "15",
+  "province": "2"
+ },
+ {
+  "label": "siraha",
+  "value": "16",
+  "province": "2"
+ },
+ {
+  "label": "dhanusa",
+  "value": "17",
+  "province": "2"
+ },
+ {
+  "label": "mahottari",
+  "value": "18",
+  "province": "2"
+ },
+ {
+  "label": "sarlahi",
+  "value": "19",
+  "province": "2"
+ },
+ {
+  "label": "rautahat",
+  "value": "20",
+  "province": "2"
+ },
+ {
+  "label": "bara",
+  "value": "21",
+  "province": "2"
+ },
+ {
+  "label": "parsa",
+  "value": "22",
+  "province": "2"
+ },
+ {
+  "label": "dolakha",
+  "value": "23",
+  "province": "3"
+ },
+ {
+  "label": "sindhupalchok",
+  "value": "24",
+  "province": "3"
+ },
+ {
+  "label": "rasuwa",
+  "value": "25",
+  "province": "3"
+ },
+ {
+  "label": "dhading",
+  "value": "26",
+  "province": "3"
+ },
+ {
+  "label": "nuwakot",
+  "value": "27",
+  "province": "3"
+ },
+ {
+  "label": "kathmandu",
+  "value": "28",
+  "province": "3"
+ },
+ {
+  "label": "bhaktapur",
+  "value": "29",
+  "province": "3"
+ },
+ {
+  "label": "lalitpur",
+  "value": "30",
+  "province": "3"
+ },
+ {
+  "label": "kavrepalanchok",
+  "value": "31",
+  "province": "3"
+ },
+ {
+  "label": "ramechhap",
+  "value": "32",
+  "province": "3"
+ },
+ {
+  "label": "sindhuli",
+  "value": "33",
+  "province": "3"
+ },
+ {
+  "label": "makwanpur",
+  "value": "34",
+  "province": "3"
+ },
+ {
+  "label": "chitawan",
+  "value": "35",
+  "province": "3"
+ },
+ {
+  "label": "gorkha",
+  "value": "36",
+  "province": "4"
+ },
+ {
+  "label": "manang",
+  "value": "37",
+  "province": "4"
+ },
+ {
+  "label": "mustang",
+  "value": "38",
+  "province": "4"
+ },
+ {
+  "label": "myagdi",
+  "value": "39",
+  "province": "4"
+ },
+ {
+  "label": "kaski",
+  "value": "40",
+  "province": "4"
+ },
+ {
+  "label": "lamjung",
+  "value": "41",
+  "province": "4"
+ },
+ {
+  "label": "tanahu",
+  "value": "42",
+  "province": "4"
+ },
+ {
+  "label": "nawalparasi_east",
+  "value": "43",
+  "province": "4"
+ },
+ {
+  "label": "syangja",
+  "value": "44",
+  "province": "4"
+ },
+ {
+  "label": "parbat",
+  "value": "45",
+  "province": "4"
+ },
+ {
+  "label": "baglung",
+  "value": "46",
+  "province": "4"
+ },
+ {
+  "label": "rukum_east",
+  "value": "47",
+  "province": "5"
+ },
+ {
+  "label": "rolpa",
+  "value": "48",
+  "province": "5"
+ },
+ {
+  "label": "pyuthan",
+  "value": "49",
+  "province": "5"
+ },
+ {
+  "label": "gulmi",
+  "value": "50",
+  "province": "5"
+ },
+ {
+  "label": "arghakhanchi",
+  "value": "51",
+  "province": "5"
+ },
+ {
+  "label": "palpa",
+  "value": "52",
+  "province": "5"
+ },
+ {
+  "label": "nawalparasi_west",
+  "value": "53",
+  "province": "5"
+ },
+ {
+  "label": "rupandehi",
+  "value": "54",
+  "province": "5"
+ },
+ {
+  "label": "kapilbastu",
+  "value": "55",
+  "province": "5"
+ },
+ {
+  "label": "dang",
+  "value": "56",
+  "province": "5"
+ },
+ {
+  "label": "banke",
+  "value": "57",
+  "province": "5"
+ },
+ {
+  "label": "bardiya",
+  "value": "58",
+  "province": "5"
+ },
+ {
+  "label": "dolpa",
+  "value": "59",
+  "province": "6"
+ },
+ {
+  "label": "mugu",
+  "value": "60",
+  "province": "6"
+ },
+ {
+  "label": "humla",
+  "value": "61",
+  "province": "6"
+ },
+ {
+  "label": "jumla",
+  "value": "62",
+  "province": "6"
+ },
+ {
+  "label": "kalikot",
+  "value": "63",
+  "province": "6"
+ },
+ {
+  "label": "dailekh",
+  "value": "64",
+  "province": "6"
+ },
+ {
+  "label": "jajarkot",
+  "value": "65",
+  "province": "6"
+ },
+ {
+  "label": "rukum_west",
+  "value": "66",
+  "province": "6"
+ },
+ {
+  "label": "salyan",
+  "value": "67",
+  "province": "6"
+ },
+ {
+  "label": "surkhet",
+  "value": "68",
+  "province": "6"
+ },
+ {
+  "label": "bajura",
+  "value": "69",
+  "province": "7"
+ },
+ {
+  "label": "bajhang",
+  "value": "70",
+  "province": "7"
+ },
+ {
+  "label": "darchula",
+  "value": "71",
+  "province": "7"
+ },
+ {
+  "label": "baitadi",
+  "value": "72",
+  "province": "7"
+ },
+ {
+  "label": "dadeldhura",
+  "value": "73",
+  "province": "7"
+ },
+ {
+  "label": "doti",
+  "value": "74",
+  "province": "7"
+ },
+ {
+  "label": "achham",
+  "value": "75",
+  "province": "7"
+ },
+ {
+  "label": "kailali",
+  "value": "76",
+  "province": "7"
+ },
+ {
+  "label": "kanchanpur",
+  "value": "77",
+  "province": "7"
+ }
+]

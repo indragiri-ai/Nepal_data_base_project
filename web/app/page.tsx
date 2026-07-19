@@ -127,17 +127,16 @@ export default function HomePage() {
             <span className="meta">Nepal Rastra Bank · monthly · 2021–present</span>
             <span className="go">Open the dashboard →</span>
           </Link>
-          <div className="sector-card soon" aria-disabled="true">
+          <Link href="/population" className="sector-card">
             {ICONS.census}
-            <span className="badge">In preparation</span>
             <h3>Population &amp; census</h3>
             <p>
-              Census 2021 headline figures by province — population, households,
-              literacy — with maps. Being prepared with the same source-first
-              care.
+              Census 2021 on the map of Nepal — population, density, sex ratio,
+              growth, and literacy for every province and district.
             </p>
-            <span className="meta">National Statistics Office · decennial</span>
-          </div>
+            <span className="meta">National Statistics Office · Census 2021</span>
+            <span className="go">Open the map →</span>
+          </Link>
         </div>
       </section>
 

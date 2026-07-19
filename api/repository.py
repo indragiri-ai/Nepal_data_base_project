@@ -56,10 +56,34 @@ class SeriesResult:
     observations: list[ObservationRow]
 
 
+@dataclass(frozen=True)
+class GeoValueRow:
+    geo_code: str
+    name_en: str
+    name_ne: str | None
+    value: Decimal
+
+
+@dataclass(frozen=True)
+class GeoValuesResult:
+    indicator_code: str
+    indicator_name: str
+    level: str
+    period: str
+    unit_code: str
+    unit_name: str
+    source_name: str
+    dataset_name: str
+    license: str | None
+    latest_release_date: str
+    values: list[GeoValueRow]
+
+
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None: ...
+    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None: ...
 
 
 _INDICATOR_COLUMNS = (
@@ -128,4 +152,46 @@ class PostgresRepository:
             license=first[12],
             latest_release_date=max(str(row[5]) for row in rows),
             observations=observations,
+        )
+
+    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None:
+        """Latest headline value (breakdowns = {}) of one indicator for EVERY
+        geography at a level — the shape a choropleth map needs in one call."""
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT g.code, g.name_en, g.name_ne, o.value,"
+                " t.gregorian_label, i.name_en, u.code, u.name_en,"
+                " s.name_en, d.name_en, d.license, r.release_date"
+                " FROM observations o"
+                " JOIN indicators i ON i.id = o.indicator_id"
+                " JOIN geographies g ON g.id = o.geography_id"
+                " JOIN time_periods t ON t.id = o.time_period_id"
+                " JOIN units u ON u.id = o.unit_id"
+                " JOIN datasets d ON d.id = o.dataset_id"
+                " JOIN sources s ON s.id = d.source_id"
+                " JOIN releases r ON r.id = o.release_id"
+                " WHERE i.code = %s AND g.level = %s AND o.is_latest"
+                "   AND o.breakdowns = '{}'::jsonb"
+                " ORDER BY g.code",
+                (indicator_code, level),
+            )
+            rows = cur.fetchall()
+        if not rows:
+            return None
+        first = rows[0]
+        return GeoValuesResult(
+            indicator_code=indicator_code,
+            indicator_name=first[5],
+            level=level,
+            period=first[4],
+            unit_code=first[6],
+            unit_name=first[7],
+            source_name=first[8],
+            dataset_name=first[9],
+            license=first[10],
+            latest_release_date=max(str(row[11]) for row in rows),
+            values=[
+                GeoValueRow(geo_code=r[0], name_en=r[1], name_ne=r[2], value=r[3])
+                for r in rows
+            ],
         )

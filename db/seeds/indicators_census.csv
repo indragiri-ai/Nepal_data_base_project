@@ -1,0 +1,6 @@
+code,name_en,definition_en,unit_code,topic,source_concept
+CENSUS_POP_TOTAL,Population (Census 2021),"Total enumerated population, National Population and Housing Census 2021. Breakdowns: sex (male/female).",PERSONS,population,population/highlight:total|male|female
+CENSUS_SEX_RATIO,Sex ratio (Census 2021),"Males per 100 females, Census 2021.",RATIO,population,population/highlight:sex_ratio
+CENSUS_POP_DENSITY,Population density (Census 2021),"Persons per square kilometre, Census 2021.",PER_KM2,population,population/highlight:density
+CENSUS_POP_GROWTH,Annual population growth rate (Census 2021),"Average annual population growth rate over 2011-2021 (exponential), as published with Census 2021.",PCT,population,population/highlight:growth_rate
+CENSUS_LITERACY_RATE,Literacy rate (Census 2021),"Share of population aged 5+ who can both read and write, Census 2021. Breakdowns: sex (male/female).",PCT,education,literacy:literacyBySex.read_write

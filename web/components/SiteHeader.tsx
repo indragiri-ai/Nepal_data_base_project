@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/", label: "Overview" },
   { href: "/explore", label: "Explore" },
   { href: "/banking", label: "Banking" },
+  { href: "/population", label: "Population" },
 ];
 
 /** Brand mark: an abstract twin-pennant — Nepal's flag reduced to two strokes. */

@@ -1,3 +1,4 @@
 name_en,name_ne,type,url,default_license,notes
 World Bank,,international,https://data.worldbank.org,CC BY 4.0,World Bank Open Data — World Development Indicators
 Nepal Rastra Bank,नेपाल राष्ट्र बैंक,central_bank,https://www.nrb.org.np,,Central bank of Nepal — banking statistics and monetary data
+National Statistics Office,राष्ट्रिय तथ्याङ्क कार्यालय,statistics_office,https://nsonepal.gov.np,,Nepal's national statistical agency (formerly CBS) — censuses and surveys

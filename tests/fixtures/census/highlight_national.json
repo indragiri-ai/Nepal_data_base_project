@@ -1,0 +1,66 @@
+{
+ "status": "OK",
+ "code": 200,
+ "success": true,
+ "data": {
+  "total": 29164578,
+  "rateTotal": {
+   "series": {
+    "data": [
+     29164578,
+     26494504
+    ]
+   },
+   "difference": 2670074
+  },
+  "sex_chart": {
+   "categories": [
+    "Male",
+    "Female"
+   ],
+   "countSeries": [
+    14253551,
+    14911027
+   ],
+   "series": [
+    "48.9",
+    "51.1"
+   ],
+   "total": 29164578
+  },
+  "male": 14253551,
+  "female": 14911027,
+  "total_growth": 3,
+  "sex_ratio": "95.59",
+  "sex_ratio_percentage": {
+   "series": {
+    "data": [
+     95.59067259,
+     94.16
+    ]
+   },
+   "difference": 1.43
+  },
+  "density": 198,
+  "density_growth_percentage": {
+   "series": {
+    "data": [
+     198,
+     180
+    ]
+   },
+   "difference": 18
+  },
+  "growth_rate": "0.92",
+  "growth_rate_percentage": {
+   "series": {
+    "data": [
+     0.92,
+     1.35
+    ]
+   },
+   "difference": -0.43
+  }
+ },
+ "message": "Data for Population overview listed successfully"
+}

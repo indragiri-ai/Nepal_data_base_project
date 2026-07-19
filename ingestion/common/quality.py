@@ -17,7 +17,7 @@ from decimal import Decimal
 
 # Percentage indicators that are CHANGE/GROWTH rates: they can be negative and are
 # bounded tightly, unlike share/level percentages.
-GROWTH_RATE_CODES = {"GDP_GROWTH", "POP_GROWTH", "CPI_YOY"}
+GROWTH_RATE_CODES = {"GDP_GROWTH", "POP_GROWTH", "CPI_YOY", "CENSUS_POP_GROWTH"}
 
 
 @dataclass(frozen=True)
@@ -72,6 +72,30 @@ def _range_failure(c: Candidate) -> str | None:
     if c.indicator_code == "POP_TOTAL":
         if not (Decimal(10) ** 6 <= value <= Decimal(10) ** 8):
             return f"{c.indicator_code} {c.year} = {value} outside population band [1e6, 1e8]"
+        return None
+
+    # (b') Census population counts run down to district level, where legitimate
+    #      values span Manang (~5.6k) to the national total (~29.2M): positive,
+    #      capped at 40M (comfortably above Nepal's total — catches a misplaced
+    #      decimal or a concatenated number, not real data).
+    if c.indicator_code == "CENSUS_POP_TOTAL":
+        if not (Decimal(1) <= value <= Decimal(4) * Decimal(10) ** 7):
+            return f"{c.indicator_code} {c.year} = {value} outside census population band [1, 4e7]"
+        return None
+
+    # (b'') Sex ratio (males per 100 females): human populations sit near 100;
+    #       [50, 150] is far wider than any real Nepali geography yet rejects a
+    #       percentage or a count accidentally routed here.
+    if c.indicator_code == "CENSUS_SEX_RATIO":
+        if not (Decimal(50) <= value <= Decimal(150)):
+            return f"{c.indicator_code} {c.year} = {value} outside sex-ratio band [50, 150]"
+        return None
+
+    # (b''') Density (persons/km²): Manang ~2 to Kathmandu ~5.2k; 25k headroom
+    #        allows any plausible urban district while catching unit errors.
+    if c.indicator_code == "CENSUS_POP_DENSITY":
+        if not (Decimal(0) < value <= Decimal(25000)):
+            return f"{c.indicator_code} {c.year} = {value} outside density band (0, 25000]"
         return None
 
     if c.unit_code == "PCT":
