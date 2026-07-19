@@ -90,6 +90,17 @@ changes; all P-code data joins are untouched.
 
 **PREREQUISITES:** none. **TIME ESTIMATE:** 90–120 min (mostly recon).
 
+> **Recon update (2026-07-19, verified):** (1) our `web/public/maps/`
+> districts file IS pre-2020 — Darchula's bbox tops out at 30.247N and fails
+> the Kalapani point-in-polygon test (80.75E, 30.30N); the "verify the
+> problem" part of Action 1 is DONE. (2) The **National Geoportal's WFS is
+> ruled out**: all its national layers (`base_nepal_new`, `App_nepal`,
+> `geonode:nepal`) also fail the Kalapani test — its "new" layers are the
+> 2015 federal structure, NOT the 2020 political map (see
+> `docs/steps/onboard-nationalgeoportal.md`, facts section). Skip channel
+> (a)'s geoportal probe; start at HDX/OCHA COD-AB post-2020, then the other
+> channels.
+
 **ACTIONS:**
 1. Instruct the implementing model:
    > "FIRST verify the problem: load `web/public/maps/nepal-districts.json`,
