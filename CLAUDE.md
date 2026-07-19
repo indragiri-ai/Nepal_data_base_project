@@ -6,6 +6,9 @@ Python 3.12 in `.venv`; commands run through `make` (see README for the list).
 
 ## Read before building
 
+- **`docs/steps/START-HERE.md` — the implementation backlog in order.** Any
+  new working session starts there: it names the current step files, the
+  order, the STOP points, and the run protocol.
 - `docs/nepal-data-portal-master-prompt.md` — engineering standards, the
   step system, phase map. **The session protocol in §6 governs how work
   proceeds**; steps live in `docs/steps/phase-N-steps.md`.
