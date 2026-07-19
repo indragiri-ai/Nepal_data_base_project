@@ -1,5 +1,11 @@
 # PHASE 2 — NEPALI SOURCES & HARMONIZATION — Step File
 
+> **July 2026 update:** an expansion phase now sits between Phase 2 and
+> Phase 3 — see **`docs/steps/phase-2b-expansion-steps.md`** (full WB mirror,
+> all census topics, NRB tiers, sector portal, official 2020 map). Its
+> reconciliation section marks which steps below are superseded (P2.S11) or
+> partially done (P2.S4); read it before starting any step here.
+
 **Version 1.0 — June 2026**
 **Governed by: Master Prompt v1.0 · Architecture Blueprint v1.0**
 **Assumes: Phase 1 exit criteria fully met (walking skeleton verified end to end — see docs/steps/phase-1-steps.md and the P1.S12 log entry).**

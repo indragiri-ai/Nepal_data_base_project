@@ -6,6 +6,12 @@
 
 > **DRAFT STATUS:** The Master Prompt (§4) requires step files to be finalized only when the previous phase nears completion, so later steps incorporate what earlier phases taught. This draft was written mid-Phase-2 at the founder's request. **Before starting P3.S1: re-read the P2.S14 PROJECT_LOG lessons, fill in the carry-forward section below, adjust any step this invalidates, and bump this file to Version 1.0.**
 
+> **July 2026 update:** **`docs/steps/phase-2b-expansion-steps.md` runs BEFORE
+> this phase** (founder decision). It absorbs P3.S2 (IA/routing → sector portal,
+> P2B.S5), partially completes P3.S1 (design system shipped 2026-07-18), builds
+> the landing page (P2B.S6) and the Playwright smoke (P2B.S5b). When resuming
+> Phase 3, verify those checklists instead of redoing the steps.
+
 **Phase goal: turn the proven engine into a *public product*. Build the design system, the information architecture, the interactive chart framework, choropleth maps with drill-down, downloads, public API documentation, and the bilingual UI — then deploy it softly and prove it on a real stranger.**
 
 **Why now:** Phases 1–2 proved the hard invisible things: the universal model, two calendars on one axis, two geographies, revisions, the review gate. None of that matters if a journalist in Surkhet can't find a number, understand it, chart it, and cite it in under a minute on a phone. Phase 3 is where trustworthiness becomes *visible*.
