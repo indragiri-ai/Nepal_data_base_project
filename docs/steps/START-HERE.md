@@ -37,7 +37,8 @@ file says otherwise.**
 | 11 | BUD.S1–S4 | `budget-center.md` | **The Budget Center** (3-tier budget dashboard) — needs #9's mirror + #10's series + #6's municipality map |
 | 12 | ODN.S1–S2 | `onboard-opendatanepal.md` | CKAN client + Kalimati daily prices (flagship) |
 | 13 | ECN.S1–S4 | `onboard-election-commission.md` | Governance sector: turnout maps + election results |
-| 14 | ODN.S3–S5, MOF.S2–S3, P2B.S9–S11, WBF.S4, NGP.S3, ECN follow-ups | respective files | The long tail — any order, founder's pick |
+| 14 | EDU.S1–S4 | `onboard-cehrd-education.md` | Education deep-dive: Flash Reports, NER/GER district maps (S1 shares the GIWMS harvester with #9) |
+| 15 | ODN.S3–S5, MOF.S2–S3, P2B.S9–S11, WBF.S4, NGP.S3, ECN follow-ups | respective files | The long tail — any order, founder's pick |
 
 Items 6–13 are largely independent of each other; reorder them freely by the
 founder's priorities. Items 1–5 are the foundation — keep their order.
