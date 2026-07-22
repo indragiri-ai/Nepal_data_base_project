@@ -1,0 +1,8 @@
+# Heavy, regenerable artifacts are kept locally only — not committed.
+# raw/  : the ~13 MB Survey-Department shapefile ZIP + extraction.
+#         Re-download from the exact URL recorded in PROVENANCE.md.
+# work/ : mapshaper intermediates. Regenerate with the steps in PROVENANCE.md.
+# The committed outputs (web/public/maps/*.json), PROVENANCE.md, and the
+# pre-2020 archive are the durable record.
+raw/
+work/
