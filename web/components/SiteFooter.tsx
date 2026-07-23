@@ -1,3 +1,5 @@
+import DataFreshness from "./DataFreshness";
+
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -43,6 +45,7 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="fineprint">
+        <DataFreshness />{" "}
         World Bank data is licensed CC&nbsp;BY&nbsp;4.0. NRB figures are provisional as
         published. Charts may be reused with attribution to the original sources.
       </div>

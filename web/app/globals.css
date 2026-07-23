@@ -248,6 +248,14 @@ main.page.narrow {
   border-top: none;
 }
 
+.site-footer .data-freshness {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.site-footer .data-freshness time {
+  color: var(--crimson);
+}
+
 /* ------------------------------------------------------------------ hero */
 
 .hero {

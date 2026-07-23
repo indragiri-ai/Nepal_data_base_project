@@ -9,6 +9,10 @@
 #
 # Note: GitHub disables scheduled workflows after ~60 days of no repo
 # activity — normal commits keep it enabled.
+#
+# The scheduled ingestion workflow (ingest.yml) also hits the database on its
+# weekly/monthly runs, so it contributes DB activity too; this daily ping is
+# the reliable heartbeat between those runs.
 
 name: Keep-alive
 

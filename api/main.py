@@ -16,10 +16,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.models import (
     DataResponse,
+    DatasetMeta,
     GeoDataResponse,
     GeoValue,
     IndicatorDetail,
     IndicatorSummary,
+    MetaResponse,
     Observation,
     Provenance,
 )
@@ -98,6 +100,26 @@ def get_indicator(
         unit_code=row.unit_code,
         unit_name=row.unit_name,
         source_concept=row.source_concept,
+    )
+
+
+@app.get("/v1/meta", response_model=MetaResponse)
+def get_meta(repo: Annotated[Repository, Depends(get_repository)]) -> MetaResponse:
+    """Data freshness per dataset — when each pipeline last succeeded and its
+    latest release date. `data_updated` is the newest of those, for the footer."""
+    rows = repo.get_meta()
+    updated = [r.last_updated for r in rows if r.last_updated is not None]
+    return MetaResponse(
+        data_updated=max(updated) if updated else None,
+        datasets=[
+            DatasetMeta(
+                dataset=r.dataset,
+                source=r.source,
+                last_updated=r.last_updated,
+                latest_release_date=r.latest_release_date,
+            )
+            for r in rows
+        ],
     )
 
 

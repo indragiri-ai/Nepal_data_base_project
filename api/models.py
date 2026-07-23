@@ -73,3 +73,24 @@ class GeoDataResponse(BaseModel):
     unit_name: str
     provenance: Provenance
     values: list[GeoValue]
+
+
+class DatasetMeta(BaseModel):
+    """Freshness of one dataset: when its pipeline last succeeded and the date
+    of its most recent data release."""
+
+    dataset: str
+    source: str
+    # Date (YYYY-MM-DD) of the latest SUCCESSFUL ingestion run, or null if the
+    # dataset has never loaded successfully.
+    last_updated: str | None
+    # Date of the most recent data release for the dataset, or null.
+    latest_release_date: str | None
+
+
+class MetaResponse(BaseModel):
+    """Portal-wide freshness. `data_updated` is the most recent successful
+    ingestion across all datasets — the single date the site footer shows."""
+
+    data_updated: str | None
+    datasets: list[DatasetMeta]

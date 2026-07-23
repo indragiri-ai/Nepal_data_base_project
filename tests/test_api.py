@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 
 from api.main import app, get_repository
 from api.repository import (
+    DatasetMetaRow,
     GeoValueRow,
     GeoValuesResult,
     IndicatorRow,
@@ -67,6 +68,22 @@ class FakeRepository:
                 GeoValueRow("NP03", "Bagmati", "बागमती", Decimal("6116866")),
             ],
         )
+
+    def get_meta(self) -> list[DatasetMetaRow]:
+        return [
+            DatasetMetaRow(
+                dataset="World Development Indicators",
+                source="World Bank",
+                last_updated="2026-07-20",
+                latest_release_date="2026-07-20",
+            ),
+            DatasetMetaRow(
+                dataset="Banking & Financial Statistics — Monthly",
+                source="Nepal Rastra Bank",
+                last_updated="2026-07-10",
+                latest_release_date="2026-07-10",
+            ),
+        ]
 
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None:
         if indicator_code != "GDP_GROWTH" or geography_code != "NP":
@@ -152,3 +169,15 @@ def test_geo_data_rejects_unknown_level(client: TestClient) -> None:
 def test_geo_data_404_when_no_data_at_level(client: TestClient) -> None:
     resp = client.get("/v1/data/geo", params={"indicator": "GDP_GROWTH", "level": "district"})
     assert resp.status_code == 404
+
+
+def test_meta_reports_freshness_per_dataset(client: TestClient) -> None:
+    resp = client.get("/v1/meta")
+    assert resp.status_code == 200
+    body = resp.json()
+    # data_updated is the most recent successful ingestion across all datasets.
+    assert body["data_updated"] == "2026-07-20"
+    datasets = {d["dataset"]: d for d in body["datasets"]}
+    assert datasets["World Development Indicators"]["source"] == "World Bank"
+    assert datasets["World Development Indicators"]["last_updated"] == "2026-07-20"
+    assert "Banking & Financial Statistics — Monthly" in datasets

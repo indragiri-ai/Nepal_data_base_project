@@ -79,11 +79,20 @@ class GeoValuesResult:
     values: list[GeoValueRow]
 
 
+@dataclass(frozen=True)
+class DatasetMetaRow:
+    dataset: str
+    source: str
+    last_updated: str | None  # date of the latest successful ingestion, or None
+    latest_release_date: str | None
+
+
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None: ...
     def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None: ...
+    def get_meta(self) -> list[DatasetMetaRow]: ...
 
 
 _INDICATOR_COLUMNS = (
@@ -195,3 +204,31 @@ class PostgresRepository:
                 for r in rows
             ],
         )
+
+    def get_meta(self) -> list[DatasetMetaRow]:
+        """Per-dataset freshness: the date of the latest SUCCESSFUL ingestion
+        run and the most recent release date. Only datasets that have loaded
+        at least once appear. Powers the site's 'Data updated' line."""
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT d.name_en, s.name_en,"
+                " MAX(il.finished_at) FILTER (WHERE il.status = 'success') AS last_success,"
+                " MAX(r.release_date) FILTER (WHERE il.status = 'success') AS latest_release"
+                " FROM datasets d"
+                " JOIN sources s ON s.id = d.source_id"
+                " JOIN ingestion_log il ON il.dataset_id = d.id"
+                " LEFT JOIN releases r ON r.id = il.release_id"
+                " GROUP BY d.id, d.name_en, s.name_en"
+                " HAVING MAX(il.finished_at) FILTER (WHERE il.status = 'success') IS NOT NULL"
+                " ORDER BY last_success DESC"
+            )
+            rows = cur.fetchall()
+        return [
+            DatasetMetaRow(
+                dataset=row[0],
+                source=row[1],
+                last_updated=row[2].date().isoformat() if row[2] is not None else None,
+                latest_release_date=str(row[3]) if row[3] is not None else None,
+            )
+            for row in rows
+        ]

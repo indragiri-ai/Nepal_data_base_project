@@ -134,6 +134,17 @@ Two hard-won gotchas (both cost a debug session):
 A **daily keep-alive** (`.github/workflows/keep-alive.yml`) pings the API so the
 free-tier Supabase DB doesn't auto-pause; a non-200 fails the run and emails you.
 
+**Scheduled ingestion** (`.github/workflows/ingest.yml`) keeps the data fresh
+automatically: World Bank weekly (Sundays), NRB monthly (the 20th). A failed run
+turns red and emails you — that's the staleness alarm. The NRB job only stages
+new files; you still review and `make nrb-bfs-promote` locally (human-made Excel
+goes through review). It needs four **Actions secrets** (Settings → Secrets and
+variables → Actions), copied from your local `.env`: `DATABASE_URL` (the pooler
+host), `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `STORAGE_BUCKET`. Run either
+pipeline on demand from the Actions tab ("Run workflow"). GitHub disables cron
+workflows after ~60 days of no repo activity — any push to `master` resets that
+timer. The site footer shows "Data last updated …" from the API's `/v1/meta`.
+
 ### Legacy: Render blueprint
 
 `render.yaml` still deploys the same portal to Render (`nepal-data-api` /

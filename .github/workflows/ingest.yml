@@ -1,0 +1,118 @@
+# Scheduled ingestion — keeps the warehouse fresh without anyone running a
+# pipeline by hand (P2B.S2). Two independent schedules:
+#
+#   world-bank : weekly (Sundays) — World Bank WDI is a clean API, safe to load
+#                directly and idempotently.
+#   nrb-bfs    : monthly (the 20th; NRB publishes mid-month) — acquires new
+#                Excel files into the raw lake and parses them into STAGING.
+#                It deliberately does NOT promote: human-made files go through
+#                review before they reach the warehouse (project rule 3). The
+#                job prints how many rows were staged so a person knows to
+#                review + promote locally.
+#
+# Census has no schedule — it is decennial.
+#
+# A failed run exits non-zero, which turns the job red and makes GitHub email
+# the repo owner: that is the staleness alarm.
+#
+# Secrets required (Settings -> Secrets and variables -> Actions), copied from
+# the local .env: DATABASE_URL (Supabase POOLER host, not the IPv6 direct host),
+# SUPABASE_URL, SUPABASE_SERVICE_KEY, STORAGE_BUCKET.
+#
+# Note: GitHub disables scheduled workflows after ~60 days with no repo
+# activity. Ordinary commits (any push to master) reset that timer.
+
+name: Scheduled ingestion
+
+on:
+  schedule:
+    - cron: "0 3 * * 0"    # weekly, Sundays 03:00 UTC (~08:45 Nepal) — World Bank
+    - cron: "0 3 20 * *"   # monthly, the 20th 03:00 UTC — NRB BFS
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Which pipeline to run now"
+        type: choice
+        options: [both, world-bank, nrb-bfs]
+        default: both
+
+# Every pipeline reads these; set them once for the whole workflow.
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+  STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+
+jobs:
+  world-bank:
+    name: World Bank — weekly refresh
+    # Runs on the weekly cron, or on a manual dispatch that selected it.
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '0 3 * * 0') ||
+      (github.event_name == 'workflow_dispatch' &&
+        (github.event.inputs.job == 'world-bank' || github.event.inputs.job == 'both'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install the project
+        run: pip install -e .
+      # `PY=python` overrides the Makefile's venv path so the make target runs
+      # against the runner's Python. A non-zero exit fails the job (the alarm).
+      - name: Ingest World Bank WDI (raw-first, idempotent)
+        run: make ingest-wb PY=python
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## World Bank weekly refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "Ran \`make ingest-wb\` at $(date -u +'%Y-%m-%d %H:%M UTC'). " \
+               "Re-runs are idempotent (unchanged values load nothing)." >> "$GITHUB_STEP_SUMMARY"
+
+  nrb-bfs:
+    name: NRB BFS — monthly acquire + extract (promote stays manual)
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '0 3 20 * *') ||
+      (github.event_name == 'workflow_dispatch' &&
+        (github.event.inputs.job == 'nrb-bfs' || github.event.inputs.job == 'both'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install the project
+        run: pip install -e .
+      - name: Acquire new NRB monthly files into the raw lake
+        run: make nrb-bfs-acquire PY=python
+      - name: Parse acquired files into staging (never promotes)
+        run: |
+          set -o pipefail
+          make nrb-bfs-extract PY=python | tee extract.log
+      - name: Show the review queue
+        run: make nrb-bfs-status PY=python
+      - name: Report staged rows (review + promote is a human step)
+        if: always()
+        run: |
+          rows=$(grep -oE '[0-9]+ staging rows written' extract.log \
+                 | grep -oE '^[0-9]+' | head -1 || true)
+          rows=${rows:-0}
+          {
+            echo "## NRB Banking & Financial Statistics — monthly"
+            if [ "$rows" -gt 0 ]; then
+              echo "🔔 **Staged $rows new row(s).** They are in the review queue,"
+              echo "NOT yet published. Human-made Excel goes through review first."
+              echo ""
+              echo "To publish them, run locally after spot-checking:"
+              echo '```'
+              echo "make nrb-bfs-status     # inspect the queue + spot-check sample"
+              echo "make nrb-bfs-promote    # promote APPROVED rows (quality-gated)"
+              echo '```'
+            else
+              echo "No new rows staged this run (NRB had nothing new, or it was"
+              echo "already acquired). Nothing to review."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

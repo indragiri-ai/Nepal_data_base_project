@@ -120,6 +120,23 @@ export function fetchSeries(indicatorCode: string, geo = "NP"): Promise<DataResp
   return getJson<DataResponse>(`/v1/data?${params.toString()}`);
 }
 
+export interface DatasetMeta {
+  dataset: string;
+  source: string;
+  last_updated: string | null;
+  latest_release_date: string | null;
+}
+
+export interface MetaResponse {
+  /** Most recent successful ingestion across all datasets — the footer date. */
+  data_updated: string | null;
+  datasets: DatasetMeta[];
+}
+
+export function fetchMeta(): Promise<MetaResponse> {
+  return getJson<MetaResponse>("/v1/meta");
+}
+
 /** A human-friendly label for a topic slug (e.g. "economy" -> "Economy"). */
 export function topicLabel(topic: string): string {
   return topic
