@@ -17,6 +17,7 @@ export interface SectorDef {
   headlineCodes: string[]; // curated charts, in display order (<=4)
   mapCard?: { href: string; label: string; note: string };
   orbitCode?: string; // ONE code whose latest value shows on the orbit node
+  orbitLabel?: string; // the metric name for that value (e.g. "GDP growth")
   external?: { href: string; label: string };
 }
 
@@ -32,6 +33,7 @@ export const SECTORS: SectorDef[] = [
     excludePrefixes: ["NRB_BFS_"], // banking lives in Finance
     headlineCodes: ["GDP_GROWTH", "CPI_YOY", "REMITTANCES_GDP", "GDP_PCAP_USD"],
     orbitCode: "GDP_GROWTH",
+    orbitLabel: "GDP growth",
   },
   {
     slug: "finance",
@@ -47,6 +49,7 @@ export const SECTORS: SectorDef[] = [
       "NRB_BFS_MOBILE_BANKING_USERS",
     ],
     orbitCode: "NRB_BFS_LENDING_RATE",
+    orbitLabel: "Avg lending rate",
     external: { href: "/banking", label: "Open the full banking dashboard" },
   },
   {
@@ -58,6 +61,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["population"],
     headlineCodes: ["POP_TOTAL", "POP_GROWTH", "URBAN_POP_PCT"],
     orbitCode: "CENSUS_POP_TOTAL",
+    orbitLabel: "Population (2021)",
     mapCard: {
       href: "/population",
       label: "Census 2021 on the map",
@@ -73,6 +77,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["health"],
     headlineCodes: ["LIFE_EXPECTANCY", "INFANT_MORTALITY"],
     orbitCode: "LIFE_EXPECTANCY",
+    orbitLabel: "Life expectancy",
   },
   {
     slug: "education",
@@ -83,6 +88,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["education"],
     headlineCodes: ["ADULT_LITERACY", "SCHOOL_ENROLL_PRIMARY"],
     orbitCode: "ADULT_LITERACY",
+    orbitLabel: "Adult literacy",
     mapCard: {
       href: "/population",
       label: "Literacy on the map",
@@ -97,6 +103,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["labor"],
     headlineCodes: ["UNEMPLOYMENT"],
     orbitCode: "UNEMPLOYMENT",
+    orbitLabel: "Unemployment",
   },
   {
     slug: "environment",
@@ -106,6 +113,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["environment", "agriculture"],
     headlineCodes: ["ELECTRICITY_ACCESS"],
     orbitCode: "ELECTRICITY_ACCESS",
+    orbitLabel: "Electricity access",
   },
   {
     slug: "governance",

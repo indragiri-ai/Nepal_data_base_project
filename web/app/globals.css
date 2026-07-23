@@ -1362,6 +1362,18 @@ button.linklike:hover {
   font-size: 0.78rem;
   color: var(--ink-3);
 }
+.orbit-node .node-metric {
+  font-size: 0.62rem;
+  color: var(--ink-3);
+  line-height: 1.15;
+  margin-top: 1px;
+  max-width: 92px;
+}
+.cap-metric {
+  font-size: 0.72rem;
+  color: var(--ink-2);
+  margin: 3px 0 0;
+}
 .orbit-node .node-value.skeleton {
   width: 40px;
   height: 0.9em;

@@ -37,10 +37,13 @@ interface NumValue {
   unit: string;
 }
 
+// Hero-glance formatting: one decimal, no false precision (detail lives on the
+// sector pages). 6.7% not 6.73%; 70.6 not 70.64.
 function fmt(v: number, unit: string): string {
-  return unit === "COUNT" || unit === "PERSONS"
-    ? formatCompact(v)
-    : formatValue(v, unit);
+  if (unit === "COUNT" || unit === "PERSONS") return formatCompact(v);
+  if (unit === "PCT") return `${v.toFixed(1)}%`;
+  if (unit === "USD") return formatValue(v, unit);
+  return v.toFixed(1);
 }
 
 /** Count-up: animates 0 → value once on mount (instant under reduced-motion). */
@@ -119,6 +122,9 @@ export default function DataOrbit() {
               <p className="cap-value">
                 {activeEntry ? fmt(activeEntry.value, activeEntry.unit) : "in preparation"}
               </p>
+              {activeEntry && activeSector.orbitLabel && (
+                <p className="cap-metric">{activeSector.orbitLabel}</p>
+              )}
             </>
           ) : (
             <>
@@ -164,9 +170,14 @@ export default function DataOrbit() {
               <span className="node-title">{sector.titleShort}</span>
               {sector.orbitCode ? (
                 entry ? (
-                  <span className="node-value">
-                    <OrbitValue value={entry.value} unit={entry.unit} />
-                  </span>
+                  <>
+                    <span className="node-value">
+                      <OrbitValue value={entry.value} unit={entry.unit} />
+                    </span>
+                    {sector.orbitLabel && (
+                      <span className="node-metric">{sector.orbitLabel}</span>
+                    )}
+                  </>
                 ) : (
                   <span className="node-value skeleton" aria-hidden="true" />
                 )

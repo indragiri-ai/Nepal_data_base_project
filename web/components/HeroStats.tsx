@@ -24,11 +24,14 @@ export default function HeroStats() {
   useEffect(() => {
     let cancelled = false;
 
+    // Deliberately NOT the orbit's signature metrics (GDP growth, lending rate,
+    // population, life expectancy…) — these complement the orbit instead of
+    // repeating it, and avoid showing two different "populations" on one screen.
     const spec = [
-      { code: "GDP_GROWTH", label: "GDP growth", source: "World Bank" },
       { code: "CPI_YOY", label: "Inflation (CPI)", source: "World Bank" },
-      { code: "POP_TOTAL", label: "Population", source: "World Bank" },
-      { code: "NRB_BFS_LENDING_RATE", label: "Avg lending rate", source: "Nepal Rastra Bank" },
+      { code: "GDP_PCAP_USD", label: "GDP per capita", source: "World Bank" },
+      { code: "REMITTANCES_GDP", label: "Remittances (% of GDP)", source: "World Bank" },
+      { code: "INTERNET_USERS", label: "Internet users", source: "World Bank" },
     ];
 
     Promise.allSettled([
@@ -46,9 +49,14 @@ export default function HeroStats() {
         if (!pair) return;
         const s = spec[i];
         const isCount = data.unit_code === "COUNT";
+        const value = isCount
+          ? formatCompact(pair.latest)
+          : data.unit_code === "PCT"
+            ? `${pair.latest.toFixed(1)}%` // one decimal — no false precision
+            : formatValue(pair.latest, data.unit_code);
         built.push({
           label: s.label,
-          value: isCount ? formatCompact(pair.latest) : formatValue(pair.latest, data.unit_code),
+          value,
           sub: `${pair.period} · ${s.source}`,
           delta:
             pair.prev != null
