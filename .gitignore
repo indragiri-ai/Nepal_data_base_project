@@ -127,3 +127,6 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Local preview screenshots (not part of the repo)
+Screenshots/
