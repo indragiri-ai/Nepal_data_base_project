@@ -1368,6 +1368,70 @@ button.linklike:hover {
   border-radius: 4px;
 }
 
+/* Interactive reveal: hover/focus a node -> center shows that sector, a
+   connector draws to it, siblings dim. */
+.orbit-center {
+  z-index: 2; /* map + caption sit above the connector line */
+}
+.orbit-map {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.orbit-wrap.has-active .orbit-map {
+  opacity: 0.55;
+  transform: scale(0.94);
+}
+.orbit-caption {
+  transition: opacity 0.25s ease;
+}
+.cap-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  font-weight: 700;
+  margin: 8px 0 0;
+}
+.cap-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 2px 0 0;
+  line-height: 1.1;
+}
+.orbit-connector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+.conn-line {
+  stroke: var(--crimson);
+  stroke-width: 0.5;
+  stroke-dasharray: 2 2;
+  opacity: 0.65;
+}
+.orbit-node {
+  z-index: 1; /* above the connector */
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease,
+    opacity 220ms ease;
+}
+.orbit-wrap.has-active .orbit-node:not(.active) {
+  opacity: 0.4;
+}
+.orbit-node.active {
+  border-color: var(--crimson);
+  box-shadow: var(--shadow-2);
+  z-index: 5;
+}
+
 /* <560px: no orbit — the same nodes reflow into a static 2-column grid */
 @media (max-width: 559px) {
   .orbit-wrap {

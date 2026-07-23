@@ -20,20 +20,60 @@ const NEPAL_PATH = "M 633.8 247.61 635.85 238.38 639.56 232.28 645.48 236.43 650
 
 // Node anchors on an ellipse rx=46% ry=42%, θ_i = -90° + i·45°:
 // left = 50% + rx·cosθ, top = 50% + ry·sinθ. Precomputed to avoid runtime trig.
-const NODE_POS: Array<{ left: string; top: string }> = [
-  { left: "50%", top: "8%" }, // -90°
-  { left: "82.5%", top: "20.3%" }, // -45°
-  { left: "96%", top: "50%" }, // 0°
-  { left: "82.5%", top: "79.7%" }, // 45°
-  { left: "50%", top: "92%" }, // 90°
-  { left: "17.5%", top: "79.7%" }, // 135°
-  { left: "4%", top: "50%" }, // 180°
-  { left: "17.5%", top: "20.3%" }, // 225°
+// x/y are the same values as numbers, for the SVG connector line.
+const NODE_POS: Array<{ left: string; top: string; x: number; y: number }> = [
+  { left: "50%", top: "8%", x: 50, y: 8 }, // -90°
+  { left: "82.5%", top: "20.3%", x: 82.5, y: 20.3 }, // -45°
+  { left: "96%", top: "50%", x: 96, y: 50 }, // 0°
+  { left: "82.5%", top: "79.7%", x: 82.5, y: 79.7 }, // 45°
+  { left: "50%", top: "92%", x: 50, y: 92 }, // 90°
+  { left: "17.5%", top: "79.7%", x: 17.5, y: 79.7 }, // 135°
+  { left: "4%", top: "50%", x: 4, y: 50 }, // 180°
+  { left: "17.5%", top: "20.3%", x: 17.5, y: 20.3 }, // 225°
 ];
 
+interface NumValue {
+  value: number;
+  unit: string;
+}
+
+function fmt(v: number, unit: string): string {
+  return unit === "COUNT" || unit === "PERSONS"
+    ? formatCompact(v)
+    : formatValue(v, unit);
+}
+
+/** Count-up: animates 0 → value once on mount (instant under reduced-motion). */
+function OrbitValue({ value, unit }: NumValue) {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setV(value);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const dur = 900;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setV(value * eased);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value]);
+  return <>{fmt(v, unit)}</>;
+}
+
 export default function DataOrbit() {
-  // orbitCode -> formatted latest value
-  const [values, setValues] = useState<Record<string, string>>({});
+  // orbitCode -> numeric latest value + unit
+  const [data, setData] = useState<Record<string, NumValue>>({});
+  // index of the hovered/focused node (drives the center reveal + connector)
+  const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -42,49 +82,91 @@ export default function DataOrbit() {
     );
     Promise.allSettled(codes.map((c) => fetchSeries(c, "NP"))).then((results) => {
       if (cancelled) return;
-      const map: Record<string, string> = {};
+      const map: Record<string, NumValue> = {};
       results.forEach((r, i) => {
         if (r.status !== "fulfilled") return;
-        const data = r.value;
-        const pair = latestPair(data);
+        const pair = latestPair(r.value);
         if (!pair) return;
-        const isCount = data.unit_code === "COUNT" || data.unit_code === "PERSONS";
-        map[codes[i]] = isCount
-          ? formatCompact(pair.latest)
-          : formatValue(pair.latest, data.unit_code);
+        map[codes[i]] = { value: pair.latest, unit: r.value.unit_code };
       });
-      setValues(map);
+      setData(map);
     });
     return () => {
       cancelled = true;
     };
   }, []);
 
+  const activeSector = active !== null ? SECTORS[active] : null;
+  const activeEntry = activeSector?.orbitCode ? data[activeSector.orbitCode] : undefined;
+
   return (
-    <div className="orbit-wrap">
+    <div className={`orbit-wrap${active !== null ? " has-active" : ""}`}>
       <div className="orbit-ring" aria-hidden="true" />
+
       <div className="orbit-center" aria-hidden="true">
-        <svg viewBox={NEPAL_VIEWBOX} role="img" aria-label="Outline of Nepal">
+        <svg
+          className="orbit-map"
+          viewBox={NEPAL_VIEWBOX}
+          role="img"
+          aria-label="Outline of Nepal"
+        >
           <path d={NEPAL_PATH} fill="var(--crimson)" fillOpacity="0.9" />
         </svg>
-        <p className="np">नेपाल</p>
-        <p className="np-sub">Nepal in data</p>
+        <div className="orbit-caption">
+          {activeSector ? (
+            <>
+              <p className="cap-label">{activeSector.titleShort}</p>
+              <p className="cap-value">
+                {activeEntry ? fmt(activeEntry.value, activeEntry.unit) : "in preparation"}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="np">नेपाल</p>
+              <p className="np-sub">Nepal in data</p>
+            </>
+          )}
+        </div>
       </div>
+
       <div className="orbit-rotor">
+        <svg
+          className="orbit-connector"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {active !== null && (
+            <line
+              className="conn-line"
+              x1="50"
+              y1="50"
+              x2={NODE_POS[active].x}
+              y2={NODE_POS[active].y}
+            />
+          )}
+        </svg>
+
         {SECTORS.map((sector, i) => {
-          const value = sector.orbitCode ? values[sector.orbitCode] : undefined;
+          const entry = sector.orbitCode ? data[sector.orbitCode] : undefined;
           return (
             <Link
               key={sector.slug}
               href={`/${sector.slug}`}
-              className="orbit-node"
+              className={`orbit-node${active === i ? " active" : ""}`}
               style={{ left: NODE_POS[i].left, top: NODE_POS[i].top }}
               aria-label={`${sector.title} — open sector`}
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive((cur) => (cur === i ? null : cur))}
+              onFocus={() => setActive(i)}
+              onBlur={() => setActive((cur) => (cur === i ? null : cur))}
             >
               <span className="node-title">{sector.titleShort}</span>
               {sector.orbitCode ? (
-                value ? (
-                  <span className="node-value">{value}</span>
+                entry ? (
+                  <span className="node-value">
+                    <OrbitValue value={entry.value} unit={entry.unit} />
+                  </span>
                 ) : (
                   <span className="node-value skeleton" aria-hidden="true" />
                 )
