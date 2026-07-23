@@ -6,6 +6,7 @@
 import { useEffect, useState } from "react";
 import { fetchIndicators, fetchSeries, type DataResponse } from "@/lib/api";
 import { formatCompact, formatDelta, formatValue } from "@/lib/format";
+import { latestPair } from "@/lib/latest";
 
 interface Tile {
   label: string;
@@ -13,24 +14,6 @@ interface Tile {
   unit?: string;
   sub: string;
   delta?: string;
-}
-
-/** Latest + previous observation of a series, preferring the aggregate
- *  breakdown when one exists (NRB series carry a bfi_class). */
-function latestPair(data: DataResponse): { latest: number; prev: number | null; period: string } | null {
-  const classes = new Set(data.observations.map((o) => o.breakdowns?.bfi_class ?? ""));
-  const pick = classes.has("overall")
-    ? "overall"
-    : classes.has("commercial_banks")
-      ? "commercial_banks"
-      : null;
-  const obs = data.observations.filter(
-    (o) => pick === null || (o.breakdowns?.bfi_class ?? "") === pick,
-  );
-  if (obs.length === 0) return null;
-  const last = obs[obs.length - 1];
-  const prev = obs.length > 1 ? obs[obs.length - 2].value : null;
-  return { latest: last.value, prev, period: last.period };
 }
 
 export default function HeroStats() {

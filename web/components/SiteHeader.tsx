@@ -2,13 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SECTORS } from "@/lib/sectors";
 
-const LINKS = [
-  { href: "/", label: "Overview" },
-  { href: "/explore", label: "Explore" },
-  { href: "/banking", label: "Banking" },
-  { href: "/population", label: "Population" },
-];
+const SECTOR_SLUGS = new Set(SECTORS.map((s) => `/${s.slug}`));
 
 /** Brand mark: an abstract twin-pennant — Nepal's flag reduced to two strokes. */
 function Mark() {
@@ -27,6 +23,7 @@ function Mark() {
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const onSector = SECTOR_SLUGS.has(pathname);
   return (
     <header className="site-header">
       <div className="shell bar">
@@ -35,15 +32,31 @@ export default function SiteHeader() {
           <span className="name">Nepal Data Portal</span>
         </Link>
         <nav className="site-nav" aria-label="Main">
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              aria-current={pathname === l.href ? "page" : undefined}
-            >
-              {l.label}
-            </Link>
-          ))}
+          <Link href="/" aria-current={pathname === "/" ? "page" : undefined}>
+            Overview
+          </Link>
+          <details className="nav-dd">
+            <summary aria-current={onSector ? "page" : undefined}>Data</summary>
+            <ul className="nav-dd-panel">
+              {SECTORS.map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/${s.slug}`}>{s.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </details>
+          <Link
+            href="/population"
+            aria-current={pathname === "/population" ? "page" : undefined}
+          >
+            Population map
+          </Link>
+          <Link
+            href="/banking"
+            aria-current={pathname === "/banking" ? "page" : undefined}
+          >
+            Banking
+          </Link>
         </nav>
       </div>
     </header>

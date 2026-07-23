@@ -37,7 +37,13 @@ export default function ExploreDashboard() {
         // Annual country-level series only; NRB monthlies live on /banking.
         const annual = list.filter((i) => !i.code.startsWith("NRB_"));
         setIndicators(annual);
-        const def = annual.find((i) => i.code === "GDP_GROWTH") ?? annual[0];
+        // Deep link: /explore?indicator=CODE (validated); else default.
+        const param =
+          typeof window !== "undefined"
+            ? new URLSearchParams(window.location.search).get("indicator")
+            : null;
+        const wanted = param ? annual.find((i) => i.code === param) : undefined;
+        const def = wanted ?? annual.find((i) => i.code === "GDP_GROWTH") ?? annual[0];
         if (def) setSelected(def.code);
       })
       .catch((err) => setIndicatorsError(messageFor(err)));

@@ -10,13 +10,25 @@ import type { DataResponse } from "@/lib/api";
 
 const LINE = "#bb2340"; // brand crimson; 7.5:1 on the white card
 
-export default function TrendChart({ data }: { data: DataResponse }) {
+export default function TrendChart({
+  data,
+  height = 420,
+  compact = false,
+}: {
+  data: DataResponse;
+  /** Chart height in px; headline charts pass 200. */
+  height?: number;
+  /** Tighter grid, no y-axis name — for small headline charts. */
+  compact?: boolean;
+}) {
   const periods = data.observations.map((o) => o.period);
   const values = data.observations.map((o) => o.value);
   const unitCode = data.unit_code;
 
   const option: ChartOption = {
-    grid: { left: 8, right: 20, top: 28, bottom: 8, containLabel: true },
+    grid: compact
+      ? { left: 4, right: 12, top: 10, bottom: 4, containLabel: true }
+      : { left: 8, right: 20, top: 28, bottom: 8, containLabel: true },
     tooltip: {
       ...TOOLTIP_STYLE,
       trigger: "axis",
@@ -80,7 +92,7 @@ export default function TrendChart({ data }: { data: DataResponse }) {
   return (
     <EChart
       option={option}
-      height={420}
+      height={height}
       ariaLabel={`Line chart of ${data.indicator.name} for ${data.geography_name}, ${
         periods[0] ?? ""
       } to ${periods[periods.length - 1] ?? ""}. The same data is available in the table below.`}

@@ -98,7 +98,16 @@ export default function BankingDashboard() {
 
   useEffect(() => {
     fetchIndicators()
-      .then((list) => setIndicators(list.filter((i) => i.code.startsWith("NRB_BFS_"))))
+      .then((list) => {
+        const nrb = list.filter((i) => i.code.startsWith("NRB_BFS_"));
+        setIndicators(nrb);
+        // Deep link: /banking?indicator=NRB_BFS_... (validated); else keep NPL.
+        const param =
+          typeof window !== "undefined"
+            ? new URLSearchParams(window.location.search).get("indicator")
+            : null;
+        if (param && nrb.some((i) => i.code === param)) setSelected(param);
+      })
       .catch((err) => setIndicatorsError(messageFor(err)));
   }, []);
 
