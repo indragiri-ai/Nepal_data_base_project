@@ -135,19 +135,22 @@ def clear_stale_pipeline_sessions(conn: psycopg.Connection[Any]) -> None:
         print(f"  cleared {len(cleared)} stale lock-holding session(s) from a crashed run")
 
 
-def _archive_with_retry(lake: RawLake, wdi_code: str, raw_bytes: bytes, source_url: str) -> str:
-    """Store one indicator's raw payload, retrying transient storage errors.
+def archive_snapshot_with_retry(
+    lake: RawLake, members: list[tuple[str, bytes, str]]
+) -> list[str]:
+    """Archive every fetched payload as ONE immutable snapshot, retrying blips.
 
-    Supabase Storage occasionally drops a connection under sustained sequential
-    uploads (the same class of flakiness as the DB pooler). A blip on ONE
-    upload must not end a 1,396-indicator run, so we back off and retry. If it
-    still fails, the caller treats the indicator as failed and does NOT load it
-    — raw-first (rule #3) means an unarchived value is never ingested.
+    Writing one object per indicator meant ~4,000 Storage round trips and a
+    ~3.8 h run on the free tier; a single snapshot is two uploads. Supabase
+    Storage occasionally drops a connection, so we back off and retry — a blip
+    on this one upload must not throw away a full fetch. Returns the snapshot's
+    payload + metadata paths for releases.raw_file_refs.
     """
     last: Exception | None = None
     for attempt in range(4):
         try:
-            return lake.store(f"worldbank/wdi/{wdi_code}", raw_bytes, source_url).payload_path
+            stored = lake.store_snapshot("worldbank/wdi-catalogue", members)
+            return [stored.payload_path, stored.metadata_path]
         except (requests.RequestException, RawLakeError) as exc:
             last = exc
             time.sleep(1.0 * (attempt + 1))
@@ -155,38 +158,38 @@ def _archive_with_retry(lake: RawLake, wdi_code: str, raw_bytes: bytes, source_u
 
 
 def fetch_all_series(
-    indicators: list[tuple[Any, ...]], lake: RawLake | None
-) -> tuple[dict[str, list[SeriesPoint]], list[str], list[str]]:
-    """Fetch (and, unless lake is None, archive) every indicator's series with NO
-    database connection open.
+    indicators: list[tuple[Any, ...]],
+) -> tuple[dict[str, list[SeriesPoint]], list[tuple[str, bytes, str]], list[str]]:
+    """Fetch every indicator's series with NO database connection open.
 
     This phase is minutes long at full-catalogue scale. Holding a connection
     across it is what leaves the 'idle in transaction' zombies that lock-block
     the next run, so the caller opens its connections around this, never during.
 
-    A per-indicator fetch OR archive failure is reported and skipped, never
-    fatal — one bad indicator must not lose the other 1,395. Passing lake=None
-    skips archiving entirely (used by --dry-run, which loads nothing).
+    Fetch only — the caller archives everything in one snapshot afterwards
+    (raw-first still holds: nothing is loaded until the snapshot is stored).
+    A per-indicator fetch failure is reported and skipped, never fatal — one bad
+    indicator must not lose the other 1,395.
 
-    Returns (points by WDI code, raw payload paths, per-indicator failures).
+    Returns (points by WDI code, raw members for archiving, per-indicator
+    failures). Each raw member is (wdi_code, raw_bytes, source_url).
     """
     points_by_code: dict[str, list[SeriesPoint]] = {}
-    raw_refs: list[str] = []
+    raw_members: list[tuple[str, bytes, str]] = []
     failures: list[str] = []
     total = len(indicators)
     for position, row in enumerate(indicators, start=1):
         wdi_code = row[4]
         try:
             points, raw_bytes, source_url = fetch_series(wdi_code)
-            if lake is not None:
-                raw_refs.append(_archive_with_retry(lake, wdi_code, raw_bytes, source_url))
-        except (requests.RequestException, RuntimeError, RawLakeError) as exc:
+        except (requests.RequestException, RuntimeError) as exc:
             failures.append(f"{wdi_code}: {exc}")
             continue
         points_by_code[wdi_code] = points
+        raw_members.append((wdi_code, raw_bytes, source_url))
         if position % 100 == 0 or position == total:
             print(f"  ... fetched {position}/{total} indicators ({len(failures)} failed)")
-    return points_by_code, raw_refs, failures
+    return points_by_code, raw_members, failures
 
 
 def run(argv: list[str] | None = None) -> int:
@@ -277,11 +280,33 @@ def run(argv: list[str] | None = None) -> int:
     conn.commit()
     conn.close()
 
-    # --- Phase 2 (NO connection open): fetch every series and archive it raw ---
+    # --- Phase 2 (NO connection open): fetch every series, then archive raw ---
     print(f"Fetching {len(indicators)} indicator series from the World Bank...")
-    points_by_code, raw_refs, fetch_failures = fetch_all_series(indicators, lake)
+    points_by_code, raw_members, fetch_failures = fetch_all_series(indicators)
     for failure in fetch_failures[:10]:
         print(f"  [fetch failed] {failure}")
+
+    # Archive all fetched payloads as ONE immutable snapshot (raw-first: done
+    # before any observation is written). A dry run (lake is None) skips this.
+    raw_refs: list[str] = []
+    if lake is not None and raw_members:
+        print(f"Archiving {len(raw_members)} raw payloads as one immutable snapshot...")
+        try:
+            raw_refs = archive_snapshot_with_retry(lake, raw_members)
+        except (requests.RequestException, RawLakeError, RuntimeError) as exc:
+            # Raw-first (rule #3): if the payload cannot be archived we must not
+            # load. Mark the log failed and stop cleanly — no observations written.
+            conn = psycopg.connect(db_url, connect_timeout=30)
+            with conn.cursor() as fail_cur:
+                fail_cur.execute(
+                    "UPDATE ingestion_log SET status = 'failed', finished_at = now(),"
+                    " error_note = %s WHERE id = %s",
+                    (f"raw archive failed, nothing loaded: {exc}", log_id),
+                )
+            conn.commit()
+            conn.close()
+            print(f"FAILURE: raw archive failed after retries — nothing loaded. {exc}")
+            return 1
 
     # --- Phase 3 (short connection): gate, then load in batches ---------------
     rows_in = loaded = rejected = unchanged = 0

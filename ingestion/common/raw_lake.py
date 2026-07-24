@@ -16,6 +16,7 @@ in .env only, never in code).
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import os
@@ -145,9 +146,10 @@ class RawLake:
         payload_path = f"{prefix}/{payload_filename}"
         metadata_path = f"{prefix}/metadata.json"
 
-        if self.backend.exists(payload_path):
-            raise RawLakeError(f"refusing to overwrite existing object: {payload_path}")
-
+        # No exists() pre-check: the microsecond-stamped path is unique per call,
+        # and put() below already refuses to overwrite (x-upsert:false on Supabase,
+        # an explicit raise on the local backend). The pre-check was a wasted
+        # round trip on every write — and at full-catalogue scale, thousands of them.
         sha256 = hashlib.sha256(payload).hexdigest()
         fetched_at = now.isoformat()
         metadata: dict[str, object] = {
@@ -171,6 +173,78 @@ class RawLake:
             size_bytes=len(payload),
             fetched_at=fetched_at,
             source_url=source_url,
+        )
+
+    def store_snapshot(
+        self,
+        dataset_code: str,
+        members: list[tuple[str, bytes, str]],
+        snapshot_filename: str = "snapshot.json",
+    ) -> StoredObject:
+        """Archive MANY payloads as ONE immutable object plus a sidecar.
+
+        For a bulk API harvest (e.g. the full ~1,400-indicator World Bank
+        catalogue) writing a separate object per member means thousands of
+        Storage round trips — pathologically slow on the free tier (~4,000
+        uploads took ~3.8 h). One combined snapshot is two uploads instead.
+
+        Each member's UNTOUCHED bytes are preserved verbatim (base64) next to
+        its own SHA-256 and source URL, so any single payload is still
+        recoverable byte-for-byte and independently verifiable — the raw-first
+        guarantee holds, only the object granularity changes. `members` is a
+        list of (member_key, payload_bytes, source_url).
+        """
+        now = datetime.now(UTC)
+        stamp = now.strftime("%Y-%m-%dT%H%M%S_%fZ")  # colon-free: safe on every filesystem
+        prefix = f"{dataset_code.strip('/')}/{stamp}"
+        payload_path = f"{prefix}/{snapshot_filename}"
+        metadata_path = f"{prefix}/metadata.json"
+        fetched_at = now.isoformat()
+
+        member_body: dict[str, object] = {}
+        member_index: dict[str, str] = {}
+        for key, payload, source_url in members:
+            digest = hashlib.sha256(payload).hexdigest()
+            member_body[key] = {
+                "source_url": source_url,
+                "sha256": digest,
+                "size_bytes": len(payload),
+                "payload_b64": base64.b64encode(payload).decode("ascii"),
+            }
+            member_index[key] = digest
+
+        snapshot: dict[str, object] = {
+            "archive_of": dataset_code,
+            "fetched_at": fetched_at,
+            "member_count": len(members),
+            "members": member_body,
+        }
+        snapshot_bytes = json.dumps(snapshot, ensure_ascii=False).encode("utf-8")
+        archive_sha = hashlib.sha256(snapshot_bytes).hexdigest()
+
+        # The sidecar carries every member's hash, so a trace can verify any one
+        # payload without downloading the whole (multi-MB) snapshot.
+        metadata: dict[str, object] = {
+            "sha256": archive_sha,
+            "fetched_at": fetched_at,
+            "member_count": len(members),
+            "size_bytes": len(snapshot_bytes),
+            "payload_path": payload_path,
+            "members_sha256": member_index,
+        }
+        self.backend.put(payload_path, snapshot_bytes, "application/json")
+        self.backend.put(
+            metadata_path,
+            json.dumps(metadata, indent=2, ensure_ascii=False).encode("utf-8"),
+            "application/json",
+        )
+        return StoredObject(
+            payload_path=payload_path,
+            metadata_path=metadata_path,
+            sha256=archive_sha,
+            size_bytes=len(snapshot_bytes),
+            fetched_at=fetched_at,
+            source_url=dataset_code,
         )
 
     @classmethod
