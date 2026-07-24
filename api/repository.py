@@ -110,8 +110,21 @@ class PostgresRepository:
         return psycopg.connect(self._dsn)
 
     def list_indicators(self) -> list[IndicatorRow]:
+        """Every indicator that actually has at least one observation.
+
+        An indicator with no data cannot be charted, so listing it advertises
+        something the portal cannot deliver — the browser renders an empty chart.
+        Reference rows legitimately exist before their data lands (seeding and
+        ingestion are separate steps, and ingestion of a large catalogue takes
+        many minutes), so the listing filters rather than assuming they arrive
+        together.
+        """
         with self._connect() as conn, conn.cursor() as cur:
-            cur.execute(f"SELECT {_INDICATOR_COLUMNS} ORDER BY i.topic, i.code")
+            cur.execute(
+                f"SELECT {_INDICATOR_COLUMNS}"
+                " WHERE EXISTS (SELECT 1 FROM observations o WHERE o.indicator_id = i.id)"
+                " ORDER BY i.topic, i.code"
+            )
             return [IndicatorRow(*row) for row in cur.fetchall()]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
