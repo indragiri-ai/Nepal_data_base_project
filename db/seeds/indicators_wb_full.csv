@@ -1,0 +1,1337 @@
+code,wdi_code,name_wb,topic,unit_code,wb_topic,latest_year,latest_value
+AG_CON_FERT_ZS,AG.CON.FERT.ZS,Fertilizer consumption (kilograms per hectare of arable land),agriculture,KG_PER_HECTARE,Agriculture & Rural Development,2023,67.842887238053
+AG_LND_AGRI_K2,AG.LND.AGRI.K2,Agricultural land (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2023,37441.0
+AG_LND_AGRI_ZS,AG.LND.AGRI.ZS,Agricultural land (% of land area),agriculture,PCT,Agriculture & Rural Development,2023,26.1185908615277
+AG_LND_ARBL_HA,AG.LND.ARBL.HA,Arable land (hectares),agriculture,HECTARES,Agriculture & Rural Development,2023,1803800.0
+AG_LND_ARBL_HA_PC,AG.LND.ARBL.HA.PC,Arable land (hectares per person),agriculture,HECTARES_PER_PERSON,Agriculture & Rural Development,2023,0.060745022649562
+AG_LND_ARBL_ZS,AG.LND.ARBL.ZS,Arable land (% of land area),agriculture,PCT,Agriculture & Rural Development,2023,12.5831880013952
+AG_LND_CREL_HA,AG.LND.CREL.HA,Land under cereal production (hectares),agriculture,HECTARES,Agriculture & Rural Development,2023,3334346.0
+AG_LND_CROP_ZS,AG.LND.CROP.ZS,Permanent cropland (% of land area),agriculture,PCT,Agriculture & Rural Development,2023,1.01151028950122
+AG_LND_EL5M_RU_K2,AG.LND.EL5M.RU.K2,Rural land area where elevation is below 5 meters (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2015,0.0
+AG_LND_EL5M_RU_ZS,AG.LND.EL5M.RU.ZS,Rural land area where elevation is below 5 meters (% of total land area),agriculture,PCT,Agriculture & Rural Development,2015,0.0
+AG_LND_FRST_K2,AG.LND.FRST.K2,Forest area (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2023,59620.3
+AG_LND_FRST_ZS,AG.LND.FRST.ZS,Forest area (% of land area),agriculture,PCT,Agriculture & Rural Development,2023,41.5907220090687
+AG_LND_IRIG_AG_ZS,AG.LND.IRIG.AG.ZS,Agricultural irrigated land (% of total agricultural land),agriculture,PCT,Agriculture & Rural Development,2023,32.2908041986058
+AG_LND_PRCP_MM,AG.LND.PRCP.MM,Average precipitation in depth (mm per year),agriculture,MM_PER_YEAR,Agriculture & Rural Development,2022,1500.0
+AG_LND_TOTL_K2,AG.LND.TOTL.K2,Land area (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2023,143350.0
+AG_LND_TOTL_RU_K2,AG.LND.TOTL.RU.K2,Rural land area (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2015,140132.783502
+AG_PRD_CREL_MT,AG.PRD.CREL.MT,Cereal production (metric tons),agriculture,METRIC_TONS,Agriculture & Rural Development,2023,11150994.25
+AG_PRD_CROP_XD,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),agriculture,INDEX,Agriculture & Rural Development,2022,116.66
+AG_PRD_FOOD_XD,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),agriculture,INDEX,Agriculture & Rural Development,2022,123.18
+AG_PRD_LVSK_XD,AG.PRD.LVSK.XD,Livestock production index (2014-2016 = 100),agriculture,INDEX,Agriculture & Rural Development,2022,144.45
+AG_SRF_TOTL_K2,AG.SRF.TOTL.K2,Surface area (sq. km),agriculture,SQ_KM,Agriculture & Rural Development,2023,147180.0
+AG_YLD_CREL_KG,AG.YLD.CREL.KG,Cereal yield (kg per hectare),agriculture,KG_PER_HECTARE,Agriculture & Rural Development,2023,3344.3
+EG_ELC_ACCS_RU_ZS,EG.ELC.ACCS.RU.ZS,"Access to electricity, rural (% of rural population)",agriculture,PCT,Agriculture & Rural Development,2024,94.2
+EN_POP_EL5M_RU_ZS,EN.POP.EL5M.RU.ZS,Rural population living in areas where elevation is below 5 meters (% of total population),agriculture,PCT,Agriculture & Rural Development,2015,0.0
+ER_H2O_FWAG_ZS,ER.H2O.FWAG.ZS,"Annual freshwater withdrawals, agriculture (% of total freshwater withdrawal)",agriculture,PCT,Agriculture & Rural Development,2022,98.13522023
+NV_AGR_TOTL_CD,NV.AGR.TOTL.CD,"Agriculture, forestry, and fishing, value added (current US$)",agriculture,USD,Agriculture & Rural Development,2025,9806608596.86782
+NV_AGR_TOTL_ZS,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",agriculture,PCT,Agriculture & Rural Development,2025,21.5578137957376
+SL_AGR_EMPL_FE_ZS,SL.AGR.EMPL.FE.ZS,"Employment in agriculture, female (% of female employment) (modeled ILO estimate)",agriculture,PCT,Agriculture & Rural Development,2025,35.8609231159835
+SL_AGR_EMPL_MA_ZS,SL.AGR.EMPL.MA.ZS,"Employment in agriculture, male (% of male employment) (modeled ILO estimate)",agriculture,PCT,Agriculture & Rural Development,2025,15.2963607050918
+SL_AGR_EMPL_ZS,SL.AGR.EMPL.ZS,Employment in agriculture (% of total employment) (modeled ILO estimate),agriculture,PCT,Agriculture & Rural Development,2025,22.9119744042875
+TM_VAL_AGRI_ZS_UN,TM.VAL.AGRI.ZS.UN,Agricultural raw materials imports (% of merchandise imports),agriculture,PCT,Agriculture & Rural Development,2022,1.29279766517618
+TX_VAL_AGRI_ZS_UN,TX.VAL.AGRI.ZS.UN,Agricultural raw materials exports (% of merchandise exports),agriculture,PCT,Agriculture & Rural Development,2022,1.62694833173806
+BG_GSR_NFSV_GD_ZS,BG.GSR.NFSV.GD.ZS,Trade in services (% of GDP),economy,PCT,Economy & Growth,2024,9.62521446213055
+BM_GSR_CMCP_ZS,BM.GSR.CMCP.ZS,"Communications, computer, etc. (% of service imports, BoP)",economy,PCT,Economy & Growth,2024,9.78664879386791
+BM_GSR_FCTY_CD,BM.GSR.FCTY.CD,"Primary income payments (BoP, current US$)",economy,USD,Economy & Growth,2024,253175696.186733
+BM_GSR_GNFS_CD,BM.GSR.GNFS.CD,"Imports of goods and services (BoP, current US$)",economy,USD,Economy & Growth,2024,14406374427.785
+BM_GSR_INSF_ZS,BM.GSR.INSF.ZS,"Insurance and financial services (% of service imports, BoP)",economy,PCT,Economy & Growth,2024,4.39608498593263
+BM_GSR_MRCH_CD,BM.GSR.MRCH.CD,"Goods imports (BoP, current US$)",economy,USD,Economy & Growth,2024,12135894260.8496
+BM_GSR_NFSV_CD,BM.GSR.NFSV.CD,"Service imports (BoP, current US$)",economy,USD,Economy & Growth,2024,2270480166.93539
+BM_GSR_ROYL_CD,BM.GSR.ROYL.CD,"Charges for the use of intellectual property, payments (BoP, current US$)",economy,USD,Economy & Growth,2024,10417563.3908931
+BM_GSR_TOTL_CD,BM.GSR.TOTL.CD,"Imports of goods, services and primary income (BoP, current US$)",economy,USD,Economy & Growth,2024,14659550123.9717
+BM_GSR_TRAN_ZS,BM.GSR.TRAN.ZS,"Transport services (% of service imports, BoP)",economy,PCT,Economy & Growth,2024,20.1802882860495
+BM_GSR_TRVL_ZS,BM.GSR.TRVL.ZS,"Travel services (% of service imports, BoP)",economy,PCT,Economy & Growth,2024,65.1804545066703
+BM_TRF_PRVT_CD,BM.TRF.PRVT.CD,"Secondary income, other sectors, payments (BoP, current US$)",economy,USD,Economy & Growth,2024,54848526.9853027
+BM_TRF_PWKR_CD_DT,BM.TRF.PWKR.CD.DT,"Personal remittances, paid (current US$)",economy,USD,Economy & Growth,2024,81687530.7216342
+BN_CAB_XOKA_CD,BN.CAB.XOKA.CD,"Current account balance (BoP, current US$)",economy,USD,Economy & Growth,2024,1679145881.89775
+BN_CAB_XOKA_GD_ZS,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),economy,PCT,Economy & Growth,2024,3.87803253239857
+BN_FIN_TOTL_CD,BN.FIN.TOTL.CD,"Net financial account (BoP, current US$)",economy,USD,Economy & Growth,2024,2107477735.29519
+BN_GSR_FCTY_CD,BN.GSR.FCTY.CD,"Net primary income (BoP, current US$)",economy,USD,Economy & Growth,2024,638463801.692049
+BN_GSR_GNFS_CD,BN.GSR.GNFS.CD,"Net trade in goods and services (BoP, current US$)",economy,USD,Economy & Growth,2024,-10964564479.1191
+BN_GSR_MRCH_CD,BN.GSR.MRCH.CD,"Net trade in goods (BoP, current US$)",economy,USD,Economy & Growth,2024,-10591217256.135
+BN_KAC_EOMS_CD,BN.KAC.EOMS.CD,"Net errors and omissions (BoP, current US$)",economy,USD,Economy & Growth,2024,376046969.00941
+BN_KLT_DINV_CD,BN.KLT.DINV.CD,"Foreign direct investment, net (BoP, current US$)",economy,USD,Economy & Growth,2024,-56900207.0648417
+BN_RES_INCL_CD,BN.RES.INCL.CD,"Reserves and related items (BoP, current US$)",economy,USD,Economy & Growth,2024,3420467879.78274
+BN_TRF_CURR_CD,BN.TRF.CURR.CD,"Net secondary income (BoP, current US$)",economy,USD,Economy & Growth,2024,12005246559.3248
+BN_TRF_KOGT_CD,BN.TRF.KOGT.CD,"Net capital account (BoP, current US$)",economy,USD,Economy & Growth,2024,52284884.3880222
+BX_GRT_EXTA_CD_WD,BX.GRT.EXTA.CD.WD,"Grants, excluding technical cooperation (BoP, current US$)",economy,USD,Economy & Growth,2023,488978785.0
+BX_GRT_TECH_CD_WD,BX.GRT.TECH.CD.WD,"Technical cooperation grants (BoP, current US$)",economy,USD,Economy & Growth,2023,81130636.0
+BX_GSR_CCIS_CD,BX.GSR.CCIS.CD,"ICT service exports (BoP, current US$)",economy,USD,Economy & Growth,2024,133762669.031971
+BX_GSR_CCIS_ZS,BX.GSR.CCIS.ZS,"ICT service exports (% of service exports, BoP)",economy,PCT,Economy & Growth,2024,7.0507799391948
+BX_GSR_CMCP_ZS,BX.GSR.CMCP.ZS,"Communications, computer, etc. (% of service exports, BoP)",economy,PCT,Economy & Growth,2024,45.6389638341697
+BX_GSR_FCTY_CD,BX.GSR.FCTY.CD,"Primary income receipts (BoP, current US$)",economy,USD,Economy & Growth,2024,891639497.878783
+BX_GSR_GNFS_CD,BX.GSR.GNFS.CD,"Exports of goods and services (BoP, current US$)",economy,USD,Economy & Growth,2024,3441809948.66586
+BX_GSR_INSF_ZS,BX.GSR.INSF.ZS,"Insurance and financial services (% of service exports, BoP)",economy,PCT,Economy & Growth,2024,0.765434094992841
+BX_GSR_MRCH_CD,BX.GSR.MRCH.CD,"Goods exports (BoP, current US$)",economy,USD,Economy & Growth,2024,1544677004.71462
+BX_GSR_NFSV_CD,BX.GSR.NFSV.CD,"Service exports (BoP, current US$)",economy,USD,Economy & Growth,2024,1897132943.95125
+BX_GSR_ROYL_CD,BX.GSR.ROYL.CD,"Charges for the use of intellectual property, receipts (BoP, current US$)",economy,USD,Economy & Growth,2024,1101577.41891279
+BX_GSR_TOTL_CD,BX.GSR.TOTL.CD,"Exports of goods, services and primary income (BoP, current US$)",economy,USD,Economy & Growth,2024,4333449446.54465
+BX_GSR_TRAN_ZS,BX.GSR.TRAN.ZS,"Transport services (% of service exports, BoP)",economy,PCT,Economy & Growth,2024,13.2174862452868
+BX_GSR_TRVL_ZS,BX.GSR.TRVL.ZS,"Travel services (% of service exports, BoP)",economy,PCT,Economy & Growth,2024,33.2559926774472
+BX_KLT_DINV_WD_GD_ZS,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",economy,PCT,Economy & Growth,2024,0.131412557108071
+BX_TRF_CURR_CD,BX.TRF.CURR.CD,"Secondary income receipts (BoP, current US$)",economy,USD,Economy & Growth,2024,12060095086.3101
+BX_TRF_PWKR_CD,BX.TRF.PWKR.CD,"Personal transfers, receipts (BoP, current US$)",economy,USD,Economy & Growth,2024,11074124639.8069
+DC_DAC_AUSL_CD,DC.DAC.AUSL.CD,"Net bilateral aid flows from DAC donors, Australia (current US$)",economy,USD,Aid Effectiveness,2023,18359424.5910645
+DC_DAC_AUTL_CD,DC.DAC.AUTL.CD,"Net bilateral aid flows from DAC donors, Austria (current US$)",economy,USD,Aid Effectiveness,2023,4298674.1065979
+DC_DAC_BELL_CD,DC.DAC.BELL.CD,"Net bilateral aid flows from DAC donors, Belgium (current US$)",economy,USD,Aid Effectiveness,2023,339536.011219025
+DC_DAC_CANL_CD,DC.DAC.CANL.CD,"Net bilateral aid flows from DAC donors, Canada (current US$)",economy,USD,Aid Effectiveness,2023,2453735.11314392
+DC_DAC_CECL_CD,DC.DAC.CECL.CD,"Net bilateral aid flows from DAC donors, European Union institutions (current US$)",economy,USD,Aid Effectiveness,2023,49941131.5917969
+DC_DAC_CHEL_CD,DC.DAC.CHEL.CD,"Net bilateral aid flows from DAC donors, Switzerland (current US$)",economy,USD,Aid Effectiveness,2023,35297100.0671387
+DC_DAC_CZEL_CD,DC.DAC.CZEL.CD,"Net bilateral aid flows from DAC donors, Czechia (current US$)",economy,USD,Aid Effectiveness,2022,190238.997340202
+DC_DAC_DEUL_CD,DC.DAC.DEUL.CD,"Net bilateral aid flows from DAC donors, Germany (current US$)",economy,USD,Aid Effectiveness,2023,50924720.7641602
+DC_DAC_DNKL_CD,DC.DAC.DNKL.CD,"Net bilateral aid flows from DAC donors, Denmark (current US$)",economy,USD,Aid Effectiveness,2023,2604059.93461609
+DC_DAC_ESPL_CD,DC.DAC.ESPL.CD,"Net bilateral aid flows from DAC donors, Spain (current US$)",economy,USD,Aid Effectiveness,2023,164689.004421234
+DC_DAC_ESTL_CD,DC.DAC.ESTL.CD,"Net bilateral aid flows from DAC donors, Estonia (current US$)",economy,USD,,2015,61009.0009868145
+DC_DAC_FINL_CD,DC.DAC.FINL.CD,"Net bilateral aid flows from DAC donors, Finland (current US$)",economy,USD,Aid Effectiveness,2023,18656818.3898926
+DC_DAC_FRAL_CD,DC.DAC.FRAL.CD,"Net bilateral aid flows from DAC donors, France (current US$)",economy,USD,Aid Effectiveness,2023,6789915.08483887
+DC_DAC_GBRL_CD,DC.DAC.GBRL.CD,"Net bilateral aid flows from DAC donors, United Kingdom (current US$)",economy,USD,Aid Effectiveness,2023,47675041.1987305
+DC_DAC_GRCL_CD,DC.DAC.GRCL.CD,"Net bilateral aid flows from DAC donors, Greece (current US$)",economy,USD,Aid Effectiveness,2022,1051.99997778982
+DC_DAC_HUNL_CD,DC.DAC.HUNL.CD,"Net bilateral aid flows from DAC donors, Hungary (current US$)",economy,USD,Aid Effectiveness,2021,350811.988115311
+DC_DAC_IRLL_CD,DC.DAC.IRLL.CD,"Net bilateral aid flows from DAC donors, Ireland (current US$)",economy,USD,Aid Effectiveness,2023,802834.987640381
+DC_DAC_ISLL_CD,DC.DAC.ISLL.CD,"Net bilateral aid flows from DAC donors, Iceland (current US$)",economy,USD,Aid Effectiveness,2015,300000.011920929
+DC_DAC_ITAL_CD,DC.DAC.ITAL.CD,"Net bilateral aid flows from DAC donors, Italy (current US$)",economy,USD,Aid Effectiveness,2023,1183282.97138214
+DC_DAC_JPNL_CD,DC.DAC.JPNL.CD,"Net bilateral aid flows from DAC donors, Japan (current US$)",economy,USD,Aid Effectiveness,2023,65435684.2041016
+DC_DAC_KORL_CD,DC.DAC.KORL.CD,"Net bilateral aid flows from DAC donors, Korea, Rep. (current US$)",economy,USD,Aid Effectiveness,2023,12405343.0557251
+DC_DAC_LTUL_CD,DC.DAC.LTUL.CD,"Net bilateral aid flows from DAC donors, Lithuania (current US$)",economy,USD,,2022,5173.99981617928
+DC_DAC_LUXL_CD,DC.DAC.LUXL.CD,"Net bilateral aid flows from DAC donors, Luxembourg (current US$)",economy,USD,Aid Effectiveness,2023,1933012.96234131
+DC_DAC_NLDL_CD,DC.DAC.NLDL.CD,"Net bilateral aid flows from DAC donors, Netherlands (current US$)",economy,USD,Aid Effectiveness,2019,53801.9984960556
+DC_DAC_NORL_CD,DC.DAC.NORL.CD,"Net bilateral aid flows from DAC donors, Norway (current US$)",economy,USD,Aid Effectiveness,2023,33098857.8796387
+DC_DAC_NZLL_CD,DC.DAC.NZLL.CD,"Net bilateral aid flows from DAC donors, New Zealand (current US$)",economy,USD,Aid Effectiveness,2023,246834.993362427
+DC_DAC_POLL_CD,DC.DAC.POLL.CD,"Net bilateral aid flows from DAC donors, Poland (current US$)",economy,USD,Aid Effectiveness,2023,122997.999191284
+DC_DAC_PRTL_CD,DC.DAC.PRTL.CD,"Net bilateral aid flows from DAC donors, Portugal (current US$)",economy,USD,Aid Effectiveness,2023,52273.9998996258
+DC_DAC_SVKL_CD,DC.DAC.SVKL.CD,"Net bilateral aid flows from DAC donors, Slovak Republic (current US$)",economy,USD,Aid Effectiveness,2019,35829.9985527992
+DC_DAC_SVNL_CD,DC.DAC.SVNL.CD,"Net bilateral aid flows from DAC donors, Slovenia (current US$)",economy,USD,Aid Effectiveness,2022,42064.9982988834
+DC_DAC_SWEL_CD,DC.DAC.SWEL.CD,"Net bilateral aid flows from DAC donors, Sweden (current US$)",economy,USD,Aid Effectiveness,2023,6246785.16387939
+DC_DAC_TOTL_CD,DC.DAC.TOTL.CD,"Net bilateral aid flows from DAC donors, Total (current US$)",economy,USD,Aid Effectiveness,2023,498034188.400954
+DC_DAC_USAL_CD,DC.DAC.USAL.CD,"Net bilateral aid flows from DAC donors, United States (current US$)",economy,USD,Aid Effectiveness,2023,139001434.326172
+DT_DOD_DECT_CD,DT.DOD.DECT.CD,"External debt stocks, total (DOD, current US$)",economy,USD,Economy & Growth,2024,10152157325.7
+DT_DOD_DECT_GN_ZS,DT.DOD.DECT.GN.ZS,External debt stocks (% of GNI),economy,PCT,Economy & Growth,2024,23.2748414884129
+DT_DOD_DIMF_CD,DT.DOD.DIMF.CD,"Use of IMF credit (DOD, current US$)",economy,USD,External Debt,2024,744414391.4
+DT_DOD_DLXF_CD,DT.DOD.DLXF.CD,"External debt stocks, long-term (DOD, current US$)",economy,USD,External Debt,2024,8984861934.3
+DT_DOD_DPNG_CD,DT.DOD.DPNG.CD,"External debt stocks, private nonguaranteed (PNG) (DOD, current US$)",economy,USD,External Debt,2024,114035000.0
+DT_DOD_DPPG_CD,DT.DOD.DPPG.CD,"External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)",economy,USD,External Debt,2024,8870826934.3
+DT_DOD_DSTC_CD,DT.DOD.DSTC.CD,"External debt stocks, short-term (DOD, current US$)",economy,USD,External Debt,2024,422881000.0
+DT_DOD_DSTC_IR_ZS,DT.DOD.DSTC.IR.ZS,Short-term debt (% of total reserves),economy,PCT,Economy & Growth,2024,2.66856083912358
+DT_DOD_DSTC_XP_ZS,DT.DOD.DSTC.XP.ZS,"Short-term debt (% of exports of goods, services and primary income)",economy,PCT,Economy & Growth,2024,9.75853082438038
+DT_DOD_DSTC_ZS,DT.DOD.DSTC.ZS,Short-term debt (% of total external debt),economy,PCT,External Debt,2024,4.1654
+DT_DOD_MIDA_CD,DT.DOD.MIDA.CD,"PPG, IDA (DOD, current US$)",economy,USD,External Debt,2024,4531123000.0
+DT_DOD_MWBG_CD,DT.DOD.MWBG.CD,"IBRD loans and IDA credits (DOD, current US$)",economy,USD,External Debt,2024,4531123000.0
+DT_DOD_PVLX_CD,DT.DOD.PVLX.CD,Present value of external debt (current US$),economy,USD,Economy & Growth,2024,5653726173.6
+DT_DOD_PVLX_EX_ZS,DT.DOD.PVLX.EX.ZS,"Present value of external debt (% of exports of goods, services and primary income)",economy,PCT,Economy & Growth,2024,130.467108079777
+DT_DOD_PVLX_GN_ZS,DT.DOD.PVLX.GN.ZS,Present value of external debt (% of GNI),economy,PCT,Economy & Growth,2024,12.9617357461861
+DT_NFL_BLAT_CD,DT.NFL.BLAT.CD,"Net financial flows, bilateral (NFL, current US$)",economy,USD,External Debt,2024,-48870017.6
+DT_NFL_CERF_CD,DT.NFL.CERF.CD,"Net official flows from UN agencies, CERF (current US$)",economy,USD,,2022,3186000.10871887
+DT_NFL_DPNG_CD,DT.NFL.DPNG.CD,"Net flows on external debt, private nonguaranteed (PNG) (NFL, current US$)",economy,USD,External Debt,2024,-99087000.0
+DT_NFL_FAOG_CD,DT.NFL.FAOG.CD,"Net official flows from UN agencies, FAO (current US$)",economy,USD,Aid Effectiveness,2023,877286.016941071
+DT_NFL_IAEA_CD,DT.NFL.IAEA.CD,"Net official flows from UN agencies, IAEA (current US$)",economy,USD,Aid Effectiveness,2023,1521196.00772858
+DT_NFL_IFAD_CD,DT.NFL.IFAD.CD,"Net official flows from UN agencies, IFAD (current US$)",economy,USD,Aid Effectiveness,2023,5975659.84725952
+DT_NFL_ILOG_CD,DT.NFL.ILOG.CD,"Net official flows from UN agencies, ILO (current US$)",economy,USD,Aid Effectiveness,2023,2284620.0466156
+DT_NFL_IMFN_CD,DT.NFL.IMFN.CD,"Net financial flows, IMF nonconcessional (NFL, current US$)",economy,USD,External Debt,2024,32220048.2
+DT_NFL_MIDA_CD,DT.NFL.MIDA.CD,"Net financial flows, IDA (NFL, current US$)",economy,USD,External Debt,2024,289551000.0
+DT_NFL_MLAT_CD,DT.NFL.MLAT.CD,"Net financial flows, multilateral (NFL, current US$)",economy,USD,External Debt,2024,533200000.0
+DT_NFL_MOTH_CD,DT.NFL.MOTH.CD,"Net financial flows, others (NFL, current US$)",economy,USD,External Debt,2024,43939064.6
+DT_NFL_NIFC_CD,DT.NFL.NIFC.CD,"IFC, private nonguaranteed (NFL, US$)",economy,USD,External Debt,2024,35165115.57
+DT_NFL_OFFT_CD,DT.NFL.OFFT.CD,"PPG, official creditors (NFL, US$)",economy,USD,External Debt,2024,484330047.0
+DT_NFL_PCBK_CD,DT.NFL.PCBK.CD,"PPG, commercial banks (NFL, current US$)",economy,USD,External Debt,2024,-129000.0
+DT_NFL_PCBO_CD,DT.NFL.PCBO.CD,"Commercial banks and other lending (PPG + PNG) (NFL, current US$)",economy,USD,External Debt,2024,-99216000.0
+DT_NFL_PNGC_CD,DT.NFL.PNGC.CD,"PNG, commercial banks and other creditors (NFL, current US$)",economy,USD,External Debt,2024,-99087000.0
+DT_NFL_PROP_CD,DT.NFL.PROP.CD,"PPG, other private creditors (NFL, current US$)",economy,USD,External Debt,2007,-22000.0
+DT_NFL_PRVT_CD,DT.NFL.PRVT.CD,"PPG, private creditors (NFL, US$)",economy,USD,External Debt,2024,-129000.0
+DT_NFL_RDBC_CD,DT.NFL.RDBC.CD,"Net financial flows, RDB concessional (NFL, current US$)",economy,USD,External Debt,2024,187762000.0
+DT_NFL_SDGF_CD,DT.NFL.SDGF.CD,"Net official flows from UN agencies, SDGFUND (current US$)",economy,USD,,2022,749993.979930878
+DT_NFL_SPRP_CD,DT.NFL.SPRP.CD,"Net official flows from UN agencies, SPRP (current US$)",economy,USD,,2023,100000.001490116
+DT_NFL_UNAI_CD,DT.NFL.UNAI.CD,"Net official flows from UN agencies, UNAIDS (current US$)",economy,USD,Aid Effectiveness,2023,275788.009166718
+DT_NFL_UNCD_CD,DT.NFL.UNCD.CD,"Net official flows from UN agencies, UNCDF (current US$)",economy,USD,,2023,5288.99999335408
+DT_NFL_UNCF_CD,DT.NFL.UNCF.CD,"Net official flows from UN agencies, UNICEF (current US$)",economy,USD,Aid Effectiveness,2023,7024000.16784668
+DT_NFL_UNCR_CD,DT.NFL.UNCR.CD,"Net official flows from UN agencies, UNHCR (current US$)",economy,USD,Aid Effectiveness,2023,2023600.10147095
+DT_NFL_UNCV_CD,DT.NFL.UNCV.CD,"Net official flows from UN agencies, UNCOVID (current US$)",economy,USD,,2021,-23870.000615716
+DT_NFL_UNDP_CD,DT.NFL.UNDP.CD,"Net official flows from UN agencies, UNDP (current US$)",economy,USD,Aid Effectiveness,2022,6597064.97192383
+DT_NFL_UNFP_CD,DT.NFL.UNFP.CD,"Net official flows from UN agencies, UNFPA (current US$)",economy,USD,Aid Effectiveness,2023,3822730.06439209
+DT_NFL_UNPB_CD,DT.NFL.UNPB.CD,"Net official flows from UN agencies, UNPBF (current US$)",economy,USD,Aid Effectiveness,2021,-7699.99995827675
+DT_NFL_UNTA_CD,DT.NFL.UNTA.CD,"Net official flows from UN agencies, UNTA (current US$)",economy,USD,Aid Effectiveness,2008,1139999.98569489
+DT_NFL_UNWN_CD,DT.NFL.UNWN.CD,"Net official flows from UN agencies, UNWOMEN (current US$)",economy,USD,,2023,1037950.03890991
+DT_NFL_WFPG_CD,DT.NFL.WFPG.CD,"Net official flows from UN agencies, WFP (current US$)",economy,USD,Aid Effectiveness,2023,1410642.02785492
+DT_NFL_WHOL_CD,DT.NFL.WHOL.CD,"Net official flows from UN agencies, WHO (current US$)",economy,USD,Aid Effectiveness,2023,6066505.90896606
+DT_NFL_WITC_CD,DT.NFL.WITC.CD,"Net official flows from UN agencies, WTO-ITC (current US$)",economy,USD,,2021,111804.001033306
+DT_ODA_ALLD_CD,DT.ODA.ALLD.CD,Net official development assistance and official aid received (current US$),economy,USD,Aid Effectiveness,2023,1173136840.82031
+DT_ODA_ALLD_KD,DT.ODA.ALLD.KD,Net official development assistance and official aid received (constant 2023 US$),economy,USD,Aid Effectiveness,2023,1173136840.82031
+DT_ODA_ODAT_CD,DT.ODA.ODAT.CD,Net official development assistance received (current US$),economy,USD,Aid Effectiveness,2023,1173136840.82031
+DT_ODA_ODAT_GI_ZS,DT.ODA.ODAT.GI.ZS,Net ODA received (% of gross capital formation),economy,PCT,Aid Effectiveness,2023,9.17475146346866
+DT_ODA_ODAT_GN_ZS,DT.ODA.ODAT.GN.ZS,Net ODA received (% of GNI),economy,PCT,Aid Effectiveness,2023,2.8244497931494
+DT_ODA_ODAT_KD,DT.ODA.ODAT.KD,Net official development assistance received (constant 2023 US$),economy,USD,Aid Effectiveness,2023,1173136840.82031
+DT_ODA_ODAT_MP_ZS,DT.ODA.ODAT.MP.ZS,"Net ODA received (% of imports of goods, services and primary income)",economy,PCT,Aid Effectiveness,2023,8.17568980408999
+DT_ODA_ODAT_PC_ZS,DT.ODA.ODAT.PC.ZS,Net ODA received per capita (current US$),economy,USD,Aid Effectiveness,2023,39.5067213475248
+DT_ODA_ODAT_XP_ZS,DT.ODA.ODAT.XP.ZS,Net ODA received (% of central government expense),economy,PCT,Aid Effectiveness,2021,22.2857957297705
+DT_TDS_DECT_CD,DT.TDS.DECT.CD,"Debt service on external debt, total (TDS, current US$)",economy,USD,External Debt,2024,536987093.3
+DT_TDS_DECT_EX_ZS,DT.TDS.DECT.EX.ZS,"Total debt service (% of exports of goods, services and primary income)",economy,PCT,Economy & Growth,2024,12.3916778046586
+DT_TDS_DECT_GN_ZS,DT.TDS.DECT.GN.ZS,Total debt service (% of GNI),economy,PCT,Economy & Growth,2024,1.22025859129943
+DT_TDS_DIMF_CD,DT.TDS.DIMF.CD,"IMF repurchases and charges (TDS, current US$)",economy,USD,External Debt,2024,20629061.8
+DT_TDS_DPPF_XP_ZS,DT.TDS.DPPF.XP.ZS,"Debt service (PPG and IMF only, % of exports of goods, services and primary income)",economy,PCT,External Debt,2024,9.33429819107578
+DT_TDS_DPPG_CD,DT.TDS.DPPG.CD,"Debt service on external debt, public and publicly guaranteed (PPG) (TDS, current US$)",economy,USD,External Debt,2024,383868031.5
+DT_TDS_DPPG_GN_ZS,DT.TDS.DPPG.GN.ZS,Public and publicly guaranteed debt service (% of GNI),economy,PCT,External Debt,2024,0.872308234606639
+DT_TDS_DPPG_XP_ZS,DT.TDS.DPPG.XP.ZS,"Public and publicly guaranteed debt service (% of exports of goods, services and primary income)",economy,PCT,External Debt,2024,8.858255674497
+DT_TDS_MLAT_CD,DT.TDS.MLAT.CD,"Multilateral debt service (TDS, current US$)",economy,USD,External Debt,2024,308517390.7
+DT_TDS_MLAT_PG_ZS,DT.TDS.MLAT.PG.ZS,Multilateral debt service (% of public and publicly guaranteed debt service),economy,PCT,External Debt,2024,80.3706913270271
+EN_POP_SLUM_UR_ZS,EN.POP.SLUM.UR.ZS,Population living in slums (% of urban population),economy,PCT,Poverty,2022,40.05521
+ER_H2O_FWDM_ZS,ER.H2O.FWDM.ZS,"Annual freshwater withdrawals, domestic (% of total freshwater withdrawal)",economy,PCT,Infrastructure,2022,1.554158638
+ER_H2O_FWIN_ZS,ER.H2O.FWIN.ZS,"Annual freshwater withdrawals, industry (% of total freshwater withdrawal)",economy,PCT,Infrastructure,2022,0.310621137
+ER_H2O_INTR_K3,ER.H2O.INTR.K3,"Renewable internal freshwater resources, total (billion cubic meters)",economy,BILLION_M3,Infrastructure,2022,198.2
+ER_H2O_INTR_PC,ER.H2O.INTR.PC,Renewable internal freshwater resources per capita (cubic meters),economy,M3_PER_CAPITA,Infrastructure,2022,6669.93410428169
+FB_AST_NPER_ZS,FB.AST.NPER.ZS,Bank nonperforming loans to total gross loans (%),economy,PCT,Financial Sector,2025,5.15351145694385
+FB_ATM_TOTL_P5,FB.ATM.TOTL.P5,"Automated teller machines (ATMs) (per 100,000 adults)",economy,PER_100K,Financial Sector,2024,24.4704593538272
+FB_BNK_CAPA_ZS,FB.BNK.CAPA.ZS,Bank capital to assets ratio (%),economy,PCT,Financial Sector,2025,6.01454937093967
+FB_CBK_BRCH_P5,FB.CBK.BRCH.P5,"Commercial bank branches (per 100,000 adults)",economy,PER_100K,Financial Sector,2024,23.8248878284133
+FD_AST_PRVT_GD_ZS,FD.AST.PRVT.GD.ZS,Domestic credit to private sector by banks (% of GDP),economy,PCT,Financial Sector,2025,90.4034842401084
+FD_RES_LIQU_AS_ZS,FD.RES.LIQU.AS.ZS,Bank liquid reserves to bank assets ratio (%),economy,PCT,Financial Sector,2025,7.67905530384054
+FI_RES_TOTL_DT_ZS,FI.RES.TOTL.DT.ZS,Total reserves (% of total external debt),economy,PCT,Financial Sector,2024,156.092747485642
+FI_RES_TOTL_MO,FI.RES.TOTL.MO,Total reserves in months of imports,economy,MONTHS_OF_IMPORTS,Financial Sector,2024,12.9718425174618
+FI_RES_XGLD_CD,FI.RES.XGLD.CD,Total reserves minus gold (current US$),economy,USD,Economy & Growth,2025,19978623093.8536
+FM_AST_CGOV_ZG_M3,FM.AST.CGOV.ZG.M3,Claims on central government (annual growth as % of broad money),economy,PCT,Financial Sector,2025,7.05514132288028
+FM_AST_DOMO_ZG_M3,FM.AST.DOMO.ZG.M3,Claims on other sectors of the domestic economy (annual growth as % of broad money),economy,PCT,Financial Sector,2025,5.21626399171165
+FM_AST_DOMS_CN,FM.AST.DOMS.CN,Net domestic credit (current LCU),economy,LCU,Financial Sector,2025,7667457956221.12
+FM_AST_NFRG_CN,FM.AST.NFRG.CN,Net foreign assets (current LCU),economy,LCU,Financial Sector,2025,3153829371171.48
+FM_AST_PRVT_GD_ZS,FM.AST.PRVT.GD.ZS,Monetary Sector credit to private sector (% GDP),economy,PCT,Financial Sector,2025,90.5447624655163
+FM_AST_PRVT_ZG_M3,FM.AST.PRVT.ZG.M3,Claims on private sector (annual growth as % of broad money),economy,PCT,Financial Sector,2025,4.92767464956412
+FM_LBL_BMNY_CN,FM.LBL.BMNY.CN,Broad money (current LCU),economy,LCU,Financial Sector,2025,8134570401200.32
+FM_LBL_BMNY_GD_ZS,FM.LBL.BMNY.GD.ZS,Broad money (% of GDP),economy,PCT,Financial Sector,2025,131.205603031948
+FM_LBL_BMNY_IR_ZS,FM.LBL.BMNY.IR.ZS,Broad money to total reserves ratio,economy,RATIO,Financial Sector,2025,2.82863696126285
+FM_LBL_BMNY_ZG,FM.LBL.BMNY.ZG,Broad money growth (annual %),economy,PCT,Financial Sector,2025,12.933089894523
+FP_CPI_TOTL,FP.CPI.TOTL,Consumer price index (2010 = 100),economy,INDEX,Financial Sector,2025,254.615350687251
+FS_AST_CGOV_GD_ZS,FS.AST.CGOV.GD.ZS,"Claims on central government, etc. (% GDP)",economy,PCT,Financial Sector,2025,28.2176986140874
+FS_AST_PRVT_GD_ZS,FS.AST.PRVT.GD.ZS,Domestic credit to private sector (% of GDP),economy,PCT,Financial Sector,2025,90.5447624655163
+FX_OWN_TOTL_40_ZS,FX.OWN.TOTL.40.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, poorest 40% (% of population ages 15+)",economy,PCT,Financial Sector,2024,53.0095282322869
+FX_OWN_TOTL_60_ZS,FX.OWN.TOTL.60.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, richest 60% (% of population ages 15+)",economy,PCT,Financial Sector,2024,64.6403454077327
+FX_OWN_TOTL_FE_ZS,FX.OWN.TOTL.FE.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)",economy,PCT,Financial Sector,2024,59.7778342772083
+FX_OWN_TOTL_MA_ZS,FX.OWN.TOTL.MA.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, male (% of population ages 15+)",economy,PCT,Financial Sector,2024,60.2270903422122
+FX_OWN_TOTL_OL_ZS,FX.OWN.TOTL.OL.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, older adults (% of population ages 25+)",economy,PCT,Financial Sector,2024,67.3720985352467
+FX_OWN_TOTL_PL_ZS,FX.OWN.TOTL.PL.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, primary education or less (% of population ages 15+)",economy,PCT,Financial Sector,2024,57.0633060524272
+FX_OWN_TOTL_SO_ZS,FX.OWN.TOTL.SO.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, secondary education or more (% of population ages 15+)",economy,PCT,Financial Sector,2024,68.7669106284418
+FX_OWN_TOTL_YG_ZS,FX.OWN.TOTL.YG.ZS,"Account ownership at a financial institution or with a mobile-money-service provider, young adults (% of population ages 15-24)",economy,PCT,Financial Sector,2024,39.1164572624061
+FX_OWN_TOTL_ZS,FX.OWN.TOTL.ZS,Account ownership at a financial institution or with a mobile-money-service provider (% of population ages 15+),economy,PCT,Financial Sector,2024,59.9911157064883
+GB_XPD_RSDV_GD_ZS,GB.XPD.RSDV.GD.ZS,Research and development expenditure (% of GDP),economy,PCT,Science & Technology,2010,0.30221
+GC_AST_TOTL_CN,GC.AST.TOTL.CN,Net acquisition of financial assets (current LCU),economy,LCU,Public Sector,2023,-103477320000.0
+GC_AST_TOTL_GD_ZS,GC.AST.TOTL.GD.ZS,Net acquisition of financial assets (% of GDP),economy,PCT,Public Sector,2023,-1.92803042001867
+GC_DOD_TOTL_CN,GC.DOD.TOTL.CN,"Central government debt, total (current LCU)",economy,LCU,Public Sector,2021,1737636800000.0
+GC_DOD_TOTL_GD_ZS,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",economy,PCT,Economy & Growth,2021,39.9222686422289
+GC_LBL_TOTL_CN,GC.LBL.TOTL.CN,"Net incurrence of liabilities, total (current LCU)",economy,LCU,Public Sector,2021,303116900000.0
+GC_LBL_TOTL_GD_ZS,GC.LBL.TOTL.GD.ZS,"Net incurrence of liabilities, total (% of GDP)",economy,PCT,Public Sector,2021,6.96412179564776
+GC_NFN_TOTL_CN,GC.NFN.TOTL.CN,Net investment in nonfinancial assets (current LCU),economy,LCU,Public Sector,2023,234624750000.0
+GC_NFN_TOTL_GD_ZS,GC.NFN.TOTL.GD.ZS,Net investment in nonfinancial assets (% of GDP),economy,PCT,Public Sector,2023,4.37162129140256
+GC_NLD_TOTL_CN,GC.NLD.TOTL.CN,Net lending (+) / net borrowing (-) (current LCU),economy,LCU,Public Sector,2023,-315760786488.0
+GC_NLD_TOTL_GD_ZS,GC.NLD.TOTL.GD.ZS,Net lending (+) / net borrowing (-) (% of GDP),economy,PCT,Public Sector,2023,-5.88338006625882
+GC_REV_GOTR_CN,GC.REV.GOTR.CN,Grants and other revenue (current LCU),economy,LCU,Public Sector,2023,161950610000.0
+GC_REV_GOTR_ZS,GC.REV.GOTR.ZS,Grants and other revenue (% of revenue),economy,PCT,Public Sector,2023,17.7895260141408
+GC_REV_XGRT_CN,GC.REV.XGRT.CN,"Revenue, excluding grants (current LCU)",economy,LCU,Public Sector,2023,887361693512.0
+GC_REV_XGRT_GD_ZS,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",economy,PCT,Economy & Growth,2023,16.5336746124699
+GC_TAX_EXPT_CN,GC.TAX.EXPT.CN,Taxes on exports (current LCU),economy,LCU,Public Sector,2023,350120000.0
+GC_TAX_EXPT_ZS,GC.TAX.EXPT.ZS,Taxes on exports (% of tax revenue),economy,PCT,Public Sector,2023,0.0467812213823164
+GC_TAX_GSRV_CN,GC.TAX.GSRV.CN,Taxes on goods and services (current LCU),economy,LCU,Public Sector,2023,345782330850.0
+GC_TAX_GSRV_RV_ZS,GC.TAX.GSRV.RV.ZS,Taxes on goods and services (% of revenue),economy,PCT,Public Sector,2023,37.9825909262479
+GC_TAX_GSRV_VA_ZS,GC.TAX.GSRV.VA.ZS,Taxes on goods and services (% value added of industry and services),economy,PCT,Public Sector,2023,9.56709019582773
+GC_TAX_IMPT_CN,GC.TAX.IMPT.CN,Customs and other import duties (current LCU),economy,LCU,Public Sector,2023,142740730000.0
+GC_TAX_IMPT_ZS,GC.TAX.IMPT.ZS,Customs and other import duties (% of tax revenue),economy,PCT,Public Sector,2023,19.0722771918298
+GC_TAX_INTT_CN,GC.TAX.INTT.CN,Taxes on international trade (current LCU),economy,LCU,Public Sector,2023,150895180000.0
+GC_TAX_INTT_RV_ZS,GC.TAX.INTT.RV.ZS,Taxes on international trade (% of revenue),economy,PCT,Public Sector,2023,16.5751381240148
+GC_TAX_OTHR_CN,GC.TAX.OTHR.CN,Other taxes (current LCU),economy,LCU,Public Sector,2023,8673542662.0
+GC_TAX_OTHR_RV_ZS,GC.TAX.OTHR.RV.ZS,Other taxes (% of revenue),economy,PCT,Public Sector,2023,0.952748574521634
+GC_TAX_TOTL_CN,GC.TAX.TOTL.CN,Tax revenue (current LCU),economy,LCU,Public Sector,2023,748419963512.0
+GC_TAX_TOTL_GD_ZS,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),economy,PCT,Public Sector,2023,13.9448572556808
+GC_TAX_YPKG_CN,GC.TAX.YPKG.CN,"Taxes on income, profits and capital gains (current LCU)",economy,LCU,Public Sector,2023,243068910000.0
+GC_TAX_YPKG_RV_ZS,GC.TAX.YPKG.RV.ZS,"Taxes on income, profits and capital gains (% of revenue)",economy,PCT,Public Sector,2023,26.6999963610748
+GC_TAX_YPKG_ZS,GC.TAX.YPKG.ZS,"Taxes on income, profits and capital gains (% of total taxes)",economy,PCT,Public Sector,2023,32.4776090765119
+GC_XPN_COMP_CN,GC.XPN.COMP.CN,Compensation of employees (current LCU),economy,LCU,Public Sector,2023,157799720000.0
+GC_XPN_COMP_ZS,GC.XPN.COMP.ZS,Compensation of employees (% of expense),economy,PCT,Public Sector,2021,14.0777487173543
+GC_XPN_GSRV_CN,GC.XPN.GSRV.CN,Goods and services expense (current LCU),economy,LCU,Public Sector,2023,50394080000.0
+GC_XPN_GSRV_ZS,GC.XPN.GSRV.ZS,Goods and services expense (% of expense),economy,PCT,Public Sector,2021,4.35456625824024
+GC_XPN_INTP_CN,GC.XPN.INTP.CN,Interest payments (current LCU),economy,LCU,Public Sector,2023,73029560000.0
+GC_XPN_INTP_RV_ZS,GC.XPN.INTP.RV.ZS,Interest payments (% of revenue),economy,PCT,Public Sector,2023,8.02195964202454
+GC_XPN_INTP_ZS,GC.XPN.INTP.ZS,Interest payments (% of expense),economy,PCT,Public Sector,2021,4.10545778120049
+GC_XPN_OTHR_CN,GC.XPN.OTHR.CN,Other expense (current LCU),economy,LCU,Public Sector,2023,3228560000.0
+GC_XPN_OTHR_ZS,GC.XPN.OTHR.ZS,Other expense (% of expense),economy,PCT,Public Sector,2021,0.26901470235159
+GC_XPN_TOTL_CN,GC.XPN.TOTL.CN,Expense (current LCU),economy,LCU,Public Sector,2021,846217690000.0
+GC_XPN_TOTL_GD_ZS,GC.XPN.TOTL.GD.ZS,Expense (% of GDP),economy,PCT,Economy & Growth,2021,19.4418821873399
+GC_XPN_TRFT_CN,GC.XPN.TRFT.CN,Subsidies and other transfers (current LCU),economy,LCU,Public Sector,2023,707054690000.0
+GC_XPN_TRFT_ZS,GC.XPN.TRFT.ZS,Subsidies and other transfers (% of expense),economy,PCT,Public Sector,2021,77.1932125408534
+GF_XPD_BUDG_ZS,GF.XPD.BUDG.ZS,Primary government expenditures as a proportion of original approved budget (%),economy,PCT,Public Sector,2024,77.6519
+IC_BRE_BE_OS,IC.BRE.BE.OS,B-READY: Business Entry: Overall Score,economy,SCORE,,2024,66.3611107667287
+IC_BRE_BI_OS,IC.BRE.BI.OS,B-READY: Business Insolvency: Overall Score,economy,SCORE,,2024,52.0370366666667
+IC_BRE_BL_OS,IC.BRE.BL.OS,B-READY: Business Location: Overall Score,economy,SCORE,,2024,60.5115986540914
+IC_BRE_DR_OS,IC.BRE.DR.OS,B-READY: Dispute Resolution: Overall Score,economy,SCORE,,2024,64.3968594868978
+IC_BRE_FS_OS,IC.BRE.FS.OS,B-READY: Financial Services: Overall Score,economy,SCORE,,2024,70.5796286885937
+IC_BRE_IT_OS,IC.BRE.IT.OS,B-READY: International Trade: Overall Score,economy,SCORE,,2024,66.6377522696543
+IC_BRE_LB_OS,IC.BRE.LB.OS,B-READY: Labor: Overall Score,economy,SCORE,,2024,65.6965827941894
+IC_BRE_MC_OS,IC.BRE.MC.OS,B-READY: Market Competition: Overall Score,economy,SCORE,,2024,33.0586915860573
+IC_BRE_TX_OS,IC.BRE.TX.OS,B-READY: Taxation: Overall Score,economy,SCORE,,2024,57.9884262084961
+IC_BRE_US_OS,IC.BRE.US.OS,B-READY: Utility Services: Overall Score,economy,SCORE,,2024,65.3853100836277
+IC_BUS_NDNS_ZS,IC.BUS.NDNS.ZS,"New business density (new registrations per 1,000 people ages 15-64)",economy,PER_1000,Private Sector,2020,1.39846767227195
+IC_BUS_NREG,IC.BUS.NREG,New businesses registered (number),economy,COUNT,Private Sector,2020,25859.0
+IC_CUS_DURS_EX,IC.CUS.DURS.EX,Average time to clear exports through customs (days),economy,DAYS,Private Sector,2023,2.90326786
+IC_CUS_DURS_IM,IC.CUS.DURS.IM,Average time to clear imports through customs (days),economy,DAYS,,2023,5.345170021
+IC_ELC_OUTG_ZS,IC.ELC.OUTG.ZS,Firms experiencing electrical outages (% of firms),economy,PCT,Private Sector,2023,75.83725739
+IC_FRM_BKWC_ZS,IC.FRM.BKWC.ZS,Firms using banks to finance working capital (% of firms),economy,PCT,Private Sector,2023,39.63251114
+IC_FRM_BNKL_ZS,IC.FRM.BNKL.ZS,Firms with a bank loan/line of credit (% of firms),economy,PCT,,2023,57.84732437
+IC_FRM_BRIB_ZS,IC.FRM.BRIB.ZS,Bribery incidence (% of firms experiencing at least one bribe payment request),economy,PCT,Private Sector,2023,6.167713165
+IC_FRM_CDP_ZS,IC.FRM.CDP.ZS,Firms that use a third party to resolve commercial disputes (% of firms),economy,PCT,,2023,7.22286272
+IC_FRM_CMPU_ZS,IC.FRM.CMPU.ZS,Firms competing against unregistered firms (% of firms),economy,PCT,Private Sector,2023,37.66072464
+IC_FRM_CO2_ZS,IC.FRM.CO2.ZS,Firms monitoring own CO2 emissions (% of firms),economy,PCT,,2023,1.786926031
+IC_FRM_CORR_ZS,IC.FRM.CORR.ZS,Informal payments to public officials (% of firms),economy,PCT,Private Sector,2023,3.388922691
+IC_FRM_CRDC_FL_ZS,IC.FRM.CRDC.FL.ZS,Firms that are fully credit constrained (% of firms),economy,PCT,,2023,11.53793812
+IC_FRM_CRDC_PT_ZS,IC.FRM.CRDC.PT.ZS,Firms that are partially credit constrained (% of firms),economy,PCT,,2023,26.71022606
+IC_FRM_DURS,IC.FRM.DURS,Time required to obtain an operating license (days),economy,DAYS,Private Sector,2023,2.799705505
+IC_FRM_ENGM_ZS,IC.FRM.ENGM.ZS,Firms adopting energy management measures to reduce emissions (% of firms),economy,PCT,,2023,8.083931923
+IC_FRM_EXS_ZS,IC.FRM.EXS.ZS,Firms exporting directly at least 10% of sales (% of firms),economy,PCT,,2023,11.0228405
+IC_FRM_FEMM_ZS,IC.FRM.FEMM.ZS,Firms with female top manager (% of firms),economy,PCT,Private Sector,2023,10.31440258
+IC_FRM_FEMO_ZS,IC.FRM.FEMO.ZS,Firms with female participation in ownership (% of firms),economy,PCT,Private Sector,2023,14.69973087
+IC_FRM_FO_ZS,IC.FRM.FO.ZS,Firms with at least 10% foreign ownership,economy,PCT,,2023,1.377724886
+IC_FRM_FREG_ZS,IC.FRM.FREG.ZS,Firms formally registered when operations started (% of firms),economy,PCT,Private Sector,2023,85.36410522
+IC_FRM_LOTM_ZS,IC.FRM.LOTM.ZS,Firms where largest owner is also the top manager (% of firms),economy,PCT,,2023,80.26119995
+IC_FRM_METG_ZS,IC.FRM.METG.ZS,Firms visited or required meetings with tax officials (% of firms),economy,PCT,Private Sector,2023,46.19594574
+IC_FRM_TAXE_ZS,IC.FRM.TAXE.ZS,Firms filling taxes electronically (% of firms),economy,PCT,,2023,40.2508812
+IC_FRM_TRNG_ZS,IC.FRM.TRNG.ZS,Firms offering formal training (% of firms),economy,PCT,Private Sector,2023,14.05171204
+IC_GOV_DURS_ZS,IC.GOV.DURS.ZS,Time spent dealing with the requirements of government regulations (% of senior management time),economy,PCT,Private Sector,2023,7.0947752
+IC_MNG_IND,IC.MNG.IND,Management practices index,economy,INDEX,,2023,44.17591095
+IC_TAX_GIFT_ZS,IC.TAX.GIFT.ZS,Firms expected to give gifts in meetings with tax officials (% of firms),economy,PCT,Private Sector,2023,4.659663677
+IC_TAX_METG,IC.TAX.METG,Number of visits or required meetings with tax officials (average for affected firms),economy,COUNT,Private Sector,2023,1.787481546
+IE_PPI_ICTI_CD,IE.PPI.ICTI.CD,Investment in ICT with private participation (current US$),economy,USD,Infrastructure,2024,10540000.0
+IE_PPI_TRAN_CD,IE.PPI.TRAN.CD,Investment in transport with private participation (current US$),economy,USD,Infrastructure,2015,350000000.0
+IE_PPN_ENGY_CD,IE.PPN.ENGY.CD,Public private partnerships investment in energy (current US$),economy,USD,Infrastructure,2022,858740000.0
+IE_PPN_ICTI_CD,IE.PPN.ICTI.CD,Public private partnerships investment in ICT (current US$),economy,USD,Infrastructure,2024,10540000.0
+IE_PPN_TRAN_CD,IE.PPN.TRAN.CD,Public private partnerships investment in transport (current US$),economy,USD,Infrastructure,2015,350000000.0
+IP_IDS_NRCT,IP.IDS.NRCT,"Industrial design applications, nonresident, by count",economy,COUNT,Infrastructure,2017,25.0
+IP_IDS_RSCT,IP.IDS.RSCT,"Industrial design applications, resident, by count",economy,COUNT,Infrastructure,2017,15.0
+IP_JRN_ARTC_SC,IP.JRN.ARTC.SC,Scientific and technical journal articles,economy,COUNT,Science & Technology,2023,1590.74
+IP_PAT_NRES,IP.PAT.NRES,"Patent applications, nonresidents",economy,COUNT,Science & Technology,2017,43.0
+IP_PAT_RESD,IP.PAT.RESD,"Patent applications, residents",economy,COUNT,Science & Technology,2017,20.0
+IP_TMK_NRCT,IP.TMK.NRCT,"Trademark applications, nonresident, by count",economy,COUNT,Infrastructure,2017,1677.0
+IP_TMK_RSCT,IP.TMK.RSCT,"Trademark applications, resident, by count",economy,COUNT,Infrastructure,2017,4005.0
+IQ_CPA_BREG_XQ,IQ.CPA.BREG.XQ,CPIA business regulatory environment rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.5
+IQ_CPA_DEBT_XQ,IQ.CPA.DEBT.XQ,CPIA debt policy rating (1=low to 6=high),economy,SCORE,Public Sector,2025,4.0
+IQ_CPA_ECON_XQ,IQ.CPA.ECON.XQ,CPIA economic management cluster average (1=low to 6=high),economy,SCORE,Public Sector,2025,3.333333
+IQ_CPA_ENVR_XQ,IQ.CPA.ENVR.XQ,CPIA policy and institutions for environmental sustainability rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.5
+IQ_CPA_FINQ_XQ,IQ.CPA.FINQ.XQ,CPIA quality of budgetary and financial management rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_FINS_XQ,IQ.CPA.FINS.XQ,CPIA financial sector rating (1=low to 6=high),economy,SCORE,Public Sector,2025,4.0
+IQ_CPA_FISP_XQ,IQ.CPA.FISP.XQ,CPIA fiscal policy rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_GNDR_XQ,IQ.CPA.GNDR.XQ,CPIA gender equality rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_HRES_XQ,IQ.CPA.HRES.XQ,CPIA building human resources rating (1=low to 6=high),economy,SCORE,Public Sector,2025,4.5
+IQ_CPA_IRAI_XQ,IQ.CPA.IRAI.XQ,IDA resource allocation index (1=low to 6=high),economy,SCORE,Public Sector,2025,3.366667
+IQ_CPA_MACR_XQ,IQ.CPA.MACR.XQ,CPIA macroeconomic management rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_PADM_XQ,IQ.CPA.PADM.XQ,CPIA quality of public administration rating (1=low to 6=high),economy,SCORE,Public Sector,2025,2.5
+IQ_CPA_PRES_XQ,IQ.CPA.PRES.XQ,CPIA equity of public resource use rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.5
+IQ_CPA_PROP_XQ,IQ.CPA.PROP.XQ,CPIA property rights and rule-based governance rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_PROT_XQ,IQ.CPA.PROT.XQ,CPIA social protection rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_REVN_XQ,IQ.CPA.REVN.XQ,CPIA efficiency of revenue mobilization rating (1=low to 6=high),economy,SCORE,Public Sector,2025,3.0
+IQ_CPA_SOCI_XQ,IQ.CPA.SOCI.XQ,CPIA policies for social inclusion/equity cluster average (1=low to 6=high),economy,SCORE,Public Sector,2025,3.5
+IQ_CPA_STRC_XQ,IQ.CPA.STRC.XQ,CPIA structural policies cluster average (1=low to 6=high),economy,SCORE,Public Sector,2025,3.833333
+IQ_CPA_TRAD_XQ,IQ.CPA.TRAD.XQ,CPIA trade rating (1=low to 6=high),economy,SCORE,Public Sector,2025,4.0
+IQ_CPA_TRAN_XQ,IQ.CPA.TRAN.XQ,"CPIA transparency, accountability, and corruption in the public sector rating (1=low to 6=high)",economy,SCORE,Public Sector,2025,2.5
+IQ_SPI_OVRL,IQ.SPI.OVRL,Statistical performance indicators (SPI): Overall score (scale 0-100),economy,SCORE,Public Sector,2024,60.3679166666667
+IQ_SPI_PIL1,IQ.SPI.PIL1,Statistical performance indicators (SPI): Pillar 1 data use score (scale 0-100),economy,SCORE,Public Sector,2024,60.0
+IQ_SPI_PIL2,IQ.SPI.PIL2,Statistical performance indicators (SPI): Pillar 2 data services score (scale 0-100),economy,SCORE,Public Sector,2024,66.2333333333333
+IQ_SPI_PIL3,IQ.SPI.PIL3,Statistical performance indicators (SPI): Pillar 3 data products score  (scale 0-100),economy,SCORE,Public Sector,2024,79.10625
+IQ_SPI_PIL4,IQ.SPI.PIL4,Statistical performance indicators (SPI): Pillar 4 data sources score (scale 0-100),economy,SCORE,Public Sector,2024,46.5
+IQ_SPI_PIL5,IQ.SPI.PIL5,Statistical performance indicators (SPI): Pillar 5 data infrastructure score (scale 0-100),economy,SCORE,Public Sector,2024,50.0
+IS_AIR_DPRT,IS.AIR.DPRT,"Air transport, registered carrier departures worldwide",economy,COUNT,Infrastructure,2023,67501.0
+IS_AIR_GOOD_MT_K1,IS.AIR.GOOD.MT.K1,"Air transport, freight (million ton-km)",economy,MILLION_TON_KM,Infrastructure,2023,16.929456
+IS_AIR_PSGR,IS.AIR.PSGR,"Air transport, passengers carried",economy,COUNT,Infrastructure,2023,4289298.0
+IT_CEL_SETS,IT.CEL.SETS,Mobile cellular subscriptions,economy,COUNT,Infrastructure,2024,29605730.0
+IT_CEL_SETS_P2,IT.CEL.SETS.P2,Mobile cellular subscriptions (per 100 people),economy,PER_100,Infrastructure,2024,99.8471420273964
+IT_MLT_MAIN,IT.MLT.MAIN,Fixed telephone subscriptions,economy,COUNT,Infrastructure,2024,407925.0
+IT_MLT_MAIN_P2,IT.MLT.MAIN.P2,Fixed telephone subscriptions (per 100 people),economy,PER_100,Infrastructure,2024,1.37575210648498
+IT_NET_BBND,IT.NET.BBND,Fixed broadband subscriptions,economy,COUNT,Infrastructure,2024,2984561.0
+IT_NET_BBND_P2,IT.NET.BBND.P2,Fixed broadband subscriptions (per 100 people),economy,PER_100,Infrastructure,2024,10.0656152054494
+IT_NET_SECR,IT.NET.SECR,Secure Internet servers,economy,COUNT,Infrastructure,2024,16048.0
+IT_NET_SECR_P6,IT.NET.SECR.P6,Secure Internet servers (per 1 million people),economy,PER_MILLION,Infrastructure,2024,541.228652445205
+LP_EXP_DURS_MD,LP.EXP.DURS.MD,"Lead time to export, median case (days)",economy,DAYS,Trade,2018,1.0
+LP_IMP_DURS_MD,LP.IMP.DURS.MD,"Lead time to import, median case (days)",economy,DAYS,Private Sector,2018,2.0
+LP_LPI_CUST_XQ,LP.LPI.CUST.XQ,Logistics performance index: Efficiency of customs clearance process (1=low to 5=high),economy,SCORE,Private Sector,2018,2.29
+LP_LPI_INFR_XQ,LP.LPI.INFR.XQ,Logistics performance index: Quality of trade and transport-related infrastructure (1=low to 5=high),economy,SCORE,Private Sector,2018,2.19
+LP_LPI_ITRN_XQ,LP.LPI.ITRN.XQ,Logistics performance index: Ease of arranging competitively priced shipments (1=low to 5=high),economy,SCORE,Private Sector,2018,2.36
+LP_LPI_LOGS_XQ,LP.LPI.LOGS.XQ,Logistics performance index: Competence and quality of logistics services (1=low to 5=high),economy,SCORE,Private Sector,2018,2.46
+LP_LPI_OVRL_XQ,LP.LPI.OVRL.XQ,Logistics performance index: Overall (1=low to 5=high),economy,SCORE,Private Sector,2018,2.51
+LP_LPI_TIME_XQ,LP.LPI.TIME.XQ,Logistics performance index: Frequency with which shipments reach consignee within scheduled or expected time (1=low to 5=high),economy,SCORE,Private Sector,2018,3.1
+LP_LPI_TRAC_XQ,LP.LPI.TRAC.XQ,Logistics performance index: Ability to track and trace consignments (1=low to 5=high),economy,SCORE,Private Sector,2018,2.65
+MS_MIL_TOTL_P1,MS.MIL.TOTL.P1,"Armed forces personnel, total",economy,COUNT,Public Sector,2020,112000.0
+MS_MIL_TOTL_TF_ZS,MS.MIL.TOTL.TF.ZS,Armed forces personnel (% of total labor force),economy,PCT,Public Sector,2020,1.40391780813332
+MS_MIL_XPND_CD,MS.MIL.XPND.CD,Military expenditure (current USD),economy,USD,Public Sector,2024,426517834.461529
+MS_MIL_XPND_CN,MS.MIL.XPND.CN,Military expenditure (current LCU),economy,LCU,Public Sector,2024,57086000000.0
+MS_MIL_XPND_GD_ZS,MS.MIL.XPND.GD.ZS,Military expenditure (% of GDP),economy,PCT,Public Sector,2024,0.979452474186084
+MS_MIL_XPND_ZS,MS.MIL.XPND.ZS,Military expenditure (% of general government expenditure),economy,PCT,Public Sector,2024,4.10656672289703
+NE_CON_GOVT_CD,NE.CON.GOVT.CD,General government final consumption expenditure (current US$),economy,USD,Economy & Growth,2025,3814307985.41918
+NE_CON_GOVT_CN,NE.CON.GOVT.CN,General government final consumption expenditure (current LCU),economy,LCU,Economy & Growth,2025,519856971047.313
+NE_CON_GOVT_KD,NE.CON.GOVT.KD,General government final consumption expenditure (constant 2015 US$),economy,USD,Economy & Growth,2025,3021199343.35968
+NE_CON_GOVT_KD_ZG,NE.CON.GOVT.KD.ZG,General government final consumption expenditure (annual % growth),economy,PCT,Economy & Growth,2025,12.0244689876605
+NE_CON_GOVT_KN,NE.CON.GOVT.KN,General government final consumption expenditure (constant LCU),economy,LCU,Economy & Growth,2025,217394732800.0
+NE_CON_GOVT_ZS,NE.CON.GOVT.ZS,General government final consumption expenditure (% of GDP),economy,PCT,Economy & Growth,2025,8.38497228649717
+NE_CON_PCAP_PP_CD,NE.CON.PCAP.PP.CD,"Households and NPISHs Final consumption expenditure per capita, PPP (current international $)",economy,USD_PPP,,2025,5028.37919410668
+NE_CON_PCAP_PP_KD,NE.CON.PCAP.PP.KD,"Households and NPISHs Final consumption expenditure per capita, PPP (constant 2021 international $)",economy,USD_PPP,,2025,4128.99895521324
+NE_CON_PRVT_CD,NE.CON.PRVT.CD,Households and NPISHs Final consumption expenditure (current US$),economy,USD,Economy & Growth,2025,38541339151.3239
+NE_CON_PRVT_CN,NE.CON.PRVT.CN,Households and NPISHs Final consumption expenditure (current LCU),economy,LCU,Economy & Growth,2025,5252848985426.8
+NE_CON_PRVT_CN_AD,NE.CON.PRVT.CN.AD,Households and NPISHs final consumption expenditure: linked series (current LCU),economy,LCU,Economy & Growth,2025,5252848985426.81
+NE_CON_PRVT_KD,NE.CON.PRVT.KD,Households and NPISHs Final consumption expenditure (constant 2015 US$),economy,USD,Economy & Growth,2025,30555826835.2194
+NE_CON_PRVT_KD_ZG,NE.CON.PRVT.KD.ZG,Households and NPISHs Final consumption expenditure (annual % growth),economy,PCT,Economy & Growth,2025,2.38934144327135
+NE_CON_PRVT_KN,NE.CON.PRVT.KN,Households and NPISHs Final consumption expenditure (constant LCU),economy,LCU,Economy & Growth,2025,2215622830600.0
+NE_CON_PRVT_PC_KD,NE.CON.PRVT.PC.KD,Households and NPISHs Final consumption expenditure per capita (constant 2015 US$),economy,USD,Economy & Growth,2025,1031.65997364247
+NE_CON_PRVT_PC_KD_ZG,NE.CON.PRVT.PC.KD.ZG,Households and NPISHs Final consumption expenditure per capita growth (annual %),economy,PCT,Economy & Growth,2025,2.50320064761968
+NE_CON_PRVT_PP_CD,NE.CON.PRVT.PP.CD,"Households and NPISHs Final consumption expenditure, PPP (current international $)",economy,USD_PPP,Economy & Growth,2025,148931128319.797
+NE_CON_PRVT_PP_KD,NE.CON.PRVT.PP.KD,"Households and NPISHs Final consumption expenditure, PPP (constant 2021 international $)",economy,USD_PPP,Economy & Growth,2025,122293178277.383
+NE_CON_PRVT_ZS,NE.CON.PRVT.ZS,Households and NPISHs final consumption expenditure (% of GDP),economy,PCT,Economy & Growth,2025,84.7252140896075
+NE_CON_TOTL_CD,NE.CON.TOTL.CD,Final consumption expenditure (current US$),economy,USD,Economy & Growth,2025,42355647136.7432
+NE_CON_TOTL_CN,NE.CON.TOTL.CN,Final consumption expenditure (current LCU),economy,LCU,Economy & Growth,2025,5772705956474.12
+NE_CON_TOTL_KD,NE.CON.TOTL.KD,Final consumption expenditure (constant 2015 US$),economy,USD,Economy & Growth,2025,33578417098.8457
+NE_CON_TOTL_KD_ZG,NE.CON.TOTL.KD.ZG,Final consumption expenditure (annual % growth),economy,PCT,Economy & Growth,2025,3.18230563392265
+NE_CON_TOTL_KN,NE.CON.TOTL.KN,Final consumption expenditure (constant LCU),economy,LCU,Economy & Growth,2025,2433017563400.0
+NE_CON_TOTL_ZS,NE.CON.TOTL.ZS,Final consumption expenditure (% of GDP),economy,PCT,Economy & Growth,2025,93.1101863761048
+NE_DAB_DEFL_ZS,NE.DAB.DEFL.ZS,Gross national expenditure deflator (base year varies by country),economy,INDEX,Economy & Growth,2025,224.667367502149
+NE_DAB_TOTL_CD,NE.DAB.TOTL.CD,Gross national expenditure (current US$),economy,USD,Economy & Growth,2025,55731361331.8125
+NE_DAB_TOTL_CN,NE.DAB.TOTL.CN,Gross national expenditure (current LCU),economy,LCU,Economy & Growth,2025,7595699352294.29
+NE_DAB_TOTL_KD,NE.DAB.TOTL.KD,Gross national expenditure (constant 2015 US$),economy,USD,Economy & Growth,2025,45472678525.9351
+NE_DAB_TOTL_KN,NE.DAB.TOTL.KN,Gross national expenditure (constant LCU),economy,LCU,Economy & Growth,2025,3380864536200.0
+NE_DAB_TOTL_ZS,NE.DAB.TOTL.ZS,Gross national expenditure (% of GDP),economy,PCT,Economy & Growth,2025,122.513945397792
+NE_EXP_GNFS_CD,NE.EXP.GNFS.CD,Exports of goods and services (current US$),economy,USD,Economy & Growth,2025,4015673776.7883
+NE_EXP_GNFS_CN,NE.EXP.GNFS.CN,Exports of goods and services (current LCU),economy,LCU,Economy & Growth,2025,547301375320.345
+NE_EXP_GNFS_KD,NE.EXP.GNFS.KD,Exports of goods and services (constant 2015 US$),economy,USD,Economy & Growth,2025,3102351199.76258
+NE_EXP_GNFS_KD_ZG,NE.EXP.GNFS.KD.ZG,Exports of goods and services (annual % growth),economy,PCT,Economy & Growth,2025,22.2307753743375
+NE_EXP_GNFS_KN,NE.EXP.GNFS.KN,Exports of goods and services (constant LCU),economy,LCU,Economy & Growth,2025,248370639700.0
+NE_GDI_FPRV_CN,NE.GDI.FPRV.CN,"Gross fixed capital formation, private sector (current LCU)",economy,LCU,Economy & Growth,2025,964839423207.448
+NE_GDI_FPRV_ZS,NE.GDI.FPRV.ZS,"Gross fixed capital formation, private sector (% of GDP)",economy,PCT,Economy & Growth,2025,15.5622647672028
+NE_GDI_FTOT_CD,NE.GDI.FTOT.CD,Gross fixed capital formation (current US$),economy,USD,Economy & Growth,2025,10722938111.094
+NE_GDI_FTOT_CN,NE.GDI.FTOT.CN,Gross fixed capital formation (current LCU),economy,LCU,Economy & Growth,2025,1461443110642.92
+NE_GDI_FTOT_KD,NE.GDI.FTOT.KD,Gross fixed capital formation (constant 2015 US$),economy,USD,Economy & Growth,2025,9493583100.03228
+NE_GDI_FTOT_KD_ZG,NE.GDI.FTOT.KD.ZG,Gross fixed capital formation (annual % growth),economy,PCT,Economy & Growth,2025,-4.05784788166498
+NE_GDI_FTOT_KN,NE.GDI.FTOT.KN,Gross fixed capital formation (constant LCU),economy,LCU,Economy & Growth,2025,758681023500.0
+NE_GDI_FTOT_ZS,NE.GDI.FTOT.ZS,Gross fixed capital formation (% of GDP),economy,PCT,Economy & Growth,2025,23.5721759320562
+NE_GDI_STKB_CD,NE.GDI.STKB.CD,Changes in inventories (current US$),economy,USD,Economy & Growth,2025,2652776083.97537
+NE_GDI_STKB_CN,NE.GDI.STKB.CN,Changes in inventories (current LCU),economy,LCU,Economy & Growth,2025,361550285177.256
+NE_GDI_STKB_KN,NE.GDI.STKB.KN,Changes in inventories (constant LCU),economy,LCU,Economy & Growth,2025,189165949400.0
+NE_GDI_TOTL_CD,NE.GDI.TOTL.CD,Gross capital formation (current US$),economy,USD,Economy & Growth,2025,13375714195.0693
+NE_GDI_TOTL_CN,NE.GDI.TOTL.CN,Gross capital formation (current LCU),economy,LCU,Economy & Growth,2025,1822993395820.17
+NE_GDI_TOTL_KD,NE.GDI.TOTL.KD,Gross capital formation (constant 2015 US$),economy,USD,Economy & Growth,2025,11894261427.0894
+NE_GDI_TOTL_KD_ZG,NE.GDI.TOTL.KD.ZG,Gross capital formation (annual % growth),economy,PCT,Economy & Growth,2025,3.04359005777069
+NE_GDI_TOTL_KN,NE.GDI.TOTL.KN,Gross capital formation (constant LCU),economy,LCU,Economy & Growth,2025,947846972800.0
+NE_GDI_TOTL_ZS,NE.GDI.TOTL.ZS,Gross capital formation (% of GDP),economy,PCT,Economy & Growth,2025,29.4037590216874
+NE_IMP_GNFS_CD,NE.IMP.GNFS.CD,Imports of goods and services (current US$),economy,USD,Economy & Growth,2025,15341170693.8035
+NE_IMP_GNFS_CN,NE.IMP.GNFS.CN,Imports of goods and services (current LCU),economy,LCU,Economy & Growth,2025,2090868005333.35
+NE_IMP_GNFS_KD,NE.IMP.GNFS.KD,Imports of goods and services (constant 2015 US$),economy,USD,Economy & Growth,2025,14021643963.6876
+NE_IMP_GNFS_KD_ZG,NE.IMP.GNFS.KD.ZG,Imports of goods and services (annual % growth),economy,PCT,Economy & Growth,2025,6.29479911455493
+NE_IMP_GNFS_KN,NE.IMP.GNFS.KN,Imports of goods and services (constant LCU),economy,LCU,Economy & Growth,2025,1093958565200.0
+NE_RSB_GNFS_CD,NE.RSB.GNFS.CD,External balance on goods and services (current US$),economy,USD,Economy & Growth,2025,-11325496917.0151
+NE_RSB_GNFS_CN,NE.RSB.GNFS.CN,External balance on goods and services (current LCU),economy,LCU,Economy & Growth,2025,-1543566630013.01
+NE_RSB_GNFS_KN,NE.RSB.GNFS.KN,External balance on goods and services (constant LCU),economy,LCU,Economy & Growth,2025,-845587925500.0
+NE_RSB_GNFS_ZS,NE.RSB.GNFS.ZS,External balance on goods and services (% of GDP),economy,PCT,Economy & Growth,2025,-24.896777644332
+NE_TRD_GNFS_ZS,NE.TRD.GNFS.ZS,Trade (% of GDP),economy,PCT,Economy & Growth,2025,42.5520448428369
+NV_AGR_EMPL_KD,NV.AGR.EMPL.KD,"Agriculture, forestry, and fishing, value added per worker (constant 2015 US$)",economy,USD,Economy & Growth,2025,5039.37190969192
+NV_AGR_TOTL_CN,NV.AGR.TOTL.CN,"Agriculture, forestry, and fishing, value added (current LCU)",economy,LCU,Economy & Growth,2025,1336555375418.64
+NV_AGR_TOTL_KD,NV.AGR.TOTL.KD,"Agriculture, forestry, and fishing, value added (constant 2015 US$)",economy,USD,Economy & Growth,2025,8645297403.22628
+NV_AGR_TOTL_KD_ZG,NV.AGR.TOTL.KD.ZG,"Agriculture, forestry, and fishing, value added (annual % growth)",economy,PCT,Economy & Growth,2025,3.04960047390317
+NV_AGR_TOTL_KN,NV.AGR.TOTL.KN,"Agriculture, forestry, and fishing, value added (constant LCU)",economy,LCU,Economy & Growth,2025,725010961124.568
+NV_FSM_TOTL_CN,NV.FSM.TOTL.CN,Financial intermediary services indirectly Measured (FISIM) (current LCU),economy,LCU,Economy & Growth,2010,35156285900.0
+NV_IND_EMPL_KD,NV.IND.EMPL.KD,"Industry (including construction), value added per worker (constant 2015 US$)",economy,USD,Economy & Growth,2025,2170.76158530236
+NV_IND_MANF_CD,NV.IND.MANF.CD,"Manufacturing, value added (current US$)",economy,USD,Economy & Growth,2025,2266413322.05255
+NV_IND_MANF_CN,NV.IND.MANF.CN,"Manufacturing, value added (current LCU)",economy,LCU,Economy & Growth,2025,308892404401.381
+NV_IND_MANF_KD,NV.IND.MANF.KD,"Manufacturing, value added (constant 2015 US$)",economy,USD,Economy & Growth,2025,1667162374.47098
+NV_IND_MANF_KD_ZG,NV.IND.MANF.KD.ZG,"Manufacturing, value added (annual % growth)",economy,PCT,Economy & Growth,2025,2.27483692351666
+NV_IND_MANF_KN,NV.IND.MANF.KN,"Manufacturing, value added (constant LCU)",economy,LCU,Economy & Growth,2025,129249258785.254
+NV_IND_MANF_ZS,NV.IND.MANF.ZS,"Manufacturing, value added (% of GDP)",economy,PCT,Economy & Growth,2025,4.98224395298016
+NV_IND_TOTL_CD,NV.IND.TOTL.CD,"Industry (including construction), value added (current US$)",economy,USD,Economy & Growth,2025,5481768838.4815
+NV_IND_TOTL_CN,NV.IND.TOTL.CN,"Industry (including construction), value added (current LCU)",economy,LCU,Economy & Growth,2025,747117368405.52
+NV_IND_TOTL_KD,NV.IND.TOTL.KD,"Industry (including construction), value added (constant 2015 US$)",economy,USD,Economy & Growth,2025,5084084855.35528
+NV_IND_TOTL_KD_ZG,NV.IND.TOTL.KD.ZG,"Industry (including construction), value added (annual % growth)",economy,PCT,Economy & Growth,2025,3.30676444946567
+NV_IND_TOTL_KN,NV.IND.TOTL.KN,"Industry (including construction), value added (constant LCU)",economy,LCU,Economy & Growth,2025,394943133189.47
+NV_IND_TOTL_ZS,NV.IND.TOTL.ZS,"Industry (including construction), value added (% of GDP)",economy,PCT,Economy & Growth,2025,12.0505423178616
+NV_MNF_CHEM_ZS_UN,NV.MNF.CHEM.ZS.UN,Chemicals (% of value added in manufacturing),economy,PCT,Economy & Growth,2022,7.87635050690306
+NV_MNF_FBTO_ZS_UN,NV.MNF.FBTO.ZS.UN,"Food, beverages and tobacco (% of value added in manufacturing)",economy,PCT,Economy & Growth,2022,32.7007906541895
+NV_MNF_MTRN_ZS_UN,NV.MNF.MTRN.ZS.UN,Machinery and transport equipment (% of value added in manufacturing),economy,PCT,Economy & Growth,2022,1.02386909468156
+NV_MNF_OTHR_ZS_UN,NV.MNF.OTHR.ZS.UN,Other manufacturing (% of value added in manufacturing),economy,PCT,Economy & Growth,2022,51.8905678016346
+NV_MNF_TECH_ZS_UN,NV.MNF.TECH.ZS.UN,Medium and high-tech manufacturing value added (% manufacturing value added),economy,PCT,Economy & Growth,2022,10.5153109905714
+NV_MNF_TXTL_ZS_UN,NV.MNF.TXTL.ZS.UN,Textiles and clothing (% of value added in manufacturing),economy,PCT,Economy & Growth,2022,6.50842194259127
+NV_SRV_EMPL_KD,NV.SRV.EMPL.KD,"Services, value added per worker (constant 2015 US$)",economy,USD,Economy & Growth,2025,5386.96228416739
+NV_SRV_TOTL_CD,NV.SRV.TOTL.CD,"Services, value added (current US$)",economy,USD,Economy & Growth,2025,24731872539.438
+NV_SRV_TOTL_CN,NV.SRV.TOTL.CN,"Services, value added (current LCU)",economy,LCU,Economy & Growth,2025,3370738911443.07
+NV_SRV_TOTL_KD,NV.SRV.TOTL.KD,"Services, value added (constant 2015 US$)",economy,USD,Economy & Growth,2025,18476995932.6859
+NV_SRV_TOTL_KD_ZG,NV.SRV.TOTL.KD.ZG,"Services, value added (annual % growth)",economy,PCT,Economy & Growth,2025,4.35603026052218
+NV_SRV_TOTL_KN,NV.SRV.TOTL.KN,"Services, value added (constant LCU)",economy,LCU,Economy & Growth,2025,1365036912098.02
+NV_SRV_TOTL_ZS,NV.SRV.TOTL.ZS,"Services, value added (% of GDP)",economy,PCT,Economy & Growth,2025,54.3679395133002
+NY_ADJ_AEDU_CD,NY.ADJ.AEDU.CD,Adjusted savings: education expenditure (current US$),economy,USD,Economy & Growth,2021,1055139594.78175
+NY_ADJ_AEDU_GN_ZS,NY.ADJ.AEDU.GN.ZS,Adjusted savings: education expenditure (% of GNI),economy,PCT,Economy & Growth,2021,2.89187204849563
+NY_ADJ_DCO2_CD,NY.ADJ.DCO2.CD,Adjusted savings: carbon dioxide damage (current US$),economy,USD,Economy & Growth,2021,737047832.372402
+NY_ADJ_DCO2_GN_ZS,NY.ADJ.DCO2.GN.ZS,Adjusted savings: carbon dioxide damage (% of GNI),economy,PCT,Economy & Growth,2021,2.02006259208093
+NY_ADJ_DFOR_CD,NY.ADJ.DFOR.CD,Adjusted savings: net forest depletion (current US$),economy,USD,Economy & Growth,2021,178858443.512504
+NY_ADJ_DFOR_GN_ZS,NY.ADJ.DFOR.GN.ZS,Adjusted savings: net forest depletion (% of GNI),economy,PCT,Economy & Growth,2021,0.490205974630525
+NY_ADJ_DKAP_CD,NY.ADJ.DKAP.CD,Adjusted savings: consumption of fixed capital (current US$),economy,USD,Economy & Growth,2021,2464523873.44234
+NY_ADJ_DKAP_GN_ZS,NY.ADJ.DKAP.GN.ZS,Adjusted savings: consumption of fixed capital (% of GNI),economy,PCT,Economy & Growth,2021,6.75463961138934
+NY_ADJ_DMIN_CD,NY.ADJ.DMIN.CD,Adjusted savings: mineral depletion (current US$),economy,USD,Economy & Growth,2021,0.0
+NY_ADJ_DMIN_GN_ZS,NY.ADJ.DMIN.GN.ZS,Adjusted savings: mineral depletion (% of GNI),economy,PCT,Economy & Growth,2021,0.0
+NY_ADJ_DNGY_CD,NY.ADJ.DNGY.CD,Adjusted savings: energy depletion (current US$),economy,USD,Economy & Growth,2021,1017001.54153081
+NY_ADJ_DNGY_GN_ZS,NY.ADJ.DNGY.GN.ZS,Adjusted savings: energy depletion (% of GNI),economy,PCT,Economy & Growth,2021,0.00278734524396106
+NY_ADJ_DPEM_CD,NY.ADJ.DPEM.CD,Adjusted savings: particulate emission damage (current US$),economy,USD,Economy & Growth,2021,621127999.955981
+NY_ADJ_DPEM_GN_ZS,NY.ADJ.DPEM.GN.ZS,Adjusted savings: particulate emission damage (% of GNI),economy,PCT,Economy & Growth,2021,1.70235550868721
+NY_ADJ_DRES_GN_ZS,NY.ADJ.DRES.GN.ZS,Adjusted savings: natural resources depletion (% of GNI),economy,PCT,Economy & Growth,2021,0.492993319874486
+NY_ADJ_ICTR_GN_ZS,NY.ADJ.ICTR.GN.ZS,Adjusted savings: gross savings (% of GNI),economy,PCT,Economy & Growth,2021,32.4993897789973
+NY_ADJ_NNAT_CD,NY.ADJ.NNAT.CD,Adjusted savings: net national savings (current US$),economy,USD,Economy & Growth,2021,9393328890.10015
+NY_ADJ_NNAT_GN_ZS,NY.ADJ.NNAT.GN.ZS,Adjusted savings: net national savings (% of GNI),economy,PCT,Economy & Growth,2021,25.7447501676079
+NY_ADJ_NNTY_CD,NY.ADJ.NNTY.CD,Adjusted net national income (current US$),economy,USD,Economy & Growth,2021,33841986561.9107
+NY_ADJ_NNTY_KD,NY.ADJ.NNTY.KD,Adjusted net national income (constant 2015 US$),economy,USD,Economy & Growth,2021,30844359289.1983
+NY_ADJ_NNTY_KD_ZG,NY.ADJ.NNTY.KD.ZG,Adjusted net national income (annual % growth),economy,PCT,Economy & Growth,2021,7.42520389612315
+NY_ADJ_NNTY_PC_CD,NY.ADJ.NNTY.PC.CD,Adjusted net national income per capita (current US$),economy,USD,Economy & Growth,2021,1148.15861171585
+NY_ADJ_NNTY_PC_KD,NY.ADJ.NNTY.PC.KD,Adjusted net national income per capita (constant 2015 US$),economy,USD,Economy & Growth,2021,1046.45797538994
+NY_ADJ_NNTY_PC_KD_ZG,NY.ADJ.NNTY.PC.KD.ZG,Adjusted net national income per capita (annual % growth),economy,PCT,Economy & Growth,2021,5.57214800341508
+NY_ADJ_SVNG_CD,NY.ADJ.SVNG.CD,"Adjusted net savings, including particulate emission damage (current US$)",economy,USD,Economy & Growth,2021,8910417207.49949
+NY_ADJ_SVNG_GN_ZS,NY.ADJ.SVNG.GN.ZS,"Adjusted net savings, including particulate emission damage (% of GNI)",economy,PCT,Economy & Growth,2021,24.4212107954609
+NY_ADJ_SVNX_CD,NY.ADJ.SVNX.CD,"Adjusted net savings, excluding particulate emission damage (current US$)",economy,USD,Economy & Growth,2021,9531545207.45547
+NY_ADJ_SVNX_GN_ZS,NY.ADJ.SVNX.GN.ZS,"Adjusted net savings, excluding particulate emission damage (% of GNI)",economy,PCT,Economy & Growth,2021,26.1235663041481
+NY_EXP_CAPM_KN,NY.EXP.CAPM.KN,Exports as a capacity to import (constant LCU),economy,LCU,Economy & Growth,2025,286352378892.505
+NY_GDP_DEFL_KD_ZG,NY.GDP.DEFL.KD.ZG,"Inflation, GDP deflator (annual %)",economy,PCT,Economy & Growth,2025,3.06559710449554
+NY_GDP_DEFL_KD_ZG_AD,NY.GDP.DEFL.KD.ZG.AD,"Inflation, GDP deflator: linked series (annual %)",economy,PCT,Financial Sector,2025,3.06559710449554
+NY_GDP_DEFL_ZS,NY.GDP.DEFL.ZS,GDP deflator (base year varies by country),economy,INDEX,Economy & Growth,2025,221.961098098983
+NY_GDP_DEFL_ZS_AD,NY.GDP.DEFL.ZS.AD,GDP deflator: linked series (base year varies by country),economy,INDEX,Financial Sector,2025,221.961098098983
+NY_GDP_DISC_CN,NY.GDP.DISC.CN,Discrepancy in expenditure estimate of GDP (current LCU),economy,LCU,Economy & Growth,2025,147732385018.716
+NY_GDP_DISC_KN,NY.GDP.DISC.KN,Discrepancy in expenditure estimate of GDP (constant LCU),economy,LCU,Economy & Growth,2025,257944886400.0
+NY_GDP_FCST_CD,NY.GDP.FCST.CD,Gross value added at basic prices (GVA) (current US$),economy,USD,Economy & Growth,2025,40020249974.7873
+NY_GDP_FCST_CN,NY.GDP.FCST.CN,Gross value added at basic prices (GVA) (current LCU),economy,LCU,Economy & Growth,2025,5454411655267.23
+NY_GDP_FCST_KD,NY.GDP.FCST.KD,Gross value added at basic prices (GVA) (constant 2015 US$),economy,USD,Economy & Growth,2025,32119373297.683
+NY_GDP_FCST_KN,NY.GDP.FCST.KN,Gross value added at basic prices (GVA) (constant LCU),economy,LCU,Economy & Growth,2025,2484991006412.06
+NY_GDP_MKTP_CN,NY.GDP.MKTP.CN,GDP (current LCU),economy,LCU,Economy & Growth,2025,6199865107300.0
+NY_GDP_MKTP_CN_AD,NY.GDP.MKTP.CN.AD,GDP: linked series (current LCU),economy,LCU,Economy & Growth,2025,6199865107300.01
+NY_GDP_MKTP_KD,NY.GDP.MKTP.KD,GDP (constant 2015 US$),economy,USD,Economy & Growth,2025,36537085383.278
+NY_GDP_MKTP_KN,NY.GDP.MKTP.KN,GDP (constant LCU),economy,LCU,Economy & Growth,2025,2793221497100.0
+NY_GDP_MKTP_PP_CD,NY.GDP.MKTP.PP.CD,"GDP, PPP (current international $)",economy,USD_PPP,Economy & Growth,2025,182896587086.718
+NY_GDP_MKTP_PP_KD,NY.GDP.MKTP.PP.KD,"GDP, PPP (constant 2021 international $)",economy,USD_PPP,Economy & Growth,2025,156292554073.567
+NY_GDP_PCAP_CN,NY.GDP.PCAP.CN,GDP per capita (current LCU),economy,LCU,Economy & Growth,2025,209326.774486482
+NY_GDP_PCAP_KD,NY.GDP.PCAP.KD,GDP per capita (constant 2015 US$),economy,USD,Economy & Growth,2025,1233.60590916945
+NY_GDP_PCAP_KD_ZG,NY.GDP.PCAP.KD.ZG,GDP per capita growth (annual %),economy,PCT,Economy & Growth,2025,4.54686122541752
+NY_GDP_PCAP_KN,NY.GDP.PCAP.KN,GDP per capita (constant LCU),economy,LCU,Economy & Growth,2025,94307.8657833695
+NY_GDP_PCAP_PP_CD,NY.GDP.PCAP.PP.CD,"GDP per capita, PPP (current international $)",economy,USD_PPP,Economy & Growth,2025,6175.15897150244
+NY_GDP_PCAP_PP_KD,NY.GDP.PCAP.PP.KD,"GDP per capita, PPP (constant 2021 international $)",economy,USD_PPP,Economy & Growth,2025,5276.92387725538
+NY_GDS_TOTL_CD,NY.GDS.TOTL.CD,Gross domestic savings (current US$),economy,USD,Economy & Growth,2025,3134163146.37001
+NY_GDS_TOTL_CN,NY.GDS.TOTL.CN,Gross domestic savings (current LCU),economy,LCU,Economy & Growth,2025,427159150825.88
+NY_GDS_TOTL_ZS,NY.GDS.TOTL.ZS,Gross domestic savings (% of GDP),economy,PCT,Economy & Growth,2025,6.8898136238952
+NY_GDY_TOTL_KN,NY.GDY.TOTL.KN,Gross domestic income (constant LCU),economy,LCU,Economy & Growth,2025,2831203236292.5
+NY_GNP_ATLS_CD,NY.GNP.ATLS.CD,"GNI, Atlas method (current US$)",economy,USD,Economy & Growth,2025,46491459103.9338
+NY_GNP_MKTP_CD,NY.GNP.MKTP.CD,GNI (current US$),economy,USD,Economy & Growth,2025,46065540648.189
+NY_GNP_MKTP_CN,NY.GNP.MKTP.CN,GNI (current LCU),economy,LCU,Economy & Growth,2025,6278332143751.28
+NY_GNP_MKTP_CN_AD,NY.GNP.MKTP.CN.AD,GNI: linked series (current LCU),economy,LCU,Economy & Growth,2025,6278332143751.29
+NY_GNP_MKTP_KD,NY.GNP.MKTP.KD,GNI (constant 2015 US$),economy,USD,Economy & Growth,2025,38698235928.9398
+NY_GNP_MKTP_KD_ZG,NY.GNP.MKTP.KD.ZG,GNI growth (annual %),economy,PCT,Economy & Growth,2025,4.03743754687488
+NY_GNP_MKTP_KN,NY.GNP.MKTP.KN,GNI (constant LCU),economy,LCU,Economy & Growth,2025,2986689976059.11
+NY_GNP_MKTP_PP_CD,NY.GNP.MKTP.PP.CD,"GNI, PPP (current international $)",economy,USD_PPP,Economy & Growth,2025,185211371830.8
+NY_GNP_MKTP_PP_KD,NY.GNP.MKTP.PP.KD,"GNI, PPP (constant 2021 international $)",economy,USD_PPP,Economy & Growth,2025,158501176171.342
+NY_GNP_PCAP_CD,NY.GNP.PCAP.CD,"GNI per capita, Atlas method (current US$)",economy,USD,Economy & Growth,2025,1570.0
+NY_GNP_PCAP_CN,NY.GNP.PCAP.CN,GNI per capita (current LCU),economy,LCU,Economy & Growth,2025,211976.06626293
+NY_GNP_PCAP_KD,NY.GNP.PCAP.KD,GNI per capita (constant 2015 US$),economy,USD,Economy & Growth,2025,1306.57308911187
+NY_GNP_PCAP_KD_ZG,NY.GNP.PCAP.KD.ZG,GNI per capita growth (annual %),economy,PCT,Economy & Growth,2025,4.15312947041453
+NY_GNP_PCAP_KN,NY.GNP.PCAP.KN,GNI per capita (constant LCU),economy,LCU,Economy & Growth,2025,100839.964783013
+NY_GNP_PCAP_PP_CD,NY.GNP.PCAP.PP.CD,"GNI per capita, PPP (current international $)",economy,USD_PPP,Economy & Growth,2025,6250.0
+NY_GNP_PCAP_PP_KD,NY.GNP.PCAP.PP.KD,"GNI per capita, PPP (constant 2021 international $)",economy,USD_PPP,Economy & Growth,2025,5351.49384479265
+NY_GNS_ICTR_CD,NY.GNS.ICTR.CD,Gross savings (current US$),economy,USD,Economy & Growth,2024,15607559947.4771
+NY_GNS_ICTR_CN,NY.GNS.ICTR.CN,Gross savings (current LCU),economy,LCU,Economy & Growth,2024,2076338830160.54
+NY_GNS_ICTR_GN_ZS,NY.GNS.ICTR.GN.ZS,Gross savings (% of GNI),economy,PCT,Economy & Growth,2024,35.46688431204
+NY_GNS_ICTR_ZS,NY.GNS.ICTR.ZS,Gross savings (% of GDP),economy,PCT,Economy & Growth,2024,36.0460790692411
+NY_GSR_NFCY_CD,NY.GSR.NFCY.CD,Net primary income (Net income from abroad) (current US$),economy,USD,Economy & Growth,2025,575730365.43332
+NY_GSR_NFCY_CN,NY.GSR.NFCY.CN,Net primary income (Net income from abroad) (current LCU),economy,LCU,Economy & Growth,2025,78467036500.0
+NY_TAX_NIND_CD,NY.TAX.NIND.CD,Taxes less subsidies on products (current US$),economy,USD,Economy & Growth,2025,5469560308.03278
+NY_TAX_NIND_CN,NY.TAX.NIND.CN,Taxes less subsidies on products (current LCU),economy,LCU,Economy & Growth,2025,745453451992.826
+NY_TAX_NIND_KN,NY.TAX.NIND.KN,Taxes less subsidies on products (constant LCU),economy,LCU,Economy & Growth,2025,308230490712.843
+NY_TRF_NCTR_CD,NY.TRF.NCTR.CD,Net secondary income (Net current transfers from abroad) (current US$),economy,USD,Economy & Growth,2025,13752142522.0308
+NY_TRF_NCTR_CN,NY.TRF.NCTR.CN,Net secondary income (Net current transfers from abroad) (current LCU),economy,LCU,Economy & Growth,2025,1874297299600.0
+NY_TRF_NCTR_KN,NY.TRF.NCTR.KN,Net secondary income (Net current transfers from abroad) (constant LCU),economy,LCU,Economy & Growth,2009,130291111746.888
+NY_TTF_GNFS_KN,NY.TTF.GNFS.KN,Terms of trade adjustment (constant LCU),economy,LCU,Economy & Growth,2025,37981739192.5049
+PA_NUS_ATLS,PA.NUS.ATLS,DEC alternative conversion factor (LCU per US$),economy,USD,Economy & Growth,2025,136.291294
+PA_NUS_FCRF,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",economy,USD,Financial Sector,2025,139.115437592696
+PA_NUS_GDP_PLI,PA.NUS.GDP.PLI,Price level index (GDP),economy,INDEX,,2025,24.8718748707678
+PA_NUS_PPP,PA.NUS.PPP,"PPP conversion factor, GDP (LCU per international $)",economy,USD_PPP,Economy & Growth,2025,33.8982001034302
+PA_NUS_PRVT_PLI,PA.NUS.PRVT.PLI,Price level index (Households and NPISHs Final consumption expenditure),economy,INDEX,,2025,25.878632349152
+PA_NUS_PRVT_PP,PA.NUS.PRVT.PP,"PPP conversion factor, households and NPISHs Final consumption expenditure (LCU per international $)",economy,USD_PPP,Economy & Growth,2025,35.2703228981619
+SE_ENR_PRSC_FM_ZS,SE.ENR.PRSC.FM.ZS,"School enrollment, primary and secondary (gross), gender parity index (GPI)",economy,INDEX,Aid Effectiveness,2022,0.954387962818146
+SE_PRM_CMPT_ZS,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",economy,PCT,Aid Effectiveness,2025,109.435240565289
+SG_GEN_PARL_ZS,SG.GEN.PARL.ZS,Proportion of seats held by women in national parliaments (%),economy,PCT,Public Sector,2024,33.0882352941176
+SI_DST_02ND_20,SI.DST.02ND.20,Income share held by second 20%,economy,PCT,Poverty,2022,13.1
+SI_DST_03RD_20,SI.DST.03RD.20,Income share held by third 20%,economy,PCT,Poverty,2022,17.0
+SI_DST_04TH_20,SI.DST.04TH.20,Income share held by fourth 20%,economy,PCT,Poverty,2022,22.2
+SI_DST_05TH_20,SI.DST.05TH.20,Income share held by highest 20%,economy,PCT,Poverty,2022,39.0
+SI_DST_10TH_10,SI.DST.10TH.10,Income share held by highest 10%,economy,PCT,Poverty,2022,24.2
+SI_DST_50MD,SI.DST.50MD,Proportion of people living below 50 percent of median income (%),economy,PCT,Poverty,2022,7.9
+SI_DST_FRST_10,SI.DST.FRST.10,Income share held by lowest 10%,economy,PCT,Poverty,2022,3.7
+SI_DST_FRST_20,SI.DST.FRST.20,Income share held by lowest 20%,economy,PCT,Poverty,2022,8.7
+SI_POV_DDAY,SI.POV.DDAY,Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population),economy,PCT,Poverty,2022,2.4
+SI_POV_GAPS,SI.POV.GAPS,Poverty gap at $3.00 a day (2021 PPP) (%),economy,PCT,Poverty,2022,0.3
+SI_POV_GINI,SI.POV.GINI,Gini index,economy,INDEX,Poverty,2022,30.0
+SI_POV_LMIC,SI.POV.LMIC,Poverty headcount ratio at $4.20 a day (2021 PPP) (% of population),economy,PCT,Poverty,2022,9.1
+SI_POV_LMIC_GP,SI.POV.LMIC.GP,Poverty gap at $4.20 a day (2021 PPP) (%),economy,PCT,Poverty,2022,1.8
+SI_POV_MPUN,SI.POV.MPUN,Multidimensional poverty headcount ratio (UNDP & OPHI) (% of population),economy,PCT,,2022,20.1
+SI_POV_MPWB,SI.POV.MPWB,Multidimensional poverty headcount ratio (World Bank) (% of population),economy,PCT,,2022,4.4
+SI_POV_NAHC,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),economy,PCT,Poverty,2022,20.3
+SI_POV_SOPO,SI.POV.SOPO,Poverty headcount ratio at societal poverty line (% of population),economy,PCT,,2022,20.2
+SI_POV_UMIC,SI.POV.UMIC,Poverty headcount ratio at $8.30 a day (2021 PPP) (% of population),economy,PCT,Poverty,2022,52.7
+SI_POV_UMIC_GP,SI.POV.UMIC.GP,Poverty gap at $8.30 a day (2021 PPP) (%),economy,PCT,Poverty,2022,16.1
+SI_RMT_COST_IB_ZS,SI.RMT.COST.IB.ZS,Average transaction cost of sending remittances to a specific country (%),economy,PCT,Financial Sector,2023,2.5303125
+SP_POP_SCIE_RD_P6,SP.POP.SCIE.RD.P6,Researchers in R&D (per million people),economy,PER_MILLION,Science & Technology,2002,59.65797
+SP_POP_TECH_RD_P6,SP.POP.TECH.RD.P6,Technicians in R&D (per million people),economy,PER_MILLION,Science & Technology,2002,141.55354
+ST_INT_ARVL,ST.INT.ARVL,"International tourism, number of arrivals",economy,COUNT,Private Sector,2020,230000.0
+ST_INT_DPRT,ST.INT.DPRT,"International tourism, number of departures",economy,COUNT,Private Sector,2017,1197000.0
+ST_INT_RCPT_CD,ST.INT.RCPT.CD,"International tourism, receipts (current US$)",economy,USD,Private Sector,2020,238000000.0
+ST_INT_RCPT_XP_ZS,ST.INT.RCPT.XP.ZS,"International tourism, receipts (% of total exports)",economy,PCT,Private Sector,2020,13.4362036771379
+ST_INT_TRNR_CD,ST.INT.TRNR.CD,"International tourism, receipts for passenger transport items (current US$)",economy,USD,Private Sector,2020,41000000.0
+ST_INT_TRNX_CD,ST.INT.TRNX.CD,"International tourism, expenditures for passenger transport items (current US$)",economy,USD,Private Sector,2020,4000000.0
+ST_INT_TVLR_CD,ST.INT.TVLR.CD,"International tourism, receipts for travel items (current US$)",economy,USD,Private Sector,2020,197000000.0
+ST_INT_TVLX_CD,ST.INT.TVLX.CD,"International tourism, expenditures for travel items (current US$)",economy,USD,Private Sector,2020,263000000.0
+ST_INT_XPND_CD,ST.INT.XPND.CD,"International tourism, expenditures (current US$)",economy,USD,Private Sector,2020,267000000.0
+ST_INT_XPND_MP_ZS,ST.INT.XPND.MP.ZS,"International tourism, expenditures (% of total imports)",economy,PCT,Private Sector,2020,2.49662633697611
+TG_VAL_TOTL_GD_ZS,TG.VAL.TOTL.GD.ZS,Merchandise trade (% of GDP),economy,PCT,Private Sector,2025,36.7291045973045
+TM_QTY_MRCH_XD_WD,TM.QTY.MRCH.XD.WD,Import volume index (2015 = 100),economy,INDEX,Private Sector,2024,139.4
+TM_TAX_MANF_BC_ZS,TM.TAX.MANF.BC.ZS,"Binding coverage, manufactured products (%)",economy,PCT,Private Sector,2022,0.0
+TM_TAX_MANF_BR_ZS,TM.TAX.MANF.BR.ZS,"Bound rate, simple mean, manufactured products (%)",economy,PCT,Private Sector,2021,24.12
+TM_TAX_MANF_SM_AR_ZS,TM.TAX.MANF.SM.AR.ZS,"Tariff rate, applied, simple mean, manufactured products (%)",economy,PCT,Private Sector,2022,12.85
+TM_TAX_MANF_SM_FN_ZS,TM.TAX.MANF.SM.FN.ZS,"Tariff rate, most favored nation, simple mean, manufactured products (%)",economy,PCT,Private Sector,2022,12.55
+TM_TAX_MANF_WM_AR_ZS,TM.TAX.MANF.WM.AR.ZS,"Tariff rate, applied, weighted mean, manufactured products (%)",economy,PCT,Private Sector,2022,11.07
+TM_TAX_MANF_WM_FN_ZS,TM.TAX.MANF.WM.FN.ZS,"Tariff rate, most favored nation, weighted mean, manufactured products (%)",economy,PCT,Private Sector,2022,12.56
+TM_TAX_MRCH_BC_ZS,TM.TAX.MRCH.BC.ZS,"Binding coverage, all products (%)",economy,PCT,Private Sector,2022,0.0
+TM_TAX_MRCH_BR_ZS,TM.TAX.MRCH.BR.ZS,"Bound rate, simple mean, all products (%)",economy,PCT,Private Sector,2021,26.33
+TM_TAX_MRCH_SM_AR_ZS,TM.TAX.MRCH.SM.AR.ZS,"Tariff rate, applied, simple mean, all products (%)",economy,PCT,Private Sector,2022,13.64
+TM_TAX_MRCH_SM_FN_ZS,TM.TAX.MRCH.SM.FN.ZS,"Tariff rate, most favored nation, simple mean, all products (%)",economy,PCT,Private Sector,2022,12.84
+TM_TAX_MRCH_WM_AR_ZS,TM.TAX.MRCH.WM.AR.ZS,"Tariff rate, applied, weighted mean, all products (%)",economy,PCT,Private Sector,2022,11.2
+TM_TAX_MRCH_WM_FN_ZS,TM.TAX.MRCH.WM.FN.ZS,"Tariff rate, most favored nation, weighted mean, all products (%)",economy,PCT,Private Sector,2022,12.44
+TM_TAX_TCOM_BC_ZS,TM.TAX.TCOM.BC.ZS,"Binding coverage, primary products (%)",economy,PCT,Private Sector,2022,0.0
+TM_TAX_TCOM_BR_ZS,TM.TAX.TCOM.BR.ZS,"Bound rate, simple mean, primary products (%)",economy,PCT,Private Sector,2021,32.88
+TM_TAX_TCOM_SM_AR_ZS,TM.TAX.TCOM.SM.AR.ZS,"Tariff rate, applied, simple mean, primary products (%)",economy,PCT,Private Sector,2022,20.23
+TM_TAX_TCOM_SM_FN_ZS,TM.TAX.TCOM.SM.FN.ZS,"Tariff rate, most favored nation, simple mean, primary products (%)",economy,PCT,Private Sector,2022,13.22
+TM_TAX_TCOM_WM_AR_ZS,TM.TAX.TCOM.WM.AR.ZS,"Tariff rate, applied, weighted mean, primary products (%)",economy,PCT,Private Sector,2022,10.83
+TM_TAX_TCOM_WM_FN_ZS,TM.TAX.TCOM.WM.FN.ZS,"Tariff rate, most favored nation, weighted mean, primary products (%)",economy,PCT,Private Sector,2022,11.64
+TM_UVI_MRCH_XD_WD,TM.UVI.MRCH.XD.WD,Import unit value index (2015 = 100),economy,INDEX,Private Sector,2024,132.8
+TM_VAL_FOOD_ZS_UN,TM.VAL.FOOD.ZS.UN,Food imports (% of merchandise imports),economy,PCT,Private Sector,2022,17.9619548542567
+TM_VAL_ICTG_ZS_UN,TM.VAL.ICTG.ZS.UN,ICT goods imports (% total goods imports),economy,PCT,Infrastructure,2022,3.27
+TM_VAL_INSF_ZS_WT,TM.VAL.INSF.ZS.WT,Insurance and financial services (% of commercial service imports),economy,PCT,Private Sector,2024,4.43525278842401
+TM_VAL_MANF_ZS_UN,TM.VAL.MANF.ZS.UN,Manufactures imports (% of merchandise imports),economy,PCT,Private Sector,2022,52.5350355753062
+TM_VAL_MRCH_AL_ZS,TM.VAL.MRCH.AL.ZS,Merchandise imports from economies in the Arab World (% of total merchandise imports),economy,PCT,Private Sector,2023,4.25448615123721
+TM_VAL_MRCH_CD_WT,TM.VAL.MRCH.CD.WT,Merchandise imports (current US$),economy,USD,Private Sector,2025,14397000000.0
+TM_VAL_MRCH_HI_ZS,TM.VAL.MRCH.HI.ZS,Merchandise imports from high-income economies (% of total merchandise imports),economy,PCT,Private Sector,2023,12.6317537687982
+TM_VAL_MRCH_OR_ZS,TM.VAL.MRCH.OR.ZS,Merchandise imports from low- and middle-income economies outside region (% of total merchandise imports),economy,PCT,Private Sector,2023,25.8927461854806
+TM_VAL_MRCH_R1_ZS,TM.VAL.MRCH.R1.ZS,Merchandise imports from low- and middle-income economies in East Asia & Pacific (% of total merchandise imports),economy,PCT,Private Sector,2023,21.1989460300338
+TM_VAL_MRCH_R2_ZS,TM.VAL.MRCH.R2.ZS,Merchandise imports from low- and middle-income economies in Europe & Central Asia (% of total merchandise imports),economy,PCT,Private Sector,2023,2.95002301371999
+TM_VAL_MRCH_R3_ZS,TM.VAL.MRCH.R3.ZS,Merchandise imports from low- and middle-income economies in Latin America & the Caribbean (% of total merchandise imports),economy,PCT,Private Sector,2023,1.17017260189798
+TM_VAL_MRCH_R4_ZS,TM.VAL.MRCH.R4.ZS,Merchandise imports from low- and middle-income economies in Middle East & North Africa (% of total merchandise imports),economy,PCT,Private Sector,2023,0.0183986285679366
+TM_VAL_MRCH_R5_ZS,TM.VAL.MRCH.R5.ZS,Merchandise imports from low- and middle-income economies in South Asia (% of total merchandise imports),economy,PCT,Private Sector,2023,61.4740316836041
+TM_VAL_MRCH_R6_ZS,TM.VAL.MRCH.R6.ZS,Merchandise imports from low- and middle-income economies in Sub-Saharan Africa (% of total merchandise imports),economy,PCT,Private Sector,2023,0.555205911260892
+TM_VAL_MRCH_RS_ZS,TM.VAL.MRCH.RS.ZS,"Merchandise imports by the reporting economy, residual (% of total merchandise imports)",economy,PCT,Private Sector,2023,0.00146836211715438
+TM_VAL_MRCH_WL_CD,TM.VAL.MRCH.WL.CD,Merchandise imports by the reporting economy (current US$),economy,USD,Private Sector,2023,12041375757.0
+TM_VAL_MRCH_WR_ZS,TM.VAL.MRCH.WR.ZS,Merchandise imports from low- and middle-income economies within region (% of total merchandise imports),economy,PCT,Private Sector,2023,61.4740316836041
+TM_VAL_MRCH_XD_WD,TM.VAL.MRCH.XD.WD,Import value index (2015 = 100),economy,INDEX,Private Sector,2024,185.2
+TM_VAL_OTHR_ZS_WT,TM.VAL.OTHR.ZS.WT,"Computer, communications and other services (% of commercial service imports)",economy,PCT,Private Sector,2024,9.44346572933551
+TM_VAL_SERV_CD_WT,TM.VAL.SERV.CD.WT,Commercial service imports (current US$),economy,USD,Private Sector,2024,2250429513.00847
+TM_VAL_TRAN_ZS_WT,TM.VAL.TRAN.ZS.WT,Transport services (% of commercial service imports),economy,PCT,Private Sector,2024,20.3600886193771
+TM_VAL_TRVL_ZS_WT,TM.VAL.TRVL.ZS.WT,Travel services (% of commercial service imports),economy,PCT,Private Sector,2024,65.7611928628634
+TT_PRI_MRCH_XD_WD,TT.PRI.MRCH.XD.WD,Net barter terms of trade index (2015 = 100),economy,INDEX,Private Sector,2024,100.5
+TX_MNF_TECH_ZS_UN,TX.MNF.TECH.ZS.UN,Medium and high-tech exports (% manufactured exports),economy,PCT,Private Sector,2022,6.25443486367994
+TX_QTY_MRCH_XD_WD,TX.QTY.MRCH.XD.WD,Export volume index (2015 = 100),economy,INDEX,Private Sector,2024,138.7
+TX_UVI_MRCH_XD_WD,TX.UVI.MRCH.XD.WD,Export unit value index (2015 = 100),economy,INDEX,Private Sector,2024,133.5
+TX_VAL_FOOD_ZS_UN,TX.VAL.FOOD.ZS.UN,Food exports (% of merchandise exports),economy,PCT,Private Sector,2022,49.3877614636353
+TX_VAL_ICTG_ZS_UN,TX.VAL.ICTG.ZS.UN,ICT goods exports (% of total goods exports),economy,PCT,Infrastructure,2022,0.04
+TX_VAL_INSF_ZS_WT,TX.VAL.INSF.ZS.WT,Insurance and financial services (% of commercial service exports),economy,PCT,Private Sector,2024,0.878058409902876
+TX_VAL_MANF_ZS_UN,TX.VAL.MANF.ZS.UN,Manufactures exports (% of merchandise exports),economy,PCT,Private Sector,2022,47.5151762006836
+TX_VAL_MRCH_AL_ZS,TX.VAL.MRCH.AL.ZS,Merchandise exports to economies in the Arab World (% of total merchandise exports),economy,PCT,Private Sector,2023,0.394979270389195
+TX_VAL_MRCH_CD_WT,TX.VAL.MRCH.CD.WT,Merchandise exports (current US$),economy,USD,Private Sector,2025,2311000000.0
+TX_VAL_MRCH_HI_ZS,TX.VAL.MRCH.HI.ZS,Merchandise exports to high-income economies (% of total merchandise exports),economy,PCT,Private Sector,2023,26.8982159844212
+TX_VAL_MRCH_OR_ZS,TX.VAL.MRCH.OR.ZS,Merchandise exports to low- and middle-income economies outside region (% of total merchandise exports),economy,PCT,Private Sector,2023,2.56540961863563
+TX_VAL_MRCH_R1_ZS,TX.VAL.MRCH.R1.ZS,Merchandise exports to low- and middle-income economies in East Asia & Pacific (% of total merchandise exports),economy,PCT,Private Sector,2023,1.46644663514036
+TX_VAL_MRCH_R2_ZS,TX.VAL.MRCH.R2.ZS,Merchandise exports to low- and middle-income economies in Europe & Central Asia (% of total merchandise exports),economy,PCT,Private Sector,2023,0.921855648336959
+TX_VAL_MRCH_R3_ZS,TX.VAL.MRCH.R3.ZS,Merchandise exports to low- and middle-income economies in Latin America & the Caribbean (% of total merchandise exports),economy,PCT,Private Sector,2023,0.0258332801405682
+TX_VAL_MRCH_R4_ZS,TX.VAL.MRCH.R4.ZS,Merchandise exports to low- and middle-income economies in Middle East & North Africa (% of total merchandise exports),economy,PCT,Private Sector,2023,0.0167394806167737
+TX_VAL_MRCH_R5_ZS,TX.VAL.MRCH.R5.ZS,Merchandise exports to low- and middle-income economies in South Asia (% of total merchandise exports),economy,PCT,Private Sector,2023,70.535324163294
+TX_VAL_MRCH_R6_ZS,TX.VAL.MRCH.R6.ZS,Merchandise exports to low- and middle-income economies in Sub-Saharan Africa (% of total merchandise exports),economy,PCT,Private Sector,2023,0.13453457440097
+TX_VAL_MRCH_RS_ZS,TX.VAL.MRCH.RS.ZS,"Merchandise exports by the reporting economy, residual (% of total merchandise exports)",economy,PCT,Private Sector,2023,0.00105023364924681
+TX_VAL_MRCH_WL_CD,TX.VAL.MRCH.WL.CD,Merchandise exports by the reporting economy (current US$),economy,USD,Private Sector,2023,1207636035.0
+TX_VAL_MRCH_WR_ZS,TX.VAL.MRCH.WR.ZS,Merchandise exports to low- and middle-income economies within region (% of total merchandise exports),economy,PCT,Private Sector,2023,70.535324163294
+TX_VAL_MRCH_XD_WD,TX.VAL.MRCH.XD.WD,Export value index (2015 = 100),economy,INDEX,Private Sector,2024,185.2
+TX_VAL_OTHR_ZS_WT,TX.VAL.OTHR.ZS.WT,"Computer, communications and other services (% of commercial service exports)",economy,PCT,Private Sector,2024,45.8104556339714
+TX_VAL_SERV_CD_WT,TX.VAL.SERV.CD.WT,Commercial service exports (current US$),economy,USD,Private Sector,2024,1653796856.40168
+TX_VAL_TECH_CD,TX.VAL.TECH.CD,High-technology exports (current US$),economy,USD,Private Sector,2022,3815787.0
+TX_VAL_TECH_MF_ZS,TX.VAL.TECH.MF.ZS,High-technology exports (% of manufactured exports),economy,PCT,Private Sector,2022,0.617520704475872
+TX_VAL_TRAN_ZS_WT,TX.VAL.TRAN.ZS.WT,Transport services (% of commercial service exports),economy,PCT,Private Sector,2024,15.1622785441224
+TX_VAL_TRVL_ZS_WT,TX.VAL.TRVL.ZS.WT,Travel services (% of commercial service exports),economy,PCT,Private Sector,2024,38.1492074120034
+VC_BTL_DETH,VC.BTL.DETH,Battle-related deaths (number of people),economy,COUNT,Public Sector,2006,457.0
+VC_IDP_NWCV,VC.IDP.NWCV,"Internally displaced persons, new displacement associated with conflict and violence (number of cases)",economy,COUNT,Public Sector,2017,2.0
+VC_IDP_NWDS,VC.IDP.NWDS,"Internally displaced persons, new displacement associated with disasters (number of cases)",economy,COUNT,Public Sector,2023,110000.0
+VC_IHR_PSRC_P5,VC.IHR.PSRC.P5,"Intentional homicides (per 100,000 people)",economy,PER_100K,Public Sector,2020,2.13004129984372
+HD_HCIP_EDUC_FE,HD_HCIP_EDUC_FE,"Human capital index plus (HCI+): education pillar score, female (scale 0–188)",education,INDEX,,2025,80.8345780884669
+HD_HCIP_EDUC_MA,HD_HCIP_EDUC_MA,"Human capital index plus (HCI+): education pillar score, male (scale 0–188)",education,INDEX,,2025,84.866925554842
+HD_HCIP_EDUC_TO,HD_HCIP_EDUC_TO,"Human capital index plus (HCI+): education pillar score, total (scale 0–188)",education,INDEX,,2025,82.6693919998016
+SE_ADT_1524_LT_FE_ZS,SE.ADT.1524.LT.FE.ZS,"Literacy rate, youth female (% of females ages 15-24)",education,PCT,Education,2019,92.0699996948242
+SE_ADT_1524_LT_FM_ZS,SE.ADT.1524.LT.FM.ZS,"Literacy rate, youth (ages 15-24), gender parity index (GPI)",education,INDEX,Education,2019,0.949999988079071
+SE_ADT_1524_LT_MA_ZS,SE.ADT.1524.LT.MA.ZS,"Literacy rate, youth male (% of males ages 15-24)",education,PCT,Education,2019,96.8099975585938
+SE_ADT_1524_LT_ZS,SE.ADT.1524.LT.ZS,"Literacy rate, youth total (% of people ages 15-24)",education,PCT,Education,2019,94.2399978637695
+SE_ADT_LITR_MA_ZS,SE.ADT.LITR.MA.ZS,"Literacy rate, adult male (% of males ages 15 and above)",education,PCT,Education,2019,79.75
+SE_COM_DURS,SE.COM.DURS,"Compulsory education, duration (years)",education,YEARS,Education,2025,9.0
+SE_ENR_PRIM_FM_ZS,SE.ENR.PRIM.FM.ZS,"School enrollment, primary (gross), gender parity index (GPI)",education,INDEX,Education,2022,0.923407137393951
+SE_ENR_SECO_FM_ZS,SE.ENR.SECO.FM.ZS,"School enrollment, secondary (gross), gender parity index (GPI)",education,INDEX,Education,2022,0.987173140048981
+SE_ENR_TERT_FM_ZS,SE.ENR.TERT.FM.ZS,"School enrollment, tertiary (gross), gender parity index (GPI)",education,INDEX,Education,2024,1.217880072339
+SE_PRE_DURS,SE.PRE.DURS,"Preprimary education, duration (years)",education,YEARS,Education,2025,2.0
+SE_PRE_ENRL_TC_ZS,SE.PRE.ENRL.TC.ZS,"Pupil-teacher ratio, preprimary",education,RATIO,Education,2019,18.60802
+SE_PRE_ENRR,SE.PRE.ENRR,"School enrollment, preprimary (% gross)",education,PCT,Education,2022,93.6980285644531
+SE_PRE_ENRR_FE,SE.PRE.ENRR.FE,"School enrollment, preprimary, female (% gross)",education,PCT,Education,2022,88.079833984375
+SE_PRE_ENRR_MA,SE.PRE.ENRR.MA,"School enrollment, preprimary, male (% gross)",education,PCT,Education,2022,99.1186676025391
+SE_PRE_TCAQ_FE_ZS,SE.PRE.TCAQ.FE.ZS,"Trained teachers in preprimary education, female (% of female teachers)",education,PCT,Education,2025,37.1057346048751
+SE_PRE_TCAQ_MA_ZS,SE.PRE.TCAQ.MA.ZS,"Trained teachers in preprimary education, male (% of male teachers)",education,PCT,Education,2025,65.3939393939394
+SE_PRE_TCAQ_ZS,SE.PRE.TCAQ.ZS,Trained teachers in preprimary education (% of total teachers),education,PCT,Education,2025,37.9258842754476
+SE_PRM_AGES,SE.PRM.AGES,Primary school starting age (years),education,YEARS,Education,2025,5.0
+SE_PRM_CMPT_FE_ZS,SE.PRM.CMPT.FE.ZS,"Primary completion rate, female (% of relevant age group)",education,PCT,Education,2025,108.865183274843
+SE_PRM_CMPT_MA_ZS,SE.PRM.CMPT.MA.ZS,"Primary completion rate, male (% of relevant age group)",education,PCT,Education,2025,109.964875498618
+SE_PRM_CUAT_FE_ZS,SE.PRM.CUAT.FE.ZS,"Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)",education,PCT,Education,2021,36.4118003845215
+SE_PRM_CUAT_MA_ZS,SE.PRM.CUAT.MA.ZS,"Educational attainment, at least completed primary, population 25+ years, male (%) (cumulative)",education,PCT,Education,2021,58.9935607910156
+SE_PRM_CUAT_ZS,SE.PRM.CUAT.ZS,"Educational attainment, at least completed primary, population 25+ years, total (%) (cumulative)",education,PCT,Education,2021,46.3495292663574
+SE_PRM_DURS,SE.PRM.DURS,"Primary education, duration (years)",education,YEARS,Education,2025,5.0
+SE_PRM_ENRL,SE.PRM.ENRL,"Primary education, pupils",education,COUNT,Education,2025,3565348.0
+SE_PRM_ENRL_FE_ZS,SE.PRM.ENRL.FE.ZS,"Primary education, pupils (% female)",education,PCT,Education,2019,50.61224
+SE_PRM_ENRL_TC_ZS,SE.PRM.ENRL.TC.ZS,"Pupil-teacher ratio, primary",education,RATIO,Education,2019,19.74396
+SE_PRM_ENRR_FE,SE.PRM.ENRR.FE,"School enrollment, primary, female (% gross)",education,PCT,Education,2025,126.376475281907
+SE_PRM_ENRR_MA,SE.PRM.ENRR.MA,"School enrollment, primary, male (% gross)",education,PCT,Education,2025,130.594438857329
+SE_PRM_GINT_FE_ZS,SE.PRM.GINT.FE.ZS,"Gross intake ratio in first grade of primary education, female (% of relevant age group)",education,PCT,Education,2019,147.53251
+SE_PRM_GINT_MA_ZS,SE.PRM.GINT.MA.ZS,"Gross intake ratio in first grade of primary education, male (% of relevant age group)",education,PCT,Education,2019,145.69882
+SE_PRM_GINT_ZS,SE.PRM.GINT.ZS,"Gross intake ratio in first grade of primary education, total (% of relevant age group)",education,PCT,Education,2019,146.61605
+SE_PRM_NENR,SE.PRM.NENR,"School enrollment, primary (% net)",education,PCT,Education,2019,96.2984
+SE_PRM_NENR_FE,SE.PRM.NENR.FE,"School enrollment, primary, female (% net)",education,PCT,Education,2004,74.78198
+SE_PRM_NENR_MA,SE.PRM.NENR.MA,"School enrollment, primary, male (% net)",education,PCT,Education,2004,85.96715
+SE_PRM_OENR_FE_ZS,SE.PRM.OENR.FE.ZS,"Over-age students, primary, female (% of female enrollment)",education,PCT,Education,2019,31.1994
+SE_PRM_OENR_MA_ZS,SE.PRM.OENR.MA.ZS,"Over-age students, primary, male (% of male enrollment)",education,PCT,Education,2019,24.64745
+SE_PRM_OENR_ZS,SE.PRM.OENR.ZS,"Over-age students, primary (% of enrollment)",education,PCT,Education,2019,27.96354
+SE_PRM_PRIV_ZS,SE.PRM.PRIV.ZS,"School enrollment, primary, private (% of total primary)",education,PCT,Education,2020,25.3811492919922
+SE_PRM_PRS5_FE_ZS,SE.PRM.PRS5.FE.ZS,"Persistence to grade 5, female (% of cohort)",education,PCT,Education,2016,73.4071426391602
+SE_PRM_PRS5_MA_ZS,SE.PRM.PRS5.MA.ZS,"Persistence to grade 5, male (% of cohort)",education,PCT,Education,2016,73.6872100830078
+SE_PRM_PRS5_ZS,SE.PRM.PRS5.ZS,"Persistence to grade 5, total (% of cohort)",education,PCT,Education,2016,73.5494384765625
+SE_PRM_PRSL_FE_ZS,SE.PRM.PRSL.FE.ZS,"Persistence to last grade of primary, female (% of cohort)",education,PCT,Education,2016,73.4071426391602
+SE_PRM_PRSL_MA_ZS,SE.PRM.PRSL.MA.ZS,"Persistence to last grade of primary, male (% of cohort)",education,PCT,Education,2016,73.6872100830078
+SE_PRM_PRSL_ZS,SE.PRM.PRSL.ZS,"Persistence to last grade of primary, total (% of cohort)",education,PCT,Education,2016,73.5494384765625
+SE_PRM_REPT_FE_ZS,SE.PRM.REPT.FE.ZS,"Repeaters, primary, female (% of female enrollment)",education,PCT,Education,2019,7.33748
+SE_PRM_REPT_MA_ZS,SE.PRM.REPT.MA.ZS,"Repeaters, primary, male (% of male enrollment)",education,PCT,Education,2019,7.85974
+SE_PRM_REPT_ZS,SE.PRM.REPT.ZS,"Repeaters, primary, total (% of total enrollment)",education,PCT,Education,2019,7.59541
+SE_PRM_TCAQ_FE_ZS,SE.PRM.TCAQ.FE.ZS,"Trained teachers in primary education, female (% of female teachers)",education,PCT,Education,2025,95.9989318100015
+SE_PRM_TCAQ_MA_ZS,SE.PRM.TCAQ.MA.ZS,"Trained teachers in primary education, male (% of male teachers)",education,PCT,Education,2025,95.5978634216097
+SE_PRM_TCAQ_ZS,SE.PRM.TCAQ.ZS,Trained teachers in primary education (% of total teachers),education,PCT,Education,2025,95.8172441825018
+SE_PRM_TCHR,SE.PRM.TCHR,"Primary education, teachers",education,COUNT,Education,2025,157456.0
+SE_PRM_TCHR_FE_ZS,SE.PRM.TCHR.FE.ZS,"Primary education, teachers (% female)",education,PCT,Education,2025,54.6990905395793
+SE_PRM_TENR,SE.PRM.TENR,"Adjusted net enrollment rate, primary (% of primary school age children)",education,PCT,Education,2019,96.2984
+SE_PRM_TENR_FE,SE.PRM.TENR.FE,"Adjusted net enrollment rate, primary, female (% of primary school age children)",education,PCT,Education,2004,74.78198
+SE_PRM_TENR_MA,SE.PRM.TENR.MA,"Adjusted net enrollment rate, primary, male (% of primary school age children)",education,PCT,Education,2004,85.96715
+SE_PRM_UNER,SE.PRM.UNER,"Children out of school, primary",education,COUNT,Education,2025,21146.0
+SE_PRM_UNER_FE,SE.PRM.UNER.FE,"Children out of school, primary, female",education,COUNT,Education,2025,19465.0
+SE_PRM_UNER_FE_ZS,SE.PRM.UNER.FE.ZS,"Children out of school, female (% of female primary school age)",education,PCT,Education,2025,1.45426915597102
+SE_PRM_UNER_MA,SE.PRM.UNER.MA,"Children out of school, primary, male",education,COUNT,Education,2025,1681.0
+SE_PRM_UNER_MA_ZS,SE.PRM.UNER.MA.ZS,"Children out of school, male (% of male primary school age)",education,PCT,Education,2025,0.117155184970683
+SE_PRM_UNER_ZS,SE.PRM.UNER.ZS,Children out of school (% of primary school age),education,PCT,Education,2025,0.762479077438538
+SE_SEC_AGES,SE.SEC.AGES,Lower secondary school starting age (years),education,YEARS,Education,2025,10.0
+SE_SEC_CMPT_LO_FE_ZS,SE.SEC.CMPT.LO.FE.ZS,"Lower secondary completion rate, female (% of relevant age group)",education,PCT,Education,2025,101.349698579379
+SE_SEC_CMPT_LO_MA_ZS,SE.SEC.CMPT.LO.MA.ZS,"Lower secondary completion rate, male (% of relevant age group)",education,PCT,Education,2025,95.3446529074318
+SE_SEC_CMPT_LO_ZS,SE.SEC.CMPT.LO.ZS,"Lower secondary completion rate, total (% of relevant age group)",education,PCT,Education,2025,98.2485856922627
+SE_SEC_CUAT_LO_FE_ZS,SE.SEC.CUAT.LO.FE.ZS,"Educational attainment, at least completed lower secondary, population 25+, female (%) (cumulative)",education,PCT,Education,2021,26.5851192474365
+SE_SEC_CUAT_LO_MA_ZS,SE.SEC.CUAT.LO.MA.ZS,"Educational attainment, at least completed lower secondary, population 25+, male (%) (cumulative)",education,PCT,Education,2021,43.1910285949707
+SE_SEC_CUAT_LO_ZS,SE.SEC.CUAT.LO.ZS,"Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)",education,PCT,Education,2021,33.893009185791
+SE_SEC_CUAT_PO_FE_ZS,SE.SEC.CUAT.PO.FE.ZS,"Educational attainment, at least completed post-secondary, population 25+, female (%) (cumulative)",education,PCT,Education,2017,7.83999798536847
+SE_SEC_CUAT_PO_MA_ZS,SE.SEC.CUAT.PO.MA.ZS,"Educational attainment, at least completed post-secondary, population 25+, male (%) (cumulative)",education,PCT,Education,2017,16.591737227824
+SE_SEC_CUAT_PO_ZS,SE.SEC.CUAT.PO.ZS,"Educational attainment, at least completed post-secondary, population 25+, total (%) (cumulative)",education,PCT,Education,2017,11.7101145889809
+SE_SEC_CUAT_UP_FE_ZS,SE.SEC.CUAT.UP.FE.ZS,"Educational attainment, at least completed upper secondary, population 25+, female (%) (cumulative)",education,PCT,Education,2021,10.0255298614502
+SE_SEC_CUAT_UP_MA_ZS,SE.SEC.CUAT.UP.MA.ZS,"Educational attainment, at least completed upper secondary, population 25+, male (%) (cumulative)",education,PCT,Education,2021,16.4417991638184
+SE_SEC_CUAT_UP_ZS,SE.SEC.CUAT.UP.ZS,"Educational attainment, at least completed upper secondary, population 25+, total (%) (cumulative)",education,PCT,Education,2021,12.8491897583008
+SE_SEC_DURS,SE.SEC.DURS,"Secondary education, duration (years)",education,YEARS,Education,2025,7.0
+SE_SEC_ENRL,SE.SEC.ENRL,"Secondary education, pupils",education,COUNT,Education,2024,3668708.0
+SE_SEC_ENRL_FE_ZS,SE.SEC.ENRL.FE.ZS,"Secondary education, pupils (% female)",education,PCT,Education,2019,51.43063
+SE_SEC_ENRL_GC,SE.SEC.ENRL.GC,"Secondary education, general pupils",education,COUNT,Education,2019,3421508.0
+SE_SEC_ENRL_GC_FE_ZS,SE.SEC.ENRL.GC.FE.ZS,"Secondary education, general pupils (% female)",education,PCT,Education,2019,51.43375
+SE_SEC_ENRL_LO_TC_ZS,SE.SEC.ENRL.LO.TC.ZS,"Pupil-teacher ratio, lower secondary",education,RATIO,Education,2019,31.99445
+SE_SEC_ENRL_TC_ZS,SE.SEC.ENRL.TC.ZS,"Pupil-teacher ratio, secondary",education,RATIO,Education,2019,28.2567
+SE_SEC_ENRL_UP_TC_ZS,SE.SEC.ENRL.UP.TC.ZS,"Pupil-teacher ratio, upper secondary",education,RATIO,Education,2019,24.86179
+SE_SEC_ENRL_VO,SE.SEC.ENRL.VO,"Secondary education, vocational pupils",education,COUNT,Education,2019,42255.0
+SE_SEC_ENRL_VO_FE_ZS,SE.SEC.ENRL.VO.FE.ZS,"Secondary education, vocational pupils (% female)",education,PCT,Education,2019,51.17738
+SE_SEC_ENRR,SE.SEC.ENRR,"School enrollment, secondary (% gross)",education,PCT,Education,2024,90.3878462155916
+SE_SEC_ENRR_FE,SE.SEC.ENRR.FE,"School enrollment, secondary, female (% gross)",education,PCT,Education,2024,90.8899312933145
+SE_SEC_ENRR_MA,SE.SEC.ENRR.MA,"School enrollment, secondary, male (% gross)",education,PCT,Education,2024,89.9105218740328
+SE_SEC_NENR,SE.SEC.NENR,"School enrollment, secondary (% net)",education,PCT,Education,2019,61.87253
+SE_SEC_NENR_FE,SE.SEC.NENR.FE,"School enrollment, secondary, female (% net)",education,PCT,Education,2019,62.81848
+SE_SEC_NENR_MA,SE.SEC.NENR.MA,"School enrollment, secondary, male (% net)",education,PCT,Education,2019,60.93904
+SE_SEC_PRIV_ZS,SE.SEC.PRIV.ZS,"School enrollment, secondary, private (% of total secondary)",education,PCT,Education,2020,23.7736797332764
+SE_SEC_PROG_FE_ZS,SE.SEC.PROG.FE.ZS,"Progression to secondary school, female (%)",education,PCT,Education,2016,80.77195
+SE_SEC_PROG_MA_ZS,SE.SEC.PROG.MA.ZS,"Progression to secondary school, male (%)",education,PCT,Education,2016,84.06958
+SE_SEC_PROG_ZS,SE.SEC.PROG.ZS,Progression to secondary school (%),education,PCT,Education,2016,82.38135
+SE_SEC_TCAQ_FE_ZS,SE.SEC.TCAQ.FE.ZS,"Trained teachers in secondary education, female (% of female teachers)",education,PCT,Education,2025,96.7324162215392
+SE_SEC_TCAQ_LO_FE_ZS,SE.SEC.TCAQ.LO.FE.ZS,"Trained teachers in lower secondary education, female (% of female teachers)",education,PCT,Education,2025,97.5184197441577
+SE_SEC_TCAQ_LO_MA_ZS,SE.SEC.TCAQ.LO.MA.ZS,"Trained teachers in lower secondary education, male (% of male teachers)",education,PCT,Education,2025,96.9987559610201
+SE_SEC_TCAQ_LO_ZS,SE.SEC.TCAQ.LO.ZS,Trained teachers in lower secondary education (% of total teachers),education,PCT,Education,2025,97.188133164215
+SE_SEC_TCAQ_MA_ZS,SE.SEC.TCAQ.MA.ZS,"Trained teachers in secondary education, male (% of male teachers)",education,PCT,Education,2025,97.695766204571
+SE_SEC_TCAQ_UP_FE_ZS,SE.SEC.TCAQ.UP.FE.ZS,"Trained teachers in upper secondary education, female (% of female teachers)",education,PCT,Education,2025,95.2054794520548
+SE_SEC_TCAQ_UP_MA_ZS,SE.SEC.TCAQ.UP.MA.ZS,"Trained teachers in upper secondary education, male (% of male teachers)",education,PCT,Education,2025,98.211341589663
+SE_SEC_TCAQ_UP_ZS,SE.SEC.TCAQ.UP.ZS,Trained teachers in upper secondary education (% of total teachers),education,PCT,Education,2025,97.6726986624705
+SE_SEC_TCAQ_ZS,SE.SEC.TCAQ.ZS,Trained teachers in secondary education (% of total teachers),education,PCT,Education,2025,97.4359593423308
+SE_SEC_TCHR,SE.SEC.TCHR,"Secondary education, teachers",education,COUNT,Education,2025,124257.0
+SE_SEC_TCHR_FE,SE.SEC.TCHR.FE,"Secondary education, teachers, female",education,COUNT,Education,2025,33511.0
+SE_SEC_TCHR_FE_ZS,SE.SEC.TCHR.FE.ZS,"Secondary education, teachers (% female)",education,PCT,Education,2025,26.9691043562938
+SE_SEC_UNER_LO_FE_ZS,SE.SEC.UNER.LO.FE.ZS,"Adolescents out of school, female (% of female lower secondary school age)",education,PCT,Education,2024,4.807836936654
+SE_SEC_UNER_LO_MA_ZS,SE.SEC.UNER.LO.MA.ZS,"Adolescents out of school, male (% of male lower secondary school age)",education,PCT,Education,2024,4.34810944435081
+SE_SEC_UNER_LO_ZS,SE.SEC.UNER.LO.ZS,Adolescents out of school (% of lower secondary school age),education,PCT,Education,2025,0.676011133162421
+SE_TER_CUAT_BA_FE_ZS,SE.TER.CUAT.BA.FE.ZS,"Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative)",education,PCT,Education,2017,3.51821562249797
+SE_TER_CUAT_BA_MA_ZS,SE.TER.CUAT.BA.MA.ZS,"Educational attainment, at least Bachelor's or equivalent, population 25+, male (%) (cumulative)",education,PCT,Education,2017,8.72072623194252
+SE_TER_CUAT_BA_ZS,SE.TER.CUAT.BA.ZS,"Educational attainment, at least Bachelor's or equivalent, population 25+, total (%) (cumulative)",education,PCT,Education,2017,5.81882377960664
+SE_TER_CUAT_MS_FE_ZS,SE.TER.CUAT.MS.FE.ZS,"Educational attainment, at least Master's or equivalent, population 25+, female (%) (cumulative)",education,PCT,Education,2017,0.946150848565936
+SE_TER_CUAT_MS_MA_ZS,SE.TER.CUAT.MS.MA.ZS,"Educational attainment, at least Master's or equivalent, population 25+, male (%) (cumulative)",education,PCT,Education,2017,2.76001191016226
+SE_TER_CUAT_MS_ZS,SE.TER.CUAT.MS.ZS,"Educational attainment, at least Master's or equivalent, population 25+, total (%) (cumulative)",education,PCT,Education,2017,1.74826041977848
+SE_TER_CUAT_ST_FE_ZS,SE.TER.CUAT.ST.FE.ZS,"Educational attainment, at least completed short-cycle tertiary, population 25+, female (%) (cumulative)",education,PCT,Education,2017,3.51821562249797
+SE_TER_CUAT_ST_MA_ZS,SE.TER.CUAT.ST.MA.ZS,"Educational attainment, at least completed short-cycle tertiary, population 25+, male (%) (cumulative)",education,PCT,Education,2017,8.72072623194252
+SE_TER_CUAT_ST_ZS,SE.TER.CUAT.ST.ZS,"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)",education,PCT,Education,2017,5.81882377960664
+SE_TER_ENRL_TC_ZS,SE.TER.ENRL.TC.ZS,"Pupil-teacher ratio, tertiary",education,RATIO,Education,2013,60.00969
+SE_TER_ENRR,SE.TER.ENRR,"School enrollment, tertiary (% gross)",education,PCT,Education,2024,21.2915596292014
+SE_TER_ENRR_FE,SE.TER.ENRR.FE,"School enrollment, tertiary, female (% gross)",education,PCT,Education,2024,23.8673282040859
+SE_TER_ENRR_MA,SE.TER.ENRR.MA,"School enrollment, tertiary, male (% gross)",education,PCT,Education,2024,18.6671130084409
+SE_TER_TCHR_FE_ZS,SE.TER.TCHR.FE.ZS,"Tertiary education, academic staff (% female)",education,PCT,Education,2024,31.2531037907631
+SE_XPD_CPRM_ZS,SE.XPD.CPRM.ZS,"Current education expenditure, primary (% of total expenditure in primary public institutions)",education,PCT,Education,2015,90.6073684692383
+SE_XPD_CSEC_ZS,SE.XPD.CSEC.ZS,"Current education expenditure, secondary (% of total expenditure in secondary public institutions)",education,PCT,Education,2015,89.925422668457
+SE_XPD_CTER_ZS,SE.XPD.CTER.ZS,"Current education expenditure, tertiary (% of total expenditure in tertiary public institutions)",education,PCT,Education,2015,82.3888778686523
+SE_XPD_CTOT_ZS,SE.XPD.CTOT.ZS,"Current education expenditure, total (% of total expenditure in public institutions)",education,PCT,Education,2015,89.0256271362305
+SE_XPD_PRIM_PC_ZS,SE.XPD.PRIM.PC.ZS,"Government expenditure per student, primary (% of GDP per capita)",education,PCT,Education,2015,12.35956
+SE_XPD_PRIM_ZS,SE.XPD.PRIM.ZS,Expenditure on primary education (% of government expenditure on education),education,PCT,Education,2015,53.77015
+SE_XPD_SECO_PC_ZS,SE.XPD.SECO.PC.ZS,"Government expenditure per student, secondary (% of GDP per capita)",education,PCT,Education,2015,10.45324
+SE_XPD_SECO_ZS,SE.XPD.SECO.ZS,Expenditure on secondary education (% of government expenditure on education),education,PCT,Education,2015,33.31876
+SE_XPD_TERT_PC_ZS,SE.XPD.TERT.PC.ZS,"Government expenditure per student, tertiary (% of GDP per capita)",education,PCT,Education,2015,24.16269
+SE_XPD_TERT_ZS,SE.XPD.TERT.ZS,Expenditure on tertiary education (% of government expenditure on education),education,PCT,Education,2015,10.79779
+SE_XPD_TOTL_GB_ZS,SE.XPD.TOTL.GB.ZS,"Government expenditure on education, total (% of government expenditure)",education,PCT,Education,2025,10.7512308373767
+SE_XPD_TOTL_GD_ZS,SE.XPD.TOTL.GD.ZS,"Government expenditure on education, total (% of GDP)",education,PCT,Education,2024,3.68849173764595
+SH_DTH_0509,SH.DTH.0509,Number of deaths ages 5-9 years,education,COUNT,Education,2024,1304.0
+SH_DTH_1014,SH.DTH.1014,Number of deaths ages 10-14 years,education,COUNT,Education,2024,1167.0
+SH_DTH_1519,SH.DTH.1519,Number of deaths ages 15-19 years,education,COUNT,Education,2024,2269.0
+SH_DTH_2024,SH.DTH.2024,Number of deaths ages 20-24 years,education,COUNT,Education,2024,3188.0
+SH_DYN_0509,SH.DYN.0509,"Probability of dying among children ages 5-9 years (per 1,000)",education,PER_1000,Education,2024,2.3
+SH_DYN_1014,SH.DYN.1014,"Probability of dying among adolescents ages 10-14 years (per 1,000)",education,PER_1000,Education,2024,2.0
+SH_DYN_1519,SH.DYN.1519,"Probability of dying among adolescents ages 15-19 years (per 1,000)",education,PER_1000,Education,2024,3.9
+SH_DYN_2024,SH.DYN.2024,"Probability of dying among youth ages 20-24 years (per 1,000)",education,PER_1000,Education,2024,5.5
+SL_TLF_TOTL_FE_ZS,SL.TLF.TOTL.FE.ZS,"Labor force, female (% of total labor force)",education,PCT,Education,2025,37.6010551540401
+SL_TLF_TOTL_IN,SL.TLF.TOTL.IN,"Labor force, total",education,COUNT,Education,2025,8362760.0
+SL_UEM_TOTL_FE_ZS,SL.UEM.TOTL.FE.ZS,"Unemployment, female (% of female labor force) (modeled ILO estimate)",education,PCT,Education,2025,11.819
+SL_UEM_TOTL_MA_ZS,SL.UEM.TOTL.MA.ZS,"Unemployment, male (% of male labor force) (modeled ILO estimate)",education,PCT,Education,2025,9.65
+AG_LND_EL5M_UR_K2,AG.LND.EL5M.UR.K2,Urban land area where elevation is below 5 meters (sq. km),environment,SQ_KM,Climate Change,2015,0.0
+AG_LND_EL5M_UR_ZS,AG.LND.EL5M.UR.ZS,Urban land area where elevation is below 5 meters (% of total land area),environment,PCT,Climate Change,2015,0.0
+AG_LND_EL5M_ZS,AG.LND.EL5M.ZS,Land area where elevation is below 5 meters (% of total land area),environment,PCT,Climate Change,2015,0.0
+AG_LND_TOTL_UR_K2,AG.LND.TOTL.UR.K2,Urban land area (sq. km),environment,SQ_KM,Urban Development,2015,3041.754743167
+EG_CFT_ACCS_RU_ZS,EG.CFT.ACCS.RU.ZS,"Access to clean fuels and technologies for cooking, rural (% of rural population)",environment,PCT,Environment,2023,25.7
+EG_CFT_ACCS_UR_ZS,EG.CFT.ACCS.UR.ZS,"Access to clean fuels and technologies for cooking, urban (% of urban population)",environment,PCT,Environment,2023,62.4
+EG_CFT_ACCS_ZS,EG.CFT.ACCS.ZS,Access to clean fuels and technologies for cooking (% of population),environment,PCT,Environment,2023,42.7
+EG_EGY_PRIM_PP_KD,EG.EGY.PRIM.PP.KD,Energy intensity level of primary energy (MJ/$2021 PPP GDP),environment,USD_PPP,Energy & Mining,2021,5.63
+EG_ELC_ACCS_UR_ZS,EG.ELC.ACCS.UR.ZS,"Access to electricity, urban (% of urban population)",environment,PCT,Energy & Mining,2024,99.7
+EG_ELC_COAL_ZS,EG.ELC.COAL.ZS,Electricity production from coal sources (% of total),environment,PCT,Energy & Mining,2021,0.000414336026517506
+EG_ELC_FOSL_ZS,EG.ELC.FOSL.ZS,"Electricity production from oil, gas and coal sources (% of total)",environment,PCT,Energy & Mining,2022,0.0
+EG_ELC_HYRO_ZS,EG.ELC.HYRO.ZS,Electricity production from hydroelectric sources (% of total),environment,PCT,Energy & Mining,2023,99.0928407976463
+EG_ELC_LOSS_ZS,EG.ELC.LOSS.ZS,Electric power transmission and distribution losses (% of output),environment,PCT,Energy & Mining,2023,14.4083033671134
+EG_ELC_NGAS_ZS,EG.ELC.NGAS.ZS,Electricity production from natural gas sources (% of total),environment,PCT,Energy & Mining,2021,0.0
+EG_ELC_NUCL_ZS,EG.ELC.NUCL.ZS,Electricity production from nuclear sources (% of total),environment,PCT,Energy & Mining,2021,0.0
+EG_ELC_PETR_ZS,EG.ELC.PETR.ZS,Electricity production from oil sources (% of total),environment,PCT,Energy & Mining,2022,0.0
+EG_ELC_RNEW_ZS,EG.ELC.RNEW.ZS,Renewable electricity output (% of total electricity output),environment,PCT,Energy & Mining,2021,83.9765900145018
+EG_ELC_RNWX_KH,EG.ELC.RNWX.KH,"Electricity production from renewable sources, excluding hydroelectric (kWh)",environment,KWH,Energy & Mining,2021,-1459900000.0
+EG_ELC_RNWX_ZS,EG.ELC.RNWX.ZS,"Electricity production from renewable sources, excluding hydroelectric (% of total)",environment,PCT,Energy & Mining,2021,-15.1222291278227
+EG_FEC_RNEW_ZS,EG.FEC.RNEW.ZS,Renewable energy consumption (% of total final energy consumption),environment,PCT,Energy & Mining,2021,73.7
+EG_GDP_PUSE_KO_PP,EG.GDP.PUSE.KO.PP,GDP per unit of energy use (PPP $ per kg of oil equivalent),environment,USD_PPP,Energy & Mining,2023,12.198506853097
+EG_GDP_PUSE_KO_PP_KD,EG.GDP.PUSE.KO.PP.KD,GDP per unit of energy use (constant 2021 PPP $ per kg of oil equivalent),environment,USD_PPP,Energy & Mining,2023,10.9821369211742
+EG_IMP_CONS_ZS,EG.IMP.CONS.ZS,"Energy imports, net (% of energy use)",environment,PCT,Energy & Mining,2022,27.4137248718471
+EG_USE_COMM_CL_ZS,EG.USE.COMM.CL.ZS,Alternative and nuclear energy (% of total energy use),environment,PCT,Energy & Mining,2023,8.96
+EG_USE_COMM_FO_ZS,EG.USE.COMM.FO.ZS,Fossil fuel energy consumption (% of total),environment,PCT,Energy & Mining,2023,0.0
+EG_USE_COMM_GD_PP_KD,EG.USE.COMM.GD.PP.KD,"Energy use (kg of oil equivalent) per $1,000 GDP (constant 2021 PPP)",environment,USD_PPP,Energy & Mining,2023,91.0569597863911
+EG_USE_CRNW_ZS,EG.USE.CRNW.ZS,Combustible renewables and waste (% of total energy),environment,PCT,Energy & Mining,2023,64.6385317766774
+EG_USE_ELEC_KH_PC,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),environment,KWH_PER_CAPITA,Energy & Mining,2023,350.972738692613
+EG_USE_PCAP_KG_OE,EG.USE.PCAP.KG.OE,Energy use (kg of oil equivalent per capita),environment,KG_OE_PER_CAPITA,Energy & Mining,2023,442.648852285229
+EN_ATM_PM25_MC_M3,EN.ATM.PM25.MC.M3,"PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)",environment,UG_PER_M3,Urban Development,2023,53.2003436952498
+EN_ATM_PM25_MC_T1_ZS,EN.ATM.PM25.MC.T1.ZS,"PM2.5 pollution, population exposed to levels exceeding WHO Interim Target-1 value (% of total)",environment,PCT,Environment,2017,99.9594563410929
+EN_ATM_PM25_MC_T2_ZS,EN.ATM.PM25.MC.T2.ZS,"PM2.5 pollution, population exposed to levels exceeding WHO Interim Target-2 value (% of total)",environment,PCT,Environment,2017,99.9999999232063
+EN_ATM_PM25_MC_T3_ZS,EN.ATM.PM25.MC.T3.ZS,"PM2.5 pollution, population exposed to levels exceeding WHO Interim Target-3 value (% of total)",environment,PCT,Environment,2017,100.0
+EN_ATM_PM25_MC_ZS,EN.ATM.PM25.MC.ZS,"PM2.5 air pollution, population exposed to levels exceeding WHO guideline value (% of total)",environment,PCT,Urban Development,2017,100.0
+EN_BIR_THRD_NO,EN.BIR.THRD.NO,"Bird species, threatened",environment,COUNT,Environment,2022,38.0
+EN_CLC_DRSK_XQ,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),environment,SCORE,Climate Change,2011,2.75
+EN_CLC_MDAT_ZS,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temperatures (% of population, average 1990-2009)",environment,PCT,Climate Change,2009,0.703796514298647
+EN_FSH_THRD_NO,EN.FSH.THRD.NO,"Fish species, threatened",environment,COUNT,Environment,2022,11.0
+EN_GHG_ALL_LU_MT_CE_AR5,EN.GHG.ALL.LU.MT.CE.AR5,Total greenhouse gas emissions including LULUCF (Mt CO2e),environment,MT_CO2E,Environment,2023,25.884
+EN_GHG_ALL_MT_CE_AR5,EN.GHG.ALL.MT.CE.AR5,Total greenhouse gas emissions excluding LULUCF (Mt CO2e),environment,MT_CO2E,Environment,2024,41.4682
+EN_GHG_ALL_PC_CE_AR5,EN.GHG.ALL.PC.CE.AR5,Total greenhouse gas emissions excluding LULUCF per capita (t CO2e/capita),environment,MT_CO2E,Environment,2024,1.39854050382155
+EN_GHG_CH4_AG_MT_CE_AR5,EN.GHG.CH4.AG.MT.CE.AR5,Methane (CH4) emissions from Agriculture (Mt CO2e),environment,MT_CO2E,Environment,2024,15.1953
+EN_GHG_CH4_BU_MT_CE_AR5,EN.GHG.CH4.BU.MT.CE.AR5,Methane (CH4) emissions from Building (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,3.2059
+EN_GHG_CH4_FE_MT_CE_AR5,EN.GHG.CH4.FE.MT.CE.AR5,Methane (CH4) emissions from Fugitive Emissions (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0608
+EN_GHG_CH4_IC_MT_CE_AR5,EN.GHG.CH4.IC.MT.CE.AR5,Methane (CH4) emissions from Industrial Combustion (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0611
+EN_GHG_CH4_MT_CE_AR5,EN.GHG.CH4.MT.CE.AR5,Methane (CH4) emissions (total) excluding LULUCF (Mt CO2e),environment,MT_CO2E,Environment,2024,20.5946
+EN_GHG_CH4_PI_MT_CE_AR5,EN.GHG.CH4.PI.MT.CE.AR5,Methane (CH4) emissions from Power Industry (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0
+EN_GHG_CH4_TR_MT_CE_AR5,EN.GHG.CH4.TR.MT.CE.AR5,Methane (CH4) emissions from Transport (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0256
+EN_GHG_CH4_WA_MT_CE_AR5,EN.GHG.CH4.WA.MT.CE.AR5,Methane (CH4) emissions from Waste (Mt CO2e),environment,MT_CO2E,Environment,2024,2.0458
+EN_GHG_CH4_ZG_AR5,EN.GHG.CH4.ZG.AR5,Methane (CH4) emissions (total) excluding LULUCF (% change from 1990),environment,PCT,Environment,2024,10.0809253498391
+EN_GHG_CO2_AG_MT_CE_AR5,EN.GHG.CO2.AG.MT.CE.AR5,Carbon dioxide (CO2) emissions from Agriculture (Mt CO2e),environment,MT_CO2E,Environment,2024,0.087
+EN_GHG_CO2_BU_MT_CE_AR5,EN.GHG.CO2.BU.MT.CE.AR5,Carbon dioxide (CO2) emissions from Building (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,2.1224
+EN_GHG_CO2_FE_MT_CE_AR5,EN.GHG.CO2.FE.MT.CE.AR5,Carbon dioxide (CO2) emissions from Fugitive Emissions (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0001
+EN_GHG_CO2_IC_MT_CE_AR5,EN.GHG.CO2.IC.MT.CE.AR5,Carbon dioxide (CO2) emissions from Industrial Combustion (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,6.442
+EN_GHG_CO2_IP_MT_CE_AR5,EN.GHG.CO2.IP.MT.CE.AR5,Carbon dioxide (CO2) emissions from Industrial Processes (Mt CO2e),environment,MT_CO2E,Environment,2024,2.1986
+EN_GHG_CO2_LU_DF_MT_CE_AR5,EN.GHG.CO2.LU.DF.MT.CE.AR5,Carbon dioxide (CO2) net fluxes from LULUCF - Deforestation (Mt CO2e),environment,MT_CO2E,Environment,2023,0.0
+EN_GHG_CO2_LU_FL_MT_CE_AR5,EN.GHG.CO2.LU.FL.MT.CE.AR5,Carbon dioxide (CO2) net fluxes from LULUCF - Forest Land (Mt CO2e),environment,MT_CO2E,Environment,2023,-16.232
+EN_GHG_CO2_LU_MT_CE_AR5,EN.GHG.CO2.LU.MT.CE.AR5,Carbon dioxide (CO2) net fluxes from LULUCF - Total excluding non-tropical fires (Mt CO2e),environment,MT_CO2E,Environment,2023,-16.232
+EN_GHG_CO2_LU_OL_MT_CE_AR5,EN.GHG.CO2.LU.OL.MT.CE.AR5,Carbon dioxide (CO2) net fluxes from LULUCF - Other Land (Mt CO2e),environment,MT_CO2E,Environment,2020,0.0
+EN_GHG_CO2_LU_OS_MT_CE_AR5,EN.GHG.CO2.LU.OS.MT.CE.AR5,Carbon dioxide (CO2) net fluxes from LULUCF - Organic Soil (Mt CO2e),environment,MT_CO2E,Environment,2020,0.0
+EN_GHG_CO2_MT_CE_AR5,EN.GHG.CO2.MT.CE.AR5,Carbon dioxide (CO2) emissions (total) excluding LULUCF (Mt CO2e),environment,MT_CO2E,Environment,2024,15.8919
+EN_GHG_CO2_PC_CE_AR5,EN.GHG.CO2.PC.CE.AR5,Carbon dioxide (CO2) emissions excluding LULUCF per capita (t CO2e/capita),environment,MT_CO2E,Environment,2024,0.535964084109792
+EN_GHG_CO2_PI_MT_CE_AR5,EN.GHG.CO2.PI.MT.CE.AR5,Carbon dioxide (CO2) emissions from Power Industry (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0
+EN_GHG_CO2_RT_GDP_KD,EN.GHG.CO2.RT.GDP.KD,Carbon intensity of GDP (kg CO2e per constant 2015 US$ of GDP),environment,USD,Environment,2024,0.454224175700975
+EN_GHG_CO2_RT_GDP_PP_KD,EN.GHG.CO2.RT.GDP.PP.KD,Carbon intensity of GDP (kg CO2e per 2021 PPP $ of GDP),environment,USD_PPP,Environment,2024,0.106185656694328
+EN_GHG_CO2_TR_MT_CE_AR5,EN.GHG.CO2.TR.MT.CE.AR5,Carbon dioxide (CO2) emissions from Transport (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,5.0417
+EN_GHG_CO2_ZG_AR5,EN.GHG.CO2.ZG.AR5,Carbon dioxide (CO2) emissions (total) excluding LULUCF (% change from 1990),environment,PCT,Environment,2024,1360.1157662624
+EN_GHG_N2O_AG_MT_CE_AR5,EN.GHG.N2O.AG.MT.CE.AR5,Nitrous oxide (N2O) emissions from Agriculture (Mt CO2e),environment,MT_CO2E,Environment,2024,3.3327
+EN_GHG_N2O_BU_MT_CE_AR5,EN.GHG.N2O.BU.MT.CE.AR5,Nitrous oxide (N2O) emissions from Building (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.5681
+EN_GHG_N2O_FE_MT_CE_AR5,EN.GHG.N2O.FE.MT.CE.AR5,Nitrous oxide (N2O) emissions from Fugitive Emissions (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0003
+EN_GHG_N2O_IC_MT_CE_AR5,EN.GHG.N2O.IC.MT.CE.AR5,Nitrous oxide (N2O) emissions from Industrial Combustion (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0846
+EN_GHG_N2O_IP_MT_CE_AR5,EN.GHG.N2O.IP.MT.CE.AR5,Nitrous oxide (N2O) emissions from Industrial Processes (Mt CO2e),environment,MT_CO2E,Environment,2024,0.4671
+EN_GHG_N2O_MT_CE_AR5,EN.GHG.N2O.MT.CE.AR5,Nitrous oxide (N2O) emissions (total) excluding LULUCF (Mt CO2e),environment,MT_CO2E,Environment,2024,4.9818
+EN_GHG_N2O_PI_MT_CE_AR5,EN.GHG.N2O.PI.MT.CE.AR5,Nitrous oxide (N2O) emissions from Power Industry (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0
+EN_GHG_N2O_TR_MT_CE_AR5,EN.GHG.N2O.TR.MT.CE.AR5,Nitrous oxide (N2O) emissions from Transport (Energy) (Mt CO2e),environment,MT_CO2E,Environment,2024,0.0813
+EN_GHG_N2O_WA_MT_CE_AR5,EN.GHG.N2O.WA.MT.CE.AR5,Nitrous oxide (N2O) emissions from Waste (Mt CO2e),environment,MT_CO2E,Environment,2024,0.4477
+EN_GHG_N2O_ZG_AR5,EN.GHG.N2O.ZG.AR5,Nitrous oxide (N2O) emissions (total) excluding LULUCF (% change from 1990),environment,PCT,Environment,2024,51.0002424830262
+EN_GHG_TOT_ZG_AR5,EN.GHG.TOT.ZG.AR5,Total greenhouse gas emissions excluding LULUCF (% change from 1990),environment,PCT,Environment,2024,79.545552948104
+EN_HPT_THRD_NO,EN.HPT.THRD.NO,"Plant species (higher), threatened",environment,COUNT,Environment,2022,24.0
+EN_MAM_THRD_NO,EN.MAM.THRD.NO,"Mammal species, threatened",environment,COUNT,Environment,2022,30.0
+EN_POP_EL5M_UR_ZS,EN.POP.EL5M.UR.ZS,Urban population living in areas where elevation is below 5 meters (% of total population),environment,PCT,Climate Change,2015,0.0
+EN_POP_EL5M_ZS,EN.POP.EL5M.ZS,Population living in areas where elevation is below 5 meters (% of total population),environment,PCT,Climate Change,2015,0.0
+EN_URB_LCTY,EN.URB.LCTY,Population in largest city,environment,PERSONS,Urban Development,2025,1672903.0
+EN_URB_LCTY_UR_ZS,EN.URB.LCTY.UR.ZS,Population in the largest city (% of urban population),environment,PCT,Urban Development,2025,8.43028428435864
+EN_URB_MCTY,EN.URB.MCTY,Population in urban agglomerations of more than 1 million,environment,PERSONS,Urban Development,2025,1672903.0
+EN_URB_MCTY_TL_ZS,EN.URB.MCTY.TL.ZS,Population in urban agglomerations of more than 1 million (% of total population),environment,PCT,Climate Change,2025,5.64824206588683
+ER_FSH_AQUA_MT,ER.FSH.AQUA.MT,Aquaculture production (metric tons),environment,METRIC_TONS,Environment,2024,102403.0
+ER_FSH_CAPT_MT,ER.FSH.CAPT.MT,Capture fisheries production (metric tons),environment,METRIC_TONS,Environment,2024,21000.0
+ER_FSH_PROD_MT,ER.FSH.PROD.MT,Total fisheries production (metric tons),environment,METRIC_TONS,Environment,2024,123403.0
+ER_GDP_FWTL_M3_KD,ER.GDP.FWTL.M3.KD,"Water productivity, total (constant 2015 US$ GDP per cubic meter of total freshwater withdrawal)",environment,USD,Environment,2022,3.48419634883389
+ER_H2O_FWTL_K3,ER.H2O.FWTL.K3,"Annual freshwater withdrawals, total (billion cubic meters)",environment,BILLION_M3,Climate Change,2022,9.4971
+ER_H2O_FWTL_ZS,ER.H2O.FWTL.ZS,"Annual freshwater withdrawals, total (% of internal resources)",environment,PCT,Climate Change,2022,4.79167507568113
+ER_LND_PTLD_ZS,ER.LND.PTLD.ZS,Terrestrial protected areas (% of total land area),environment,PCT,Climate Change,2025,23.6
+ER_PTD_TOTL_ZS,ER.PTD.TOTL.ZS,Terrestrial and marine protected areas (% of total territorial area),environment,PCT,Climate Change,2025,23.6
+IC_ELC_DURS,IC.ELC.DURS,Time to obtain an electrical connection (days),environment,DAYS,Energy & Mining,2023,20.34823036
+IC_FRM_BNKS_ZS,IC.FRM.BNKS.ZS,Firms using banks to finance investment (% of firms),environment,PCT,Energy & Mining,2023,33.4204483
+IC_FRM_OUTG_ZS,IC.FRM.OUTG.ZS,Value lost due to electrical outages (% of sales for affected firms),environment,PCT,Energy & Mining,2023,1.0
+IE_PPI_ENGY_CD,IE.PPI.ENGY.CD,Investment in energy with private participation (current US$),environment,USD,Energy & Mining,2022,858740000.0
+IQ_CPA_PUBS_XQ,IQ.CPA.PUBS.XQ,CPIA public sector management and institutions cluster average (1=low to 6=high),environment,SCORE,Climate Change,2025,2.8
+NY_GDP_COAL_RT_ZS,NY.GDP.COAL.RT.ZS,Coal rents (% of GDP),environment,PCT,Environment,2021,0.00606226595390929
+NY_GDP_FRST_RT_ZS,NY.GDP.FRST.RT.ZS,Forest rents (% of GDP),environment,PCT,Environment,2021,0.492874643993917
+NY_GDP_MINR_RT_ZS,NY.GDP.MINR.RT.ZS,Mineral rents (% of GDP),environment,PCT,Energy & Mining,2021,0.0
+NY_GDP_NGAS_RT_ZS,NY.GDP.NGAS.RT.ZS,Natural gas rents (% of GDP),environment,PCT,Energy & Mining,2021,0.0
+NY_GDP_PETR_RT_ZS,NY.GDP.PETR.RT.ZS,Oil rents (% of GDP),environment,PCT,Energy & Mining,2021,0.0
+NY_GDP_TOTL_RT_ZS,NY.GDP.TOTL.RT.ZS,Total natural resources rents (% of GDP),environment,PCT,Energy & Mining,2021,0.498936909947826
+TM_VAL_FUEL_ZS_UN,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),environment,PCT,Energy & Mining,2022,22.9689802047485
+TM_VAL_MMTL_ZS_UN,TM.VAL.MMTL.ZS.UN,Ores and metals imports (% of merchandise imports),environment,PCT,Energy & Mining,2022,2.28891493189264
+TX_VAL_FUEL_ZS_UN,TX.VAL.FUEL.ZS.UN,Fuel exports (% of merchandise exports),environment,PCT,Energy & Mining,2022,0.000422001355639369
+TX_VAL_MMTL_ZS_UN,TX.VAL.MMTL.ZS.UN,Ores and metals exports (% of merchandise exports),environment,PCT,Energy & Mining,2022,1.44460468329415
+GD_WBL_OVL_ENF,GD_WBL_OVL_ENF,WBL: Enforcement Perceptions Index (scale 0-100),governance,INDEX,,2025,40.01
+GD_WBL_OVL_LAW,GD_WBL_OVL_LAW,WBL: Legal Framework Index (scale 0-100),governance,INDEX,,2025,57.93
+GD_WBL_OVL_SFR,GD_WBL_OVL_SFR,WBL: Supportive Framework Index (scale 0-100),governance,INDEX,,2025,44.68
+GOV_WGI_CC_EST,GOV_WGI_CC_EST,Control of Corruption - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.632602
+GOV_WGI_CC_SC,GOV_WGI_CC_SC,Control of Corruption - Governance score (0-100),governance,SCORE,,2024,35.0499922
+GOV_WGI_GE_EST,GOV_WGI_GE_EST,Government Effectiveness - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.8845295
+GOV_WGI_GE_SC,GOV_WGI_GE_SC,Government Effectiveness - Governance score (0-100),governance,SCORE,,2024,34.1416692
+GOV_WGI_PV_EST,GOV_WGI_PV_EST,Political Stability - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.414613399999999
+GOV_WGI_PV_SC,GOV_WGI_PV_SC,Political Stability - Governance score (0-100),governance,SCORE,,2024,58.8121329
+GOV_WGI_RL_EST,GOV_WGI_RL_EST,Rule of Law - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.303653399999999
+GOV_WGI_RL_SC,GOV_WGI_RL_SC,Rule of Law - Governance score (0-100),governance,SCORE,,2024,51.7386218
+GOV_WGI_RQ_EST,GOV_WGI_RQ_EST,Regulatory Quality - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.552333499999999
+GOV_WGI_RQ_SC,GOV_WGI_RQ_SC,Regulatory Quality - Governance score (0-100),governance,SCORE,,2024,46.1517079
+GOV_WGI_VA_EST,GOV_WGI_VA_EST,Voice and Accountability - Governance estimate (approx. -2.5 to +2.5),governance,SCORE,,2024,-0.0597655
+GOV_WGI_VA_SC,GOV_WGI_VA_SC,Voice and Accountability - Governance score (0-100),governance,SCORE,,2024,55.8031944
+HD_HCIP_HLTH_FE,HD_HCIP_HLTH_FE,"Human capital index plus (HCI+): health pillar score, female (scale 0–50)",health,INDEX,,2025,41.1004993057251
+HD_HCIP_HLTH_MA,HD_HCIP_HLTH_MA,"Human capital index plus (HCI+): health pillar score, male (scale 0–50)",health,INDEX,,2025,39.7977329492569
+HD_HCIP_HLTH_TO,HD_HCIP_HLTH_TO,"Human capital index plus (HCI+): health pillar score, total (scale 0–50)",health,INDEX,,2025,40.4895933794975
+SG_VAW_1549_ZS,SG.VAW.1549.ZS,Proportion of women subjected to physical and/or sexual violence in the last 12 months (% of ever-partnered women ages 15-49),health,PCT,Health,2016,11.2
+SG_VAW_ARGU_ZS,SG.VAW.ARGU.ZS,Women who believe a husband is justified in beating his wife when she argues with him (%),health,PCT,Health,2022,4.7
+SG_VAW_BURN_ZS,SG.VAW.BURN.ZS,Women who believe a husband is justified in beating his wife when she burns the food (%),health,PCT,Health,2022,1.2
+SG_VAW_GOES_ZS,SG.VAW.GOES.ZS,Women who believe a husband is justified in beating his wife when she goes out without telling him (%),health,PCT,Health,2022,5.6
+SG_VAW_NEGL_ZS,SG.VAW.NEGL.ZS,Women who believe a husband is justified in beating his wife when she neglects the children (%),health,PCT,Health,2022,15.3
+SG_VAW_REAS_ZS,SG.VAW.REAS.ZS,Women who believe a husband is justified in beating his wife (any of five reasons) (%),health,PCT,Health,2022,18.6
+SG_VAW_REFU_ZS,SG.VAW.REFU.ZS,Women who believe a husband is justified in beating his wife when she refuses sex with him (%),health,PCT,Health,2022,1.6
+SH_ALC_PCAP_FE_LI,SH.ALC.PCAP.FE.LI,"Total alcohol consumption per capita, female (liters of pure alcohol, projected estimates, female 15+ years of age)",health,LITRES_PER_CAPITA,Health,2020,0.37
+SH_ALC_PCAP_LI,SH.ALC.PCAP.LI,"Total alcohol consumption per capita (liters of pure alcohol, projected estimates, 15+ years of age)",health,LITRES_PER_CAPITA,Health,2020,1.06
+SH_ALC_PCAP_MA_LI,SH.ALC.PCAP.MA.LI,"Total alcohol consumption per capita, male (liters of pure alcohol, projected estimates, male 15+ years of age)",health,LITRES_PER_CAPITA,Health,2020,1.86
+SH_ANM_ALLW_ZS,SH.ANM.ALLW.ZS,Prevalence of anemia among women of reproductive age (% of women ages 15-49),health,PCT,Health,2023,33.2
+SH_ANM_CHLD_ZS,SH.ANM.CHLD.ZS,Prevalence of anemia among children (% of children ages 6-59 months),health,PCT,Health,2019,44.6
+SH_ANM_NPRG_ZS,SH.ANM.NPRG.ZS,Prevalence of anemia among non-pregnant women (% of women ages 15-49),health,PCT,Health,2023,33.2
+SH_CON_1524_FE_ZS,SH.CON.1524.FE.ZS,"Condom use, population ages 15-24, female (% of females ages 15-24)",health,PCT,Health,2011,8.5
+SH_CON_1524_MA_ZS,SH.CON.1524.MA.ZS,"Condom use, population ages 15-24, male (% of males ages 15-24)",health,PCT,Health,2011,36.0
+SH_DTH_COMM_ZS,SH.DTH.COMM.ZS,"Cause of death, by communicable diseases and maternal, prenatal and nutrition conditions (% of total)",health,PCT,Health,2021,31.2514492447766
+SH_DTH_IMRT,SH.DTH.IMRT,Number of infant deaths,health,COUNT,Health,2024,12587.0
+SH_DTH_INJR_ZS,SH.DTH.INJR.ZS,"Cause of death, by injury (% of total)",health,PCT,Health,2021,9.62536984232045
+SH_DTH_MORT,SH.DTH.MORT,Number of under-five deaths,health,COUNT,Health,2024,14257.0
+SH_DTH_NCOM_ZS,SH.DTH.NCOM.ZS,"Cause of death, by non-communicable diseases (% of total)",health,PCT,Health,2021,55.3353172551134
+SH_DTH_NMRT,SH.DTH.NMRT,Number of neonatal deaths,health,COUNT,Health,2024,8589.0
+SH_DTH_OCVD_ZS,SH.DTH.OCVD.ZS,"Cause of death, by other COVID-19 pandemic-related outcomes (% of total)",health,PCT,,2021,3.78786365778942
+SH_DYN_AIDS_FE_ZS,SH.DYN.AIDS.FE.ZS,Women's share of population ages 15+ living with HIV (%),health,PCT,Health,2024,42.0843315782985
+SH_DYN_AIDS_ZS,SH.DYN.AIDS.ZS,"Prevalence of HIV, total (% of population ages 15-49)",health,PCT,Health,2024,0.1
+SH_DYN_MORT,SH.DYN.MORT,"Mortality rate, under-5 (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,25.1
+SH_DYN_MORT_FE,SH.DYN.MORT.FE,"Mortality rate, under-5, female (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,23.1
+SH_DYN_MORT_MA,SH.DYN.MORT.MA,"Mortality rate, under-5, male (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,27.0
+SH_DYN_NCOM_FE_ZS,SH.DYN.NCOM.FE.ZS,"Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)",health,PCT,Health,2021,19.3
+SH_DYN_NCOM_MA_ZS,SH.DYN.NCOM.MA.ZS,"Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)",health,PCT,Health,2021,19.6
+SH_DYN_NCOM_ZS,SH.DYN.NCOM.ZS,"Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70 (%)",health,PCT,Health,2021,19.4
+SH_DYN_NMRT,SH.DYN.NMRT,"Mortality rate, neonatal (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,15.3
+SH_FPL_SATM_ZS,SH.FPL.SATM.ZS,Demand for family planning satisfied by modern methods (% of married women with demand for family planning),health,PCT,Health,2022,54.7
+SH_H2O_BASW_RU_ZS,SH.H2O.BASW.RU.ZS,"People using at least basic drinking water services, rural (% of rural population)",health,PCT,Health,2024,94.0202370654508
+SH_H2O_BASW_UR_ZS,SH.H2O.BASW.UR.ZS,"People using at least basic drinking water services, urban (% of urban population)",health,PCT,Health,2024,92.3207313141639
+SH_H2O_BASW_ZS,SH.H2O.BASW.ZS,People using at least basic drinking water services (% of population),health,PCT,Health,2024,93.6401246842117
+SH_H2O_SMDW_RU_ZS,SH.H2O.SMDW.RU.ZS,"People using safely managed drinking water services, rural (% of rural population)",health,PCT,Health,2024,14.432988017063
+SH_H2O_SMDW_UR_ZS,SH.H2O.SMDW.UR.ZS,"People using safely managed drinking water services, urban (% of urban population)",health,PCT,Health,2024,23.6161130598384
+SH_H2O_SMDW_ZS,SH.H2O.SMDW.ZS,People using safely managed drinking water services (% of population),health,PCT,Health,2024,16.4868856683866
+SH_HIV_0014,SH.HIV.0014,Children (0-14) living with HIV,health,COUNT,Health,2024,1100.0
+SH_HIV_1524_FE_ZS,SH.HIV.1524.FE.ZS,"Prevalence of HIV, female (% ages 15-24)",health,PCT,Health,2024,0.1
+SH_HIV_1524_MA_ZS,SH.HIV.1524.MA.ZS,"Prevalence of HIV, male (% ages 15-24)",health,PCT,Health,2024,0.1
+SH_HIV_ARTC_ZS,SH.HIV.ARTC.ZS,Antiretroviral therapy coverage (% of people living with HIV),health,PCT,Health,2024,77.0
+SH_HIV_INCD,SH.HIV.INCD,Adults (ages 15-49) newly infected with HIV,health,COUNT,Health,2024,540.0
+SH_HIV_INCD_14,SH.HIV.INCD.14,Children (ages 0-14) newly infected with HIV,health,COUNT,Health,2024,100.0
+SH_HIV_INCD_TL,SH.HIV.INCD.TL,Adults (ages 15+) and children (ages 0-14) newly infected with HIV,health,COUNT,Health,2024,620.0
+SH_HIV_INCD_TL_P3,SH.HIV.INCD.TL.P3,"Incidence of HIV, all (per 1,000 uninfected population)",health,PER_1000,Health,2024,0.1
+SH_HIV_INCD_YG,SH.HIV.INCD.YG,Young people (ages 15-24) newly infected with HIV,health,COUNT,Health,2024,100.0
+SH_HIV_INCD_YG_P3,SH.HIV.INCD.YG.P3,"Incidence of HIV, ages 15-24 (per 1,000 uninfected population ages 15-24)",health,PER_1000,Health,2024,0.1
+SH_HIV_INCD_ZS,SH.HIV.INCD.ZS,"Incidence of HIV, ages 15-49 (per 1,000 uninfected population ages 15-49)",health,PER_1000,Health,2024,0.1
+SH_HIV_PMTC_ZS,SH.HIV.PMTC.ZS,Antiretroviral therapy coverage for PMTCT (% of pregnant women living with HIV),health,PCT,Health,2024,65.0
+SH_IMM_HEPB,SH.IMM.HEPB,"Immunization, HepB3 (% of one-year-old children)",health,PCT,Health,2024,97.0
+SH_IMM_IDPT,SH.IMM.IDPT,"Immunization, DPT (% of children ages 12-23 months)",health,PCT,Health,2024,97.0
+SH_IMM_MEAS,SH.IMM.MEAS,"Immunization, measles (% of children ages 12-23 months)",health,PCT,Health,2024,97.0
+SH_MED_BEDS_ZS,SH.MED.BEDS.ZS,"Hospital beds (per 1,000 people)",health,PER_1000,Health,2023,0.54
+SH_MED_CMHW_P3,SH.MED.CMHW.P3,"Community health workers (per 1,000 people)",health,PER_1000,Health,2004,0.684
+SH_MED_NUMW_P3,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",health,PER_1000,Health,2023,4.092
+SH_MED_PHYS_ZS,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",health,PER_1000,Health,2023,1.011
+SH_MED_SAOP_P5,SH.MED.SAOP.P5,"Specialist surgical workforce (per 100,000 population)",health,PER_100K,Health,2014,2.96
+SH_MLR_INCD_P3,SH.MLR.INCD.P3,"Incidence of malaria (per 1,000 population at risk)",health,PER_1000,Health,2024,0.0
+SH_MLR_TRET_ZS,SH.MLR.TRET.ZS,Children with fever receiving antimalarial drugs (% of children under age 5 with fever),health,PCT,Health,2016,2.0
+SH_MMR_DTHS,SH.MMR.DTHS,Number of maternal deaths,health,COUNT,Health,2023,820.0
+SH_MMR_RISK_ZS,SH.MMR.RISK.ZS,Lifetime risk of maternal death (%),health,PCT,Health,2023,0.30164262313966
+SH_PRG_ANEM,SH.PRG.ANEM,Prevalence of anemia among pregnant women (%),health,PCT,Health,2023,35.2
+SH_PRV_SMOK,SH.PRV.SMOK,Prevalence of current tobacco use (% of adults),health,PCT,Health,2024,28.7
+SH_PRV_SMOK_FE,SH.PRV.SMOK.FE,"Prevalence of current tobacco use, females (% of female adults)",health,PCT,Health,2024,10.6
+SH_PRV_SMOK_MA,SH.PRV.SMOK.MA,"Prevalence of current tobacco use, males (% of male adults)",health,PCT,Health,2024,46.8
+SH_SGR_CRSK_ZS,SH.SGR.CRSK.ZS,Risk of catastrophic expenditure for surgical care (% of people at risk),health,PCT,Health,2022,58.2
+SH_SGR_IRSK_ZS,SH.SGR.IRSK.ZS,Risk of impoverishing expenditure for surgical care (% of people at risk),health,PCT,Health,2022,86.6
+SH_SGR_PROC_P5,SH.SGR.PROC.P5,"Number of surgical procedures (per 100,000 population)",health,PER_100K,Health,2011,208.0
+SH_STA_AIRP_FE_P5,SH.STA.AIRP.FE.P5,"Mortality rate attributed to household and ambient air pollution, age-standardized, female (per 100,000 female population)",health,PER_100K,Health,2019,156.0
+SH_STA_AIRP_MA_P5,SH.STA.AIRP.MA.P5,"Mortality rate attributed to household and ambient air pollution, age-standardized, male (per 100,000 male population)",health,PER_100K,Health,2019,204.3
+SH_STA_AIRP_P5,SH.STA.AIRP.P5,"Mortality rate attributed to household and ambient air pollution, age-standardized (per 100,000 population)",health,PER_100K,Health,2019,177.9
+SH_STA_ANVC_ZS,SH.STA.ANVC.ZS,Pregnant women receiving prenatal care (%),health,PCT,Health,2019,88.8
+SH_STA_ARIC_ZS,SH.STA.ARIC.ZS,ARI treatment (% of children under 5 taken to a health provider),health,PCT,Health,2019,82.0
+SH_STA_BASS_RU_ZS,SH.STA.BASS.RU.ZS,"People using at least basic sanitation services, rural (% of rural population)",health,PCT,Health,2024,86.9720424421688
+SH_STA_BASS_UR_ZS,SH.STA.BASS.UR.ZS,"People using at least basic sanitation services, urban (% of urban population)",health,PCT,Health,2024,82.742135530695
+SH_STA_BASS_ZS,SH.STA.BASS.ZS,People using at least basic sanitation services (% of population),health,PCT,Health,2024,86.0259805937649
+SH_STA_BFED_ZS,SH.STA.BFED.ZS,Exclusive breastfeeding (% of children under 6 months),health,PCT,Health,2019,62.14038
+SH_STA_BRTC_ZS,SH.STA.BRTC.ZS,Births attended by skilled health staff (% of total),health,PCT,Health,2019,77.2
+SH_STA_BRTW_ZS,SH.STA.BRTW.ZS,Low-birthweight babies (% of births),health,PCT,Health,2020,19.73151245
+SH_STA_DIAB_ZS,SH.STA.DIAB.ZS,Diabetes prevalence (% of population ages 20 to 79),health,PCT,Health,2024,7.7
+SH_STA_HYGN_RU_ZS,SH.STA.HYGN.RU.ZS,"People with basic handwashing facilities including soap and water, rural (% of rural population)",health,PCT,Health,2024,65.7541323596542
+SH_STA_HYGN_UR_ZS,SH.STA.HYGN.UR.ZS,"People with basic handwashing facilities including soap and water, urban (% of urban population)",health,PCT,Health,2024,76.8522221891106
+SH_STA_HYGN_ZS,SH.STA.HYGN.ZS,People with basic handwashing facilities including soap and water (% of population),health,PCT,Health,2024,68.2363305442225
+SH_STA_MALN_FE_ZS,SH.STA.MALN.FE.ZS,"Prevalence of underweight, weight for age, female (% of children under 5)",health,PCT,Health,2022,20.4
+SH_STA_MALN_MA_ZS,SH.STA.MALN.MA.ZS,"Prevalence of underweight, weight for age, male (% of children under 5)",health,PCT,Health,2022,16.4
+SH_STA_MALN_ZS,SH.STA.MALN.ZS,"Prevalence of underweight, weight for age (% of children under 5)",health,PCT,Health,2022,18.3
+SH_STA_MMRT,SH.STA.MMRT,"Maternal mortality ratio (modeled estimate, per 100,000 live births)",health,PER_100K,Health,2023,142.0
+SH_STA_MMRT_NE,SH.STA.MMRT.NE,"Maternal mortality ratio (national estimate, per 100,000 live births)",health,PER_100K,Health,2016,239.0
+SH_STA_ODFC_RU_ZS,SH.STA.ODFC.RU.ZS,"People practicing open defecation, rural (% of rural population)",health,PCT,Health,2024,0.0
+SH_STA_ODFC_UR_ZS,SH.STA.ODFC.UR.ZS,"People practicing open defecation, urban (% of urban population)",health,PCT,Health,2024,2.38396222230972
+SH_STA_ODFC_ZS,SH.STA.ODFC.ZS,People practicing open defecation (% of population),health,PCT,Health,2024,0.533197002313746
+SH_STA_ORCF_ZS,SH.STA.ORCF.ZS,Diarrhea treatment (% of children under 5 receiving oral rehydration and continued feeding),health,PCT,Health,2019,62.4
+SH_STA_ORTH,SH.STA.ORTH,Diarrhea treatment (% of children under 5 who received ORS packet),health,PCT,Health,2019,59.5
+SH_STA_OWGH_FE_ZS,SH.STA.OWGH.FE.ZS,"Prevalence of overweight, weight for height, female (% of children under 5)",health,PCT,Health,2022,1.0
+SH_STA_OWGH_MA_ZS,SH.STA.OWGH.MA.ZS,"Prevalence of overweight, weight for height, male (% of children under 5)",health,PCT,Health,2022,1.6
+SH_STA_OWGH_ME_FE_ZS,SH.STA.OWGH.ME.FE.ZS,"Prevalence of overweight, weight for height, female (modeled estimate, % of children under 5)",health,PCT,,2024,1.6
+SH_STA_OWGH_ME_MA_ZS,SH.STA.OWGH.ME.MA.ZS,"Prevalence of overweight, weight for height, male (modeled estimate, % of children under 5)",health,PCT,,2024,1.9
+SH_STA_OWGH_ME_ZS,SH.STA.OWGH.ME.ZS,"Prevalence of overweight, weight for height (modeled estimate, % of children under 5)",health,PCT,Health,2024,1.8
+SH_STA_OWGH_ZS,SH.STA.OWGH.ZS,"Prevalence of overweight, weight for height (% of children under 5)",health,PCT,Health,2022,1.3
+SH_STA_POIS_P5,SH.STA.POIS.P5,"Mortality rate attributed to unintentional poisoning (per 100,000 population)",health,PER_100K,Health,2021,2.93
+SH_STA_POIS_P5_FE,SH.STA.POIS.P5.FE,"Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)",health,PER_100K,Health,2021,3.0
+SH_STA_POIS_P5_MA,SH.STA.POIS.P5.MA,"Mortality rate attributed to unintentional poisoning, male (per 100,000 male population)",health,PER_100K,Health,2021,2.84
+SH_STA_SMSS_RU_ZS,SH.STA.SMSS.RU.ZS,"People using safely managed sanitation services, rural (% of rural population)",health,PCT,Health,2024,55.5592771094766
+SH_STA_SMSS_UR_ZS,SH.STA.SMSS.UR.ZS,"People using safely managed sanitation services, urban (% of urban population)",health,PCT,Health,2024,45.9584076437959
+SH_STA_SMSS_ZS,SH.STA.SMSS.ZS,People using safely managed sanitation services (% of population),health,PCT,Health,2024,53.4119460561394
+SH_STA_STNT_FE_ZS,SH.STA.STNT.FE.ZS,"Prevalence of stunting, height for age, female (% of children under 5)",health,PCT,Health,2022,25.0
+SH_STA_STNT_MA_ZS,SH.STA.STNT.MA.ZS,"Prevalence of stunting, height for age, male (% of children under 5)",health,PCT,Health,2022,24.7
+SH_STA_STNT_ME_FE_ZS,SH.STA.STNT.ME.FE.ZS,"Prevalence of stunting, height for age, female (modeled estimate, % of children under 5)",health,PCT,,2024,25.1
+SH_STA_STNT_ME_MA_ZS,SH.STA.STNT.ME.MA.ZS,"Prevalence of stunting, height for age, male (modeled estimate, % of children under 5)",health,PCT,,2024,27.0
+SH_STA_STNT_ME_ZS,SH.STA.STNT.ME.ZS,"Prevalence of stunting, height for age (modeled estimate, % of children under 5)",health,PCT,Health,2024,26.0
+SH_STA_STNT_ZS,SH.STA.STNT.ZS,"Prevalence of stunting, height for age (% of children under 5)",health,PCT,Health,2022,24.8
+SH_STA_SUIC_FE_P5,SH.STA.SUIC.FE.P5,"Suicide mortality rate, female (per 100,000 female population)",health,PER_100K,Health,2021,7.16
+SH_STA_SUIC_MA_P5,SH.STA.SUIC.MA.P5,"Suicide mortality rate, male (per 100,000 male population)",health,PER_100K,Health,2021,13.33
+SH_STA_SUIC_P5,SH.STA.SUIC.P5,"Suicide mortality rate (per 100,000 population)",health,PER_100K,Health,2021,10.14
+SH_STA_TRAF_P5,SH.STA.TRAF.P5,"Mortality caused by road traffic injury (per 100,000 population)",health,PER_100K,Health,2019,16.3
+SH_STA_WASH_P5,SH.STA.WASH.P5,"Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (per 100,000 population)",health,PER_100K,Health,2019,17.8
+SH_STA_WAST_FE_ZS,SH.STA.WAST.FE.ZS,"Prevalence of wasting, weight for height, female (% of children under 5)",health,PCT,Health,2022,6.3
+SH_STA_WAST_MA_ZS,SH.STA.WAST.MA.ZS,"Prevalence of wasting, weight for height, male (% of children under 5)",health,PCT,Health,2022,7.6
+SH_STA_WAST_ZS,SH.STA.WAST.ZS,"Prevalence of wasting, weight for height (% of children under 5)",health,PCT,Health,2022,7.0
+SH_SVR_WAST_FE_ZS,SH.SVR.WAST.FE.ZS,"Prevalence of severe wasting, weight for height, female (% of children under 5)",health,PCT,Health,2022,0.9
+SH_SVR_WAST_MA_ZS,SH.SVR.WAST.MA.ZS,"Prevalence of severe wasting, weight for height, male (% of children under 5)",health,PCT,Health,2022,0.8
+SH_SVR_WAST_ZS,SH.SVR.WAST.ZS,"Prevalence of severe wasting, weight for height (% of children under 5)",health,PCT,Health,2022,0.8
+SH_TBS_CURE_ZS,SH.TBS.CURE.ZS,Tuberculosis treatment success rate (% of new cases),health,PCT,Health,2023,92.0
+SH_TBS_DTEC_ZS,SH.TBS.DTEC.ZS,"Tuberculosis case detection rate (%, all forms)",health,PCT,Health,2024,60.0
+SH_TBS_INCD,SH.TBS.INCD,"Incidence of tuberculosis (per 100,000 people)",health,PER_100K,Health,2024,227.0
+SH_UHC_FH40,SH_UHC_FH40,Proportion of population facing financial hardship due to out-of-pocket health expenditure (%),health,PCT,,2022,24.94
+SH_UHC_FH40_FURTHER,SH_UHC_FH40_FURTHER,"Proportion of population further impoverished due to out-of-pocket health expenditure, based on the societal poverty line (%)",health,PCT,,2022,16.0
+SH_UHC_FH40_IMPOV,SH_UHC_FH40_IMPOV,"Proportion of population facing impoverishing out-of-pocket health expenditure, based on the societal poverty line (%)",health,PCT,,2022,18.5
+SH_UHC_FH40_LARGE,SH_UHC_FH40_LARGE,Proportion of population facing large (but non-impoverishing) out-of-pocket health expenditure (%),health,PCT,,2022,6.43
+SH_UHC_FH40_PUSHED,SH_UHC_FH40_PUSHED,Proportion of population pushed into poverty (based on the societal poverty line) due to out-of-pocket health expenditure (%),health,PCT,,2022,2.51
+SH_UHC_SCI,SH_UHC_SCI,UHC service coverage index,health,INDEX,,2023,58.0
+SH_UHC_SCI_CAPACITY,SH_UHC_SCI_CAPACITY,UHC service coverage sub-index on service capacity and access,health,INDEX,,2023,50.0
+SH_UHC_SCI_ID,SH_UHC_SCI_ID,UHC service coverage sub-index on infectious diseases,health,INDEX,,2023,83.0
+SH_UHC_SCI_NCD,SH_UHC_SCI_NCD,UHC service coverage sub-index on non-communicable diseases,health,INDEX,,2023,43.0
+SH_UHC_SCI_RMNCH,SH_UHC_SCI_RMNCH,"UHC service coverage sub-index on reproductive, maternal, newborn and child health",health,INDEX,,2023,62.0
+SH_VAC_TTNS_ZS,SH.VAC.TTNS.ZS,Newborns protected against tetanus (%),health,PCT,Health,2024,93.0
+SH_XPD_CHEX_GD_ZS,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),health,PCT,Health,2023,6.15843678
+SH_XPD_CHEX_PC_CD,SH.XPD.CHEX.PC.CD,Current health expenditure per capita (current US$),health,USD,Health,2023,83.96018982
+SH_XPD_CHEX_PP_CD,SH.XPD.CHEX.PP.CD,"Current health expenditure per capita, PPP (current international $)",health,USD_PPP,Health,2023,332.162753551408
+SH_XPD_EHEX_CH_ZS,SH.XPD.EHEX.CH.ZS,External health expenditure (% of current health expenditure),health,PCT,Health,2023,6.9469142
+SH_XPD_EHEX_PC_CD,SH.XPD.EHEX.PC.CD,External health expenditure per capita (current US$),health,USD,Health,2023,5.83264239
+SH_XPD_EHEX_PP_CD,SH.XPD.EHEX.PP.CD,"External health expenditure per capita, PPP (current international $)",health,USD_PPP,Health,2023,23.0750605619794
+SH_XPD_GHED_CH_ZS,SH.XPD.GHED.CH.ZS,Domestic general government health expenditure (% of current health expenditure),health,PCT,Health,2023,31.30563164
+SH_XPD_GHED_GD_ZS,SH.XPD.GHED.GD.ZS,Domestic general government health expenditure (% of GDP),health,PCT,Health,2023,1.92793751
+SH_XPD_GHED_GE_ZS,SH.XPD.GHED.GE.ZS,Domestic general government health expenditure (% of general government expenditure),health,PCT,Health,2023,7.66042948
+SH_XPD_GHED_PC_CD,SH.XPD.GHED.PC.CD,Domestic general government health expenditure per capita (current US$),health,USD,Health,2023,26.28426818
+SH_XPD_GHED_PP_CD,SH.XPD.GHED.PP.CD,"Domestic general government health expenditure per capita, PPP (current international $)",health,USD_PPP,Health,2023,103.985644840919
+SH_XPD_OOPC_CH_ZS,SH.XPD.OOPC.CH.ZS,Out-of-pocket expenditure (% of current health expenditure),health,PCT,Health,2023,59.38827515
+SH_XPD_OOPC_PC_CD,SH.XPD.OOPC.PC.CD,Out-of-pocket expenditure per capita (current US$),health,USD,Health,2023,49.86250921
+SH_XPD_OOPC_PP_CD,SH.XPD.OOPC.PP.CD,"Out-of-pocket expenditure per capita, PPP (current international $)",health,USD_PPP,Health,2023,197.265723314448
+SH_XPD_PVTD_CH_ZS,SH.XPD.PVTD.CH.ZS,Domestic private health expenditure (% of current health expenditure),health,PCT,Health,2023,61.7474556
+SH_XPD_PVTD_PC_CD,SH.XPD.PVTD.PC.CD,Domestic private health expenditure per capita (current US$),health,USD,Health,2023,51.84328248
+SH_XPD_PVTD_PP_CD,SH.XPD.PVTD.PP.CD,"Domestic private health expenditure per capita, PPP (current international $)",health,USD_PPP,Health,2023,205.102045175957
+SN_ITK_DEFC_ZS,SN.ITK.DEFC.ZS,Prevalence of undernourishment (% of population),health,PCT,Health,2023,5.3
+SN_ITK_MSFI_ZS,SN.ITK.MSFI.ZS,Prevalence of moderate or severe food insecurity in the population (%),health,PCT,Health,2023,36.6
+SN_ITK_SALT_ZS,SN.ITK.SALT.ZS,Consumption of iodized salt (% of households),health,PCT,Health,2017,94.2
+SN_ITK_SVFI_ZS,SN.ITK.SVFI.ZS,Prevalence of severe food insecurity in the population (%),health,PCT,Health,2023,12.8
+SN_ITK_VITA_ZS,SN.ITK.VITA.ZS,Vitamin A supplementation coverage rate (% of children ages 6-59 months),health,PCT,Health,2023,82.0
+SP_ADO_TFRT,SP.ADO.TFRT,"Adolescent fertility rate (births per 1,000 women ages 15-19)",health,PER_1000,Health,2024,66.489
+SP_DYN_AMRT_FE,SP.DYN.AMRT.FE,"Mortality rate, adult, female (per 1,000 female adults)",health,PER_1000,Health,2024,136.332
+SP_DYN_AMRT_MA,SP.DYN.AMRT.MA,"Mortality rate, adult, male (per 1,000 male adults)",health,PER_1000,Health,2024,178.025
+SP_DYN_CONM_ZS,SP.DYN.CONM.ZS,"Contraceptive prevalence, any modern method (% of married women ages 15-49)",health,PCT,Health,2022,42.7
+SP_DYN_CONU_ZS,SP.DYN.CONU.ZS,"Contraceptive prevalence, any method (% of married women ages 15-49)",health,PCT,Health,2022,57.2
+SP_DYN_IMRT_FE_IN,SP.DYN.IMRT.FE.IN,"Mortality rate, infant, female (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,20.2
+SP_DYN_IMRT_MA_IN,SP.DYN.IMRT.MA.IN,"Mortality rate, infant, male (per 1,000 live births)",health,PER_1000_LIVE_BIRTHS,Health,2024,24.1
+SP_DYN_LE00_FE_IN,SP.DYN.LE00.FE.IN,"Life expectancy at birth, female (years)",health,YEARS,Health,2024,72.138
+SP_DYN_LE00_MA_IN,SP.DYN.LE00.MA.IN,"Life expectancy at birth, male (years)",health,YEARS,Health,2024,69.09
+SP_DYN_TO65_FE_ZS,SP.DYN.TO65.FE.ZS,"Survival to age 65, female (% of cohort)",health,PCT,Health,2024,77.839703
+SP_DYN_TO65_MA_ZS,SP.DYN.TO65.MA.ZS,"Survival to age 65, male (% of cohort)",health,PCT,Health,2024,71.227318
+SP_HOU_FEMA_ZS,SP.HOU.FEMA.ZS,Female headed households (% of households with a female head),health,PCT,Health,2022,32.7
+SP_M15_2024_FE_ZS,SP.M15.2024.FE.ZS,Women who were first married by age 15 (% of women ages 20-24),health,PCT,Health,2022,5.8
+SP_M18_2024_FE_ZS,SP.M18.2024.FE.ZS,Women who were first married by age 18 (% of women ages 20-24),health,PCT,Health,2022,34.9
+SP_MTR_1519_ZS,SP.MTR.1519.ZS,Teenage mothers (% of women ages 15-19 who have had children or are currently pregnant),health,PCT,Health,2022,13.1
+SP_REG_BRTH_FE_ZS,SP.REG.BRTH.FE.ZS,"Completeness of birth registration, female (%)",health,PCT,Health,2019,78.3
+SP_REG_BRTH_MA_ZS,SP.REG.BRTH.MA.ZS,"Completeness of birth registration, male (%)",health,PCT,Health,2019,76.3
+SP_REG_BRTH_RU_ZS,SP.REG.BRTH.RU.ZS,"Completeness of birth registration, rural (%)",health,PCT,Health,2019,79.3
+SP_REG_BRTH_UR_ZS,SP.REG.BRTH.UR.ZS,"Completeness of birth registration, urban (%)",health,PCT,Health,2019,76.1
+SP_REG_BRTH_ZS,SP.REG.BRTH.ZS,Completeness of birth registration (%),health,PCT,Health,2019,77.2
+SP_UWT_TFRT,SP.UWT.TFRT,Unmet need for contraception (% of married women ages 15-49),health,PCT,Health,2022,20.8
+HD_HCIP_OTJL_FE,HD_HCIP_OTJL_FE,"Human capital index plus (HCI+): on-the-job learning pillar score, female (scale -30–87)",labor,INDEX,,2025,-4.59891543755004
+HD_HCIP_OTJL_MA,HD_HCIP_OTJL_MA,"Human capital index plus (HCI+): on-the-job learning pillar score, male (scale -30–87)",labor,INDEX,,2025,29.2407424625391
+HD_HCIP_OTJL_TO,HD_HCIP_OTJL_TO,"Human capital index plus (HCI+): on-the-job learning pillar score, total (scale -30–87)",labor,INDEX,,2025,10.0558814373072
+SL_AGR_0714_FE_ZS,SL.AGR.0714.FE.ZS,"Child employment in agriculture, female (% of female economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,88.93
+SL_AGR_0714_MA_ZS,SL.AGR.0714.MA.ZS,"Child employment in agriculture, male (% of male economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,89.03
+SL_AGR_0714_ZS,SL.AGR.0714.ZS,Child employment in agriculture (% of economically active children ages 7-14),labor,PCT,Social Protection & Labor,2008,88.97
+SL_EMP_1524_SP_FE_NE_ZS,SL.EMP.1524.SP.FE.NE.ZS,"Employment to population ratio, ages 15-24, female (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,16.567
+SL_EMP_1524_SP_FE_ZS,SL.EMP.1524.SP.FE.ZS,"Employment to population ratio, ages 15-24, female (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,14.713
+SL_EMP_1524_SP_MA_NE_ZS,SL.EMP.1524.SP.MA.NE.ZS,"Employment to population ratio, ages 15-24, male (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,31.913
+SL_EMP_1524_SP_MA_ZS,SL.EMP.1524.SP.MA.ZS,"Employment to population ratio, ages 15-24, male (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,28.828
+SL_EMP_1524_SP_NE_ZS,SL.EMP.1524.SP.NE.ZS,"Employment to population ratio, ages 15-24, total (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,23.446
+SL_EMP_1524_SP_ZS,SL.EMP.1524.SP.ZS,"Employment to population ratio, ages 15-24, total (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,21.69
+SL_EMP_MPYR_FE_ZS,SL.EMP.MPYR.FE.ZS,"Employers, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,0.529748350599713
+SL_EMP_MPYR_MA_ZS,SL.EMP.MPYR.MA.ZS,"Employers, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,2.23669617239951
+SL_EMP_MPYR_ZS,SL.EMP.MPYR.ZS,"Employers, total (% of total employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,1.60456696978953
+SL_EMP_SELF_FE_ZS,SL.EMP.SELF.FE.ZS,"Self-employed, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,90.8325657650354
+SL_EMP_SELF_MA_ZS,SL.EMP.SELF.MA.ZS,"Self-employed, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,71.3783362041557
+SL_EMP_SELF_ZS,SL.EMP.SELF.ZS,"Self-employed, total (% of total employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,78.5827665110785
+SL_EMP_SMGT_FE_ZS,SL.EMP.SMGT.FE.ZS,Female share of employment in senior and middle management (%),labor,PCT,Social Protection & Labor,2017,13.903
+SL_EMP_TOTL_SP_FE_NE_ZS,SL.EMP.TOTL.SP.FE.NE.ZS,"Employment to population ratio, 15+, female (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,24.557
+SL_EMP_TOTL_SP_FE_ZS,SL.EMP.TOTL.SP.FE.ZS,"Employment to population ratio, 15+, female (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,24.226
+SL_EMP_TOTL_SP_MA_NE_ZS,SL.EMP.TOTL.SP.MA.NE.ZS,"Employment to population ratio, 15+, male (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,49.572
+SL_EMP_TOTL_SP_MA_ZS,SL.EMP.TOTL.SP.MA.ZS,"Employment to population ratio, 15+, male (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,47.797
+SL_EMP_TOTL_SP_NE_ZS,SL.EMP.TOTL.SP.NE.ZS,"Employment to population ratio, 15+, total (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,35.66
+SL_EMP_TOTL_SP_ZS,SL.EMP.TOTL.SP.ZS,"Employment to population ratio, 15+, total (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,35.137
+SL_EMP_VULN_FE_ZS,SL.EMP.VULN.FE.ZS,"Vulnerable employment, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,90.3028174144356
+SL_EMP_VULN_MA_ZS,SL.EMP.VULN.MA.ZS,"Vulnerable employment, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,69.141661242117
+SL_EMP_VULN_ZS,SL.EMP.VULN.ZS,"Vulnerable employment, total (% of total employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,76.9782128968763
+SL_EMP_WORK_FE_ZS,SL.EMP.WORK.FE.ZS,"Wage and salaried workers, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,9.16743423496462
+SL_EMP_WORK_MA_ZS,SL.EMP.WORK.MA.ZS,"Wage and salaried workers, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,28.6216637958443
+SL_EMP_WORK_ZS,SL.EMP.WORK.ZS,"Wage and salaried workers, total (% of total employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,21.4172334889215
+SL_FAM_0714_FE_ZS,SL.FAM.0714.FE.ZS,"Children in employment, unpaid family workers, female (% of female children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,92.51
+SL_FAM_0714_MA_ZS,SL.FAM.0714.MA.ZS,"Children in employment, unpaid family workers, male (% of male children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,91.97
+SL_FAM_0714_ZS,SL.FAM.0714.ZS,"Children in employment, unpaid family workers (% of children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,92.26
+SL_FAM_WORK_FE_ZS,SL.FAM.WORK.FE.ZS,"Contributing family workers, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,65.007216464358
+SL_FAM_WORK_MA_ZS,SL.FAM.WORK.MA.ZS,"Contributing family workers, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,26.7994392829032
+SL_FAM_WORK_ZS,SL.FAM.WORK.ZS,"Contributing family workers, total (% of total employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,40.9488183176688
+SL_GDP_PCAP_EM_KD,SL.GDP.PCAP.EM.KD,GDP per person employed (constant 2021 PPP $),labor,USD_PPP,Social Protection & Labor,2025,20873.596150203
+SL_IND_EMPL_FE_ZS,SL.IND.EMPL.FE.ZS,"Employment in industry, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,17.5918719746569
+SL_IND_EMPL_MA_ZS,SL.IND.EMPL.MA.ZS,"Employment in industry, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,39.3295659490565
+SL_IND_EMPL_ZS,SL.IND.EMPL.ZS,Employment in industry (% of total employment) (modeled ILO estimate),labor,PCT,Social Protection & Labor,2025,31.2794891328272
+SL_MNF_0714_FE_ZS,SL.MNF.0714.FE.ZS,"Child employment in manufacturing, female (% of female economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,1.48
+SL_MNF_0714_MA_ZS,SL.MNF.0714.MA.ZS,"Child employment in manufacturing, male (% of male economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,1.27
+SL_MNF_0714_ZS,SL.MNF.0714.ZS,Child employment in manufacturing (% of economically active children ages 7-14),labor,PCT,Social Protection & Labor,2008,1.39
+SL_SLF_0714_FE_ZS,SL.SLF.0714.FE.ZS,"Children in employment, self-employed, female (% of female children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,5.71
+SL_SLF_0714_MA_ZS,SL.SLF.0714.MA.ZS,"Children in employment, self-employed, male (% of male children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,5.17
+SL_SLF_0714_ZS,SL.SLF.0714.ZS,"Children in employment, self-employed (% of children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,5.46
+SL_SRV_0714_FE_ZS,SL.SRV.0714.FE.ZS,"Child employment in services, female (% of female economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,2.19
+SL_SRV_0714_MA_ZS,SL.SRV.0714.MA.ZS,"Child employment in services, male (% of male economically active children ages 7-14)",labor,PCT,Social Protection & Labor,2008,4.17
+SL_SRV_0714_ZS,SL.SRV.0714.ZS,Child employment in services (% of economically active children ages 7-14),labor,PCT,Social Protection & Labor,2008,3.09
+SL_SRV_EMPL_FE_ZS,SL.SRV.EMPL.FE.ZS,"Employment in services, female (% of female employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,46.5472409736493
+SL_SRV_EMPL_MA_ZS,SL.SRV.EMPL.MA.ZS,"Employment in services, male (% of male employment) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,45.3740945562124
+SL_SRV_EMPL_ZS,SL.SRV.EMPL.ZS,Employment in services (% of total employment) (modeled ILO estimate),labor,PCT,Social Protection & Labor,2025,45.8085364628854
+SL_TLF_0714_FE_ZS,SL.TLF.0714.FE.ZS,"Children in employment, female (% of female children ages 7-14)",labor,PCT,Social Protection & Labor,2014,44.0913556662385
+SL_TLF_0714_MA_ZS,SL.TLF.0714.MA.ZS,"Children in employment, male (% of male children ages 7-14)",labor,PCT,Social Protection & Labor,2014,41.5049127269705
+SL_TLF_0714_SW_FE_TM,SL.TLF.0714.SW.FE.TM,"Average working hours of children, study and work, female, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,9.44932421831104
+SL_TLF_0714_SW_FE_ZS,SL.TLF.0714.SW.FE.ZS,"Children in employment, study and work, female (% of female children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,89.7932299910213
+SL_TLF_0714_SW_MA_TM,SL.TLF.0714.SW.MA.TM,"Average working hours of children, study and work, male, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,8.13528613277088
+SL_TLF_0714_SW_MA_ZS,SL.TLF.0714.SW.MA.ZS,"Children in employment, study and work, male (% of male children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,92.8637738231442
+SL_TLF_0714_SW_TM,SL.TLF.0714.SW.TM,"Average working hours of children, study and work, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,8.81549206395045
+SL_TLF_0714_SW_ZS,SL.TLF.0714.SW.ZS,"Children in employment, study and work (% of children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,91.2485593938361
+SL_TLF_0714_WK_FE_TM,SL.TLF.0714.WK.FE.TM,"Average working hours of children, working only, female, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,13.580838601518
+SL_TLF_0714_WK_FE_ZS,SL.TLF.0714.WK.FE.ZS,"Children in employment, work only, female (% of female children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,10.2067700089787
+SL_TLF_0714_WK_MA_TM,SL.TLF.0714.WK.MA.TM,"Average working hours of children, working only, male, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,15.2290942483638
+SL_TLF_0714_WK_MA_ZS,SL.TLF.0714.WK.MA.ZS,"Children in employment, work only, male (% of male children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,7.1362261768558
+SL_TLF_0714_WK_TM,SL.TLF.0714.WK.TM,"Average working hours of children, working only, ages 7-14 (hours per week)",labor,HOURS_PER_WEEK,Social Protection & Labor,2014,14.2178682288111
+SL_TLF_0714_WK_ZS,SL.TLF.0714.WK.ZS,"Children in employment, work only (% of children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2014,8.7514406061639
+SL_TLF_0714_ZS,SL.TLF.0714.ZS,"Children in employment, total (% of children ages 7-14)",labor,PCT,Social Protection & Labor,2014,42.8274929134937
+SL_TLF_ACTI_1524_FE_NE_ZS,SL.TLF.ACTI.1524.FE.NE.ZS,"Labor force participation rate for ages 15-24, female (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,21.372
+SL_TLF_ACTI_1524_FE_ZS,SL.TLF.ACTI.1524.FE.ZS,"Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,19.154
+SL_TLF_ACTI_1524_MA_NE_ZS,SL.TLF.ACTI.1524.MA.NE.ZS,"Labor force participation rate for ages 15-24, male (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,39.51
+SL_TLF_ACTI_1524_MA_ZS,SL.TLF.ACTI.1524.MA.ZS,"Labor force participation rate for ages 15-24, male (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,35.641
+SL_TLF_ACTI_1524_NE_ZS,SL.TLF.ACTI.1524.NE.ZS,"Labor force participation rate for ages 15-24, total (%) (national estimate)",labor,PCT,Social Protection & Labor,2017,29.503
+SL_TLF_ACTI_1524_ZS,SL.TLF.ACTI.1524.ZS,"Labor force participation rate for ages 15-24, total (%) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,27.303
+SL_TLF_ACTI_FE_ZS,SL.TLF.ACTI.FE.ZS,"Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,29.554
+SL_TLF_ACTI_MA_ZS,SL.TLF.ACTI.MA.ZS,"Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,56.176
+SL_TLF_ACTI_ZS,SL.TLF.ACTI.ZS,"Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,41.892
+SL_TLF_ADVN_FE_ZS,SL.TLF.ADVN.FE.ZS,"Labor force with advanced education, female (% of female working-age population with advanced education)",labor,PCT,Social Protection & Labor,2017,56.94
+SL_TLF_ADVN_MA_ZS,SL.TLF.ADVN.MA.ZS,"Labor force with advanced education, male (% of male working-age population with advanced education)",labor,PCT,Social Protection & Labor,2017,73.91
+SL_TLF_ADVN_ZS,SL.TLF.ADVN.ZS,Labor force with advanced education (% of total working-age population with advanced education),labor,PCT,Social Protection & Labor,2017,67.666
+SL_TLF_BASC_FE_ZS,SL.TLF.BASC.FE.ZS,"Labor force with basic education, female (% of female working-age population with basic education)",labor,PCT,Social Protection & Labor,2017,27.472
+SL_TLF_BASC_MA_ZS,SL.TLF.BASC.MA.ZS,"Labor force with basic education, male (% of male working-age population with basic education)",labor,PCT,Social Protection & Labor,2017,58.38
+SL_TLF_BASC_ZS,SL.TLF.BASC.ZS,Labor force with basic education (% of total working-age population with basic education),labor,PCT,Social Protection & Labor,2017,44.005
+SL_TLF_CACT_FE_NE_ZS,SL.TLF.CACT.FE.NE.ZS,"Labor force participation rate, female (% of female population ages 15+) (national estimate)",labor,PCT,Social Protection & Labor,2017,27.913
+SL_TLF_CACT_FE_ZS,SL.TLF.CACT.FE.ZS,"Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,27.473
+SL_TLF_CACT_FM_NE_ZS,SL.TLF.CACT.FM.NE.ZS,Ratio of female to male labor force participation rate (%) (national estimate),labor,PCT,Social Protection & Labor,2017,50.7933908359719
+SL_TLF_CACT_FM_ZS,SL.TLF.CACT.FM.ZS,Ratio of female to male labor force participation rate (%) (modeled ILO estimate),labor,PCT,Social Protection & Labor,2025,51.9318740312276
+SL_TLF_CACT_MA_NE_ZS,SL.TLF.CACT.MA.NE.ZS,"Labor force participation rate, male (% of male population ages 15+) (national estimate)",labor,PCT,Social Protection & Labor,2017,54.954
+SL_TLF_CACT_MA_ZS,SL.TLF.CACT.MA.ZS,"Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,52.902
+SL_TLF_CACT_NE_ZS,SL.TLF.CACT.NE.ZS,"Labor force participation rate, total (% of total population ages 15+) (national estimate)",labor,PCT,Social Protection & Labor,2017,39.915
+SL_TLF_CACT_ZS,SL.TLF.CACT.ZS,"Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,39.244
+SL_TLF_INTM_FE_ZS,SL.TLF.INTM.FE.ZS,"Labor force with intermediate education, female (% of female working-age population with intermediate education)",labor,PCT,Social Protection & Labor,2017,34.047
+SL_TLF_INTM_MA_ZS,SL.TLF.INTM.MA.ZS,"Labor force with intermediate education, male (% of male working-age population with intermediate education)",labor,PCT,Social Protection & Labor,2017,53.675
+SL_TLF_INTM_ZS,SL.TLF.INTM.ZS,Labor force with intermediate education (% of total working-age population with intermediate education),labor,PCT,Social Protection & Labor,2017,44.187
+SL_TLF_PART_FE_ZS,SL.TLF.PART.FE.ZS,"Part time employment, female (% of total female employment)",labor,PCT,Social Protection & Labor,2017,39.249
+SL_TLF_PART_MA_ZS,SL.TLF.PART.MA.ZS,"Part time employment, male (% of total male employment)",labor,PCT,Social Protection & Labor,2017,18.863
+SL_TLF_PART_ZS,SL.TLF.PART.ZS,"Part time employment, total (% of total employment)",labor,PCT,Social Protection & Labor,2017,26.671
+SL_UEM_1524_FE_NE_ZS,SL.UEM.1524.FE.NE.ZS,"Unemployment, youth female (% of female labor force ages 15-24) (national estimate)",labor,PCT,Social Protection & Labor,2017,22.483
+SL_UEM_1524_FE_ZS,SL.UEM.1524.FE.ZS,"Unemployment, youth female (% of female labor force ages 15-24) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,23.186
+SL_UEM_1524_MA_NE_ZS,SL.UEM.1524.MA.NE.ZS,"Unemployment, youth male (% of male labor force ages 15-24) (national estimate)",labor,PCT,Social Protection & Labor,2017,19.228
+SL_UEM_1524_MA_ZS,SL.UEM.1524.MA.ZS,"Unemployment, youth male (% of male labor force ages 15-24) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,19.114
+SL_UEM_1524_NE_ZS,SL.UEM.1524.NE.ZS,"Unemployment, youth total (% of total labor force ages 15-24) (national estimate)",labor,PCT,Social Protection & Labor,2017,20.529
+SL_UEM_1524_ZS,SL.UEM.1524.ZS,"Unemployment, youth total (% of total labor force ages 15-24) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,20.559
+SL_UEM_ADVN_FE_ZS,SL.UEM.ADVN.FE.ZS,"Unemployment with advanced education, female (% of female labor force with advanced education)",labor,PCT,Social Protection & Labor,2017,7.68
+SL_UEM_ADVN_MA_ZS,SL.UEM.ADVN.MA.ZS,"Unemployment with advanced education, male (% of male labor force with advanced education)",labor,PCT,Social Protection & Labor,2017,8.614
+SL_UEM_ADVN_ZS,SL.UEM.ADVN.ZS,Unemployment with advanced education (% of total labor force with advanced education),labor,PCT,Social Protection & Labor,2017,8.325
+SL_UEM_BASC_FE_ZS,SL.UEM.BASC.FE.ZS,"Unemployment with basic education, female (% of female labor force with basic education)",labor,PCT,Social Protection & Labor,2017,12.64
+SL_UEM_BASC_MA_ZS,SL.UEM.BASC.MA.ZS,"Unemployment with basic education, male (% of male labor force with basic education)",labor,PCT,Social Protection & Labor,2017,8.651
+SL_UEM_BASC_ZS,SL.UEM.BASC.ZS,Unemployment with basic education (% of total labor force with basic education),labor,PCT,Social Protection & Labor,2017,9.809
+SL_UEM_INTM_FE_ZS,SL.UEM.INTM.FE.ZS,"Unemployment with intermediate education, female (% of female labor force with intermediate education)",labor,PCT,Social Protection & Labor,2017,16.506
+SL_UEM_INTM_MA_ZS,SL.UEM.INTM.MA.ZS,"Unemployment with intermediate education, male (% of male labor force with intermediate education)",labor,PCT,Social Protection & Labor,2017,13.252
+SL_UEM_INTM_ZS,SL.UEM.INTM.ZS,Unemployment with intermediate education (% of total labor force with intermediate education),labor,PCT,Social Protection & Labor,2017,14.464
+SL_UEM_NEET_FE_ME_ZS,SL.UEM.NEET.FE.ME.ZS,"Share of youth not in education, employment or training, female (% of female youth population) (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,41.386
+SL_UEM_NEET_FE_ZS,SL.UEM.NEET.FE.ZS,"Share of youth not in education, employment or training, female (% of female youth population)",labor,PCT,Social Protection & Labor,2017,45.817
+SL_UEM_NEET_MA_ME_ZS,SL.UEM.NEET.MA.ME.ZS,"Share of youth not in education, employment or training, male (% of male youth population)  (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,19.697
+SL_UEM_NEET_MA_ZS,SL.UEM.NEET.MA.ZS,"Share of youth not in education, employment or training, male (% of male youth population)",labor,PCT,Social Protection & Labor,2017,21.156
+SL_UEM_NEET_ME_ZS,SL.UEM.NEET.ME.ZS,"Share of youth not in education, employment or training, total (% of youth population)  (modeled ILO estimate)",labor,PCT,Social Protection & Labor,2025,30.665
+SL_UEM_NEET_ZS,SL.UEM.NEET.ZS,"Share of youth not in education, employment or training, total (% of youth population)",labor,PCT,Social Protection & Labor,2017,34.763
+SL_UEM_TOTL_FE_NE_ZS,SL.UEM.TOTL.FE.NE.ZS,"Unemployment, female (% of female labor force) (national estimate)",labor,PCT,Social Protection & Labor,2017,12.02
+SL_UEM_TOTL_MA_NE_ZS,SL.UEM.TOTL.MA.NE.ZS,"Unemployment, male (% of male labor force) (national estimate)",labor,PCT,Social Protection & Labor,2017,9.794
+SL_UEM_TOTL_NE_ZS,SL.UEM.TOTL.NE.ZS,"Unemployment, total (% of total labor force) (national estimate)",labor,PCT,Social Protection & Labor,2017,10.66
+SL_WAG_0714_FE_ZS,SL.WAG.0714.FE.ZS,"Children in employment, wage workers, female (% of female children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,1.69
+SL_WAG_0714_MA_ZS,SL.WAG.0714.MA.ZS,"Children in employment, wage workers, male (% of male children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,2.54
+SL_WAG_0714_ZS,SL.WAG.0714.ZS,"Children in employment, wage workers (% of children in employment, ages 7-14)",labor,PCT,Social Protection & Labor,2008,2.08
+per_allsp_adq_pop_tot,per_allsp.adq_pop_tot,Adequacy of social protection and labor programs (% of total welfare of beneficiary households),labor,PCT,Social Protection & Labor,2010,5.95494157507738
+per_allsp_ben_q1_tot,per_allsp.ben_q1_tot,Benefit incidence of social protection and labor programs to poorest quintile (% of total SPL benefits),labor,PCT,Social Protection & Labor,2010,5.9229447127618
+per_allsp_cov_pop_tot,per_allsp.cov_pop_tot,Coverage of social protection and labor programs (% of population),labor,PCT,Social Protection & Labor,2010,43.4853833010242
+per_sa_allsa_adq_pop_tot,per_sa_allsa.adq_pop_tot,Adequacy of social safety net programs (% of total welfare of beneficiary households),labor,PCT,Social Protection & Labor,2010,2.5121161327491
+per_sa_allsa_ben_q1_tot,per_sa_allsa.ben_q1_tot,Benefit incidence of social safety net programs to poorest quintile (% of total safety net benefits),labor,PCT,Social Protection & Labor,2010,15.7330316763591
+per_sa_allsa_cov_pop_tot,per_sa_allsa.cov_pop_tot,Coverage of social safety net programs (% of population),labor,PCT,Social Protection & Labor,2010,40.1376120426982
+per_sa_allsa_cov_q1_tot,per_sa_allsa.cov_q1_tot,Coverage of social safety net programs in poorest quintile (% of population),labor,PCT,Social Protection & Labor,2010,48.9454998573349
+per_sa_allsa_cov_q2_tot,per_sa_allsa.cov_q2_tot,Coverage of social safety net programs in 2nd quintile (% of population),labor,PCT,Social Protection & Labor,2010,46.5135842483478
+per_sa_allsa_cov_q3_tot,per_sa_allsa.cov_q3_tot,Coverage of social safety net programs in 3rd quintile (% of population),labor,PCT,Social Protection & Labor,2010,39.8468719647772
+per_sa_allsa_cov_q4_tot,per_sa_allsa.cov_q4_tot,Coverage of social safety net programs in 4th quintile (% of population),labor,PCT,Social Protection & Labor,2010,36.7084445283257
+per_sa_allsa_cov_q5_tot,per_sa_allsa.cov_q5_tot,Coverage of social safety net programs in richest quintile (% of population),labor,PCT,Social Protection & Labor,2010,28.6867741127334
+per_si_allsi_adq_pop_tot,per_si_allsi.adq_pop_tot,Adequacy of social insurance programs (% of total welfare of beneficiary households),labor,PCT,Social Protection & Labor,2010,18.2455410399589
+per_si_allsi_ben_q1_tot,per_si_allsi.ben_q1_tot,Benefit incidence of social insurance programs to poorest quintile (% of total social insurance benefits),labor,PCT,Social Protection & Labor,2010,0.464775725797249
+per_si_allsi_cov_pop_tot,per_si_allsi.cov_pop_tot,Coverage of social insurance programs (% of population),labor,PCT,Social Protection & Labor,2010,5.25896121599293
+per_si_allsi_cov_q1_tot,per_si_allsi.cov_q1_tot,Coverage of social insurance programs in poorest quintile (% of population),labor,PCT,Social Protection & Labor,2010,0.56878196376792
+per_si_allsi_cov_q2_tot,per_si_allsi.cov_q2_tot,Coverage of social insurance programs in 2nd quintile (% of population),labor,PCT,Social Protection & Labor,2010,2.73073745560879
+per_si_allsi_cov_q3_tot,per_si_allsi.cov_q3_tot,Coverage of social insurance programs in 3rd quintile (% of population),labor,PCT,Social Protection & Labor,2010,4.3717939408177
+per_si_allsi_cov_q4_tot,per_si_allsi.cov_q4_tot,Coverage of social insurance programs in 4th quintile (% of population),labor,PCT,Social Protection & Labor,2010,6.43006796161112
+per_si_allsi_cov_q5_tot,per_si_allsi.cov_q5_tot,Coverage of social insurance programs in richest quintile (% of population),labor,PCT,Social Protection & Labor,2010,12.184940935446
+EN_POP_DNST,EN.POP.DNST,Population density (people per sq. km of land area),population,PER_KM2,Urban Development,2023,207.147638646669
+SE_ADT_LITR_FE_ZS,SE.ADT.LITR.FE.ZS,"Literacy rate, adult female (% of females ages 15 and above)",population,PCT,Gender,2019,59.4099998474121
+SG_DMK_ALLD_FN_ZS,SG.DMK.ALLD.FN.ZS,"Women participating in the three decisions (own health care, major household purchases, and visiting family) (% of women age 15-49)",population,PCT,Gender,2022,47.8
+SG_DMK_SRCR_FN_ZS,SG.DMK.SRCR.FN.ZS,"Women making their own informed decisions regarding sexual relations, contraceptive use and reproductive health care (% of women age 15-49)",population,PCT,Gender,2022,62.6
+SM_POP_ASYS_EA,SM.POP.ASYS.EA,Asylum-seekers by country or territory of asylum,population,COUNT,,2025,302.0
+SM_POP_ASYS_EO,SM.POP.ASYS.EO,Asylum-seekers by country or territory of origin,population,COUNT,,2025,14564.0
+SM_POP_FDIP,SM.POP.FDIP,Forcibly displaced people,population,COUNT,,2025,19915.0
+SM_POP_IDPC,SM.POP.IDPC,Internally displaced people (IDP) by country or territory of asylum / origin,population,COUNT,,2016,50000.0
+SM_POP_NETM,SM.POP.NETM,Net migration,population,COUNT,Financial Sector,2025,-364699.0
+SM_POP_RHCR_EA,SM.POP.RHCR.EA,Refugees under the mandate of the UNHCR by country or territory of asylum,population,COUNT,,2025,19613.0
+SM_POP_RHCR_EO,SM.POP.RHCR.EO,Refugees under the mandate of the UNHCR by country or territory of origin,population,COUNT,,2025,8019.0
+SM_POP_TOTL,SM.POP.TOTL,"International migrant stock, total",population,COUNT,Financial Sector,2024,470719.0
+SM_POP_TOTL_ZS,SM.POP.TOTL.ZS,International migrant stock (% of population),population,PCT,Financial Sector,2024,1.6
+SP_DYN_CBRT_IN,SP.DYN.CBRT.IN,"Birth rate, crude (per 1,000 people)",population,PER_1000,Health,2024,18.962
+SP_DYN_CDRT_IN,SP.DYN.CDRT.IN,"Death rate, crude (per 1,000 people)",population,PER_1000,Health,2024,6.972
+SP_DYN_TFRT_IN,SP.DYN.TFRT.IN,"Fertility rate, total (births per woman)",population,BIRTHS_PER_WOMAN,Health,2024,1.961
+SP_DYN_WFRT,SP.DYN.WFRT,Wanted fertility rate (births per woman),population,BIRTHS_PER_WOMAN,Health,2022,1.7
+SP_POP_0004_FE_5Y,SP.POP.0004.FE.5Y,"Population ages 00-04, female (% of female population)",population,PCT,Health,2025,8.62684323237339
+SP_POP_0004_MA_5Y,SP.POP.0004.MA.5Y,"Population ages 00-04, male (% of male population)",population,PCT,Health,2025,9.7787860194576
+SP_POP_0014_FE_IN,SP.POP.0014.FE.IN,"Population ages 0-14, female",population,PERSONS,Health,2025,4042177.0
+SP_POP_0014_FE_ZS,SP.POP.0014.FE.ZS,"Population ages 0-14, female (% of female population)",population,PCT,Health,2025,26.0989226595006
+SP_POP_0014_MA_IN,SP.POP.0014.MA.IN,"Population ages 0-14, male",population,PERSONS,Health,2025,4266289.0
+SP_POP_0014_MA_ZS,SP.POP.0014.MA.ZS,"Population ages 0-14, male (% of male population)",population,PCT,Health,2025,30.1926793727765
+SP_POP_0014_TO,SP.POP.0014.TO,"Population ages 0-14, total",population,PERSONS,Health,2025,8308466.0
+SP_POP_0014_TO_ZS,SP.POP.0014.TO.ZS,Population ages 0-14 (% of total population),population,PCT,Education,2025,28.0519719053718
+SP_POP_0509_FE_5Y,SP.POP.0509.FE.5Y,"Population ages 05-09, female (% of female population)",population,PCT,Health,2025,8.59757200900122
+SP_POP_0509_MA_5Y,SP.POP.0509.MA.5Y,"Population ages 05-09, male (% of male population)",population,PCT,Health,2025,10.0448471749535
+SP_POP_1014_FE_5Y,SP.POP.1014.FE.5Y,"Population ages 10-14, female (% of female population)",population,PCT,Health,2025,8.87450741812605
+SP_POP_1014_MA_5Y,SP.POP.1014.MA.5Y,"Population ages 10-14, male (% of male population)",population,PCT,Health,2025,10.3690461783654
+SP_POP_1519_FE_5Y,SP.POP.1519.FE.5Y,"Population ages 15-19, female (% of female population)",population,PCT,Health,2025,9.27767033732607
+SP_POP_1519_MA_5Y,SP.POP.1519.MA.5Y,"Population ages 15-19, male (% of male population)",population,PCT,Health,2025,10.3451965682039
+SP_POP_1564_FE_IN,SP.POP.1564.FE.IN,"Population ages 15-64, female",population,PERSONS,Health,2025,10380947.0
+SP_POP_1564_FE_ZS,SP.POP.1564.FE.ZS,"Population ages 15-64, female (% of female population)",population,PCT,Health,2025,67.0261428149671
+SP_POP_1564_MA_IN,SP.POP.1564.MA.IN,"Population ages 15-64, male",population,PERSONS,Health,2025,8966744.0
+SP_POP_1564_MA_ZS,SP.POP.1564.MA.ZS,"Population ages 15-64, male (% of male population)",population,PCT,Health,2025,63.457970546793
+SP_POP_1564_TO,SP.POP.1564.TO,"Population ages 15-64, total",population,PERSONS,Health,2025,19347692.0
+SP_POP_1564_TO_ZS,SP.POP.1564.TO.ZS,Population ages 15-64 (% of total population),population,PCT,Education,2025,65.3238393696021
+SP_POP_2024_FE_5Y,SP.POP.2024.FE.5Y,"Population ages 20-24, female (% of female population)",population,PCT,Health,2025,9.53531650418238
+SP_POP_2024_MA_5Y,SP.POP.2024.MA.5Y,"Population ages 20-24, male (% of male population)",population,PCT,Health,2025,9.81084499098032
+SP_POP_2529_FE_5Y,SP.POP.2529.FE.5Y,"Population ages 25-29, female (% of female population)",population,PCT,Health,2025,9.21685514973537
+SP_POP_2529_MA_5Y,SP.POP.2529.MA.5Y,"Population ages 25-29, male (% of male population)",population,PCT,Health,2025,8.61384225712144
+SP_POP_3034_FE_5Y,SP.POP.3034.FE.5Y,"Population ages 30-34, female (% of female population)",population,PCT,Health,2025,8.29418370428671
+SP_POP_3034_MA_5Y,SP.POP.3034.MA.5Y,"Population ages 30-34, male (% of male population)",population,PCT,Health,2025,7.15147899429662
+SP_POP_3539_FE_5Y,SP.POP.3539.FE.5Y,"Population ages 35-39, female (% of female population)",population,PCT,Health,2025,7.27875602304572
+SP_POP_3539_MA_5Y,SP.POP.3539.MA.5Y,"Population ages 35-39, male (% of male population)",population,PCT,Health,2025,5.95234961122305
+SP_POP_4044_FE_5Y,SP.POP.4044.FE.5Y,"Population ages 40-44, female (% of female population)",population,PCT,Health,2025,6.44253589453579
+SP_POP_4044_MA_5Y,SP.POP.4044.MA.5Y,"Population ages 40-44, male (% of male population)",population,PCT,Health,2025,5.4973917585089
+SP_POP_4549_FE_5Y,SP.POP.4549.FE.5Y,"Population ages 45-49, female (% of female population)",population,PCT,Health,2025,5.39567724045356
+SP_POP_4549_MA_5Y,SP.POP.4549.MA.5Y,"Population ages 45-49, male (% of male population)",population,PCT,Health,2025,4.90633543308981
+SP_POP_5054_FE_5Y,SP.POP.5054.FE.5Y,"Population ages 50-54, female (% of female population)",population,PCT,Health,2025,4.65098335588587
+SP_POP_5054_MA_5Y,SP.POP.5054.MA.5Y,"Population ages 50-54, male (% of male population)",population,PCT,Health,2025,4.45498333004251
+SP_POP_5559_FE_5Y,SP.POP.5559.FE.5Y,"Population ages 55-59, female (% of female population)",population,PCT,Health,2025,3.80492329257519
+SP_POP_5559_MA_5Y,SP.POP.5559.MA.5Y,"Population ages 55-59, male (% of male population)",population,PCT,Health,2025,3.62226039103453
+SP_POP_6064_FE_5Y,SP.POP.6064.FE.5Y,"Population ages 60-64, female (% of female population)",population,PCT,Health,2025,3.12924131294043
+SP_POP_6064_MA_5Y,SP.POP.6064.MA.5Y,"Population ages 60-64, male (% of male population)",population,PCT,Health,2025,3.10328721229196
+SP_POP_6569_FE_5Y,SP.POP.6569.FE.5Y,"Population ages 65-69, female (% of female population)",population,PCT,Health,2025,2.55548078396
+SP_POP_6569_MA_5Y,SP.POP.6569.MA.5Y,"Population ages 65-69, male (% of male population)",population,PCT,Health,2025,2.53490924763326
+SP_POP_65UP_FE_IN,SP.POP.65UP.FE.IN,"Population ages 65 and above, female",population,PERSONS,Health,2025,1064784.0
+SP_POP_65UP_FE_ZS,SP.POP.65UP.FE.ZS,"Population ages 65 and above, female (% of female population)",population,PCT,Health,2025,6.87493452553226
+SP_POP_65UP_MA_IN,SP.POP.65UP.MA.IN,"Population ages 65 and above, male",population,PERSONS,Health,2025,897176.0
+SP_POP_65UP_MA_ZS,SP.POP.65UP.MA.ZS,"Population ages 65 and above, male (% of male population)",population,PCT,Health,2025,6.34935008043051
+SP_POP_65UP_TO,SP.POP.65UP.TO,"Population ages 65 and above, total",population,PERSONS,Health,2025,1961960.0
+SP_POP_65UP_TO_ZS,SP.POP.65UP.TO.ZS,Population ages 65 and above (% of total population),population,PCT,Health,2025,6.62418872502616
+SP_POP_7074_FE_5Y,SP.POP.7074.FE.5Y,"Population ages 70-74, female (% of female population)",population,PCT,Health,2025,1.99090806811701
+SP_POP_7074_MA_5Y,SP.POP.7074.MA.5Y,"Population ages 70-74, male (% of male population)",population,PCT,Health,2025,1.85686199992781
+SP_POP_7579_FE_5Y,SP.POP.7579.FE.5Y,"Population ages 75-79, female (% of female population)",population,PCT,Health,2025,1.32912402789079
+SP_POP_7579_MA_5Y,SP.POP.7579.MA.5Y,"Population ages 75-79, male (% of male population)",population,PCT,Health,2025,1.1713555566407
+SP_POP_80UP_FE_5Y,SP.POP.80UP.FE.5Y,"Population ages 80 and above, female (% of female population)",population,PCT,Health,2025,0.999421645564451
+SP_POP_80UP_MA_5Y,SP.POP.80UP.MA.5Y,"Population ages 80 and above, male (% of male population)",population,PCT,Health,2025,0.786223276228733
+SP_POP_BRTH_MF,SP.POP.BRTH.MF,Sex ratio at birth (male births per female births),population,RATIO,Health,2024,1.049
+SP_POP_DPND,SP.POP.DPND,Age dependency ratio (% of working-age population),population,PCT,Health,2025,53.0834685604877
+SP_POP_DPND_OL,SP.POP.DPND.OL,"Age dependency ratio, old (% of working-age population)",population,PCT,Health,2025,10.1405376930747
+SP_POP_DPND_YG,SP.POP.DPND.YG,"Age dependency ratio, young (% of working-age population)",population,PCT,Health,2025,42.942930867413
+SP_POP_TOTL_FE_IN,SP.POP.TOTL.FE.IN,"Population, female",population,PERSONS,Health,2025,15487908.0
+SP_POP_TOTL_FE_ZS,SP.POP.TOTL.FE.ZS,"Population, female (% of total population)",population,PCT,Health,2025,52.2920042486158
+SP_POP_TOTL_MA_IN,SP.POP.TOTL.MA.IN,"Population, male",population,PERSONS,Health,2025,14130210.0
+SP_POP_TOTL_MA_ZS,SP.POP.TOTL.MA.ZS,"Population, male (% of total population)",population,PCT,Health,2025,47.7079957513842
+SP_RUR_TOTL,SP.RUR.TOTL,Rural population,population,PERSONS,Agriculture & Rural Development,2025,9774149.0
+SP_RUR_TOTL_ZG,SP.RUR.TOTL.ZG,Rural population growth (annual %),population,PCT,Agriculture & Rural Development,2025,-0.796896215077231
+SP_RUR_TOTL_ZS,SP.RUR.TOTL.ZS,Rural population (% of total population),population,PCT,Agriculture & Rural Development,2025,33.000575115141
+SP_URB_GROW,SP.URB.GROW,Urban population growth (annual %),population,PCT,Climate Change,2025,0.228365123974616
+SP_URB_TOTL,SP.URB.TOTL,Urban population,population,PERSONS,Climate Change,2025,19843969.0

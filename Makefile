@@ -9,12 +9,17 @@ else
     VENV_BIN := .venv/bin
 endif
 
+# Tools are invoked as `python -m <tool>`, never through the .exe/console-script
+# shim in .venv/Scripts. Those shims hard-code the interpreter path they were
+# built with, so they break silently (exit 1, no output) if the venv is moved or
+# Python is upgraded — which is exactly what happened to mypy and pytest here.
+# `python -m` always uses the interpreter next to it, so the gates keep working.
 PY    := $(VENV_BIN)/python
-RUFF  := $(VENV_BIN)/ruff
-MYPY  := $(VENV_BIN)/mypy
-PYTEST := $(VENV_BIN)/pytest
+RUFF  := $(PY) -m ruff
+MYPY  := $(PY) -m mypy
+PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne ingest-wb seed-nrb seed-census ingest-census nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb seed-nrb seed-census ingest-census nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -61,6 +66,9 @@ load-calendar:  ## Load the BS<->AD day-level calendar reference (idempotent)
 
 seed-periods-ne:  ## Seed Nepali fiscal-year time periods from bs_calendar (idempotent)
 	$(PY) scripts/seed_periods_ne.py
+
+wb-catalog:  ## P2B.S3a: enumerate & curate the full WB WDI catalogue -> reviewable CSVs (no DB)
+	$(PY) -m scripts.wb_catalog
 
 ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-first, idempotent)
 	$(PY) -m ingestion.worldbank.pipeline

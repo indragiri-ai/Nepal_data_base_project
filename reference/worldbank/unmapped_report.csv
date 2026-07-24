@@ -1,0 +1,42 @@
+wdi_code,name_wb,wb_unit,wb_topics,unit_resolved,sector_resolved,reason,latest_year,latest_value
+ER.H2O.FWST.ZS,Level of water stress: freshwater withdrawal as a proportion of available freshwater resources,,Environment,,environment,unit unresolved,2022,8.311832662
+HD_HCIP_OVRL_FE,"Human capital index plus (HCI+): overall score, female (scale 0–325)",,,INDEX,,sector unresolved,2025,117.336161956642
+HD_HCIP_OVRL_MA,"Human capital index plus (HCI+): overall score, male (scale 0–325)",,,INDEX,,sector unresolved,2025,153.905400966638
+HD_HCIP_OVRL_TO,"Human capital index plus (HCI+): overall score, total (scale 0–325)",,,INDEX,,sector unresolved,2025,133.214866816606
+IC.BRE.BE.P1,B-READY: Business Entry Pillar 1: Quality of Regulations for Business Entry,,,,economy,unit unresolved,2024,74.9999992847443
+IC.BRE.BE.P2,B-READY: Business Entry Pillar 2: Digital Public Services and Transparency of Information for Business Entry,,,,economy,unit unresolved,2024,53.3333330154419
+IC.BRE.BE.P3,B-READY: Business Entry Pillar 3: Operational Efficiency of Business Entry,,,,economy,unit unresolved,2024,70.75
+IC.BRE.BI.P1,B-READY: Business Insolvency Pillar 1: Quality of Regulations for Judicial Insolvency Proceedings,,,,economy,unit unresolved,2024,46.11111
+IC.BRE.BI.P2,B-READY: Business Insolvency Pillar 2: Quality of Institutional and Operational Infrastructure for Judicial Insolvency Proceedings,,,,economy,unit unresolved,2024,20.0
+IC.BRE.BI.P3,B-READY: Business Insolvency Pillar 3: Operational Efficiency of Resolving Judicial Insolvency Proceedings,,,,economy,unit unresolved,2024,90.0
+IC.BRE.BL.P1,B-READY: Business Location Pillar 1: Quality of Regulations for Business Location,,,,economy,unit unresolved,2024,50.0570179149508
+IC.BRE.BL.P2,B-READY: Business Location Pillar 2: Quality of Public Services and Transparency of Information for Business Location,,,,economy,unit unresolved,2024,37.4111114442348
+IC.BRE.BL.P3,B-READY: Business Location Pillar 3: Operational Efficiency of Establishing a Business Location,,,,economy,unit unresolved,2024,94.0666666030884
+IC.BRE.DR.P1,B-READY: Dispute Resolution Pillar 1: Quality of Regulations for Dispute Resolution,,,,economy,unit unresolved,2024,69.6743316650391
+IC.BRE.DR.P2,B-READY: Dispute Resolution Pillar 2: Public Services for Dispute Resolution,,,,economy,unit unresolved,2024,41.0662498474121
+IC.BRE.DR.P3,B-READY: Dispute Resolution Pillar 3:  Ease of Resolving a Commercial Dispute,,,,economy,unit unresolved,2024,82.4499969482422
+IC.BRE.FS.P1,B-READY: Financial Services Pillar 1: Quality of Regulations for Financial Services,,,,economy,unit unresolved,2024,84.6111111193895
+IC.BRE.FS.P2,B-READY: Financial Services Pillar 2: Accessibility of Information in Credit Infrastructure,,,,economy,unit unresolved,2024,77.3611088991165
+IC.BRE.FS.P3,B-READY: Financial Services Pillar 3: Operational Efficiency of Receiving Financial Services,,,,economy,unit unresolved,2024,49.7666660472751
+IC.BRE.IT.P1,B-READY: International Trade Pillar 1: Quality of Regulations for International Trade,,,,economy,unit unresolved,2024,50.2465887476608
+IC.BRE.IT.P2,B-READY: International Trade Pillar 2: Quality of Public Services for the Facilitation of International Trade,,,,economy,unit unresolved,2024,66.6666667499999
+IC.BRE.IT.P3,"B-READY: International Trade Pillar 3: Efficiency of Importing Goods, Exporting Goods, and Engaging in Digital Trade",,,,economy,unit unresolved,2024,83.0000013113021
+IC.BRE.LB.P1,B-READY: Labor Pillar 1: Quality of Labor Regulations,,,,economy,unit unresolved,2024,72.6730769230769
+IC.BRE.LB.P2,B-READY: Labor Pillar 2: Adequacy of Public Services for Labor,,,,economy,unit unresolved,2024,58.3333333333333
+IC.BRE.LB.P3,B-READY: Labor Pillar 3: Operational Efficiency of Labor Regulations and Public Services in Practice,,,,economy,unit unresolved,2024,66.0833328664302
+IC.BRE.MC.P1,B-READY: Market Competition Pillar 1: Quality of Regulations that Promote Market Competition,,,,economy,unit unresolved,2024,36.276694893837
+IC.BRE.MC.P2,B-READY: Market Competition Pillar 2: Public Services that Promote Market Competition,,,,economy,unit unresolved,2024,26.4197526574135
+IC.BRE.MC.P3,B-READY: Market Competition Pillar 3:  Implementation of Key Services Promoting Market Competition,,,,economy,unit unresolved,2024,36.4796272069216
+IC.BRE.P1.RF,B-READY: Pillar 1: Regulatory Framework,,,,economy,unit unresolved,2024,59.2976303100585
+IC.BRE.P2.PS,B-READY: Pillar 2: Public Services,,,,economy,unit unresolved,2024,49.2886374115944
+IC.BRE.P3.OE,B-READY: Pillar 3: Operational Efficiency,,,,economy,unit unresolved,2024,72.2096292681992
+IC.BRE.TX.P1,B-READY: Taxation Pillar 1: Quality of Regulations on Taxation,,,,economy,unit unresolved,2024,49.75
+IC.BRE.TX.P2,B-READY: Taxation Pillar 2: Public Services Provided by the Tax Administration,,,,economy,unit unresolved,2024,44.9652786254883
+IC.BRE.TX.P3,B-READY: Taxation Pillar 3: Operational Efficiency of Tax Systems in Practice,,,,economy,unit unresolved,2024,79.25
+IC.BRE.US.P1,B-READY: Utility Services Pillar 1: Quality of Regulations on Utility Services,,,,economy,unit unresolved,2024,58.5763868093491
+IC.BRE.US.P2,B-READY: Utility Services Pillar 2: Quality of Governance and Transparency of Utility Services,,,,economy,unit unresolved,2024,67.329543441534
+IC.BRE.US.P3,B-READY: Utility Services Pillar 3: Operational Efficiency of Utility Service Provision,,,,economy,unit unresolved,2024,70.25
+IC.FRM.NPRD.ZS,"Firms that introduced a new product/service and process, and spent on R&D",,,,economy,unit unresolved,2023,0.2116246969
+MS.MIL.MPRT.KD,Arms imports (SIPRI trend indicator values),,Public Sector | Trade,,economy,unit unresolved,2021,0.0
+SH.MMR.RISK,Lifetime risk of maternal death (1 in: rate varies by country),,Health | Gender,,health,unit unresolved,2023,332.0
+SI.SPR.PGAP,Prosperity gap (average shortfall from a prosperity standard of $28/day),,,,economy,unit unresolved,2022,3.9
