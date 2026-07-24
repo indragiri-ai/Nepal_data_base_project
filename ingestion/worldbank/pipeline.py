@@ -20,11 +20,15 @@ Run with `make ingest-wb`. Idempotent: rerunning never creates duplicates.
 
 from __future__ import annotations
 
+import argparse
+import csv
 import json
 import os
 import sys
+import time
 from dataclasses import dataclass
 from decimal import Decimal
+from pathlib import Path
 from typing import Any
 
 import psycopg
@@ -32,13 +36,22 @@ import requests
 from dotenv import load_dotenv
 
 from ingestion.common.quality import Candidate, run_quality_gate
-from ingestion.common.raw_lake import RawLake
+from ingestion.common.raw_lake import RawLake, RawLakeError
 
 WB_URL = "https://api.worldbank.org/v2/country/{country}/indicator/{code}"
 COUNTRY = "NPL"
 GEOGRAPHY_CODE = "NP"
 DATASET_NAME = "World Development Indicators"
 PER_PAGE = "1000"
+# Rows per executemany round trip. Large enough that 40k observations take tens
+# of batches, small enough that one batch is a short, interruptible statement.
+INSERT_BATCH_SIZE = 1000
+# The continuity report has one line per series with a year gap — ~1,000 lines at
+# full-catalogue scale, which would bury the summary. Print a sample, count the rest.
+INFO_PRINT_LIMIT = 15
+# Every quality failure is written here in full, so a blocked load is diagnosable
+# without re-running the fetch (the console only shows the first ten).
+GATE_REPORT = Path("reference/worldbank/quality_gate_failures.csv")
 
 
 @dataclass(frozen=True)
@@ -90,15 +103,118 @@ def _scalar(cur: psycopg.Cursor[Any]) -> Any:
     return None if row is None else row[0]
 
 
-def run() -> int:
+def _write_gate_report(failures: list[str]) -> None:
+    """Write every quality-gate failure to a reviewable CSV. A blocked load must
+    be diagnosable without re-running the whole fetch."""
+    GATE_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    with GATE_REPORT.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(["failure"])
+        writer.writerows([failure] for failure in failures)
+    print(f"  wrote {len(failures)} quality-gate failure(s) to {GATE_REPORT}")
+
+
+def clear_stale_pipeline_sessions(conn: psycopg.Connection[Any]) -> None:
+    """Terminate 'idle in transaction' sessions left by a crashed pipeline run.
+
+    Only our own pipelines write observations, so such a session is a dead
+    predecessor still holding locks via the pooler — left alone it blocks this
+    run into statement timeout (CLAUDE.md rule 8). Same idiom as
+    `scripts/nrb_bfs.clear_stale_pipeline_sessions`.
+    """
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity"
+            " WHERE datname = current_database() AND pid <> pg_backend_pid()"
+            "   AND state = 'idle in transaction'"
+            "   AND query LIKE '%observations%'"
+        )
+        cleared = cur.fetchall()
+    conn.commit()
+    if cleared:
+        print(f"  cleared {len(cleared)} stale lock-holding session(s) from a crashed run")
+
+
+def _archive_with_retry(lake: RawLake, wdi_code: str, raw_bytes: bytes, source_url: str) -> str:
+    """Store one indicator's raw payload, retrying transient storage errors.
+
+    Supabase Storage occasionally drops a connection under sustained sequential
+    uploads (the same class of flakiness as the DB pooler). A blip on ONE
+    upload must not end a 1,396-indicator run, so we back off and retry. If it
+    still fails, the caller treats the indicator as failed and does NOT load it
+    — raw-first (rule #3) means an unarchived value is never ingested.
+    """
+    last: Exception | None = None
+    for attempt in range(4):
+        try:
+            return lake.store(f"worldbank/wdi/{wdi_code}", raw_bytes, source_url).payload_path
+        except (requests.RequestException, RawLakeError) as exc:
+            last = exc
+            time.sleep(1.0 * (attempt + 1))
+    raise last if last is not None else RuntimeError("unreachable")
+
+
+def fetch_all_series(
+    indicators: list[tuple[Any, ...]], lake: RawLake | None
+) -> tuple[dict[str, list[SeriesPoint]], list[str], list[str]]:
+    """Fetch (and, unless lake is None, archive) every indicator's series with NO
+    database connection open.
+
+    This phase is minutes long at full-catalogue scale. Holding a connection
+    across it is what leaves the 'idle in transaction' zombies that lock-block
+    the next run, so the caller opens its connections around this, never during.
+
+    A per-indicator fetch OR archive failure is reported and skipped, never
+    fatal — one bad indicator must not lose the other 1,395. Passing lake=None
+    skips archiving entirely (used by --dry-run, which loads nothing).
+
+    Returns (points by WDI code, raw payload paths, per-indicator failures).
+    """
+    points_by_code: dict[str, list[SeriesPoint]] = {}
+    raw_refs: list[str] = []
+    failures: list[str] = []
+    total = len(indicators)
+    for position, row in enumerate(indicators, start=1):
+        wdi_code = row[4]
+        try:
+            points, raw_bytes, source_url = fetch_series(wdi_code)
+            if lake is not None:
+                raw_refs.append(_archive_with_retry(lake, wdi_code, raw_bytes, source_url))
+        except (requests.RequestException, RuntimeError, RawLakeError) as exc:
+            failures.append(f"{wdi_code}: {exc}")
+            continue
+        points_by_code[wdi_code] = points
+        if position % 100 == 0 or position == total:
+            print(f"  ... fetched {position}/{total} indicators ({len(failures)} failed)")
+    return points_by_code, raw_refs, failures
+
+
+def run(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Ingest World Bank WDI series for Nepal.")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="fetch and archive raw, run the quality gate, report what WOULD be"
+        " loaded — but write no release and no observations",
+    )
+    args = parser.parse_args(argv)
+    dry_run: bool = args.dry_run
+
     load_dotenv()
     db_url = os.environ.get("DATABASE_URL", "").strip()
     if not db_url:
         print("FAILURE: DATABASE_URL is empty. Fill in .env.")
         return 1
-    lake = RawLake.from_env()
+    # A dry run loads nothing, so it must not write raw-lake objects either
+    # (~4,000 storage round trips thrown away). The real run archives raw-first.
+    lake = None if dry_run else RawLake.from_env()
 
-    conn = psycopg.connect(db_url)
+    # --- Phase 1 (short connection): read reference data, open the log row -----
+    # The connection is CLOSED before the long network phase. Holding it open
+    # across minutes of HTTP is what leaves 'idle in transaction' zombies on
+    # Supabase's pooler, which then lock-block the next run (CLAUDE.md rule 8).
+    conn = psycopg.connect(db_url, connect_timeout=30)
+    clear_stale_pipeline_sessions(conn)
     cur = conn.cursor()
 
     cur.execute("SELECT id FROM datasets WHERE name_en = %s", (DATASET_NAME,))
@@ -110,12 +226,35 @@ def run() -> int:
         conn.close()
         return 1
 
+    # A crashed prior run leaves its log row stuck at 'running' forever (the
+    # crash happens in the connection-less fetch phase, so its own except block
+    # never runs). Close them out so the log reflects reality.
+    cur.execute(
+        "UPDATE ingestion_log SET status = 'failed', finished_at = now(),"
+        " error_note = 'orphaned running row closed by a later run'"
+        " WHERE dataset_id = %s AND status = 'running'",
+        (dataset_id,),
+    )
+    if cur.rowcount:
+        print(f"  closed {cur.rowcount} orphaned 'running' log row(s) from a crashed run")
+
     cur.execute("SELECT gregorian_label, id FROM time_periods WHERE period_type = 'year'")
     year_to_period = {int(label): pid for label, pid in cur.fetchall()}
+    # Scope to World Bank indicators only. Other pipelines (NRB, census) also set
+    # source_concept, but with THEIR concept codes (e.g. 'BFS.C4.ccdratio',
+    # 'population/highlight:density') — not WDI codes. Sending those to the WB API
+    # wastes a request each and, worse, would load a wrong value under the WDI
+    # dataset if a foreign concept ever collided with a real WDI code. We fetch
+    # exactly the indicators whose preferred source is this dataset's source
+    # (World Bank). NOTE: P2B.S4 may repoint some WB indicators' preferred_source
+    # to another source for the headline-answer policy; revisit this scope then.
     cur.execute(
         "SELECT i.code, i.id, i.unit_id, u.code, i.source_concept"
         " FROM indicators i JOIN units u ON u.id = i.unit_id"
-        " WHERE i.source_concept IS NOT NULL ORDER BY i.code"
+        " WHERE i.source_concept IS NOT NULL"
+        "   AND i.preferred_source_id = (SELECT source_id FROM datasets WHERE id = %s)"
+        " ORDER BY i.code",
+        (dataset_id,),
     )
     indicators = cur.fetchall()
 
@@ -136,18 +275,23 @@ def run() -> int:
     )
     log_id = _scalar(cur)
     conn.commit()
+    conn.close()
 
+    # --- Phase 2 (NO connection open): fetch every series and archive it raw ---
+    print(f"Fetching {len(indicators)} indicator series from the World Bank...")
+    points_by_code, raw_refs, fetch_failures = fetch_all_series(indicators, lake)
+    for failure in fetch_failures[:10]:
+        print(f"  [fetch failed] {failure}")
+
+    # --- Phase 3 (short connection): gate, then load in batches ---------------
     rows_in = loaded = rejected = unchanged = 0
-    raw_refs: list[str] = []
     release_id: int | None = None
+    conn = psycopg.connect(db_url, connect_timeout=30)
+    cur = conn.cursor()
     try:
-        # --- Fetch + archive raw + build candidate observations ---
         candidates: list[Candidate] = []
         for indicator_code, indicator_id, unit_id, unit_code, wdi_code in indicators:
-            points, raw_bytes, source_url = fetch_series(wdi_code)
-            stored = lake.store(f"worldbank/wdi/{wdi_code}", raw_bytes, source_url)
-            raw_refs.append(stored.payload_path)
-            for point in points:
+            for point in points_by_code.get(wdi_code, []):
                 rows_in += 1
                 if point.value is None:
                     rejected += 1
@@ -170,8 +314,14 @@ def run() -> int:
 
         # --- Quality gate: must pass BEFORE any release/observation is written ---
         result = run_quality_gate(candidates)
-        for info in result.infos:
+        # At catalogue scale the continuity report is ~1,000 lines; summarise it.
+        for info in result.infos[:INFO_PRINT_LIMIT]:
             print(f"  [info] {info}")
+        if len(result.infos) > INFO_PRINT_LIMIT:
+            print(f"  [info] ... and {len(result.infos) - INFO_PRINT_LIMIT} more series"
+                  " with year gaps (WB simply has no value for those years)")
+        if result.failures:
+            _write_gate_report(result.failures)
         if not result.passed:
             reason = f"{len(result.failures)} quality failure(s): " + "; ".join(result.failures[:5])
             cur.execute(
@@ -182,10 +332,35 @@ def run() -> int:
             )
             conn.commit()
             conn.close()
-            print("QUALITY GATE BLOCKED THE LOAD — nothing was written. Reasons:")
+            print(f"QUALITY GATE BLOCKED THE LOAD — nothing was written."
+                  f" {len(result.failures)} failure(s), full list in {GATE_REPORT}. First 10:")
             for failure in result.failures[:10]:
                 print(f"  - {failure}")
             return 1
+
+        if dry_run:
+            cur.execute(
+                "UPDATE ingestion_log SET status = 'success', finished_at = now(),"
+                " rows_in = %s, rows_loaded = 0, rows_rejected = %s, error_note = %s"
+                " WHERE id = %s",
+                (rows_in, rejected, "dry run — nothing written", log_id),
+            )
+            conn.commit()
+            conn.close()
+            would_load = 0
+            for c in candidates:
+                assert c.indicator_id is not None and c.period_id is not None
+                if latest.get((c.indicator_id, c.period_id)) != c.value:
+                    would_load += 1
+            print("\nDRY RUN — the quality gate PASSED and nothing was written.")
+            print(f"  indicators fetched : {len(indicators) - len(fetch_failures)}"
+                  f"/{len(indicators)}")
+            print(f"  data points read   : {rows_in}")
+            print(f"  would load         : {would_load} observations")
+            print(f"  would skip (same)  : {len(candidates) - would_load}")
+            print(f"  rejected (nulls etc): {rejected}")
+            print("Re-run without --dry-run to load.")
+            return 0
 
         # --- Gate passed: create the release and load new/changed values ---
         cur.execute(
@@ -194,20 +369,33 @@ def run() -> int:
             (dataset_id,),
         )
         release_id = _scalar(cur)
+
+        # Batched with executemany in chunks: at full-catalogue scale this is
+        # tens of thousands of rows, and Supabase's free tier drops the
+        # connection under sustained row-by-row writes (CLAUDE.md rule 8).
+        to_insert: list[tuple[Any, ...]] = []
         for candidate in candidates:
             assert candidate.indicator_id is not None and candidate.period_id is not None
             if latest.get((candidate.indicator_id, candidate.period_id)) == candidate.value:
                 unchanged += 1
                 continue
-            cur.execute(
-                "INSERT INTO observations"
-                " (indicator_id, geography_id, time_period_id, dataset_id,"
-                "  release_id, value, unit_id, status)"
-                " VALUES (%s, %s, %s, %s, %s, %s, %s, 'final')",
+            to_insert.append(
                 (candidate.indicator_id, geography_id, candidate.period_id, dataset_id,
-                 release_id, candidate.value, candidate.unit_id),
+                 release_id, candidate.value, candidate.unit_id)
             )
-            loaded += 1
+
+        insert_sql = (
+            "INSERT INTO observations"
+            " (indicator_id, geography_id, time_period_id, dataset_id,"
+            "  release_id, value, unit_id, status)"
+            " VALUES (%s, %s, %s, %s, %s, %s, %s, 'final')"
+        )
+        for start in range(0, len(to_insert), INSERT_BATCH_SIZE):
+            batch = to_insert[start : start + INSERT_BATCH_SIZE]
+            cur.executemany(insert_sql, batch)
+            loaded += len(batch)
+            if len(to_insert) > INSERT_BATCH_SIZE:
+                print(f"  ... inserted {loaded}/{len(to_insert)} observations")
 
         cur.execute(
             "UPDATE releases SET raw_file_refs = %s WHERE id = %s",
@@ -218,7 +406,7 @@ def run() -> int:
             " rows_in = %s, rows_loaded = %s, rows_rejected = %s,"
             " raw_file_refs = %s, release_id = %s, error_note = %s WHERE id = %s",
             (rows_in, loaded, rejected, json.dumps(raw_refs), release_id,
-             f"unchanged={unchanged}", log_id),
+             f"unchanged={unchanged}; fetch_failed={len(fetch_failures)}", log_id),
         )
         conn.commit()
     except Exception as exc:  # noqa: BLE001 — any failure must be logged, then surfaced
@@ -235,13 +423,18 @@ def run() -> int:
 
     conn.close()
     print("World Bank ingestion summary:")
-    print(f"  indicators fetched : {len(indicators)}")
+    print(f"  indicators fetched : {len(indicators) - len(fetch_failures)}/{len(indicators)}")
     print(f"  data points read   : {rows_in}")
     print(f"  observations loaded: {loaded}")
     print(f"  unchanged (skipped): {unchanged}")
     print(f"  rejected (nulls etc): {rejected}")
     print("  quality gate       : PASSED")
     print(f"  release id         : {release_id}")
+    if fetch_failures:
+        print(f"\n  {len(fetch_failures)} indicator(s) could not be fetched — reported, not"
+              " guessed. Re-run to retry just those:")
+        for failure in fetch_failures:
+            print(f"    - {failure}")
     print("Done.")
     return 0
 

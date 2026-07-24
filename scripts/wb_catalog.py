@@ -224,6 +224,7 @@ class Indicator:
     name: str
     unit: str
     topics: tuple[str, ...]
+    definition: str = ""  # WB's "sourceNote" — the published definition
 
 
 @dataclass(frozen=True)
@@ -409,6 +410,7 @@ def fetch_indicator_list() -> list[Indicator]:
                 name=(row.get("name") or "").strip(),
                 unit=(row.get("unit") or "").strip(),
                 topics=topics,
+                definition=(row.get("sourceNote") or "").strip(),
             )
         )
     return indicators

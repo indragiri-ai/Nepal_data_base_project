@@ -130,3 +130,6 @@ desktop.ini
 
 # Local preview screenshots (not part of the repo)
 Screenshots/
+
+# Pipeline run diagnostic — regenerated on any quality-gate-blocked load
+reference/worldbank/quality_gate_failures.csv

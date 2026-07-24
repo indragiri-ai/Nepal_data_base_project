@@ -13,6 +13,10 @@ it twice never creates duplicates (every table is upserted on its natural key):
                      verified to exist (failures are reported, never guessed —
                      Prime Directive 7). name_ne is left NULL: TODO Phase 3
                      translation review.
+  - indicators       from db/seeds/indicators_wb_full.csv — the full curated WDI
+                     catalogue (P2B.S3a/b), same verified-metadata rule, read
+                     from WB's source-2 listing in one request. Disjoint from
+                     indicators.csv: the hand-curated 20 keep their own codes.
 
 Run with `make seed`.
 """
@@ -33,6 +37,7 @@ from dotenv import load_dotenv
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from ingestion.common.fiscal_periods import year_sort_key  # noqa: E402
+from scripts.wb_catalog import fetch_indicator_list  # noqa: E402
 
 SEEDS_DIR = Path("db/seeds")
 WB_INDICATOR_META = "https://api.worldbank.org/v2/indicator/{code}"
@@ -236,6 +241,61 @@ def seed_indicators(cur: Cursor, source_id: int) -> tuple[int, list[str]]:
     return loaded, failures
 
 
+def seed_indicators_wb_full(cur: Cursor, source_id: int) -> tuple[int, list[str]]:
+    """Seed the full curated WDI catalogue from db/seeds/indicators_wb_full.csv
+    (P2B.S3b).
+
+    Same verified-metadata rule as the hand-curated 20: name_en and definition_en
+    come from World Bank's own metadata, and a code that does not appear in the
+    live source-2 listing is REPORTED, never guessed. The difference is where the
+    metadata is read from — WB's source-2 indicator listing carries `name` and
+    `sourceNote` for every indicator in one response, so this verifies 1,336
+    codes with a single request instead of hammering the API 1,336 times.
+
+    Writes are batched with executemany: Supabase's free tier drops connections
+    under sustained row-by-row traffic (CLAUDE.md rule 8).
+    """
+    rows = _read_csv("indicators_wb_full.csv")
+    if not rows:
+        return 0, []
+
+    live = {ind.code: ind for ind in fetch_indicator_list()}
+    cur.execute("SELECT code, id FROM units")
+    unit_ids = {code: uid for code, uid in cur.fetchall()}
+
+    params: list[tuple[Any, ...]] = []
+    failures: list[str] = []
+    for r in rows:
+        wdi = r["wdi_code"]
+        unit_id = unit_ids.get(r["unit_code"])
+        if unit_id is None:
+            failures.append(f"{r['code']}: unknown unit '{r['unit_code']}' — run seed_units first")
+            continue
+        meta = live.get(wdi)
+        if meta is None:
+            failures.append(f"{r['code']}: WDI code '{wdi}' is not in WB's live source-2 listing")
+            continue
+        params.append(
+            (r["code"], meta.name, meta.definition, unit_id, r["topic"], wdi, source_id)
+        )
+
+    cur.executemany(
+        "INSERT INTO indicators"
+        " (code, name_en, name_ne, definition_en, definition_ne, unit_id,"
+        "  topic, source_concept, preferred_source_id)"
+        " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s)"
+        " ON CONFLICT (code) DO UPDATE SET"
+        "   name_en = EXCLUDED.name_en,"
+        "   definition_en = EXCLUDED.definition_en,"
+        "   unit_id = EXCLUDED.unit_id,"
+        "   topic = EXCLUDED.topic,"
+        "   source_concept = EXCLUDED.source_concept,"
+        "   preferred_source_id = EXCLUDED.preferred_source_id",
+        params,
+    )
+    return len(params), failures
+
+
 def main() -> int:
     load_dotenv()
     url = os.environ.get("DATABASE_URL", "").strip()
@@ -252,6 +312,8 @@ def main() -> int:
         seed_geographies(cur)
         seed_time_periods(cur)
         loaded, failures = seed_indicators(cur, source_id)
+        wb_loaded, wb_failures = seed_indicators_wb_full(cur, source_id)
+        failures.extend(wb_failures)
         conn.commit()
 
         counts = {}
@@ -262,7 +324,7 @@ def main() -> int:
     print("Seed summary (table row counts):")
     for table, count in counts.items():
         print(f"  {table:13} {count}")
-    print(f"\nIndicators loaded this run: {loaded}")
+    print(f"\nIndicators loaded this run: {loaded} hand-curated + {wb_loaded} WB full catalogue")
 
     if failures:
         print("\nWDI codes that FAILED verification (NOT loaded, NOT guessed):")
