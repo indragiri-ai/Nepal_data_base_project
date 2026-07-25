@@ -22,6 +22,16 @@ class IndicatorSummary(BaseModel):
     preferred_source: str | None = None
 
 
+class IndicatorSpark(BaseModel):
+    """One indicator's compact national trend for the sector cards: the latest
+    value and a short run of recent values (chronological) for a sparkline."""
+
+    code: str
+    latest_period: str
+    latest_value: float
+    points: list[float]
+
+
 class IndicatorDetail(BaseModel):
     code: str
     name_en: str

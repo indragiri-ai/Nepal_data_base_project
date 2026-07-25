@@ -21,6 +21,12 @@ export interface IndicatorSummary {
   name: string;
   topic: string;
   unit: string;
+  /** Headline-answer policy (decision 0005), from /v1/indicators. `source` is
+   *  where this indicator's data comes from; `preferred_source` is the headline
+   *  source for its concept. When they differ, this series is an alternative
+   *  estimate. Absent on the single-indicator responses. */
+  source?: string | null;
+  preferred_source?: string | null;
 }
 
 export interface Provenance {
@@ -105,6 +111,20 @@ export interface GeoDataResponse {
 
 export function fetchIndicators(): Promise<IndicatorSummary[]> {
   return getJson<IndicatorSummary[]>("/v1/indicators");
+}
+
+/** One indicator's latest value + a short recent trend, for the sector cards. */
+export interface IndicatorSpark {
+  code: string;
+  latest_period: string;
+  latest_value: number;
+  points: number[];
+}
+
+/** Every indicator's latest value + sparkline points in a single request — the
+ *  data behind the sector-page cards (avoids one fetch per indicator). */
+export function fetchIndicatorSparks(): Promise<IndicatorSpark[]> {
+  return getJson<IndicatorSpark[]>("/v1/indicators/spark");
 }
 
 export function fetchGeoValues(

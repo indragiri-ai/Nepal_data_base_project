@@ -59,7 +59,9 @@ export const SECTORS: SectorDef[] = [
     description:
       "Who lives in Nepal, where, and how that is changing — census counts and demographic series.",
     topics: ["population"],
-    headlineCodes: ["POP_TOTAL", "POP_GROWTH", "URBAN_POP_PCT"],
+    // Census is the headline for population facts (decision 0005); the World Bank
+    // POP_TOTAL/POP_GROWTH series appear in the list below, badged as alternatives.
+    headlineCodes: ["CENSUS_POP_TOTAL", "CENSUS_POP_GROWTH", "URBAN_POP_PCT"],
     orbitCode: "CENSUS_POP_TOTAL",
     orbitLabel: "Population (2021)",
     mapCard: {
@@ -86,7 +88,9 @@ export const SECTORS: SectorDef[] = [
     description:
       "Literacy and schooling — how Nepal learns, from census counts and international series.",
     topics: ["education"],
-    headlineCodes: ["ADULT_LITERACY", "SCHOOL_ENROLL_PRIMARY"],
+    // Census literacy is the headline (decision 0005); the World Bank ADULT_LITERACY
+    // series (a different age base, 15+) is listed below as an alternative.
+    headlineCodes: ["CENSUS_LITERACY_RATE", "SCHOOL_ENROLL_PRIMARY"],
     orbitCode: "ADULT_LITERACY",
     orbitLabel: "Adult literacy",
     mapCard: {
@@ -121,16 +125,32 @@ export const SECTORS: SectorDef[] = [
     titleShort: "Governance",
     description: "Public institutions and governance indicators.",
     topics: ["governance"],
-    headlineCodes: [], // none loaded yet — arrives with the full WB catalog (P2B.S3)
+    // The WGI governance indicators are loaded (P2B.S3b); no curated headline
+    // charts chosen yet, so the page shows the full list without an "At a glance".
+    headlineCodes: [],
     // no orbitCode — the orbit node shows "in preparation"
   },
 ];
 
-/** Source badge for a code, until P2B.S4 formalizes preferred sources. */
+/** Source badge from a code alone (used where only the code is known — the orbit,
+ *  headline cards). Prefer `sourceForIndicator` when the API row is available: it
+ *  carries the authoritative source (decision 0005 / P2B.S4). */
 export function sourceForCode(code: string): string {
   if (code.startsWith("NRB_BFS_")) return "Nepal Rastra Bank";
   if (code.startsWith("CENSUS_")) return "National Statistics Office";
   return "World Bank";
+}
+
+/** The indicator's own (origin) source — authoritative from the API, with the
+ *  code heuristic as a fallback for older responses. */
+export function sourceForIndicator(ind: IndicatorSummary): string {
+  return ind.source ?? sourceForCode(ind.code);
+}
+
+/** True when this series is an alternative estimate: its own source is not the
+ *  headline source for its concept (decision 0005). The UI badges these. */
+export function isAlternative(ind: IndicatorSummary): boolean {
+  return Boolean(ind.source && ind.preferred_source && ind.source !== ind.preferred_source);
 }
 
 function belongs(sector: SectorDef, ind: IndicatorSummary): boolean {

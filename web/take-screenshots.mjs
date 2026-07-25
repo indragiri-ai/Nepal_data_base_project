@@ -8,6 +8,8 @@ const WIDTHS = [
 const PAGES = [
   ["home", "/"],
   ["economy", "/economy"],
+  ["people", "/people"],
+  ["education", "/education"],
 ];
 const BASE = "http://localhost:3199";
 

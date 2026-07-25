@@ -20,6 +20,7 @@ from api.models import (
     GeoDataResponse,
     GeoValue,
     IndicatorDetail,
+    IndicatorSpark,
     IndicatorSummary,
     MetaResponse,
     Observation,
@@ -84,6 +85,24 @@ def list_indicators(
             source=r.source, preferred_source=r.preferred_source,
         )
         for r in repo.list_indicators()
+    ]
+
+
+@app.get("/v1/indicators/spark", response_model=list[IndicatorSpark])
+def list_indicator_sparks(
+    repo: Annotated[Repository, Depends(get_repository)],
+) -> list[IndicatorSpark]:
+    """Every indicator's latest value + a short recent trend, in one call — the
+    data behind the sector-page cards (avoids one request per indicator).
+    Declared before /v1/indicators/{code} so 'spark' isn't read as a code."""
+    return [
+        IndicatorSpark(
+            code=r.code,
+            latest_period=r.latest_period,
+            latest_value=float(r.latest_value),
+            points=[float(p) for p in r.points],
+        )
+        for r in repo.get_spark_series()
     ]
 
 

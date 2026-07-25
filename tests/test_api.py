@@ -14,6 +14,7 @@ from api.repository import (
     GeoValueRow,
     GeoValuesResult,
     IndicatorRow,
+    IndicatorSparkRow,
     ObservationRow,
     SeriesResult,
 )
@@ -62,6 +63,22 @@ _WB_POP = IndicatorRow(
 class FakeRepository:
     def list_indicators(self) -> list[IndicatorRow]:
         return [_GDP, _CENSUS_POP, _WB_POP]
+
+    def get_spark_series(self) -> list[IndicatorSparkRow]:
+        return [
+            IndicatorSparkRow(
+                code="GDP_GROWTH",
+                latest_period="2020",
+                latest_value=Decimal("-2.37"),
+                points=[Decimal("7.62"), Decimal("6.66"), Decimal("-2.37")],
+            ),
+            IndicatorSparkRow(
+                code="CENSUS_POP_TOTAL",
+                latest_period="2021",
+                latest_value=Decimal("29164578"),
+                points=[Decimal("29164578")],
+            ),
+        ]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
         by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP, "POP_TOTAL": _WB_POP}
@@ -161,6 +178,20 @@ def test_list_indicators_exposes_headline_badge_fields(client: TestClient) -> No
     assert wb["source"] == "World Bank"
     assert wb["preferred_source"] == "National Statistics Office"
     assert wb["source"] != wb["preferred_source"]
+
+
+def test_indicator_sparks(client: TestClient) -> None:
+    """/v1/indicators/spark returns latest value + a short trend per indicator,
+    and is matched before /v1/indicators/{code} (so 'spark' is not a code)."""
+    resp = client.get("/v1/indicators/spark")
+    assert resp.status_code == 200
+    by_code = {r["code"]: r for r in resp.json()}
+    gdp = by_code["GDP_GROWTH"]
+    assert gdp["latest_value"] == -2.37
+    assert gdp["latest_period"] == "2020"
+    assert gdp["points"] == [7.62, 6.66, -2.37]
+    # a single-year census fact has a one-point series
+    assert by_code["CENSUS_POP_TOTAL"]["points"] == [29164578.0]
 
 
 def test_get_data_includes_provenance(client: TestClient) -> None:

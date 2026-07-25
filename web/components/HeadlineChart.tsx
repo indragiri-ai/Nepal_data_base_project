@@ -12,7 +12,6 @@ import { fetchSeries, type DataResponse } from "@/lib/api";
 import { ApiError } from "@/lib/api";
 import { formatCompact, formatValue } from "@/lib/format";
 import { latestPair } from "@/lib/latest";
-import { sourceForCode } from "@/lib/sectors";
 
 const TrendChart = dynamic(() => import("@/components/TrendChart"), {
   ssr: false,
@@ -83,8 +82,12 @@ export default function HeadlineChart({ code }: { code: string }) {
   }
 
   const pair = latestPair(data);
-  const source = sourceForCode(code);
+  // Authoritative source for this series (decision 0005), straight from the API.
+  const source = data.provenance.source;
   const isCount = data.unit_code === "COUNT" || data.unit_code === "PERSONS";
+  // A census headline is a single year (e.g. 2021): a one-point "trend" is
+  // misleading, so we lead with the value alone and skip the line.
+  const hasTrend = data.observations.length >= 2;
 
   return (
     <div className="headline">
@@ -97,7 +100,11 @@ export default function HeadlineChart({ code }: { code: string }) {
           <span className="headline-period"> · {pair.period}</span>
         </p>
       )}
-      <TrendChart data={data} height={200} compact />
+      {hasTrend ? (
+        <TrendChart data={data} height={200} compact />
+      ) : (
+        <p className="headline-single">Single reference year · {pair?.period ?? "latest"}</p>
+      )}
       <p className="headline-source">
         {source} · {pair?.period ?? "latest"}
       </p>

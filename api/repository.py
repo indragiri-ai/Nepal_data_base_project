@@ -34,6 +34,18 @@ class IndicatorRow:
 
 
 @dataclass(frozen=True)
+class IndicatorSparkRow:
+    """One indicator's compact national trend, for the sector-page cards: the
+    latest value and a short run of recent values (chronological, most-recent
+    last) to draw a sparkline. One row per indicator, built in a single query."""
+
+    code: str
+    latest_period: str
+    latest_value: Decimal
+    points: list[Decimal]
+
+
+@dataclass(frozen=True)
 class ObservationRow:
     period: str
     sort_key: int
@@ -94,6 +106,7 @@ class DatasetMetaRow:
 
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
+    def get_spark_series(self) -> list[IndicatorSparkRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None: ...
     def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None: ...
@@ -150,6 +163,55 @@ class PostgresRepository:
             cur.execute(f"SELECT {_INDICATOR_COLUMNS} WHERE i.code = %s", (code,))
             row = cur.fetchone()
         return IndicatorRow(*row) if row is not None else None
+
+    def get_spark_series(self, max_points: int = 16) -> list[IndicatorSparkRow]:
+        """Every indicator's national trend in ONE query, for the sector cards.
+
+        Picks a single headline series per indicator+period: the empty-breakdown
+        row (country-level WB, census all-sexes) if present, else the aggregate
+        NRB bank class (overall, then commercial_banks) — the same headline slice
+        the charts use, done server-side so the page makes one request, not one
+        per indicator.
+        """
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "WITH picked AS ("
+                "  SELECT o.indicator_id, t.gregorian_label AS period, t.sort_key,"
+                "    o.value,"
+                "    row_number() OVER ("
+                "      PARTITION BY o.indicator_id, o.time_period_id"
+                "      ORDER BY CASE"
+                "        WHEN o.breakdowns = '{}'::jsonb THEN 0"
+                "        WHEN o.breakdowns->>'bfi_class' = 'overall' THEN 1"
+                "        WHEN o.breakdowns->>'bfi_class' = 'commercial_banks' THEN 2"
+                "        ELSE 3 END, o.id"
+                "    ) AS rn"
+                "  FROM observations o"
+                "  JOIN geographies g ON g.id = o.geography_id"
+                "  JOIN time_periods t ON t.id = o.time_period_id"
+                "  WHERE g.code = 'NP' AND o.is_latest"
+                ")"
+                " SELECT i.code, p.period, p.value"
+                " FROM picked p JOIN indicators i ON i.id = p.indicator_id"
+                " WHERE p.rn = 1"
+                " ORDER BY i.code, p.sort_key",
+            )
+            rows = cur.fetchall()
+        by_code: dict[str, list[tuple[str, Decimal]]] = {}
+        for code, period, value in rows:
+            by_code.setdefault(code, []).append((period, value))
+        result: list[IndicatorSparkRow] = []
+        for code, pts in by_code.items():
+            recent = pts[-max_points:]
+            result.append(
+                IndicatorSparkRow(
+                    code=code,
+                    latest_period=recent[-1][0],
+                    latest_value=recent[-1][1],
+                    points=[v for _, v in recent],
+                )
+            )
+        return result
 
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None:
         with self._connect() as conn, conn.cursor() as cur:

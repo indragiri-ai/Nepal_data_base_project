@@ -8,25 +8,33 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   fetchIndicators,
+  fetchIndicatorSparks,
   ApiError,
   type IndicatorSummary,
+  type IndicatorSpark,
 } from "@/lib/api";
 import {
   SECTORS,
   indicatorsForSector,
-  sourceForCode,
+  sourceForIndicator,
   assignmentWarnings,
   type SectorDef,
 } from "@/lib/sectors";
-import HeadlineChart, { linkForCode } from "@/components/HeadlineChart";
+import HeadlineChart from "@/components/HeadlineChart";
+import SparkCard from "@/components/SparkCard";
 
 const SOURCE_ORDER = ["World Bank", "Nepal Rastra Bank", "National Statistics Office"];
 
 export default function SectorDashboard({ slug }: { slug: string }) {
   const sector = SECTORS.find((s) => s.slug === slug) as SectorDef;
   const [indicators, setIndicators] = useState<IndicatorSummary[] | null>(null);
+  const [sparks, setSparks] = useState<Map<string, IndicatorSpark>>(new Map());
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("");
+  // Big sectors (Economy ~600) are capped per source group so the page stays
+  // tight; a group expands on demand.
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const GROUP_CAP = 24;
 
   useEffect(() => {
     let cancelled = false;
@@ -42,6 +50,15 @@ export default function SectorDashboard({ slug }: { slug: string }) {
       .catch((e: unknown) => {
         if (!cancelled) setError(e instanceof ApiError ? e.message : "Could not load indicators.");
       });
+    // Sparklines load in parallel; if they fail the cards still render (value-less),
+    // so a spark outage never blocks the page.
+    fetchIndicatorSparks()
+      .then((rows) => {
+        if (!cancelled) setSparks(new Map(rows.map((r) => [r.code, r])));
+      })
+      .catch(() => {
+        /* cards fall back to name + source badge */
+      });
     return () => {
       cancelled = true;
     };
@@ -53,7 +70,7 @@ export default function SectorDashboard({ slug }: { slug: string }) {
   );
 
   const sources = useMemo(() => {
-    const set = new Set(owned.map((i) => sourceForCode(i.code)));
+    const set = new Set(owned.map((i) => sourceForIndicator(i)));
     return SOURCE_ORDER.filter((s) => set.has(s));
   }, [owned]);
 
@@ -68,7 +85,7 @@ export default function SectorDashboard({ slug }: { slug: string }) {
   const grouped = useMemo(() => {
     return SOURCE_ORDER.map((src) => ({
       source: src,
-      rows: filtered.filter((i) => sourceForCode(i.code) === src),
+      rows: filtered.filter((i) => sourceForIndicator(i) === src),
     })).filter((g) => g.rows.length > 0);
   }, [filtered]);
 
@@ -131,11 +148,7 @@ export default function SectorDashboard({ slug }: { slug: string }) {
         </div>
 
         {owned.length === 0 && indicators && (
-          <div className="state">
-            {sector.slug === "governance"
-              ? "No governance indicators are loaded yet. They arrive with the full World Bank catalog (step P2B.S3)."
-              : "No indicators are loaded for this sector yet."}
-          </div>
+          <div className="state">No indicators are loaded for this sector yet.</div>
         )}
 
         {owned.length > 0 && (
@@ -155,24 +168,38 @@ export default function SectorDashboard({ slug }: { slug: string }) {
               <div className="state">No indicators match “{filter}”.</div>
             )}
 
-            {grouped.map((g) => (
-              <div className="ind-group" key={g.source}>
-                <h3 className="ind-group-head">{g.source}</h3>
-                <ul className="ind-list">
-                  {g.rows.map((ind) => (
-                    <li key={ind.code}>
-                      <Link href={linkForCode(ind.code)} className="ind-row">
-                        <span className="ind-name">{ind.name}</span>
-                        <span className="ind-meta">
-                          <span className="chip">{ind.unit}</span>
-                          <span className="badge">{sourceForCode(ind.code)}</span>
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {grouped.map((g) => {
+              const isExpanded = expanded.has(g.source);
+              const shown = isExpanded ? g.rows : g.rows.slice(0, GROUP_CAP);
+              return (
+                <div className="ind-group" key={g.source}>
+                  <h3 className="ind-group-head">
+                    {g.source} <span className="ind-group-count">{g.rows.length}</span>
+                  </h3>
+                  <div className="card-grid">
+                    {shown.map((ind) => (
+                      <SparkCard key={ind.code} ind={ind} spark={sparks.get(ind.code)} />
+                    ))}
+                  </div>
+                  {g.rows.length > GROUP_CAP && (
+                    <button
+                      type="button"
+                      className="btn ghost small show-all"
+                      onClick={() =>
+                        setExpanded((prev) => {
+                          const next = new Set(prev);
+                          if (next.has(g.source)) next.delete(g.source);
+                          else next.add(g.source);
+                          return next;
+                        })
+                      }
+                    >
+                      {isExpanded ? "Show fewer" : `Show all ${g.rows.length} →`}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </>
         )}
       </section>
