@@ -1,0 +1,754 @@
+local_code,local_name,local_type_ne,local_type_en,district_code,district_name,province_code,province_name,geoportal_fid
+NP010101,Aathrai Tribeni,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,1
+NP010102,Maiwakhola,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,2
+NP010103,Meringden,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,3
+NP010104,Mikwakhola,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,4
+NP010105,Pathibhara Yangwarak,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,9
+NP010106,Phaktanglung,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,5
+NP010107,Phungling,Nagarpalika,Municipality,NP0101,Taplejung,NP01,Koshi,6
+NP010108,Sidingba,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,7
+NP010109,Sirijangha,Gaunpalika,Rural Municipality,NP0101,Taplejung,NP01,Koshi,8
+NP010201,Falelung,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,10
+NP010202,Falgunanda,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,11
+NP010203,Hilihang,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,12
+NP010204,Kummayak,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,13
+NP010205,Miklajung,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,14
+NP010206,Phidim,Nagarpalika,Municipality,NP0102,Panchthar,NP01,Koshi,15
+NP010207,Tumbewa,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,16
+NP010208,Yangwarak,Gaunpalika,Rural Municipality,NP0102,Panchthar,NP01,Koshi,17
+NP010301,Chulachuli,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,18
+NP010302,Deumai,Nagarpalika,Municipality,NP0103,Ilam,NP01,Koshi,19
+NP010303,Fakphokthum,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,20
+NP010304,Illam,Nagarpalika,Municipality,NP0103,Ilam,NP01,Koshi,21
+NP010305,Mai,Nagarpalika,Municipality,NP0103,Ilam,NP01,Koshi,22
+NP010306,Maijogmai,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,23
+NP010307,Mangsebung,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,24
+NP010308,Rong,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,25
+NP010309,Sandakpur,Gaunpalika,Rural Municipality,NP0103,Ilam,NP01,Koshi,26
+NP010310,Suryodaya,Nagarpalika,Municipality,NP0103,Ilam,NP01,Koshi,27
+NP010401,Arjundhara,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,28
+NP010402,Barhadashi,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,29
+NP010403,Bhadrapur,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,30
+NP010404,Birtamod,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,31
+NP010405,Buddhashanti,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,32
+NP010406,Damak,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,33
+NP010407,Gauradhaha,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,34
+NP010408,Gauriganj,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,35
+NP010409,Haldibari,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,36
+NP010410,Jhapa,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,37
+NP010411,Kachankawal,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,38
+NP010412,Kamal,Gaunpalika,Rural Municipality,NP0104,Jhapa,NP01,Koshi,39
+NP010413,Kankai,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,40
+NP010414,Mechinagar,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,41
+NP010415,Shivasataxi,Nagarpalika,Municipality,NP0104,Jhapa,NP01,Koshi,42
+NP010501,Belbari,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,43
+NP010502,Biratnagar,Mahanagarpalika,Metropolitan City,NP0105,Morang,NP01,Koshi,44
+NP010503,Budhiganga,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,45
+NP010504,Dhanpalthan,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,46
+NP010505,Gramthan,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,47
+NP010506,Jahada,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,48
+NP010507,Kanepokhari,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,49
+NP010508,Katahari,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,50
+NP010509,Kerabari,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,51
+NP010510,Letang,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,52
+NP010511,Miklajung,Gaunpalika,Rural Municipality,NP0105,Morang,NP01,Koshi,53
+NP010512,Patahrishanishchare,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,54
+NP010513,Rangeli,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,55
+NP010514,Ratuwamai,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,56
+NP010515,Sundarharaicha,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,57
+NP010516,Sunwarshi,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,58
+NP010517,Uralabari,Nagarpalika,Municipality,NP0105,Morang,NP01,Koshi,59
+NP010601,Barah,Nagarpalika,Municipality,NP0106,Sunsari,NP01,Koshi,60
+NP010602,Barju,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,61
+NP010603,Bhokraha Narsingh,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,62
+NP010604,Dewanganj,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,63
+NP010605,Dharan,Upamahanagarpalika,Sub-Metropolitan City,NP0106,Sunsari,NP01,Koshi,64
+NP010606,Duhabi,Nagarpalika,Municipality,NP0106,Sunsari,NP01,Koshi,65
+NP010607,Gadhi,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,66
+NP010608,Harinagar,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,67
+NP010609,Inaruwa,Nagarpalika,Municipality,NP0106,Sunsari,NP01,Koshi,68
+NP010610,Itahari,Upamahanagarpalika,Sub-Metropolitan City,NP0106,Sunsari,NP01,Koshi,69
+NP010611,Koshi,Gaunpalika,Rural Municipality,NP0106,Sunsari,NP01,Koshi,70
+NP010612,Ramdhuni,Nagarpalika,Municipality,NP0106,Sunsari,NP01,Koshi,71
+NP010701,Chaubise,Gaunpalika,Rural Municipality,NP0107,Dhankuta,NP01,Koshi,73
+NP010702,Chhathar Jorpati,Gaunpalika,Rural Municipality,NP0107,Dhankuta,NP01,Koshi,74
+NP010703,Dhankuta,Nagarpalika,Municipality,NP0107,Dhankuta,NP01,Koshi,75
+NP010704,Mahalaxmi,Nagarpalika,Municipality,NP0107,Dhankuta,NP01,Koshi,77
+NP010705,Pakhribas,Nagarpalika,Municipality,NP0107,Dhankuta,NP01,Koshi,78
+NP010706,Sangurigadhi,Gaunpalika,Rural Municipality,NP0107,Dhankuta,NP01,Koshi,79
+NP010707,Shahidbhumi,Gaunpalika,Rural Municipality,NP0107,Dhankuta,NP01,Koshi,76
+NP010801,Aathrai,Gaunpalika,Rural Municipality,NP0108,Terhathum,NP01,Koshi,80
+NP010802,Chhathar,Gaunpalika,Rural Municipality,NP0108,Terhathum,NP01,Koshi,81
+NP010803,Laligurans,Nagarpalika,Municipality,NP0108,Terhathum,NP01,Koshi,82
+NP010804,Menchayam,Gaunpalika,Rural Municipality,NP0108,Terhathum,NP01,Koshi,83
+NP010805,Myanglung,Nagarpalika,Municipality,NP0108,Terhathum,NP01,Koshi,84
+NP010806,Phedap,Gaunpalika,Rural Municipality,NP0108,Terhathum,NP01,Koshi,85
+NP010901,Bhotkhola,Gaunpalika,Rural Municipality,NP0109,Sankhuwasabha,NP01,Koshi,86
+NP010902,Chainpur,Nagarpalika,Municipality,NP0109,Sankhuwasabha,NP01,Koshi,87
+NP010903,Chichila,Gaunpalika,Rural Municipality,NP0109,Sankhuwasabha,NP01,Koshi,88
+NP010904,Dharmadevi,Nagarpalika,Municipality,NP0109,Sankhuwasabha,NP01,Koshi,89
+NP010905,Khandbari,Nagarpalika,Municipality,NP0109,Sankhuwasabha,NP01,Koshi,90
+NP010906,Madi,Nagarpalika,Municipality,NP0109,Sankhuwasabha,NP01,Koshi,91
+NP010907,Makalu,Gaunpalika,Rural Municipality,NP0109,Sankhuwasabha,NP01,Koshi,92
+NP010908,Panchakhapan,Nagarpalika,Municipality,NP0109,Sankhuwasabha,NP01,Koshi,93
+NP010909,Sabhapokhari,Gaunpalika,Rural Municipality,NP0109,Sankhuwasabha,NP01,Koshi,94
+NP010910,Silichong,Gaunpalika,Rural Municipality,NP0109,Sankhuwasabha,NP01,Koshi,95
+NP011001,Aamchowk,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,96
+NP011002,Arun,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,97
+NP011003,Bhojpur,Nagarpalika,Municipality,NP0110,Bhojpur,NP01,Koshi,98
+NP011004,Hatuwagadhi,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,99
+NP011005,Pauwadungma,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,100
+NP011006,Ramprasad Rai,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,101
+NP011007,Salpasilichho,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,102
+NP011008,Shadananda,Nagarpalika,Municipality,NP0110,Bhojpur,NP01,Koshi,103
+NP011009,Tyamkemaiyung,Gaunpalika,Rural Municipality,NP0110,Bhojpur,NP01,Koshi,104
+NP011101,Dudhkoshi,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,106
+NP011102,Khumbupasanglahmu,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,107
+NP011103,Likhupike,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,108
+NP011104,Mahakulung,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,109
+NP011105,Nechasalyan,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,110
+NP011106,Solududhakunda,Nagarpalika,Municipality,NP0111,Solukhumbu,NP01,Koshi,111
+NP011107,Sotang,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,112
+NP011108,Thulung Dudhkoshi,Gaunpalika,Rural Municipality,NP0111,Solukhumbu,NP01,Koshi,105
+NP011201,Ainselukhark,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,121
+NP011202,Barahapokhari,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,122
+NP011203,Diprung,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,123
+NP011204,Halesi Tuwachung,Nagarpalika,Municipality,NP0112,Khotang,NP01,Koshi,124
+NP011205,Jantedhunga,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,125
+NP011206,Kepilasagadhi,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,126
+NP011207,Khotehang,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,127
+NP011208,Rawa Besi,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,128
+NP011209,Rupakot Majhuwagadhi,Nagarpalika,Municipality,NP0112,Khotang,NP01,Koshi,129
+NP011210,Sakela,Gaunpalika,Rural Municipality,NP0112,Khotang,NP01,Koshi,130
+NP011301,Champadevi,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,113
+NP011302,Chisankhugadhi,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,114
+NP011303,Khijidemba,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,115
+NP011304,Likhu,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,116
+NP011305,Manebhanjyang,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,117
+NP011306,Molung,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,118
+NP011307,Siddhicharan,Nagarpalika,Municipality,NP0113,Okhaldhunga,NP01,Koshi,119
+NP011308,Sunkoshi,Gaunpalika,Rural Municipality,NP0113,Okhaldhunga,NP01,Koshi,120
+NP011401,Belaka,Nagarpalika,Municipality,NP0114,Udayapur,NP01,Koshi,131
+NP011402,Chaudandigadhi,Nagarpalika,Municipality,NP0114,Udayapur,NP01,Koshi,132
+NP011403,Katari,Nagarpalika,Municipality,NP0114,Udayapur,NP01,Koshi,133
+NP011404,Rautamai,Gaunpalika,Rural Municipality,NP0114,Udayapur,NP01,Koshi,134
+NP011405,Sunkoshi,Gaunpalika,Rural Municipality,NP0114,Udayapur,NP01,Koshi,135
+NP011406,Tapli,Gaunpalika,Rural Municipality,NP0114,Udayapur,NP01,Koshi,136
+NP011407,Triyuga,Nagarpalika,Municipality,NP0114,Udayapur,NP01,Koshi,137
+NP011408,Udayapurgadhi,Gaunpalika,Rural Municipality,NP0114,Udayapur,NP01,Koshi,138
+NP021501,Agnisair Krishna Savaran,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,140
+NP021502,Balan Bihul,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,141
+NP021503,Belhi Chapena,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,142
+NP021504,Bishnupur,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,143
+NP021505,Bode Barsain,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,144
+NP021506,Chhinnamasta,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,145
+NP021507,Dakneshwori,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,146
+NP021508,Hanumannagar Kankalini,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,147
+NP021509,Kanchanrup,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,148
+NP021510,Khadak,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,149
+NP021511,Mahadeva,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,150
+NP021512,Rajbiraj,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,151
+NP021513,Rupani,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,152
+NP021514,Saptakoshi,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,153
+NP021515,Shambhunath,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,154
+NP021516,Surunga,Nagarpalika,Municipality,NP0215,Saptari,NP02,Madhesh,155
+NP021517,Tilathi Koiladi,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,156
+NP021518,Tirahut,Gaunpalika,Rural Municipality,NP0215,Saptari,NP02,Madhesh,157
+NP021601,Arnama,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,159
+NP021602,Aurahi,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,160
+NP021603,Bariyarpatti,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,161
+NP021604,Bhagawanpur,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,162
+NP021605,Bishnupur,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,163
+NP021606,Dhangadhimai,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,164
+NP021607,Golbazar,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,165
+NP021608,Kalyanpur,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,166
+NP021609,Karjanha,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,167
+NP021610,Lahan,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,168
+NP021611,Laxmipur Patari,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,169
+NP021612,Mirchaiya,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,170
+NP021613,Naraha,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,171
+NP021614,Nawarajpur,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,172
+NP021615,Sakhuwanankarkatti,Gaunpalika,Rural Municipality,NP0216,Siraha,NP02,Madhesh,173
+NP021616,Siraha,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,174
+NP021617,Sukhipur,Nagarpalika,Municipality,NP0216,Siraha,NP02,Madhesh,175
+NP021701,Aaurahi,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,176
+NP021702,Bateshwor,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,177
+NP021703,Bideha,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,178
+NP021704,Chhireshwornath,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,179
+NP021705,Dhanauji,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,180
+NP021706,Dhanusadham,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,181
+NP021707,Ganeshman Charnath,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,182
+NP021708,Hansapur,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,183
+NP021709,Janaknandani,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,184
+NP021710,Janakpur,Upamahanagarpalika,Sub-Metropolitan City,NP0217,Dhanusha,NP02,Madhesh,185
+NP021711,Kamala,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,186
+NP021712,Lakshminiya,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,187
+NP021713,Mithila,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,188
+NP021714,Mithila Bihari,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,189
+NP021715,Mukhiyapatti Musarmiya,Gaunpalika,Rural Municipality,NP0217,Dhanusha,NP02,Madhesh,190
+NP021716,Nagarain,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,191
+NP021717,Sabaila,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,192
+NP021718,Sahidnagar,Nagarpalika,Municipality,NP0217,Dhanusha,NP02,Madhesh,193
+NP021801,Aurahi,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,194
+NP021802,Balwa,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,195
+NP021803,Bardibas,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,196
+NP021804,Bhangaha,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,197
+NP021805,Ekdanra,Gaunpalika,Rural Municipality,NP0218,Mahottari,NP02,Madhesh,198
+NP021806,Gaushala,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,199
+NP021807,Jaleswor,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,200
+NP021808,Loharpatti,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,201
+NP021809,Mahottari,Gaunpalika,Rural Municipality,NP0218,Mahottari,NP02,Madhesh,202
+NP021810,Manra Siswa,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,203
+NP021811,Matihani,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,204
+NP021812,Pipra,Gaunpalika,Rural Municipality,NP0218,Mahottari,NP02,Madhesh,205
+NP021813,Ramgopalpur,Nagarpalika,Municipality,NP0218,Mahottari,NP02,Madhesh,206
+NP021814,Samsi,Gaunpalika,Rural Municipality,NP0218,Mahottari,NP02,Madhesh,207
+NP021815,Sonama,Gaunpalika,Rural Municipality,NP0218,Mahottari,NP02,Madhesh,208
+NP021901,Bagmati,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,209
+NP021902,Balara,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,210
+NP021903,Barahathawa,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,211
+NP021904,Basbariya,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,212
+NP021905,Bishnu,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,213
+NP021906,Bramhapuri,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,214
+NP021907,Chakraghatta,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,215
+NP021908,Chandranagar,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,216
+NP021909,Dhankaul,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,217
+NP021910,Godaita,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,218
+NP021911,Haripur,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,219
+NP021912,Haripurwa,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,220
+NP021913,Hariwan,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,221
+NP021914,Ishworpur,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,222
+NP021915,Kabilasi,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,223
+NP021916,Kaudena,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,224
+NP021917,Lalbandi,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,225
+NP021918,Malangawa,Nagarpalika,Municipality,NP0219,Sarlahi,NP02,Madhesh,226
+NP021919,Parsa,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,227
+NP021920,Ramnagar,Gaunpalika,Rural Municipality,NP0219,Sarlahi,NP02,Madhesh,228
+NP023201,Baudhimai,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,345
+NP023202,Brindaban,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,346
+NP023203,Chandrapur,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,347
+NP023204,Dewahhi Gonahi,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,348
+NP023205,Durga Bhagwati,Gaunpalika,Rural Municipality,NP0232,Rautahat,NP02,Madhesh,349
+NP023206,Gadhimai,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,350
+NP023207,Garuda,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,351
+NP023208,Gaur,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,352
+NP023209,Gujara,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,353
+NP023210,Ishanath,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,354
+NP023211,Katahariya,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,355
+NP023212,Madhav Narayan,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,356
+NP023213,Maulapur,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,357
+NP023214,Paroha,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,358
+NP023215,Phatuwa Bijayapur,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,359
+NP023216,Rajdevi,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,360
+NP023217,Rajpur,Nagarpalika,Municipality,NP0232,Rautahat,NP02,Madhesh,361
+NP023218,Yemunamai,Gaunpalika,Rural Municipality,NP0232,Rautahat,NP02,Madhesh,362
+NP023301,Adarshkotwal,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,363
+NP023302,Baragadhi,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,364
+NP023303,Bishrampur,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,365
+NP023304,Devtal,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,366
+NP023305,Jitpur Simara,Upamahanagarpalika,Sub-Metropolitan City,NP0233,Bara,NP02,Madhesh,367
+NP023306,Kalaiya,Upamahanagarpalika,Sub-Metropolitan City,NP0233,Bara,NP02,Madhesh,368
+NP023307,Karaiyamai,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,369
+NP023308,Kolhabi,Nagarpalika,Municipality,NP0233,Bara,NP02,Madhesh,370
+NP023309,Mahagadhimai,Nagarpalika,Municipality,NP0233,Bara,NP02,Madhesh,371
+NP023310,Nijgadh,Nagarpalika,Municipality,NP0233,Bara,NP02,Madhesh,372
+NP023311,Pacharauta,Nagarpalika,Municipality,NP0233,Bara,NP02,Madhesh,373
+NP023312,Parwanipur,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,374
+NP023313,Pheta,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,375
+NP023314,Prasauni,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,376
+NP023315,Simraungadh,Nagarpalika,Municipality,NP0233,Bara,NP02,Madhesh,377
+NP023316,Suwarna,Gaunpalika,Rural Municipality,NP0233,Bara,NP02,Madhesh,378
+NP023401,Bahudaramai,Nagarpalika,Municipality,NP0234,Parsa,NP02,Madhesh,380
+NP023402,Bindabasini,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,381
+NP023403,Birgunj,Mahanagarpalika,Metropolitan City,NP0234,Parsa,NP02,Madhesh,382
+NP023404,Chhipaharmai,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,383
+NP023405,Dhobini,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,384
+NP023406,Jagarnathpur,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,385
+NP023407,Jirabhawani,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,386
+NP023408,Kalikamai,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,387
+NP023409,Pakahamainpur,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,388
+NP023410,Parsagadhi,Nagarpalika,Municipality,NP0234,Parsa,NP02,Madhesh,389
+NP023411,Paterwasugauli,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,390
+NP023412,Pokhariya,Nagarpalika,Municipality,NP0234,Parsa,NP02,Madhesh,391
+NP023413,SakhuwaPrasauni,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,392
+NP023414,Thori,Gaunpalika,Rural Municipality,NP0234,Parsa,NP02,Madhesh,393
+NP032001,Dudhouli,Nagarpalika,Municipality,NP0320,Sindhuli,NP03,Bagmati,229
+NP032002,Ghanglekh,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,230
+NP032003,Golanjor,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,231
+NP032004,Hariharpurgadhi,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,232
+NP032005,Kamalamai,Nagarpalika,Municipality,NP0320,Sindhuli,NP03,Bagmati,233
+NP032006,Marin,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,234
+NP032007,Phikkal,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,235
+NP032008,Sunkoshi,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,236
+NP032009,Tinpatan,Gaunpalika,Rural Municipality,NP0320,Sindhuli,NP03,Bagmati,237
+NP032101,Doramba,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,238
+NP032102,Gokulganga,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,239
+NP032103,Khadadevi,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,240
+NP032104,Likhu Tamakoshi,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,241
+NP032105,Manthali,Nagarpalika,Municipality,NP0321,Ramechhap,NP03,Bagmati,242
+NP032106,Ramechhap,Nagarpalika,Municipality,NP0321,Ramechhap,NP03,Bagmati,243
+NP032107,Sunapati,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,244
+NP032108,Umakunda,Gaunpalika,Rural Municipality,NP0321,Ramechhap,NP03,Bagmati,245
+NP032201,Baiteshwor,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,246
+NP032202,Bhimeshwor,Nagarpalika,Municipality,NP0322,Dolakha,NP03,Bagmati,247
+NP032203,Bigu,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,248
+NP032204,Gaurishankar,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,249
+NP032205,Jiri,Nagarpalika,Municipality,NP0322,Dolakha,NP03,Bagmati,250
+NP032206,Kalinchok,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,251
+NP032207,Melung,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,252
+NP032208,Sailung,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,253
+NP032209,Tamakoshi,Gaunpalika,Rural Municipality,NP0322,Dolakha,NP03,Bagmati,254
+NP032301,Balefi,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,255
+NP032302,Barhabise,Nagarpalika,Municipality,NP0323,Sindhupalchok,NP03,Bagmati,256
+NP032303,Bhotekoshi,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,257
+NP032304,Chautara SangachokGadhi,Nagarpalika,Municipality,NP0323,Sindhupalchok,NP03,Bagmati,258
+NP032305,Helambu,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,259
+NP032306,Indrawati,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,260
+NP032307,Jugal,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,261
+NP032308,Lisangkhu Pakhar,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,262
+NP032309,Melamchi,Nagarpalika,Municipality,NP0323,Sindhupalchok,NP03,Bagmati,263
+NP032310,Panchpokhari Thangpal,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,264
+NP032311,Sunkoshi,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,265
+NP032312,Tripurasundari,Gaunpalika,Rural Municipality,NP0323,Sindhupalchok,NP03,Bagmati,266
+NP032401,Banepa,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,267
+NP032402,Bethanchowk,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,268
+NP032403,Bhumlu,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,269
+NP032404,Chaurideurali,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,270
+NP032405,Dhulikhel,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,271
+NP032406,Khanikhola,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,272
+NP032407,Mahabharat,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,273
+NP032408,Mandandeupur,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,274
+NP032409,Namobuddha,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,275
+NP032410,Panauti,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,276
+NP032411,Panchkhal,Nagarpalika,Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,277
+NP032412,Roshi,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,278
+NP032413,Temal,Gaunpalika,Rural Municipality,NP0324,Kabhrepalanchok,NP03,Bagmati,279
+NP032501,Bagmati,Gaunpalika,Rural Municipality,NP0325,Lalitpur,NP03,Bagmati,280
+NP032502,Godawari,Nagarpalika,Municipality,NP0325,Lalitpur,NP03,Bagmati,281
+NP032503,Konjyosom,Gaunpalika,Rural Municipality,NP0325,Lalitpur,NP03,Bagmati,282
+NP032504,Lalitpur,Mahanagarpalika,Metropolitan City,NP0325,Lalitpur,NP03,Bagmati,283
+NP032505,Mahalaxmi,Nagarpalika,Municipality,NP0325,Lalitpur,NP03,Bagmati,284
+NP032506,Mahankal,Gaunpalika,Rural Municipality,NP0325,Lalitpur,NP03,Bagmati,285
+NP032601,Bhaktapur,Nagarpalika,Municipality,NP0326,Bhaktapur,NP03,Bagmati,286
+NP032602,Changunarayan,Nagarpalika,Municipality,NP0326,Bhaktapur,NP03,Bagmati,287
+NP032603,Madhyapur Thimi,Nagarpalika,Municipality,NP0326,Bhaktapur,NP03,Bagmati,288
+NP032604,Suryabinayak,Nagarpalika,Municipality,NP0326,Bhaktapur,NP03,Bagmati,289
+NP032701,Budhanilakantha,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,290
+NP032702,Chandragiri,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,291
+NP032703,Dakshinkali,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,292
+NP032704,Gokarneshwor,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,293
+NP032705,Kageshwori Manahora,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,294
+NP032706,Kathmandu,Mahanagarpalika,Metropolitan City,NP0327,Kathmandu,NP03,Bagmati,295
+NP032707,Kirtipur,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,296
+NP032708,Nagarjun,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,297
+NP032709,Shankharapur,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,298
+NP032710,Tarakeshwor,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,299
+NP032711,Tokha,Nagarpalika,Municipality,NP0327,Kathmandu,NP03,Bagmati,300
+NP032801,Belkotgadhi,Nagarpalika,Municipality,NP0328,Nuwakot,NP03,Bagmati,301
+NP032802,Bidur,Nagarpalika,Municipality,NP0328,Nuwakot,NP03,Bagmati,302
+NP032803,Dupcheshwar,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,303
+NP032804,Kakani,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,304
+NP032805,Kispang,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,305
+NP032806,Likhu,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,306
+NP032807,Meghang,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,307
+NP032808,Panchakanya,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,308
+NP032809,Shivapuri,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,309
+NP032810,Suryagadhi,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,310
+NP032811,Tadi,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,311
+NP032812,Tarkeshwar,Gaunpalika,Rural Municipality,NP0328,Nuwakot,NP03,Bagmati,312
+NP032901,Gosaikunda,Gaunpalika,Rural Municipality,NP0329,Rasuwa,NP03,Bagmati,315
+NP032902,Kalika,Gaunpalika,Rural Municipality,NP0329,Rasuwa,NP03,Bagmati,316
+NP032903,Naukunda,Gaunpalika,Rural Municipality,NP0329,Rasuwa,NP03,Bagmati,317
+NP032904,Parbati Kunda,Gaunpalika,Rural Municipality,NP0329,Rasuwa,NP03,Bagmati,318
+NP032905,Uttargaya,Gaunpalika,Rural Municipality,NP0329,Rasuwa,NP03,Bagmati,319
+NP033001,Benighat Rorang,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,320
+NP033002,Dhunibesi,Nagarpalika,Municipality,NP0330,Dhading,NP03,Bagmati,321
+NP033003,Gajuri,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,322
+NP033004,Galchi,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,323
+NP033005,Gangajamuna,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,324
+NP033006,Jwalamukhi,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,325
+NP033007,Khaniyabash,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,326
+NP033008,Netrawati Dabjong,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,327
+NP033009,Nilakantha,Nagarpalika,Municipality,NP0330,Dhading,NP03,Bagmati,328
+NP033010,Rubi Valley,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,329
+NP033011,Siddhalek,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,330
+NP033012,Thakre,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,331
+NP033013,Tripura Sundari,Gaunpalika,Rural Municipality,NP0330,Dhading,NP03,Bagmati,332
+NP033101,Bagmati,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,333
+NP033102,Bakaiya,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,334
+NP033103,Bhimphedi,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,335
+NP033104,Hetauda,Upamahanagarpalika,Sub-Metropolitan City,NP0331,Makawanpur,NP03,Bagmati,336
+NP033105,Indrasarowar,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,337
+NP033106,Kailash,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,338
+NP033107,Makawanpurgadhi,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,339
+NP033108,Manahari,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,340
+NP033109,Raksirang,Gaunpalika,Rural Municipality,NP0331,Makawanpur,NP03,Bagmati,341
+NP033110,Thaha,Nagarpalika,Municipality,NP0331,Makawanpur,NP03,Bagmati,342
+NP033501,Bharatpur,Mahanagarpalika,Metropolitan City,NP0335,Chitawan,NP03,Bagmati,396
+NP033502,Ichchhyakamana,Gaunpalika,Rural Municipality,NP0335,Chitawan,NP03,Bagmati,397
+NP033503,Kalika,Nagarpalika,Municipality,NP0335,Chitawan,NP03,Bagmati,398
+NP033504,Khairahani,Nagarpalika,Municipality,NP0335,Chitawan,NP03,Bagmati,399
+NP033505,Madi,Nagarpalika,Municipality,NP0335,Chitawan,NP03,Bagmati,400
+NP033506,Rapti,Nagarpalika,Municipality,NP0335,Chitawan,NP03,Bagmati,401
+NP033507,Ratnanagar,Nagarpalika,Municipality,NP0335,Chitawan,NP03,Bagmati,402
+NP043601,Aarughat,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,404
+NP043602,Ajirkot,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,405
+NP043603,Bhimsen,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,406
+NP043604,Chum Nubri,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,407
+NP043605,Dharche,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,408
+NP043606,Gandaki,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,409
+NP043607,Gorkha,Nagarpalika,Municipality,NP0436,Gorkha,NP04,Gandaki,410
+NP043608,Palungtar,Nagarpalika,Municipality,NP0436,Gorkha,NP04,Gandaki,411
+NP043609,Sahid Lakhan,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,412
+NP043610,Siranchok,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,413
+NP043611,Sulikot,Gaunpalika,Rural Municipality,NP0436,Gorkha,NP04,Gandaki,414
+NP043701,Besishahar,Nagarpalika,Municipality,NP0437,Lamjung,NP04,Gandaki,415
+NP043702,Dordi,Gaunpalika,Rural Municipality,NP0437,Lamjung,NP04,Gandaki,416
+NP043703,Dudhpokhari,Gaunpalika,Rural Municipality,NP0437,Lamjung,NP04,Gandaki,417
+NP043704,Kwholasothar,Gaunpalika,Rural Municipality,NP0437,Lamjung,NP04,Gandaki,418
+NP043705,MadhyaNepal,Nagarpalika,Municipality,NP0437,Lamjung,NP04,Gandaki,419
+NP043706,Marsyangdi,Gaunpalika,Rural Municipality,NP0437,Lamjung,NP04,Gandaki,420
+NP043707,Rainas,Nagarpalika,Municipality,NP0437,Lamjung,NP04,Gandaki,421
+NP043708,Sundarbazar,Nagarpalika,Municipality,NP0437,Lamjung,NP04,Gandaki,422
+NP043801,Chame,Gaunpalika,Rural Municipality,NP0438,Manang,NP04,Gandaki,449
+NP043802,Narphu,Gaunpalika,Rural Municipality,NP0438,Manang,NP04,Gandaki,450
+NP043803,Nashong,Gaunpalika,Rural Municipality,NP0438,Manang,NP04,Gandaki,451
+NP043804,Neshyang,Gaunpalika,Rural Municipality,NP0438,Manang,NP04,Gandaki,452
+NP043901,Annapurna,Gaunpalika,Rural Municipality,NP0439,Kaski,NP04,Gandaki,444
+NP043902,Machhapuchchhre,Gaunpalika,Rural Municipality,NP0439,Kaski,NP04,Gandaki,445
+NP043903,Madi,Gaunpalika,Rural Municipality,NP0439,Kaski,NP04,Gandaki,446
+NP043904,Pokhara Lekhnath,Mahanagarpalika,Metropolitan City,NP0439,Kaski,NP04,Gandaki,447
+NP043905,Rupa,Gaunpalika,Rural Municipality,NP0439,Kaski,NP04,Gandaki,448
+NP044001,Anbukhaireni,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,423
+NP044002,Bandipur,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,424
+NP044003,Bhanu,Nagarpalika,Municipality,NP0440,Tanahu,NP04,Gandaki,425
+NP044004,Bhimad,Nagarpalika,Municipality,NP0440,Tanahu,NP04,Gandaki,426
+NP044005,Byas,Nagarpalika,Municipality,NP0440,Tanahu,NP04,Gandaki,427
+NP044006,Devghat,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,428
+NP044007,Ghiring,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,429
+NP044008,Myagde,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,430
+NP044009,Rhishing,Gaunpalika,Rural Municipality,NP0440,Tanahu,NP04,Gandaki,431
+NP044010,Shuklagandaki,Nagarpalika,Municipality,NP0440,Tanahu,NP04,Gandaki,432
+NP044101,Aandhikhola,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,433
+NP044102,Arjunchaupari,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,434
+NP044103,Bhirkot,Nagarpalika,Municipality,NP0441,Syangja,NP04,Gandaki,435
+NP044104,Biruwa,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,436
+NP044105,Chapakot,Nagarpalika,Municipality,NP0441,Syangja,NP04,Gandaki,437
+NP044106,Galyang,Nagarpalika,Municipality,NP0441,Syangja,NP04,Gandaki,438
+NP044107,Harinas,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,439
+NP044108,Kaligandagi,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,440
+NP044109,Phedikhola,Gaunpalika,Rural Municipality,NP0441,Syangja,NP04,Gandaki,441
+NP044110,Putalibazar,Nagarpalika,Municipality,NP0441,Syangja,NP04,Gandaki,442
+NP044111,Waling,Nagarpalika,Municipality,NP0441,Syangja,NP04,Gandaki,443
+NP044201,Bihadi,Gaunpalika,Rural Municipality,NP0442,Parbat,NP04,Gandaki,465
+NP044202,Jaljala,Gaunpalika,Rural Municipality,NP0442,Parbat,NP04,Gandaki,466
+NP044203,Kushma,Nagarpalika,Municipality,NP0442,Parbat,NP04,Gandaki,467
+NP044204,Mahashila,Gaunpalika,Rural Municipality,NP0442,Parbat,NP04,Gandaki,468
+NP044205,Modi,Gaunpalika,Rural Municipality,NP0442,Parbat,NP04,Gandaki,469
+NP044206,Painyu,Gaunpalika,Rural Municipality,NP0442,Parbat,NP04,Gandaki,470
+NP044207,Phalebas,Nagarpalika,Municipality,NP0442,Parbat,NP04,Gandaki,471
+NP044301,Badigad,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,472
+NP044302,Baglung,Nagarpalika,Municipality,NP0443,Baglung,NP04,Gandaki,473
+NP044303,Bareng,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,474
+NP044304,Dhorpatan,Nagarpalika,Municipality,NP0443,Baglung,NP04,Gandaki,475
+NP044305,Galkot,Nagarpalika,Municipality,NP0443,Baglung,NP04,Gandaki,476
+NP044306,Jaimuni,Nagarpalika,Municipality,NP0443,Baglung,NP04,Gandaki,477
+NP044307,Kanthekhola,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,478
+NP044308,Nisikhola,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,479
+NP044309,Taman Khola,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,480
+NP044310,Tara Khola,Gaunpalika,Rural Municipality,NP0443,Baglung,NP04,Gandaki,481
+NP044401,Annapurna,Gaunpalika,Rural Municipality,NP0444,Myagdi,NP04,Gandaki,458
+NP044402,Beni,Nagarpalika,Municipality,NP0444,Myagdi,NP04,Gandaki,459
+NP044403,Dhaulagiri,Gaunpalika,Rural Municipality,NP0444,Myagdi,NP04,Gandaki,460
+NP044404,Malika,Gaunpalika,Rural Municipality,NP0444,Myagdi,NP04,Gandaki,461
+NP044405,Mangala,Gaunpalika,Rural Municipality,NP0444,Myagdi,NP04,Gandaki,462
+NP044406,Raghuganga,Gaunpalika,Rural Municipality,NP0444,Myagdi,NP04,Gandaki,463
+NP044501,Barhagaun Muktikhsetra,Gaunpalika,Rural Municipality,NP0445,Mustang,NP04,Gandaki,453
+NP044502,Dalome,Gaunpalika,Rural Municipality,NP0445,Mustang,NP04,Gandaki,454
+NP044503,Gharapjhong,Gaunpalika,Rural Municipality,NP0445,Mustang,NP04,Gandaki,455
+NP044504,Lomanthang,Gaunpalika,Rural Municipality,NP0445,Mustang,NP04,Gandaki,456
+NP044505,Thasang,Gaunpalika,Rural Municipality,NP0445,Mustang,NP04,Gandaki,457
+NP044701,Binayee Tribeni,Gaunpalika,Rural Municipality,NP0447,Nawalparasi East,NP04,Gandaki,764
+NP044702,Bulingtar,Gaunpalika,Rural Municipality,NP0447,Nawalparasi East,NP04,Gandaki,766
+NP044703,Bungdikali,Gaunpalika,Rural Municipality,NP0447,Nawalparasi East,NP04,Gandaki,767
+NP044704,Devchuli,Nagarpalika,Municipality,NP0447,Nawalparasi East,NP04,Gandaki,768
+NP044705,Gaidakot,Nagarpalika,Municipality,NP0447,Nawalparasi East,NP04,Gandaki,769
+NP044706,Hupsekot,Gaunpalika,Rural Municipality,NP0447,Nawalparasi East,NP04,Gandaki,770
+NP044707,Kawasoti,Nagarpalika,Municipality,NP0447,Nawalparasi East,NP04,Gandaki,771
+NP044708,Madhyabindu,Nagarpalika,Municipality,NP0447,Nawalparasi East,NP04,Gandaki,772
+NP054601,Bagnaskali,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,495
+NP054602,Mathagadhi,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,496
+NP054603,Nisdi,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,497
+NP054604,Purbakhola,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,498
+NP054605,Rainadevi Chhahara,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,499
+NP054606,Rambha,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,500
+NP054607,Rampur,Nagarpalika,Municipality,NP0546,Palpa,NP05,Lumbini,501
+NP054608,Ribdikot,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,502
+NP054609,Tansen,Nagarpalika,Municipality,NP0546,Palpa,NP05,Lumbini,503
+NP054610,Tinau,Gaunpalika,Rural Municipality,NP0546,Palpa,NP05,Lumbini,504
+NP054701,Bardaghat,Nagarpalika,Municipality,NP0547,Nawalparasi West,NP05,Lumbini,505
+NP054702,Palhi Nandan,Gaunpalika,Rural Municipality,NP0547,Nawalparasi West,NP05,Lumbini,506
+NP054703,Pratappur,Gaunpalika,Rural Municipality,NP0547,Nawalparasi West,NP05,Lumbini,507
+NP054704,Ramgram,Nagarpalika,Municipality,NP0547,Nawalparasi West,NP05,Lumbini,508
+NP054705,Sarawal,Gaunpalika,Rural Municipality,NP0547,Nawalparasi West,NP05,Lumbini,509
+NP054706,Sunwal,Nagarpalika,Municipality,NP0547,Nawalparasi West,NP05,Lumbini,510
+NP054707,Susta,Gaunpalika,Rural Municipality,NP0547,Nawalparasi West,NP05,Lumbini,511
+NP054801,Butwal,Upamahanagarpalika,Sub-Metropolitan City,NP0548,Rupandehi,NP05,Lumbini,512
+NP054802,Devdaha,Nagarpalika,Municipality,NP0548,Rupandehi,NP05,Lumbini,513
+NP054803,Gaidahawa,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,514
+NP054804,Kanchan,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,515
+NP054805,Kotahimai,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,516
+NP054806,Lumbini Sanskritik,Nagarpalika,Municipality,NP0548,Rupandehi,NP05,Lumbini,517
+NP054807,Marchawari,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,518
+NP054808,Mayadevi,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,519
+NP054809,Omsatiya,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,520
+NP054810,Rohini,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,521
+NP054811,Sainamaina,Nagarpalika,Municipality,NP0548,Rupandehi,NP05,Lumbini,522
+NP054812,Sammarimai,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,523
+NP054813,Siddharthanagar,Nagarpalika,Municipality,NP0548,Rupandehi,NP05,Lumbini,524
+NP054814,Siyari,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,525
+NP054815,Sudhdhodhan,Gaunpalika,Rural Municipality,NP0548,Rupandehi,NP05,Lumbini,526
+NP054816,Tillotama,Nagarpalika,Municipality,NP0548,Rupandehi,NP05,Lumbini,527
+NP054901,Banganga,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,529
+NP054902,Bijayanagar,Gaunpalika,Rural Municipality,NP0549,Kapilbastu,NP05,Lumbini,530
+NP054903,Buddhabhumi,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,531
+NP054904,Kapilbastu,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,532
+NP054905,Krishnanagar,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,533
+NP054906,Maharajgunj,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,534
+NP054907,Mayadevi,Gaunpalika,Rural Municipality,NP0549,Kapilbastu,NP05,Lumbini,535
+NP054908,Shivaraj,Nagarpalika,Municipality,NP0549,Kapilbastu,NP05,Lumbini,536
+NP054909,Suddhodhan,Gaunpalika,Rural Municipality,NP0549,Kapilbastu,NP05,Lumbini,537
+NP054910,Yashodhara,Gaunpalika,Rural Municipality,NP0549,Kapilbastu,NP05,Lumbini,538
+NP055001,Bhumekasthan,Nagarpalika,Municipality,NP0550,Arghakhanchi,NP05,Lumbini,539
+NP055002,Chhatradev,Gaunpalika,Rural Municipality,NP0550,Arghakhanchi,NP05,Lumbini,540
+NP055003,Malarani,Gaunpalika,Rural Municipality,NP0550,Arghakhanchi,NP05,Lumbini,541
+NP055004,Panini,Gaunpalika,Rural Municipality,NP0550,Arghakhanchi,NP05,Lumbini,542
+NP055005,Sandhikharka,Nagarpalika,Municipality,NP0550,Arghakhanchi,NP05,Lumbini,543
+NP055006,Sitganga,Nagarpalika,Municipality,NP0550,Arghakhanchi,NP05,Lumbini,544
+NP055101,Chandrakot,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,483
+NP055102,Chatrakot,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,484
+NP055103,Dhurkot,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,485
+NP055104,Gulmidarbar,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,486
+NP055105,Isma,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,487
+NP055106,Kaligandaki,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,488
+NP055107,Madane,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,489
+NP055108,Malika,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,490
+NP055109,Musikot,Nagarpalika,Municipality,NP0551,Gulmi,NP05,Lumbini,491
+NP055110,Resunga,Nagarpalika,Municipality,NP0551,Gulmi,NP05,Lumbini,492
+NP055111,Ruru,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,493
+NP055112,Satyawati,Gaunpalika,Rural Municipality,NP0551,Gulmi,NP05,Lumbini,494
+NP055201,Bhume,Gaunpalika,Rural Municipality,NP0552,Rukum East,NP05,Lumbini,774
+NP055202,Putha Uttarganga,Gaunpalika,Rural Municipality,NP0552,Rukum East,NP05,Lumbini,775
+NP055203,Sisne,Gaunpalika,Rural Municipality,NP0552,Rukum East,NP05,Lumbini,776
+NP055401,Duikholi,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,554
+NP055402,Lungri,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,555
+NP055403,Madi,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,556
+NP055404,Rolpa,Nagarpalika,Municipality,NP0554,Rolpa,NP05,Lumbini,557
+NP055405,Runtigadi,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,558
+NP055406,Sukidaha,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,559
+NP055407,Sunchhahari,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,560
+NP055408,Suwarnabati,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,561
+NP055409,Thawang,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,562
+NP055410,Tribeni,Gaunpalika,Rural Municipality,NP0554,Rolpa,NP05,Lumbini,563
+NP055501,Ayirabati,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,545
+NP055502,Gaumukhi,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,546
+NP055503,Jhimruk,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,547
+NP055504,Mallarani,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,548
+NP055505,Mandavi,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,549
+NP055506,Naubahini,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,550
+NP055507,Pyuthan,Nagarpalika,Municipality,NP0555,Pyuthan,NP05,Lumbini,551
+NP055508,Sarumarani,Gaunpalika,Rural Municipality,NP0555,Pyuthan,NP05,Lumbini,552
+NP055509,Sworgadwary,Nagarpalika,Municipality,NP0555,Pyuthan,NP05,Lumbini,553
+NP055601,Babai,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,580
+NP055602,Banglachuli,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,581
+NP055603,Dangisharan,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,582
+NP055604,Gadhawa,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,583
+NP055605,Ghorahi,Upamahanagarpalika,Sub-Metropolitan City,NP0556,Dang,NP05,Lumbini,584
+NP055606,Lamahi,Nagarpalika,Municipality,NP0556,Dang,NP05,Lumbini,585
+NP055607,Rajpur,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,586
+NP055608,Rapti,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,587
+NP055609,Shantinagar,Gaunpalika,Rural Municipality,NP0556,Dang,NP05,Lumbini,588
+NP055610,Tulsipur,Upamahanagarpalika,Sub-Metropolitan City,NP0556,Dang,NP05,Lumbini,589
+NP055701,Baijanath,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,590
+NP055702,Duduwa,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,591
+NP055703,Janki,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,592
+NP055704,Khajura,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,593
+NP055705,Kohalpur,Nagarpalika,Municipality,NP0557,Banke,NP05,Lumbini,594
+NP055706,Narainapur,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,595
+NP055707,Nepalgunj,Upamahanagarpalika,Sub-Metropolitan City,NP0557,Banke,NP05,Lumbini,596
+NP055708,Rapti Sonari,Gaunpalika,Rural Municipality,NP0557,Banke,NP05,Lumbini,597
+NP055801,Badhaiyatal,Gaunpalika,Rural Municipality,NP0558,Bardiya,NP05,Lumbini,598
+NP055802,Bansagadhi,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,599
+NP055803,Barbardiya,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,601
+NP055804,Geruwa,Gaunpalika,Rural Municipality,NP0558,Bardiya,NP05,Lumbini,602
+NP055805,Gulariya,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,603
+NP055806,Madhuwan,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,604
+NP055807,Rajapur,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,605
+NP055808,Thakurbaba,Nagarpalika,Municipality,NP0558,Bardiya,NP05,Lumbini,606
+NP065201,Aathbiskot,Nagarpalika,Municipality,NP0652,Rukum West,NP06,Karnali,564
+NP065202,Banfikot,Gaunpalika,Rural Municipality,NP0652,Rukum West,NP06,Karnali,565
+NP065203,Chaurjahari,Nagarpalika,Municipality,NP0652,Rukum West,NP06,Karnali,566
+NP065204,Musikot,Nagarpalika,Municipality,NP0652,Rukum West,NP06,Karnali,567
+NP065205,Sani Bheri,Gaunpalika,Rural Municipality,NP0652,Rukum West,NP06,Karnali,568
+NP065206,Tribeni,Gaunpalika,Rural Municipality,NP0652,Rukum West,NP06,Karnali,569
+NP065301,Bagchaur,Nagarpalika,Municipality,NP0653,Salyan,NP06,Karnali,570
+NP065302,Bangad Kupinde,Nagarpalika,Municipality,NP0653,Salyan,NP06,Karnali,571
+NP065303,Chhatreshwori,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,572
+NP065304,Darma,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,573
+NP065305,Dhorchaur,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,574
+NP065306,Kalimati,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,575
+NP065307,Kapurkot,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,576
+NP065308,Kumakhmalika,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,577
+NP065309,Sharada,Nagarpalika,Municipality,NP0653,Salyan,NP06,Karnali,578
+NP065310,Tribeni,Gaunpalika,Rural Municipality,NP0653,Salyan,NP06,Karnali,579
+NP065901,Barahtal,Gaunpalika,Rural Municipality,NP0659,Surkhet,NP06,Karnali,608
+NP065902,Bheriganga,Nagarpalika,Municipality,NP0659,Surkhet,NP06,Karnali,609
+NP065903,Birendranagar,Nagarpalika,Municipality,NP0659,Surkhet,NP06,Karnali,610
+NP065904,Chaukune,Gaunpalika,Rural Municipality,NP0659,Surkhet,NP06,Karnali,611
+NP065905,Chingad,Gaunpalika,Rural Municipality,NP0659,Surkhet,NP06,Karnali,612
+NP065906,Gurbhakot,Nagarpalika,Municipality,NP0659,Surkhet,NP06,Karnali,613
+NP065907,Lekbeshi,Nagarpalika,Municipality,NP0659,Surkhet,NP06,Karnali,614
+NP065908,Panchpuri,Nagarpalika,Municipality,NP0659,Surkhet,NP06,Karnali,615
+NP065909,Simta,Gaunpalika,Rural Municipality,NP0659,Surkhet,NP06,Karnali,616
+NP066001,Barekot,Gaunpalika,Rural Municipality,NP0660,Jajarkot,NP06,Karnali,628
+NP066002,Bheri,Nagarpalika,Municipality,NP0660,Jajarkot,NP06,Karnali,629
+NP066003,Chhedagad,Nagarpalika,Municipality,NP0660,Jajarkot,NP06,Karnali,630
+NP066004,Junichande,Gaunpalika,Rural Municipality,NP0660,Jajarkot,NP06,Karnali,631
+NP066005,Kuse,Gaunpalika,Rural Municipality,NP0660,Jajarkot,NP06,Karnali,632
+NP066006,Shiwalaya,Gaunpalika,Rural Municipality,NP0660,Jajarkot,NP06,Karnali,633
+NP066007,Tribeni Nalagad,Nagarpalika,Municipality,NP0660,Jajarkot,NP06,Karnali,634
+NP066101,Aathabis,Nagarpalika,Municipality,NP0661,Dailekh,NP06,Karnali,617
+NP066102,Bhagawatimai,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,618
+NP066103,Bhairabi,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,619
+NP066104,Chamunda Bindrasaini,Nagarpalika,Municipality,NP0661,Dailekh,NP06,Karnali,620
+NP066105,Dullu,Nagarpalika,Municipality,NP0661,Dailekh,NP06,Karnali,621
+NP066106,Dungeshwor,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,622
+NP066107,Gurans,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,623
+NP066108,Mahabu,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,624
+NP066109,Narayan,Nagarpalika,Municipality,NP0661,Dailekh,NP06,Karnali,625
+NP066110,Naumule,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,626
+NP066111,Thantikandh,Gaunpalika,Rural Municipality,NP0661,Dailekh,NP06,Karnali,627
+NP066201,Chharka Tangsong,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,635
+NP066202,Dolpo Buddha,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,636
+NP066203,Jagadulla,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,637
+NP066204,Kaike,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,638
+NP066205,Mudkechula,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,639
+NP066206,Shey Phoksundo,Gaunpalika,Rural Municipality,NP0662,Dolpa,NP06,Karnali,640
+NP066207,Thuli Bheri,Nagarpalika,Municipality,NP0662,Dolpa,NP06,Karnali,641
+NP066208,Tripurasundari,Nagarpalika,Municipality,NP0662,Dolpa,NP06,Karnali,642
+NP066301,Chandannath,Nagarpalika,Municipality,NP0663,Jumla,NP06,Karnali,643
+NP066302,Guthichaur,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,644
+NP066303,Hima,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,645
+NP066304,Kanakasundari,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,646
+NP066305,Patrasi,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,647
+NP066306,Sinja,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,648
+NP066307,Tatopani,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,649
+NP066308,Tila,Gaunpalika,Rural Municipality,NP0663,Jumla,NP06,Karnali,650
+NP066401,Kalika,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,651
+NP066402,Khandachakra,Nagarpalika,Municipality,NP0664,Kalikot,NP06,Karnali,652
+NP066403,Mahawai,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,653
+NP066404,Naraharinath,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,654
+NP066405,Pachaljharana,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,655
+NP066406,Palata,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,656
+NP066407,Raskot,Nagarpalika,Municipality,NP0664,Kalikot,NP06,Karnali,657
+NP066408,Sanni Tribeni,Gaunpalika,Rural Municipality,NP0664,Kalikot,NP06,Karnali,658
+NP066409,Tilagufa,Nagarpalika,Municipality,NP0664,Kalikot,NP06,Karnali,659
+NP066501,Chhayanath Rara,Nagarpalika,Municipality,NP0665,Mugu,NP06,Karnali,660
+NP066502,Khatyad,Gaunpalika,Rural Municipality,NP0665,Mugu,NP06,Karnali,661
+NP066503,Mugum Karmarong,Gaunpalika,Rural Municipality,NP0665,Mugu,NP06,Karnali,662
+NP066504,Soru,Gaunpalika,Rural Municipality,NP0665,Mugu,NP06,Karnali,663
+NP066601,Adanchuli,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,664
+NP066602,Chankheli,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,665
+NP066603,Kharpunath,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,666
+NP066604,Namkha,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,667
+NP066605,Sarkegad,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,668
+NP066606,Simkot,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,669
+NP066607,Tanjakot,Gaunpalika,Rural Municipality,NP0666,Humla,NP06,Karnali,670
+NP076701,Bithadchir,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,681
+NP076702,Bungal,Nagarpalika,Municipality,NP0767,Bajhang,NP07,Sudurpashchim,682
+NP076703,Chabispathivera,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,683
+NP076704,Durgathali,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,684
+NP076705,JayaPrithivi,Nagarpalika,Municipality,NP0767,Bajhang,NP07,Sudurpashchim,685
+NP076706,Kanda,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,686
+NP076707,Kedarseu,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,687
+NP076708,Khaptadchhanna,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,688
+NP076709,Masta,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,689
+NP076710,Surma,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,690
+NP076711,Talkot,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,691
+NP076712,Thalara,Gaunpalika,Rural Municipality,NP0767,Bajhang,NP07,Sudurpashchim,692
+NP076801,Badimalika,Nagarpalika,Municipality,NP0768,Bajura,NP07,Sudurpashchim,671
+NP076802,Budhiganga,Nagarpalika,Municipality,NP0768,Bajura,NP07,Sudurpashchim,672
+NP076803,Budhinanda,Nagarpalika,Municipality,NP0768,Bajura,NP07,Sudurpashchim,673
+NP076804,Chhededaha,Gaunpalika,Rural Municipality,NP0768,Bajura,NP07,Sudurpashchim,674
+NP076805,Gaumul,Gaunpalika,Rural Municipality,NP0768,Bajura,NP07,Sudurpashchim,675
+NP076806,Himali,Gaunpalika,Rural Municipality,NP0768,Bajura,NP07,Sudurpashchim,676
+NP076807,Pandav Gupha,Gaunpalika,Rural Municipality,NP0768,Bajura,NP07,Sudurpashchim,677
+NP076808,Swami Kartik,Gaunpalika,Rural Municipality,NP0768,Bajura,NP07,Sudurpashchim,678
+NP076809,Tribeni,Nagarpalika,Municipality,NP0768,Bajura,NP07,Sudurpashchim,679
+NP076901,Bannigadhi Jayagadh,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,694
+NP076902,Chaurpati,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,695
+NP076903,Dhakari,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,696
+NP076904,Kamalbazar,Nagarpalika,Municipality,NP0769,Achham,NP07,Sudurpashchim,697
+NP076905,Mangalsen,Nagarpalika,Municipality,NP0769,Achham,NP07,Sudurpashchim,698
+NP076906,Mellekh,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,699
+NP076907,Panchadewal Binayak,Nagarpalika,Municipality,NP0769,Achham,NP07,Sudurpashchim,700
+NP076908,Ramaroshan,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,701
+NP076909,Sanphebagar,Nagarpalika,Municipality,NP0769,Achham,NP07,Sudurpashchim,702
+NP076910,Turmakhad,Gaunpalika,Rural Municipality,NP0769,Achham,NP07,Sudurpashchim,703
+NP077001,Adharsha,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,705
+NP077002,Badikedar,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,706
+NP077003,Bogtan,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,707
+NP077004,Dipayal Silgadi,Nagarpalika,Municipality,NP0770,Doti,NP07,Sudurpashchim,708
+NP077005,Jorayal,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,709
+NP077006,K I Singh,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,710
+NP077007,Purbichauki,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,711
+NP077008,Sayal,Gaunpalika,Rural Municipality,NP0770,Doti,NP07,Sudurpashchim,712
+NP077009,Shikhar,Nagarpalika,Municipality,NP0770,Doti,NP07,Sudurpashchim,713
+NP077101,Bardagoriya,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,715
+NP077102,Bhajani,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,716
+NP077103,Chure,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,717
+NP077104,Dhangadhi,Upamahanagarpalika,Sub-Metropolitan City,NP0771,Kailali,NP07,Sudurpashchim,718
+NP077105,Gauriganga,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,719
+NP077106,Ghodaghodi,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,720
+NP077107,Godawari,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,721
+NP077108,Janaki,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,722
+NP077109,Joshipur,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,723
+NP077110,Kailari,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,724
+NP077111,Lamkichuha,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,725
+NP077112,Mohanyal,Gaunpalika,Rural Municipality,NP0771,Kailali,NP07,Sudurpashchim,726
+NP077113,Tikapur,Nagarpalika,Municipality,NP0771,Kailali,NP07,Sudurpashchim,727
+NP077201,Bedkot,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,728
+NP077202,Belauri,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,729
+NP077203,Beldandi,Gaunpalika,Rural Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,730
+NP077204,Bhimdatta,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,731
+NP077205,Krishnapur,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,732
+NP077206,Laljhadi,Gaunpalika,Rural Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,733
+NP077207,Mahakali,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,734
+NP077208,Punarbas,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,735
+NP077209,Shuklaphanta,Nagarpalika,Municipality,NP0772,Kanchanpur,NP07,Sudurpashchim,736
+NP077301,Ajaymeru,Gaunpalika,Rural Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,738
+NP077302,Alital,Gaunpalika,Rural Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,739
+NP077303,Amargadhi,Nagarpalika,Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,740
+NP077304,Bhageshwar,Gaunpalika,Rural Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,741
+NP077305,Ganayapdhura,Gaunpalika,Rural Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,742
+NP077306,Nawadurga,Gaunpalika,Rural Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,743
+NP077307,Parashuram,Nagarpalika,Municipality,NP0773,Dadeldhura,NP07,Sudurpashchim,744
+NP077401,Dasharathchanda,Nagarpalika,Municipality,NP0774,Baitadi,NP07,Sudurpashchim,745
+NP077402,Dilasaini,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,746
+NP077403,Dogadakedar,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,747
+NP077404,Melauli,Nagarpalika,Municipality,NP0774,Baitadi,NP07,Sudurpashchim,748
+NP077405,Pancheshwar,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,749
+NP077406,Patan,Nagarpalika,Municipality,NP0774,Baitadi,NP07,Sudurpashchim,750
+NP077407,Purchaudi,Nagarpalika,Municipality,NP0774,Baitadi,NP07,Sudurpashchim,751
+NP077408,Shivanath,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,752
+NP077409,Sigas,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,753
+NP077410,Surnaya,Gaunpalika,Rural Municipality,NP0774,Baitadi,NP07,Sudurpashchim,754
+NP077501,Apihimal,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,755
+NP077502,Byas,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,756
+NP077503,Dunhu,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,757
+NP077504,Lekam,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,758
+NP077505,Mahakali,Nagarpalika,Municipality,NP0775,Darchula,NP07,Sudurpashchim,759
+NP077506,Malikaarjun,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,760
+NP077507,Marma,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,761
+NP077508,Naugad,Gaunpalika,Rural Municipality,NP0775,Darchula,NP07,Sudurpashchim,762
+NP077509,Shailyashikhar,Nagarpalika,Municipality,NP0775,Darchula,NP07,Sudurpashchim,763

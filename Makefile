@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry seed-nrb seed-census ingest-census nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census ingest-census nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -75,6 +75,9 @@ ingest-wb:  ## Fetch World Bank indicators for Nepal into the warehouse (raw-fir
 
 ingest-wb-dry:  ## Same fetch + quality gate, but write nothing (rehearsal before a big load)
 	$(PY) -m ingestion.worldbank.pipeline --dry-run
+
+geoportal-harvest:  ## NGP.S1: harvest + reconcile the Survey Dept official admin boundaries
+	$(PY) -m scripts.geoportal_harvest
 
 seed-nrb:  ## Seed the 35 NRB Banking & Financial Statistics indicators (idempotent)
 	$(PY) scripts/seed_nrb.py
