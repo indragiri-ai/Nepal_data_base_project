@@ -26,6 +26,11 @@ class IndicatorRow:
     unit_code: str
     unit_name: str
     source_concept: str | None
+    # Populated by list_indicators (for the headline-answer badge, decision 0005):
+    # `source` is the indicator's own origin; `preferred_source` is the headline
+    # source for its concept. When they differ, this is an alternative estimate.
+    source: str | None = None
+    preferred_source: str | None = None
 
 
 @dataclass(frozen=True)
@@ -121,11 +126,24 @@ class PostgresRepository:
         """
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
-                f"SELECT {_INDICATOR_COLUMNS}"
+                "SELECT i.code, i.name_en, i.name_ne, i.definition_en, i.topic,"
+                " u.code, u.name_en, i.source_concept,"
+                " os.name_en AS origin_source, ps.name_en AS preferred_source"
+                " FROM indicators i"
+                " JOIN units u ON u.id = i.unit_id"
+                " LEFT JOIN sources os ON os.id = i.origin_source_id"
+                " LEFT JOIN sources ps ON ps.id = i.preferred_source_id"
                 " WHERE EXISTS (SELECT 1 FROM observations o WHERE o.indicator_id = i.id)"
                 " ORDER BY i.topic, i.code"
             )
-            return [IndicatorRow(*row) for row in cur.fetchall()]
+            return [
+                IndicatorRow(
+                    code=r[0], name_en=r[1], name_ne=r[2], definition_en=r[3],
+                    topic=r[4], unit_code=r[5], unit_name=r[6], source_concept=r[7],
+                    source=r[8], preferred_source=r[9],
+                )
+                for r in cur.fetchall()
+            ]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
         with self._connect() as conn, conn.cursor() as cur:

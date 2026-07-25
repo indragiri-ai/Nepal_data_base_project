@@ -79,7 +79,10 @@ def list_indicators(
     repo: Annotated[Repository, Depends(get_repository)],
 ) -> list[IndicatorSummary]:
     return [
-        IndicatorSummary(code=r.code, name=r.name_en, topic=r.topic, unit=r.unit_code)
+        IndicatorSummary(
+            code=r.code, name=r.name_en, topic=r.topic, unit=r.unit_code,
+            source=r.source, preferred_source=r.preferred_source,
+        )
         for r in repo.list_indicators()
     ]
 

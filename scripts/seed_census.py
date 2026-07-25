@@ -58,18 +58,19 @@ def seed_census_indicators(cur: Cursor) -> tuple[int, list[str]]:
         cur.execute(
             "INSERT INTO indicators"
             " (code, name_en, name_ne, definition_en, definition_ne, unit_id,"
-            "  topic, source_concept, preferred_source_id)"
-            " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s)"
+            "  topic, source_concept, origin_source_id, preferred_source_id)"
+            " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s, %s)"
             " ON CONFLICT (code) DO UPDATE SET"
             "   name_en = EXCLUDED.name_en,"
             "   definition_en = EXCLUDED.definition_en,"
             "   unit_id = EXCLUDED.unit_id,"
             "   topic = EXCLUDED.topic,"
             "   source_concept = EXCLUDED.source_concept,"
+            "   origin_source_id = EXCLUDED.origin_source_id,"
             "   preferred_source_id = EXCLUDED.preferred_source_id",
             (
                 r["code"], r["name_en"], r["definition_en"],
-                unit_id, r["topic"], r["source_concept"], source_id,
+                unit_id, r["topic"], r["source_concept"], source_id, source_id,
             ),
         )
         loaded += 1

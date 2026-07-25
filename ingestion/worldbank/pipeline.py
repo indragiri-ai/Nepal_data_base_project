@@ -247,15 +247,16 @@ def run(argv: list[str] | None = None) -> int:
     # source_concept, but with THEIR concept codes (e.g. 'BFS.C4.ccdratio',
     # 'population/highlight:density') — not WDI codes. Sending those to the WB API
     # wastes a request each and, worse, would load a wrong value under the WDI
-    # dataset if a foreign concept ever collided with a real WDI code. We fetch
-    # exactly the indicators whose preferred source is this dataset's source
-    # (World Bank). NOTE: P2B.S4 may repoint some WB indicators' preferred_source
-    # to another source for the headline-answer policy; revisit this scope then.
+    # dataset if a foreign concept ever collided with a real WDI code. We scope on
+    # origin_source_id (immutable provenance — this dataset's source), NOT on
+    # preferred_source_id: decision 0005 repoints the preferred source of the
+    # census/WB collision series to the census, and those WB series must keep being
+    # refreshed here.
     cur.execute(
         "SELECT i.code, i.id, i.unit_id, u.code, i.source_concept"
         " FROM indicators i JOIN units u ON u.id = i.unit_id"
         " WHERE i.source_concept IS NOT NULL"
-        "   AND i.preferred_source_id = (SELECT source_id FROM datasets WHERE id = %s)"
+        "   AND i.origin_source_id = (SELECT source_id FROM datasets WHERE id = %s)"
         " ORDER BY i.code",
         (dataset_id,),
     )

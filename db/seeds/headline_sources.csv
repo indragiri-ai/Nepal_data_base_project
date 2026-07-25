@@ -1,0 +1,7 @@
+alternative_code,headline_source,note
+POP_TOTAL,National Statistics Office,Total population — census enumeration is the headline; WB SP.POP.TOTL is a modeled estimate.
+POP_GROWTH,National Statistics Office,Population growth rate — headline is the census intercensal rate; WB SP.POP.GROW is modeled.
+EN_POP_DNST,National Statistics Office,Population density — headline is census; WB EN.POP.DNST is derived from its modeled population.
+SP_POP_TOTL_FE_IN,National Statistics Office,Female population — headline is the census sex-disaggregated count; WB is modeled.
+SP_POP_TOTL_MA_IN,National Statistics Office,Male population — headline is the census sex-disaggregated count; WB is modeled.
+ADULT_LITERACY,National Statistics Office,Literacy — headline is the census literate-population count (age 5+). NOTE the WB series SE.ADT.LITR.ZS is ADULT (15+) literacy — a different age base — so it is a related alternative estimate, not an identical measure.

@@ -226,16 +226,19 @@ def seed_indicators(cur: Cursor, source_id: int) -> tuple[int, list[str]]:
         cur.execute(
             "INSERT INTO indicators"
             " (code, name_en, name_ne, definition_en, definition_ne, unit_id,"
-            "  topic, source_concept, preferred_source_id)"
-            " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s)"
+            "  topic, source_concept, origin_source_id, preferred_source_id)"
+            " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s, %s)"
             " ON CONFLICT (code) DO UPDATE SET"
             "   name_en = EXCLUDED.name_en,"
             "   definition_en = EXCLUDED.definition_en,"
             "   unit_id = EXCLUDED.unit_id,"
             "   topic = EXCLUDED.topic,"
             "   source_concept = EXCLUDED.source_concept,"
+            "   origin_source_id = EXCLUDED.origin_source_id,"
+            # preferred is reset to the origin here; seed_headline_sources() then
+            # repoints the collision alternatives (idempotent, runs after).
             "   preferred_source_id = EXCLUDED.preferred_source_id",
-            (r["code"], name_en, definition_en, unit_id, r["topic"], wdi, source_id),
+            (r["code"], name_en, definition_en, unit_id, r["topic"], wdi, source_id, source_id),
         )
         loaded += 1
     return loaded, failures
@@ -276,24 +279,61 @@ def seed_indicators_wb_full(cur: Cursor, source_id: int) -> tuple[int, list[str]
             failures.append(f"{r['code']}: WDI code '{wdi}' is not in WB's live source-2 listing")
             continue
         params.append(
-            (r["code"], meta.name, meta.definition, unit_id, r["topic"], wdi, source_id)
+            (r["code"], meta.name, meta.definition, unit_id, r["topic"], wdi,
+             source_id, source_id)
         )
 
     cur.executemany(
         "INSERT INTO indicators"
         " (code, name_en, name_ne, definition_en, definition_ne, unit_id,"
-        "  topic, source_concept, preferred_source_id)"
-        " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s)"
+        "  topic, source_concept, origin_source_id, preferred_source_id)"
+        " VALUES (%s, %s, NULL, %s, NULL, %s, %s, %s, %s, %s)"
         " ON CONFLICT (code) DO UPDATE SET"
         "   name_en = EXCLUDED.name_en,"
         "   definition_en = EXCLUDED.definition_en,"
         "   unit_id = EXCLUDED.unit_id,"
         "   topic = EXCLUDED.topic,"
         "   source_concept = EXCLUDED.source_concept,"
+        "   origin_source_id = EXCLUDED.origin_source_id,"
         "   preferred_source_id = EXCLUDED.preferred_source_id",
         params,
     )
     return len(params), failures
+
+
+def seed_headline_sources(cur: Cursor) -> tuple[int, list[str]]:
+    """Repoint preferred_source_id for colliding concepts to the HEADLINE source
+    (P2B.S4 / decision 0005), from db/seeds/headline_sources.csv.
+
+    Runs AFTER the indicator seeders, which reset preferred_source_id to each
+    indicator's own (origin) source — this step then demotes the alternatives so
+    the census/NRB headline wins. origin_source_id is untouched, so the WB
+    pipeline keeps refreshing the demoted series. A missing indicator or source
+    is REPORTED, never guessed (rule #1).
+    """
+    rows = _read_csv("headline_sources.csv")
+    if not rows:
+        return 0, []
+    cur.execute("SELECT name_en, id FROM sources")
+    source_ids = {name: sid for name, sid in cur.fetchall()}
+    applied = 0
+    failures: list[str] = []
+    for r in rows:
+        code = r["alternative_code"]
+        headline = r["headline_source"]
+        headline_id = source_ids.get(headline)
+        if headline_id is None:
+            failures.append(f"{code}: unknown headline source '{headline}'")
+            continue
+        cur.execute(
+            "UPDATE indicators SET preferred_source_id = %s WHERE code = %s",
+            (headline_id, code),
+        )
+        if cur.rowcount == 0:
+            failures.append(f"{code}: indicator not found — cannot set headline source")
+            continue
+        applied += 1
+    return applied, failures
 
 
 def main() -> int:
@@ -314,6 +354,9 @@ def main() -> int:
         loaded, failures = seed_indicators(cur, source_id)
         wb_loaded, wb_failures = seed_indicators_wb_full(cur, source_id)
         failures.extend(wb_failures)
+        # Repoint headline sources LAST — after the seeders reset preferred to origin.
+        headline_applied, headline_failures = seed_headline_sources(cur)
+        failures.extend(headline_failures)
         conn.commit()
 
         counts = {}
@@ -325,6 +368,7 @@ def main() -> int:
     for table, count in counts.items():
         print(f"  {table:13} {count}")
     print(f"\nIndicators loaded this run: {loaded} hand-curated + {wb_loaded} WB full catalogue")
+    print(f"Headline sources repointed (decision 0005): {headline_applied}")
 
     if failures:
         print("\nWDI codes that FAILED verification (NOT loaded, NOT guessed):")

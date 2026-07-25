@@ -38,15 +38,33 @@ _CENSUS_POP = IndicatorRow(
     unit_code="PERSONS",
     unit_name="Persons",
     source_concept="population/highlight:total|male|female",
+    # headline for population: origin == preferred
+    source="National Statistics Office",
+    preferred_source="National Statistics Office",
+)
+
+# The World Bank population series — an ALTERNATIVE to the census (decision 0005):
+# its own source differs from the headline (preferred) source.
+_WB_POP = IndicatorRow(
+    code="POP_TOTAL",
+    name_en="Population, total",
+    name_ne=None,
+    definition_en="Total population (World Bank modeled estimate).",
+    topic="population",
+    unit_code="PERSONS",
+    unit_name="Persons",
+    source_concept="SP.POP.TOTL",
+    source="World Bank",
+    preferred_source="National Statistics Office",
 )
 
 
 class FakeRepository:
     def list_indicators(self) -> list[IndicatorRow]:
-        return [_GDP, _CENSUS_POP]
+        return [_GDP, _CENSUS_POP, _WB_POP]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
-        by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP}
+        by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP, "POP_TOTAL": _WB_POP}
         return by_code.get(code)
 
     def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None:
@@ -126,6 +144,23 @@ def test_list_indicators(client: TestClient) -> None:
     assert resp.status_code == 200
     codes = [item["code"] for item in resp.json()]
     assert "GDP_GROWTH" in codes
+
+
+def test_list_indicators_exposes_headline_badge_fields(client: TestClient) -> None:
+    """/v1/indicators carries source + preferred_source so the frontend can badge
+    an alternative estimate (decision 0005)."""
+    by_code = {item["code"]: item for item in client.get("/v1/indicators").json()}
+
+    # A headline series: its source is also the preferred (headline) source.
+    census = by_code["CENSUS_POP_TOTAL"]
+    assert census["source"] == census["preferred_source"] == "National Statistics Office"
+
+    # The World Bank population series is an alternative: source != preferred_source,
+    # and the preferred (headline) source is the census.
+    wb = by_code["POP_TOTAL"]
+    assert wb["source"] == "World Bank"
+    assert wb["preferred_source"] == "National Statistics Office"
+    assert wb["source"] != wb["preferred_source"]
 
 
 def test_get_data_includes_provenance(client: TestClient) -> None:

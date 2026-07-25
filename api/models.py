@@ -14,6 +14,12 @@ class IndicatorSummary(BaseModel):
     name: str
     topic: str
     unit: str
+    # Headline-answer policy (decision 0005), populated by /v1/indicators.
+    # `source` is where this indicator's data comes from; `preferred_source` is
+    # the headline source for its concept. When they differ, this series is an
+    # alternative estimate and the UI badges it "alternative estimate — {source}".
+    source: str | None = None
+    preferred_source: str | None = None
 
 
 class IndicatorDetail(BaseModel):
