@@ -67,7 +67,15 @@ is the province number, and NSO municipality ids are **not yet extracted**
 municipality census data to this mapping **by (district, name)**, or first
 gather the municipality NSO-id list from the census API.
 
-## Web map (NGP.S2) — `web/public/maps/nepal-local-units.json`
+> **Superseded for the shipped map (P2B.S8, 2026-07-26):**
+> `web/public/maps/nepal-local-units.json` is now built from **OCHA COD-AB**
+> (`npl_admin3`, official `adm3_pcode`), because the census names match COD-AB
+> exactly (753/753) while the geoportal layer used older spellings for ~16 units.
+> This geoportal harvest remains as **independent verification** of the 753 count
+> and the district reconciliation. The section below documents the original
+> geoportal-based build.
+
+## Web map (NGP.S2, original geoportal build) — `web/public/maps/nepal-local-units.json`
 
 Built from the raw local-unit layer, reproducibly:
 
