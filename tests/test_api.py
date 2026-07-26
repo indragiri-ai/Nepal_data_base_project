@@ -84,13 +84,28 @@ class FakeRepository:
         by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP, "POP_TOTAL": _WB_POP}
         return by_code.get(code)
 
-    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None:
-        if indicator_code != "CENSUS_POP_TOTAL" or level != "province":
+    def get_geo_values(
+        self, indicator_code: str, level: str, parent_code: str | None = None
+    ) -> GeoValuesResult | None:
+        if indicator_code != "CENSUS_POP_TOTAL":
+            return None
+        if level == "province" and parent_code is None:
+            values = [
+                GeoValueRow("NP01", "Koshi", "कोशी", Decimal("4961412")),
+                GeoValueRow("NP03", "Bagmati", "बागमती", Decimal("6116866")),
+            ]
+        elif level == "local_unit" and parent_code == "NP0327":
+            # drill: local units of one district (parent = district P-code)
+            values = [
+                GeoValueRow("NP0327301", "Kathmandu", None, Decimal("862400")),
+                GeoValueRow("NP0327402", "Kirtipur", None, Decimal("67000")),
+            ]
+        else:
             return None
         return GeoValuesResult(
             indicator_code="CENSUS_POP_TOTAL",
             indicator_name="Population (Census 2021)",
-            level="province",
+            level=level,
             period="2021",
             unit_code="PERSONS",
             unit_name="Persons",
@@ -98,10 +113,7 @@ class FakeRepository:
             dataset_name="National Population and Housing Census 2021",
             license=None,
             latest_release_date="2026-07-19",
-            values=[
-                GeoValueRow("NP01", "Koshi", "कोशी", Decimal("4961412")),
-                GeoValueRow("NP03", "Bagmati", "बागमती", Decimal("6116866")),
-            ],
+            values=values,
         )
 
     def get_meta(self) -> list[DatasetMetaRow]:
@@ -234,6 +246,29 @@ def test_geo_data_rejects_unknown_level(client: TestClient) -> None:
 
 def test_geo_data_404_when_no_data_at_level(client: TestClient) -> None:
     resp = client.get("/v1/data/geo", params={"indicator": "GDP_GROWTH", "level": "district"})
+    assert resp.status_code == 404
+
+
+def test_geo_data_drills_to_a_districts_local_units(client: TestClient) -> None:
+    """P2B.S8b: level=local_unit with parent=<district> returns just that
+    district's municipalities (drill-down)."""
+    resp = client.get(
+        "/v1/data/geo",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "local_unit", "parent": "NP0327"},
+    )
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["level"] == "local_unit"
+    codes = [v["geo_code"] for v in body["values"]]
+    assert codes == ["NP0327301", "NP0327402"]
+
+
+def test_geo_data_local_unit_without_parent_404s_in_fake(client: TestClient) -> None:
+    # The fake only serves the NP0327 drill; a bad parent yields an honest 404.
+    resp = client.get(
+        "/v1/data/geo",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "local_unit", "parent": "NP9999"},
+    )
     assert resp.status_code == 404
 
 

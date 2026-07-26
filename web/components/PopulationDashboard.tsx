@@ -2,10 +2,11 @@
 
 // Population & census dashboard — Census 2021 painted on the map of Nepal.
 //
-// The thing the official PDF tables make hard: pick an indicator, see every
-// province or district at once, hover for exact figures, and take the data
-// with you as CSV. Regions join by P-code; values come from our warehouse
-// (raw-first from the NSO census API), never live-scraped.
+// Pick an indicator, see every province / district / municipality at once, hover
+// for exact figures, drill from a district into its local units, and take the
+// data as CSV. Regions join by P-code; values come from our warehouse (raw-first
+// from the NSO census), never live-scraped. Which levels exist comes from the
+// data: a district-only indicator shows no (empty) municipality map (P2B.S8b).
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
@@ -14,6 +15,7 @@ import {
   fetchGeoValues,
   fetchIndicators,
   type GeoDataResponse,
+  type GeoLevel,
   type IndicatorSummary,
 } from "@/lib/api";
 import { formatValue } from "@/lib/format";
@@ -24,24 +26,39 @@ const ChoroplethMap = dynamic(() => import("@/components/ChoroplethMap"), {
   loading: () => <div className="state">Preparing map…</div>,
 });
 
-type Level = "province" | "district";
-
-const LEVELS: Array<{ id: Level; label: string }> = [
+const LEVELS: Array<{ id: GeoLevel; label: string }> = [
   { id: "province", label: "By province" },
   { id: "district", label: "By district" },
+  { id: "local_unit", label: "By municipality" },
 ];
+
+const NOUN: Record<GeoLevel, string> = {
+  province: "provinces",
+  district: "districts",
+  local_unit: "municipalities",
+};
+const NOUN_ONE: Record<GeoLevel, string> = {
+  province: "province",
+  district: "district",
+  local_unit: "municipality",
+};
 
 export default function PopulationDashboard() {
   const [indicators, setIndicators] = useState<IndicatorSummary[] | null>(null);
   const [indicatorsError, setIndicatorsError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string>("CENSUS_POP_TOTAL");
-  const [level, setLevel] = useState<Level>("district");
+  const [level, setLevel] = useState<GeoLevel>("district");
+  // When set, we're drilled into one district's local units.
+  const [drill, setDrill] = useState<{ code: string; name: string } | null>(null);
 
   const [geo, setGeo] = useState<GeoDataResponse | null>(null);
   const [geoError, setGeoError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const [mapError, setMapError] = useState<string | null>(null);
+
+  const effectiveLevel: GeoLevel = drill ? "local_unit" : level;
+  const parent = drill?.code;
 
   useEffect(() => {
     fetchIndicators()
@@ -54,7 +71,8 @@ export default function PopulationDashboard() {
     let cancelled = false;
     setLoading(true);
     setGeoError(null);
-    fetchGeoValues(selected, level)
+    setMapError(null);
+    fetchGeoValues(selected, effectiveLevel, parent)
       .then((data) => {
         if (!cancelled) setGeo(data);
       })
@@ -70,7 +88,7 @@ export default function PopulationDashboard() {
     return () => {
       cancelled = true;
     };
-  }, [selected, level]);
+  }, [selected, effectiveLevel, parent]);
 
   const onMapError = useCallback((message: string) => setMapError(message), []);
 
@@ -84,11 +102,31 @@ export default function PopulationDashboard() {
       })),
     [geo],
   );
+  const ranked = useMemo(() => [...(geo?.values ?? [])].sort((a, b) => b.value - a.value), [geo]);
 
-  const ranked = useMemo(
-    () => [...(geo?.values ?? [])].sort((a, b) => b.value - a.value),
-    [geo],
+  // Click a district (district view) to drill into its local units.
+  const onRegionClick = useCallback(
+    (code: string) => {
+      if (drill || level !== "district") return;
+      const region = regions.find((r) => r.code === code);
+      if (region) {
+        setShowTable(false);
+        setDrill({ code, name: region.name });
+      }
+    },
+    [drill, level, regions],
   );
+
+  const chooseLevel = (id: GeoLevel) => {
+    setDrill(null);
+    setShowTable(false);
+    setLevel(id);
+  };
+
+  // A municipality-level request that came back empty = this indicator has no
+  // municipality data. Say so plainly rather than draw an empty map.
+  const noMunicipalityData =
+    !loading && geoError !== null && effectiveLevel === "local_unit";
 
   return (
     <main className="page narrow">
@@ -98,8 +136,8 @@ export default function PopulationDashboard() {
         </p>
         <h1>Population &amp; census</h1>
         <p className="sub">
-          The National Population and Housing Census 2021, on the map — every
-          province and district, with the exact figure a hover away.
+          The National Population and Housing Census 2021, on the map — province,
+          district, and all 753 municipalities, with the exact figure a hover away.
         </p>
       </div>
 
@@ -111,8 +149,7 @@ export default function PopulationDashboard() {
           </div>
         ) : indicators !== null && indicators.length === 0 ? (
           <div className="state">
-            No census indicators are loaded yet. Run the census ingestion, then
-            refresh.
+            No census indicators are loaded yet. Run the census ingestion, then refresh.
           </div>
         ) : (
           <>
@@ -141,8 +178,8 @@ export default function PopulationDashboard() {
                   <button
                     key={l.id}
                     type="button"
-                    aria-pressed={level === l.id}
-                    onClick={() => setLevel(l.id)}
+                    aria-pressed={!drill && level === l.id}
+                    onClick={() => chooseLevel(l.id)}
                   >
                     {l.label}
                   </button>
@@ -150,17 +187,45 @@ export default function PopulationDashboard() {
               </div>
             </div>
 
-            <MapArea
-              loading={loading}
-              error={geoError ?? mapError}
-              geo={geo}
-              regions={regions}
-              ranked={ranked}
-              level={level}
-              showTable={showTable}
-              onToggleTable={() => setShowTable((v) => !v)}
-              onMapError={onMapError}
-            />
+            {/* Drill breadcrumb */}
+            {drill && (
+              <p className="crumb drill-crumb">
+                <button type="button" className="linklike" onClick={() => setDrill(null)}>
+                  ← All districts
+                </button>
+                <span> / Municipalities of {drill.name}</span>
+              </p>
+            )}
+
+            {!drill && level === "district" && (
+              <p className="stat-note">Tip: click a district to see its municipalities.</p>
+            )}
+
+            {noMunicipalityData ? (
+              <div className="state">
+                Municipality-level data isn&rsquo;t available for this indicator yet — it
+                exists for <strong>Population (Census 2021)</strong>.{" "}
+                {drill && (
+                  <button type="button" className="linklike" onClick={() => setDrill(null)}>
+                    Back to districts
+                  </button>
+                )}
+              </div>
+            ) : (
+              <MapArea
+                loading={loading}
+                error={geoError ?? mapError}
+                geo={geo}
+                regions={regions}
+                ranked={ranked}
+                level={effectiveLevel}
+                drill={drill}
+                showTable={showTable}
+                onToggleTable={() => setShowTable((v) => !v)}
+                onMapError={onMapError}
+                onRegionClick={onRegionClick}
+              />
+            )}
           </>
         )}
       </section>
@@ -175,19 +240,23 @@ function MapArea({
   regions,
   ranked,
   level,
+  drill,
   showTable,
   onToggleTable,
   onMapError,
+  onRegionClick,
 }: {
   loading: boolean;
   error: string | null;
   geo: GeoDataResponse | null;
   regions: Array<{ code: string; name: string; nameNe: string | null; value: number }>;
   ranked: GeoDataResponse["values"];
-  level: Level;
+  level: GeoLevel;
+  drill: { code: string; name: string } | null;
   showTable: boolean;
   onToggleTable: () => void;
   onMapError: (message: string) => void;
+  onRegionClick: (code: string) => void;
 }) {
   if (loading) return <div className="state">Loading data…</div>;
 
@@ -201,7 +270,7 @@ function MapArea({
             Show the data as a table instead
           </button>
         )}
-        {geo && showTable && <GeoTable geo={geo} ranked={ranked} />}
+        {geo && showTable && <GeoTable geo={geo} ranked={ranked} level={level} />}
       </div>
     );
   }
@@ -210,9 +279,10 @@ function MapArea({
 
   const highest = ranked[0];
   const lowest = ranked[ranked.length - 1];
+  const scope = drill ? `in_${drill.code}` : `by_${level}`;
 
   const exportCsv = () =>
-    downloadCsv(`${geo.indicator.code}_by_${level}.csv`, [
+    downloadCsv(`${geo.indicator.code}_${scope}.csv`, [
       ["code", "name", "name_ne", geo.unit_code.toLowerCase(), "census_year"],
       ...geo.values.map((v) => [
         v.geo_code,
@@ -229,8 +299,8 @@ function MapArea({
         <div className="titles">
           <h2>{geo.indicator.name}</h2>
           <p className="sub">
-            {geo.values.length} {level === "province" ? "provinces" : "districts"} ·{" "}
-            {geo.unit_name} · Census {geo.period}
+            {geo.values.length} {NOUN[level]}
+            {drill ? ` in ${drill.name}` : ""} · {geo.unit_name} · Census {geo.period}
           </p>
         </div>
         <div className="toolbar">
@@ -267,12 +337,16 @@ function MapArea({
         data={regions}
         unitCode={geo.unit_code}
         onError={onMapError}
+        districtFilter={drill?.code}
+        onRegionClick={onRegionClick}
       />
       <p className="stat-note">
-        Drag to pan · scroll to zoom · hover any {level} for its exact figure.
+        Drag to pan · scroll to zoom · hover any {NOUN_ONE[level]} for its exact figure.
       </p>
 
-      {showTable && <GeoTable geo={geo} ranked={ranked} />}
+      {showTable && (
+        <GeoTable geo={geo} ranked={ranked} level={level} onRowClick={onRegionClick} />
+      )}
 
       <p className="attribution">
         Source:{" "}
@@ -280,7 +354,7 @@ function MapArea({
           {geo.provenance.source} — {geo.provenance.dataset}
         </a>
         <span>· final results as published</span>
-        <span>· boundaries: OCHA/Survey Dept. P-codes (MIT-licensed GeoJSON)</span>
+        <span>· boundaries: OCHA COD-AB P-codes</span>
       </p>
     </>
   );
@@ -289,17 +363,23 @@ function MapArea({
 function GeoTable({
   geo,
   ranked,
+  level,
+  onRowClick,
 }: {
   geo: GeoDataResponse;
   ranked: GeoDataResponse["values"];
+  level: GeoLevel;
+  onRowClick?: (code: string) => void;
 }) {
+  const head = level === "province" ? "Province" : level === "district" ? "District" : "Municipality";
+  const drillable = level === "district" && !!onRowClick;
   return (
     <div className="table-wrap">
       <table className="data">
         <thead>
           <tr>
             <th>#</th>
-            <th>{geo.level === "province" ? "Province" : "District"}</th>
+            <th>{head}</th>
             <th>नाम</th>
             <th>{geo.unit_name}</th>
           </tr>
@@ -308,7 +388,20 @@ function GeoTable({
           {ranked.map((v, i) => (
             <tr key={v.geo_code}>
               <td>{i + 1}</td>
-              <td style={{ textAlign: "left" }}>{v.name}</td>
+              <td style={{ textAlign: "left" }}>
+                {drillable ? (
+                  <button
+                    type="button"
+                    className="linklike"
+                    onClick={() => onRowClick?.(v.geo_code)}
+                    title={`See ${v.name}'s municipalities`}
+                  >
+                    {v.name}
+                  </button>
+                ) : (
+                  v.name
+                )}
+              </td>
               <td style={{ textAlign: "left" }}>{v.name_ne ?? "—"}</td>
               <td>{formatValue(v.value, geo.unit_code)}</td>
             </tr>

@@ -127,11 +127,15 @@ export function fetchIndicatorSparks(): Promise<IndicatorSpark[]> {
   return getJson<IndicatorSpark[]>("/v1/indicators/spark");
 }
 
+export type GeoLevel = "province" | "district" | "local_unit";
+
 export function fetchGeoValues(
   indicatorCode: string,
-  level: "province" | "district",
+  level: GeoLevel,
+  parent?: string,
 ): Promise<GeoDataResponse> {
   const params = new URLSearchParams({ indicator: indicatorCode, level });
+  if (parent) params.set("parent", parent);
   return getJson<GeoDataResponse>(`/v1/data/geo?${params.toString()}`);
 }
 

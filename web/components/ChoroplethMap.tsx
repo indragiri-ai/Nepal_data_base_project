@@ -47,22 +47,43 @@ export interface RegionDatum {
 interface MapSpec {
   url: string;
   nameProperty: string;
+  /** GeoJSON feature property naming the parent district (for drill filtering). */
+  districtProperty?: string;
 }
 
-const MAPS: Record<string, MapSpec> = {
+export type MapLevel = "province" | "district" | "local_unit";
+
+const MAPS: Record<MapLevel, MapSpec> = {
   province: { url: "/maps/nepal-provinces.json", nameProperty: "ADM1_PCODE" },
   district: { url: "/maps/nepal-districts.json", nameProperty: "DIST_PCODE" },
+  local_unit: {
+    url: "/maps/nepal-local-units.json",
+    nameProperty: "ADM3_PCODE",
+    districtProperty: "DIST_PCODE",
+  },
 };
 
 const registered = new Set<string>();
 
-async function ensureMap(level: string): Promise<void> {
-  if (registered.has(level)) return;
-  const res = await fetch(MAPS[level].url);
+/** Register the echarts map for `mapName`. When `districtFilter` is set, only
+ *  that district's features are kept — a focused drill view of its local units. */
+async function ensureMap(level: MapLevel, mapName: string, districtFilter?: string): Promise<void> {
+  if (registered.has(mapName)) return;
+  const spec = MAPS[level];
+  const res = await fetch(spec.url);
   if (!res.ok) throw new Error(`Couldn't load the ${level} map (HTTP ${res.status}).`);
-  const geojson = await res.json();
-  echarts.registerMap(`nepal-${level}`, geojson);
-  registered.add(level);
+  let geojson = await res.json();
+  if (districtFilter && spec.districtProperty) {
+    const prop = spec.districtProperty;
+    geojson = {
+      ...geojson,
+      features: geojson.features.filter(
+        (f: { properties: Record<string, string> }) => f.properties[prop] === districtFilter,
+      ),
+    };
+  }
+  echarts.registerMap(mapName, geojson);
+  registered.add(mapName);
 }
 
 type Option = echarts.ComposeOption<
@@ -74,14 +95,23 @@ export default function ChoroplethMap({
   data,
   unitCode,
   onError,
+  districtFilter,
+  onRegionClick,
 }: {
-  level: "province" | "district";
+  level: MapLevel;
   data: RegionDatum[];
   unitCode: string;
   onError: (message: string) => void;
+  /** For level=local_unit: show only this district's units (drill view). */
+  districtFilter?: string;
+  /** Called with a region's P-code when it is clicked (drill-down). */
+  onRegionClick?: (code: string) => void;
 }) {
   const holder = useRef<HTMLDivElement>(null);
   const chart = useRef<echarts.ECharts | null>(null);
+  const clickRef = useRef(onRegionClick);
+  clickRef.current = onRegionClick;
+  const mapName = districtFilter ? `nepal-${level}-${districtFilter}` : `nepal-${level}`;
   const [mapReady, setMapReady] = useState<string | null>(null);
 
   useEffect(() => {
@@ -89,6 +119,9 @@ export default function ChoroplethMap({
     if (!el) return;
     const instance = echarts.init(el);
     chart.current = instance;
+    instance.on("click", (params: { name?: string }) => {
+      if (params.name && clickRef.current) clickRef.current(params.name);
+    });
     const ro = new ResizeObserver(() => instance.resize());
     ro.observe(el);
     return () => {
@@ -100,9 +133,9 @@ export default function ChoroplethMap({
 
   useEffect(() => {
     let cancelled = false;
-    ensureMap(level)
+    ensureMap(level, mapName, districtFilter)
       .then(() => {
-        if (!cancelled) setMapReady(level);
+        if (!cancelled) setMapReady(mapName);
       })
       .catch((err) => {
         if (!cancelled) onError(err instanceof Error ? err.message : String(err));
@@ -110,10 +143,10 @@ export default function ChoroplethMap({
     return () => {
       cancelled = true;
     };
-  }, [level, onError]);
+  }, [level, mapName, districtFilter, onError]);
 
   useEffect(() => {
-    if (mapReady !== level || !chart.current || data.length === 0) return;
+    if (mapReady !== mapName || !chart.current || data.length === 0) return;
 
     const byCode = new Map(data.map((d) => [d.code, d]));
     const values = data.map((d) => d.value);
@@ -154,10 +187,10 @@ export default function ChoroplethMap({
       series: [
         {
           type: "map",
-          map: `nepal-${level}`,
+          map: mapName,
           nameProperty: MAPS[level].nameProperty,
           roam: true,
-          scaleLimit: { min: 1, max: 6 },
+          scaleLimit: { min: 1, max: 8 },
           selectedMode: false,
           itemStyle: {
             areaColor: "#f1efe9", // regions with no data recede to the wash
@@ -178,7 +211,7 @@ export default function ChoroplethMap({
       ],
     };
     chart.current.setOption(option, { notMerge: true });
-  }, [mapReady, level, data, unitCode]);
+  }, [mapReady, mapName, level, data, unitCode]);
 
   return (
     <div

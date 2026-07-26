@@ -1577,3 +1577,11 @@ button.linklike:hover {
     transform: translate(-50%, -50%) rotate(-360deg);
   }
 }
+
+/* Drill-down breadcrumb on the population map (P2B.S8b). */
+.drill-crumb {
+  margin: 4px 0 10px;
+}
+.drill-crumb .linklike {
+  font-weight: 600;
+}

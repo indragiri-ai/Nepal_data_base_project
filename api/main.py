@@ -149,22 +149,29 @@ def get_meta(repo: Annotated[Repository, Depends(get_repository)]) -> MetaRespon
 def get_geo_data(
     repo: Annotated[Repository, Depends(get_repository)],
     indicator: Annotated[str, Query(description="Indicator code, e.g. CENSUS_POP_TOTAL")],
-    level: Annotated[str, Query(description="Geography level: province or district")],
+    level: Annotated[str, Query(description="Geography level: province, district, or local_unit")],
+    parent: Annotated[
+        str | None,
+        Query(description="Restrict to children of this geography (e.g. a district"
+              " P-code) — used to drill from a district to its local units"),
+    ] = None,
 ) -> GeoDataResponse:
     """Latest value of one indicator for EVERY geography at a level — the
-    single call a choropleth map needs."""
-    if level not in ("province", "district"):
+    single call a choropleth map needs. `parent` narrows to one geography's
+    children (district → its local units)."""
+    if level not in ("province", "district", "local_unit"):
         raise HTTPException(
-            status_code=422, detail="level must be 'province' or 'district'"
+            status_code=422, detail="level must be 'province', 'district', or 'local_unit'"
         )
     indicator_row = repo.get_indicator(indicator)
     if indicator_row is None:
         raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
-    result = repo.get_geo_values(indicator, level)
+    result = repo.get_geo_values(indicator, level, parent)
     if result is None:
+        where = f" under {parent}" if parent else ""
         raise HTTPException(
             status_code=404,
-            detail=f"No {level}-level data for indicator '{indicator}'",
+            detail=f"No {level}-level data for indicator '{indicator}'{where}",
         )
     return GeoDataResponse(
         indicator=IndicatorSummary(

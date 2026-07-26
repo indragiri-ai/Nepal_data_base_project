@@ -109,7 +109,9 @@ class Repository(Protocol):
     def get_spark_series(self) -> list[IndicatorSparkRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
     def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None: ...
-    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None: ...
+    def get_geo_values(
+        self, indicator_code: str, level: str, parent_code: str | None = None
+    ) -> GeoValuesResult | None: ...
     def get_meta(self) -> list[DatasetMetaRow]: ...
 
 
@@ -256,9 +258,21 @@ class PostgresRepository:
             observations=observations,
         )
 
-    def get_geo_values(self, indicator_code: str, level: str) -> GeoValuesResult | None:
+    def get_geo_values(
+        self, indicator_code: str, level: str, parent_code: str | None = None
+    ) -> GeoValuesResult | None:
         """Latest headline value (breakdowns = {}) of one indicator for EVERY
-        geography at a level — the shape a choropleth map needs in one call."""
+        geography at a level — the shape a choropleth map needs in one call.
+
+        `parent_code` narrows the set to children of one geography — used to drill
+        from a district to its local units (P2B.S8), so the map/table shows just
+        that district's municipalities rather than all 753 nationally.
+        """
+        parent_filter = ""
+        params: list[str] = [indicator_code, level]
+        if parent_code is not None:
+            parent_filter = " AND g.parent_id = (SELECT id FROM geographies WHERE code = %s)"
+            params.append(parent_code)
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
                 "SELECT g.code, g.name_en, g.name_ne, o.value,"
@@ -273,9 +287,9 @@ class PostgresRepository:
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.level = %s AND o.is_latest"
-                "   AND o.breakdowns = '{}'::jsonb"
+                "   AND o.breakdowns = '{}'::jsonb" + parent_filter +
                 " ORDER BY g.code",
-                (indicator_code, level),
+                tuple(params),
             )
             rows = cur.fetchall()
         if not rows:
