@@ -73,7 +73,15 @@ in the same province (never guessed):
   gap). This is inherent to how the census releases municipality vs district
   aggregates; municipality values are shown as-published and labelled, and are
   not forced to reconcile.
-- **Boundary join:** municipality NSO names romanise ~20–30 units differently
-  from the Survey-Department boundary layer (`reference/geo/geoportal/`), so the
-  NSO⇄boundary (`LUCODE`) crosswalk needs curated verification for those — never
-  a forced fuzzy join (P2B.S8 note; the geoportal spellings are the map's).
+- **Boundary join — resolved authoritatively via OCHA COD-AB.** The census NSO
+  names romanise ~16 units differently from the *geoportal* boundary layer, so
+  rather than a fuzzy geoportal join, they were verified against the official
+  **OCHA/UN Nepal Common Operational Dataset – Administrative Boundaries
+  (`cod-ab-npl`, HDX)**, whose `npl_admin3` sheet carries official
+  **`adm3_pcode`** (e.g. `NP0101301`, extending our district P-codes) + English
+  names. **census → COD matched 753/753** (751 exact, 2 obvious variants:
+  Melanchi/Melamchi, Manang Ngisyang/Ngisyang). `local_unit_crosswalk.csv` is
+  therefore keyed by the official `adm3_pcode` — every local unit has an official
+  code, not a minted one. COD-AB (not the geoportal) is the local-unit boundary +
+  code source for P2B.S8; the geoportal harvest (`reference/geo/geoportal/`)
+  stands as independent verification of the 753 count.
