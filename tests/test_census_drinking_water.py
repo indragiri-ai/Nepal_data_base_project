@@ -7,9 +7,8 @@ from pathlib import Path
 
 from ingestion.nso.census_drinking_water import (
     CATEGORY_COLUMNS,
-    GeographyMaps,
-    parse_source,
 )
+from ingestion.nso.census_shape_a import GeographyMaps, parse_source
 
 HEADER = (
     "prov,dist,gapa,provname,dname,gapaname,rowtotal," + ",".join(CATEGORY_COLUMNS) + "\n"
@@ -40,7 +39,7 @@ def test_parse_source_maps_every_level_and_preserves_raw_categories(tmp_path: Pa
         local_units={("1", "1"): "NP0101301"},
     )
 
-    values, failures, levels, skipped = parse_source(source, maps)
+    values, failures, levels, skipped = parse_source(source, maps, CATEGORY_COLUMNS)
 
     assert failures == []
     assert skipped == 0
@@ -68,7 +67,7 @@ def test_parse_source_reports_unmapped_geography_and_bad_sum(tmp_path: Path) -> 
         local_units={("1", "1"): "NP0101301"},
     )
 
-    values, failures, levels, skipped = parse_source(source, maps)
+    values, failures, levels, skipped = parse_source(source, maps, CATEGORY_COLUMNS)
 
     assert values == []
     assert levels == {}
@@ -92,7 +91,7 @@ def test_parse_source_skips_institutional_and_reports_duplicate(tmp_path: Path) 
         local_units={("1", "1"): "NP0101301"},
     )
 
-    values, failures, levels, skipped = parse_source(source, maps)
+    values, failures, levels, skipped = parse_source(source, maps, CATEGORY_COLUMNS)
 
     assert len(values) == 10
     assert levels == {"local_unit": 1}
@@ -109,6 +108,7 @@ def test_parse_source_rejects_unexpected_header(tmp_path: Path) -> None:
     values, failures, levels, skipped = parse_source(
         source,
         GeographyMaps(provinces={}, districts={}, local_units={}),
+        CATEGORY_COLUMNS,
     )
 
     assert values == []

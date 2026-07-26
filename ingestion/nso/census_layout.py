@@ -107,6 +107,21 @@ REGISTRY: tuple[CensusIndicator, ...] = (
             "h_JarBottle|i_Others"
         ),
     ),
+    CensusIndicator(
+        code="CENSUS_HH_FLOOR_MATERIAL",
+        name_en="Households by floor material (Census 2021)",
+        definition_en=(
+            "Number of households by floor material, National Population and Housing "
+            "Census 2021. The headline is all households; category breakdown values "
+            "preserve the six original Hhld05 source column codes."
+        ),
+        unit_code="HOUSEHOLDS",
+        topic="health",
+        source_concept=(
+            "Hhld05_FloorOfHouse:rowtotal|a_Mud|b_Wooden|c_BrickStone|"
+            "d_Ceramic|e_Cemented|f_Other"
+        ),
+    ),
 )
 
 
