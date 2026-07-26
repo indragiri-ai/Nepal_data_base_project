@@ -1,0 +1,754 @@
+census_dist,census_gapa,census_name,district_code,lucode,ngp_name,status
+1,1,Phaktanlung Gaunpalika,NP0101,NP010106,Phaktanglung,matched
+1,2,Mikwakhola Gaunpalika,NP0101,NP010104,Mikwakhola,matched
+1,3,Meringden Gaunpalika,NP0101,NP010103,Meringden,matched
+1,4,Maiwakhola Gaunpalika,NP0101,NP010102,Maiwakhola,matched
+1,5,Aatharai Tribeni Gaunpalika,NP0101,NP010101,Aathrai Tribeni,matched
+1,6,Phungling Municipality,NP0101,NP010107,Phungling,matched
+1,7,Pathivara Yangwarak Gaunpalika,NP0101,NP010105,Pathibhara Yangwarak,matched
+1,8,Sirijanga Gaunpalika,NP0101,NP010109,Sirijangha,matched
+1,9,Sidingba Gaunpalika,NP0101,NP010108,Sidingba,matched
+9,1,Yangbarak Gaunpalika,NP0102,NP010208,Yangwarak,matched
+9,2,Hilihan Gaunpalika,NP0102,NP010203,Hilihang,matched
+9,3,Falelung Gaunpalika,NP0102,NP010201,Falelung,matched
+9,4,Phidim Municipality,NP0102,NP010206,Phidim,matched
+9,5,Falgunanda Gaunpalika,NP0102,NP010202,Falgunanda,matched
+9,6,Kummayak Gaunpalika,NP0102,NP010204,Kummayak,matched
+9,7,Tumbewa Gaunpalika,NP0102,NP010207,Tumbewa,matched
+9,8,Miklajung Gaunpalika,NP0102,NP010205,Miklajung,matched
+10,1,Mai Jogmai Gaunpalika,NP0103,NP010306,Maijogmai,matched
+10,2,Sandakpur Gaunpalika,NP0103,NP010309,Sandakpur,matched
+10,3,Illam Municipality,NP0103,NP010304,Illam,matched
+10,4,Deumai Municipality,NP0103,NP010302,Deumai,matched
+10,5,Fakfokathum Gaunpalika,NP0103,NP010303,Fakphokthum,suggested
+10,6,Mangsebung Gaunpalika,NP0103,NP010307,Mangsebung,matched
+10,7,Chulachuli Gaunpalika,NP0103,NP010301,Chulachuli,matched
+10,8,Mai Municipality,NP0103,NP010305,Mai,matched
+10,9,Suryodaya Municipality,NP0103,NP010310,Suryodaya,matched
+10,10,Rong Gaunpalika,NP0103,NP010308,Rong,matched
+11,1,Mechinagar Municipality,NP0104,NP010414,Mechinagar,matched
+11,2,Buddhashanti Gaunpalika,NP0104,NP010405,Buddhashanti,matched
+11,3,Arjundhara Municipality,NP0104,NP010401,Arjundhara,matched
+11,4,Kankai Municipality,NP0104,NP010413,Kankai,matched
+11,5,Shivasatakshi Municipality,NP0104,NP010415,Shivasataxi,matched
+11,6,Kamal Gaunpalika,NP0104,NP010412,Kamal,matched
+11,7,Damak Municipality,NP0104,NP010406,Damak,matched
+11,8,Gauradaha Municipality,NP0104,NP010407,Gauradhaha,matched
+11,9,Gauriganj Gaunpalika,NP0104,NP010408,Gauriganj,matched
+11,10,Jhapa Gaunpalika,NP0104,NP010410,Jhapa,matched
+11,11,Barhadashi Gaunpalika,NP0104,NP010402,Barhadashi,matched
+11,12,Birtamod Municipality,NP0104,NP010404,Birtamod,matched
+11,13,Haldibari Gaunpalika,NP0104,NP010409,Haldibari,matched
+11,14,Bhadrapur Municipality,NP0104,NP010403,Bhadrapur,matched
+11,15,Kachanakawal Gaunpalika,NP0104,NP010411,Kachankawal,matched
+12,1,Miklajung Gaunpalika,NP0105,NP010511,Miklajung,matched
+12,2,Letang Municipality,NP0105,NP010510,Letang,matched
+12,3,Kerabari Gaunpalika,NP0105,NP010509,Kerabari,matched
+12,4,Sundarharaicha Municipality,NP0105,NP010515,Sundarharaicha,matched
+12,5,Belbari Municipality,NP0105,NP010501,Belbari,matched
+12,6,Kanepokhari Gaunpalika,NP0105,NP010507,Kanepokhari,matched
+12,7,Pathari Shanishchare Municipality,NP0105,NP010512,Patahrishanishchare,matched
+12,8,Urlabari Municipality,NP0105,NP010517,Uralabari,matched
+12,9,Ratuwamai Municipality,NP0105,NP010514,Ratuwamai,matched
+12,10,Sunwarshi Municipality,NP0105,NP010516,Sunwarshi,matched
+12,11,Rangeli Municipality,NP0105,NP010513,Rangeli,matched
+12,12,Gramthan Gaunpalika,NP0105,NP010505,Gramthan,matched
+12,13,Budhiganga Gaunpalika,NP0105,NP010503,Budhiganga,matched
+12,14,Biratnagar Metropolitian City,NP0105,NP010502,Biratnagar,matched
+12,15,Katahari Gaunpalika,NP0105,NP010508,Katahari,matched
+12,16,Dhanapalthan Gaunpalika,NP0105,NP010504,Dhanpalthan,matched
+12,17,Jahada Gaunpalika,NP0105,NP010506,Jahada,matched
+13,1,Dharan Sub-Metropolitian City,NP0106,NP010605,Dharan,matched
+13,2,Barahachhetra Municipality,NP0106,NP010601,Barah,suggested
+13,3,Koshi Gaunpalika,NP0106,NP010611,Koshi,matched
+13,4,Bhokraha Narsingh Gaunpalika,NP0106,NP010603,Bhokraha Narsingh,matched
+13,5,Ramdhuni Municipality,NP0106,NP010612,Ramdhuni,matched
+13,6,Itahari Sub-Metropolitian City,NP0106,NP010610,Itahari,matched
+13,7,Duhabi Municipality,NP0106,NP010606,Duhabi,matched
+13,8,Gadhi Gaunpalika,NP0106,NP010607,Gadhi,matched
+13,9,Inaruwa Municipality,NP0106,NP010609,Inaruwa,matched
+13,10,Harinagar Gaunpalika,NP0106,NP010608,Harinagar,matched
+13,11,Dewangunj Gaunpalika,NP0106,NP010604,Dewanganj,matched
+13,12,Barju Gaunpalika,NP0106,NP010602,Barju,matched
+7,1,Mahalaxmi Municipality,NP0107,NP010704,Mahalaxmi,matched
+7,2,Pakhribas Municipality,NP0107,NP010705,Pakhribas,matched
+7,3,Chhathar Jorpati Gaunpalika,NP0107,NP010702,Chhathar Jorpati,matched
+7,4,Dhankuta Municipality,NP0107,NP010703,Dhankuta,matched
+7,5,Shahidbhumi Gaunpalika,NP0107,NP010707,Shahidbhumi,matched
+7,6,Sangurigadhi Gaunpalika,NP0107,NP010706,Sangurigadhi,matched
+7,7,Chaubise Gaunpalika,NP0107,NP010701,Chaubise,matched
+8,1,Aatharai Gaunpalika,NP0108,NP010801,Aathrai,matched
+8,2,Phedap Gaunpalika,NP0108,NP010806,Phedap,matched
+8,3,Menchhayayem Gaunpalika,NP0108,NP010804,Menchayam,matched
+8,4,Myanglung Municipality,NP0108,NP010805,Myanglung,matched
+8,5,Laligurans Municipality,NP0108,NP010803,Laligurans,matched
+8,6,Chhathar Gaunpalika,NP0108,NP010802,Chhathar,matched
+2,1,Bhotkhola Gaunpalika,NP0109,NP010901,Bhotkhola,matched
+2,2,Makalu Gaunpalika,NP0109,NP010907,Makalu,matched
+2,3,Silichong Gaunpalika,NP0109,NP010910,Silichong,matched
+2,4,Chichila Gaunpalika,NP0109,NP010903,Chichila,matched
+2,5,Sabhapokhari Gaunpalika,NP0109,NP010909,Sabhapokhari,matched
+2,6,Khandabari Municipality,NP0109,NP010905,Khandbari,matched
+2,7,Panchakhapan Municipality,NP0109,NP010908,Panchakhapan,matched
+2,8,Chainapur Municipality,NP0109,NP010902,Chainpur,matched
+2,9,Madi Municipality,NP0109,NP010906,Madi,matched
+2,10,Dharmadevi Municipality,NP0109,NP010904,Dharmadevi,matched
+6,1,Shadananda Municipality,NP0110,NP011008,Shadananda,matched
+6,2,Salpa Silichho Gaunpalika,NP0110,NP011007,Salpasilichho,matched
+6,3,Temkemaiyum Gaunpalika,NP0110,NP011009,Tyamkemaiyung,suggested
+6,4,Bhojpur Municipality,NP0110,NP011003,Bhojpur,matched
+6,5,Arun Gaunpalika,NP0110,NP011002,Arun,matched
+6,6,Pauwa Dunma Gaunpalika,NP0110,NP011005,Pauwadungma,matched
+6,7,Ramprasad Rai Gaunpalika,NP0110,NP011006,Ramprasad Rai,matched
+6,8,Hatuwagadhi Gaunpalika,NP0110,NP011004,Hatuwagadhi,matched
+6,9,Aamchowk Gaunpalika,NP0110,NP011001,Aamchowk,matched
+3,1,Khumbu Pasanglhamu Gaunpalika,NP0111,NP011102,Khumbupasanglahmu,matched
+3,2,Mahakulung Gaunpalika,NP0111,NP011104,Mahakulung,matched
+3,3,Sotang Gaunpalika,NP0111,NP011107,Sotang,matched
+3,4,Mapya Dudhkoshi Gaunpalika,NP0111,NP011101,Dudhkoshi,suggested
+3,5,Thulung Dudhkoshi Gaunpalika,NP0111,NP011108,Thulung Dudhkoshi,matched
+3,6,Necha Salyan Gaunpalika,NP0111,NP011105,Nechasalyan,matched
+3,7,Solu Dhudhakunda Municipality,NP0111,NP011106,Solududhakunda,matched
+3,8,Likhu Pike Gaunpalika,NP0111,NP011103,Likhupike,matched
+5,1,Kepilasgadhi Gaunpalika,NP0112,NP011206,Kepilasagadhi,matched
+5,2,Aiselukharka Gaunpalika,NP0112,NP011201,Ainselukhark,matched
+5,3,Rawa Besi Gaunpalika,NP0112,NP011208,Rawa Besi,matched
+5,4,Halesi Tuwachung Municipality,NP0112,NP011204,Halesi Tuwachung,matched
+5,5,Diktel Rupakot Majhuwagadhi Municipality,NP0112,NP011209,Rupakot Majhuwagadhi,matched
+5,6,Sakela Gaunpalika,NP0112,NP011210,Sakela,matched
+5,7,Diprung Chuichumma Gaunpalika,NP0112,NP011203,Diprung,suggested
+5,8,Khotehang Gaunpalika,NP0112,NP011207,Khotehang,matched
+5,9,Jante Dhunga Gaunpalika,NP0112,NP011205,Jantedhunga,matched
+5,10,Baraha Pokhari Gaunpalika,NP0112,NP011202,Barahapokhari,matched
+4,1,Chishankhu Gadhi Gaunpalika,NP0113,NP011302,Chisankhugadhi,matched
+4,2,Siddhicharan Municipality,NP0113,NP011307,Siddhicharan,matched
+4,3,Molung Gaunpalika,NP0113,NP011306,Molung,matched
+4,4,Khiji Demba Gaunpalika,NP0113,NP011303,Khijidemba,matched
+4,5,Likhu Gaunpalika,NP0113,NP011304,Likhu,matched
+4,6,Champadevi Gaunpalika,NP0113,NP011301,Champadevi,matched
+4,7,Sunkoshi Gaunpalika,NP0113,NP011308,Sunkoshi,matched
+4,8,Manebhanjyang Gaunpalika,NP0113,NP011305,Manebhanjyang,matched
+14,1,Belaka Municipality,NP0114,NP011401,Belaka,matched
+14,2,Chaudandigadhi Municipality,NP0114,NP011402,Chaudandigadhi,matched
+14,3,Triyuga Municipality,NP0114,NP011407,Triyuga,matched
+14,4,Rautamai Gaunpalika,NP0114,NP011404,Rautamai,matched
+14,5,Limchunbung Gaunpalika,NP0114,,,pending
+14,6,Tapli Gaunpalika,NP0114,NP011406,Tapli,matched
+14,7,Katari Municipality,NP0114,NP011403,Katari,matched
+14,8,Udayapurgadhi Gaunpalika,NP0114,NP011408,Udayapurgadhi,matched
+15,1,Saptakoshi Municipality,NP0215,NP021514,Saptakoshi,matched
+15,2,Kanchanrup Municipality,NP0215,NP021509,Kanchanrup,matched
+15,3,Agnisair Krishna Sabaran Gaunpalika,NP0215,NP021501,Agnisair Krishna Savaran,matched
+15,4,Rupani Gaunpalika,NP0215,NP021513,Rupani,matched
+15,5,Shambhunath Municipality,NP0215,NP021515,Shambhunath,matched
+15,6,Khadak Municipality,NP0215,NP021510,Khadak,matched
+15,7,Surunga Municipality,NP0215,NP021516,Surunga,matched
+15,8,Balan-Bihul Gaunpalika,NP0215,NP021502,Balan Bihul,matched
+15,9,Bode Barsain Municipality,NP0215,NP021505,Bode Barsain,matched
+15,10,Dakneshwori Municipality,NP0215,NP021507,Dakneshwori,matched
+15,11,Rajgadh Gaunpalika,NP0215,,,pending
+15,12,Bishnupur Gaunpalika,NP0215,NP021504,Bishnupur,matched
+15,13,Rajbiraj Municipality,NP0215,NP021512,Rajbiraj,matched
+15,14,Mahadewa Gaunpalika,NP0215,NP021511,Mahadeva,matched
+15,15,Tirahut Gaunpalika,NP0215,NP021518,Tirahut,matched
+15,16,Hanumannagar Kankalini Municipality,NP0215,NP021508,Hanumannagar Kankalini,matched
+15,17,Tilathi Koiladi Gaunpalika,NP0215,NP021517,Tilathi Koiladi,matched
+15,18,Chhinnamasta Gaunpalika,NP0215,NP021506,Chhinnamasta,matched
+16,1,Lahan Municipality,NP0216,NP021610,Lahan,matched
+16,2,Dhangadhimai Municipality,NP0216,NP021606,Dhangadhimai,matched
+16,3,Golbazar Municipality,NP0216,NP021607,Golbazar,matched
+16,4,Mirchaiya Municipality,NP0216,NP021612,Mirchaiya,matched
+16,5,Karjanha Municipality,NP0216,NP021609,Karjanha,matched
+16,6,Kalyanpur Municipality,NP0216,NP021608,Kalyanpur,matched
+16,7,Naraha Gaunpalika,NP0216,NP021613,Naraha,matched
+16,8,Bishnupur Gaunpalika,NP0216,NP021605,Bishnupur,matched
+16,9,Arnama Gaunpalika,NP0216,NP021601,Arnama,matched
+16,10,Sukhipur Municipality,NP0216,NP021617,Sukhipur,matched
+16,11,Laxmipur Patari Gaunpalika,NP0216,NP021611,Laxmipur Patari,matched
+16,12,Sakhuwa Nankarkatti Gaunpalika,NP0216,NP021615,Sakhuwanankarkatti,matched
+16,13,Bhagawanpur Gaunpalika,NP0216,NP021604,Bhagawanpur,matched
+16,14,Nawarajpur Gaunpalika,NP0216,NP021614,Nawarajpur,matched
+16,15,Bariyarpatti Gaunpalika,NP0216,NP021603,Bariyarpatti,matched
+16,16,Aurahi Gaunpalika,NP0216,NP021602,Aurahi,matched
+16,17,Siraha Municipality,NP0216,NP021616,Siraha,matched
+17,1,Ganeshman Charnath Municipality,NP0217,NP021707,Ganeshman Charnath,matched
+17,2,Dhanushadham Municipality,NP0217,NP021706,Dhanusadham,matched
+17,3,Mithila Municipality,NP0217,NP021713,Mithila,matched
+17,4,Bateshwor Gaunpalika,NP0217,NP021702,Bateshwor,matched
+17,5,Chhireshwornath Municipality,NP0217,NP021704,Chhireshwornath,matched
+17,6,Laxminiya Gaunpalika,NP0217,NP021712,Lakshminiya,suggested
+17,7,Mithila Bihari Municipality,NP0217,NP021714,Mithila Bihari,matched
+17,8,Hansapur Municipality,NP0217,NP021708,Hansapur,matched
+17,9,Sabaila Municipality,NP0217,NP021717,Sabaila,matched
+17,10,Shahidnagar Municipality,NP0217,NP021718,Sahidnagar,matched
+17,11,Kamala Municipality,NP0217,NP021711,Kamala,matched
+17,12,Janak Nandini Gaunpalika,NP0217,NP021709,Janaknandani,matched
+17,13,Bideha Municipality,NP0217,NP021703,Bideha,matched
+17,14,Aurahi Gaunpalika,NP0217,NP021701,Aaurahi,matched
+17,15,Janakpurdham Sub-Metropolitian City,NP0217,NP021710,Janakpur,suggested
+17,16,Dhanauji Gaunpalika,NP0217,NP021705,Dhanauji,matched
+17,17,Nagarain Municipality,NP0217,NP021716,Nagarain,matched
+17,18,Mukhiyapatti Musaharmiya Gaunpalika,NP0217,NP021715,Mukhiyapatti Musarmiya,matched
+18,1,Bardibas Municipality,NP0218,NP021803,Bardibas,matched
+18,2,Gaushala Municipality,NP0218,NP021806,Gaushala,matched
+18,3,Sonama Gaunpalika,NP0218,NP021815,Sonama,matched
+18,4,Aurahi Municipality,NP0218,NP021801,Aurahi,matched
+18,5,Bhangaha Municipality,NP0218,NP021804,Bhangaha,matched
+18,6,Loharpatti Municipality,NP0218,NP021808,Loharpatti,matched
+18,7,Balawa Municipality,NP0218,NP021802,Balwa,matched
+18,8,Ram Gopalpur Municipality,NP0218,NP021813,Ramgopalpur,matched
+18,9,Samsi Gaunpalika,NP0218,NP021814,Samsi,matched
+18,10,Manara Shisawa Municipality,NP0218,NP021810,Manra Siswa,matched
+18,11,Ekadara Gaunpalika,NP0218,NP021805,Ekdanra,matched
+18,12,Mahottari Gaunpalika,NP0218,NP021809,Mahottari,matched
+18,13,Pipara Gaunpalika,NP0218,NP021812,Pipra,matched
+18,14,Matihani Municipality,NP0218,NP021811,Matihani,matched
+18,15,Jaleshwor Municipality,NP0218,NP021807,Jaleswor,matched
+19,1,Lalbandi Municipality,NP0219,NP021917,Lalbandi,matched
+19,2,Hariwan Municipality,NP0219,NP021913,Hariwan,matched
+19,3,Bagmati Municipality,NP0219,NP021901,Bagmati,matched
+19,4,Barahathawa Municipality,NP0219,NP021903,Barahathawa,matched
+19,5,Haripur Municipality,NP0219,NP021911,Haripur,matched
+19,6,Ishworpur Municipality,NP0219,NP021914,Ishworpur,matched
+19,7,Haripurwa Municipality,NP0219,NP021912,Haripurwa,matched
+19,8,Parsa Gaunpalika,NP0219,NP021919,Parsa,matched
+19,9,Brahmapuri Gaunpalika,NP0219,NP021906,Bramhapuri,matched
+19,10,Chandranagar Gaunpalika,NP0219,NP021908,Chandranagar,matched
+19,11,Kabilashi Municipality,NP0219,NP021915,Kabilasi,matched
+19,12,Chakraghatta Gaunpalika,NP0219,NP021907,Chakraghatta,matched
+19,13,Basbariya Gaunpalika,NP0219,NP021904,Basbariya,matched
+19,14,Dhanakaul Gaunpalika,NP0219,NP021909,Dhankaul,matched
+19,15,Ramnagar Gaunpalika,NP0219,NP021920,Ramnagar,matched
+19,16,Balara Municipality,NP0219,NP021902,Balara,matched
+19,17,Godaita Municipality,NP0219,NP021910,Godaita,matched
+19,18,Bishnu Gaunpalika,NP0219,NP021905,Bishnu,matched
+19,19,Kaudena Gaunpalika,NP0219,NP021916,Kaudena,matched
+19,20,Malangawa Municipality,NP0219,NP021918,Malangawa,matched
+20,1,Chandrapur Municipality,NP0232,NP023203,Chandrapur,matched
+20,2,Gujara Municipality,NP0232,NP023209,Gujara,matched
+20,3,Phatuwa Bijayapur Municipality,NP0232,NP023215,Phatuwa Bijayapur,matched
+20,4,Katahariya Municipality,NP0232,NP023211,Katahariya,matched
+20,5,Brindaban Municipality,NP0232,NP023202,Brindaban,matched
+20,6,Gadhimai Municipality,NP0232,NP023206,Gadhimai,matched
+20,7,Madhav Narayan Municipality,NP0232,NP023212,Madhav Narayan,matched
+20,8,Garuda Municipality,NP0232,NP023207,Garuda,matched
+20,9,Dewahi Gonahi Municipality,NP0232,NP023204,Dewahhi Gonahi,matched
+20,10,Maulapur Municipality,NP0232,NP023213,Maulapur,matched
+20,11,Boudhimai Municipality,NP0232,NP023201,Baudhimai,matched
+20,12,Paroha Municipality,NP0232,NP023214,Paroha,matched
+20,13,Rajpur Municipality,NP0232,NP023217,Rajpur,matched
+20,14,Yamunamai Gaunpalika,NP0232,NP023218,Yemunamai,matched
+20,15,Durga Bhagawati Gaunpalika,NP0232,NP023205,Durga Bhagwati,matched
+20,16,Rajdevi Municipality,NP0232,NP023216,Rajdevi,matched
+20,17,Gaur Municipality,NP0232,NP023208,Gaur,matched
+20,18,Ishanath Municipality,NP0232,NP023210,Ishanath,matched
+21,1,Nijagadh Municipality,NP0233,NP023310,Nijgadh,matched
+21,2,Kolhabi Municipality,NP0233,NP023308,Kolhabi,matched
+21,3,Jitpur Simara Sub-Metropolitian City,NP0233,NP023305,Jitpur Simara,matched
+21,4,Parawanipur Gaunpalika,NP0233,NP023312,Parwanipur,matched
+21,5,Prasauni Gaunpalika,NP0233,NP023314,Prasauni,matched
+21,6,Bishrampur Gaunpalika,NP0233,NP023303,Bishrampur,matched
+21,7,Pheta Gaunpalika,NP0233,NP023313,Pheta,matched
+21,8,Kalaiya Sub-Metropolitian City,NP0233,NP023306,Kalaiya,matched
+21,9,Karaiyamai Gaunpalika,NP0233,NP023307,Karaiyamai,matched
+21,10,Baragadhi Gaunpalika,NP0233,NP023302,Baragadhi,matched
+21,11,Aadarsha Kotwal Gaunpalika,NP0233,NP023301,Adarshkotwal,matched
+21,12,Simroungadh Municipality,NP0233,NP023315,Simraungadh,matched
+21,13,Pacharauta Municipality,NP0233,NP023311,Pacharauta,matched
+21,14,Mahagadhimai Municipality,NP0233,NP023309,Mahagadhimai,matched
+21,15,Devtal Gaunpalika,NP0233,NP023304,Devtal,matched
+21,16,Subarna Gaunpalika,NP0233,NP023316,Suwarna,matched
+22,1,Thori Gaunpalika,NP0234,NP023414,Thori,matched
+22,2,Jirabhawani Gaunpalika,NP0234,NP023407,Jirabhawani,matched
+22,3,Jagarnathpur Gaunpalika,NP0234,NP023406,Jagarnathpur,matched
+22,4,Paterwa Sugauli Gaunpalika,NP0234,NP023411,Paterwasugauli,matched
+22,5,Sakhuwa Prasauni Gaunpalika,NP0234,NP023413,SakhuwaPrasauni,matched
+22,6,Parsagadhi Municipality,NP0234,NP023410,Parsagadhi,matched
+22,7,Birgunj Metropolitian City,NP0234,NP023403,Birgunj,matched
+22,8,Bahudarmai Municipality,NP0234,NP023401,Bahudaramai,matched
+22,9,Pokhariya Municipality,NP0234,NP023412,Pokhariya,matched
+22,10,Kalikamai Gaunpalika,NP0234,NP023408,Kalikamai,matched
+22,11,Dhobini Gaunpalika,NP0234,NP023405,Dhobini,matched
+22,12,Chhipaharmai Gaunpalika,NP0234,NP023404,Chhipaharmai,matched
+22,13,Pakaha Mainpur Gaunpalika,NP0234,NP023409,Pakahamainpur,matched
+22,14,Bindabasini Gaunpalika,NP0234,NP023402,Bindabasini,matched
+33,1,Dudhouli Municipality,NP0320,NP032001,Dudhouli,matched
+33,2,Phikkal Gaunpalika,NP0320,NP032007,Phikkal,matched
+33,3,Tinpatan Gaunpalika,NP0320,NP032009,Tinpatan,matched
+33,4,Golanjor Gaunpalika,NP0320,NP032003,Golanjor,matched
+33,5,Kamalamai Municipality,NP0320,NP032005,Kamalamai,matched
+33,6,Sunkoshi Gaunpalika,NP0320,NP032008,Sunkoshi,matched
+33,7,Ghyanglekha Gaunpalika,NP0320,NP032002,Ghanglekh,matched
+33,8,Marin Gaunpalika,NP0320,NP032006,Marin,matched
+33,9,Hariharpurgaghi Gaunpalika,NP0320,NP032004,Hariharpurgadhi,matched
+32,1,Umakunda Gaunpalika,NP0321,NP032108,Umakunda,matched
+32,2,Gokulganga Gaunpalika,NP0321,NP032102,Gokulganga,matched
+32,3,Likhu Tamakoshi Gaunpalika,NP0321,NP032104,Likhu Tamakoshi,matched
+32,4,Ramechhap Municipality,NP0321,NP032106,Ramechhap,matched
+32,5,Manthali  Municipality,NP0321,NP032105,Manthali,matched
+32,6,Khandadevi Gaunpalika,NP0321,NP032103,Khadadevi,matched
+32,7,Doramba Gaunpalika,NP0321,NP032101,Doramba,matched
+32,8,Sunapati Gaunpalika,NP0321,NP032107,Sunapati,matched
+23,1,Gaurishankar Gaunpalika,NP0322,NP032204,Gaurishankar,matched
+23,2,Bigu Gaunpalika,NP0322,NP032203,Bigu,matched
+23,3,Kalinchowk Gaunpalika,NP0322,NP032206,Kalinchok,matched
+23,4,Baiteshwor Gaunpalika,NP0322,NP032201,Baiteshwor,matched
+23,5,Jiri Municipality,NP0322,NP032205,Jiri,matched
+23,6,Tamakoshi Gaunpalika,NP0322,NP032209,Tamakoshi,matched
+23,7,Melung Gaunpalika,NP0322,NP032207,Melung,matched
+23,8,Shailung Gaunpalika,NP0322,NP032208,Sailung,matched
+23,9,Bhimeshwor Municipality,NP0322,NP032202,Bhimeshwor,matched
+24,1,Bhotekoshi Gaunpalika,NP0323,NP032303,Bhotekoshi,matched
+24,2,Jugal Gaunpalika,NP0323,NP032307,Jugal,matched
+24,3,Panchpokhari Thangpal Gaunpalika,NP0323,NP032310,Panchpokhari Thangpal,matched
+24,4,Helambu Gaunpalika,NP0323,NP032305,Helambu,matched
+24,5,Melanchi Municipality,NP0323,NP032309,Melamchi,matched
+24,6,Indrawoti Gaunpalika,NP0323,NP032306,Indrawati,matched
+24,7,Choutara Sangachowkgadhi Municipality,NP0323,NP032304,Chautara SangachokGadhi,matched
+24,8,Balephi Gaunpalika,NP0323,NP032301,Balefi,suggested
+24,9,Bahrabise Municipality,NP0323,NP032302,Barhabise,matched
+24,10,Tripurasundari Gaunpalika,NP0323,NP032312,Tripurasundari,matched
+24,11,Lisankhu Pakhar Gaunpalika,NP0323,NP032308,Lisangkhu Pakhar,matched
+24,12,Sunkoshi Gaunpalika,NP0323,NP032311,Sunkoshi,matched
+31,1,Chauri Deurali Gaunpalika,NP0324,NP032404,Chaurideurali,matched
+31,2,Bhumlu Gaunpalika,NP0324,NP032403,Bhumlu,matched
+31,3,Mandan Deupur Municipality,NP0324,NP032408,Mandandeupur,matched
+31,4,Banepa Municipality,NP0324,NP032401,Banepa,matched
+31,5,Dhulikhel Municipality,NP0324,NP032405,Dhulikhel,matched
+31,6,Panchkhal Municipality,NP0324,NP032411,Panchkhal,matched
+31,7,Temal Gaunpalika,NP0324,NP032413,Temal,matched
+31,8,Namobuddha Municipality,NP0324,NP032409,Namobuddha,matched
+31,9,Panauti Municipality,NP0324,NP032410,Panauti,matched
+31,10,Bethanchowk Gaunpalika,NP0324,NP032402,Bethanchowk,matched
+31,11,Roshi Gaunpalika,NP0324,NP032412,Roshi,matched
+31,12,Mahabharat Gaunpalika,NP0324,NP032407,Mahabharat,matched
+31,13,Khanikhola Gaunpalika,NP0324,NP032406,Khanikhola,matched
+30,1,Mahalaxmi Municipality,NP0325,NP032505,Mahalaxmi,matched
+30,2,Lalitpur Metropolitian City,NP0325,NP032504,Lalitpur,matched
+30,3,Godawari Municipality,NP0325,NP032502,Godawari,matched
+30,4,Konjyosom Gaunpalika,NP0325,NP032503,Konjyosom,matched
+30,5,Mahankal Gaunpalika,NP0325,NP032506,Mahankal,matched
+30,6,Bagmati Gaunpalika,NP0325,NP032501,Bagmati,matched
+29,1,Changunarayan Municipality,NP0326,NP032602,Changunarayan,matched
+29,2,Bhaktapur Municipality,NP0326,NP032601,Bhaktapur,matched
+29,3,Madhyapur Thimi Municipality,NP0326,NP032603,Madhyapur Thimi,matched
+29,4,Suryabinayak Municipality,NP0326,NP032604,Suryabinayak,matched
+28,1,Shankharapur Municipality,NP0327,NP032709,Shankharapur,matched
+28,2,Kageshwori Manahara Municipality,NP0327,NP032705,Kageshwori Manahora,matched
+28,3,Gokarneshwor Municipality,NP0327,NP032704,Gokarneshwor,matched
+28,4,Budhanilkhantha Municipality,NP0327,NP032701,Budhanilakantha,matched
+28,5,Tokha Municipality,NP0327,NP032711,Tokha,matched
+28,6,Tarakeshwor Municipality,NP0327,NP032710,Tarakeshwor,matched
+28,7,Nagarjun Municipality,NP0327,NP032708,Nagarjun,matched
+28,8,Kathmandu Metropolitian City,NP0327,NP032706,Kathmandu,matched
+28,9,Kirtipur Municipality,NP0327,NP032707,Kirtipur,matched
+28,10,Chandragiri Municipality,NP0327,NP032702,Chandragiri,matched
+28,11,Dakshinkali Municipality,NP0327,NP032703,Dakshinkali,matched
+27,1,Dupcheshwor Gaunpalika,NP0328,NP032803,Dupcheshwar,matched
+27,2,Tadi Gaunpalika,NP0328,NP032811,Tadi,matched
+27,3,Suryagadhi Gaunpalika,NP0328,NP032810,Suryagadhi,matched
+27,4,Bidur Municipality,NP0328,NP032802,Bidur,matched
+27,5,Kispang Gaunpalika,NP0328,NP032805,Kispang,matched
+27,6,Myagang Gaunpalika,NP0328,,,pending
+27,7,Tarakeshwor Gaunpalika,NP0328,NP032812,Tarkeshwar,matched
+27,8,Belkotgadhi Municipality,NP0328,NP032801,Belkotgadhi,matched
+27,9,Likhu Gaunpalika,NP0328,NP032806,Likhu,matched
+27,10,Panchakanya Gaunpalika,NP0328,NP032808,Panchakanya,matched
+27,11,Shivapuri Gaunpalika,NP0328,NP032809,Shivapuri,matched
+27,12,Kakani Gaunpalika,NP0328,NP032804,Kakani,matched
+25,1,Gosaikunda Gaunpalika,NP0329,NP032901,Gosaikunda,matched
+25,2,Aamachhodingmo Gaunpalika,NP0329,,,pending
+25,3,Uttargaya Gaunpalika,NP0329,NP032905,Uttargaya,matched
+25,4,Kalika Gaunpalika,NP0329,NP032902,Kalika,matched
+25,5,Naukunda Gaunpalika,NP0329,NP032903,Naukunda,matched
+26,1,Rubi Valley Gaunpalika,NP0330,NP033010,Rubi Valley,matched
+26,2,Khaniyabas Gaunpalika,NP0330,NP033007,Khaniyabash,matched
+26,3,Ganga Jamuna Gaunpalika,NP0330,NP033005,Gangajamuna,matched
+26,4,Tripurasundari Gaunpalika,NP0330,NP033013,Tripura Sundari,matched
+26,5,Netrawati Dabjong Gaunpalika,NP0330,NP033008,Netrawati Dabjong,matched
+26,6,Nilkhantha Municipality,NP0330,NP033009,Nilakantha,matched
+26,7,Jwalamukhi Gaunpalika,NP0330,NP033006,Jwalamukhi,matched
+26,8,Siddhalek Gaunpalika,NP0330,NP033011,Siddhalek,matched
+26,9,Benighat Rorang Gaunpalika,NP0330,NP033001,Benighat Rorang,matched
+26,10,Gajuri Gaunpalika,NP0330,NP033003,Gajuri,matched
+26,11,Galchhi Gaunpalika,NP0330,NP033004,Galchi,matched
+26,12,Thakre Gaunpalika,NP0330,NP033012,Thakre,matched
+26,13,Dhunibenshi Municipality,NP0330,NP033002,Dhunibesi,matched
+34,1,Indrasarowar Gaunpalika,NP0331,NP033105,Indrasarowar,matched
+34,2,Thaha Municipality,NP0331,NP033110,Thaha,matched
+34,3,Kailash Gaunpalika,NP0331,NP033106,Kailash,matched
+34,4,Raksirang Gaunpalika,NP0331,NP033109,Raksirang,matched
+34,5,Manahari Gaunpalika,NP0331,NP033108,Manahari,matched
+34,6,Hetauda Sub-Metropolitian City,NP0331,NP033104,Hetauda,matched
+34,7,Bhimphedi Gaunpalika,NP0331,NP033103,Bhimphedi,matched
+34,8,Makawanpurgadhi Gaunpalika,NP0331,NP033107,Makawanpurgadhi,matched
+34,9,Bakaiya Gaunpalika,NP0331,NP033102,Bakaiya,matched
+34,10,Bagmati Gaunpalika,NP0331,NP033101,Bagmati,matched
+35,1,Rapti Municipality,NP0335,NP033506,Rapti,matched
+35,2,Kalika Municipality,NP0335,NP033503,Kalika,matched
+35,3,Ichchha Kamana Gaunpalika,NP0335,NP033502,Ichchhyakamana,matched
+35,4,Bharatpur Metropolitian City,NP0335,NP033501,Bharatpur,matched
+35,5,Ratnanagar Municipality,NP0335,NP033507,Ratnanagar,matched
+35,6,Khairahani Municipality,NP0335,NP033504,Khairahani,matched
+35,7,Madi Municipality,NP0335,NP033505,Madi,matched
+36,1,Chumanubri Gaunpalika,NP0436,NP043604,Chum Nubri,matched
+36,2,Ajirkot Gaunpalika,NP0436,NP043602,Ajirkot,matched
+36,3,Barpak Sulikot Gaunpalika,NP0436,NP043611,Sulikot,suggested
+36,4,Dharche Gaunpalika,NP0436,NP043605,Dharche,matched
+36,5,Aarughat Gaunpalika,NP0436,NP043601,Aarughat,matched
+36,6,Bhimsenthapa Gaunpalika,NP0436,NP043603,Bhimsen,suggested
+36,7,Siranchowk Gaunpalika,NP0436,NP043610,Siranchok,matched
+36,8,Palungtar Municipality,NP0436,NP043608,Palungtar,matched
+36,9,Gorkha Municipality,NP0436,NP043607,Gorkha,matched
+36,10,Shahid Lakhan Gaunpalika,NP0436,NP043609,Sahid Lakhan,matched
+36,11,Gandaki Gaunpalika,NP0436,NP043606,Gandaki,matched
+41,1,Dordi Gaunpalika,NP0437,NP043702,Dordi,matched
+41,2,Marshyangdi Gaunpalika,NP0437,NP043706,Marsyangdi,matched
+41,3,Kwhola Sothar Gaunpalika,NP0437,NP043704,Kwholasothar,matched
+41,4,Madhya Nepal Municipality,NP0437,NP043705,MadhyaNepal,matched
+41,5,Bensishahar Municipality,NP0437,NP043701,Besishahar,matched
+41,6,Sundarbazar Municipality,NP0437,NP043708,Sundarbazar,matched
+41,7,Rainas Municipality,NP0437,NP043707,Rainas,matched
+41,8,Dudhapokhari Gaunpalika,NP0437,NP043703,Dudhpokhari,matched
+37,1,Narpa Bhumi Gaunpalika,NP0438,NP043802,Narphu,suggested
+37,2,Manang Ngisyang Gaunpalika,NP0438,,,pending
+37,3,Chame Gaunpalika,NP0438,NP043801,Chame,matched
+37,4,Nason Gaunpalika,NP0438,NP043803,Nashong,matched
+40,1,Madi Gaunpalika,NP0439,NP043903,Madi,matched
+40,2,Machhapuchchhre Gaunpalika,NP0439,NP043902,Machhapuchchhre,matched
+40,3,Annapurna Gaunpalika,NP0439,NP043901,Annapurna,matched
+40,4,Pokhara Metropolitian City,NP0439,NP043904,Pokhara Lekhnath,suggested
+40,5,Rupa Gaunpalika,NP0439,NP043905,Rupa,matched
+42,1,Bhanu Municipality,NP0440,NP044003,Bhanu,matched
+42,2,Byas Municipality,NP0440,NP044005,Byas,matched
+42,3,Myagde Gaunpalika,NP0440,NP044008,Myagde,matched
+42,4,Shuklagandaki Municipality,NP0440,NP044010,Shuklagandaki,matched
+42,5,Bhimad Municipality,NP0440,NP044004,Bhimad,matched
+42,6,Ghiring Gaunpalika,NP0440,NP044007,Ghiring,matched
+42,7,Rhishing Gaunpalika,NP0440,NP044009,Rhishing,matched
+42,8,Devghat Gaunpalika,NP0440,NP044006,Devghat,matched
+42,9,Bandipur Gaunpalika,NP0440,NP044002,Bandipur,matched
+42,10,Aanbu Khaireni Gaunpalika,NP0440,NP044001,Anbukhaireni,matched
+44,1,Putalibazar Municipality,NP0441,NP044110,Putalibazar,matched
+44,2,Phedikhola Gaunpalika,NP0441,NP044109,Phedikhola,matched
+44,3,Aandhikhola Gaunpalika,NP0441,NP044101,Aandhikhola,matched
+44,4,Arjun Choupari Gaunpalika,NP0441,NP044102,Arjunchaupari,matched
+44,5,Bhirkot Municipality,NP0441,NP044103,Bhirkot,matched
+44,6,Biruwa Gaunpalika,NP0441,NP044104,Biruwa,matched
+44,7,Harinas Gaunpalika,NP0441,NP044107,Harinas,matched
+44,8,Chapakot Municipality,NP0441,NP044105,Chapakot,matched
+44,9,Walling Municipality,NP0441,NP044111,Waling,matched
+44,10,Galyang Municipality,NP0441,NP044106,Galyang,matched
+44,11,Kaligandaki Gaunpalika,NP0441,NP044108,Kaligandagi,matched
+45,1,Modi Gaunpalika,NP0442,NP044205,Modi,matched
+45,2,Jaljala Gaunpalika,NP0442,NP044202,Jaljala,matched
+45,3,Kushma Municipality,NP0442,NP044203,Kushma,matched
+45,4,Phalebas Municipality,NP0442,NP044207,Phalebas,matched
+45,5,Mahashila Gaunpalika,NP0442,NP044204,Mahashila,matched
+45,6,Bihadi Gaunpalika,NP0442,NP044201,Bihadi,matched
+45,7,Paiyu Gaunpalika,NP0442,NP044206,Painyu,matched
+46,1,Baglung Municipality,NP0443,NP044302,Baglung,matched
+46,2,Kathekhola Gaunpalika,NP0443,NP044307,Kanthekhola,matched
+46,3,Tarakhola Gaunpalika,NP0443,NP044310,Tara Khola,matched
+46,4,Tamankhola Gaunpalika,NP0443,NP044309,Taman Khola,matched
+46,5,Dhorpatan Municipality,NP0443,NP044304,Dhorpatan,matched
+46,6,Nisikhola Gaunpalika,NP0443,NP044308,Nisikhola,matched
+46,7,Badigad Gaunpalika,NP0443,NP044301,Badigad,matched
+46,8,Galkot Municipality,NP0443,NP044305,Galkot,matched
+46,9,Bareng Gaunpalika,NP0443,NP044303,Bareng,matched
+46,10,Jaimuni Municipality,NP0443,NP044306,Jaimuni,matched
+39,1,Annapurna Gaunpalika,NP0444,NP044401,Annapurna,matched
+39,2,Raghuganga Gaunpalika,NP0444,NP044406,Raghuganga,matched
+39,3,Dhawalagiri Gaunpalika,NP0444,NP044403,Dhaulagiri,matched
+39,4,Malika Gaunpalika,NP0444,NP044404,Malika,matched
+39,5,Mangala Gaunpalika,NP0444,NP044405,Mangala,matched
+39,6,Beni Municipality,NP0444,NP044402,Beni,matched
+38,1,Lo Ghekar Damodarkunda Gaunpalika,NP0445,,,pending
+38,2,Gharpajhong Gaunpalika,NP0445,NP044503,Gharapjhong,matched
+38,3,Varagung Muktichhetra Gaunpalika,NP0445,NP044501,Barhagaun Muktikhsetra,suggested
+38,4,Lomanthang Gaunpalika,NP0445,NP044504,Lomanthang,matched
+38,5,Thasang Gaunpalika,NP0445,NP044505,Thasang,matched
+43,1,Gaidakot Municipality,NP0447,NP044705,Gaidakot,matched
+43,2,Bulingtar Gaunpalika,NP0447,NP044702,Bulingtar,matched
+43,3,Baudikali Gaunpalika,NP0447,NP044703,Bungdikali,matched
+43,4,Hupsekot Gaunpalika,NP0447,NP044706,Hupsekot,matched
+43,5,Devchuli Municipality,NP0447,NP044704,Devchuli,matched
+43,6,Kawasoti Municipality,NP0447,NP044707,Kawasoti,matched
+43,7,Madhya Bindu Municipality,NP0447,NP044708,Madhyabindu,matched
+43,8,Binayi Tribeni Gaunpalika,NP0447,NP044701,Binayee Tribeni,matched
+52,1,Rampur Municipality,NP0546,NP054607,Rampur,matched
+52,2,Purbakhola Gaunpalika,NP0546,NP054604,Purbakhola,matched
+52,3,Rambha Gaunpalika,NP0546,NP054606,Rambha,matched
+52,4,Baganaskali Gaunpalika,NP0546,NP054601,Bagnaskali,matched
+52,5,Tansen Municipality,NP0546,NP054609,Tansen,matched
+52,6,Ribdikot Gaunpalika,NP0546,NP054608,Ribdikot,matched
+52,7,Rainadevi Chhahara Gaunpalika,NP0546,NP054605,Rainadevi Chhahara,matched
+52,8,Tinau Gaunpalika,NP0546,NP054610,Tinau,matched
+52,9,Mathagadhi Gaunpalika,NP0546,NP054602,Mathagadhi,matched
+52,10,Nisdi Gaunpalika,NP0546,NP054603,Nisdi,matched
+53,1,Bardaghat Municipality,NP0547,NP054701,Bardaghat,matched
+53,2,Sunawal Municipality,NP0547,NP054706,Sunwal,matched
+53,3,Ramgram Municipality,NP0547,NP054704,Ramgram,matched
+53,4,Palhinandan Gaunpalika,NP0547,NP054702,Palhi Nandan,matched
+53,5,Sarawal Gaunpalika,NP0547,NP054705,Sarawal,matched
+53,6,Pratapapur Gaunpalika,NP0547,NP054703,Pratappur,matched
+53,7,Susta Gaunpalika,NP0547,NP054707,Susta,matched
+54,1,Devdaha Municipality,NP0548,NP054802,Devdaha,matched
+54,2,Butwal Sub-Metropolitian City,NP0548,NP054801,Butwal,matched
+54,3,Sainamaina Municipality,NP0548,NP054811,Sainamaina,matched
+54,4,Kanchan Gaunpalika,NP0548,NP054804,Kanchan,matched
+54,5,Gaidahawa Gaunpalika,NP0548,NP054803,Gaidahawa,matched
+54,6,Suddhodhan Gaunpalika,NP0548,NP054815,Sudhdhodhan,matched
+54,7,Siyari Gaunpalika,NP0548,NP054814,Siyari,matched
+54,8,Tilottama Municipality,NP0548,NP054816,Tillotama,matched
+54,9,Om Satiya Gaunpalika,NP0548,NP054809,Omsatiya,matched
+54,10,Rohini Gaunpalika,NP0548,NP054810,Rohini,matched
+54,11,Siddharthanagar Municipality,NP0548,NP054813,Siddharthanagar,matched
+54,12,Mayadevi Gaunpalika,NP0548,NP054808,Mayadevi,matched
+54,13,Lumbini Sanskritik Municipality,NP0548,NP054806,Lumbini Sanskritik,matched
+54,14,Kotahimai Gaunpalika,NP0548,NP054805,Kotahimai,matched
+54,15,Sammarimai Gaunpalika,NP0548,NP054812,Sammarimai,matched
+54,16,Marchawari Gaunpalika,NP0548,NP054807,Marchawari,matched
+55,1,Banganga Municipality,NP0549,NP054901,Banganga,matched
+55,2,Buddhabhumi Municipality,NP0549,NP054903,Buddhabhumi,matched
+55,3,Shivaraj Municipality,NP0549,NP054908,Shivaraj,matched
+55,4,Bijayanagar Gaunpalika,NP0549,NP054902,Bijayanagar,matched
+55,5,Krishnanagar Municipality,NP0549,NP054905,Krishnanagar,matched
+55,6,Maharajganj Municipality,NP0549,NP054906,Maharajgunj,matched
+55,7,Kapilbastu Municipality,NP0549,NP054904,Kapilbastu,matched
+55,8,Yasodhara Gaunpalika,NP0549,NP054910,Yashodhara,matched
+55,9,Mayadevi Gaunpalika,NP0549,NP054907,Mayadevi,matched
+55,10,Shuddhodhan Gaunpalika,NP0549,NP054909,Suddhodhan,matched
+51,1,Chhatradev Gaunpalika,NP0550,NP055002,Chhatradev,matched
+51,2,Malarani Gaunpalika,NP0550,NP055003,Malarani,matched
+51,3,Bhumikasthan Municipality,NP0550,NP055001,Bhumekasthan,matched
+51,4,Sandhikharka Municipality,NP0550,NP055005,Sandhikharka,matched
+51,5,Panini Gaunpalika,NP0550,NP055004,Panini,matched
+51,6,Shitaganga Municipality,NP0550,NP055006,Sitganga,matched
+50,1,Kali Gandaki Gaunpalika,NP0551,NP055106,Kaligandaki,matched
+50,2,Satyawoti Gaunpalika,NP0551,NP055112,Satyawati,matched
+50,3,Chandrakot Gaunpalika,NP0551,NP055101,Chandrakot,matched
+50,4,Musikot Municipality,NP0551,NP055109,Musikot,matched
+50,5,Isma Gaunpalika,NP0551,NP055105,Isma,matched
+50,6,Malika Gaunpalika,NP0551,NP055108,Malika,matched
+50,7,Madane Gaunpalika,NP0551,NP055107,Madane,matched
+50,8,Dhurkot Gaunpalika,NP0551,NP055103,Dhurkot,matched
+50,9,Resunga Municipality,NP0551,NP055110,Resunga,matched
+50,10,Gulmi Durbar Gaunpalika,NP0551,NP055104,Gulmidarbar,matched
+50,11,Chhatrakot Gaunpalika,NP0551,NP055102,Chatrakot,matched
+50,12,Ruruchhetra Gaunpalika,NP0551,,,pending
+47,1,Putha Uttanganga Gaunpalika,NP0552,NP055202,Putha Uttarganga,matched
+47,2,Sisne Gaunpalika,NP0552,NP055203,Sisne,matched
+47,3,Bhoome Gaunpalika,NP0552,NP055201,Bhume,suggested
+48,1,Sunchhahari Gaunpalika,NP0554,NP055407,Sunchhahari,matched
+48,2,Thawang Gaunpalika,NP0554,NP055409,Thawang,matched
+48,3,Pariwartan Gaunpalika,NP0554,,,pending
+48,4,Gangadev Gaunpalika,NP0554,,,pending
+48,5,Madi Gaunpalika,NP0554,NP055403,Madi,matched
+48,6,Tribeni Gaunpalika,NP0554,NP055410,Tribeni,matched
+48,7,Rolpa Municipality,NP0554,NP055404,Rolpa,matched
+48,8,Runtigadhi Gaunpalika,NP0554,NP055405,Runtigadi,matched
+48,9,Sunil Smriti Gaunpalika,NP0554,,,pending
+48,10,Lungri Gaunpalika,NP0554,NP055402,Lungri,matched
+49,1,Gaumukhi Gaunpalika,NP0555,NP055502,Gaumukhi,matched
+49,2,Naubahini Gaunpalika,NP0555,NP055506,Naubahini,matched
+49,3,Jhimaruk Gaunpalika,NP0555,NP055503,Jhimruk,matched
+49,4,Pyuthan Municipality,NP0555,NP055507,Pyuthan,matched
+49,5,Sworgadwari Municipality,NP0555,NP055509,Sworgadwary,matched
+49,6,Mandavi Gaunpalika,NP0555,NP055505,Mandavi,matched
+49,7,Mallarani Gaunpalika,NP0555,NP055504,Mallarani,matched
+49,8,Aairawati Gaunpalika,NP0555,NP055501,Ayirabati,suggested
+49,9,Sarumarani Gaunpalika,NP0555,NP055508,Sarumarani,matched
+56,1,Bangalachuli Gaunpalika,NP0556,NP055602,Banglachuli,matched
+56,2,Ghorahi Sub-Metropolitian City,NP0556,NP055605,Ghorahi,matched
+56,3,Tulsipur Sub-Metropolitian City,NP0556,NP055610,Tulsipur,matched
+56,4,Shantinagar Gaunpalika,NP0556,NP055609,Shantinagar,matched
+56,5,Babai Gaunpalika,NP0556,NP055601,Babai,matched
+56,6,Dangisharan Gaunpalika,NP0556,NP055603,Dangisharan,matched
+56,7,Lamahi Municipality,NP0556,NP055606,Lamahi,matched
+56,8,Rapti Gaunpalika,NP0556,NP055608,Rapti,matched
+56,9,Gadhawa Gaunpalika,NP0556,NP055604,Gadhawa,matched
+56,10,Rajpur Gaunpalika,NP0556,NP055607,Rajpur,matched
+57,1,Rapti Sonari Gaunpalika,NP0557,NP055708,Rapti Sonari,matched
+57,2,Kohalpur Municipality,NP0557,NP055705,Kohalpur,matched
+57,3,Baijanath Gaunpalika,NP0557,NP055701,Baijanath,matched
+57,4,Khajura Gaunpalika,NP0557,NP055704,Khajura,matched
+57,5,Janaki Gaunpalika,NP0557,NP055703,Janki,matched
+57,6,Nepalganj Sub-Metropolitian City,NP0557,NP055707,Nepalgunj,matched
+57,7,Duduwa Gaunpalika,NP0557,NP055702,Duduwa,matched
+57,8,Narainapur Gaunpalika,NP0557,NP055706,Narainapur,matched
+58,1,Bansgadhi Municipality,NP0558,NP055802,Bansagadhi,matched
+58,2,Barbardiya Municipality,NP0558,NP055803,Barbardiya,matched
+58,3,Thakurbaba Municipality,NP0558,NP055808,Thakurbaba,matched
+58,4,Geruwa Gaunpalika,NP0558,NP055804,Geruwa,matched
+58,5,Rajapur Municipality,NP0558,NP055807,Rajapur,matched
+58,6,Madhuwan Municipality,NP0558,NP055806,Madhuwan,matched
+58,7,Gulariya Municipality,NP0558,NP055805,Gulariya,matched
+58,8,Badhaiyatal Gaunpalika,NP0558,NP055801,Badhaiyatal,matched
+66,1,Aathabisakot Municipality,NP0652,NP065201,Aathbiskot,matched
+66,2,Sanibheri Gaunpalika,NP0652,NP065205,Sani Bheri,matched
+66,3,Banphikot Gaunpalika,NP0652,NP065202,Banfikot,matched
+66,4,Musikot Municipality,NP0652,NP065204,Musikot,matched
+66,5,Tribeni Gaunpalika,NP0652,NP065206,Tribeni,matched
+66,6,Chaurjahari Municipality,NP0652,NP065203,Chaurjahari,matched
+67,1,Darma Gaunpalika,NP0653,NP065304,Darma,matched
+67,2,Kumakh Gaunpalika,NP0653,NP065308,Kumakhmalika,suggested
+67,3,Banagad Kupinde Municipality,NP0653,NP065302,Bangad Kupinde,matched
+67,4,Siddha Kumakh Gaunpalika,NP0653,,,pending
+67,5,Bagachour Municipality,NP0653,NP065301,Bagchaur,matched
+67,6,Chhatreshwori Gaunpalika,NP0653,NP065303,Chhatreshwori,matched
+67,7,Sharada Municipality,NP0653,NP065309,Sharada,matched
+67,8,Kalimati Gaunpalika,NP0653,NP065306,Kalimati,matched
+67,9,Tribeni Gaunpalika,NP0653,NP065310,Tribeni,matched
+67,10,Kapurkot Gaunpalika,NP0653,NP065307,Kapurkot,matched
+68,1,Simta Gaunpalika,NP0659,NP065909,Simta,matched
+68,2,Chingad Gaunpalika,NP0659,NP065905,Chingad,matched
+68,3,Lekabeshi Municipality,NP0659,NP065907,Lekbeshi,matched
+68,4,Gurbhakot Municipality,NP0659,NP065906,Gurbhakot,matched
+68,5,Bheriganga Municipality,NP0659,NP065902,Bheriganga,matched
+68,6,Birendranagar Municipality,NP0659,NP065903,Birendranagar,matched
+68,7,Barahatal Gaunpalika,NP0659,NP065901,Barahtal,matched
+68,8,Panchapuri Municipality,NP0659,NP065908,Panchpuri,matched
+68,9,Chaukune Gaunpalika,NP0659,NP065904,Chaukune,matched
+65,1,Barekot Gaunpalika,NP0660,NP066001,Barekot,matched
+65,2,Kuse Gaunpalika,NP0660,NP066005,Kuse,matched
+65,3,Junichande Gaunpalika,NP0660,NP066004,Junichande,matched
+65,4,Chhedagad Municipality,NP0660,NP066003,Chhedagad,matched
+65,5,Shivalaya Gaunpalika,NP0660,NP066006,Shiwalaya,matched
+65,6,Bheri Malika Municipality,NP0660,NP066002,Bheri,suggested
+65,7,Nalgad Municipality,NP0660,,,pending
+64,1,Naumule Gaunpalika,NP0661,NP066110,Naumule,matched
+64,2,Mahabu Gaunpalika,NP0661,NP066108,Mahabu,matched
+64,3,Bhairabi Gaunpalika,NP0661,NP066103,Bhairabi,matched
+64,4,Thantikandh Gaunpalika,NP0661,NP066111,Thantikandh,matched
+64,5,Aathbis Municipality,NP0661,NP066101,Aathabis,matched
+64,6,Chamunda Bindrasaini Municipality,NP0661,NP066104,Chamunda Bindrasaini,matched
+64,7,Dullu Municipality,NP0661,NP066105,Dullu,matched
+64,8,Narayan Municipality,NP0661,NP066109,Narayan,matched
+64,9,Bhagawatimai Gaunpalika,NP0661,NP066102,Bhagawatimai,matched
+64,10,Dungeshwor Gaunpalika,NP0661,NP066106,Dungeshwor,matched
+64,11,Gurans Gaunpalika,NP0661,NP066107,Gurans,matched
+59,1,Dolpo Buddha Gaunpalika,NP0662,NP066202,Dolpo Buddha,matched
+59,2,Shey Phoksundo Gaunpalika,NP0662,NP066206,Shey Phoksundo,matched
+59,3,Jagadulla Gaunpalika,NP0662,NP066203,Jagadulla,matched
+59,4,Mudkechula Gaunpalika,NP0662,NP066205,Mudkechula,matched
+59,5,Tripurasundari Municipality,NP0662,NP066208,Tripurasundari,matched
+59,6,Thulibheri Municipality,NP0662,NP066207,Thuli Bheri,matched
+59,7,Kaike Gaunpalika,NP0662,NP066204,Kaike,matched
+59,8,Chharka Tangsong Gaunpalika,NP0662,NP066201,Chharka Tangsong,matched
+62,1,Patarasi Gaunpalika,NP0663,NP066305,Patrasi,matched
+62,2,Kanaka Sundari Gaunpalika,NP0663,NP066304,Kanakasundari,matched
+62,3,Sinja Gaunpalika,NP0663,NP066306,Sinja,matched
+62,4,Chandannath Municipality,NP0663,NP066301,Chandannath,matched
+62,5,Guthichaur Gaunpalika,NP0663,NP066302,Guthichaur,matched
+62,6,Tatopani Gaunpalika,NP0663,NP066307,Tatopani,matched
+62,7,Tila Gaunpalika,NP0663,NP066308,Tila,matched
+62,8,Hima Gaunpalika,NP0663,NP066303,Hima,matched
+63,1,Palata Gaunpalika,NP0664,NP066406,Palata,matched
+63,2,Pachal Jharana Gaunpalika,NP0664,NP066405,Pachaljharana,matched
+63,3,Raskot Municipality,NP0664,NP066407,Raskot,matched
+63,4,Sanni Tribeni Gaunpalika,NP0664,NP066408,Sanni Tribeni,matched
+63,5,Naraharinath Gaunpalika,NP0664,NP066404,Naraharinath,matched
+63,6,Khandachakra Municipality,NP0664,NP066402,Khandachakra,matched
+63,7,Tilagupha Municipality,NP0664,NP066409,Tilagufa,matched
+63,8,Mahawai Gaunpalika,NP0664,NP066403,Mahawai,matched
+63,9,Shuva Kalika Gaunpalika,NP0664,NP066401,Kalika,suggested
+60,1,Mugumakarmarog Gaunpalika,NP0665,NP066503,Mugum Karmarong,matched
+60,2,Chhayanath Rara Municipality,NP0665,NP066501,Chhayanath Rara,matched
+60,3,Soru Gaunpalika,NP0665,NP066504,Soru,matched
+60,4,Khatyad Gaunpalika,NP0665,NP066502,Khatyad,matched
+61,1,Chankheli Gaunpalika,NP0666,NP066602,Chankheli,matched
+61,2,Kharpunath Gaunpalika,NP0666,NP066603,Kharpunath,matched
+61,3,Simkot Gaunpalika,NP0666,NP066606,Simkot,matched
+61,4,Namkha Gaunpalika,NP0666,NP066604,Namkha,matched
+61,5,Sarkegad Gaunpalika,NP0666,NP066605,Sarkegad,matched
+61,6,Adanchuli Gaunpalika,NP0666,NP066601,Adanchuli,matched
+61,7,Tanjakot Gaunpalika,NP0666,NP066607,Tanjakot,matched
+70,1,Saipal Gaunpalika,NP0767,,,pending
+70,2,Bungal Municipality,NP0767,NP076702,Bungal,matched
+70,3,Surma Gaunpalika,NP0767,NP076710,Surma,matched
+70,4,Talkot Gaunpalika,NP0767,NP076711,Talkot,matched
+70,5,Masta Gaunpalika,NP0767,NP076709,Masta,matched
+70,6,Jayaprithbi Municipality,NP0767,NP076705,JayaPrithivi,matched
+70,7,Chhabis Pathibhara Gaunpalika,NP0767,NP076703,Chabispathivera,suggested
+70,8,Durgathali Gaunpalika,NP0767,NP076704,Durgathali,matched
+70,9,Kedarsyun Gaunpalika,NP0767,NP076707,Kedarseu,matched
+70,10,Bitthadchir Gaunpalika,NP0767,NP076701,Bithadchir,matched
+70,11,Thalara Gaunpalika,NP0767,NP076712,Thalara,matched
+70,12,Khaptad Chhanna Gaunpalika,NP0767,NP076708,Khaptadchhanna,matched
+69,1,Himali Gaunpalika,NP0768,NP076806,Himali,matched
+69,2,Gaumul Gaunpalika,NP0768,NP076805,Gaumul,matched
+69,3,Budhinanda Municipality,NP0768,NP076803,Budhinanda,matched
+69,4,Swamikartik Khapar Gaunpalika,NP0768,NP076808,Swami Kartik,suggested
+69,5,Jagannath Gaunpalika,NP0768,,,pending
+69,6,Badimalika Municipality,NP0768,NP076801,Badimalika,matched
+69,7,Khaptad Chhededaha Gaunpalika,NP0768,NP076804,Chhededaha,suggested
+69,8,Budhiganga Municipality,NP0768,NP076802,Budhiganga,matched
+69,9,Tribeni Municipality,NP0768,NP076809,Tribeni,matched
+75,1,Panchdebal Binayak Municipality,NP0769,NP076907,Panchadewal Binayak,matched
+75,2,Ramaroshan Gaunpalika,NP0769,NP076908,Ramaroshan,matched
+75,3,Mellekh Gaunpalika,NP0769,NP076906,Mellekh,matched
+75,4,Sanphebagar Municipality,NP0769,NP076909,Sanphebagar,matched
+75,5,Chaurpati Gaunpalika,NP0769,NP076902,Chaurpati,matched
+75,6,Mangalsen Municipality,NP0769,NP076905,Mangalsen,matched
+75,7,Bannigadhi Jayagadh Gaunpalika,NP0769,NP076901,Bannigadhi Jayagadh,matched
+75,8,Kamal bazar Municipality,NP0769,NP076904,Kamalbazar,matched
+75,9,Dhakari Gaunpalika,NP0769,NP076903,Dhakari,matched
+75,10,Turmakhand Gaunpalika,NP0769,NP076910,Turmakhad,matched
+74,1,Purbichouki Gaunpalika,NP0770,NP077007,Purbichauki,matched
+74,2,Sayal Gaunpalika,NP0770,NP077008,Sayal,matched
+74,3,Aadarsha Gaunpalika,NP0770,NP077001,Adharsha,matched
+74,4,Shikhar Municipality,NP0770,NP077009,Shikhar,matched
+74,5,Dipayal Silgadhi Municipality,NP0770,NP077004,Dipayal Silgadi,matched
+74,6,K.I. Singh Gaunpalika,NP0770,NP077006,K I Singh,matched
+74,7,Bogatan Phudsil Gaunpalika,NP0770,,,pending
+74,8,Badi Kedar Gaunpalika,NP0770,NP077002,Badikedar,matched
+74,9,Jorayal Gaunpalika,NP0770,NP077005,Jorayal,matched
+76,1,Mohanyal Gaunpalika,NP0771,NP077112,Mohanyal,matched
+76,2,Chure Gaunpalika,NP0771,NP077103,Chure,matched
+76,3,Godawari Municipality,NP0771,NP077107,Godawari,matched
+76,4,Gauriganga Municipality,NP0771,NP077105,Gauriganga,matched
+76,5,Ghodaghodi Municipality,NP0771,NP077106,Ghodaghodi,matched
+76,6,Bardagoriya Gaunpalika,NP0771,NP077101,Bardagoriya,matched
+76,7,Lamki Chuha Municipality,NP0771,NP077111,Lamkichuha,matched
+76,8,Janaki Gaunpalika,NP0771,NP077108,Janaki,matched
+76,9,Joshipur Gaunpalika,NP0771,NP077109,Joshipur,matched
+76,10,Tikapur Municipality,NP0771,NP077113,Tikapur,matched
+76,11,Bhajani Municipality,NP0771,NP077102,Bhajani,matched
+76,12,Kailari Gaunpalika,NP0771,NP077110,Kailari,matched
+76,13,Dhangadhi Sub-Metropolitian City,NP0771,NP077104,Dhangadhi,matched
+77,1,Krishnapur Municipality,NP0772,NP077205,Krishnapur,matched
+77,2,Shuklaphanta Municipality,NP0772,NP077209,Shuklaphanta,matched
+77,3,Bedkot Municipality,NP0772,NP077201,Bedkot,matched
+77,4,Bhimdatta Municipality,NP0772,NP077204,Bhimdatta,matched
+77,5,Dodhara Chandani Municipality,NP0772,,,pending
+77,6,Laljhadi Gaunpalika,NP0772,NP077206,Laljhadi,matched
+77,7,Punarbas Municipality,NP0772,NP077208,Punarbas,matched
+77,8,Belouri Municipality,NP0772,NP077202,Belauri,matched
+77,9,Beldandi Gaunpalika,NP0772,NP077203,Beldandi,matched
+73,1,Nawadurga Gaunpalika,NP0773,NP077306,Nawadurga,matched
+73,2,Amargadhi Municipality,NP0773,NP077303,Amargadhi,matched
+73,3,Ajayameru Gaunpalika,NP0773,NP077301,Ajaymeru,matched
+73,4,Bhageshwor Gaunpalika,NP0773,NP077304,Bhageshwar,matched
+73,5,Parashuram Municipality,NP0773,NP077307,Parashuram,matched
+73,6,Aalital Gaunpalika,NP0773,NP077302,Alital,matched
+73,7,Ganyapdhura Gaunpalika,NP0773,NP077305,Ganayapdhura,matched
+72,1,Dilasaini Gaunpalika,NP0774,NP077402,Dilasaini,matched
+72,2,Dogada Kedar Gaunpalika,NP0774,NP077403,Dogadakedar,matched
+72,3,Puchaundi Municipality,NP0774,NP077407,Purchaudi,matched
+72,4,Surnaya Gaunpalika,NP0774,NP077410,Surnaya,matched
+72,5,Dasharathchand Municipality,NP0774,NP077401,Dasharathchanda,matched
+72,6,Pancheshwor Gaunpalika,NP0774,NP077405,Pancheshwar,matched
+72,7,Shivanath Gaunpalika,NP0774,NP077408,Shivanath,matched
+72,8,Melauli Municipality,NP0774,NP077404,Melauli,matched
+72,9,Patan Municipality,NP0774,NP077406,Patan,matched
+72,10,Sigas Gaunpalika,NP0774,NP077409,Sigas,matched
+71,1,Byas Gaunpalika,NP0775,NP077502,Byas,matched
+71,2,Duhun Gaunpalika,NP0775,NP077503,Dunhu,suggested
+71,3,Mahakali Municipality,NP0775,NP077505,Mahakali,matched
+71,4,Naugad  Gaunpalika,NP0775,NP077508,Naugad,matched
+71,5,Apihimal Gaunpalika,NP0775,NP077501,Apihimal,matched
+71,6,Marma Gaunpalika,NP0775,NP077507,Marma,matched
+71,7,Shailyashikhar Municipality,NP0775,NP077509,Shailyashikhar,matched
+71,8,Malikarjun Gaunpalika,NP0775,NP077506,Malikaarjun,matched
+71,9,Lekam Gaunpalika,NP0775,NP077504,Lekam,matched

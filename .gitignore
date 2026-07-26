@@ -133,3 +133,6 @@ Screenshots/
 
 # Pipeline run diagnostic — regenerated on any quality-gate-blocked load
 reference/worldbank/quality_gate_failures.csv
+
+# Bulk NSO census CSV downloads (archived to the raw lake, not git)
+Census_data/
