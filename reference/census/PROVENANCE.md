@@ -52,5 +52,28 @@ in the same province (never guessed):
 - NSO spells प्रदेश ७ "Sudurpaschim" in English and "सुदुरपश्चिम" in Nepali; we
   keep the source's spellings as-is.
 - The municipality (753 local units) list was also seen embedded in the site JS
-  (with ward counts) — deliberately NOT loaded yet (no dataset needs it; Prime
-  Directive 7).
+  (with ward counts) — extracted for P2B.S8 as `nso_munis_raw.json` (see below).
+
+## Municipality level (P2B.S8, added 2026-07-26)
+
+- **`nso_munis_raw.json`** — all **753 local units** with `{district (global NSO
+  id 1–77), value (per-district index 1..N), label (name incl. type), wards}`,
+  extracted verbatim from the census-results site JS bundle
+  (`chunks/8539…js`, the `o=[…]` array), same pattern as the district list.
+  **Verification: 753 units and 6,743 wards — both match the official totals.**
+- **Municipality data endpoint:** the `/local-level-container/*` family (NOT
+  `/population/highlight`, which returns HTTP 500 when `municipality=` is added).
+  `/local-level-container/highlight?province=&district=&municipality=` serves
+  population + sex per local unit; a wide family of other topics exists
+  (household-facility, disability, economic-indicator, migration-indicator,
+  literacy-indicator, …) plus `/population/*/ward` for ward level.
+- **Known reconciliation quirk (document, don't "fix"):** municipality figures
+  do not sum exactly to the district total the district endpoint reports (e.g.
+  Taplejung: 9 municipalities sum to 119,450 vs the district's 120,590 — a ~0.9%
+  gap). This is inherent to how the census releases municipality vs district
+  aggregates; municipality values are shown as-published and labelled, and are
+  not forced to reconcile.
+- **Boundary join:** municipality NSO names romanise ~20–30 units differently
+  from the Survey-Department boundary layer (`reference/geo/geoportal/`), so the
+  NSO⇄boundary (`LUCODE`) crosswalk needs curated verification for those — never
+  a forced fuzzy join (P2B.S8 note; the geoportal spellings are the map's).

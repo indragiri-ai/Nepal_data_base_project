@@ -1,0 +1,4520 @@
+[
+ {
+  "district": "1",
+  "value": "1",
+  "label": "Phaktanlung Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "1",
+  "value": "2",
+  "label": "Mikwakhola Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "1",
+  "value": "3",
+  "label": "Meringden Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "1",
+  "value": "4",
+  "label": "Maiwakhola Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "1",
+  "value": "5",
+  "label": "Aatharai Tribeni Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "1",
+  "value": "6",
+  "label": "Phungling Municipality",
+  "wards": 11
+ },
+ {
+  "district": "1",
+  "value": "7",
+  "label": "Pathivara Yangwarak Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "1",
+  "value": "8",
+  "label": "Sirijanga Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "1",
+  "value": "9",
+  "label": "Sidingba Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "2",
+  "value": "1",
+  "label": "Bhotkhola Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "2",
+  "value": "2",
+  "label": "Makalu Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "2",
+  "value": "3",
+  "label": "Silichong Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "2",
+  "value": "4",
+  "label": "Chichila Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "2",
+  "value": "5",
+  "label": "Sabhapokhari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "2",
+  "value": "6",
+  "label": "Khandabari Municipality",
+  "wards": 11
+ },
+ {
+  "district": "2",
+  "value": "7",
+  "label": "Panchakhapan Municipality",
+  "wards": 9
+ },
+ {
+  "district": "2",
+  "value": "8",
+  "label": "Chainapur Municipality",
+  "wards": 11
+ },
+ {
+  "district": "2",
+  "value": "9",
+  "label": "Madi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "2",
+  "value": "10",
+  "label": "Dharmadevi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "3",
+  "value": "1",
+  "label": "Khumbu Pasanglhamu Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "3",
+  "value": "2",
+  "label": "Mahakulung Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "3",
+  "value": "3",
+  "label": "Sotang Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "3",
+  "value": "4",
+  "label": "Mapya Dudhkoshi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "3",
+  "value": "5",
+  "label": "Thulung Dudhkoshi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "3",
+  "value": "6",
+  "label": "Necha Salyan Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "3",
+  "value": "7",
+  "label": "Solu Dhudhakunda Municipality",
+  "wards": 11
+ },
+ {
+  "district": "3",
+  "value": "8",
+  "label": "Likhu Pike Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "4",
+  "value": "1",
+  "label": "Chishankhu Gadhi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "4",
+  "value": "2",
+  "label": "Siddhicharan Municipality",
+  "wards": 12
+ },
+ {
+  "district": "4",
+  "value": "3",
+  "label": "Molung Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "4",
+  "value": "4",
+  "label": "Khiji Demba Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "4",
+  "value": "5",
+  "label": "Likhu Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "4",
+  "value": "6",
+  "label": "Champadevi Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "4",
+  "value": "7",
+  "label": "Sunkoshi Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "4",
+  "value": "8",
+  "label": "Manebhanjyang Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "5",
+  "value": "1",
+  "label": "Kepilasgadhi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "5",
+  "value": "2",
+  "label": "Aiselukharka Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "5",
+  "value": "3",
+  "label": "Rawa Besi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "5",
+  "value": "4",
+  "label": "Halesi Tuwachung Municipality",
+  "wards": 11
+ },
+ {
+  "district": "5",
+  "value": "5",
+  "label": "Diktel Rupakot Majhuwagadhi Municipality",
+  "wards": 15
+ },
+ {
+  "district": "5",
+  "value": "6",
+  "label": "Sakela Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "5",
+  "value": "7",
+  "label": "Diprung Chuichumma Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "5",
+  "value": "8",
+  "label": "Khotehang Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "5",
+  "value": "9",
+  "label": "Jante Dhunga Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "5",
+  "value": "10",
+  "label": "Baraha Pokhari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "6",
+  "value": "1",
+  "label": "Shadananda Municipality",
+  "wards": 14
+ },
+ {
+  "district": "6",
+  "value": "2",
+  "label": "Salpa Silichho Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "6",
+  "value": "3",
+  "label": "Temkemaiyum Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "6",
+  "value": "4",
+  "label": "Bhojpur Municipality",
+  "wards": 12
+ },
+ {
+  "district": "6",
+  "value": "5",
+  "label": "Arun Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "6",
+  "value": "6",
+  "label": "Pauwa Dunma Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "6",
+  "value": "7",
+  "label": "Ramprasad Rai Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "6",
+  "value": "8",
+  "label": "Hatuwagadhi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "6",
+  "value": "9",
+  "label": "Aamchowk Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "7",
+  "value": "1",
+  "label": "Mahalaxmi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "7",
+  "value": "2",
+  "label": "Pakhribas Municipality",
+  "wards": 10
+ },
+ {
+  "district": "7",
+  "value": "3",
+  "label": "Chhathar Jorpati Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "7",
+  "value": "4",
+  "label": "Dhankuta Municipality",
+  "wards": 10
+ },
+ {
+  "district": "7",
+  "value": "5",
+  "label": "Shahidbhumi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "7",
+  "value": "6",
+  "label": "Sangurigadhi Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "7",
+  "value": "7",
+  "label": "Chaubise Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "8",
+  "value": "1",
+  "label": "Aatharai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "8",
+  "value": "2",
+  "label": "Phedap Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "8",
+  "value": "3",
+  "label": "Menchhayayem Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "8",
+  "value": "4",
+  "label": "Myanglung Municipality",
+  "wards": 10
+ },
+ {
+  "district": "8",
+  "value": "5",
+  "label": "Laligurans Municipality",
+  "wards": 9
+ },
+ {
+  "district": "8",
+  "value": "6",
+  "label": "Chhathar Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "9",
+  "value": "1",
+  "label": "Yangbarak Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "9",
+  "value": "2",
+  "label": "Hilihan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "9",
+  "value": "3",
+  "label": "Falelung Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "9",
+  "value": "4",
+  "label": "Phidim Municipality",
+  "wards": 14
+ },
+ {
+  "district": "9",
+  "value": "5",
+  "label": "Falgunanda Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "9",
+  "value": "6",
+  "label": "Kummayak Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "9",
+  "value": "7",
+  "label": "Tumbewa Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "9",
+  "value": "8",
+  "label": "Miklajung Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "10",
+  "value": "1",
+  "label": "Mai Jogmai Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "10",
+  "value": "2",
+  "label": "Sandakpur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "10",
+  "value": "3",
+  "label": "Illam Municipality",
+  "wards": 12
+ },
+ {
+  "district": "10",
+  "value": "4",
+  "label": "Deumai Municipality",
+  "wards": 9
+ },
+ {
+  "district": "10",
+  "value": "5",
+  "label": "Fakfokathum Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "10",
+  "value": "6",
+  "label": "Mangsebung Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "10",
+  "value": "7",
+  "label": "Chulachuli Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "10",
+  "value": "8",
+  "label": "Mai Municipality",
+  "wards": 10
+ },
+ {
+  "district": "10",
+  "value": "9",
+  "label": "Suryodaya Municipality",
+  "wards": 14
+ },
+ {
+  "district": "10",
+  "value": "10",
+  "label": "Rong Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "11",
+  "value": "1",
+  "label": "Mechinagar Municipality",
+  "wards": 15
+ },
+ {
+  "district": "11",
+  "value": "2",
+  "label": "Buddhashanti Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "11",
+  "value": "3",
+  "label": "Arjundhara Municipality",
+  "wards": 11
+ },
+ {
+  "district": "11",
+  "value": "4",
+  "label": "Kankai Municipality",
+  "wards": 9
+ },
+ {
+  "district": "11",
+  "value": "5",
+  "label": "Shivasatakshi Municipality",
+  "wards": 11
+ },
+ {
+  "district": "11",
+  "value": "6",
+  "label": "Kamal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "11",
+  "value": "7",
+  "label": "Damak Municipality",
+  "wards": 10
+ },
+ {
+  "district": "11",
+  "value": "8",
+  "label": "Gauradaha Municipality",
+  "wards": 9
+ },
+ {
+  "district": "11",
+  "value": "9",
+  "label": "Gauriganj Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "11",
+  "value": "10",
+  "label": "Jhapa Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "11",
+  "value": "11",
+  "label": "Barhadashi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "11",
+  "value": "12",
+  "label": "Birtamod Municipality",
+  "wards": 10
+ },
+ {
+  "district": "11",
+  "value": "13",
+  "label": "Haldibari Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "11",
+  "value": "14",
+  "label": "Bhadrapur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "11",
+  "value": "15",
+  "label": "Kachanakawal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "1",
+  "label": "Miklajung Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "12",
+  "value": "2",
+  "label": "Letang Municipality",
+  "wards": 9
+ },
+ {
+  "district": "12",
+  "value": "3",
+  "label": "Kerabari Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "12",
+  "value": "4",
+  "label": "Sundarharaicha Municipality",
+  "wards": 12
+ },
+ {
+  "district": "12",
+  "value": "5",
+  "label": "Belbari Municipality",
+  "wards": 11
+ },
+ {
+  "district": "12",
+  "value": "6",
+  "label": "Kanepokhari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "7",
+  "label": "Pathari Shanishchare Municipality",
+  "wards": 10
+ },
+ {
+  "district": "12",
+  "value": "8",
+  "label": "Urlabari Municipality",
+  "wards": 9
+ },
+ {
+  "district": "12",
+  "value": "9",
+  "label": "Ratuwamai Municipality",
+  "wards": 10
+ },
+ {
+  "district": "12",
+  "value": "10",
+  "label": "Sunwarshi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "12",
+  "value": "11",
+  "label": "Rangeli Municipality",
+  "wards": 9
+ },
+ {
+  "district": "12",
+  "value": "12",
+  "label": "Gramthan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "13",
+  "label": "Budhiganga Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "14",
+  "label": "Biratnagar Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "12",
+  "value": "15",
+  "label": "Katahari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "16",
+  "label": "Dhanapalthan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "12",
+  "value": "17",
+  "label": "Jahada Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "13",
+  "value": "1",
+  "label": "Dharan Sub-Metropolitian City",
+  "wards": 20
+ },
+ {
+  "district": "13",
+  "value": "2",
+  "label": "Barahachhetra Municipality",
+  "wards": 11
+ },
+ {
+  "district": "13",
+  "value": "3",
+  "label": "Koshi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "13",
+  "value": "4",
+  "label": "Bhokraha Narsingh Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "13",
+  "value": "5",
+  "label": "Ramdhuni Municipality",
+  "wards": 9
+ },
+ {
+  "district": "13",
+  "value": "6",
+  "label": "Itahari Sub-Metropolitian City",
+  "wards": 20
+ },
+ {
+  "district": "13",
+  "value": "7",
+  "label": "Duhabi Municipality",
+  "wards": 12
+ },
+ {
+  "district": "13",
+  "value": "8",
+  "label": "Gadhi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "13",
+  "value": "9",
+  "label": "Inaruwa Municipality",
+  "wards": 10
+ },
+ {
+  "district": "13",
+  "value": "10",
+  "label": "Harinagar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "13",
+  "value": "11",
+  "label": "Dewangunj Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "13",
+  "value": "12",
+  "label": "Barju Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "14",
+  "value": "1",
+  "label": "Belaka Municipality",
+  "wards": 9
+ },
+ {
+  "district": "14",
+  "value": "2",
+  "label": "Chaudandigadhi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "14",
+  "value": "3",
+  "label": "Triyuga Municipality",
+  "wards": 16
+ },
+ {
+  "district": "14",
+  "value": "4",
+  "label": "Rautamai Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "14",
+  "value": "5",
+  "label": "Limchunbung Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "14",
+  "value": "6",
+  "label": "Tapli Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "14",
+  "value": "7",
+  "label": "Katari Municipality",
+  "wards": 14
+ },
+ {
+  "district": "14",
+  "value": "8",
+  "label": "Udayapurgadhi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "15",
+  "value": "1",
+  "label": "Saptakoshi Municipality",
+  "wards": 11
+ },
+ {
+  "district": "15",
+  "value": "2",
+  "label": "Kanchanrup Municipality",
+  "wards": 12
+ },
+ {
+  "district": "15",
+  "value": "3",
+  "label": "Agnisair Krishna Sabaran Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "15",
+  "value": "4",
+  "label": "Rupani Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "15",
+  "value": "5",
+  "label": "Shambhunath Municipality",
+  "wards": 12
+ },
+ {
+  "district": "15",
+  "value": "6",
+  "label": "Khadak Municipality",
+  "wards": 11
+ },
+ {
+  "district": "15",
+  "value": "7",
+  "label": "Surunga Municipality",
+  "wards": 11
+ },
+ {
+  "district": "15",
+  "value": "8",
+  "label": "Balan-Bihul Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "15",
+  "value": "9",
+  "label": "Bode Barsain Municipality",
+  "wards": 10
+ },
+ {
+  "district": "15",
+  "value": "10",
+  "label": "Dakneshwori Municipality",
+  "wards": 10
+ },
+ {
+  "district": "15",
+  "value": "11",
+  "label": "Rajgadh Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "15",
+  "value": "12",
+  "label": "Bishnupur Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "15",
+  "value": "13",
+  "label": "Rajbiraj Municipality",
+  "wards": 16
+ },
+ {
+  "district": "15",
+  "value": "14",
+  "label": "Mahadewa Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "15",
+  "value": "15",
+  "label": "Tirahut Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "15",
+  "value": "16",
+  "label": "Hanumannagar Kankalini Municipality",
+  "wards": 14
+ },
+ {
+  "district": "15",
+  "value": "17",
+  "label": "Tilathi Koiladi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "15",
+  "value": "18",
+  "label": "Chhinnamasta Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "16",
+  "value": "1",
+  "label": "Lahan Municipality",
+  "wards": 24
+ },
+ {
+  "district": "16",
+  "value": "2",
+  "label": "Dhangadhimai Municipality",
+  "wards": 14
+ },
+ {
+  "district": "16",
+  "value": "3",
+  "label": "Golbazar Municipality",
+  "wards": 13
+ },
+ {
+  "district": "16",
+  "value": "4",
+  "label": "Mirchaiya Municipality",
+  "wards": 12
+ },
+ {
+  "district": "16",
+  "value": "5",
+  "label": "Karjanha Municipality",
+  "wards": 11
+ },
+ {
+  "district": "16",
+  "value": "6",
+  "label": "Kalyanpur Municipality",
+  "wards": 12
+ },
+ {
+  "district": "16",
+  "value": "7",
+  "label": "Naraha Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "8",
+  "label": "Bishnupur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "9",
+  "label": "Arnama Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "10",
+  "label": "Sukhipur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "16",
+  "value": "11",
+  "label": "Laxmipur Patari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "16",
+  "value": "12",
+  "label": "Sakhuwa Nankarkatti Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "13",
+  "label": "Bhagawanpur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "14",
+  "label": "Nawarajpur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "15",
+  "label": "Bariyarpatti Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "16",
+  "label": "Aurahi Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "16",
+  "value": "17",
+  "label": "Siraha Municipality",
+  "wards": 22
+ },
+ {
+  "district": "17",
+  "value": "1",
+  "label": "Ganeshman Charnath Municipality",
+  "wards": 11
+ },
+ {
+  "district": "17",
+  "value": "2",
+  "label": "Dhanushadham Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "3",
+  "label": "Mithila Municipality",
+  "wards": 11
+ },
+ {
+  "district": "17",
+  "value": "4",
+  "label": "Bateshwor Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "17",
+  "value": "5",
+  "label": "Chhireshwornath Municipality",
+  "wards": 10
+ },
+ {
+  "district": "17",
+  "value": "6",
+  "label": "Laxminiya Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "17",
+  "value": "7",
+  "label": "Mithila Bihari Municipality",
+  "wards": 10
+ },
+ {
+  "district": "17",
+  "value": "8",
+  "label": "Hansapur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "9",
+  "label": "Sabaila Municipality",
+  "wards": 13
+ },
+ {
+  "district": "17",
+  "value": "10",
+  "label": "Shahidnagar Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "11",
+  "label": "Kamala Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "12",
+  "label": "Janak Nandini Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "17",
+  "value": "13",
+  "label": "Bideha Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "14",
+  "label": "Aurahi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "17",
+  "value": "15",
+  "label": "Janakpurdham Sub-Metropolitian City",
+  "wards": 25
+ },
+ {
+  "district": "17",
+  "value": "16",
+  "label": "Dhanauji Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "17",
+  "value": "17",
+  "label": "Nagarain Municipality",
+  "wards": 9
+ },
+ {
+  "district": "17",
+  "value": "18",
+  "label": "Mukhiyapatti Musaharmiya Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "18",
+  "value": "1",
+  "label": "Bardibas Municipality",
+  "wards": 14
+ },
+ {
+  "district": "18",
+  "value": "2",
+  "label": "Gaushala Municipality",
+  "wards": 12
+ },
+ {
+  "district": "18",
+  "value": "3",
+  "label": "Sonama Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "18",
+  "value": "4",
+  "label": "Aurahi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "18",
+  "value": "5",
+  "label": "Bhangaha Municipality",
+  "wards": 9
+ },
+ {
+  "district": "18",
+  "value": "6",
+  "label": "Loharpatti Municipality",
+  "wards": 9
+ },
+ {
+  "district": "18",
+  "value": "7",
+  "label": "Balawa Municipality",
+  "wards": 11
+ },
+ {
+  "district": "18",
+  "value": "8",
+  "label": "Ram Gopalpur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "18",
+  "value": "9",
+  "label": "Samsi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "18",
+  "value": "10",
+  "label": "Manara Shisawa Municipality",
+  "wards": 10
+ },
+ {
+  "district": "18",
+  "value": "11",
+  "label": "Ekadara Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "18",
+  "value": "12",
+  "label": "Mahottari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "18",
+  "value": "13",
+  "label": "Pipara Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "18",
+  "value": "14",
+  "label": "Matihani Municipality",
+  "wards": 9
+ },
+ {
+  "district": "18",
+  "value": "15",
+  "label": "Jaleshwor Municipality",
+  "wards": 12
+ },
+ {
+  "district": "19",
+  "value": "1",
+  "label": "Lalbandi Municipality",
+  "wards": 17
+ },
+ {
+  "district": "19",
+  "value": "2",
+  "label": "Hariwan Municipality",
+  "wards": 11
+ },
+ {
+  "district": "19",
+  "value": "3",
+  "label": "Bagmati Municipality",
+  "wards": 12
+ },
+ {
+  "district": "19",
+  "value": "4",
+  "label": "Barahathawa Municipality",
+  "wards": 18
+ },
+ {
+  "district": "19",
+  "value": "5",
+  "label": "Haripur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "19",
+  "value": "6",
+  "label": "Ishworpur Municipality",
+  "wards": 15
+ },
+ {
+  "district": "19",
+  "value": "7",
+  "label": "Haripurwa Municipality",
+  "wards": 9
+ },
+ {
+  "district": "19",
+  "value": "8",
+  "label": "Parsa Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "19",
+  "value": "9",
+  "label": "Brahmapuri Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "19",
+  "value": "10",
+  "label": "Chandranagar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "19",
+  "value": "11",
+  "label": "Kabilashi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "19",
+  "value": "12",
+  "label": "Chakraghatta Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "19",
+  "value": "13",
+  "label": "Basbariya Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "19",
+  "value": "14",
+  "label": "Dhanakaul Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "19",
+  "value": "15",
+  "label": "Ramnagar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "19",
+  "value": "16",
+  "label": "Balara Municipality",
+  "wards": 11
+ },
+ {
+  "district": "19",
+  "value": "17",
+  "label": "Godaita Municipality",
+  "wards": 12
+ },
+ {
+  "district": "19",
+  "value": "18",
+  "label": "Bishnu Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "19",
+  "value": "19",
+  "label": "Kaudena Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "19",
+  "value": "20",
+  "label": "Malangawa Municipality",
+  "wards": 12
+ },
+ {
+  "district": "20",
+  "value": "1",
+  "label": "Chandrapur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "20",
+  "value": "2",
+  "label": "Gujara Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "3",
+  "label": "Phatuwa Bijayapur Municipality",
+  "wards": 11
+ },
+ {
+  "district": "20",
+  "value": "4",
+  "label": "Katahariya Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "5",
+  "label": "Brindaban Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "6",
+  "label": "Gadhimai Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "7",
+  "label": "Madhav Narayan Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "8",
+  "label": "Garuda Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "9",
+  "label": "Dewahi Gonahi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "10",
+  "label": "Maulapur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "11",
+  "label": "Boudhimai Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "12",
+  "label": "Paroha Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "13",
+  "label": "Rajpur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "14",
+  "label": "Yamunamai Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "20",
+  "value": "15",
+  "label": "Durga Bhagawati Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "20",
+  "value": "16",
+  "label": "Rajdevi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "17",
+  "label": "Gaur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "20",
+  "value": "18",
+  "label": "Ishanath Municipality",
+  "wards": 9
+ },
+ {
+  "district": "21",
+  "value": "1",
+  "label": "Nijagadh Municipality",
+  "wards": 13
+ },
+ {
+  "district": "21",
+  "value": "2",
+  "label": "Kolhabi Municipality",
+  "wards": 11
+ },
+ {
+  "district": "21",
+  "value": "3",
+  "label": "Jitpur Simara Sub-Metropolitian City",
+  "wards": 24
+ },
+ {
+  "district": "21",
+  "value": "4",
+  "label": "Parawanipur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "21",
+  "value": "5",
+  "label": "Prasauni Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "21",
+  "value": "6",
+  "label": "Bishrampur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "21",
+  "value": "7",
+  "label": "Pheta Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "21",
+  "value": "8",
+  "label": "Kalaiya Sub-Metropolitian City",
+  "wards": 27
+ },
+ {
+  "district": "21",
+  "value": "9",
+  "label": "Karaiyamai Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "21",
+  "value": "10",
+  "label": "Baragadhi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "21",
+  "value": "11",
+  "label": "Aadarsha Kotwal Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "21",
+  "value": "12",
+  "label": "Simroungadh Municipality",
+  "wards": 11
+ },
+ {
+  "district": "21",
+  "value": "13",
+  "label": "Pacharauta Municipality",
+  "wards": 9
+ },
+ {
+  "district": "21",
+  "value": "14",
+  "label": "Mahagadhimai Municipality",
+  "wards": 11
+ },
+ {
+  "district": "21",
+  "value": "15",
+  "label": "Devtal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "21",
+  "value": "16",
+  "label": "Subarna Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "22",
+  "value": "1",
+  "label": "Thori Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "2",
+  "label": "Jirabhawani Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "3",
+  "label": "Jagarnathpur Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "22",
+  "value": "4",
+  "label": "Paterwa Sugauli Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "5",
+  "label": "Sakhuwa Prasauni Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "22",
+  "value": "6",
+  "label": "Parsagadhi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "22",
+  "value": "7",
+  "label": "Birgunj Metropolitian City",
+  "wards": 32
+ },
+ {
+  "district": "22",
+  "value": "8",
+  "label": "Bahudarmai Municipality",
+  "wards": 9
+ },
+ {
+  "district": "22",
+  "value": "9",
+  "label": "Pokhariya Municipality",
+  "wards": 10
+ },
+ {
+  "district": "22",
+  "value": "10",
+  "label": "Kalikamai Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "11",
+  "label": "Dhobini Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "12",
+  "label": "Chhipaharmai Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "13",
+  "label": "Pakaha Mainpur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "22",
+  "value": "14",
+  "label": "Bindabasini Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "23",
+  "value": "1",
+  "label": "Gaurishankar Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "23",
+  "value": "2",
+  "label": "Bigu Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "23",
+  "value": "3",
+  "label": "Kalinchowk Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "23",
+  "value": "4",
+  "label": "Baiteshwor Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "23",
+  "value": "5",
+  "label": "Jiri Municipality",
+  "wards": 9
+ },
+ {
+  "district": "23",
+  "value": "6",
+  "label": "Tamakoshi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "23",
+  "value": "7",
+  "label": "Melung Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "23",
+  "value": "8",
+  "label": "Shailung Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "23",
+  "value": "9",
+  "label": "Bhimeshwor Municipality",
+  "wards": 9
+ },
+ {
+  "district": "24",
+  "value": "1",
+  "label": "Bhotekoshi Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "24",
+  "value": "2",
+  "label": "Jugal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "24",
+  "value": "3",
+  "label": "Panchpokhari Thangpal Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "24",
+  "value": "4",
+  "label": "Helambu Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "24",
+  "value": "5",
+  "label": "Melanchi Municipality",
+  "wards": 13
+ },
+ {
+  "district": "24",
+  "value": "6",
+  "label": "Indrawoti Gaunpalika",
+  "wards": 12
+ },
+ {
+  "district": "24",
+  "value": "7",
+  "label": "Choutara Sangachowkgadhi Municipality",
+  "wards": 14
+ },
+ {
+  "district": "24",
+  "value": "8",
+  "label": "Balephi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "24",
+  "value": "9",
+  "label": "Bahrabise Municipality",
+  "wards": 9
+ },
+ {
+  "district": "24",
+  "value": "10",
+  "label": "Tripurasundari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "24",
+  "value": "11",
+  "label": "Lisankhu Pakhar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "24",
+  "value": "12",
+  "label": "Sunkoshi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "25",
+  "value": "1",
+  "label": "Gosaikunda Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "25",
+  "value": "2",
+  "label": "Aamachhodingmo Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "25",
+  "value": "3",
+  "label": "Uttargaya Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "25",
+  "value": "4",
+  "label": "Kalika Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "25",
+  "value": "5",
+  "label": "Naukunda Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "26",
+  "value": "1",
+  "label": "Rubi Valley Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "26",
+  "value": "2",
+  "label": "Khaniyabas Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "26",
+  "value": "3",
+  "label": "Ganga Jamuna Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "26",
+  "value": "4",
+  "label": "Tripurasundari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "26",
+  "value": "5",
+  "label": "Netrawati Dabjong Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "26",
+  "value": "6",
+  "label": "Nilkhantha Municipality",
+  "wards": 14
+ },
+ {
+  "district": "26",
+  "value": "7",
+  "label": "Jwalamukhi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "26",
+  "value": "8",
+  "label": "Siddhalek Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "26",
+  "value": "9",
+  "label": "Benighat Rorang Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "26",
+  "value": "10",
+  "label": "Gajuri Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "26",
+  "value": "11",
+  "label": "Galchhi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "26",
+  "value": "12",
+  "label": "Thakre Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "26",
+  "value": "13",
+  "label": "Dhunibenshi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "27",
+  "value": "1",
+  "label": "Dupcheshwor Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "27",
+  "value": "2",
+  "label": "Tadi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "27",
+  "value": "3",
+  "label": "Suryagadhi Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "27",
+  "value": "4",
+  "label": "Bidur Municipality",
+  "wards": 13
+ },
+ {
+  "district": "27",
+  "value": "5",
+  "label": "Kispang Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "27",
+  "value": "6",
+  "label": "Myagang Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "27",
+  "value": "7",
+  "label": "Tarakeshwor Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "27",
+  "value": "8",
+  "label": "Belkotgadhi Municipality",
+  "wards": 13
+ },
+ {
+  "district": "27",
+  "value": "9",
+  "label": "Likhu Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "27",
+  "value": "10",
+  "label": "Panchakanya Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "27",
+  "value": "11",
+  "label": "Shivapuri Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "27",
+  "value": "12",
+  "label": "Kakani Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "28",
+  "value": "1",
+  "label": "Shankharapur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "28",
+  "value": "2",
+  "label": "Kageshwori Manahara Municipality",
+  "wards": 9
+ },
+ {
+  "district": "28",
+  "value": "3",
+  "label": "Gokarneshwor Municipality",
+  "wards": 9
+ },
+ {
+  "district": "28",
+  "value": "4",
+  "label": "Budhanilkhantha Municipality",
+  "wards": 13
+ },
+ {
+  "district": "28",
+  "value": "5",
+  "label": "Tokha Municipality",
+  "wards": 11
+ },
+ {
+  "district": "28",
+  "value": "6",
+  "label": "Tarakeshwor Municipality",
+  "wards": 11
+ },
+ {
+  "district": "28",
+  "value": "7",
+  "label": "Nagarjun Municipality",
+  "wards": 10
+ },
+ {
+  "district": "28",
+  "value": "8",
+  "label": "Kathmandu Metropolitian City",
+  "wards": 32
+ },
+ {
+  "district": "28",
+  "value": "9",
+  "label": "Kirtipur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "28",
+  "value": "10",
+  "label": "Chandragiri Municipality",
+  "wards": 15
+ },
+ {
+  "district": "28",
+  "value": "11",
+  "label": "Dakshinkali Municipality",
+  "wards": 9
+ },
+ {
+  "district": "29",
+  "value": "1",
+  "label": "Changunarayan Municipality",
+  "wards": 9
+ },
+ {
+  "district": "29",
+  "value": "2",
+  "label": "Bhaktapur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "29",
+  "value": "3",
+  "label": "Madhyapur Thimi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "29",
+  "value": "4",
+  "label": "Suryabinayak Municipality",
+  "wards": 10
+ },
+ {
+  "district": "30",
+  "value": "1",
+  "label": "Mahalaxmi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "30",
+  "value": "2",
+  "label": "Lalitpur Metropolitian City",
+  "wards": 29
+ },
+ {
+  "district": "30",
+  "value": "3",
+  "label": "Godawari Municipality",
+  "wards": 14
+ },
+ {
+  "district": "30",
+  "value": "4",
+  "label": "Konjyosom Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "30",
+  "value": "5",
+  "label": "Mahankal Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "30",
+  "value": "6",
+  "label": "Bagmati Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "31",
+  "value": "1",
+  "label": "Chauri Deurali Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "31",
+  "value": "2",
+  "label": "Bhumlu Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "31",
+  "value": "3",
+  "label": "Mandan Deupur Municipality",
+  "wards": 12
+ },
+ {
+  "district": "31",
+  "value": "4",
+  "label": "Banepa Municipality",
+  "wards": 14
+ },
+ {
+  "district": "31",
+  "value": "5",
+  "label": "Dhulikhel Municipality",
+  "wards": 12
+ },
+ {
+  "district": "31",
+  "value": "6",
+  "label": "Panchkhal Municipality",
+  "wards": 13
+ },
+ {
+  "district": "31",
+  "value": "7",
+  "label": "Temal Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "31",
+  "value": "8",
+  "label": "Namobuddha Municipality",
+  "wards": 11
+ },
+ {
+  "district": "31",
+  "value": "9",
+  "label": "Panauti Municipality",
+  "wards": 12
+ },
+ {
+  "district": "31",
+  "value": "10",
+  "label": "Bethanchowk Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "31",
+  "value": "11",
+  "label": "Roshi Gaunpalika",
+  "wards": 12
+ },
+ {
+  "district": "31",
+  "value": "12",
+  "label": "Mahabharat Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "31",
+  "value": "13",
+  "label": "Khanikhola Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "32",
+  "value": "1",
+  "label": "Umakunda Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "32",
+  "value": "2",
+  "label": "Gokulganga Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "32",
+  "value": "3",
+  "label": "Likhu Tamakoshi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "32",
+  "value": "4",
+  "label": "Ramechhap Municipality",
+  "wards": 9
+ },
+ {
+  "district": "32",
+  "value": "5",
+  "label": "Manthali  Municipality",
+  "wards": 14
+ },
+ {
+  "district": "32",
+  "value": "6",
+  "label": "Khandadevi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "32",
+  "value": "7",
+  "label": "Doramba Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "32",
+  "value": "8",
+  "label": "Sunapati Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "33",
+  "value": "1",
+  "label": "Dudhouli Municipality",
+  "wards": 14
+ },
+ {
+  "district": "33",
+  "value": "2",
+  "label": "Phikkal Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "33",
+  "value": "3",
+  "label": "Tinpatan Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "33",
+  "value": "4",
+  "label": "Golanjor Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "33",
+  "value": "5",
+  "label": "Kamalamai Municipality",
+  "wards": 14
+ },
+ {
+  "district": "33",
+  "value": "6",
+  "label": "Sunkoshi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "33",
+  "value": "7",
+  "label": "Ghyanglekha Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "33",
+  "value": "8",
+  "label": "Marin Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "33",
+  "value": "9",
+  "label": "Hariharpurgaghi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "34",
+  "value": "1",
+  "label": "Indrasarowar Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "34",
+  "value": "2",
+  "label": "Thaha Municipality",
+  "wards": 12
+ },
+ {
+  "district": "34",
+  "value": "3",
+  "label": "Kailash Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "34",
+  "value": "4",
+  "label": "Raksirang Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "34",
+  "value": "5",
+  "label": "Manahari Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "34",
+  "value": "6",
+  "label": "Hetauda Sub-Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "34",
+  "value": "7",
+  "label": "Bhimphedi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "34",
+  "value": "8",
+  "label": "Makawanpurgadhi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "34",
+  "value": "9",
+  "label": "Bakaiya Gaunpalika",
+  "wards": 12
+ },
+ {
+  "district": "34",
+  "value": "10",
+  "label": "Bagmati Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "35",
+  "value": "1",
+  "label": "Rapti Municipality",
+  "wards": 13
+ },
+ {
+  "district": "35",
+  "value": "2",
+  "label": "Kalika Municipality",
+  "wards": 11
+ },
+ {
+  "district": "35",
+  "value": "3",
+  "label": "Ichchha Kamana Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "35",
+  "value": "4",
+  "label": "Bharatpur Metropolitian City",
+  "wards": 29
+ },
+ {
+  "district": "35",
+  "value": "5",
+  "label": "Ratnanagar Municipality",
+  "wards": 16
+ },
+ {
+  "district": "35",
+  "value": "6",
+  "label": "Khairahani Municipality",
+  "wards": 13
+ },
+ {
+  "district": "35",
+  "value": "7",
+  "label": "Madi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "36",
+  "value": "1",
+  "label": "Chumanubri Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "36",
+  "value": "2",
+  "label": "Ajirkot Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "36",
+  "value": "3",
+  "label": "Barpak Sulikot Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "36",
+  "value": "4",
+  "label": "Dharche Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "36",
+  "value": "5",
+  "label": "Aarughat Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "36",
+  "value": "6",
+  "label": "Bhimsenthapa Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "36",
+  "value": "7",
+  "label": "Siranchowk Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "36",
+  "value": "8",
+  "label": "Palungtar Municipality",
+  "wards": 10
+ },
+ {
+  "district": "36",
+  "value": "9",
+  "label": "Gorkha Municipality",
+  "wards": 14
+ },
+ {
+  "district": "36",
+  "value": "10",
+  "label": "Shahid Lakhan Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "36",
+  "value": "11",
+  "label": "Gandaki Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "37",
+  "value": "1",
+  "label": "Narpa Bhumi Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "37",
+  "value": "2",
+  "label": "Manang Ngisyang Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "37",
+  "value": "3",
+  "label": "Chame Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "37",
+  "value": "4",
+  "label": "Nason Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "38",
+  "value": "1",
+  "label": "Lo Ghekar Damodarkunda Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "38",
+  "value": "2",
+  "label": "Gharpajhong Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "38",
+  "value": "3",
+  "label": "Varagung Muktichhetra Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "38",
+  "value": "4",
+  "label": "Lomanthang Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "38",
+  "value": "5",
+  "label": "Thasang Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "39",
+  "value": "1",
+  "label": "Annapurna Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "39",
+  "value": "2",
+  "label": "Raghuganga Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "39",
+  "value": "3",
+  "label": "Dhawalagiri Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "39",
+  "value": "4",
+  "label": "Malika Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "39",
+  "value": "5",
+  "label": "Mangala Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "39",
+  "value": "6",
+  "label": "Beni Municipality",
+  "wards": 10
+ },
+ {
+  "district": "40",
+  "value": "1",
+  "label": "Madi Gaunpalika",
+  "wards": 12
+ },
+ {
+  "district": "40",
+  "value": "2",
+  "label": "Machhapuchchhre Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "40",
+  "value": "3",
+  "label": "Annapurna Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "40",
+  "value": "4",
+  "label": "Pokhara Metropolitian City",
+  "wards": 33
+ },
+ {
+  "district": "40",
+  "value": "5",
+  "label": "Rupa Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "41",
+  "value": "1",
+  "label": "Dordi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "41",
+  "value": "2",
+  "label": "Marshyangdi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "41",
+  "value": "3",
+  "label": "Kwhola Sothar Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "41",
+  "value": "4",
+  "label": "Madhya Nepal Municipality",
+  "wards": 10
+ },
+ {
+  "district": "41",
+  "value": "5",
+  "label": "Bensishahar Municipality",
+  "wards": 11
+ },
+ {
+  "district": "41",
+  "value": "6",
+  "label": "Sundarbazar Municipality",
+  "wards": 11
+ },
+ {
+  "district": "41",
+  "value": "7",
+  "label": "Rainas Municipality",
+  "wards": 10
+ },
+ {
+  "district": "41",
+  "value": "8",
+  "label": "Dudhapokhari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "42",
+  "value": "1",
+  "label": "Bhanu Municipality",
+  "wards": 13
+ },
+ {
+  "district": "42",
+  "value": "2",
+  "label": "Byas Municipality",
+  "wards": 14
+ },
+ {
+  "district": "42",
+  "value": "3",
+  "label": "Myagde Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "42",
+  "value": "4",
+  "label": "Shuklagandaki Municipality",
+  "wards": 12
+ },
+ {
+  "district": "42",
+  "value": "5",
+  "label": "Bhimad Municipality",
+  "wards": 9
+ },
+ {
+  "district": "42",
+  "value": "6",
+  "label": "Ghiring Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "42",
+  "value": "7",
+  "label": "Rhishing Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "42",
+  "value": "8",
+  "label": "Devghat Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "42",
+  "value": "9",
+  "label": "Bandipur Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "42",
+  "value": "10",
+  "label": "Aanbu Khaireni Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "43",
+  "value": "1",
+  "label": "Gaidakot Municipality",
+  "wards": 18
+ },
+ {
+  "district": "43",
+  "value": "2",
+  "label": "Bulingtar Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "43",
+  "value": "3",
+  "label": "Baudikali Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "43",
+  "value": "4",
+  "label": "Hupsekot Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "43",
+  "value": "5",
+  "label": "Devchuli Municipality",
+  "wards": 17
+ },
+ {
+  "district": "43",
+  "value": "6",
+  "label": "Kawasoti Municipality",
+  "wards": 17
+ },
+ {
+  "district": "43",
+  "value": "7",
+  "label": "Madhya Bindu Municipality",
+  "wards": 15
+ },
+ {
+  "district": "43",
+  "value": "8",
+  "label": "Binayi Tribeni Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "44",
+  "value": "1",
+  "label": "Putalibazar Municipality",
+  "wards": 14
+ },
+ {
+  "district": "44",
+  "value": "2",
+  "label": "Phedikhola Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "44",
+  "value": "3",
+  "label": "Aandhikhola Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "44",
+  "value": "4",
+  "label": "Arjun Choupari Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "44",
+  "value": "5",
+  "label": "Bhirkot Municipality",
+  "wards": 9
+ },
+ {
+  "district": "44",
+  "value": "6",
+  "label": "Biruwa Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "44",
+  "value": "7",
+  "label": "Harinas Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "44",
+  "value": "8",
+  "label": "Chapakot Municipality",
+  "wards": 10
+ },
+ {
+  "district": "44",
+  "value": "9",
+  "label": "Walling Municipality",
+  "wards": 14
+ },
+ {
+  "district": "44",
+  "value": "10",
+  "label": "Galyang Municipality",
+  "wards": 11
+ },
+ {
+  "district": "44",
+  "value": "11",
+  "label": "Kaligandaki Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "45",
+  "value": "1",
+  "label": "Modi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "45",
+  "value": "2",
+  "label": "Jaljala Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "45",
+  "value": "3",
+  "label": "Kushma Municipality",
+  "wards": 14
+ },
+ {
+  "district": "45",
+  "value": "4",
+  "label": "Phalebas Municipality",
+  "wards": 11
+ },
+ {
+  "district": "45",
+  "value": "5",
+  "label": "Mahashila Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "45",
+  "value": "6",
+  "label": "Bihadi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "45",
+  "value": "7",
+  "label": "Paiyu Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "46",
+  "value": "1",
+  "label": "Baglung Municipality",
+  "wards": 14
+ },
+ {
+  "district": "46",
+  "value": "2",
+  "label": "Kathekhola Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "46",
+  "value": "3",
+  "label": "Tarakhola Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "46",
+  "value": "4",
+  "label": "Tamankhola Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "46",
+  "value": "5",
+  "label": "Dhorpatan Municipality",
+  "wards": 9
+ },
+ {
+  "district": "46",
+  "value": "6",
+  "label": "Nisikhola Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "46",
+  "value": "7",
+  "label": "Badigad Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "46",
+  "value": "8",
+  "label": "Galkot Municipality",
+  "wards": 11
+ },
+ {
+  "district": "46",
+  "value": "9",
+  "label": "Bareng Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "46",
+  "value": "10",
+  "label": "Jaimuni Municipality",
+  "wards": 10
+ },
+ {
+  "district": "47",
+  "value": "1",
+  "label": "Putha Uttanganga Gaunpalika",
+  "wards": 14
+ },
+ {
+  "district": "47",
+  "value": "2",
+  "label": "Sisne Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "47",
+  "value": "3",
+  "label": "Bhoome Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "48",
+  "value": "1",
+  "label": "Sunchhahari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "48",
+  "value": "2",
+  "label": "Thawang Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "48",
+  "value": "3",
+  "label": "Pariwartan Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "48",
+  "value": "4",
+  "label": "Gangadev Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "48",
+  "value": "5",
+  "label": "Madi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "48",
+  "value": "6",
+  "label": "Tribeni Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "48",
+  "value": "7",
+  "label": "Rolpa Municipality",
+  "wards": 10
+ },
+ {
+  "district": "48",
+  "value": "8",
+  "label": "Runtigadhi Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "48",
+  "value": "9",
+  "label": "Sunil Smriti Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "48",
+  "value": "10",
+  "label": "Lungri Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "49",
+  "value": "1",
+  "label": "Gaumukhi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "49",
+  "value": "2",
+  "label": "Naubahini Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "49",
+  "value": "3",
+  "label": "Jhimaruk Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "49",
+  "value": "4",
+  "label": "Pyuthan Municipality",
+  "wards": 10
+ },
+ {
+  "district": "49",
+  "value": "5",
+  "label": "Sworgadwari Municipality",
+  "wards": 9
+ },
+ {
+  "district": "49",
+  "value": "6",
+  "label": "Mandavi Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "49",
+  "value": "7",
+  "label": "Mallarani Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "49",
+  "value": "8",
+  "label": "Aairawati Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "49",
+  "value": "9",
+  "label": "Sarumarani Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "50",
+  "value": "1",
+  "label": "Kali Gandaki Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "50",
+  "value": "2",
+  "label": "Satyawoti Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "50",
+  "value": "3",
+  "label": "Chandrakot Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "50",
+  "value": "4",
+  "label": "Musikot Municipality",
+  "wards": 9
+ },
+ {
+  "district": "50",
+  "value": "5",
+  "label": "Isma Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "50",
+  "value": "6",
+  "label": "Malika Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "50",
+  "value": "7",
+  "label": "Madane Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "50",
+  "value": "8",
+  "label": "Dhurkot Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "50",
+  "value": "9",
+  "label": "Resunga Municipality",
+  "wards": 14
+ },
+ {
+  "district": "50",
+  "value": "10",
+  "label": "Gulmi Durbar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "50",
+  "value": "11",
+  "label": "Chhatrakot Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "50",
+  "value": "12",
+  "label": "Ruruchhetra Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "51",
+  "value": "1",
+  "label": "Chhatradev Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "51",
+  "value": "2",
+  "label": "Malarani Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "51",
+  "value": "3",
+  "label": "Bhumikasthan Municipality",
+  "wards": 10
+ },
+ {
+  "district": "51",
+  "value": "4",
+  "label": "Sandhikharka Municipality",
+  "wards": 12
+ },
+ {
+  "district": "51",
+  "value": "5",
+  "label": "Panini Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "51",
+  "value": "6",
+  "label": "Shitaganga Municipality",
+  "wards": 14
+ },
+ {
+  "district": "52",
+  "value": "1",
+  "label": "Rampur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "52",
+  "value": "2",
+  "label": "Purbakhola Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "52",
+  "value": "3",
+  "label": "Rambha Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "52",
+  "value": "4",
+  "label": "Baganaskali Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "52",
+  "value": "5",
+  "label": "Tansen Municipality",
+  "wards": 14
+ },
+ {
+  "district": "52",
+  "value": "6",
+  "label": "Ribdikot Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "52",
+  "value": "7",
+  "label": "Rainadevi Chhahara Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "52",
+  "value": "8",
+  "label": "Tinau Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "52",
+  "value": "9",
+  "label": "Mathagadhi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "52",
+  "value": "10",
+  "label": "Nisdi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "53",
+  "value": "1",
+  "label": "Bardaghat Municipality",
+  "wards": 16
+ },
+ {
+  "district": "53",
+  "value": "2",
+  "label": "Sunawal Municipality",
+  "wards": 13
+ },
+ {
+  "district": "53",
+  "value": "3",
+  "label": "Ramgram Municipality",
+  "wards": 18
+ },
+ {
+  "district": "53",
+  "value": "4",
+  "label": "Palhinandan Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "53",
+  "value": "5",
+  "label": "Sarawal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "53",
+  "value": "6",
+  "label": "Pratapapur Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "53",
+  "value": "7",
+  "label": "Susta Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "54",
+  "value": "1",
+  "label": "Devdaha Municipality",
+  "wards": 12
+ },
+ {
+  "district": "54",
+  "value": "2",
+  "label": "Butwal Sub-Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "54",
+  "value": "3",
+  "label": "Sainamaina Municipality",
+  "wards": 11
+ },
+ {
+  "district": "54",
+  "value": "4",
+  "label": "Kanchan Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "54",
+  "value": "5",
+  "label": "Gaidahawa Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "54",
+  "value": "6",
+  "label": "Suddhodhan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "54",
+  "value": "7",
+  "label": "Siyari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "54",
+  "value": "8",
+  "label": "Tilottama Municipality",
+  "wards": 17
+ },
+ {
+  "district": "54",
+  "value": "9",
+  "label": "Om Satiya Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "54",
+  "value": "10",
+  "label": "Rohini Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "54",
+  "value": "11",
+  "label": "Siddharthanagar Municipality",
+  "wards": 13
+ },
+ {
+  "district": "54",
+  "value": "12",
+  "label": "Mayadevi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "54",
+  "value": "13",
+  "label": "Lumbini Sanskritik Municipality",
+  "wards": 13
+ },
+ {
+  "district": "54",
+  "value": "14",
+  "label": "Kotahimai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "54",
+  "value": "15",
+  "label": "Sammarimai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "54",
+  "value": "16",
+  "label": "Marchawari Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "55",
+  "value": "1",
+  "label": "Banganga Municipality",
+  "wards": 11
+ },
+ {
+  "district": "55",
+  "value": "2",
+  "label": "Buddhabhumi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "55",
+  "value": "3",
+  "label": "Shivaraj Municipality",
+  "wards": 11
+ },
+ {
+  "district": "55",
+  "value": "4",
+  "label": "Bijayanagar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "55",
+  "value": "5",
+  "label": "Krishnanagar Municipality",
+  "wards": 12
+ },
+ {
+  "district": "55",
+  "value": "6",
+  "label": "Maharajganj Municipality",
+  "wards": 11
+ },
+ {
+  "district": "55",
+  "value": "7",
+  "label": "Kapilbastu Municipality",
+  "wards": 12
+ },
+ {
+  "district": "55",
+  "value": "8",
+  "label": "Yasodhara Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "55",
+  "value": "9",
+  "label": "Mayadevi Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "55",
+  "value": "10",
+  "label": "Shuddhodhan Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "56",
+  "value": "1",
+  "label": "Bangalachuli Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "56",
+  "value": "2",
+  "label": "Ghorahi Sub-Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "56",
+  "value": "3",
+  "label": "Tulsipur Sub-Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "56",
+  "value": "4",
+  "label": "Shantinagar Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "56",
+  "value": "5",
+  "label": "Babai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "56",
+  "value": "6",
+  "label": "Dangisharan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "56",
+  "value": "7",
+  "label": "Lamahi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "56",
+  "value": "8",
+  "label": "Rapti Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "56",
+  "value": "9",
+  "label": "Gadhawa Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "56",
+  "value": "10",
+  "label": "Rajpur Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "57",
+  "value": "1",
+  "label": "Rapti Sonari Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "57",
+  "value": "2",
+  "label": "Kohalpur Municipality",
+  "wards": 15
+ },
+ {
+  "district": "57",
+  "value": "3",
+  "label": "Baijanath Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "57",
+  "value": "4",
+  "label": "Khajura Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "57",
+  "value": "5",
+  "label": "Janaki Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "57",
+  "value": "6",
+  "label": "Nepalganj Sub-Metropolitian City",
+  "wards": 23
+ },
+ {
+  "district": "57",
+  "value": "7",
+  "label": "Duduwa Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "57",
+  "value": "8",
+  "label": "Narainapur Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "58",
+  "value": "1",
+  "label": "Bansgadhi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "58",
+  "value": "2",
+  "label": "Barbardiya Municipality",
+  "wards": 11
+ },
+ {
+  "district": "58",
+  "value": "3",
+  "label": "Thakurbaba Municipality",
+  "wards": 9
+ },
+ {
+  "district": "58",
+  "value": "4",
+  "label": "Geruwa Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "58",
+  "value": "5",
+  "label": "Rajapur Municipality",
+  "wards": 10
+ },
+ {
+  "district": "58",
+  "value": "6",
+  "label": "Madhuwan Municipality",
+  "wards": 9
+ },
+ {
+  "district": "58",
+  "value": "7",
+  "label": "Gulariya Municipality",
+  "wards": 12
+ },
+ {
+  "district": "58",
+  "value": "8",
+  "label": "Badhaiyatal Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "59",
+  "value": "1",
+  "label": "Dolpo Buddha Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "59",
+  "value": "2",
+  "label": "Shey Phoksundo Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "59",
+  "value": "3",
+  "label": "Jagadulla Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "59",
+  "value": "4",
+  "label": "Mudkechula Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "59",
+  "value": "5",
+  "label": "Tripurasundari Municipality",
+  "wards": 11
+ },
+ {
+  "district": "59",
+  "value": "6",
+  "label": "Thulibheri Municipality",
+  "wards": 11
+ },
+ {
+  "district": "59",
+  "value": "7",
+  "label": "Kaike Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "59",
+  "value": "8",
+  "label": "Chharka Tangsong Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "60",
+  "value": "1",
+  "label": "Mugumakarmarog Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "60",
+  "value": "2",
+  "label": "Chhayanath Rara Municipality",
+  "wards": 14
+ },
+ {
+  "district": "60",
+  "value": "3",
+  "label": "Soru Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "60",
+  "value": "4",
+  "label": "Khatyad Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "61",
+  "value": "1",
+  "label": "Chankheli Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "61",
+  "value": "2",
+  "label": "Kharpunath Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "61",
+  "value": "3",
+  "label": "Simkot Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "61",
+  "value": "4",
+  "label": "Namkha Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "61",
+  "value": "5",
+  "label": "Sarkegad Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "61",
+  "value": "6",
+  "label": "Adanchuli Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "61",
+  "value": "7",
+  "label": "Tanjakot Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "62",
+  "value": "1",
+  "label": "Patarasi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "62",
+  "value": "2",
+  "label": "Kanaka Sundari Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "62",
+  "value": "3",
+  "label": "Sinja Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "62",
+  "value": "4",
+  "label": "Chandannath Municipality",
+  "wards": 10
+ },
+ {
+  "district": "62",
+  "value": "5",
+  "label": "Guthichaur Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "62",
+  "value": "6",
+  "label": "Tatopani Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "62",
+  "value": "7",
+  "label": "Tila Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "62",
+  "value": "8",
+  "label": "Hima Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "63",
+  "value": "1",
+  "label": "Palata Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "63",
+  "value": "2",
+  "label": "Pachal Jharana Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "63",
+  "value": "3",
+  "label": "Raskot Municipality",
+  "wards": 9
+ },
+ {
+  "district": "63",
+  "value": "4",
+  "label": "Sanni Tribeni Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "63",
+  "value": "5",
+  "label": "Naraharinath Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "63",
+  "value": "6",
+  "label": "Khandachakra Municipality",
+  "wards": 11
+ },
+ {
+  "district": "63",
+  "value": "7",
+  "label": "Tilagupha Municipality",
+  "wards": 11
+ },
+ {
+  "district": "63",
+  "value": "8",
+  "label": "Mahawai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "63",
+  "value": "9",
+  "label": "Shuva Kalika Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "64",
+  "value": "1",
+  "label": "Naumule Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "64",
+  "value": "2",
+  "label": "Mahabu Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "64",
+  "value": "3",
+  "label": "Bhairabi Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "64",
+  "value": "4",
+  "label": "Thantikandh Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "64",
+  "value": "5",
+  "label": "Aathbis Municipality",
+  "wards": 9
+ },
+ {
+  "district": "64",
+  "value": "6",
+  "label": "Chamunda Bindrasaini Municipality",
+  "wards": 9
+ },
+ {
+  "district": "64",
+  "value": "7",
+  "label": "Dullu Municipality",
+  "wards": 13
+ },
+ {
+  "district": "64",
+  "value": "8",
+  "label": "Narayan Municipality",
+  "wards": 11
+ },
+ {
+  "district": "64",
+  "value": "9",
+  "label": "Bhagawatimai Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "64",
+  "value": "10",
+  "label": "Dungeshwor Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "64",
+  "value": "11",
+  "label": "Gurans Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "65",
+  "value": "1",
+  "label": "Barekot Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "65",
+  "value": "2",
+  "label": "Kuse Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "65",
+  "value": "3",
+  "label": "Junichande Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "65",
+  "value": "4",
+  "label": "Chhedagad Municipality",
+  "wards": 13
+ },
+ {
+  "district": "65",
+  "value": "5",
+  "label": "Shivalaya Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "65",
+  "value": "6",
+  "label": "Bheri Malika Municipality",
+  "wards": 13
+ },
+ {
+  "district": "65",
+  "value": "7",
+  "label": "Nalgad Municipality",
+  "wards": 13
+ },
+ {
+  "district": "66",
+  "value": "1",
+  "label": "Aathabisakot Municipality",
+  "wards": 14
+ },
+ {
+  "district": "66",
+  "value": "2",
+  "label": "Sanibheri Gaunpalika",
+  "wards": 11
+ },
+ {
+  "district": "66",
+  "value": "3",
+  "label": "Banphikot Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "66",
+  "value": "4",
+  "label": "Musikot Municipality",
+  "wards": 14
+ },
+ {
+  "district": "66",
+  "value": "5",
+  "label": "Tribeni Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "66",
+  "value": "6",
+  "label": "Chaurjahari Municipality",
+  "wards": 14
+ },
+ {
+  "district": "67",
+  "value": "1",
+  "label": "Darma Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "67",
+  "value": "2",
+  "label": "Kumakh Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "67",
+  "value": "3",
+  "label": "Banagad Kupinde Municipality",
+  "wards": 12
+ },
+ {
+  "district": "67",
+  "value": "4",
+  "label": "Siddha Kumakh Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "67",
+  "value": "5",
+  "label": "Bagachour Municipality",
+  "wards": 12
+ },
+ {
+  "district": "67",
+  "value": "6",
+  "label": "Chhatreshwori Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "67",
+  "value": "7",
+  "label": "Sharada Municipality",
+  "wards": 15
+ },
+ {
+  "district": "67",
+  "value": "8",
+  "label": "Kalimati Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "67",
+  "value": "9",
+  "label": "Tribeni Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "67",
+  "value": "10",
+  "label": "Kapurkot Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "68",
+  "value": "1",
+  "label": "Simta Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "68",
+  "value": "2",
+  "label": "Chingad Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "68",
+  "value": "3",
+  "label": "Lekabeshi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "68",
+  "value": "4",
+  "label": "Gurbhakot Municipality",
+  "wards": 14
+ },
+ {
+  "district": "68",
+  "value": "5",
+  "label": "Bheriganga Municipality",
+  "wards": 13
+ },
+ {
+  "district": "68",
+  "value": "6",
+  "label": "Birendranagar Municipality",
+  "wards": 16
+ },
+ {
+  "district": "68",
+  "value": "7",
+  "label": "Barahatal Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "68",
+  "value": "8",
+  "label": "Panchapuri Municipality",
+  "wards": 11
+ },
+ {
+  "district": "68",
+  "value": "9",
+  "label": "Chaukune Gaunpalika",
+  "wards": 10
+ },
+ {
+  "district": "69",
+  "value": "1",
+  "label": "Himali Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "69",
+  "value": "2",
+  "label": "Gaumul Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "69",
+  "value": "3",
+  "label": "Budhinanda Municipality",
+  "wards": 10
+ },
+ {
+  "district": "69",
+  "value": "4",
+  "label": "Swamikartik Khapar Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "69",
+  "value": "5",
+  "label": "Jagannath Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "69",
+  "value": "6",
+  "label": "Badimalika Municipality",
+  "wards": 9
+ },
+ {
+  "district": "69",
+  "value": "7",
+  "label": "Khaptad Chhededaha Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "69",
+  "value": "8",
+  "label": "Budhiganga Municipality",
+  "wards": 10
+ },
+ {
+  "district": "69",
+  "value": "9",
+  "label": "Tribeni Municipality",
+  "wards": 9
+ },
+ {
+  "district": "70",
+  "value": "1",
+  "label": "Saipal Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "70",
+  "value": "2",
+  "label": "Bungal Municipality",
+  "wards": 11
+ },
+ {
+  "district": "70",
+  "value": "3",
+  "label": "Surma Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "70",
+  "value": "4",
+  "label": "Talkot Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "70",
+  "value": "5",
+  "label": "Masta Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "70",
+  "value": "6",
+  "label": "Jayaprithbi Municipality",
+  "wards": 11
+ },
+ {
+  "district": "70",
+  "value": "7",
+  "label": "Chhabis Pathibhara Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "70",
+  "value": "8",
+  "label": "Durgathali Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "70",
+  "value": "9",
+  "label": "Kedarsyun Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "70",
+  "value": "10",
+  "label": "Bitthadchir Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "70",
+  "value": "11",
+  "label": "Thalara Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "70",
+  "value": "12",
+  "label": "Khaptad Chhanna Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "71",
+  "value": "1",
+  "label": "Byas Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "71",
+  "value": "2",
+  "label": "Duhun Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "71",
+  "value": "3",
+  "label": "Mahakali Municipality",
+  "wards": 9
+ },
+ {
+  "district": "71",
+  "value": "4",
+  "label": "Naugad  Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "71",
+  "value": "5",
+  "label": "Apihimal Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "71",
+  "value": "6",
+  "label": "Marma Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "71",
+  "value": "7",
+  "label": "Shailyashikhar Municipality",
+  "wards": 9
+ },
+ {
+  "district": "71",
+  "value": "8",
+  "label": "Malikarjun Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "71",
+  "value": "9",
+  "label": "Lekam Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "72",
+  "value": "1",
+  "label": "Dilasaini Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "72",
+  "value": "2",
+  "label": "Dogada Kedar Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "72",
+  "value": "3",
+  "label": "Puchaundi Municipality",
+  "wards": 10
+ },
+ {
+  "district": "72",
+  "value": "4",
+  "label": "Surnaya Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "72",
+  "value": "5",
+  "label": "Dasharathchand Municipality",
+  "wards": 11
+ },
+ {
+  "district": "72",
+  "value": "6",
+  "label": "Pancheshwor Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "72",
+  "value": "7",
+  "label": "Shivanath Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "72",
+  "value": "8",
+  "label": "Melauli Municipality",
+  "wards": 9
+ },
+ {
+  "district": "72",
+  "value": "9",
+  "label": "Patan Municipality",
+  "wards": 10
+ },
+ {
+  "district": "72",
+  "value": "10",
+  "label": "Sigas Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "73",
+  "value": "1",
+  "label": "Nawadurga Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "73",
+  "value": "2",
+  "label": "Amargadhi Municipality",
+  "wards": 11
+ },
+ {
+  "district": "73",
+  "value": "3",
+  "label": "Ajayameru Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "73",
+  "value": "4",
+  "label": "Bhageshwor Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "73",
+  "value": "5",
+  "label": "Parashuram Municipality",
+  "wards": 12
+ },
+ {
+  "district": "73",
+  "value": "6",
+  "label": "Aalital Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "73",
+  "value": "7",
+  "label": "Ganyapdhura Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "74",
+  "value": "1",
+  "label": "Purbichouki Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "74",
+  "value": "2",
+  "label": "Sayal Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "74",
+  "value": "3",
+  "label": "Aadarsha Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "74",
+  "value": "4",
+  "label": "Shikhar Municipality",
+  "wards": 11
+ },
+ {
+  "district": "74",
+  "value": "5",
+  "label": "Dipayal Silgadhi Municipality",
+  "wards": 9
+ },
+ {
+  "district": "74",
+  "value": "6",
+  "label": "K.I. Singh Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "74",
+  "value": "7",
+  "label": "Bogatan Phudsil Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "74",
+  "value": "8",
+  "label": "Badi Kedar Gaunpalika",
+  "wards": 5
+ },
+ {
+  "district": "74",
+  "value": "9",
+  "label": "Jorayal Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "75",
+  "value": "1",
+  "label": "Panchdebal Binayak Municipality",
+  "wards": 9
+ },
+ {
+  "district": "75",
+  "value": "2",
+  "label": "Ramaroshan Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "75",
+  "value": "3",
+  "label": "Mellekh Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "75",
+  "value": "4",
+  "label": "Sanphebagar Municipality",
+  "wards": 14
+ },
+ {
+  "district": "75",
+  "value": "5",
+  "label": "Chaurpati Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "75",
+  "value": "6",
+  "label": "Mangalsen Municipality",
+  "wards": 14
+ },
+ {
+  "district": "75",
+  "value": "7",
+  "label": "Bannigadhi Jayagadh Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "75",
+  "value": "8",
+  "label": "Kamal bazar Municipality",
+  "wards": 10
+ },
+ {
+  "district": "75",
+  "value": "9",
+  "label": "Dhakari Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "75",
+  "value": "10",
+  "label": "Turmakhand Gaunpalika",
+  "wards": 8
+ },
+ {
+  "district": "76",
+  "value": "1",
+  "label": "Mohanyal Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "76",
+  "value": "2",
+  "label": "Chure Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "76",
+  "value": "3",
+  "label": "Godawari Municipality",
+  "wards": 12
+ },
+ {
+  "district": "76",
+  "value": "4",
+  "label": "Gauriganga Municipality",
+  "wards": 11
+ },
+ {
+  "district": "76",
+  "value": "5",
+  "label": "Ghodaghodi Municipality",
+  "wards": 12
+ },
+ {
+  "district": "76",
+  "value": "6",
+  "label": "Bardagoriya Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "76",
+  "value": "7",
+  "label": "Lamki Chuha Municipality",
+  "wards": 10
+ },
+ {
+  "district": "76",
+  "value": "8",
+  "label": "Janaki Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "76",
+  "value": "9",
+  "label": "Joshipur Gaunpalika",
+  "wards": 7
+ },
+ {
+  "district": "76",
+  "value": "10",
+  "label": "Tikapur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "76",
+  "value": "11",
+  "label": "Bhajani Municipality",
+  "wards": 9
+ },
+ {
+  "district": "76",
+  "value": "12",
+  "label": "Kailari Gaunpalika",
+  "wards": 9
+ },
+ {
+  "district": "76",
+  "value": "13",
+  "label": "Dhangadhi Sub-Metropolitian City",
+  "wards": 19
+ },
+ {
+  "district": "77",
+  "value": "1",
+  "label": "Krishnapur Municipality",
+  "wards": 9
+ },
+ {
+  "district": "77",
+  "value": "2",
+  "label": "Shuklaphanta Municipality",
+  "wards": 12
+ },
+ {
+  "district": "77",
+  "value": "3",
+  "label": "Bedkot Municipality",
+  "wards": 10
+ },
+ {
+  "district": "77",
+  "value": "4",
+  "label": "Bhimdatta Municipality",
+  "wards": 19
+ },
+ {
+  "district": "77",
+  "value": "5",
+  "label": "Dodhara Chandani Municipality",
+  "wards": 10
+ },
+ {
+  "district": "77",
+  "value": "6",
+  "label": "Laljhadi Gaunpalika",
+  "wards": 6
+ },
+ {
+  "district": "77",
+  "value": "7",
+  "label": "Punarbas Municipality",
+  "wards": 11
+ },
+ {
+  "district": "77",
+  "value": "8",
+  "label": "Belouri Municipality",
+  "wards": 10
+ },
+ {
+  "district": "77",
+  "value": "9",
+  "label": "Beldandi Gaunpalika",
+  "wards": 5
+ }
+]
