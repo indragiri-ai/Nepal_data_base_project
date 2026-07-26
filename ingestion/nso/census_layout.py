@@ -90,6 +90,23 @@ REGISTRY: tuple[CensusIndicator, ...] = (
         topic="education",
         source_concept="literacy:literacyBySex.read_write",
     ),
+    CensusIndicator(
+        code="CENSUS_HH_DRINKING_WATER",
+        name_en="Household source of drinking water (Census 2021)",
+        definition_en=(
+            "Number of households by main source of drinking water, National Population and "
+            "Housing Census 2021. The headline is all households; category breakdown values "
+            "preserve the nine original Hhld06 source column codes because TapPiped1 and "
+            "TapPiped2 are not self-explanatory."
+        ),
+        unit_code="HOUSEHOLDS",
+        topic="health",
+        source_concept=(
+            "Hhld06_SourceOfDrinkingWater:rowtotal|a_TapPiped1|b_TapPiped2|"
+            "c_Tubewell|d_CoveredWell|e_UncoverWell|f_Spoutwater|g_RiverStream|"
+            "h_JarBottle|i_Others"
+        ),
+    ),
 )
 
 

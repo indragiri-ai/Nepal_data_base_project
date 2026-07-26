@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census ingest-census ingest-census-local nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census ingest-census ingest-census-local ingest-census-drinking-water nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -90,6 +90,9 @@ ingest-census:  ## Fetch Census 2021 for Nepal + 7 provinces + 77 districts (raw
 
 ingest-census-local:  ## P2B.S8a: load municipality (753 local-unit) census population from Census_data/
 	$(PY) -m ingestion.nso.census_local_units
+
+ingest-census-drinking-water:  ## Load Hhld06 drinking-water sources at all census levels
+	$(PY) -m ingestion.nso.census_drinking_water
 
 nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
 	$(PY) -m ingestion.nrb.bfs_acquire
