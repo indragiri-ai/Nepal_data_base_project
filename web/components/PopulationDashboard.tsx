@@ -53,6 +53,7 @@ const INDICATOR_GROUPS: Array<{ label: string; prefix: string }> = [
   { label: "Education level", prefix: "CENSUS_INDV18_" },
   { label: "Disability", prefix: "CENSUS_INDV16_" },
   { label: "Age and sex", prefix: "CENSUS_INDV04_" },
+  { label: "Household facilities", prefix: "CENSUS_HHLD10_" },
   { label: "Cooking fuel", prefix: "CENSUS_HHLD07_" },
   { label: "Toilets", prefix: "CENSUS_HHLD09_" },
 ];

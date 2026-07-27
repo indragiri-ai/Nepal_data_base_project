@@ -36,6 +36,17 @@
         "c_Institutnl",
         "d_Other"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Own",
+            "b_Rented",
+            "c_Institutnl",
+            "d_Other"
+          ]
+        }
+      ],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -120,6 +131,18 @@
         "c_RCC",
         "d_WoodPillar",
         "e_Other"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_MudBondBrick",
+            "b_CmntBondBrick",
+            "c_RCC",
+            "d_WoodPillar",
+            "e_Other"
+          ]
+        }
       ],
       "row_count": 838,
       "indicator_specs": [
@@ -221,6 +244,21 @@
         "f_GalvSheet",
         "g_Prefab",
         "h_Other"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_MudBondBrick",
+            "b_CmntBondBrick",
+            "c_Wood",
+            "d_Bamboo",
+            "e_UnbakeBrick",
+            "f_GalvSheet",
+            "g_Prefab",
+            "h_Other"
+          ]
+        }
       ],
       "row_count": 838,
       "indicator_specs": [
@@ -353,6 +391,21 @@
         "g_Mud",
         "h_Other"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_GalvSheet",
+            "b_Cement",
+            "c_Thatch",
+            "d_Tile",
+            "e_Stone",
+            "f_Wood",
+            "g_Mud",
+            "h_Other"
+          ]
+        }
+      ],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -482,6 +535,20 @@
         "f_Kerosene",
         "g_Others"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_firewood",
+            "b_LPGas",
+            "c_Electricity",
+            "d_Cowdung",
+            "e_BioGas",
+            "f_Kerosene",
+            "g_Others"
+          ]
+        }
+      ],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -597,6 +664,18 @@
         "d_BioGas",
         "e_Others"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Electricity",
+            "b_Solar",
+            "c_Kerosene",
+            "d_BioGas",
+            "e_Others"
+          ]
+        }
+      ],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -691,6 +770,18 @@
         "c_Ordinary",
         "d_Public",
         "e_NoToilet"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_FlushToilet1",
+            "b_FlushToilet2",
+            "c_Ordinary",
+            "d_Public",
+            "e_NoToilet"
+          ]
+        }
       ],
       "row_count": 838,
       "indicator_specs": [
@@ -808,6 +899,15 @@
         "l_Refrigerator",
         "m_WashingMachine",
         "n_AirConditionr"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "x_NoFacility",
+            "atleastOne"
+          ]
+        }
       ],
       "row_count": 838,
       "indicator_specs": [
@@ -1014,6 +1114,18 @@
         "d_NoOwnership",
         "e_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_HouseOnly",
+            "b_LandOnly",
+            "c_HouseAndLand",
+            "d_NoOwnership",
+            "e_notstd"
+          ]
+        }
+      ],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -1122,6 +1234,25 @@
         "e_Others_m",
         "e_Others_f",
         "notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "NoBusiness",
+            "a_Cottage_m",
+            "a_Cottage_f",
+            "b_Trade_m",
+            "b_Trade_f",
+            "c_Transprt_m",
+            "c_Transprt_f",
+            "d_Service_m",
+            "d_Service_f",
+            "e_Others_m",
+            "e_Others_f",
+            "notstd"
+          ]
+        }
       ],
       "row_count": 838,
       "indicator_specs": [
@@ -1286,6 +1417,7 @@
         "male",
         "female"
       ],
+      "sum_rules": [],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -1372,6 +1504,15 @@
         "rowtotal",
         "a_male",
         "b_female"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_male",
+            "b_female"
+          ]
+        }
       ],
       "row_count": 16760,
       "indicator_specs": [
@@ -1460,6 +1601,23 @@
         "h_naturlCalamaty",
         "i_Other",
         "j_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Transf",
+            "b_nonTransf",
+            "c_roadAccidnt",
+            "d_othrAccidnt",
+            "e_pregnancy",
+            "f_crime",
+            "g_sucide",
+            "h_naturlCalamaty",
+            "i_Other",
+            "j_notstd"
+          ]
+        }
       ],
       "row_count": 50280,
       "indicator_specs": [
@@ -1612,6 +1770,17 @@
         "c_within6week",
         "d_other"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_pregnant",
+            "b_delivery",
+            "c_within6week",
+            "d_other"
+          ]
+        }
+      ],
       "row_count": 3352,
       "indicator_specs": [
         {
@@ -1697,6 +1866,7 @@
         "female",
         "AbsntHhldnotstd"
       ],
+      "sum_rules": [],
       "row_count": 838,
       "indicator_specs": [
         {
@@ -1819,6 +1989,28 @@
         "m_60to64",
         "n_65plus",
         "o_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_00to04",
+            "b_05to09",
+            "c_10to14",
+            "d_15to19",
+            "e_20to24",
+            "f_25to29",
+            "g_30to34",
+            "h_35to39",
+            "i_40to44",
+            "j_45to49",
+            "k_50to54",
+            "l_55to59",
+            "m_60to64",
+            "n_65plus",
+            "o_notstd"
+          ]
+        }
       ],
       "row_count": 2514,
       "indicator_specs": [
@@ -2044,6 +2236,26 @@
         "l_other",
         "m_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_india",
+            "b_saarc",
+            "c_asean",
+            "d_midleast",
+            "e_othrasian",
+            "f_eucntry",
+            "g_othreuropn",
+            "h_northamericn",
+            "i_southamericn",
+            "j_african",
+            "k_pacific",
+            "l_other",
+            "m_notstd"
+          ]
+        }
+      ],
       "row_count": 22626,
       "indicator_specs": [
         {
@@ -2236,6 +2448,20 @@
         "f_others",
         "g_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_salary",
+            "b_trade",
+            "c_study",
+            "d_jobseek",
+            "e_dependnt",
+            "f_others",
+            "g_notstd"
+          ]
+        }
+      ],
       "row_count": 22626,
       "indicator_specs": [
         {
@@ -2379,6 +2605,26 @@
         "k_pacific",
         "l_other",
         "m_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_india",
+            "b_saarc",
+            "c_asean",
+            "d_midleast",
+            "e_othrasian",
+            "f_eucntry",
+            "g_othreuropn",
+            "h_northamericn",
+            "i_southamericn",
+            "j_african",
+            "k_pacific",
+            "l_other",
+            "m_notstd"
+          ]
+        }
       ],
       "row_count": 20112,
       "indicator_specs": [
@@ -2574,6 +2820,21 @@
         "g_65plus",
         "h_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_below14",
+            "b_15to24",
+            "c_25to34",
+            "d_35to44",
+            "e_45to54",
+            "f_55to64",
+            "g_65plus",
+            "h_notstd"
+          ]
+        }
+      ],
       "row_count": 22626,
       "indicator_specs": [
         {
@@ -2723,6 +2984,24 @@
         "i_others",
         "j_nolevel",
         "k_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_earlyedu",
+            "b_primary",
+            "c_lowrsecndry",
+            "d_upprsecndry",
+            "e_slc",
+            "f_intermediate",
+            "g_graduate",
+            "h_postgraduate",
+            "i_others",
+            "j_nolevel",
+            "k_notstd"
+          ]
+        }
       ],
       "row_count": 22626,
       "indicator_specs": [
@@ -2887,6 +3166,22 @@
         "h_8person",
         "i_9person"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_1person",
+            "b_2person",
+            "c_3person",
+            "d_4person",
+            "e_5person",
+            "f_6person",
+            "g_7person",
+            "h_8person",
+            "i_9person"
+          ]
+        }
+      ],
       "row_count": 915,
       "indicator_specs": [
         {
@@ -3024,6 +3319,15 @@
         "a_male",
         "b_female"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_male",
+            "b_female"
+          ]
+        }
+      ],
       "row_count": 93330,
       "indicator_specs": [
         {
@@ -3090,6 +3394,15 @@
         "rowtotal",
         "a_male",
         "b_female"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_male",
+            "b_female"
+          ]
+        }
       ],
       "row_count": 19215,
       "indicator_specs": [
@@ -3160,6 +3473,7 @@
         "male",
         "feml"
       ],
+      "sum_rules": [],
       "row_count": 680,
       "indicator_specs": [
         {
@@ -3258,6 +3572,21 @@
         "f_50to59",
         "g_60to69",
         "h_70plus"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_below14",
+            "b_15to19",
+            "c_20to29",
+            "d_30to39",
+            "e_40t049",
+            "f_50to59",
+            "g_60to69",
+            "h_70plus"
+          ]
+        }
       ],
       "row_count": 2745,
       "indicator_specs": [
@@ -3405,6 +3734,25 @@
         "j_hhldworkr",
         "k_norelation",
         "l_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_self",
+            "b_spouse",
+            "c_son",
+            "d_dau",
+            "e_parent",
+            "f_mothfathlaw",
+            "g_brosis",
+            "h_grndchld",
+            "i_other",
+            "j_hhldworkr",
+            "k_norelation",
+            "l_notstd"
+          ]
+        }
       ],
       "row_count": 2745,
       "indicator_specs": [
@@ -3586,6 +3934,19 @@
         "e_other",
         "f_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_nepal",
+            "b_india",
+            "c_china",
+            "d_saarc",
+            "e_other",
+            "f_notstd"
+          ]
+        }
+      ],
       "row_count": 27450,
       "indicator_specs": [
         {
@@ -3703,6 +4064,18 @@
         "c_widow",
         "d_divorced",
         "e_separated"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_nevrmarried",
+            "b_married",
+            "c_widow",
+            "d_divorced",
+            "e_separated"
+          ]
+        }
       ],
       "row_count": 41175,
       "indicator_specs": [
@@ -3825,6 +4198,25 @@
         "j_45to49",
         "k_50plus",
         "l_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_below10",
+            "b_10to14",
+            "c_15to17",
+            "d_18to19",
+            "e_20to24",
+            "f_25to29",
+            "g_30to34",
+            "h_35to39",
+            "i_40to44",
+            "j_45to49",
+            "k_50plus",
+            "l_notstd"
+          ]
+        }
       ],
       "row_count": 41175,
       "indicator_specs": [
@@ -4022,6 +4414,27 @@
         "m_nodisabl",
         "n_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_physical",
+            "b_lowvision",
+            "c_blind",
+            "d_deaf",
+            "e_hardhear",
+            "f_deafblind",
+            "g_speech",
+            "h_mental",
+            "i_intellect",
+            "j_hemophilia",
+            "k_autism",
+            "l_multiple",
+            "m_nodisabl",
+            "n_notstd"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -4218,6 +4631,17 @@
         "c_noreadwrite",
         "d_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_readwrite",
+            "b_readonly",
+            "c_noreadwrite",
+            "d_notstd"
+          ]
+        }
+      ],
       "row_count": 68625,
       "indicator_specs": [
         {
@@ -4327,6 +4751,24 @@
         "i_other",
         "j_nolevel",
         "k_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_earlyedu",
+            "b_primary",
+            "c_lowrsecndry",
+            "d_upprsecndry",
+            "e_slc",
+            "f_inter",
+            "g_graduat",
+            "h_pgraduat",
+            "i_other",
+            "j_nolevel",
+            "k_notstd"
+          ]
+        }
       ],
       "row_count": 68625,
       "indicator_specs": [
@@ -4523,6 +4965,32 @@
         "ans_upprsecndry",
         "ans_others",
         "ans_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "ca_earlychildhood",
+            "ca_primary",
+            "ca_lowrsecndry",
+            "ca_upprsecndry",
+            "ca_others",
+            "ca_notstd",
+            "cna_earlychildhood",
+            "cna_primary",
+            "cna_lowrsecndry",
+            "cna_upprsecndry",
+            "cna_others",
+            "cna_notstd",
+            "neverattnd",
+            "ans_earlychildhood",
+            "ans_primary",
+            "ans_lowrsecndry",
+            "ans_upprsecndry",
+            "ans_others",
+            "ans_notstd"
+          ]
+        }
       ],
       "row_count": 60390,
       "indicator_specs": [
@@ -4775,6 +5243,7 @@
         "notstd_m",
         "notstd_f"
       ],
+      "sum_rules": [],
       "row_count": 20130,
       "indicator_specs": [
         {
@@ -4938,6 +5407,26 @@
         "k_computr",
         "l_others",
         "m_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_humnty",
+            "b_mgm",
+            "c_edu",
+            "d_science",
+            "e_medicine",
+            "f_enginring",
+            "g_law",
+            "h_agri",
+            "i_forstry",
+            "j_vetnry",
+            "k_computr",
+            "l_others",
+            "m_notstd"
+          ]
+        }
       ],
       "row_count": 38430,
       "indicator_specs": [
@@ -5135,6 +5624,27 @@
         "fBorn",
         "notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "allNativeBorn",
+            "fBorn",
+            "notstd"
+          ]
+        },
+        {
+          "total": "allNativeBorn",
+          "parts": [
+            "nb_samePalika",
+            "nb_othrPalika",
+            "nb_othrDist_M",
+            "nb_othrDist_H",
+            "nb_othrDist_T",
+            "nb_othrDist_NS"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -5289,6 +5799,21 @@
         "g_Sudurpaschim",
         "h_Notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Province1",
+            "b_Madhesh",
+            "c_Bagmati",
+            "d_Gandaki",
+            "e_Lumbini",
+            "f_Karnali",
+            "g_Sudurpaschim",
+            "h_Notstd"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -5442,6 +5967,26 @@
         "k_pacific",
         "l_other",
         "m_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_india",
+            "b_saarc",
+            "c_asean",
+            "d_midleast",
+            "e_othrasian",
+            "f_eucntry",
+            "g_othreuropn",
+            "h_northamericn",
+            "i_southamericn",
+            "j_african",
+            "k_pacific",
+            "l_other",
+            "m_notstd"
+          ]
+        }
       ],
       "row_count": 10980,
       "indicator_specs": [
@@ -5637,6 +6182,21 @@
         "othrDist_NS",
         "fCountry"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "samePalika",
+            "othrPalika_R",
+            "othrPalika_U",
+            "othrPalika_NS",
+            "othrDist_R",
+            "othrDist_U",
+            "othrDist_NS",
+            "fCountry"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -5788,6 +6348,25 @@
         "NotStated_R",
         "NotStated_U",
         "NotStated_NS"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "Mountain_R",
+            "Mountain_U",
+            "Mountain_NS",
+            "Hill_R",
+            "Hill_U",
+            "Hill_NS",
+            "Tarai_R",
+            "Tarai_U",
+            "Tarai_NS",
+            "NotStated_R",
+            "NotStated_U",
+            "NotStated_NS"
+          ]
+        }
       ],
       "row_count": 46665,
       "indicator_specs": [
@@ -5973,6 +6552,21 @@
         "g_Sudurpaschim",
         "h_Notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Province1",
+            "b_Madhesh",
+            "c_Bagmati",
+            "d_Gandaki",
+            "e_Lumbini",
+            "f_Karnali",
+            "g_Sudurpaschim",
+            "h_Notstd"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -6115,6 +6709,20 @@
         "f_50plus",
         "g_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Below1",
+            "b_01to04",
+            "c_05to09",
+            "d_10to24",
+            "e_25to49",
+            "f_50plus",
+            "g_notstd"
+          ]
+        }
+      ],
       "row_count": 46665,
       "indicator_specs": [
         {
@@ -6252,6 +6860,23 @@
         "h_regurn",
         "i_others",
         "j_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_work",
+            "b_trade",
+            "c_study",
+            "d_marriage",
+            "e_dependnt",
+            "f_calamity",
+            "g_agri",
+            "h_regurn",
+            "i_others",
+            "j_notstd"
+          ]
+        }
       ],
       "row_count": 46665,
       "indicator_specs": [
@@ -6426,6 +7051,26 @@
         "k_pacific",
         "l_other",
         "m_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_india",
+            "b_saarc",
+            "c_asean",
+            "d_midleast",
+            "e_othrasian",
+            "f_eucntry",
+            "g_othreuropn",
+            "h_northamericn",
+            "i_southamericn",
+            "j_african",
+            "k_pacific",
+            "l_other",
+            "m_notstd"
+          ]
+        }
       ],
       "row_count": 10980,
       "indicator_specs": [
@@ -6619,6 +7264,20 @@
         "f_50plus",
         "g_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_Below1",
+            "b_01to04",
+            "c_05to09",
+            "d_10to24",
+            "e_25to49",
+            "f_50plus",
+            "g_notstd"
+          ]
+        }
+      ],
       "row_count": 10980,
       "indicator_specs": [
         {
@@ -6756,6 +7415,23 @@
         "h_regurn",
         "i_others",
         "j_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_work",
+            "b_trade",
+            "c_study",
+            "d_marriage",
+            "e_dependnt",
+            "f_calamity",
+            "g_agri",
+            "h_regurn",
+            "i_others",
+            "j_notstd"
+          ]
+        }
       ],
       "row_count": 46665,
       "indicator_specs": [
@@ -6914,6 +7590,20 @@
         "f_40to44",
         "g_45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_15to19",
+            "b_20to24",
+            "c_25to29",
+            "d_30to34",
+            "e_35to39",
+            "f_40to44",
+            "g_45to49"
+          ]
+        }
+      ],
       "row_count": 10065,
       "indicator_specs": [
         {
@@ -7041,6 +7731,20 @@
         "f_40to44",
         "g_45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_15to19",
+            "b_20to24",
+            "c_25to29",
+            "d_30to34",
+            "e_35to39",
+            "f_40to44",
+            "g_45to49"
+          ]
+        }
+      ],
       "row_count": 10980,
       "indicator_specs": [
         {
@@ -7167,6 +7871,20 @@
         "e_35to39",
         "f_40to44",
         "g_45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_15to19",
+            "b_20to24",
+            "c_25to29",
+            "d_30to34",
+            "e_35to39",
+            "f_40to44",
+            "g_45to49"
+          ]
+        }
       ],
       "row_count": 9150,
       "indicator_specs": [
@@ -7301,6 +8019,7 @@
         "f_40to44",
         "g_45to49"
       ],
+      "sum_rules": [],
       "row_count": 10980,
       "indicator_specs": [
         {
@@ -7639,6 +8358,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 16470,
       "indicator_specs": [
         {
@@ -7768,6 +8501,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 16470,
       "indicator_specs": [
@@ -7899,6 +8646,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 16470,
       "indicator_specs": [
         {
@@ -8025,6 +8786,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 11895,
       "indicator_specs": [
@@ -8153,6 +8928,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 11895,
       "indicator_specs": [
         {
@@ -8279,6 +9068,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 11895,
       "indicator_specs": [
@@ -8407,6 +9210,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 21960,
       "indicator_specs": [
         {
@@ -8533,6 +9350,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 21960,
       "indicator_specs": [
@@ -8661,6 +9492,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 21960,
       "indicator_specs": [
         {
@@ -8787,6 +9632,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 8235,
       "indicator_specs": [
@@ -8915,6 +9774,20 @@
         "yr40to44",
         "yr45to49"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
+      ],
       "row_count": 8235,
       "indicator_specs": [
         {
@@ -9041,6 +9914,20 @@
         "yr35to39",
         "yr40to44",
         "yr45to49"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "yr15to19",
+            "yr20to24",
+            "yr25to29",
+            "yr30to34",
+            "yr35to39",
+            "yr40to44",
+            "yr45to49"
+          ]
+        }
       ],
       "row_count": 8235,
       "indicator_specs": [
@@ -9183,6 +10070,25 @@
         "j_55to59",
         "k_60to64",
         "l_65pls"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_10to14",
+            "b_15to19",
+            "c_20to24",
+            "d_25to29",
+            "e_30to34",
+            "f_35to39",
+            "g_40to44",
+            "h_45to49",
+            "i_50to54",
+            "j_55to59",
+            "k_60to64",
+            "l_65pls"
+          ]
+        }
       ],
       "row_count": 13725,
       "indicator_specs": [
@@ -9373,6 +10279,24 @@
         "i_plant",
         "j_elementary",
         "k_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_armed",
+            "b_managr",
+            "c_profesnl",
+            "d_technician",
+            "e_clerical",
+            "f_service",
+            "g_skillagri",
+            "h_craft",
+            "i_plant",
+            "j_elementary",
+            "k_notstd"
+          ]
+        }
       ],
       "row_count": 10980,
       "indicator_specs": [
@@ -9575,6 +10499,35 @@
         "t_hhld_activ",
         "u_extra_teri",
         "v_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_agri",
+            "b_mining",
+            "c_manuf",
+            "d_electri",
+            "e_water",
+            "f_const",
+            "g_wholesale",
+            "h_transp",
+            "i_accommod",
+            "j_informat",
+            "k_finance",
+            "l_realestat",
+            "m_profesnl",
+            "n_admin",
+            "o_pub_admin",
+            "p_educatn",
+            "q_humnhealth",
+            "r_arts",
+            "s_otherservic",
+            "t_hhld_activ",
+            "u_extra_teri",
+            "v_notstd"
+          ]
+        }
       ],
       "row_count": 10980,
       "indicator_specs": [
@@ -9870,6 +10823,26 @@
         "NoWorkno",
         "NoWorkns"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "mon6pls",
+            "mon3to5ft",
+            "mon3to5pt",
+            "mon3to5no",
+            "mon3to5ns",
+            "mon1to2ft",
+            "mon1to2pt",
+            "mon1to2no",
+            "mon1to2ns",
+            "NoWorkft",
+            "NoWorkpt",
+            "NoWorkno",
+            "NoWorkns"
+          ]
+        }
+      ],
       "row_count": 35685,
       "indicator_specs": [
         {
@@ -10065,6 +11038,7 @@
         "notstd_male",
         "notstd_feml"
       ],
+      "sum_rules": [],
       "row_count": 13725,
       "indicator_specs": [
         {
@@ -10239,6 +11213,7 @@
         "notstd_male",
         "notstd_feml"
       ],
+      "sum_rules": [],
       "row_count": 16470,
       "indicator_specs": [
         {
@@ -10400,6 +11375,25 @@
         "j_55to59",
         "k_60to64",
         "l_65pls"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_10to14",
+            "b_15to19",
+            "c_20to24",
+            "d_25to29",
+            "e_30to34",
+            "f_35to39",
+            "g_40to44",
+            "h_45to49",
+            "i_50to54",
+            "j_55to59",
+            "k_60to64",
+            "l_65pls"
+          ]
+        }
       ],
       "row_count": 32940,
       "indicator_specs": [
@@ -10593,6 +11587,25 @@
         "k_60to64",
         "l_65pls"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_10to14",
+            "b_15to19",
+            "c_20to24",
+            "d_25to29",
+            "e_30to34",
+            "f_35to39",
+            "g_40to44",
+            "h_45to49",
+            "i_50to54",
+            "j_55to59",
+            "k_60to64",
+            "l_65pls"
+          ]
+        }
+      ],
       "row_count": 63135,
       "indicator_specs": [
         {
@@ -10783,6 +11796,24 @@
         "j_elementary",
         "k_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_armed",
+            "b_managr",
+            "c_profesnl",
+            "d_technician",
+            "e_clerical",
+            "f_service",
+            "g_skillagri",
+            "h_craft",
+            "i_plant",
+            "j_elementary",
+            "k_notstd"
+          ]
+        }
+      ],
       "row_count": 63135,
       "indicator_specs": [
         {
@@ -10965,6 +11996,24 @@
         "i_plant",
         "j_elementary",
         "k_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_armed",
+            "b_managr",
+            "c_profesnl",
+            "d_technician",
+            "e_clerical",
+            "f_service",
+            "g_skillagri",
+            "h_craft",
+            "i_plant",
+            "j_elementary",
+            "k_notstd"
+          ]
+        }
       ],
       "row_count": 49410,
       "indicator_specs": [
@@ -11170,6 +12219,35 @@
         "t_hhld_activ",
         "u_extra_teri",
         "v_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_agri",
+            "b_mining",
+            "c_manuf",
+            "d_electri",
+            "e_water",
+            "f_const",
+            "g_wholesale",
+            "h_transp",
+            "i_accommod",
+            "j_informat",
+            "k_finance",
+            "l_realestat",
+            "m_profesnl",
+            "n_admin",
+            "o_pub_admin",
+            "p_educatn",
+            "q_humnhealth",
+            "r_arts",
+            "s_otherservic",
+            "t_hhld_activ",
+            "u_extra_teri",
+            "v_notstd"
+          ]
+        }
       ],
       "row_count": 49410,
       "indicator_specs": [
@@ -11463,6 +12541,25 @@
         "k_60to64",
         "l_65pls"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_10to14",
+            "b_15to19",
+            "c_20to24",
+            "d_25to29",
+            "e_30to34",
+            "f_35to39",
+            "g_40to44",
+            "h_45to49",
+            "i_50to54",
+            "j_55to59",
+            "k_60to64",
+            "l_65pls"
+          ]
+        }
+      ],
       "row_count": 16470,
       "indicator_specs": [
         {
@@ -11641,6 +12738,18 @@
         "d_familysupp",
         "e_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_employee",
+            "b_employer",
+            "c_ownaccount",
+            "d_familysupp",
+            "e_notstd"
+          ]
+        }
+      ],
       "row_count": 32940,
       "indicator_specs": [
         {
@@ -11750,6 +12859,19 @@
         "d_nprofit",
         "e_hhldsectr",
         "f_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_govt",
+            "b_financl",
+            "c_nfinancl",
+            "d_nprofit",
+            "e_hhldsectr",
+            "f_notstd"
+          ]
+        }
       ],
       "row_count": 41175,
       "indicator_specs": [
@@ -11874,6 +12996,19 @@
         "e_hhldsectr",
         "f_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_govt",
+            "b_financl",
+            "c_nfinancl",
+            "d_nprofit",
+            "e_hhldsectr",
+            "f_notstd"
+          ]
+        }
+      ],
       "row_count": 49410,
       "indicator_specs": [
         {
@@ -11994,6 +13129,19 @@
         "e_hhldsectr",
         "f_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_govt",
+            "b_financl",
+            "c_nfinancl",
+            "d_nprofit",
+            "e_hhldsectr",
+            "f_notstd"
+          ]
+        }
+      ],
       "row_count": 32940,
       "indicator_specs": [
         {
@@ -12113,6 +13261,19 @@
         "d_nprofit",
         "e_hhldsectr",
         "f_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_govt",
+            "b_financl",
+            "c_nfinancl",
+            "d_nprofit",
+            "e_hhldsectr",
+            "f_notstd"
+          ]
+        }
       ],
       "row_count": 63135,
       "indicator_specs": [
@@ -12239,6 +13400,22 @@
         "g_soclwork",
         "h_other",
         "i_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_student",
+            "b_hhldwork",
+            "c_hhldchore",
+            "d_aged",
+            "e_disable",
+            "f_pension",
+            "g_soclwork",
+            "h_other",
+            "i_notstd"
+          ]
+        }
       ],
       "row_count": 41175,
       "indicator_specs": [
@@ -12399,6 +13576,22 @@
         "h_other",
         "i_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_student",
+            "b_hhldwork",
+            "c_hhldchore",
+            "d_aged",
+            "e_disable",
+            "f_penson",
+            "g_socialwork",
+            "h_other",
+            "i_notstd"
+          ]
+        }
+      ],
       "row_count": 49410,
       "indicator_specs": [
         {
@@ -12554,6 +13747,22 @@
         "g_socialwork",
         "h_other",
         "i_notstd"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_student",
+            "b_hhldwork",
+            "c_hhldchore",
+            "d_aged",
+            "e_disable",
+            "f_penson",
+            "g_socialwork",
+            "h_other",
+            "i_notstd"
+          ]
+        }
       ],
       "row_count": 10980,
       "indicator_specs": [
@@ -12711,6 +13920,22 @@
         "h_Othr",
         "i_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_MothrFathr",
+            "b_MothrOnly",
+            "c_FathrOnly",
+            "d_FathrStepMothr",
+            "e_MothrStepFathr",
+            "f_OthrRelativ",
+            "g_Employr",
+            "h_Othr",
+            "i_notstd"
+          ]
+        }
+      ],
       "row_count": 16470,
       "indicator_specs": [
         {
@@ -12867,6 +14092,22 @@
         "h_Othr",
         "i_notstd"
       ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "a_MothrFathr",
+            "b_MothrOnly",
+            "c_FathrOnly",
+            "d_FathrStepMothr",
+            "e_MothrStepFathr",
+            "f_OthrRelativ",
+            "g_Employr",
+            "h_Othr",
+            "i_notstd"
+          ]
+        }
+      ],
       "row_count": 10980,
       "indicator_specs": [
         {
@@ -13016,6 +14257,19 @@
         "age3yr",
         "age4yr",
         "age5yr"
+      ],
+      "sum_rules": [
+        {
+          "total": "rowtotal",
+          "parts": [
+            "age0yr",
+            "age1yr",
+            "age2yr",
+            "age3yr",
+            "age4yr",
+            "age5yr"
+          ]
+        }
       ],
       "row_count": 8235,
       "indicator_specs": [

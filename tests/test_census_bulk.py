@@ -5,15 +5,19 @@ from __future__ import annotations
 from decimal import Decimal
 from pathlib import Path
 
+import pytest
+
 from ingestion.nso.census_bulk import (
+    BulkParseError,
     FileSpec,
     IndicatorSpec,
     ParseStats,
+    SumRule,
     breakdown_key,
     iter_cells,
 )
 from ingestion.nso.census_shape_a import GeographyMaps
-from scripts.census_bulk_manifest import compile_file
+from scripts.census_bulk_manifest import _sum_rules_for, compile_file
 
 
 def test_breakdown_key_is_independent_of_key_order() -> None:
@@ -29,6 +33,64 @@ def test_breakdown_key_is_independent_of_key_order() -> None:
 
     assert breakdown_key(from_parser) == breakdown_key(from_postgres)
     assert breakdown_key({}) == "{}"
+
+
+def test_hierarchical_tables_get_curated_sum_rules_not_the_flat_one() -> None:
+    """Hhld10 is multiple-response: a household may own a radio AND a TV.
+
+    A flat "every category sums to rowtotal" check rejects it (35.6M against
+    6.66M households), which is why the file could not load. Only the
+    no-facility/at-least-one split is a real identity.
+    """
+    measures = ["rowtotal", "x_NoFacility", "atleastOne", "a_Radio", "b_TV"]
+
+    rules = _sum_rules_for("Hhld10_HouseholdFacility", measures)
+
+    assert [r.total for r in rules] == ["rowtotal"]
+    assert rules[0].parts == ["x_NoFacility", "atleastOne"]
+    assert "a_Radio" not in rules[0].parts
+
+
+def test_flat_tables_still_get_the_default_every_category_rule() -> None:
+    rules = _sum_rules_for("Hhld07_TypeOfCookingFuel", ["rowtotal", "a_firewood", "b_LPGas"])
+
+    assert len(rules) == 1
+    assert rules[0].total == "rowtotal"
+    assert rules[0].parts == ["a_firewood", "b_LPGas"]
+
+
+def test_a_violated_sum_rule_blocks_the_file() -> None:
+    """A source whose own arithmetic disagrees must fail loudly, not load."""
+    payload = (
+        b"prov,dist,gapa,provname,dname,gapaname,rowtotal,a_yes,b_no\n"
+        b'0,0,0,"NEPAL","NEPAL","NEPAL",10,6,9\n'
+    )
+    spec = FileSpec(
+        stem="Indv99_TestTable",
+        source_csv=Path("unused.csv"),
+        header_line=1,
+        header=(
+            "prov", "dist", "gapa", "provname", "dname", "gapaname",
+            "rowtotal", "a_yes", "b_no",
+        ),
+        has_gapa=True,
+        dimension_columns=(),
+        split_dimensions=(),
+        total_dimension_values={},
+        label_columns=(),
+        measure_columns=("rowtotal", "a_yes", "b_no"),
+        sum_rules=(SumRule(total="rowtotal", parts=("a_yes", "b_no")),),
+        row_count=1,
+        indicator_specs=(
+            IndicatorSpec(
+                code="CENSUS_TEST_TOTAL", unit_code="PERSONS",
+                measure="rowtotal", split_values={},
+            ),
+        ),
+    )
+
+    with pytest.raises(BulkParseError, match="15 != rowtotal 10"):
+        list(iter_cells(payload, spec, GeographyMaps({}, {}, {}), "full", ParseStats()))
 
 
 def test_manifest_compiler_discovers_published_total_code(tmp_path: Path) -> None:
@@ -89,6 +151,7 @@ def test_bulk_parser_emits_headline_and_source_label_breakdown() -> None:
         total_dimension_values={"sex": "-1"},
         label_columns=("sexname",),
         measure_columns=("rowtotal", "a_yes", "b_no"),
+        sum_rules=(SumRule(total="rowtotal", parts=("a_yes", "b_no")),),
         row_count=2,
         indicator_specs=indicators,
     )
@@ -131,6 +194,7 @@ def test_balanced_mode_skips_only_local_detailed_cells() -> None:
         total_dimension_values={"sex": "-1"},
         label_columns=("sexname",),
         measure_columns=("rowtotal",),
+        sum_rules=(),
         row_count=2,
         indicator_specs=(
             IndicatorSpec(

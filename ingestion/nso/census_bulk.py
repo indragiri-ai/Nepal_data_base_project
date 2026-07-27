@@ -73,6 +73,14 @@ class IndicatorSpec:
 
 
 @dataclass(frozen=True)
+class SumRule:
+    """A published identity the source must satisfy: total == sum(parts)."""
+
+    total: str
+    parts: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class FileSpec:
     stem: str
     source_csv: Path
@@ -84,6 +92,7 @@ class FileSpec:
     total_dimension_values: dict[str, str]
     label_columns: tuple[str, ...]
     measure_columns: tuple[str, ...]
+    sum_rules: tuple[SumRule, ...]
     row_count: int
     indicator_specs: tuple[IndicatorSpec, ...]
 
@@ -134,6 +143,15 @@ def load_manifest(path: Path = MANIFEST_PATH) -> list[FileSpec]:
             )
             for raw in raw_file["indicator_specs"]
         )
+        if "sum_rules" not in raw_file:
+            raise BulkParseError(
+                f"{raw_file['stem']}: manifest predates sum_rules; "
+                "regenerate it with `make census-bulk-manifest`"
+            )
+        sum_rules = tuple(
+            SumRule(total=raw["total"], parts=tuple(raw["parts"]))
+            for raw in raw_file["sum_rules"]
+        )
         specs.append(
             FileSpec(
                 stem=raw_file["stem"],
@@ -146,6 +164,7 @@ def load_manifest(path: Path = MANIFEST_PATH) -> list[FileSpec]:
                 total_dimension_values=dict(raw_file["total_dimension_values"]),
                 label_columns=tuple(raw_file["label_columns"]),
                 measure_columns=tuple(raw_file["measure_columns"]),
+                sum_rules=sum_rules,
                 row_count=int(raw_file["row_count"]),
                 indicator_specs=indicators,
             )
@@ -287,7 +306,6 @@ def iter_cells(
     stats: ParseStats,
 ) -> Iterator[ParsedCell]:
     indicator_lookup = _indicator_lookup(spec)
-    measure_set = set(spec.measure_columns)
     for row_number, row in enumerate(_rows_from_payload(payload, spec), 1):
         stats.rows_seen += 1
         mapped = _map_geography(row, spec, maps)
@@ -297,28 +315,28 @@ def iter_cells(
         geography_code, geography_level = mapped
         breakdowns = _breakdowns(row, spec)
 
-        if "rowtotal" in measure_set and len(spec.measure_columns) > 1:
+        for rule in spec.sum_rules:
             total = _parse_decimal(
-                row["rowtotal"],
-                f"{spec.stem} data row {row_number}:rowtotal",
+                row[rule.total],
+                f"{spec.stem} data row {row_number}:{rule.total}",
             )
-            categories = [
+            parts = [
                 _parse_decimal(
-                    row[measure],
-                    f"{spec.stem} data row {row_number}:{measure}",
+                    row[part],
+                    f"{spec.stem} data row {row_number}:{part}",
                 )
-                for measure in spec.measure_columns
-                if measure != "rowtotal"
+                for part in rule.parts
             ]
-            if total is not None and all(value is not None for value in categories):
-                category_sum = sum(
-                    (value for value in categories if value is not None),
+            if total is not None and all(value is not None for value in parts):
+                part_sum = sum(
+                    (value for value in parts if value is not None),
                     Decimal(0),
                 )
-                if category_sum != total:
+                if part_sum != total:
                     raise BulkParseError(
-                        f"{spec.stem} data row {row_number}: category sum "
-                        f"{category_sum} != rowtotal {total}"
+                        f"{spec.stem} data row {row_number}: "
+                        f"{' + '.join(rule.parts)} = {part_sum} != "
+                        f"{rule.total} {total}"
                     )
 
         split_key = tuple(

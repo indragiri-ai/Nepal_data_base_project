@@ -61,6 +61,50 @@ class IndicatorSpec:
 
 
 @dataclass(frozen=True)
+class SumRule:
+    """One published arithmetic identity: ``total`` equals the sum of ``parts``."""
+
+    total: str
+    parts: list[str]
+
+
+# Most tables are flat: every category column sums to rowtotal. Two published
+# tables are not, and the flat check rejects them (correctly — it will not load
+# a shape it does not understand):
+#
+#   Hhld10_HouseholdFacility        households may own several facilities, so
+#     a_Radio…n_AirConditionr are MULTIPLE-RESPONSE and legitimately sum past
+#     rowtotal (35.6M against 6.66M households). Only the no-facility/at-least-
+#     one split is an identity.
+#   Indv22_PopulationByPlaceOfBirth allNativeBorn is a subtotal of the nb_*
+#     columns, which are therefore counted twice by a flat sum.
+#
+# Each rule below was verified against the file's own NEPAL row before being
+# written here; none is inferred from column names. Measure columns named in no
+# rule are simply not sum-checked — that is a statement about the published
+# table, not a licence to skip validation elsewhere.
+CURATED_SUM_RULES: dict[str, list[SumRule]] = {
+    "Hhld10_HouseholdFacility": [
+        SumRule(total="rowtotal", parts=["x_NoFacility", "atleastOne"]),
+    ],
+    "Indv22_PopulationByPlaceOfBirth": [
+        SumRule(total="rowtotal", parts=["allNativeBorn", "fBorn", "notstd"]),
+        SumRule(
+            total="allNativeBorn",
+            parts=[
+                "nb_samePalika",
+                "nb_othrPalika",
+                "nb_othrDist_M",
+                "nb_othrDist_H",
+                "nb_othrDist_T",
+                "nb_othrDist_NS",
+            ],
+        ),
+    ],
+}
+
+
+@dataclass(frozen=True)
 class FileSpec:
     stem: str
     source_csv: str
@@ -72,8 +116,36 @@ class FileSpec:
     total_dimension_values: dict[str, str]
     label_columns: list[str]
     measure_columns: list[str]
+    sum_rules: list[SumRule]
     row_count: int
     indicator_specs: list[IndicatorSpec]
+
+
+def _sum_rules_for(stem: str, measures: list[str]) -> list[SumRule]:
+    """The arithmetic the loader must check for one file.
+
+    Curated rules win where a table is hierarchical; otherwise the default
+    identity is the flat one, stated explicitly so the manifest carries the
+    check rather than the loader assuming it.
+    """
+    curated = CURATED_SUM_RULES.get(stem)
+    if curated is not None:
+        known = set(measures)
+        for rule in curated:
+            unknown = [c for c in (rule.total, *rule.parts) if c not in known]
+            if unknown:
+                raise ManifestError(
+                    f"{stem}: curated sum rule names columns not in the source: {unknown}"
+                )
+        return curated
+    if "rowtotal" in measures and len(measures) > 1:
+        return [
+            SumRule(
+                total="rowtotal",
+                parts=[m for m in measures if m != "rowtotal"],
+            )
+        ]
+    return []
 
 
 def _is_decimal(raw: str) -> bool:
@@ -379,6 +451,7 @@ def compile_file(path: Path) -> FileSpec:
         total_dimension_values=total_dimension_values,
         label_columns=label_columns,
         measure_columns=measures,
+        sum_rules=_sum_rules_for(path.stem, measures),
         row_count=len(rows),
         indicator_specs=specs,
     )
@@ -422,10 +495,34 @@ def write_outputs(specs: list[FileSpec]) -> None:
         for spec in specs
         for indicator in spec.indicator_specs
     ]
+    _keep_curated_names(rows)
     with SEED_PATH.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=SEED_COLUMNS)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def _keep_curated_names(rows: list[dict[str, str]]) -> None:
+    """Never let regeneration clobber a hand-written indicator name.
+
+    Generated names are built from raw source column codes ("Population By Edu
+    Level: c_lowrsecndry"); the ones a human has since rewritten ("Education:
+    lower secondary") are what the website shows. A name in the existing seed
+    that differs from the generated one was curated, so it wins — otherwise
+    recompiling the manifest would silently undo that work.
+    """
+    if not SEED_PATH.exists():
+        return
+    with SEED_PATH.open(encoding="utf-8", newline="") as fh:
+        existing = {row["code"]: row for row in csv.DictReader(fh)}
+    kept = 0
+    for row in rows:
+        previous = existing.get(row["code"])
+        if previous is not None and previous["name_en"] != row["name_en"]:
+            row["name_en"] = previous["name_en"]
+            kept += 1
+    if kept:
+        print(f"Kept {kept} curated indicator names from the existing seed.")
 
 
 def main() -> int:
