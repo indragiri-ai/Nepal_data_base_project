@@ -43,6 +43,48 @@ const NOUN_ONE: Record<GeoLevel, string> = {
   local_unit: "municipality",
 };
 
+// The picker held 7 census indicators until the bulk tables landed; it now holds
+// 56, which is unusable as one flat list. Group by source census table, in the
+// order a reader is likely to want. Anything unmatched falls into the headline
+// group rather than disappearing — a newly loaded table must never go missing
+// from the picker just because nobody added it here.
+const INDICATOR_GROUPS: Array<{ label: string; prefix: string }> = [
+  { label: "Literacy", prefix: "CENSUS_INDV17_" },
+  { label: "Education level", prefix: "CENSUS_INDV18_" },
+  { label: "Disability", prefix: "CENSUS_INDV16_" },
+  { label: "Age and sex", prefix: "CENSUS_INDV04_" },
+  { label: "Cooking fuel", prefix: "CENSUS_HHLD07_" },
+  { label: "Toilets", prefix: "CENSUS_HHLD09_" },
+];
+
+const HEADLINE_GROUP = "Headline indicators";
+
+type IndicatorGroup = { label: string; items: IndicatorSummary[] };
+
+export function groupIndicators(list: IndicatorSummary[]): IndicatorGroup[] {
+  const groups = new Map<string, IndicatorSummary[]>();
+  for (const ind of list) {
+    const match = INDICATOR_GROUPS.find((g) => ind.code.startsWith(g.prefix));
+    const label = match ? match.label : HEADLINE_GROUP;
+    const items = groups.get(label);
+    if (items) items.push(ind);
+    else groups.set(label, [ind]);
+  }
+  return [HEADLINE_GROUP, ...INDICATOR_GROUPS.map((g) => g.label)]
+    .filter((label) => groups.has(label))
+    .map((label) => ({
+      label,
+      items: (groups.get(label) ?? []).slice().sort(tableTotalFirst),
+    }));
+}
+
+// A table's own total is the map-worthy number, but the API returns codes
+// alphabetically, which buries "…_ROWTOTAL" under its own categories.
+function tableTotalFirst(a: IndicatorSummary, b: IndicatorSummary): number {
+  const rank = (code: string) => (code.endsWith("_ROWTOTAL") ? 0 : 1);
+  return rank(a.code) - rank(b.code) || a.name.localeCompare(b.name);
+}
+
 export default function PopulationDashboard() {
   const [indicators, setIndicators] = useState<IndicatorSummary[] | null>(null);
   const [indicatorsError, setIndicatorsError] = useState<string | null>(null);
@@ -164,10 +206,14 @@ export default function PopulationDashboard() {
                     aria-label="Select a census indicator"
                   >
                     {!indicators && <option>Loading indicators…</option>}
-                    {(indicators ?? []).map((ind) => (
-                      <option key={ind.code} value={ind.code}>
-                        {ind.name}
-                      </option>
+                    {groupIndicators(indicators ?? []).map((group) => (
+                      <optgroup key={group.label} label={group.label}>
+                        {group.items.map((ind) => (
+                          <option key={ind.code} value={ind.code}>
+                            {ind.name}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </span>
