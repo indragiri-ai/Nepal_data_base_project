@@ -28,15 +28,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from ingestion.common.io_utf8 import configure_stdout_utf8  # noqa: E402
 
-CSV_PATH = Path("db/seeds/indicators_census.csv")
+CSV_PATHS = (
+    Path("db/seeds/indicators_census.csv"),
+    Path("db/seeds/indicators_census_bulk.csv"),
+)
 SOURCE_NAME = "National Statistics Office"
 
 Cursor = psycopg.Cursor[Any]
 
 
 def seed_census_indicators(cur: Cursor) -> tuple[int, list[str]]:
-    with CSV_PATH.open(encoding="utf-8", newline="") as fh:
-        rows = list(DictReader(fh))
+    rows: list[dict[str, str]] = []
+    for path in CSV_PATHS:
+        if not path.exists():
+            continue
+        with path.open(encoding="utf-8", newline="") as fh:
+            rows.extend(DictReader(fh))
 
     cur.execute("SELECT code, id FROM units")
     unit_ids = {code: uid for code, uid in cur.fetchall()}

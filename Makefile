@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -84,6 +84,15 @@ seed-nrb:  ## Seed the 35 NRB Banking & Financial Statistics indicators (idempot
 
 seed-census:  ## Seed the Census 2021 indicators (idempotent)
 	$(PY) scripts/seed_census.py
+
+census-bulk-manifest:  ## Compile remaining census CSV layouts into manifest + indicator seed
+	$(PY) -m scripts.census_bulk_manifest
+
+ingest-census-bulk-dry:  ## Validate all remaining census files without raw/DB writes
+	$(PY) -m ingestion.nso.census_bulk --mode balanced --dry-run
+
+ingest-census-bulk-balanced:  ## Load all headlines + detailed breakdowns through district
+	$(PY) -m ingestion.nso.census_bulk --mode balanced
 
 ingest-census:  ## Fetch Census 2021 for Nepal + 7 provinces + 77 districts (raw-first, idempotent)
 	$(PY) -m ingestion.nso.census_pipeline
