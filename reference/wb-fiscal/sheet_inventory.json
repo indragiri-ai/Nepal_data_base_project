@@ -1,0 +1,309 @@
+{
+  "workbook": "NepalFiscalDashboard",
+  "host": "https://dataviz.worldbank.org",
+  "harvested_at": "2026-08-01T09:46:08.360732+00:00",
+  "raw_lake_payload": "worldbank/fiscal-dashboard/2026-08-01T094608_360732Z/sheets.json",
+  "raw_lake_metadata": "worldbank/fiscal-dashboard/2026-08-01T094608_360732Z/metadata.json",
+  "non_data_sheets": [
+    "Landing page",
+    "lisa_dashboard"
+  ],
+  "sheets": [
+    {
+      "sheet": "Federal Revenue",
+      "view": "FederalRevenue",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/FederalRevenue.csv?%3Aembed=y",
+      "columns": [
+        "Year1",
+        "fed_measure_%tot",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Type1",
+        "Year1"
+      ],
+      "default_view_rows": 7,
+      "size_bytes": 620
+    },
+    {
+      "sheet": "Federal Expenditure",
+      "view": "FederalExpenditure",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/FederalExpenditure.csv?%3Aembed=y",
+      "columns": [
+        "Year1",
+        "fed_measure_%tot",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Type1",
+        "Year1"
+      ],
+      "default_view_rows": 7,
+      "size_bytes": 605
+    },
+    {
+      "sheet": "Federal Financing",
+      "view": "FederalFinancing",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/FederalFinancing.csv?%3Aembed=y",
+      "columns": [
+        "Year1",
+        "fed_measure_%tot",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Type1",
+        "Year1"
+      ],
+      "default_view_rows": 7,
+      "size_bytes": 497
+    },
+    {
+      "sheet": "Federal Debt Stock",
+      "view": "FederalDebtStock",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/FederalDebtStock.csv?%3Aembed=y",
+      "columns": [
+        "Year1",
+        "fed_measure_%tot",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Type1",
+        "Year1"
+      ],
+      "default_view_rows": 7,
+      "size_bytes": 540
+    },
+    {
+      "sheet": "Federal Fiscal Indicators",
+      "view": "FederalFiscalIndicators",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/FederalFiscalIndicators.csv?%3Aembed=y",
+      "columns": [
+        "Year1",
+        "fed_measure_%tot",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Type1",
+        "Year1"
+      ],
+      "default_view_rows": 7,
+      "size_bytes": 1056
+    },
+    {
+      "sheet": "Provincial Revenue",
+      "view": "ProvincialRevenue",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialRevenue.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "Fiscal year",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Province Name",
+        "Type1",
+        "Local Unit"
+      ],
+      "default_view_rows": 4,
+      "size_bytes": 550
+    },
+    {
+      "sheet": "Provincial Expenditure",
+      "view": "ProvincialExpenditure",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialExpenditure.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "Fiscal year",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Province Name",
+        "Type1",
+        "Local Unit"
+      ],
+      "default_view_rows": 2,
+      "size_bytes": 347
+    },
+    {
+      "sheet": "Provincial Financing",
+      "view": "ProvincialFinancing",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialFinancing.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "Fiscal year",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Province Name",
+        "Type1",
+        "Local Unit"
+      ],
+      "default_view_rows": 2,
+      "size_bytes": 354
+    },
+    {
+      "sheet": "Provincial Fiscal Indicators",
+      "view": "ProvincialFiscalIndicators",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialFiscalIndicators.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "Fiscal year",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Province Name",
+        "Type1",
+        "Local Unit"
+      ],
+      "default_view_rows": 1,
+      "size_bytes": 272
+    },
+    {
+      "sheet": "Provincial Grants",
+      "view": "ProvincialGrants",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialGrants.csv?%3Aembed=y",
+      "columns": [
+        "Group2 (Prov!Grant)",
+        "grant_%TOT_G3",
+        "Fiscal year (prov!grant)",
+        "Group0 (Prov!Grant)",
+        "Group1 (Prov!Grant)",
+        "Group2 (Prov!Grant)",
+        "Province Name (prov!grant)",
+        "Type (prov!grant)1",
+        "Local Unit"
+      ],
+      "default_view_rows": 5,
+      "size_bytes": 875
+    },
+    {
+      "sheet": "Provincial GDP",
+      "view": "ProvincialGDP",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/ProvincialGDP.csv?%3Aembed=y",
+      "columns": [
+        "Group0 (Province!Gdp)",
+        "gdp_%share_avg_div7",
+        "FY1",
+        "Group1 (Province!Gdp)",
+        "Type (province!gdp)1"
+      ],
+      "default_view_rows": 4,
+      "size_bytes": 350
+    },
+    {
+      "sheet": "Local Level Revenue",
+      "view": "LocalLevelRevenue",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/LocalLevelRevenue.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "FY1",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Municipal Name",
+        "Type1"
+      ],
+      "default_view_rows": 2,
+      "size_bytes": 260
+    },
+    {
+      "sheet": "Local Level Expenditure",
+      "view": "LocalLevelExpenditure",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/LocalLevelExpenditure.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "FY1",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Municipal Name",
+        "Type1"
+      ],
+      "default_view_rows": 2,
+      "size_bytes": 383
+    },
+    {
+      "sheet": "Local Level Financing",
+      "view": "LocalLevelFinancing",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/LocalLevelFinancing.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "FY1",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Municipal Name",
+        "Type1"
+      ],
+      "default_view_rows": 1,
+      "size_bytes": 224
+    },
+    {
+      "sheet": "Local Level Fiscal Indicators",
+      "view": "LocalLevelFiscalIndicators",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/LocalLevelFiscalIndicators.csv?%3Aembed=y",
+      "columns": [
+        "Group2",
+        "measure_%TOT_G3",
+        "FY1",
+        "Group0",
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Municipal Name",
+        "Type1"
+      ],
+      "default_view_rows": 1,
+      "size_bytes": 242
+    },
+    {
+      "sheet": "Local Level Grants",
+      "view": "LocalLevelGrants",
+      "source_url": "https://dataviz.worldbank.org/views/NepalFiscalDashboard/LocalLevelGrants.csv?%3Aembed=y",
+      "columns": [
+        "Group2 (Grant)",
+        "grant_%TOT_G3",
+        "FY (grant)1",
+        "Group0 (Grant)",
+        "Group1 (Grant)",
+        "Group2 (Grant)",
+        "Group3 (Grant)",
+        "Municipal Name (Grant)",
+        "Type (grant)1"
+      ],
+      "default_view_rows": 2,
+      "size_bytes": 405
+    }
+  ]
+}
