@@ -5,6 +5,7 @@
 // everything. Reads its shape from lib/sectors.ts.
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   fetchIndicators,
@@ -22,6 +23,14 @@ import {
 } from "@/lib/sectors";
 import HeadlineChart from "@/components/HeadlineChart";
 import SparkCard from "@/components/SparkCard";
+
+// Loaded on demand: FiscalPanel pulls in ECharts, and a static import put the
+// whole charting bundle on EVERY sector page (5.7 kB -> 183 kB). Only Economy
+// renders it, so only Economy should pay for it.
+const FiscalPanel = dynamic(() => import("@/components/FiscalPanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading public finance…</p>,
+});
 
 const SOURCE_ORDER = ["World Bank", "Nepal Rastra Bank", "National Statistics Office"];
 
@@ -140,6 +149,10 @@ export default function SectorDashboard({ slug }: { slug: string }) {
           </div>
         </section>
       )}
+
+      {/* Public finance (WBF.S3). Sits above the long indicator list because a
+          676-item list is where fiscal data goes to be never found. */}
+      {sector.slug === "economy" && <FiscalPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

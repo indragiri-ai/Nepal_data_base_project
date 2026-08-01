@@ -1587,6 +1587,111 @@ button.linklike:hover {
 }
 
 /* ==================================================================
+   Public finance panel (WBF.S3) — Economy sector page
+   ================================================================== */
+
+.fiscal-panel {
+  margin: 34px 0 8px;
+}
+
+.fiscal-intro {
+  color: var(--ink-2);
+  font-size: 0.94rem;
+  margin: -6px 0 18px;
+  max-width: 68ch;
+}
+
+.fiscal-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.fiscal-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.fiscal-tile .tile-label {
+  color: var(--ink-3);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Figures wear text ink, never a series colour — the mark carries identity. */
+.fiscal-tile .tile-value {
+  font-family: var(--font-display, inherit);
+  font-size: 1.42rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.fiscal-tile .tile-note {
+  color: var(--ink-3);
+  font-size: 0.8rem;
+}
+
+.fiscal-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1000px) {
+  /* The two flow charts sit side by side; debt spans the row beneath. */
+  .fiscal-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fiscal-charts > figure:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.fiscal-charts figure {
+  margin: 0;
+  padding: 18px 18px 10px;
+}
+
+.fiscal-charts figcaption {
+  margin-bottom: 10px;
+}
+
+.fiscal-charts figcaption h3 {
+  margin: 0 0 4px;
+  font-size: 1.02rem;
+}
+
+.fiscal-charts figcaption p {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 0.86rem;
+  max-width: 60ch;
+}
+
+.fiscal-provenance {
+  color: var(--ink-3);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  max-width: 80ch;
+  margin-top: 14px;
+}
+
+.fiscal-provenance strong {
+  color: var(--ink-2);
+}
+
+/* ==================================================================
    Global search (SRCH.S1) — header box + results page
    ================================================================== */
 
