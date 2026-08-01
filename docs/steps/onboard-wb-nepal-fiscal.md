@@ -91,6 +91,60 @@ brute-force; three failed protocol variants = fall to (B)/(C).
 
 ---
 
+## WBF.S2 RECON (2026-08-01) — measured from the source, not assumed
+
+Done at the start of S2. Every fact below came from the dashboard itself.
+
+**Fiscal years:** FY2018 … FY2024 (7), confirmed present on the federal sheets.
+`Year1=FY2018` narrows a federal sheet to that year.
+
+**The seven province names the source accepts — its spelling is the only one
+that works:**
+
+`Koshi` · `Madhesh` · `Bagmati` · `Gandaki` · `Lumbini` · `Karnali` ·
+`Sudurpaschim`
+
+Rejected spellings that return **zero rows with no error**: `Sudurpashchim`
+(with `sh`), `Madhes` (no `h`), `Province 1`. Any unmatched value is
+indistinguishable from "no data", so the loader MUST fail loudly on a province
+that returns nothing.
+
+**Completeness is provable by sum — use it as the gate.** Two checks, both
+exact to the last decimal:
+
+| check | parts | total | diff |
+|-------|-------|-------|------|
+| 7 provinces, Taxes FY2024 | 12,320.47 + 11,275.08 + 20,704.84 + 12,907.97 + 11,828.10 + 7,766.79 + 8,166.11 | **84,969.36** | **0.0000** |
+| Federal revenue categories FY2018 | Taxes 640,169.3 + Grants 39,318.7 + Misc receipt 0 + Other revenue 86,548.1 | **766,036.1** | **0.0000** |
+
+This is the same idea as the census `SumRule` work: enumerate the parts, and
+prove the enumeration is complete by summing to the published parent. A set of
+categories that does NOT sum to its parent means a category was missed — fail,
+do not load. Reuse that pattern rather than inventing a new one.
+
+**Federal Revenue Group2 categories (complete, proven by the sum above):**
+`Taxes` · `Grants` · `Miscellaneous receipt` · `Other revenue`.
+Group3/Group4 go deeper (e.g. `Grants` → `External grants`).
+
+**Budget vs Actual is NOT uniform — check per sheet, never assume:**
+
+| sheet | Actual | Budget |
+|-------|--------|--------|
+| Federal Revenue | 7 rows | 7 rows (FY2018: 802,223.22 vs actual 766,036.1) |
+| Federal Expenditure | 7 rows | 7 rows (FY2018: 1,138,707.44 vs actual 967,633.1) |
+| Federal Debt Stock | 7 rows | **0 rows — no budget series exists** |
+
+**Scale, and the local-level problem.** Federal + provincial at Group2 across
+7 years and both types is on the order of **~2,700 observations** — trivial for
+the 500 MB tier. Local level is different: 753 municipalities × 7 years × 5
+sheets is roughly **26,000 requests**, which at the polite 1-per-second rate is
+**over seven hours** of harvesting, plus the storage. The local sheets' default
+views give national local-government aggregates for free; municipality-level
+detail is a separate decision (scope + storage + runtime), NOT an automatic
+part of S2.
+
+---
+
 ### WBF.S2 — Model and ingest the fiscal series
 
 **GOAL:** Federal + provincial revenue/expenditure/budget series in the
