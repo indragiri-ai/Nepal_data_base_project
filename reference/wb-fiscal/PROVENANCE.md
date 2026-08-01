@@ -151,6 +151,60 @@ Magnitudes are consistent with Nepal's published federal accounts (order of
 NPR 0.7–1.0 trillion), which supports the `NPR Million` reading — but
 consistency is not verification.
 
+## OPEN ISSUE — the aggregate row disagrees with its own parts (2026-08-01)
+
+**Status: BLOCKING. No fiscal data has been loaded into the warehouse.**
+
+On Federal Revenue (`Type1=Actual`), the aggregate row — the one with
+`Group2 = *`, which should be "revenue and grants, all categories" — equals the
+sum of its four categories in FY2018 **exactly**, and in no other year.
+
+| dashboard year | aggregate row (`Group2=*`) | Taxes + Grants + Other revenue + Miscellaneous receipt | difference |
+|---|---|---|---|
+| FY2018 | 766,036.1 | 766,036.1 | **0.0** |
+| FY2019 | 765,535.7 | 862,564.7 | +97,029.0 |
+| FY2020 | 764,732.9 | 864,919.6 | +100,186.7 |
+| FY2021 | 901,099.25 | 1,012,040.75 | +110,941.5 |
+| FY2022 | 1,013,490.1 | 1,141,336.3 | +127,846.2 |
+| FY2023 | 913,786.1 | 1,034,033.5 | +120,247.4 |
+| FY2024 | 979,141.2 | 1,106,008.1 | +126,866.9 |
+
+Two things point at the **aggregate row** as the odd one out rather than the
+categories:
+
+1. It is nearly flat across FY2018–FY2020 — 766.0, 765.5, 764.7 (NPR bn) —
+   which is not a plausible path for Nepal's federal revenue over three years.
+   The sum of parts over the same years (766.0, 862.6, 864.9) moves as revenue
+   actually did.
+2. The four categories are individually plausible in level and trend.
+
+**What was ruled out.** Simple nesting does not explain it: no subset of the
+four categories (dropping Miscellaneous receipt as a child of Other revenue,
+or excluding Grants) reproduces the aggregate for FY2020 or FY2024.
+
+**What this is NOT.** It is not a parsing bug — the figures above are the
+source's own strings, and FY2018 reconciles perfectly through the same code
+path. It is not the fiscal-year mapping either; that would shift years, not
+change one series' level while leaving the other coherent.
+
+**Consequence.** Both readings cannot be published. Loading the aggregate would
+understate federal revenue by 12–13% in six of seven years; loading the summed
+parts would publish a total the source does not itself state. Rule 1 says
+report, never guess, so **nothing is loaded** until this is resolved.
+
+**How to resolve, in order of preference:**
+1. Ask the World Bank (Infonepal@WorldBank.org) what the aggregate row
+   represents — this is question 3 in the drafted email.
+2. Spot-check both readings for one year against the MoF Red Book / budget
+   speech. Whichever matches the published national figure is the true total,
+   and the other must be excluded or relabelled.
+3. Only then load, with the resolution recorded in each indicator's
+   `definition_en` so the reasoning stays auditable.
+
+The harvester (`ingestion/worldbank/fiscal_harvest.py`) enforces this: its sum
+check fails the run and writes no staging file, so the discrepancy cannot be
+loaded by accident.
+
 ## Reproducing this
 
 ```
