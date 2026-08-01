@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SECTORS } from "@/lib/sectors";
+import SearchBox from "@/components/SearchBox";
 
 const SECTOR_SLUGS = new Set(SECTORS.map((s) => `/${s.slug}`));
 
@@ -58,6 +59,8 @@ export default function SiteHeader() {
             Banking
           </Link>
         </nav>
+        {/* Hidden on the search page itself, which shows a larger box of its own. */}
+        {pathname !== "/search" && <SearchBox />}
       </div>
     </header>
   );

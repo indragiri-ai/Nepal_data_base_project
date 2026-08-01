@@ -110,3 +110,29 @@ class MetaResponse(BaseModel):
 
     data_updated: str | None
     datasets: list[DatasetMeta]
+
+
+class SearchHit(BaseModel):
+    """One global-search match (SRCH.S1).
+
+    `kind` is 'indicator' (a dataset the portal can chart) or 'geography' (a
+    place), so the UI can group results. `detail` is the kind's qualifier — an
+    indicator's topic, or a geography's level. `unit` is null for geographies.
+    """
+
+    kind: str
+    code: str
+    name: str
+    name_ne: str | None
+    detail: str
+    unit: str | None
+
+
+class SearchResponse(BaseModel):
+    """Results for one search. `total` is the number of hits returned, which is
+    capped by `limit` — no match is a valid answer, returned as an empty list
+    rather than a 404."""
+
+    query: str
+    total: int
+    results: list[SearchHit]
