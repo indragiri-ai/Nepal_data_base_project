@@ -25,15 +25,25 @@ import { downloadCsv } from "@/lib/csv";
 
 // The portal's validated categorical palette (globals.css). Order is the
 // colourblind-safety mechanism — assign by entity, never re-order.
+// One hue per ENTITY, held constant across every chart in the panel. Within a
+// chart, budget-vs-actual is the same entity measured twice, so it reuses the
+// entity's hue and separates by dash. No chart carries more than two series,
+// so no hue is ever cycled.
 const REVENUE = "#008300"; // --series-1
 const EXPENDITURE = "#2a78d6"; // --series-2
+const FINANCING = "#c98500"; // --series-3
 const DEBT = "#4a3aa7"; // --series-4
+const BALANCE = "#bb2340"; // --series-single (brand crimson)
 
 const CODES = [
   "FISCAL_REVENUE_ACTUAL",
   "FISCAL_REVENUE_BUDGET",
   "FISCAL_EXPENDITURE_ACTUAL",
   "FISCAL_EXPENDITURE_BUDGET",
+  "FISCAL_FINANCING_ACTUAL",
+  "FISCAL_FINANCING_BUDGET",
+  "FISCAL_NET_OPERATING_BALANCE_ACTUAL",
+  "FISCAL_NET_OPERATING_BALANCE_BUDGET",
   "FISCAL_DEBT_STOCK",
 ] as const;
 
@@ -46,7 +56,10 @@ const toBn = (millions: number) => millions / 1000;
 const bn = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
 const fmtBn = (v: number | null) => (v == null ? "—" : `${bn.format(v)}`);
 
-function baseOption(periods: string[]): ChartOption {
+/** `includeZero` anchors the axis to zero. Financing and the operating balance
+ *  go negative, and an axis that floats free of zero makes a wholly negative
+ *  series look like an ordinary rise and fall — the reader loses the sign. */
+function baseOption(periods: string[], includeZero = false): ChartOption {
   return {
     // Generous right padding: the final category label (FY 2023/24) is wide and
     // was clipping against the plot edge.
@@ -70,7 +83,7 @@ function baseOption(periods: string[]): ChartOption {
     },
     yAxis: {
       type: "value",
-      scale: true,
+      scale: !includeZero,
       name: "NPR billion",
       nameTextStyle: { color: CHART_INK.axisLabel, fontSize: 11, align: "left" },
       nameGap: 12,
@@ -165,6 +178,10 @@ export default function FiscalPanel() {
       revenueBudget: seriesFor("FISCAL_REVENUE_BUDGET"),
       expenditure: seriesFor("FISCAL_EXPENDITURE_ACTUAL"),
       expenditureBudget: seriesFor("FISCAL_EXPENDITURE_BUDGET"),
+      financing: seriesFor("FISCAL_FINANCING_ACTUAL"),
+      financingBudget: seriesFor("FISCAL_FINANCING_BUDGET"),
+      balance: seriesFor("FISCAL_NET_OPERATING_BALANCE_ACTUAL"),
+      balanceBudget: seriesFor("FISCAL_NET_OPERATING_BALANCE_BUDGET"),
       debt: seriesFor("FISCAL_DEBT_STOCK"),
       provenance: data.FISCAL_REVENUE_ACTUAL.provenance,
     };
@@ -195,8 +212,10 @@ export default function FiscalPanel() {
   const revBud = view.revenueBudget[last];
   const debt = view.debt[last];
   const latestPeriod = view.periods[last];
+  const expBud = view.expenditureBudget[last];
   const deficit = rev != null && exp != null ? exp - rev : null;
   const shortfall = rev != null && revBud != null ? revBud - rev : null;
+  const expShortfall = exp != null && expBud != null ? expBud - exp : null;
 
   const revExpOption: ChartOption = {
     ...baseOption(view.periods),
@@ -207,12 +226,42 @@ export default function FiscalPanel() {
     ],
   };
 
-  const budgetOption: ChartOption = {
+  const revenueBudgetOption: ChartOption = {
     ...baseOption(view.periods),
     legend: { ...LEGEND, data: ["Revenue collected", "Revenue budgeted"] },
     series: [
       line("Revenue collected", view.revenue, REVENUE),
       line("Revenue budgeted", view.revenueBudget, REVENUE, true),
+    ],
+  };
+
+  const expenditureBudgetOption: ChartOption = {
+    ...baseOption(view.periods),
+    legend: { ...LEGEND, data: ["Expenditure spent", "Expenditure budgeted"] },
+    series: [
+      line("Expenditure spent", view.expenditure, EXPENDITURE),
+      line("Expenditure budgeted", view.expenditureBudget, EXPENDITURE, true),
+    ],
+  };
+
+  // Zero-anchored: this series is negative throughout.
+  const financingOption: ChartOption = {
+    ...baseOption(view.periods, true),
+    legend: { ...LEGEND, data: ["Financing (actual)", "Financing (budget)"] },
+    series: [
+      line("Financing (actual)", view.financing, FINANCING),
+      line("Financing (budget)", view.financingBudget, FINANCING, true),
+    ],
+  };
+
+  // Zero-anchored: the sign is the whole point — above zero means day-to-day
+  // running costs were covered by revenue, below zero means they were not.
+  const balanceOption: ChartOption = {
+    ...baseOption(view.periods, true),
+    legend: { ...LEGEND, data: ["Balance (actual)", "Balance (budget)"] },
+    series: [
+      line("Balance (actual)", view.balance, BALANCE),
+      line("Balance (budget)", view.balanceBudget, BALANCE, true),
     ],
   };
 
@@ -227,6 +276,10 @@ export default function FiscalPanel() {
     fmtBn(view.revenueBudget[i]),
     fmtBn(view.expenditure[i]),
     fmtBn(view.expenditureBudget[i]),
+    fmtBn(view.balance[i]),
+    fmtBn(view.balanceBudget[i]),
+    fmtBn(view.financing[i]),
+    fmtBn(view.financingBudget[i]),
     fmtBn(view.debt[i]),
   ]);
   const header = [
@@ -235,6 +288,10 @@ export default function FiscalPanel() {
     "Revenue (budget)",
     "Expenditure (actual)",
     "Expenditure (budget)",
+    "Operating balance (actual)",
+    "Operating balance (budget)",
+    "Financing (actual)",
+    "Financing (budget)",
     "Debt stock",
   ];
 
@@ -301,6 +358,21 @@ export default function FiscalPanel() {
 
         <figure className="panel">
           <figcaption>
+            <h3>Net operating balance</h3>
+            <p>
+              Revenue against day-to-day running costs. Above zero means routine
+              spending was covered by revenue; below zero means it was not.
+            </p>
+          </figcaption>
+          <EChart
+            option={balanceOption}
+            height={320}
+            ariaLabel={`Line chart of Nepal's federal net operating balance, actual (solid) against budget (dashed), ${view.periods[0]} to ${latestPeriod}, NPR billion, axis anchored at zero.`}
+          />
+        </figure>
+
+        <figure className="panel">
+          <figcaption>
             <h3>Budgeted revenue against what was collected</h3>
             <p>
               {shortfall != null && shortfall > 0
@@ -309,9 +381,41 @@ export default function FiscalPanel() {
             </p>
           </figcaption>
           <EChart
-            option={budgetOption}
+            option={revenueBudgetOption}
             height={320}
             ariaLabel={`Line chart comparing budgeted federal revenue (dashed) with revenue actually collected (solid), ${view.periods[0]} to ${latestPeriod}, NPR billion.`}
+          />
+        </figure>
+
+        <figure className="panel">
+          <figcaption>
+            <h3>Budgeted spending against what was spent</h3>
+            <p>
+              {expShortfall != null && expShortfall > 0
+                ? `In ${latestPeriod} the government budgeted NPR ${fmtBn(expBud)} bn and spent NPR ${fmtBn(exp)} bn — NPR ${fmtBn(expShortfall)} bn of the budget went unspent.`
+                : "Budgeted expenditure against expenditure actually incurred."}
+            </p>
+          </figcaption>
+          <EChart
+            option={expenditureBudgetOption}
+            height={320}
+            ariaLabel={`Line chart comparing budgeted federal expenditure (dashed) with expenditure actually incurred (solid), ${view.periods[0]} to ${latestPeriod}, NPR billion.`}
+          />
+        </figure>
+
+        <figure className="panel">
+          <figcaption>
+            <h3>Financing</h3>
+            <p>
+              How the gap is covered — net borrowing and changes in the
+              government&rsquo;s financial assets. Negative throughout, meaning a
+              financing requirement in every year shown.
+            </p>
+          </figcaption>
+          <EChart
+            option={financingOption}
+            height={320}
+            ariaLabel={`Line chart of Nepal's federal financing, actual (solid) against budget (dashed), ${view.periods[0]} to ${latestPeriod}, NPR billion, axis anchored at zero.`}
           />
         </figure>
 

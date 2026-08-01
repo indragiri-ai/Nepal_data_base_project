@@ -1649,12 +1649,9 @@ button.linklike:hover {
 }
 
 @media (min-width: 1000px) {
-  /* The two flow charts sit side by side; debt spans the row beneath. */
+  /* Six charts, paired: flows, then plan-vs-outturn, then financing and debt. */
   .fiscal-charts {
     grid-template-columns: 1fr 1fr;
-  }
-  .fiscal-charts > figure:last-child {
-    grid-column: 1 / -1;
   }
 }
 
