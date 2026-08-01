@@ -25,6 +25,8 @@ from api.models import (
     MetaResponse,
     Observation,
     Provenance,
+    SearchHit,
+    SearchResponse,
 )
 from api.repository import PostgresRepository, Repository
 
@@ -141,6 +143,42 @@ def get_meta(repo: Annotated[Repository, Depends(get_repository)]) -> MetaRespon
                 latest_release_date=r.latest_release_date,
             )
             for r in rows
+        ],
+    )
+
+
+_MIN_QUERY_LEN = 2
+
+
+@app.get("/v1/search", response_model=SearchResponse)
+def search(
+    repo: Annotated[Repository, Depends(get_repository)],
+    q: Annotated[str, Query(description="Free text: an indicator name, a code, or a place."
+                                        " English or Nepali (Devanagari).")],
+    limit: Annotated[int, Query(ge=1, le=50, description="Maximum hits to return.")] = 20,
+) -> SearchResponse:
+    """Search every indicator and geography in the warehouse from one box.
+
+    Matching is case-insensitive substring in both English and Nepali. A query
+    that matches nothing returns an empty list, not a 404 — "we don't have
+    that" is a legitimate answer from a data portal and the UI says so plainly.
+    """
+    term = q.strip()
+    if len(term) < _MIN_QUERY_LEN:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Search needs at least {_MIN_QUERY_LEN} characters.",
+        )
+    hits = repo.search(term, limit)
+    return SearchResponse(
+        query=term,
+        total=len(hits),
+        results=[
+            SearchHit(
+                kind=h.kind, code=h.code, name=h.name_en, name_ne=h.name_ne,
+                detail=h.detail, unit=h.unit_code,
+            )
+            for h in hits
         ],
     )
 

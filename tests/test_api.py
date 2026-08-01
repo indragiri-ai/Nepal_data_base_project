@@ -16,7 +16,9 @@ from api.repository import (
     IndicatorRow,
     IndicatorSparkRow,
     ObservationRow,
+    SearchHitRow,
     SeriesResult,
+    escape_like,
 )
 
 _GDP = IndicatorRow(
@@ -60,9 +62,77 @@ _WB_POP = IndicatorRow(
 )
 
 
+# A census literacy indicator carrying a real Devanagari name — the fixture that
+# proves search works in Nepali, not only English (SRCH.S1).
+_CENSUS_LITERACY = IndicatorRow(
+    code="CENSUS_LITERACY_RATE",
+    name_en="Literacy rate (Census 2021)",
+    name_ne="साक्षरता दर",
+    definition_en="Share of people aged 5+ who can read and write.",
+    topic="education",
+    unit_code="PCT",
+    unit_name="Percent",
+    source_concept="Indv08_LiteracyStatus",
+    source="National Statistics Office",
+    preferred_source="National Statistics Office",
+)
+
+# What the fake search ranges over: the indicators above plus a few places.
+# (kind, code, name_en, name_ne, detail, unit_code, definition)
+_SEARCHABLE: list[tuple[str, str, str, str | None, str, str | None, str | None]] = [
+    ("indicator", _GDP.code, _GDP.name_en, _GDP.name_ne, _GDP.topic, _GDP.unit_code,
+     _GDP.definition_en),
+    ("indicator", _CENSUS_POP.code, _CENSUS_POP.name_en, _CENSUS_POP.name_ne,
+     _CENSUS_POP.topic, _CENSUS_POP.unit_code, _CENSUS_POP.definition_en),
+    ("indicator", _CENSUS_LITERACY.code, _CENSUS_LITERACY.name_en, _CENSUS_LITERACY.name_ne,
+     _CENSUS_LITERACY.topic, _CENSUS_LITERACY.unit_code, _CENSUS_LITERACY.definition_en),
+    ("geography", "NP", "Nepal", "नेपाल", "country", None, None),
+    ("geography", "NP0321", "Sarlahi", "सर्लाही", "district", None, None),
+    ("geography", "NP03", "Bagmati", "बागमती", "province", None, None),
+]
+
+
+def _fake_score(term: str, code: str, name_en: str, name_ne: str | None) -> int:
+    """Mirror of the SQL CASE ladder in PostgresRepository.search."""
+    t = term.lower()
+    ne = (name_ne or "").lower()
+    if code.lower() == t:
+        return 100
+    if t in code.lower():
+        return 80
+    if name_en.lower().startswith(t) or (ne and ne.startswith(t)):
+        return 60
+    if t in name_en.lower() or t in ne:
+        return 40
+    return 20
+
+
 class FakeRepository:
     def list_indicators(self) -> list[IndicatorRow]:
-        return [_GDP, _CENSUS_POP, _WB_POP]
+        return [_GDP, _CENSUS_POP, _WB_POP, _CENSUS_LITERACY]
+
+    def search(self, term: str, limit: int = 20) -> list[SearchHitRow]:
+        """Literal (non-wildcard) case-insensitive substring match.
+
+        Treating the term as literal text is exactly what `escape_like` buys in
+        the real query, so a `%` typed by a user finds only rows containing a
+        literal percent sign. The escaping logic itself is unit-tested directly
+        against `escape_like`; this fake covers the route's behaviour.
+        """
+        t = term.lower()
+        hits = []
+        for kind, code, name_en, name_ne, detail, unit, definition in _SEARCHABLE:
+            haystacks = [code, name_en, name_ne or "", definition or ""]
+            if any(t in h.lower() for h in haystacks):
+                hits.append(
+                    SearchHitRow(
+                        kind=kind, code=code, name_en=name_en, name_ne=name_ne,
+                        detail=detail, unit_code=unit,
+                        score=_fake_score(term, code, name_en, name_ne),
+                    )
+                )
+        hits.sort(key=lambda h: (-h.score, h.name_en))
+        return hits[:limit]
 
     def get_spark_series(self) -> list[IndicatorSparkRow]:
         return [
@@ -158,6 +228,80 @@ def client() -> Iterator[TestClient]:
     app.dependency_overrides[get_repository] = FakeRepository
     yield TestClient(app)
     app.dependency_overrides.clear()
+
+
+def test_search_matches_english_name_case_insensitively(client: TestClient) -> None:
+    res = client.get("/v1/search", params={"q": "literacy"})
+    assert res.status_code == 200
+    body = res.json()
+    assert body["query"] == "literacy"
+    codes = [r["code"] for r in body["results"]]
+    assert "CENSUS_LITERACY_RATE" in codes
+    # Same query in a different case must find the same row.
+    assert client.get("/v1/search", params={"q": "LITERACY"}).json()["results"] == body["results"]
+
+
+def test_search_matches_nepali_devanagari_name(client: TestClient) -> None:
+    # The reason the query uses ILIKE and not to_tsvector: an 'english' text
+    # search config cannot index Devanagari, which would make name_ne dead text.
+    res = client.get("/v1/search", params={"q": "साक्षरता"})
+    assert res.status_code == 200
+    codes = [r["code"] for r in res.json()["results"]]
+    assert "CENSUS_LITERACY_RATE" in codes
+
+
+def test_search_finds_a_place_and_labels_its_kind(client: TestClient) -> None:
+    res = client.get("/v1/search", params={"q": "Sarlahi"})
+    hits = res.json()["results"]
+    assert [h["code"] for h in hits] == ["NP0321"]
+    assert hits[0]["kind"] == "geography"
+    assert hits[0]["detail"] == "district"
+    assert hits[0]["name_ne"] == "सर्लाही"
+    assert hits[0]["unit"] is None
+
+
+def test_search_ranks_an_exact_code_first(client: TestClient) -> None:
+    res = client.get("/v1/search", params={"q": "GDP_GROWTH"})
+    results = res.json()["results"]
+    assert results[0]["code"] == "GDP_GROWTH"
+
+
+def test_search_treats_wildcards_as_literal_text(client: TestClient) -> None:
+    # Regression guard for the LIKE-injection bug: unescaped, '%%' is a wildcard
+    # pair that would match and dump the entire catalogue. Escaped, it is two
+    # literal percent signs, which nothing in the corpus contains.
+    res = client.get("/v1/search", params={"q": "%%"})
+    assert res.status_code == 200
+    assert res.json()["total"] == 0
+
+
+def test_escape_like_neutralises_wildcards() -> None:
+    # Backslash must be escaped FIRST, else it double-escapes what follows.
+    assert escape_like("100%") == "100\\%"
+    assert escape_like("a_b") == "a\\_b"
+    assert escape_like("c:\\x") == "c:\\\\x"
+    assert escape_like("literacy") == "literacy"
+
+
+def test_search_rejects_a_too_short_query(client: TestClient) -> None:
+    res = client.get("/v1/search", params={"q": "a"})
+    assert res.status_code == 422
+    # Whitespace is trimmed before the length check, so "  " is too short too.
+    assert client.get("/v1/search", params={"q": "   "}).status_code == 422
+
+
+def test_search_with_no_match_is_empty_not_404(client: TestClient) -> None:
+    # "We don't have that" is a real answer from a data portal, not an error.
+    res = client.get("/v1/search", params={"q": "zzzznothing"})
+    assert res.status_code == 200
+    assert res.json() == {"query": "zzzznothing", "total": 0, "results": []}
+
+
+def test_search_respects_and_bounds_the_limit(client: TestClient) -> None:
+    res = client.get("/v1/search", params={"q": "NP", "limit": 1})
+    assert res.json()["total"] == 1
+    assert client.get("/v1/search", params={"q": "NP", "limit": 51}).status_code == 422
+    assert client.get("/v1/search", params={"q": "NP", "limit": 0}).status_code == 422
 
 
 def test_health_is_db_free(client: TestClient) -> None:

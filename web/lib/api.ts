@@ -161,6 +161,49 @@ export function fetchMeta(): Promise<MetaResponse> {
   return getJson<MetaResponse>("/v1/meta");
 }
 
+/** One global-search match (SRCH.S1). `kind` is "indicator" (a dataset that can
+ *  be charted) or "geography" (a place). `detail` is the indicator's topic or
+ *  the geography's level; `unit` is null for places. */
+export interface SearchHit {
+  kind: "indicator" | "geography";
+  code: string;
+  name: string;
+  name_ne: string | null;
+  detail: string;
+  unit: string | null;
+}
+
+export interface SearchResponse {
+  query: string;
+  total: number;
+  results: SearchHit[];
+}
+
+/** Search every indicator and place in the warehouse. Matches English and
+ *  Nepali text. The API rejects queries shorter than two characters (422), so
+ *  callers should not send them. */
+export function fetchSearch(query: string, limit = 30): Promise<SearchResponse> {
+  const params = new URLSearchParams({ q: query, limit: String(limit) });
+  return getJson<SearchResponse>(`/v1/search?${params.toString()}`);
+}
+
+/** Where a search hit leads.
+ *
+ *  Indicators: /explore charts any annual series by code, EXCEPT the NRB
+ *  monthly banking series, which /explore deliberately filters out and
+ *  /banking owns — so those route to /banking instead.
+ *
+ *  Places: /population does not yet read a geography from the URL, so a place
+ *  links to the map itself rather than to a deep link that would be silently
+ *  ignored. Deep-linking a place is SRCH.S2 work. */
+export function hrefForHit(hit: SearchHit): string {
+  if (hit.kind === "geography") return "/population";
+  if (hit.code.startsWith("NRB_")) {
+    return `/banking?indicator=${encodeURIComponent(hit.code)}`;
+  }
+  return `/explore?indicator=${encodeURIComponent(hit.code)}`;
+}
+
 /** A human-friendly label for a topic slug (e.g. "economy" -> "Economy"). */
 export function topicLabel(topic: string): string {
   return topic

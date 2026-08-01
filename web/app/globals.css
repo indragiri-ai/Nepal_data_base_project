@@ -1585,3 +1585,197 @@ button.linklike:hover {
 .drill-crumb .linklike {
   font-weight: 600;
 }
+
+/* ==================================================================
+   Global search (SRCH.S1) — header box + results page
+   ================================================================== */
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 9px;
+  width: 15px;
+  height: 15px;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 190px;
+  height: 34px;
+  padding: 0 10px 0 30px;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--hairline-2);
+  border-radius: 8px;
+  transition: width 140ms ease, border-color 140ms ease;
+}
+
+.search-box input::placeholder {
+  color: var(--ink-3);
+}
+
+.search-box input:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: transparent;
+  width: 240px;
+}
+
+/* The native clear affordance clashes with the custom chrome. */
+.search-box input::-webkit-search-decoration,
+.search-box input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Narrow screens: the nav already wraps, so drop the box rather than crowd it.
+   The /search page keeps its own box, which stays reachable from any link. */
+@media (max-width: 860px) {
+  .site-header .search-box {
+    display: none;
+  }
+}
+
+.search-page {
+  padding: 28px 0 64px;
+}
+
+.search-page h1 {
+  margin: 0 0 14px;
+}
+
+.search-page-box {
+  margin-bottom: 22px;
+}
+
+/* On the results page the box is the primary control, not header furniture. */
+.search-page-box .search-box input,
+.search-page-box .search-box input:focus {
+  width: min(100%, 460px);
+  height: 44px;
+  font-size: 1rem;
+  padding-left: 36px;
+}
+
+.search-page-box .search-box .search-icon {
+  left: 12px;
+  width: 17px;
+  height: 17px;
+}
+
+/* The shared .state block is a centred flex COLUMN sized for dashboard
+   placeholders. Here the message is a sentence with inline links, and a flex
+   column would put each inline child on its own line — so restore normal text
+   flow and let it sit close under the box. */
+.search-page .state {
+  display: block;
+  min-height: 0;
+  text-align: left;
+  max-width: 62ch;
+  padding: 18px 0;
+  line-height: 1.6;
+}
+
+.search-summary {
+  color: var(--ink-2);
+  font-size: 0.94rem;
+  margin: 0 0 18px;
+}
+
+.search-group {
+  margin-bottom: 30px;
+}
+
+.search-group h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.06rem;
+  margin: 0 0 2px;
+}
+
+.search-group h2 .count {
+  font-family: var(--font-display, inherit);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--wash);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.search-group .group-note {
+  color: var(--ink-3);
+  font-size: 0.86rem;
+  margin: 0 0 12px;
+}
+
+.search-hits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.search-hits li {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.search-hits a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 14px;
+  padding: 12px 10px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.search-hits a:hover {
+  background: var(--wash);
+  text-decoration: none;
+}
+
+.search-hits a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.hit-name {
+  font-weight: 550;
+}
+
+.hit-ne {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.hit-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.hit-meta .tag {
+  color: var(--ink-2);
+  background: var(--wash);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+
+.hit-meta code {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}

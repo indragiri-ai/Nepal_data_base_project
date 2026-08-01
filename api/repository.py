@@ -104,6 +104,26 @@ class DatasetMetaRow:
     latest_release_date: str | None
 
 
+@dataclass(frozen=True)
+class SearchHitRow:
+    """One global-search match (SRCH.S1), from either dimension table.
+
+    `kind` says which table it came from, so the UI can group results:
+    'indicator' (a dataset the portal can chart) or 'geography' (a place).
+    `detail` carries the kind's natural qualifier — an indicator's topic or a
+    geography's level — so one row shape serves both. `unit_code` is None for
+    geographies. `score` is the relevance rank; higher sorts first.
+    """
+
+    kind: str
+    code: str
+    name_en: str
+    name_ne: str | None
+    detail: str
+    unit_code: str | None
+    score: int
+
+
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
     def get_spark_series(self) -> list[IndicatorSparkRow]: ...
@@ -113,6 +133,18 @@ class Repository(Protocol):
         self, indicator_code: str, level: str, parent_code: str | None = None
     ) -> GeoValuesResult | None: ...
     def get_meta(self) -> list[DatasetMetaRow]: ...
+    def search(self, term: str, limit: int = 20) -> list[SearchHitRow]: ...
+
+
+def escape_like(term: str) -> str:
+    """Neutralise LIKE wildcards in user input (SRCH.S1).
+
+    `%` and `_` are wildcards inside ILIKE, so an unescaped `%` typed into the
+    search box would match every row in the catalogue. The backslash must be
+    escaped first, or it would double-escape the escapes added after it. Paired
+    with `ESCAPE '\\'` in every ILIKE below.
+    """
+    return term.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
 
 
 _INDICATOR_COLUMNS = (
@@ -311,6 +343,76 @@ class PostgresRepository:
                 for r in rows
             ],
         )
+
+    def search(self, term: str, limit: int = 20) -> list[SearchHitRow]:
+        """Find indicators and geographies whose text matches `term` (SRCH.S1).
+
+        Matching is case-insensitive substring (ILIKE), NOT Postgres full-text.
+        That is deliberate: `to_tsvector` stems against a language config, and
+        no Nepali config ships with Postgres — an 'english' vector mangles
+        Devanagari, so `name_ne` would be unsearchable. Character-level
+        matching is script-agnostic and works for both name columns.
+
+        No index backs this. The two dimension tables together hold on the
+        order of 2,700 short rows, where a sequential scan is sub-millisecond;
+        a pg_trgm index would cost storage (scarce on the 500 MB tier) to
+        solve a problem this size does not have.
+
+        Indicators are filtered to those that actually have observations, for
+        the same reason `list_indicators` is: a searchable indicator with no
+        data is a promise the portal cannot keep.
+        """
+        contains = f"%{escape_like(term)}%"
+        prefix = f"{escape_like(term)}%"
+        params = {"term": term, "contains": contains, "prefix": prefix, "limit": limit}
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT kind, code, name_en, name_ne, detail, unit_code, score FROM ("
+                "  SELECT 'indicator' AS kind, i.code, i.name_en, i.name_ne,"
+                "    i.topic AS detail, u.code AS unit_code,"
+                "    CASE"
+                "      WHEN lower(i.code) = lower(%(term)s) THEN 100"
+                "      WHEN i.code ILIKE %(contains)s ESCAPE '\\' THEN 80"
+                "      WHEN i.name_en ILIKE %(prefix)s ESCAPE '\\'"
+                "        OR i.name_ne ILIKE %(prefix)s ESCAPE '\\' THEN 60"
+                "      WHEN i.name_en ILIKE %(contains)s ESCAPE '\\'"
+                "        OR i.name_ne ILIKE %(contains)s ESCAPE '\\' THEN 40"
+                "      ELSE 20"
+                "    END AS score"
+                "  FROM indicators i"
+                "  JOIN units u ON u.id = i.unit_id"
+                "  WHERE EXISTS (SELECT 1 FROM observations o WHERE o.indicator_id = i.id)"
+                "    AND (i.code ILIKE %(contains)s ESCAPE '\\'"
+                "      OR i.name_en ILIKE %(contains)s ESCAPE '\\'"
+                "      OR i.name_ne ILIKE %(contains)s ESCAPE '\\'"
+                "      OR i.definition_en ILIKE %(contains)s ESCAPE '\\')"
+                "  UNION ALL"
+                "  SELECT 'geography' AS kind, g.code, g.name_en, g.name_ne,"
+                "    g.level AS detail, NULL AS unit_code,"
+                "    CASE"
+                "      WHEN lower(g.code) = lower(%(term)s) THEN 100"
+                "      WHEN g.code ILIKE %(contains)s ESCAPE '\\' THEN 80"
+                "      WHEN g.name_en ILIKE %(prefix)s ESCAPE '\\'"
+                "        OR g.name_ne ILIKE %(prefix)s ESCAPE '\\' THEN 60"
+                "      ELSE 40"
+                "    END AS score"
+                "  FROM geographies g"
+                "  WHERE g.code ILIKE %(contains)s ESCAPE '\\'"
+                "    OR g.name_en ILIKE %(contains)s ESCAPE '\\'"
+                "    OR g.name_ne ILIKE %(contains)s ESCAPE '\\'"
+                ") hits"
+                " ORDER BY score DESC, name_en"
+                " LIMIT %(limit)s",
+                params,
+            )
+            rows = cur.fetchall()
+        return [
+            SearchHitRow(
+                kind=r[0], code=r[1], name_en=r[2], name_ne=r[3],
+                detail=r[4], unit_code=r[5], score=r[6],
+            )
+            for r in rows
+        ]
 
     def get_meta(self) -> list[DatasetMetaRow]:
         """Per-dataset freshness: the date of the latest SUCCESSFUL ingestion

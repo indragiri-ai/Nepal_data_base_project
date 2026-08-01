@@ -29,19 +29,22 @@ file says otherwise.**
 | 3 | P2B.S3a/b | `phase-2b-expansion-steps.md` | World Bank full catalog (~1,400 indicators). Has a founder STOP between a and b |
 | 4 | P2B.S4 | `phase-2b-expansion-steps.md` | Headline-answer policy (one number per question) |
 | 5 | P2B.S5a/b + P2B.S6 | spec: `../specs/frontend-sector-portal-spec.md` | ⛔ Sector portal + orbit landing. Follow the SPEC for the how; the steps are acceptance gates. Founder screenshot-approval STOP before deploying the orbit |
-| 6 | NGP.S1–S2 | `onboard-nationalgeoportal.md` | Official boundaries + the 753-municipality web map (unblocks #8) |
-| 7 | P2B.S7 (families A–E) | `phase-2b-expansion-steps.md` | All census topics at province+district |
-| 8 | P2B.S8a/b | `phase-2b-expansion-steps.md` | Municipality-level census + drill-down UI |
-| 9 | MOF.S1 then MOF.S4 | `onboard-mof-publications.md` | MoF publications raw mirror + public bilingual library page |
-| 10 | WBF.S1–S3 | `onboard-wb-nepal-fiscal.md` | Federal + provincial fiscal series (Tableau spike first — fail-safe) |
-| 11 | BUD.S1–S4 | `budget-center.md` | **The Budget Center** (3-tier budget dashboard) — needs #9's mirror + #10's series + #6's municipality map |
-| 12 | ODN.S1–S2 | `onboard-opendatanepal.md` | CKAN client + Kalimati daily prices (flagship) |
-| 13 | ECN.S1–S4 | `onboard-election-commission.md` | Governance sector: turnout maps + election results |
-| 14 | EDU.S1–S4 | `onboard-cehrd-education.md` | Education deep-dive: Flash Reports, NER/GER district maps (S1 shares the GIWMS harvester with #9) |
-| 15 | ODN.S3–S5, MOF.S2–S3, P2B.S9–S11, WBF.S4, NGP.S3, ECN follow-ups | respective files | The long tail — any order, founder's pick |
+| 6 | **SRCH.S1** | `global-search.md` | **Global search** — one box over every indicator and place. Founder-raised 2026-08-01; put ahead of the remaining sources because it makes each one findable the day it lands |
+| 7 | NGP.S1–S2 | `onboard-nationalgeoportal.md` | Official boundaries + the 753-municipality web map (unblocks #9) |
+| 8 | P2B.S7 (families A–E) | `phase-2b-expansion-steps.md` | All census topics at province+district |
+| 9 | P2B.S8a/b | `phase-2b-expansion-steps.md` | Municipality-level census + drill-down UI |
+| 10 | MOF.S1 then MOF.S4 | `onboard-mof-publications.md` | MoF publications raw mirror + public bilingual library page |
+| 11 | WBF.S1–S3 | `onboard-wb-nepal-fiscal.md` | Federal + provincial fiscal series (Tableau spike first — fail-safe). **Founder's pick for the source after search** |
+| 12 | BUD.S1–S4 | `budget-center.md` | **The Budget Center** (3-tier budget dashboard) — needs #10's mirror + #11's series + #7's municipality map |
+| 13 | ODN.S1–S2 | `onboard-opendatanepal.md` | CKAN client + Kalimati daily prices (flagship) |
+| 14 | ECN.S1–S4 | `onboard-election-commission.md` | Governance sector: turnout maps + election results |
+| 15 | EDU.S1–S4 | `onboard-cehrd-education.md` | Education deep-dive: Flash Reports, NER/GER district maps (S1 shares the GIWMS harvester with #10) |
+| 16 | ODN.S3–S5, MOF.S2–S3, P2B.S9–S11, WBF.S4, NGP.S3, ECN follow-ups | respective files | The long tail — any order, founder's pick |
 
-Items 6–13 are largely independent of each other; reorder them freely by the
-founder's priorities. Items 1–5 are the foundation — keep their order.
+Items 7–14 are largely independent of each other; reorder them freely by the
+founder's priorities. Items 1–5 are the foundation — keep their order. Item 6
+(search) is not a foundation lock, but every source onboarded before it is a
+source nobody can search until it lands.
 
 ## The explicit STOP points (only places to wait for the founder)
 
