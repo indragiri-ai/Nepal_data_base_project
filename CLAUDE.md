@@ -19,6 +19,16 @@ Python 3.12 in `.venv`; commands run through `make` (see README for the list).
   sources are provenance only).
 - `docs/runbooks/adding-a-data-source.md` — the checklist for any new source.
 
+## Orientation shortcut (optional)
+
+`graphify-out/` (gitignored, built locally) holds a knowledge graph of this repo:
+1,180 nodes across code, docs and decisions. For **"where is X handled?" /
+"what depends on Y?"** questions, `/graphify query "<question>"` is cheaper and
+more accurate than grepping blind. It is **not** a substitute for reading the
+files you are about to edit, and it goes stale as code changes — rebuild with
+`/graphify . --update` at the end of a phase. If it is absent or stale, ignore
+it and work normally; nothing depends on it.
+
 ## Non-negotiable rules (hard-won; do not relearn these)
 
 1. **Never guess.** Unverifiable data, dates, codes, or mappings are reported,

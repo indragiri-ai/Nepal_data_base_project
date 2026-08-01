@@ -136,3 +136,13 @@ reference/worldbank/quality_gate_failures.csv
 
 # Bulk NSO census CSV downloads (archived to the raw lake, not git)
 Census_data/
+
+# Knowledge graph build output — regenerable from the repo, ~2 MB of JSON/HTML.
+# Rebuild with `/graphify .` (full) or `/graphify . --update` (changed files only).
+graphify-out/
+
+# Claude Code per-machine settings. A shared .claude/settings.json would be
+# committed deliberately; settings.local.json is personal (local paths, granted
+# permissions) and the .tmp.* files are its save-in-progress scratch.
+.claude/settings.local.json
+.claude/*.tmp.*
