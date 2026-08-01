@@ -35,3 +35,4 @@ BILLION_M3,Billion cubic metres,,"Freshwater withdrawals and renewable resources
 M3_PER_CAPITA,Cubic metres per capita,,"Renewable internal freshwater resources per head"
 LITRES_PER_CAPITA,Litres per capita,,"Total alcohol consumption (litres of pure alcohol)"
 MILLION_TON_KM,Million tonne-kilometres,,"Air transport freight volume"
+NPR_MILLION,Nepali rupees (millions),,"Fiscal figures as published by the WB Nepal Fiscal Dashboard, whose own Local Unit column states NPR Million"
