@@ -3,6 +3,7 @@ import Link from "next/link";
 import HeroStats from "@/components/HeroStats";
 import DataOrbit from "@/components/DataOrbit";
 import SectorCards from "@/components/SectorCards";
+import StartHere from "@/components/StartHere";
 
 export const metadata: Metadata = {
   title: "Nepal Data Portal — trustworthy data about Nepal",
@@ -33,6 +34,19 @@ export default function HomePage() {
           <DataOrbit />
         </div>
         <HeroStats />
+      </section>
+
+      {/* Before the sector grid: a few concrete places to start. Sector cards
+          ask the visitor to already know what they want; this does not. */}
+      <section aria-labelledby="start-title">
+        <div className="section-head">
+          <h2 id="start-title">Start here</h2>
+          <p>
+            Four things worth the first click — each one loaded, checked, and
+            traceable to the office that published it.
+          </p>
+        </div>
+        <StartHere />
       </section>
 
       <section id="sectors" aria-labelledby="sections-title">

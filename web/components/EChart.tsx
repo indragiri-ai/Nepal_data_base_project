@@ -9,6 +9,7 @@
 
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts/core";
+import { BarChart, type BarSeriesOption } from "echarts/charts";
 import { LineChart, type LineSeriesOption } from "echarts/charts";
 import {
   GridComponent,
@@ -20,10 +21,21 @@ import {
 } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 
-echarts.use([LineChart, GridComponent, LegendComponent, TooltipComponent, CanvasRenderer]);
+echarts.use([
+  BarChart,
+  LineChart,
+  GridComponent,
+  LegendComponent,
+  TooltipComponent,
+  CanvasRenderer,
+]);
 
 export type ChartOption = echarts.ComposeOption<
-  LineSeriesOption | GridComponentOption | LegendComponentOption | TooltipComponentOption
+  | BarSeriesOption
+  | LineSeriesOption
+  | GridComponentOption
+  | LegendComponentOption
+  | TooltipComponentOption
 >;
 
 /** Chrome shared by every chart on the site — recessive by design. */

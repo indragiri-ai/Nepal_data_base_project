@@ -9,6 +9,7 @@ Read-only: there are no write methods anywhere.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Protocol
@@ -145,6 +146,32 @@ def escape_like(term: str) -> str:
     with `ESCAPE '\\'` in every ILIKE below.
     """
     return term.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+# Column positions in the get_geo_values row tuple that this helper cares about.
+_GEO_SORT_KEY = 12
+
+
+def latest_period_rows(rows: Sequence[Any]) -> list[Any]:
+    """Keep only the rows belonging to the newest period in the result set.
+
+    A choropleth shows ONE year. The query behind it returns every year a
+    geography has (see `get_geo_values`), so without this the map would draw a
+    value from an arbitrary year under the label of another — the kind of
+    quietly wrong number this portal exists not to publish.
+
+    "Newest" is decided by `time_periods.sort_key`, the column whose whole job
+    is ordering periods along the timeline; comparing the display labels would
+    sort 'FY 2019/20' after 'FY 2023/24' in some fiscal-year spellings.
+
+    Geographies with no data in that newest period are simply absent — the map
+    leaves them blank rather than back-filling an older year, which would put
+    two different years in one picture.
+    """
+    if not rows:
+        return []
+    newest = max(r[_GEO_SORT_KEY] for r in rows)
+    return [r for r in rows if r[_GEO_SORT_KEY] == newest]
 
 
 _INDICATOR_COLUMNS = (
@@ -299,6 +326,15 @@ class PostgresRepository:
         `parent_code` narrows the set to children of one geography — used to drill
         from a district to its local units (P2B.S8), so the map/table shows just
         that district's municipalities rather than all 753 nationally.
+
+        ONE period, not all of them. `is_latest` marks the newest *release* of a
+        cell, not the newest year — every year of a series carries it. So this
+        query returns one row per geography per year, and the caller must pick
+        the year or a map draws whichever row happens to win, under a label
+        borrowed from a different year. Census data hid this for months (a
+        census has one year); the provincial fiscal series, six years deep, is
+        the first data at this level where it bites. `latest_period_rows` does
+        the picking.
         """
         parent_filter = ""
         params: list[str] = [indicator_code, level]
@@ -309,7 +345,7 @@ class PostgresRepository:
             cur.execute(
                 "SELECT g.code, g.name_en, g.name_ne, o.value,"
                 " t.gregorian_label, i.name_en, u.code, u.name_en,"
-                " s.name_en, d.name_en, d.license, r.release_date"
+                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key"
                 " FROM observations o"
                 " JOIN indicators i ON i.id = o.indicator_id"
                 " JOIN geographies g ON g.id = o.geography_id"
@@ -323,7 +359,8 @@ class PostgresRepository:
                 " ORDER BY g.code",
                 tuple(params),
             )
-            rows = cur.fetchall()
+            all_rows = cur.fetchall()
+        rows = latest_period_rows(all_rows)
         if not rows:
             return None
         first = rows[0]

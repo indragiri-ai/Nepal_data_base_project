@@ -15,11 +15,98 @@ export interface SectorDef {
   includePrefixes?: string[]; // adopt every code with this prefix (e.g. NRB_BFS_)
   excludePrefixes?: string[]; // codes carved OUT of this sector
   headlineCodes: string[]; // curated charts, in display order (<=4)
+  themes?: ThemeDef[]; // sub-shelves within the sector (see below)
   mapCard?: { href: string; label: string; note: string };
   orbitCode?: string; // ONE code whose latest value shows on the orbit node
   orbitLabel?: string; // the metric name for that value (e.g. "GDP growth")
   external?: { href: string; label: string };
 }
+
+/** A shelf inside a sector.
+ *
+ *  Economy holds ~676 indicators. Grouped only by source, that is one wall of
+ *  cards you can only search if you already know the name of the thing you
+ *  want — which defeats browsing. Themes cut the wall into shelves a person can
+ *  scan.
+ *
+ *  `match` is a list of lowercase substrings tested against the indicator's
+ *  NAME, first theme wins, and anything unmatched falls to a visible "Other"
+ *  group rather than being hidden. This is OUR navigation aid and nothing more:
+ *  it deliberately does not claim to reproduce the World Bank's own taxonomy,
+ *  which the warehouse does not store per indicator. Keeping the rule here as
+ *  data means a human can read it, argue with it and fix it in one place —
+ *  the same reason the sector definitions live in this file.
+ */
+export interface ThemeDef {
+  label: string;
+  match: string[];
+}
+
+// Order matters: first match wins, so the specific shelves come before the
+// broad one. "Growth & national accounts" is LAST for that reason — half the
+// catalogue is expressed as a share of GDP, and if it ran first it would
+// swallow trade, credit and remittances alike on the strength of their
+// denominator. (It did, on first render: 106 indicators, most of them not
+// national accounts at all.)
+const ECONOMY_THEMES: ThemeDef[] = [
+  // No "cpi" here: it is a prefix of CPIA, the World Bank's policy RATINGS, and
+  // it earned nothing anyway — "price" already catches both the consumer price
+  // index and inflation.
+  { label: "Prices & inflation", match: ["price", "inflation", "deflator"] },
+  {
+    label: "Government finance",
+    match: [
+      "tax", "government", "fiscal", "public", "debt", "revenue", "expense",
+      "grant", "budget", "subsidies", "military expenditure",
+    ],
+  },
+  {
+    label: "Trade",
+    match: ["export", "import", "trade", "tariff", "merchandise", "customs"],
+  },
+  {
+    label: "External & remittances",
+    match: [
+      "remittance",
+      "foreign direct investment",
+      "current account",
+      "reserve",
+      "exchange rate",
+      "external",
+      "official development",
+      "net official",
+      "balance of payments",
+      "oda",
+      "aid",
+      "portfolio",
+    ],
+  },
+  {
+    label: "Money, credit & interest",
+    match: [
+      "money", "credit", "interest", "lending", "deposit", "monetary",
+      "bank", "financial sector",
+    ],
+  },
+  {
+    label: "Poverty & inequality",
+    match: ["poverty", "gini", "income share", "inequality", "consumption per capita"],
+  },
+  {
+    label: "Business & investment",
+    match: [
+      "business", "firms", "investment", "enterprise", "startup", "industry",
+      "manufacturing", "services", "value chain",
+    ],
+  },
+  {
+    label: "Growth & national accounts",
+    match: [
+      "gdp", "gross domestic", "gross national", "value added", "gross capital",
+      "gross savings", "final consumption", "national income",
+    ],
+  },
+];
 
 // Order = nav order = orbit order. Titles/descriptions are verbatim per spec.
 export const SECTORS: SectorDef[] = [
@@ -32,6 +119,7 @@ export const SECTORS: SectorDef[] = [
     topics: ["economy"],
     excludePrefixes: ["NRB_BFS_"], // banking lives in Finance
     headlineCodes: ["GDP_GROWTH", "CPI_YOY", "REMITTANCES_GDP", "GDP_PCAP_USD"],
+    themes: ECONOMY_THEMES,
     orbitCode: "GDP_GROWTH",
     orbitLabel: "GDP growth",
   },
@@ -169,6 +257,68 @@ export function indicatorsForSector(
   indicators: IndicatorSummary[],
 ): IndicatorSummary[] {
   return indicators.filter((ind) => belongs(sector, ind));
+}
+
+export const OTHER_THEME = "Everything else";
+
+/** The part of an indicator name that says WHAT it measures.
+ *
+ *  World Bank names put the subject first and the unit or basis in brackets:
+ *  "Trade in services (% of GDP)", "Broad money (% of GDP)", "Grants, excluding
+ *  technical cooperation (BoP, current US$)". Matching the raw name therefore
+ *  shelves half the catalogue by its DENOMINATOR — everything expressed as a
+ *  share of GDP looks like national accounts. Dropping the bracketed part
+ *  leaves the subject, which is what a reader is actually looking for. */
+export function themeSubject(name: string): string {
+  return name.toLowerCase().replace(/\([^)]*\)/g, " ");
+}
+
+/** Does this subject start a word with any of these terms?
+ *
+ *  Anchored at a word START, not a bare substring and not a whole word. A bare
+ *  substring shelves the CPIA policy ratings under prices because "cpi" sits
+ *  inside "cpia"; whole-word matching loses "taxes" and "banking" for "tax" and
+ *  "bank". Word-start keeps the plurals and drops the accidents. */
+function matchesAny(subject: string, terms: string[]): boolean {
+  return terms.some((term) => {
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`\\b${escaped}`).test(subject);
+  });
+}
+
+export interface ThemeGroup {
+  label: string;
+  rows: IndicatorSummary[];
+}
+
+/** Shelve a sector's indicators into its themes, in the order the themes are
+ *  declared. First match wins, so an indicator appears exactly once — the same
+ *  rule that governs sector assignment, for the same reason: a number the
+ *  reader meets twice under two headings is a number they cannot count.
+ *
+ *  Empty themes are dropped (an empty shelf is noise). Unmatched indicators are
+ *  collected into a visible "Everything else" group placed last — never hidden,
+ *  because a growing "Everything else" is exactly the signal that the themes
+ *  need editing. */
+export function groupByTheme(
+  themes: ThemeDef[],
+  indicators: IndicatorSummary[],
+): ThemeGroup[] {
+  const buckets = new Map<string, IndicatorSummary[]>(themes.map((t) => [t.label, []]));
+  const other: IndicatorSummary[] = [];
+
+  for (const ind of indicators) {
+    const name = themeSubject(ind.name);
+    const hit = themes.find((t) => matchesAny(name, t.match));
+    if (hit) buckets.get(hit.label)!.push(ind);
+    else other.push(ind);
+  }
+
+  const groups = themes
+    .map((t) => ({ label: t.label, rows: buckets.get(t.label)! }))
+    .filter((g) => g.rows.length > 0);
+  if (other.length > 0) groups.push({ label: OTHER_THEME, rows: other });
+  return groups;
 }
 
 export function sectorForCode(code: string, topic: string): SectorDef | undefined {

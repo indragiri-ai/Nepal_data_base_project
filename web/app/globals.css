@@ -1881,3 +1881,106 @@ button.linklike:hover {
   font-size: 0.76rem;
   color: var(--ink-3);
 }
+
+/* Theme jump row on sector pages (the shelves inside a sector).
+   The series-chip rules above fade unpressed chips, which is right for on/off
+   toggles and wrong here: every shelf must stay legible whether or not it is
+   the one selected, since this row is how you decide where to go. */
+.theme-row {
+  margin-bottom: 22px;
+}
+
+.theme-row .chip[aria-pressed="false"] {
+  opacity: 1;
+}
+
+.theme-row .chip[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--card);
+}
+
+.theme-row .chip-count {
+  font-size: 0.78rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
+.theme-row .chip[aria-pressed="true"] .chip-count {
+  color: var(--card);
+  opacity: 0.75;
+}
+
+/* "Start here" band on the landing page. Same card language as the sector
+   cards (this is the same kind of object — a way in), with a source line and
+   an optional New pill. */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow-1);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+a.featured-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--hairline-2);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.featured-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.featured-card h3 {
+  font-size: 1.06rem;
+  margin: 0;
+}
+
+.featured-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  flex: 1;
+}
+
+.featured-source {
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-3) !important;
+  flex: none !important;
+}
+
+.pill-new {
+  flex: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 8px;
+}

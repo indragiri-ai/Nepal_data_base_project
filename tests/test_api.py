@@ -19,6 +19,7 @@ from api.repository import (
     SearchHitRow,
     SeriesResult,
     escape_like,
+    latest_period_rows,
 )
 
 _GDP = IndicatorRow(
@@ -426,3 +427,60 @@ def test_meta_reports_freshness_per_dataset(client: TestClient) -> None:
     assert datasets["World Development Indicators"]["source"] == "World Bank"
     assert datasets["World Development Indicators"]["last_updated"] == "2026-07-20"
     assert "Banking & Financial Statistics — Monthly" in datasets
+
+
+# --- latest_period_rows: one year on the map, not all of them -----------------
+# The query behind /v1/data/geo returns every year each geography has, because
+# is_latest marks the newest RELEASE of a cell, not the newest year. These rows
+# are shaped like that query's output; only index 12 (sort_key) matters here.
+
+
+def _geo_row(code: str, value: str, label: str, sort_key: int) -> tuple[object, ...]:
+    return (
+        code, code, None, Decimal(value), label, "Provincial expenditure (budget)",
+        "NPR_MILLION", "Nepali rupees (millions)", "World Bank",
+        "Nepal Fiscal Dashboard", None, "2026-08-06", sort_key,
+    )
+
+
+def test_latest_period_rows_keeps_only_the_newest_year() -> None:
+    # The real bug: five fiscal years per province came back as one map.
+    rows = [
+        _geo_row("NP01", "42120.41", "FY 2019/20", 2019),
+        _geo_row("NP01", "36233.53", "FY 2023/24", 2023),
+        _geo_row("NP03", "58000.00", "FY 2019/20", 2019),
+        _geo_row("NP03", "62209.10", "FY 2023/24", 2023),
+    ]
+    kept = latest_period_rows(rows)
+    assert [r[0] for r in kept] == ["NP01", "NP03"]
+    assert {r[4] for r in kept} == {"FY 2023/24"}
+    assert [r[3] for r in kept] == [Decimal("36233.53"), Decimal("62209.10")]
+
+
+def test_latest_period_rows_uses_sort_key_not_the_label() -> None:
+    # Label ordering is a trap: 'FY 2019/20' sorts after 'FY 2023/24' in some
+    # spellings, so the newest period is decided by sort_key alone.
+    rows = [
+        _geo_row("NP01", "1", "FY 2023/24", 2023),
+        _geo_row("NP01", "2", "FY 2019/20", 2019),
+    ]
+    assert [r[4] for r in latest_period_rows(rows)] == ["FY 2023/24"]
+
+
+def test_latest_period_rows_drops_a_geography_missing_that_year() -> None:
+    # Blank on the map beats back-filling an older year into the same picture.
+    rows = [
+        _geo_row("NP01", "10", "FY 2023/24", 2023),
+        _geo_row("NP02", "20", "FY 2019/20", 2019),
+    ]
+    assert [r[0] for r in latest_period_rows(rows)] == ["NP01"]
+
+
+def test_latest_period_rows_handles_an_empty_result() -> None:
+    assert latest_period_rows([]) == []
+
+
+def test_latest_period_rows_leaves_single_year_data_untouched() -> None:
+    # Census data is one period; the helper must not change what already worked.
+    rows = [_geo_row("NP01", "4961412", "2021", 2021), _geo_row("NP03", "6116866", "2021", 2021)]
+    assert len(latest_period_rows(rows)) == 2

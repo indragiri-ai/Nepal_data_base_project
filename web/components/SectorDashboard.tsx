@@ -16,6 +16,7 @@ import {
 } from "@/lib/api";
 import {
   SECTORS,
+  groupByTheme,
   indicatorsForSector,
   sourceForIndicator,
   assignmentWarnings,
@@ -32,6 +33,12 @@ const FiscalPanel = dynamic(() => import("@/components/FiscalPanel"), {
   loading: () => <p className="state">Loading public finance…</p>,
 });
 
+// Same reasoning: ECharts stays off every sector page that does not draw one.
+const ProvincePanel = dynamic(() => import("@/components/ProvincePanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading provincial figures…</p>,
+});
+
 const SOURCE_ORDER = ["World Bank", "Nepal Rastra Bank", "National Statistics Office"];
 
 export default function SectorDashboard({ slug }: { slug: string }) {
@@ -43,6 +50,8 @@ export default function SectorDashboard({ slug }: { slug: string }) {
   // Big sectors (Economy ~600) are capped per source group so the page stays
   // tight; a group expands on demand.
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  // null = every shelf. Picking one narrows the list to it.
+  const [activeTheme, setActiveTheme] = useState<string | null>(null);
   const GROUP_CAP = 24;
 
   useEffect(() => {
@@ -91,12 +100,38 @@ export default function SectorDashboard({ slug }: { slug: string }) {
     );
   }, [owned, filter]);
 
+  // Themed shelves where the sector defines them (Economy's ~676 indicators),
+  // otherwise the original grouping by source. A sector small enough to read in
+  // one screen does not need shelves, and inventing them there would add a
+  // layer of chrome over nothing.
   const grouped = useMemo(() => {
+    if (sector.themes) {
+      return groupByTheme(sector.themes, filtered).map((g) => ({
+        source: g.label,
+        rows: g.rows,
+      }));
+    }
     return SOURCE_ORDER.map((src) => ({
       source: src,
       rows: filtered.filter((i) => sourceForIndicator(i) === src),
     })).filter((g) => g.rows.length > 0);
-  }, [filtered]);
+  }, [filtered, sector.themes]);
+
+  // Counts for the jump row come from the UNfiltered set, so the shelves keep
+  // their shape while you type — a row of counts that reshuffles on every
+  // keystroke is unreadable.
+  const themeCounts = useMemo(() => {
+    if (!sector.themes) return [];
+    return groupByTheme(sector.themes, owned).map((g) => ({
+      label: g.label,
+      count: g.rows.length,
+    }));
+  }, [owned, sector.themes]);
+
+  const visible = useMemo(
+    () => (activeTheme ? grouped.filter((g) => g.source === activeTheme) : grouped),
+    [grouped, activeTheme],
+  );
 
   const hasHeadlines = sector.headlineCodes.length > 0 || Boolean(sector.mapCard);
 
@@ -154,6 +189,10 @@ export default function SectorDashboard({ slug }: { slug: string }) {
           676-item list is where fiscal data goes to be never found. */}
       {sector.slug === "economy" && <FiscalPanel />}
 
+      {/* The provinces, under the federal picture: same money, one level down.
+          Per-province budgets are hard to find anywhere else. */}
+      {sector.slug === "economy" && <ProvincePanel />}
+
       {/* Full list */}
       <section aria-labelledby="all-list">
         <div className="band-head">
@@ -177,11 +216,44 @@ export default function SectorDashboard({ slug }: { slug: string }) {
               />
             </div>
 
-            {grouped.length === 0 && (
-              <div className="state">No indicators match “{filter}”.</div>
+            {/* Jump row: the shelves this sector has, with how much is on each.
+                Counts are the point — they tell you where the data actually is
+                before you commit to a click. */}
+            {themeCounts.length > 0 && (
+              <div className="chip-row theme-row" role="group" aria-label="Filter by theme">
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={activeTheme === null}
+                  onClick={() => setActiveTheme(null)}
+                >
+                  All <span className="chip-count">{owned.length}</span>
+                </button>
+                {themeCounts.map((t) => (
+                  <button
+                    key={t.label}
+                    type="button"
+                    className="chip"
+                    aria-pressed={activeTheme === t.label}
+                    onClick={() =>
+                      setActiveTheme((prev) => (prev === t.label ? null : t.label))
+                    }
+                  >
+                    {t.label} <span className="chip-count">{t.count}</span>
+                  </button>
+                ))}
+              </div>
             )}
 
-            {grouped.map((g) => {
+            {visible.length === 0 && (
+              <div className="state">
+                {filter
+                  ? `No indicators match “${filter}”.`
+                  : "No indicators on this shelf."}
+              </div>
+            )}
+
+            {visible.map((g) => {
               const isExpanded = expanded.has(g.source);
               const shown = isExpanded ? g.rows : g.rows.slice(0, GROUP_CAP);
               return (
