@@ -321,6 +321,36 @@ the tabled figures, and two independent provinces agreeing to the last
 published decimal is strong; replacing them with the ministries' own PDFs (via
 the GIWMS harvester that MOF.S1 / EDU.S1 will build) would make it airtight.
 
+## Staying up to date (WBF.S4, 2026-08-06)
+
+The dashboard publishes roughly annually and gives no notification. The step
+file proposed watching the page's "Last Updated" string — but as recorded
+above, **that string is not on the page**, and a watcher aimed at it would
+never fire while looking like it worked.
+
+So the watcher checks the **data**. `ingestion/worldbank/fiscal_watch.py`
+re-harvests the nine federal aggregate series (the same `harvest()` the loader
+uses, so there is no second parser to keep in step) and reduces them to a
+fingerprint stored in `watch_fingerprint.json`: per series, how many years it
+has, its newest year, and that year's value. Any new fiscal year, revised
+headline figure, or renamed series moves the fingerprint.
+
+`.github/workflows/wb-fiscal-watch.yml` runs it quarterly and opens a labelled
+GitHub issue when it fires — a red run is easy to miss months later; an issue
+is not. It touches no database and needs no secrets.
+
+    make wb-fiscal-watch          # has it changed? exit 1 = yes
+    make wb-fiscal-watch-update   # accept the current state as the baseline
+
+Federal only, deliberately: a provincial harvest is ~45 minutes and the
+provincial sheets ride the same publication cycle, so the federal series are
+the canary at a cost of nine requests.
+
+**The one blind spot, stated plainly:** a revision to an OLDER year that leaves
+the newest year untouched does not move the fingerprint. Keeping every value
+would make this file a second copy of the warehouse. Since both loaders are
+idempotent, a re-run after any fire picks up older revisions anyway.
+
 ## Reproducing this
 
 ```

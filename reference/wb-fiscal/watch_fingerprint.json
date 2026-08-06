@@ -1,0 +1,51 @@
+{
+  "_what": "Fingerprint of the World Bank Nepal Fiscal Dashboard's federal series. Compared on a schedule by ingestion/worldbank/fiscal_watch.py; a difference means the source published something new. Update it only after re-running the load.",
+  "checked_at": "2026-08-06",
+  "series": {
+    "FISCAL_DEBT_STOCK": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "2430184.3",
+      "years": "7"
+    },
+    "FISCAL_EXPENDITURE_ACTUAL": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "1121153.96",
+      "years": "7"
+    },
+    "FISCAL_EXPENDITURE_BUDGET": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "1443858.5",
+      "years": "7"
+    },
+    "FISCAL_FINANCING_ACTUAL": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "-81357.92",
+      "years": "7"
+    },
+    "FISCAL_FINANCING_BUDGET": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "-145295.5",
+      "years": "7"
+    },
+    "FISCAL_NET_OPERATING_BALANCE_ACTUAL": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "50014.6",
+      "years": "7"
+    },
+    "FISCAL_NET_OPERATING_BALANCE_BUDGET": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "156778.6",
+      "years": "7"
+    },
+    "FISCAL_REVENUE_ACTUAL": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "979141.2",
+      "years": "7"
+    },
+    "FISCAL_REVENUE_BUDGET": {
+      "latest_period": "FY 2023/24",
+      "latest_value": "1298562.7",
+      "years": "7"
+    }
+  }
+}

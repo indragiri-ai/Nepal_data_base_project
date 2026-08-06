@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial wb-fiscal-watch wb-fiscal-watch-update nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -123,6 +123,12 @@ ingest-wb-fiscal-dry:  ## Same, but write nothing
 
 ingest-wb-fiscal-provincial:  ## WBF.S2: load provincial fiscal data for all 7 provinces (~10 min)
 	$(PY) -m ingestion.worldbank.fiscal_provincial
+
+wb-fiscal-watch:  ## WBF.S4: has the fiscal dashboard changed? (exit 1 = yes)
+	$(PY) -m ingestion.worldbank.fiscal_watch
+
+wb-fiscal-watch-update:  ## WBF.S4: accept the source's current state as the baseline
+	$(PY) -m ingestion.worldbank.fiscal_watch --update
 
 nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
 	$(PY) -m ingestion.nrb.bfs_acquire
