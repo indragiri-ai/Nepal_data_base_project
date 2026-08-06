@@ -151,9 +151,31 @@ Magnitudes are consistent with Nepal's published federal accounts (order of
 NPR 0.7–1.0 trillion), which supports the `NPR Million` reading — but
 consistency is not verification.
 
-## OPEN ISSUE — the aggregate row disagrees with its own parts (2026-08-01)
+## RESOLVED FOR LOADING — the aggregate row disagrees with its own parts
 
-**Status: BLOCKING. No fiscal data has been loaded into the warehouse.**
+**Status (2026-08-04): settled well enough to publish the aggregates, and only
+the aggregates. The underlying question is still open with the World Bank.**
+
+What settled it: the aggregate rows were checked against Nepal's own published
+accounts (FCGO), and they match.
+
+| Series | Dashboard | FCGO | Gap |
+|---|---|---|---|
+| FY 2018/19 revenue | 765,535.7 | 764,767.76 non-financing receipt | 0.10% |
+| FY 2022/23 revenue | 913,786.1 | 910,370.97 non-financing receipt | 0.38% |
+| FY 2018/19 expenditure | 957,980.1 | 944,351.58 recurrent + capital | 1.44% |
+
+So the **aggregate is the trustworthy series** and it is loaded. The revenue
+**category rows are still NOT loaded**: they do not sum to the aggregate in any
+year after FY 2017/18, and the reason remains unestablished (a revenue-sharing
+explanation fits FY 2018/19 to 0.12% but fails FY 2022/23 by 12%). Publishing
+them would let a reader add four published numbers and get a fifth that
+contradicts the published total. Question 3 of the founder's email to
+Infonepal@WorldBank.org still asks what the aggregate represents; if it is
+answered, the categories may become loadable.
+
+The evidence that opened this issue is kept below, unchanged, because the
+discrepancy itself is not explained — only worked around.
 
 On Federal Revenue (`Type1=Actual`), the aggregate row — the one with
 `Group2 = *`, which should be "revenue and grants, all categories" — equals the
@@ -187,23 +209,117 @@ source's own strings, and FY2018 reconciles perfectly through the same code
 path. It is not the fiscal-year mapping either; that would shift years, not
 change one series' level while leaving the other coherent.
 
-**Consequence.** Both readings cannot be published. Loading the aggregate would
-understate federal revenue by 12–13% in six of seven years; loading the summed
-parts would publish a total the source does not itself state. Rule 1 says
-report, never guess, so **nothing is loaded** until this is resolved.
-
-**How to resolve, in order of preference:**
-1. Ask the World Bank (Infonepal@WorldBank.org) what the aggregate row
-   represents — this is question 3 in the drafted email.
-2. Spot-check both readings for one year against the MoF Red Book / budget
-   speech. Whichever matches the published national figure is the true total,
-   and the other must be excluded or relabelled.
-3. Only then load, with the resolution recorded in each indicator's
-   `definition_en` so the reasoning stays auditable.
+**Consequence.** Both readings cannot be published. Rule 1 says report, never
+guess. The FCGO check above decided it: the aggregate matches Nepal's own
+accounts and is published; the summed parts are not, and the categories are
+withheld rather than relabelled into a total the source never states.
 
 The harvester (`ingestion/worldbank/fiscal_harvest.py`) enforces this: its sum
 check fails the run and writes no staging file, so the discrepancy cannot be
 loaded by accident.
+
+## Provincial figures — a different treatment, and why (2026-08-06)
+
+The provincial sheets are handled the OPPOSITE way round from the federal ones,
+and the reason is the source, not a change of mind.
+
+- **Federal:** the source publishes an aggregate AND its parts, and they
+  disagree. The aggregate is published (FCGO-verified); the parts are withheld.
+- **Provincial:** the source publishes **no provincial aggregate at all** —
+  only per-province, per-category rows. So each stored category value is the
+  source's own figure, and the per-province TOTAL is derived by summing them.
+
+Deriving a total is only allowed because it is gated against the source itself.
+For every sheet, type, year and category, the seven provinces must sum to the
+figure the same sheet publishes with no province filter:
+
+    sum(seven provinces)  ==  the source's own all-provinces figure
+
+That all-provinces figure comes from the source, so the check is not the
+pipeline marking its own homework. It passes for **every category, year and
+type** — e.g. FY2024 taxes, the seven provinces sum to 84,969.36, exactly the
+published all-provinces value. A failure means a province or category went
+missing, and the load stops rather than publishing a total that is quietly
+short.
+
+Loaded: Provincial Revenue, Provincial Expenditure and Provincial Grants, both
+Budget and Actual, geographies NP01–NP07 — 1,078 observations under release 47.
+Coverage is not the same for both types, because the source's is not: the
+**Actual** series run FY 2018/19 – FY 2023/24 (six years) and the **Budget**
+series FY 2019/20 – FY 2023/24 (five). The dashboard publishes no provincial
+rows before those years, so the gap is the source's, not a harvesting loss —
+the all-provinces cross-check would have caught a dropped year. Provincial
+Financing and Provincial Fiscal Indicators are deliberately left for a later
+pass.
+
+### A correction to this file (2026-08-06)
+
+An earlier draft of this section said the provincial data was **loaded on
+2026-08-04**. It was not. The warehouse was checked on 2026-08-06 and held zero
+provincial observations and no provincial indicators — the loader had been
+written and tested, but no successful load had ever run. The load recorded
+below is the first one. The earlier claim is corrected rather than quietly
+deleted, because a provenance file that overstates what happened is the same
+failure as data that overstates what a source says.
+
+### The independent check WBF.S2 asks for — done (2026-08-06)
+
+The sum check above is internal to the dashboard: it proves nothing was dropped
+in harvesting, not that the World Bank's provincial figures match what the
+provinces themselves published. WBF.S2 requires one provincial figure checked
+against that province's own budget. **Two were checked, both for FY 2023/24
+(BS 2080/81) budgeted expenditure, and both reconcile.**
+
+**Bagmati (NP03)** — budget presented 16 June 2023:
+
+| Line | Bagmati's own announced budget | This portal (WB dashboard) |
+|---|---|---|
+| Capital | 35,506.3 | 35,506.3 |
+| Current / recurrent | 26,702.7 | 26,702.8 |
+| Financial management | 500.0 | not in this sheet |
+| **Total** | **62,709.0** | **62,209.1** |
+
+**Koshi (NP01)** — budget presented 15 June 2023 by Chief Minister Hikmat
+Kumar Karki (figures as the source reports them, in NPR billion):
+
+| Line | Koshi's own announced budget | This portal (WB dashboard) |
+|---|---|---|
+| Capital | 18.23 | 18.23 |
+| Current 14.39 + transfers to local levels 3.60 | 17.99 | 18.00 (recurrent) |
+| Fiscal management | 0.01 | not in this sheet |
+| **Total** | **36.24** | **36.23** |
+
+Two things this establishes. First, the component figures match the provinces'
+own numbers to the last decimal the sources publish — this is not a
+coincidence at that precision. Second, **the residual is explained, not waved
+away**: in both provinces the dashboard's total is short by exactly the
+province's "financial management / fiscal arrangement" line (500.0 for Bagmati,
+10.0 for Koshi), because that is financing, which the dashboard carries in a
+separate Provincial Financing sheet that is not loaded. Add it back and the
+totals agree exactly.
+
+It also confirms a mapping that was otherwise a guess: the dashboard's
+**"Recurrent expenditure" includes a province's fiscal transfers to local
+levels**, not only its own current spending. Koshi's 17,999.3 is
+14,396.3 current + 3,603.0 transfers.
+
+Sources for the provincial side of this check:
+
+- Koshi: <https://risingnepaldaily.com/news/28161> (The Rising Nepal,
+  15 June 2023) — total Rs 36.24 bn with the four-way split.
+- Bagmati: <https://english.ratopati.com/story/28314/budget-presented-by-bagmati->
+  (Ratopati, 16 June 2023) — total Rs 62,709 m with capital, current and
+  financial management stated separately.
+
+**Honest limitation:** these are press reports of the budget speeches, not the
+speech PDFs. The provinces' own documents were tried first and were not usable
+here — Koshi's Budget Implementation Annual Report 2080/81 is a scanned image
+with no text layer, and the fiscal tables in the Koshi Provincial Economic
+Survey 2080/81 could not be located by text search because the PDF's Devanagari
+font mapping is broken on extraction. Press reports of a budget speech quote
+the tabled figures, and two independent provinces agreeing to the last
+published decimal is strong; replacing them with the ministries' own PDFs (via
+the GIWMS harvester that MOF.S1 / EDU.S1 will build) would make it airtight.
 
 ## Reproducing this
 

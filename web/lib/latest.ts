@@ -25,11 +25,15 @@ export function latestPair(data: DataResponse): LatestPair | null {
     obs = obs.filter((o) => (o.breakdowns?.bfi_class ?? "") === pick);
   }
 
-  // Census series carry a sex breakdown (male/female/total) — the headline is
-  // the total, stored as the empty-breakdown row. Without this the orbit shows
-  // a single sex's count (e.g. ~14.9M instead of 29.2M).
-  if (obs.some((o) => o.breakdowns?.sex)) {
-    obs = obs.filter((o) => Object.keys(o.breakdowns ?? {}).length === 0);
+  // Any series that publishes both parts and a whole stores the whole as the
+  // empty-breakdown row: census by sex (male/female/total), provincial fiscal
+  // by category (taxes/grants/…/total). Take the whole whenever one exists —
+  // otherwise the headline is whichever part happened to sort last (the orbit
+  // showed ~14.9M instead of 29.2M before this). NRB series have no empty row,
+  // so they keep the bfi_class pick above.
+  if (obs.some((o) => Object.keys(o.breakdowns ?? {}).length > 0)) {
+    const whole = obs.filter((o) => Object.keys(o.breakdowns ?? {}).length === 0);
+    if (whole.length > 0) obs = whole;
   }
 
   if (obs.length === 0) return null;

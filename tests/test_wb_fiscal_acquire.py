@@ -5,7 +5,9 @@ from __future__ import annotations
 from typing import Any
 
 import pytest
+import requests
 
+from ingestion.worldbank import fiscal_acquire
 from ingestion.worldbank.fiscal_acquire import (
     DATA_SHEETS,
     NON_DATA_SHEETS,
@@ -99,6 +101,43 @@ def test_fetch_sheet_fails_loudly_on_a_shell() -> None:
     ])
     with pytest.raises(FiscalAcquireError, match="expected text/csv"):
         fetch_sheet(session, "Federal Revenue")  # type: ignore[arg-type]
+
+
+class FlakySession(FakeSession):
+    """Raises a transport error on the first `failures` calls, then serves."""
+
+    def __init__(self, responses: list[FakeResponse], failures: int) -> None:
+        super().__init__(responses)
+        self._failures = failures
+
+    def get(self, url: str, params: dict[str, Any] | None = None, **kw: Any) -> FakeResponse:
+        if self._failures > 0:
+            self._failures -= 1
+            self.calls.append((url, dict(params or {})))
+            raise requests.ReadTimeout("read timed out")
+        return super().get(url, params, **kw)
+
+
+def test_fetch_sheet_survives_a_transient_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
+    # A provincial harvest is ~340 requests; one dropped connection must not
+    # throw away the run. Two timeouts, then the real CSV.
+    monkeypatch.setattr(fiscal_acquire.time, "sleep", lambda _s: None)
+    session = FlakySession([FakeResponse(FEDERAL_REVENUE_CSV, "text/csv")], failures=2)
+    payload = fetch_sheet(session, "Federal Revenue")  # type: ignore[arg-type]
+    assert payload.rows[1][0] == "FY2018"
+    assert len(session.calls) == 3  # two failed attempts plus the one that worked
+
+
+def test_fetch_sheet_gives_up_when_the_source_is_really_down(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Retrying forever would hide an outage. After the last attempt it raises.
+    monkeypatch.setattr(fiscal_acquire.time, "sleep", lambda _s: None)
+    attempts = len(fiscal_acquire.RETRY_BACKOFF_S) + 1
+    session = FlakySession([], failures=attempts)
+    with pytest.raises(requests.ReadTimeout):
+        fetch_sheet(session, "Federal Revenue")  # type: ignore[arg-type]
+    assert len(session.calls) == attempts
 
 
 def test_describe_reports_shape_without_values() -> None:

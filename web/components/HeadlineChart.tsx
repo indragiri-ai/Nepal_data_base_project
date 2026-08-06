@@ -27,11 +27,15 @@ export function linkForCode(code: string): string {
 }
 
 /** Keep only the headline slice of a multi-breakdown series: the aggregate
- *  bank class, or the empty-breakdown (all-sexes) rows. Returns a copy. */
+ *  bank class, or the empty-breakdown (whole) rows. Returns a copy.
+ *  Without this a chart draws several values per period — every sex, or every
+ *  provincial revenue category plus their total — as one zigzag line. */
 function headlineSlice(data: DataResponse): DataResponse {
   const hasBfi = data.observations.some((o) => o.breakdowns?.bfi_class);
-  const hasSex = data.observations.some((o) => o.breakdowns?.sex);
-  if (!hasBfi && !hasSex) return data;
+  const hasParts = data.observations.some(
+    (o) => Object.keys(o.breakdowns ?? {}).length > 0,
+  );
+  if (!hasParts) return data;
 
   let obs = data.observations;
   if (hasBfi) {
@@ -43,9 +47,11 @@ function headlineSlice(data: DataResponse): DataResponse {
         : null;
     if (pick) obs = obs.filter((o) => (o.breakdowns?.bfi_class ?? "") === pick);
   }
-  if (hasSex) {
-    obs = obs.filter((o) => Object.keys(o.breakdowns ?? {}).length === 0);
-  }
+  // Parts plus a whole (census by sex, provincial fiscal by category): the
+  // whole is the empty-breakdown row. NRB has no such row — the pick above
+  // already reduced it to one class, so this leaves it alone.
+  const whole = obs.filter((o) => Object.keys(o.breakdowns ?? {}).length === 0);
+  if (whole.length > 0) obs = whole;
   return { ...data, observations: obs };
 }
 

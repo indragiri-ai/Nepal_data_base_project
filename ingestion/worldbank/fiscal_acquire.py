@@ -63,6 +63,8 @@ LANDING_VIEW = "Landingpage"
 DATASET_CODE = "worldbank/fiscal-dashboard"
 INVENTORY_PATH = Path("reference/wb-fiscal/sheet_inventory.json")
 REQUEST_PAUSE_S = 1.0  # be polite: one call per second
+# Waits between attempts on a transport error; len + 1 = attempts per request.
+RETRY_BACKOFF_S: tuple[float, ...] = (5.0, 15.0)
 
 # A browser-shaped UA. dataviz.worldbank.org sits behind a CDN that serves the
 # viz shell rather than data to obviously non-browser clients; identifying the
@@ -128,12 +130,41 @@ def open_session() -> requests.Session:
     session.headers.update(
         {"User-Agent": USER_AGENT, "Accept-Language": "en-US,en;q=0.9"}
     )
-    session.get(
+    _get(
+        session,
         f"{HOST}/views/{WORKBOOK}/{LANDING_VIEW}",
-        params={":embed": "y", ":showVizHome": "no"},
+        {":embed": "y", ":showVizHome": "no"},
         timeout=60,
     )
     return session
+
+
+def _get(
+    session: requests.Session, url: str, params: dict[str, str], timeout: int = 90
+) -> requests.Response:
+    """GET, surviving a transient network blip but never a real failure.
+
+    A provincial harvest is ~340 requests over six minutes, so one dropped
+    connection or slow response is close to certain; without this a single
+    timeout throws away the whole run (it did, on 2026-08-04, four minutes in).
+    Transport errors only — a response that arrives is handled by the caller,
+    which is where a wrong content type is caught. After the last attempt the
+    error is re-raised: a source that is genuinely down must still fail loudly.
+    """
+    for attempt in range(len(RETRY_BACKOFF_S) + 1):
+        try:
+            return session.get(url, params=params, timeout=timeout)
+        except requests.RequestException as exc:
+            if attempt == len(RETRY_BACKOFF_S):
+                raise
+            wait = RETRY_BACKOFF_S[attempt]
+            print(
+                f"    network error ({type(exc).__name__}); attempt "
+                f"{attempt + 1}/{len(RETRY_BACKOFF_S) + 1} failed, "
+                f"retrying in {wait:.0f}s"
+            )
+            time.sleep(wait)
+    raise FiscalAcquireError("unreachable: the retry loop always returns or raises")
 
 
 def fetch_sheet(
@@ -151,17 +182,18 @@ def fetch_sheet(
     params: dict[str, str] = {":embed": "y", **(filters or {})}
     url = f"{HOST}/views/{WORKBOOK}/{view}.csv"
 
-    response = session.get(url, params=params, timeout=90)
+    response = _get(session, url, params)
     content_type = response.headers.get("content-type", "")
     if "csv" not in content_type.lower():
         # One retry: reload the view to refresh the session, then ask again.
-        session.get(
+        _get(
+            session,
             f"{HOST}/views/{WORKBOOK}/{view}",
-            params={":embed": "y", ":showVizHome": "no"},
+            {":embed": "y", ":showVizHome": "no"},
             timeout=60,
         )
         time.sleep(REQUEST_PAUSE_S)
-        response = session.get(url, params=params, timeout=90)
+        response = _get(session, url, params)
         content_type = response.headers.get("content-type", "")
 
     if "csv" not in content_type.lower():
