@@ -49,7 +49,7 @@ The step file's facts-bank sample reproduces **exactly**: row 1 is
 a test against a captured fixture, so a re-upload with different content
 fails rather than passing as the same data.
 
-### Resource 2 — `1095e921-51ae-47b7-a501-9da185c0644e` — MALFORMED
+### Resource 2 — `1095e921-51ae-47b7-a501-9da185c0644e` — MALFORMED, and mis-titled
 
 **Two corrections to the step file's facts bank, both found by probing:**
 
@@ -83,10 +83,77 @@ The CKAN client deliberately passes these field names through untouched: a
 generic client that silently renamed them would hide the fault from the only
 code able to check it.
 
+## Verification of the positional mapping — DONE, and it passes (2026-08-06)
+
+Founder's decision: verify the mapping, then load both resources if it holds.
+It holds, on two independent tests.
+
+**Test 1 — the overlap (decisive).** The two resources overlap: resource 1
+runs to 2021-05-13 and resource 2 starts 2021-01-05, about four months in
+common. Reading resource 2 through the positional mapping and comparing it,
+commodity by commodity, against resource 1 — whose columns are labelled and
+trusted:
+
+| Date | Rows compared | Agree | Disagree |
+|---|---|---|---|
+| 2021-01-05 | 95 | 95 | 0 |
+| 2021-02-14 | 100 | 100 | 0 |
+| 2021-03-15 | 108 | 108 | 0 |
+| 2021-04-20 | 103 | 103 | 0 |
+| 2021-05-13 | 91 | 91 | 0 |
+| **Total** | **497** | **497** | **0** |
+
+Unit, minimum, maximum and average all agree exactly. The mapping
+`commodity / date / unit / min / max / avg` is confirmed, not assumed.
+
+**Test 2 — the agency's own site (independent channel).** kalimatimarket.gov.np
+publishes historical prices through its comparative-prices page (POST with a
+CSRF token; Nepali labels, Bikram Sambat dates). For 2022-04-18 the commodity
+names line up **exactly by position** with the ODN copy — गोलभेडा ठूलो(नेपाली)
+↔ Tomato Big(Nepali), and so on down the list. Identity and ordering confirmed
+from outside the aggregator.
+
+### But that test found something else — read before publishing any price
+
+The agency's published average and the dataset's "Average" **disagree for 10 of
+24 commodities checked**, always with the agency's higher. The cause is now
+established:
+
+> **The dataset's `Average` column is not an average. It is exactly the
+> midpoint of that day's minimum and maximum.**
+
+Checked across **5,000 rows sampled from both resources**, spanning the full
+2013→2022 range: **100.00% are exactly (min + max) / 2**, zero exceptions. The
+agency's own average is a different figure — usually closer to the day's high
+(e.g. 2022-04-18, Green Peas: min 60, max 70, our "Average" 65.00, the market
+board's published average 66.67).
+
+Consequence for ODN.S2: **the column must not be published as "average
+price".** It is a midpoint of the day's range, and that is what a label has to
+say. Minimum and maximum are the source's own figures and carry no such
+problem.
+
+## Real coverage — a third correction
+
+The resource titles are wrong about the end date too. Verified from the data:
+
+| Resource | Title claims | Actually contains |
+|---|---|---|
+| 1 | June 2013 → May 2021 | 2013-06-16 → 2021-05-13 ✓ |
+| 2 | May 2021 → September 2023 | **2021-01-05 → 2022-04-18** |
+
+So the dataset as a whole covers **2013-06-16 → 2022-04-18** — a decade of
+daily prices, ending in April 2022. Not September 2023, and not "present".
+Any page publishing it must say so.
+
+Note the agency's own site *does* carry prices past 2022 (2023-09-01 returned
+89 commodities), so a future step could extend the series from the market
+board directly. That is a different acquisition channel and a separate step.
+
 ## Open decisions for ODN.S2
 
-- Whether to load resource 2 at all, and if so under what verification of the
-  positional mapping. Resource 1 alone gives a clean 2013→2021 daily series.
+- **Labelling the midpoint** — publish min/max plus a clearly-named midpoint,
+  or min/max only. It cannot be called an average.
 - Basket size and storage. 242,411 source rows, filtered to Kg-only and a
-  top-25 commodity basket across three statistics, is a large load for a free
-  tier. The step requires a projected-size check with a **STOP** at 200 MB.
+  top-25 commodity basket, is a large load for a free tier. The step requires
+  a projected-size check with a **STOP** at 200 MB.
