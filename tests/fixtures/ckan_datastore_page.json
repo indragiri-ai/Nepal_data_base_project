@@ -1,0 +1,83 @@
+{
+  "help": "https://api.opendatanepal.com/api/3/action/help_show?name=datastore_search",
+  "success": true,
+  "result": {
+    "include_total": true,
+    "limit": 3,
+    "records_format": "objects",
+    "resource_id": "b791b8cd-7ed4-445c-ad8d-69bf58a2c8d4",
+    "total_estimation_threshold": null,
+    "records": [
+      {
+        "_id": 1,
+        "SN": "0",
+        "Commodity": "Tomato Big(Nepali)",
+        "Date": "2013-06-16",
+        "Unit": "Kg",
+        "Minimum": "35.0",
+        "Maximum": "40.0",
+        "Average": "37.5"
+      },
+      {
+        "_id": 2,
+        "SN": "1",
+        "Commodity": "Tomato Small(Local)",
+        "Date": "2013-06-16",
+        "Unit": "Kg",
+        "Minimum": "26.0",
+        "Maximum": "32.0",
+        "Average": "29.0"
+      },
+      {
+        "_id": 3,
+        "SN": "2",
+        "Commodity": "Potato Red",
+        "Date": "2013-06-16",
+        "Unit": "Kg",
+        "Minimum": "20.0",
+        "Maximum": "21.0",
+        "Average": "20.5"
+      }
+    ],
+    "fields": [
+      {
+        "id": "_id",
+        "type": "int"
+      },
+      {
+        "id": "SN",
+        "type": "text"
+      },
+      {
+        "id": "Commodity",
+        "type": "text"
+      },
+      {
+        "id": "Date",
+        "type": "text"
+      },
+      {
+        "id": "Unit",
+        "type": "text"
+      },
+      {
+        "id": "Minimum",
+        "type": "text"
+      },
+      {
+        "id": "Maximum",
+        "type": "text"
+      },
+      {
+        "id": "Average",
+        "type": "text"
+      }
+    ],
+    "_links": {
+      "start": "/api/3/action/datastore_search?resource_id=b791b8cd-7ed4-445c-ad8d-69bf58a2c8d4&limit=3",
+      "next": "/api/3/action/datastore_search?resource_id=b791b8cd-7ed4-445c-ad8d-69bf58a2c8d4&limit=3&offset=3"
+    },
+    "total": 197161,
+    "total_was_estimated": false
+  }
+}
