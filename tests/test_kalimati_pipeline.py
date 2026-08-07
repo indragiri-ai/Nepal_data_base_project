@@ -8,6 +8,7 @@ database work itself is exercised by the dry run against the live warehouse.
 from __future__ import annotations
 
 import csv
+import re
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
@@ -188,3 +189,23 @@ def test_different_days_and_commodities_are_never_merged() -> None:
     kept, overlaps, conflicts = deduplicate(rows)
     assert len(kept) == 3
     assert overlaps == 0
+
+
+def test_the_frontend_basket_matches_the_seed_csv() -> None:
+    """The commodity picker lists the same basket the loader loaded.
+
+    The panel hard-codes the list (it is a client component with no build-time
+    access to db/seeds), so the two can drift — and a picker offering a
+    commodity that was never loaded shows a reader an empty chart. This test is
+    the seam that catches it.
+    """
+    panel = Path("web/components/MarketPricesPanel.tsx").read_text(encoding="utf-8")
+    block = panel.split("const BASKET = [", 1)[1].split("] as const", 1)[0]
+    in_panel = re.findall(r'"([^"]+)"', block)
+
+    with BASKET_CSV.open(encoding="utf-8", newline="") as fh:
+        in_csv = [row["commodity"] for row in csv.DictReader(fh)]
+
+    assert in_panel == in_csv, (
+        "the commodity picker and db/seeds/kalimati_basket.csv have drifted"
+    )

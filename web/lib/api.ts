@@ -144,6 +144,24 @@ export function fetchSeries(indicatorCode: string, geo = "NP"): Promise<DataResp
   return getJson<DataResponse>(`/v1/data?${params.toString()}`);
 }
 
+/** One slice of a broken-down series — e.g. a single commodity's daily prices.
+ *  Without this a chart of one vegetable would have to download all 25, since
+ *  the Kalimati series is ~77,000 observations per indicator. */
+export function fetchSeriesSlice(
+  indicatorCode: string,
+  geo: string,
+  breakdownKey: string,
+  breakdownValue: string,
+): Promise<DataResponse> {
+  const params = new URLSearchParams({
+    indicator: indicatorCode,
+    geo,
+    breakdown_key: breakdownKey,
+    breakdown_value: breakdownValue,
+  });
+  return getJson<DataResponse>(`/v1/data?${params.toString()}`);
+}
+
 export interface DatasetMeta {
   dataset: string;
   source: string;

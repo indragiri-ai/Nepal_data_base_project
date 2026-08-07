@@ -203,9 +203,27 @@ class FakeRepository:
             ),
         ]
 
-    def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None:
+    def get_series(
+        self,
+        indicator_code: str,
+        geography_code: str,
+        breakdown_key: str | None = None,
+        breakdown_value: str | None = None,
+    ) -> SeriesResult | None:
         if indicator_code != "GDP_GROWTH" or geography_code != "NP":
             return None
+        observations = [
+            ObservationRow("2019", 2019, Decimal("6.66"), "final", None, "2026-06-13",
+                           {"variant": "a"}),
+            ObservationRow("2020", 2020, Decimal("-2.37"), "final", None, "2026-06-13",
+                           {"variant": "b"}),
+        ]
+        if breakdown_key is not None:
+            observations = [
+                o for o in observations if o.breakdowns.get(breakdown_key) == breakdown_value
+            ]
+            if not observations:
+                return None
         return SeriesResult(
             indicator_code="GDP_GROWTH",
             indicator_name="GDP growth (annual %)",
@@ -217,10 +235,7 @@ class FakeRepository:
             dataset_name="World Development Indicators",
             license="CC BY 4.0",
             latest_release_date="2026-06-13",
-            observations=[
-                ObservationRow("2019", 2019, Decimal("6.66"), "final", None, "2026-06-13"),
-                ObservationRow("2020", 2020, Decimal("-2.37"), "final", None, "2026-06-13"),
-            ],
+            observations=observations,
         )
 
 
@@ -484,3 +499,62 @@ def test_latest_period_rows_leaves_single_year_data_untouched() -> None:
     # Census data is one period; the helper must not change what already worked.
     rows = [_geo_row("NP01", "4961412", "2021", 2021), _geo_row("NP03", "6116866", "2021", 2021)]
     assert len(latest_period_rows(rows)) == 2
+
+
+# --- the breakdown filter on /v1/data ----------------------------------------
+# Some series are only usable one slice at a time: the Kalimati daily prices
+# are 76,747 observations per indicator across 25 commodities, so charting one
+# vegetable without a filter means sending every vegetable to the browser.
+
+
+def test_data_without_a_breakdown_returns_the_whole_series(client: TestClient) -> None:
+    resp = client.get("/v1/data", params={"indicator": "GDP_GROWTH", "geo": "NP"})
+    assert resp.status_code == 200
+    assert len(resp.json()["observations"]) == 2
+
+
+def test_data_filtered_by_a_breakdown_returns_only_that_slice(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data",
+        params={
+            "indicator": "GDP_GROWTH", "geo": "NP",
+            "breakdown_key": "variant", "breakdown_value": "a",
+        },
+    )
+    assert resp.status_code == 200
+    body = resp.json()
+    assert len(body["observations"]) == 1
+    assert body["observations"][0]["period"] == "2019"
+
+
+def test_a_breakdown_key_without_a_value_is_rejected(client: TestClient) -> None:
+    # Accepting it would silently return the whole series to a caller who asked
+    # for one slice — the exact failure the filter exists to prevent.
+    resp = client.get(
+        "/v1/data",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_key": "variant"},
+    )
+    assert resp.status_code == 422
+    assert "together" in resp.json()["detail"]
+
+
+def test_a_breakdown_value_without_a_key_is_rejected(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_value": "a"},
+    )
+    assert resp.status_code == 422
+
+
+def test_a_breakdown_that_matches_nothing_404s_with_the_filter_named(
+    client: TestClient,
+) -> None:
+    resp = client.get(
+        "/v1/data",
+        params={
+            "indicator": "GDP_GROWTH", "geo": "NP",
+            "breakdown_key": "variant", "breakdown_value": "nope",
+        },
+    )
+    assert resp.status_code == 404
+    assert "variant='nope'" in resp.json()["detail"]

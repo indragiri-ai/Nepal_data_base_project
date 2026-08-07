@@ -129,7 +129,13 @@ class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
     def get_spark_series(self) -> list[IndicatorSparkRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
-    def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None: ...
+    def get_series(
+        self,
+        indicator_code: str,
+        geography_code: str,
+        breakdown_key: str | None = None,
+        breakdown_value: str | None = None,
+    ) -> SeriesResult | None: ...
     def get_geo_values(
         self, indicator_code: str, level: str, parent_code: str | None = None
     ) -> GeoValuesResult | None: ...
@@ -274,7 +280,25 @@ class PostgresRepository:
             )
         return result
 
-    def get_series(self, indicator_code: str, geography_code: str) -> SeriesResult | None:
+    def get_series(
+        self,
+        indicator_code: str,
+        geography_code: str,
+        breakdown_key: str | None = None,
+        breakdown_value: str | None = None,
+    ) -> SeriesResult | None:
+        """One indicator's series for one geography, optionally ONE breakdown.
+
+        The breakdown filter exists because some series are enormous when taken
+        whole: the Kalimati daily prices are 76,747 observations per indicator
+        across 25 commodities, so a chart of one vegetable would otherwise mean
+        sending every vegetable to the browser and throwing 24/25 of it away.
+        """
+        breakdown_filter = ""
+        params: list[str] = [indicator_code, geography_code]
+        if breakdown_key is not None and breakdown_value is not None:
+            breakdown_filter = " AND o.breakdowns->>%s = %s"
+            params += [breakdown_key, breakdown_value]
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
                 "SELECT t.gregorian_label, t.sort_key, o.value, o.status, o.footnote,"
@@ -289,8 +313,9 @@ class PostgresRepository:
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.code = %s AND o.is_latest"
-                " ORDER BY t.sort_key",
-                (indicator_code, geography_code),
+                + breakdown_filter
+                + " ORDER BY t.sort_key",
+                tuple(params),
             )
             rows = cur.fetchall()
         if not rows:

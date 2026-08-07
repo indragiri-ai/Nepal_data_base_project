@@ -238,14 +238,36 @@ def get_data(
     repo: Annotated[Repository, Depends(get_repository)],
     indicator: Annotated[str, Query(description="Indicator code, e.g. GDP_GROWTH")],
     geo: Annotated[str, Query(description="Geography code, e.g. NP")] = "NP",
+    breakdown_key: Annotated[
+        str | None,
+        Query(description="Breakdown dimension to filter on, e.g. 'commodity'"),
+    ] = None,
+    breakdown_value: Annotated[
+        str | None,
+        Query(description="Value of that dimension, e.g. 'Tomato Small(Local)'"),
+    ] = None,
 ) -> DataResponse:
+    # Both or neither: a key without a value would silently return the whole
+    # series, which for the daily price data is 76,747 observations where the
+    # caller asked for one commodity.
+    if (breakdown_key is None) != (breakdown_value is None):
+        raise HTTPException(
+            status_code=422,
+            detail="breakdown_key and breakdown_value must be given together",
+        )
     indicator_row = repo.get_indicator(indicator)
     if indicator_row is None:
         raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
-    series = repo.get_series(indicator, geo)
+    series = repo.get_series(indicator, geo, breakdown_key, breakdown_value)
     if series is None:
+        where = (
+            f" with {breakdown_key}='{breakdown_value}'"
+            if breakdown_key is not None
+            else ""
+        )
         raise HTTPException(
-            status_code=404, detail=f"No data for indicator '{indicator}' in geography '{geo}'"
+            status_code=404,
+            detail=f"No data for indicator '{indicator}' in geography '{geo}'{where}",
         )
     return DataResponse(
         indicator=IndicatorSummary(

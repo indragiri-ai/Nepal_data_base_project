@@ -39,6 +39,11 @@ const ProvincePanel = dynamic(() => import("@/components/ProvincePanel"), {
   loading: () => <p className="state">Loading provincial figures…</p>,
 });
 
+const MarketPricesPanel = dynamic(() => import("@/components/MarketPricesPanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading market prices…</p>,
+});
+
 const SOURCE_ORDER = ["World Bank", "Nepal Rastra Bank", "National Statistics Office"];
 
 export default function SectorDashboard({ slug }: { slug: string }) {
@@ -192,6 +197,10 @@ export default function SectorDashboard({ slug }: { slug: string }) {
       {/* The provinces, under the federal picture: same money, one level down.
           Per-province budgets are hard to find anywhere else. */}
       {sector.slug === "economy" && <ProvincePanel />}
+
+      {/* Food prices lead this sector: it is the one series here that answers a
+          question people actually ask out loud. */}
+      {sector.slug === "environment" && <MarketPricesPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">
