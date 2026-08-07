@@ -14,8 +14,10 @@
 //  * The midpoint is DERIVED here, not stored, and never called an average:
 //    it is exactly (low + high) / 2, and the market board's own published
 //    average is a different, usually higher number.
-//  * Daily/monthly is a readability toggle. The monthly view IS an average —
-//    of the daily lows and the daily highs — and says so in words.
+//  * Daily/monthly is a readability toggle. The monthly band shows the
+//    month's CHEAPEST and DEAREST price, not an average of each end —
+//    averaging both ends collapses the band and hides the volatility that is
+//    the whole story of a vegetable market.
 //  * Table view and CSV below; identity never rests on colour alone.
 //
 // Vintage honesty: this series ENDS 18 April 2022. Every label says so, because
@@ -34,7 +36,7 @@ const MAX_CODE = "KALIMATI_PRICE_MAX";
 // The portal's validated categorical palette (globals.css). Produce gets
 // series-1; the band is the same hue at low opacity, not a second colour.
 const PRODUCE = "#008300";
-const BAND = "rgba(0, 131, 0, 0.16)";
+const BAND = "rgba(0, 131, 0, 0.30)";
 
 // The curated basket, in the order the loader ranked it (most trading days
 // first). Kept in step with db/seeds/kalimati_basket.csv.
@@ -53,33 +55,60 @@ interface Point {
   label: string;
   low: number;
   high: number;
+  /** Daily: exactly halfway between low and high. Monthly: the average of that
+   *  month's daily midpoints. Never the source's "Average" column, which is a
+   *  midpoint too and disagrees with the market board's own average. */
+  mid: number;
 }
+
+/** How much of the decade to show at once. Nine years of a seasonal series in
+ *  one width is a comb; most questions are about the recent years. */
+type Window = "all" | "3y";
+const WINDOWS: Record<Window, string> = { "3y": "Last 3 years", all: "All years" };
 
 const npr = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 1,
   maximumFractionDigits: 1,
 });
 
-/** Average the daily lows and the daily highs within each calendar month.
- *  This is a real average and is labelled as one — unlike the midpoint. */
+/** Roll daily prices up to months.
+ *
+ *  The band becomes the month's REAL spread — its cheapest low and its dearest
+ *  high — and the line the average of that month's daily midpoints.
+ *
+ *  The first version averaged the lows and averaged the highs, which was a
+ *  quiet mistake: averaging both ends collapses the band to almost nothing, so
+ *  the chart drew a hairline and the whole point of showing a range was lost.
+ *  A month in which tomatoes swung between 20 and 80 rupees should LOOK like
+ *  that month. */
 function toMonthly(points: Point[]): Point[] {
-  const buckets = new Map<string, { low: number; high: number; n: number }>();
+  const buckets = new Map<string, { low: number; high: number; midSum: number; n: number }>();
   for (const p of points) {
     const month = p.label.slice(0, 7); // YYYY-MM
-    const bucket = buckets.get(month) ?? { low: 0, high: 0, n: 0 };
-    bucket.low += p.low;
-    bucket.high += p.high;
-    bucket.n += 1;
-    buckets.set(month, bucket);
+    const b = buckets.get(month);
+    if (b === undefined) {
+      buckets.set(month, { low: p.low, high: p.high, midSum: p.mid, n: 1 });
+      continue;
+    }
+    b.low = Math.min(b.low, p.low);
+    b.high = Math.max(b.high, p.high);
+    b.midSum += p.mid;
+    b.n += 1;
   }
   return [...buckets.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, b]) => ({ label: month, low: b.low / b.n, high: b.high / b.n }));
+    .map(([month, b]) => ({
+      label: month,
+      low: b.low,
+      high: b.high,
+      mid: b.midSum / b.n,
+    }));
 }
 
 export default function MarketPricesPanel() {
   const [commodity, setCommodity] = useState<string>("Tomato Small(Local)");
   const [grain, setGrain] = useState<Grain>("monthly");
+  const [windowSize, setWindowSize] = useState<Window>("3y");
   const [raw, setRaw] = useState<Point[] | null>(null);
   const [meta, setMeta] = useState<DataResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -101,7 +130,12 @@ export default function MarketPricesPanel() {
           const high = highByDay.get(o.period);
           // A low without its high is half a fact; skip rather than invent one.
           if (high === undefined) continue;
-          points.push({ label: o.period, low: o.value, high });
+          points.push({
+            label: o.period,
+            low: o.value,
+            high,
+            mid: (o.value + high) / 2,
+          });
         }
         setRaw(points);
         setMeta(lows);
@@ -118,10 +152,23 @@ export default function MarketPricesPanel() {
     };
   }, [commodity]);
 
-  const points = useMemo(
-    () => (raw === null ? [] : grain === "monthly" ? toMonthly(raw) : raw),
-    [raw, grain],
-  );
+  const points = useMemo(() => {
+    if (raw === null) return [];
+    // Window first, then roll up: a 3-year monthly view should be built from
+    // the days inside those 3 years, not sliced out of the full rollup.
+    let rows = raw;
+    if (windowSize === "3y" && raw.length > 0) {
+      const lastDay = raw[raw.length - 1].label;
+      const cutoff = `${Number(lastDay.slice(0, 4)) - 3}${lastDay.slice(4)}`;
+      rows = raw.filter((p) => p.label >= cutoff);
+    }
+    return grain === "monthly" ? toMonthly(rows) : rows;
+  }, [raw, grain, windowSize]);
+
+  // The band means something different in each view, so it is named for what
+  // it actually is rather than carrying one vague label across both.
+  const rangeLabel = grain === "monthly" ? "Cheapest to dearest in the month" : "Low to high";
+  const midLabel = grain === "monthly" ? "Average price" : "Midpoint";
 
   const option: ChartOption | null = useMemo(() => {
     if (points.length === 0) return null;
@@ -131,12 +178,12 @@ export default function MarketPricesPanel() {
     // how a two-bounded range is filled. The tooltip below reads the real
     // numbers out of `points`, never off the stack.
     const spans = points.map((p) => p.high - p.low);
-    const mids = points.map((p) => (p.low + p.high) / 2);
+    const mids = points.map((p) => p.mid);
 
     return {
       grid: { left: 8, right: 24, top: 40, bottom: 8, containLabel: true },
       legend: {
-        data: ["Daily range", "Midpoint"],
+        data: [rangeLabel, midLabel],
         top: 0,
         // Right-aligned: the y-axis name sits at the top LEFT of the plot, and
         // a left-aligned legend printed straight through it.
@@ -156,12 +203,13 @@ export default function MarketPricesPanel() {
           const i = list[0]?.dataIndex as number;
           const p = points[i];
           if (!p) return "";
-          const mid = (p.low + p.high) / 2;
+          const top = grain === "monthly" ? "dearest" : "high";
+          const bottom = grain === "monthly" ? "cheapest" : "low";
           return (
             `<strong>${p.label}</strong><br/>` +
-            `high &nbsp;NPR ${npr.format(p.high)}<br/>` +
-            `low &nbsp;&nbsp;NPR ${npr.format(p.low)}<br/>` +
-            `midpoint NPR ${npr.format(mid)}`
+            `${top} &nbsp;NPR ${npr.format(p.high)}<br/>` +
+            `${bottom} &nbsp;NPR ${npr.format(p.low)}<br/>` +
+            `${midLabel.toLowerCase()} &nbsp;NPR ${npr.format(p.mid)}`
           );
         },
       },
@@ -194,7 +242,7 @@ export default function MarketPricesPanel() {
           z: 1,
         },
         {
-          name: "Daily range",
+          name: rangeLabel,
           type: "line",
           stack: "range",
           data: spans,
@@ -205,10 +253,10 @@ export default function MarketPricesPanel() {
           z: 1,
         },
         {
-          name: "Midpoint",
+          name: midLabel,
           type: "line",
           data: mids,
-          lineStyle: { color: PRODUCE, width: 2 },
+          lineStyle: { color: PRODUCE, width: 1.5 },
           itemStyle: { color: PRODUCE },
           symbol: "none",
           smooth: false,
@@ -233,13 +281,14 @@ export default function MarketPricesPanel() {
               downloadCsv(
                 `kalimati-${commodity.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-${grain}.csv`,
                 [
-                  [grain === "monthly" ? "Month" : "Date", "Low (NPR/kg)", "High (NPR/kg)",
-                   "Midpoint (NPR/kg)"],
+                  [grain === "monthly" ? "Month" : "Date", `${grain === "monthly" ? "Cheapest" : "Low"} (NPR/kg)`,
+                   `${grain === "monthly" ? "Dearest" : "High"} (NPR/kg)`,
+                   `${midLabel} (NPR/kg)`],
                   ...points.map((p) => [
                     p.label,
                     npr.format(p.low),
                     npr.format(p.high),
-                    npr.format((p.low + p.high) / 2),
+                    npr.format(p.mid),
                   ]),
                 ],
               )
@@ -289,6 +338,18 @@ export default function MarketPricesPanel() {
             Every day
           </button>
         </div>
+        <div className="segmented" role="group" aria-label="How many years">
+          {(Object.keys(WINDOWS) as Window[]).map((w) => (
+            <button
+              key={w}
+              type="button"
+              aria-pressed={windowSize === w}
+              onClick={() => setWindowSize(w)}
+            >
+              {WINDOWS[w]}
+            </button>
+          ))}
+        </div>
       </div>
 
       {error && (
@@ -307,11 +368,25 @@ export default function MarketPricesPanel() {
                 price, {first.label} to {last.label}
               </h3>
               <p>
-                The shaded band is the range between the day&rsquo;s lowest and
-                highest price; the line is the midpoint between them.{" "}
-                {grain === "monthly"
-                  ? "Monthly view averages the daily lows and the daily highs within each month."
-                  : `Every trading day shown — ${points.length.toLocaleString()} of them.`}
+                {grain === "monthly" ? (
+                  <>
+                    The shaded band spans the cheapest and dearest price the
+                    market recorded in each month; the line is that
+                    month&rsquo;s average. Over these{" "}
+                    {points.length.toLocaleString()} months it ranged{" "}
+                    <strong>
+                      NPR {npr.format(Math.min(...points.map((p) => p.low)))} to{" "}
+                      {npr.format(Math.max(...points.map((p) => p.high)))} per kg
+                    </strong>
+                    .
+                  </>
+                ) : (
+                  <>
+                    The shaded band is the gap between the day&rsquo;s lowest and
+                    highest price; the line is halfway between them. Every
+                    trading day shown — {points.length.toLocaleString()} of them.
+                  </>
+                )}
               </p>
             </figcaption>
             <EChart
@@ -338,9 +413,9 @@ export default function MarketPricesPanel() {
                 <thead>
                   <tr>
                     <th scope="col">{grain === "monthly" ? "Month" : "Date"}</th>
-                    <th scope="col">Low</th>
-                    <th scope="col">High</th>
-                    <th scope="col">Midpoint</th>
+                    <th scope="col">{grain === "monthly" ? "Cheapest" : "Low"}</th>
+                    <th scope="col">{grain === "monthly" ? "Dearest" : "High"}</th>
+                    <th scope="col">{midLabel}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -351,7 +426,7 @@ export default function MarketPricesPanel() {
                       <th scope="row">{p.label}</th>
                       <td>{npr.format(p.low)}</td>
                       <td>{npr.format(p.high)}</td>
-                      <td>{npr.format((p.low + p.high) / 2)}</td>
+                      <td>{npr.format(p.mid)}</td>
                     </tr>
                   ))}
                 </tbody>
