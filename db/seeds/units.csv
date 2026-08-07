@@ -36,3 +36,4 @@ M3_PER_CAPITA,Cubic metres per capita,,"Renewable internal freshwater resources 
 LITRES_PER_CAPITA,Litres per capita,,"Total alcohol consumption (litres of pure alcohol)"
 MILLION_TON_KM,Million tonne-kilometres,,"Air transport freight volume"
 NPR_MILLION,Nepali rupees (millions),,"Fiscal figures as published by the WB Nepal Fiscal Dashboard, whose own Local Unit column states NPR Million"
+NPR_PER_KG,Nepali rupees per kilogram,,"Wholesale price per kilogram as published by the Kalimati Fruits and Vegetable Market Development Board; only rows the source itself marks Kg are stored under this unit"

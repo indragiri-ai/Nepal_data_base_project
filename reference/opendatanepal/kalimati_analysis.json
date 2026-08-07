@@ -1,0 +1,119 @@
+{
+  "generated": "2026-08-06",
+  "rows_total": 242411,
+  "rows_kg": 235501,
+  "rows_other_units": 6910,
+  "other_units": {
+    "1 Pc": 3702,
+    "Doz": 3208
+  },
+  "commodities_total": 131,
+  "date_first": "2013-06-16",
+  "date_last": "2022-04-18",
+  "basket_size": 25,
+  "basket": [
+    {
+      "commodity": "Cauli Local",
+      "days": 3216
+    },
+    {
+      "commodity": "Ginger",
+      "days": 3215
+    },
+    {
+      "commodity": "Cabbage(Local)",
+      "days": 3213
+    },
+    {
+      "commodity": "Raddish White(Local)",
+      "days": 3212
+    },
+    {
+      "commodity": "Chilli Dry",
+      "days": 3212
+    },
+    {
+      "commodity": "Potato Red",
+      "days": 3211
+    },
+    {
+      "commodity": "Bamboo Shoot",
+      "days": 3208
+    },
+    {
+      "commodity": "Onion Dry (Indian)",
+      "days": 3206
+    },
+    {
+      "commodity": "Brd Leaf Mustard",
+      "days": 3206
+    },
+    {
+      "commodity": "Coriander Green",
+      "days": 3206
+    },
+    {
+      "commodity": "French Bean(Local)",
+      "days": 3204
+    },
+    {
+      "commodity": "Tomato Small(Local)",
+      "days": 3202
+    },
+    {
+      "commodity": "Carrot(Local)",
+      "days": 3201
+    },
+    {
+      "commodity": "Onion Green",
+      "days": 3199
+    },
+    {
+      "commodity": "Spinach Leaf",
+      "days": 3197
+    },
+    {
+      "commodity": "Brinjal Long",
+      "days": 3195
+    },
+    {
+      "commodity": "Chilli Green",
+      "days": 3195
+    },
+    {
+      "commodity": "Garlic Dry Chinese",
+      "days": 3192
+    },
+    {
+      "commodity": "Mushroom(Kanya)",
+      "days": 3191
+    },
+    {
+      "commodity": "Lime",
+      "days": 3188
+    },
+    {
+      "commodity": "Capsicum",
+      "days": 3188
+    },
+    {
+      "commodity": "Pumpkin",
+      "days": 3178
+    },
+    {
+      "commodity": "Tamarind",
+      "days": 3177
+    },
+    {
+      "commodity": "Bottle Gourd",
+      "days": 3166
+    },
+    {
+      "commodity": "Tofu",
+      "days": 3159
+    }
+  ],
+  "basket_rows": 79937,
+  "projected_observations": 159874,
+  "projected_mb": 76.1
+}
