@@ -150,10 +150,58 @@ Note the agency's own site *does* carry prices past 2022 (2023-09-01 returned
 89 commodities), so a future step could extend the series from the market
 board directly. That is a different acquisition channel and a separate step.
 
-## Open decisions for ODN.S2
+## The load (ODN.S2) — done 2026-08-07
 
-- **Labelling the midpoint** — publish min/max plus a clearly-named midpoint,
-  or min/max only. It cannot be called an average.
-- Basket size and storage. 242,411 source rows, filtered to Kg-only and a
-  top-25 commodity basket, is a large load for a free tier. The step requires
-  a projected-size check with a **STOP** at 200 MB.
+**153,494 observations**: the daily low and the daily high for each of 25
+commodities, 2013-06-16 → 2022-04-18, filed under Kathmandu Metropolitan City
+(`NP0327101`), in NPR per kilogram.
+
+| Check | Result |
+|---|---|
+| Commodity-days loaded | 76,747 (× 2 series = 153,494) |
+| Commodities | 25, from `db/seeds/kalimati_basket.csv` |
+| Coverage | 2013-06-16 → 2022-04-18, 3,091 trading days |
+| Duplicate latest cells | **0** |
+| Rows where the low exceeds the high | **0** |
+| Value range | 1.0 – 1,500.0 NPR/kg (inside the 0–10,000 band) |
+| Spot-checks against the source | **3 of 3 exact** |
+
+Spot-checks span both resources and nine years: Cauli Local on 2013-06-16
+(30/35), Potato Red on 2018-07-04 (36/38), Tomato Small(Local) on 2022-04-18
+(25/30) — each read back from the warehouse and compared with a fresh API
+call.
+
+### The overlap, and the bug it caused
+
+The first load **failed** after 135,000 rows on the
+`observations_unique_per_release` constraint. The cause: the two resources
+overlap by about four months, and the loader was offering the same
+commodity-day twice. The constraint was right to reject it — the alternative
+is a silently double-counted price.
+
+The loader now de-duplicates per commodity-day, keeping the later publication,
+and reports what it dropped. On the real data: **3,190 duplicate rows dropped,
+and every single duplicated commodity-day agreed exactly between the two
+resources.** That is a useful result in itself — the two files are consistent
+where they overlap, which is further evidence the positional mapping is right.
+
+No data had to be deleted to recover: the loader skips values it already
+holds, so the re-run inserted only the missing 18,494 under a new release.
+
+### What the storage actually cost
+
+Projected 76 MB; the real cost was **28.5 MB** (200.3 → 228.8 MB, about 186
+bytes per observation). The 476-bytes-per-row figure used for the projection
+came from dividing the whole `observations` table and its indexes by row
+count, which over-attributes shared index overhead to each new row. The
+database now sits at **228.8 MB of the 500 MB free tier (46%)** — considerably
+more headroom for future sources than the estimate suggested.
+
+## Still open
+
+- **Extending past April 2022.** The market board's own site publishes later
+  prices (2023-09-01 returned 89 commodities), so a future step could continue
+  the series directly from the agency. That is a different acquisition channel.
+- The remaining 106 commodities outside the basket, and the 6,910 rows priced
+  per piece or per dozen, are neither loaded nor lost — they are in the raw
+  lake, and a later pass can add them if the storage budget allows.
