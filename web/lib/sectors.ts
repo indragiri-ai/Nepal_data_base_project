@@ -19,6 +19,10 @@ export interface SectorDef {
   mapCard?: { href: string; label: string; note: string };
   orbitCode?: string; // ONE code whose latest value shows on the orbit node
   orbitLabel?: string; // the metric name for that value (e.g. "GDP growth")
+  /** Shown on the orbit node when no single number can represent the sector —
+   *  25 vegetables have 25 prices. Without it the node reads "in preparation",
+   *  which would be false for a sector holding 153,494 figures. */
+  orbitNote?: string;
   external?: { href: string; label: string };
 }
 
@@ -124,6 +128,19 @@ export const SECTORS: SectorDef[] = [
     orbitLabel: "GDP growth",
   },
   {
+    slug: "food-prices",
+    title: "Food Prices",
+    titleShort: "Food",
+    description:
+      "What food costs at Kalimati — daily wholesale prices for 25 everyday vegetables, from the market that sets Nepal's produce prices.",
+    topics: [],
+    // Matched at runtime, the way Finance adopts the NRB series.
+    includePrefixes: ["KALIMATI_"],
+    // No curated headline charts: the market-prices panel IS this page.
+    headlineCodes: [],
+    orbitNote: "daily prices",
+  },
+  {
     slug: "finance",
     title: "Finance & Banking",
     titleShort: "Finance",
@@ -203,6 +220,10 @@ export const SECTORS: SectorDef[] = [
     titleShort: "Environment",
     description: "Land, energy, and environment.",
     topics: ["environment", "agriculture"],
+    // The Kalimati price series carries topic 'environment' but has its own
+    // sector; without this carve-out it would appear in both, and every
+    // indicator belongs to exactly one.
+    excludePrefixes: ["KALIMATI_"],
     headlineCodes: ["ELECTRICITY_ACCESS"],
     orbitCode: "ELECTRICITY_ACCESS",
     orbitLabel: "Electricity access",

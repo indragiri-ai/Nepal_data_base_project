@@ -21,16 +21,22 @@ const NEPAL_PATH = "M 633.8 247.61 635.85 238.38 639.56 232.28 645.48 236.43 650
 // Node anchors on an ellipse rx=46% ry=42%, θ_i = -90° + i·45°:
 // left = 50% + rx·cosθ, top = 50% + ry·sinθ. Precomputed to avoid runtime trig.
 // x/y are the same values as numbers, for the SVG connector line.
-const NODE_POS: Array<{ left: string; top: string; x: number; y: number }> = [
-  { left: "50%", top: "8%", x: 50, y: 8 }, // -90°
-  { left: "82.5%", top: "20.3%", x: 82.5, y: 20.3 }, // -45°
-  { left: "96%", top: "50%", x: 96, y: 50 }, // 0°
-  { left: "82.5%", top: "79.7%", x: 82.5, y: 79.7 }, // 45°
-  { left: "50%", top: "92%", x: 50, y: 92 }, // 90°
-  { left: "17.5%", top: "79.7%", x: 17.5, y: 79.7 }, // 135°
-  { left: "4%", top: "50%", x: 4, y: 50 }, // 180°
-  { left: "17.5%", top: "20.3%", x: 17.5, y: 20.3 }, // 225°
-];
+// Node positions, COMPUTED from however many sectors there are.
+//
+// These were eight hand-written coordinates, which meant adding a ninth sector
+// indexed past the end of the array and took the landing page down. The maths
+// reproduces those eight exactly: an ellipse of radius 46 x 42 about the
+// centre, first node at the top, the rest spaced evenly clockwise.
+const RX = 46;
+const RY = 42;
+
+const NODE_POS: Array<{ left: string; top: string; x: number; y: number }> =
+  SECTORS.map((_, i) => {
+    const angle = (-90 + (360 * i) / SECTORS.length) * (Math.PI / 180);
+    const x = 50 + RX * Math.cos(angle);
+    const y = 50 + RY * Math.sin(angle);
+    return { left: `${x.toFixed(1)}%`, top: `${y.toFixed(1)}%`, x, y };
+  });
 
 interface NumValue {
   value: number;
@@ -182,7 +188,13 @@ export default function DataOrbit() {
                   <span className="node-value skeleton" aria-hidden="true" />
                 )
               ) : (
-                <span className="node-value muted">in preparation</span>
+                // A sector can hold plenty of data and still have no single
+                // headline number — 25 vegetables have 25 prices, and picking
+                // one would be arbitrary. `orbitNote` says what is there
+                // instead; only a genuinely empty sector reads "in preparation".
+                <span className="node-value muted">
+                  {sector.orbitNote ?? "in preparation"}
+                </span>
               )}
             </Link>
           );

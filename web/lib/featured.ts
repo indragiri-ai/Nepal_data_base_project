@@ -36,6 +36,13 @@ export const FEATURED: FeaturedEntry[] = [
     fresh: true,
   },
   {
+    href: "/food-prices",
+    label: "What food cost, day by day",
+    note: "Daily wholesale prices for 25 everyday vegetables at Kalimati market, 2013 to 2022 — a decade of what Nepal actually paid.",
+    source: "Kalimati Market Board · Open Data Nepal",
+    fresh: true,
+  },
+  {
     href: "/population",
     label: "Census 2021 on the map",
     note: "Population, density and literacy for all seven provinces and 77 districts, drawn from the national census.",

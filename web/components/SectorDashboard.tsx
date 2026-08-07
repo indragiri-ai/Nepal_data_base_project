@@ -44,7 +44,19 @@ const MarketPricesPanel = dynamic(() => import("@/components/MarketPricesPanel")
   loading: () => <p className="state">Loading market prices…</p>,
 });
 
+// Preferred display order. Any source NOT listed here still appears — sorted
+// after these, alphabetically. The list used to be exhaustive, which meant a
+// new publisher's indicators silently vanished from the page: the Kalimati
+// market board's two series belong to a sector whose whole list was built by
+// mapping over this array.
 const SOURCE_ORDER = ["World Bank", "Nepal Rastra Bank", "National Statistics Office"];
+
+function orderSources(present: Iterable<string>): string[] {
+  const set = new Set(present);
+  const known = SOURCE_ORDER.filter((s) => set.has(s));
+  const rest = [...set].filter((s) => !SOURCE_ORDER.includes(s)).sort();
+  return [...known, ...rest];
+}
 
 export default function SectorDashboard({ slug }: { slug: string }) {
   const sector = SECTORS.find((s) => s.slug === slug) as SectorDef;
@@ -92,10 +104,10 @@ export default function SectorDashboard({ slug }: { slug: string }) {
     [indicators, sector],
   );
 
-  const sources = useMemo(() => {
-    const set = new Set(owned.map((i) => sourceForIndicator(i)));
-    return SOURCE_ORDER.filter((s) => set.has(s));
-  }, [owned]);
+  const sources = useMemo(
+    () => orderSources(owned.map((i) => sourceForIndicator(i))),
+    [owned],
+  );
 
   const filtered = useMemo(() => {
     const q = filter.trim().toLowerCase();
@@ -116,7 +128,7 @@ export default function SectorDashboard({ slug }: { slug: string }) {
         rows: g.rows,
       }));
     }
-    return SOURCE_ORDER.map((src) => ({
+    return orderSources(filtered.map((i) => sourceForIndicator(i))).map((src) => ({
       source: src,
       rows: filtered.filter((i) => sourceForIndicator(i) === src),
     })).filter((g) => g.rows.length > 0);
@@ -198,9 +210,8 @@ export default function SectorDashboard({ slug }: { slug: string }) {
           Per-province budgets are hard to find anywhere else. */}
       {sector.slug === "economy" && <ProvincePanel />}
 
-      {/* Food prices lead this sector: it is the one series here that answers a
-          question people actually ask out loud. */}
-      {sector.slug === "environment" && <MarketPricesPanel />}
+      {/* Food prices have their own sector: this panel IS the page. */}
+      {sector.slug === "food-prices" && <MarketPricesPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

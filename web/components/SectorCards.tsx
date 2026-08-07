@@ -14,6 +14,14 @@ const icons: Record<string, ReactNode> = {
   economy: (
     <path d="M3 20h18M5 20V10m5 10V4m5 16v-8m5 8V7" strokeWidth={S} strokeLinecap="round" />
   ),
+  "food-prices": (
+    <path
+      d="M12 21c-3.5-2-6-5.5-6-9a6 6 0 0 1 12 0c0 3.5-2.5 7-6 9Zm0-18v3m-4 1 1.5 1.5M16 4l-1.5 1.5"
+      strokeWidth={S}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
   finance: (
     <path
       d="M3 9.5 12 4l9 5.5M5 10v7m4.5-7v7m5-7v7m4.5-7v7M3 20h18"
