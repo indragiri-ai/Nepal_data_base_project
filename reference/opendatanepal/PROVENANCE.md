@@ -197,11 +197,57 @@ count, which over-attributes shared index overhead to each new row. The
 database now sits at **228.8 MB of the 500 MB free tier (46%)** — considerably
 more headroom for future sources than the estimate suggested.
 
-## Still open
+## Extended to the present, from the board itself (2026-08-08)
 
-- **Extending past April 2022.** The market board's own site publishes later
-  prices (2023-09-01 returned 89 commodities), so a future step could continue
-  the series directly from the agency. That is a different acquisition channel.
+The series no longer stops in 2022. The market board publishes its own price
+history through an API its website uses — `POST /api/price-history/{code}` —
+and **one request returns a commodity's whole history**, 2013 to today.
+
+**105,707 observations** loaded as `KALIMATI_PRICE_AVG`, 23 commodities,
+2013-06-16 → 2026-08-08, from the board directly rather than a re-publisher.
+
+It is stored as a SEPARATE indicator, not appended to the low/high pair,
+because it is a different statistic — and this is now proven twice over:
+
+- The board's own daily page shows a commodity with minimum 30, maximum 40 and
+  average **34.85**. A midpoint would be 35.
+- Across the **70,595 days where all three exist**, the board's average
+  differs from the midpoint of our low and high on **32,570 of them (46.1%)**.
+
+Appending it to the low/high series would have made one line silently change
+meaning halfway along.
+
+**A cross-check worth having:** on those 70,595 shared days the board's average
+falls inside our own low–high band **99.97% of the time** (70,576). Two
+channels, one taken from an aggregator and one from the agency, agreeing on
+almost every day of a decade.
+
+### Two faults this found, recorded rather than smoothed over
+
+1. **The board's average is capped at 999.99.** For 16 days of Lime in
+   March–April 2018 the board reports exactly `999.99` while its own published
+   low and high for those days are 1,000–1,500. The average cannot be below the
+   minimum, so those 16 values are a field-width artefact, not prices. They are
+   16 rows out of 105,707; they are loaded as the board publishes them and
+   flagged here. Three further days (French Bean 2021-04-26, Mushroom(Kanya)
+   2021-06-15, Cauli Local 2021-06-21) sit a little under the day's low, which
+   is a smaller and unexplained discrepancy.
+2. **"Chilli Green" returns no data** from the board, though it appears in
+   their own dropdown — so 23 commodities carry the average series where 25
+   carry the low/high pair. And **"Potato Red"** is no longer offered at all
+   (the board now lists "Potato Red(Long)" and "Potato Red(Indian)"), so it is
+   absent rather than mapped onto a near-neighbour.
+
+### Being a good guest
+
+The board's page carries a written policy: it detects heavy request volume from
+one IP, asks callers to wait between requests, and warns that ignoring it can
+get the IP blocked. A first run pacing at 4 seconds had its connection closed
+on the ninth consecutive request. Pacing is now **12 seconds**, retries wait a
+minute then three, and each commodity's response is cached so an interrupted
+run never asks for the same thing twice. A test fails if the pause is lowered.
+
+## Still open
 - The remaining 106 commodities outside the basket, and the 6,910 rows priced
   per piece or per dozen, are neither loaded nor lost — they are in the raw
   lake, and a later pass can add them if the storage budget allows.

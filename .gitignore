@@ -146,3 +146,4 @@ graphify-out/
 # permissions) and the .tmp.* files are its save-in-progress scratch.
 .claude/settings.local.json
 .claude/*.tmp.*
+.cache/

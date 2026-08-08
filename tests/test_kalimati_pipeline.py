@@ -71,20 +71,37 @@ def test_every_basket_row_carries_its_evidence() -> None:
 # --- what the loader stores --------------------------------------------------
 
 
-def test_only_two_indicators_are_seeded_and_neither_is_an_average() -> None:
-    """The source's 'Average' column is not loaded.
+def test_the_low_high_pair_is_never_presented_as_an_average() -> None:
+    """The re-published 'Average' column is not loaded, and never named one.
 
     It is exactly (min + max) / 2 across the whole series and disagrees with
-    the market board's own published average, so it is derived for display and
-    labelled a midpoint. Nothing in the warehouse may be called an average.
+    the market board's own published average. Only a figure that really is an
+    average may carry the word — and only one does: KALIMATI_PRICE_AVG, which
+    comes from the board itself and says so in its own name.
     """
     with SEED_CSV.open(encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
     codes = {r["code"] for r in rows}
-    assert codes == {MIN_INDICATOR, MAX_INDICATOR}
+    assert codes == {MIN_INDICATOR, MAX_INDICATOR, "KALIMATI_PRICE_AVG"}
+
+    by_code = {r["code"]: r for r in rows}
+    for code in (MIN_INDICATOR, MAX_INDICATOR):
+        assert "average" not in by_code[code]["name_en"].lower()
+    # The one that IS an average names its author, so no reader can mistake it
+    # for something this portal computed.
+    assert "market board average" in by_code["KALIMATI_PRICE_AVG"]["name_en"].lower()
     for row in rows:
-        assert "average" not in row["name_en"].lower()
         assert row["unit"] == UNIT_CODE
+
+
+def test_the_board_average_definition_explains_it_is_not_a_midpoint() -> None:
+    # The whole reason it is a separate series rather than an extension of the
+    # low/high pair: they are different statistics.
+    with SEED_CSV.open(encoding="utf-8", newline="") as fh:
+        row = next(r for r in csv.DictReader(fh) if r["code"] == "KALIMATI_PRICE_AVG")
+    text = row["definition_en"].lower()
+    assert "not the midpoint" in text
+    assert "continues to the present" in text
 
 
 def test_the_definitions_state_the_closed_coverage_window() -> None:

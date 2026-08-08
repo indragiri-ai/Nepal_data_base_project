@@ -32,6 +32,11 @@ import { downloadCsv } from "@/lib/csv";
 const GEO = "NP0327101"; // Kathmandu Metropolitan City — where the market is
 const MIN_CODE = "KALIMATI_PRICE_MIN";
 const MAX_CODE = "KALIMATI_PRICE_MAX";
+// The market board's OWN average, taken from the board directly. It reaches
+// today, where the low/high pair (re-published via Open Data Nepal) stops in
+// April 2022. It is a genuine average, NOT the midpoint of low and high: the
+// two differ on 46% of the days where both exist.
+const AVG_CODE = "KALIMATI_PRICE_AVG";
 
 // The portal's validated categorical palette (globals.css). Produce gets
 // series-1; the band is the same hue at low opacity, not a second colour.
@@ -53,11 +58,12 @@ type Grain = "daily" | "monthly";
 
 interface Point {
   label: string;
-  low: number;
-  high: number;
-  /** Daily: exactly halfway between low and high. Monthly: the average of that
-   *  month's daily midpoints. Never the source's "Average" column, which is a
-   *  midpoint too and disagrees with the market board's own average. */
+  /** The day's low and high are absent after 2022-04-18, where the
+   *  re-published series ends and only the board's own average continues. */
+  low: number | null;
+  high: number | null;
+  /** The market board's own published average. Daily: as published. Monthly:
+   *  the mean of that month's daily averages. */
   mid: number;
 }
 
@@ -82,18 +88,23 @@ const npr = new Intl.NumberFormat("en-US", {
  *  A month in which tomatoes swung between 20 and 80 rupees should LOOK like
  *  that month. */
 function toMonthly(points: Point[]): Point[] {
-  const buckets = new Map<string, { low: number; high: number; midSum: number; n: number }>();
+  interface Bucket {
+    low: number | null;
+    high: number | null;
+    midSum: number;
+    n: number;
+  }
+  const buckets = new Map<string, Bucket>();
   for (const p of points) {
     const month = p.label.slice(0, 7); // YYYY-MM
-    const b = buckets.get(month);
-    if (b === undefined) {
-      buckets.set(month, { low: p.low, high: p.high, midSum: p.mid, n: 1 });
-      continue;
-    }
-    b.low = Math.min(b.low, p.low);
-    b.high = Math.max(b.high, p.high);
+    const b = buckets.get(month) ?? { low: null, high: null, midSum: 0, n: 0 };
+    // A month keeps a band only from the days that HAVE one; months after the
+    // low/high series ends get no band at all rather than a partial one.
+    if (p.low !== null) b.low = b.low === null ? p.low : Math.min(b.low, p.low);
+    if (p.high !== null) b.high = b.high === null ? p.high : Math.max(b.high, p.high);
     b.midSum += p.mid;
     b.n += 1;
+    buckets.set(month, b);
   }
   return [...buckets.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
@@ -119,26 +130,33 @@ export default function MarketPricesPanel() {
     setRaw(null);
     setError(null);
     Promise.all([
-      fetchSeriesSlice(MIN_CODE, GEO, "commodity", commodity),
-      fetchSeriesSlice(MAX_CODE, GEO, "commodity", commodity),
+      fetchSeriesSlice(AVG_CODE, GEO, "commodity", commodity),
+      fetchSeriesSlice(MIN_CODE, GEO, "commodity", commodity).catch(() => null),
+      fetchSeriesSlice(MAX_CODE, GEO, "commodity", commodity).catch(() => null),
     ])
-      .then(([lows, highs]) => {
+      .then(([avgs, lows, highs]) => {
         if (cancelled) return;
-        const highByDay = new Map(highs.observations.map((o) => [o.period, o.value]));
-        const points: Point[] = [];
-        for (const o of lows.observations) {
+        // The AVERAGE drives the timeline: it is the longest series, running to
+        // today. Low/high are attached where they exist and left null after
+        // April 2022 — the band simply stops rather than being extended with a
+        // number nobody published. (Low/high are optional: a commodity the
+        // board still trades may have no re-published history at all.)
+        const lowByDay = new Map((lows?.observations ?? []).map((o) => [o.period, o.value]));
+        const highByDay = new Map((highs?.observations ?? []).map((o) => [o.period, o.value]));
+        const points: Point[] = avgs.observations.map((o) => {
+          const low = lowByDay.get(o.period);
           const high = highByDay.get(o.period);
-          // A low without its high is half a fact; skip rather than invent one.
-          if (high === undefined) continue;
-          points.push({
+          // A low without its high is half a band; take neither.
+          const paired = low !== undefined && high !== undefined;
+          return {
             label: o.period,
-            low: o.value,
-            high,
-            mid: (o.value + high) / 2,
-          });
-        }
+            low: paired ? low : null,
+            high: paired ? high : null,
+            mid: o.value,
+          };
+        });
         setRaw(points);
-        setMeta(lows);
+        setMeta(avgs);
       })
       .catch((e: unknown) => {
         if (!cancelled) {
@@ -168,7 +186,9 @@ export default function MarketPricesPanel() {
   // The band means something different in each view, so it is named for what
   // it actually is rather than carrying one vague label across both.
   const rangeLabel = grain === "monthly" ? "Cheapest to dearest in the month" : "Low to high";
-  const midLabel = grain === "monthly" ? "Average price" : "Midpoint";
+  // Always the market board's own figure, so it is named after them rather
+  // than described vaguely as "average" — the word the source misuses.
+  const midLabel = "Market board average";
 
   const option: ChartOption | null = useMemo(() => {
     if (points.length === 0) return null;
@@ -177,7 +197,11 @@ export default function MarketPricesPanel() {
     // The band is drawn as a transparent floor plus a stacked height, which is
     // how a two-bounded range is filled. The tooltip below reads the real
     // numbers out of `points`, never off the stack.
-    const spans = points.map((p) => p.high - p.low);
+    // null where the day has no published low/high: ECharts leaves a gap
+    // instead of drawing a band across data that does not exist.
+    const spans = points.map((p) =>
+      p.low === null || p.high === null ? null : p.high - p.low,
+    );
     const mids = points.map((p) => p.mid);
 
     return {
@@ -205,11 +229,15 @@ export default function MarketPricesPanel() {
           if (!p) return "";
           const top = grain === "monthly" ? "dearest" : "high";
           const bottom = grain === "monthly" ? "cheapest" : "low";
+          const band =
+            p.low === null || p.high === null
+              ? "<em>no low/high published for this period</em><br/>"
+              : `${top} &nbsp;NPR ${npr.format(p.high)}<br/>` +
+                `${bottom} &nbsp;NPR ${npr.format(p.low)}<br/>`;
           return (
             `<strong>${p.label}</strong><br/>` +
-            `${top} &nbsp;NPR ${npr.format(p.high)}<br/>` +
-            `${bottom} &nbsp;NPR ${npr.format(p.low)}<br/>` +
-            `${midLabel.toLowerCase()} &nbsp;NPR ${npr.format(p.mid)}`
+            band +
+            `board average &nbsp;NPR ${npr.format(p.mid)}`
           );
         },
       },
@@ -266,6 +294,8 @@ export default function MarketPricesPanel() {
     };
   }, [points]);
 
+  // How many periods still have a low/high band, for the caption.
+  const banded = points.filter((p) => p.low !== null).length;
   const first = points[0];
   const last = points[points.length - 1];
 
@@ -286,8 +316,8 @@ export default function MarketPricesPanel() {
                    `${midLabel} (NPR/kg)`],
                   ...points.map((p) => [
                     p.label,
-                    npr.format(p.low),
-                    npr.format(p.high),
+                    p.low === null ? "" : npr.format(p.low),
+                    p.high === null ? "" : npr.format(p.high),
                     npr.format(p.mid),
                   ]),
                 ],
@@ -301,10 +331,11 @@ export default function MarketPricesPanel() {
 
       <p className="sub">
         Wholesale prices at the Kalimati Fruits and Vegetable Market in
-        Kathmandu — Nepal&rsquo;s largest wholesale produce market. Each trading
-        day the market publishes the lowest and highest price a commodity
-        fetched. <strong>This series runs to 18 April 2022 and is not current
-        prices.</strong>
+        Kathmandu — Nepal&rsquo;s largest wholesale produce market. The line is
+        the market board&rsquo;s own average, published daily and current. The
+        shaded band is the day&rsquo;s lowest and highest price, which comes
+        from a re-published copy that <strong>stops on 18 April 2022</strong> —
+        so the band ends there while the line continues.
       </p>
 
       <div className="controls">
@@ -370,21 +401,29 @@ export default function MarketPricesPanel() {
               <p>
                 {grain === "monthly" ? (
                   <>
-                    The shaded band spans the cheapest and dearest price the
-                    market recorded in each month; the line is that
-                    month&rsquo;s average. Over these{" "}
-                    {points.length.toLocaleString()} months it ranged{" "}
+                    The line is the market board&rsquo;s own average for each
+                    month; the shaded band, where it appears, spans the cheapest
+                    and dearest price recorded that month. Over these{" "}
+                    {points.length.toLocaleString()} months the average ranged{" "}
                     <strong>
-                      NPR {npr.format(Math.min(...points.map((p) => p.low)))} to{" "}
-                      {npr.format(Math.max(...points.map((p) => p.high)))} per kg
+                      NPR {npr.format(Math.min(...points.map((p) => p.mid)))} to{" "}
+                      {npr.format(Math.max(...points.map((p) => p.mid)))} per kg
                     </strong>
                     .
                   </>
                 ) : (
                   <>
-                    The shaded band is the gap between the day&rsquo;s lowest and
-                    highest price; the line is halfway between them. Every
-                    trading day shown — {points.length.toLocaleString()} of them.
+                    The line is the market board&rsquo;s published average for
+                    each trading day; the shaded band, where it appears, is that
+                    day&rsquo;s low to high. {points.length.toLocaleString()}{" "}
+                    trading days shown.
+                  </>
+                )}
+                {banded > 0 && banded < points.length && (
+                  <>
+                    {" "}
+                    The band covers the first {banded.toLocaleString()} of them —
+                    the low/high series ends 18 April 2022.
                   </>
                 )}
               </p>
@@ -424,8 +463,8 @@ export default function MarketPricesPanel() {
                   {[...points].reverse().slice(0, 120).map((p) => (
                     <tr key={p.label}>
                       <th scope="row">{p.label}</th>
-                      <td>{npr.format(p.low)}</td>
-                      <td>{npr.format(p.high)}</td>
+                      <td>{p.low === null ? "—" : npr.format(p.low)}</td>
+                      <td>{p.high === null ? "—" : npr.format(p.high)}</td>
                       <td>{npr.format(p.mid)}</td>
                     </tr>
                   ))}
@@ -443,14 +482,17 @@ export default function MarketPricesPanel() {
           <p className="fiscal-provenance">
             <strong>Source:</strong> Kalimati Fruits and Vegetable Market
             Development Board (kalimatimarket.gov.np), the market that records
-            these prices. <strong>Distributed by:</strong> Open Data Nepal, under
-            CC BY 4.0. Prices are per kilogram; the market also publishes some
-            commodities per piece or per dozen, and those are deliberately not
-            shown here because converting them would need a weight the source
-            does not give. The midpoint shown is derived as exactly halfway
-            between the day&rsquo;s low and high — the market board publishes its
-            own average, which is a different figure, so nothing here is labelled
-            an average. Coverage 16 June 2013 – 18 April 2022
+            these prices. The <strong>average line</strong> is the board&rsquo;s
+            own published figure, taken directly from them, and runs to the
+            present. The <strong>low/high band</strong> comes from the board&rsquo;s
+            data as re-published by <strong>Open Data Nepal</strong> under
+            CC BY 4.0, which ends 18 April 2022. The two are kept apart on
+            purpose: the board&rsquo;s average is a real average, not the
+            midpoint of the low and high, and the two differ on 46% of the days
+            where both exist. Prices are per kilogram; the market also publishes
+            some commodities per piece or per dozen, and those are deliberately
+            not shown because converting them would need a weight the source
+            does not give. Coverage 16 June 2013 to the present
             {meta?.provenance.latest_release_date
               ? `; loaded ${meta.provenance.latest_release_date}`
               : ""}
