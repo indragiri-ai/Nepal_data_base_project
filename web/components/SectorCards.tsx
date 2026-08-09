@@ -77,6 +77,15 @@ const icons: Record<string, ReactNode> = {
       strokeLinejoin="round"
     />
   ),
+  // A ballot paper going into a box — the act, not any party's emblem.
+  elections: (
+    <path
+      d="M4 12h16v8H4v-8Zm4-9h8v9H8V3Zm2 3h4m-4 3h3"
+      strokeWidth={S}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 };
 
 export default function SectorCards() {

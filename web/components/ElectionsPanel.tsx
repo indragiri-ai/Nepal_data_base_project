@@ -1,6 +1,6 @@
 "use client";
 
-// Election results (ECN.S4) — the Governance sector's centrepiece.
+// Election results (ECN.S4) — the Elections sector. This panel IS the page.
 //
 // Data: Election Commission of Nepal, via ECN.S1–S3. Two House of
 // Representatives elections, 2082 BS (polled 5 March 2026) and 2079 BS
@@ -93,7 +93,7 @@ function partiesFor(series: DataResponse | null, period: Period): PartyValue[] {
     .map((o) => ({ party: o.breakdowns!.party, value: o.value }));
 }
 
-export default function GovernancePanel() {
+export default function ElectionsPanel() {
   const [period, setPeriod] = useState<Period>("2026");
   const [votes, setVotes] = useState<DataResponse | null>(null);
   const [seats, setSeats] = useState<DataResponse | null>(null);

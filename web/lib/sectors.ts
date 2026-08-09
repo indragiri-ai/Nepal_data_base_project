@@ -234,10 +234,30 @@ export const SECTORS: SectorDef[] = [
     titleShort: "Governance",
     description: "Public institutions and governance indicators.",
     topics: ["governance"],
+    // Elections have their own sector (below). They share the `governance`
+    // topic in the warehouse — the topic describes the subject, not the page —
+    // so they are carved out here, the way Environment carves out Kalimati.
+    excludePrefixes: ["ELECTION_"],
     // The WGI governance indicators are loaded (P2B.S3b); no curated headline
     // charts chosen yet, so the page shows the full list without an "At a glance".
     headlineCodes: [],
     // no orbitCode — the orbit node shows "in preparation"
+  },
+  {
+    slug: "elections",
+    title: "Elections",
+    titleShort: "Elections",
+    description:
+      "How Nepal voted — results of the House of Representatives elections of 2026 and 2022, and of the 2022 local election that filled all 35,221 seats in Nepal's 753 local governments. Official figures from the Election Commission of Nepal.",
+    topics: [],
+    // Matched at runtime by code, the way Food Prices adopts the Kalimati series.
+    includePrefixes: ["ELECTION_"],
+    // No curated headline charts: the elections panel IS this page.
+    headlineCodes: [],
+    // No orbit number. Elections have no single headline figure — a seat count
+    // belongs to a party, not to the country — and inventing one is exactly the
+    // mistake the sector cards used to make.
+    orbitNote: "results by party",
   },
 ];
 

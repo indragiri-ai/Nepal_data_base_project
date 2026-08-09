@@ -49,9 +49,14 @@ const SeasonalityPanel = dynamic(() => import("@/components/SeasonalityPanel"), 
   loading: () => <p className="state">Loading seasonal averages…</p>,
 });
 
-const GovernancePanel = dynamic(() => import("@/components/GovernancePanel"), {
+const ElectionsPanel = dynamic(() => import("@/components/ElectionsPanel"), {
   ssr: false,
   loading: () => <p className="state">Loading election results…</p>,
+});
+
+const LocalElectionPanel = dynamic(() => import("@/components/LocalElectionPanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading local results…</p>,
 });
 
 // Preferred display order. Any source NOT listed here still appears — sorted
@@ -226,9 +231,13 @@ export default function SectorDashboard({ slug }: { slug: string }) {
       {/* The question a price chart cannot answer: when is each one cheap? */}
       {sector.slug === "food-prices" && <SeasonalityPanel />}
 
-      {/* Election results (ECN.S4). The Governance page was empty before this;
-          the results are also the sector's whole reason to exist. */}
-      {sector.slug === "governance" && <GovernancePanel />}
+      {/* Election results (ECN.S4). Elections have their own sector; this
+          panel is the whole page. */}
+      {sector.slug === "elections" && <ElectionsPanel />}
+
+      {/* The tier of government closest to people, and the hardest to find
+          results for anywhere else. */}
+      {sector.slug === "elections" && <LocalElectionPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

@@ -196,6 +196,30 @@ def test_rewriting_the_party_file_never_upgrades_a_names_provenance(tmp_path: Pa
     assert rows["जनमत पार्टी"]["source_of_english"] == ""
 
 
+def test_a_narrower_run_never_forgets_parties_already_recorded(tmp_path: Path) -> None:
+    """Running one election must not delete the other's parties.
+
+    `--cycle 2079` knows only 2079's parties. Rewriting the file from that set
+    alone dropped 36 of the 91 recorded parties in a real run — silently, and
+    including any English name a human had curated. The file is a union of every
+    party ever seen, not a snapshot of the last run.
+    """
+    import ingestion.election.ecn_pipeline as pipe
+
+    target = tmp_path / "party_names.csv"
+    original = pipe.PARTY_CSV
+    pipe.PARTY_CSV = target
+    try:
+        pipe.write_party_reference({"क", "ख"}, {"क": "Ka"})
+        # A later, narrower run that sees only one of them.
+        pipe.write_party_reference({"क"}, {"क": "Ka"})
+        rows = {r["name_ne"]: r for r in csv.DictReader(target.open(encoding="utf-8"))}
+    finally:
+        pipe.PARTY_CSV = original
+
+    assert set(rows) == {"क", "ख"}, "the party absent from the narrower run was dropped"
+
+
 def test_a_hand_curated_name_survives_a_rewrite_with_its_label() -> None:
     """The other direction: a human's entry must not be wiped by the next run."""
     import ingestion.election.ecn_pipeline as pipe

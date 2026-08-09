@@ -391,6 +391,57 @@ add up (the mistake ECN.S1's first run made).
    ECN-published names as "curated by hand" on the second run, asserting a human
    check that had never happened. Pinned by a test.
 
+## The 2079 local election — all 35,221 seats
+
+Nepal's local election of **13 May 2022** (2079-01-30 BS, from the Commission's
+own sealed election programme published 2022-03-24) filled every seat in the 753
+local governments. The portal publishes a per-office summary at
+
+    JSONFiles/Election2079/Local/TopFivePartyPostWise<Office>.json
+
+for eight offices, and `ELECTION_LOCAL_SEATS` loads all of them (40 rows):
+
+| Office (Nepali) | English | Seats | Won |
+|---|---|---:|---:|
+| प्रमुख | Mayor (municipality) | 293 | 293 |
+| अध्यक्ष | Chair (rural municipality) | 460 | 460 |
+| उपप्रमुख | Deputy mayor | 293 | 293 |
+| उपाध्यक्ष | Deputy chair | 460 | 460 |
+| वडा अध्यक्ष | Ward chair | 6,743 | 6,743 |
+| महिला सदस्य | Woman member | 6,743 | **6,742** |
+| दलित महिला सदस्य | Dalit woman member | 6,743 | **6,620** |
+| सदस्य | Member | 13,486 | 13,486 |
+| | **Total** | **35,221** | **35,097** |
+
+The English office names come from the Commission's **own file names**, not from
+a translation of ours.
+
+**124 seats were never filled** — 123 Dalit woman member seats and 1 woman
+member seat. That is a real published outcome about Nepali local democracy, so
+the loader reports it and the page states it. Seats won *below* seats available
+is therefore not an error; seats won *above* is impossible and blocks the load.
+
+### Two limits of the local data — both stated on the page
+
+**1. Only four parties per office, plus "अन्य".** The files live up to the name
+`TopFive…`: four named parties and one combined **अन्य (Other)** row at rank 50.
+The totals are complete, but individual small parties and independents cannot be
+separated. There is no fuller variant — `PartyPostWise…`, `AllPartyPostWise…`
+and `TopTenPartyPostWise…` were all probed and all 404.
+
+**2. A cross-office total is only valid for a party itemised in EVERY office.**
+This is the subtle trap in the format, and it is easy to publish a wrong number
+here. A party listed for mayors but not for members has its member seats folded
+into अन्य, so adding up the rows where it *does* appear understates it badly.
+In 2079 only **three parties plus अन्य** are itemised for all eight offices:
+
+    नेपाली काँग्रेस 13,773 · नेपाल क.पा. (एमाले) 11,929
+    नेपाल क.पा. (माओवादी केन्द्र) 5,045 · अन्य 2,798
+
+One party is itemised for **a single office**: summing its rows gives 12 seats
+nationally, which would be plainly wrong. The panel therefore totals only the
+parties present in every office and names the rest as uncountable.
+
 ### The two result files name the same party differently — do NOT join them
 
 Found while building ECN.S4, and it is the sharpest trap in this source. The

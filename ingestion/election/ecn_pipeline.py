@@ -1,15 +1,18 @@
-"""ECN.S3 — load party votes and seats for both House of Representatives elections.
+"""ECN.S3 — load party votes and seats for Nepal's elections.
 
 WHAT GOES IN
 ------------
-Two indicators, from the endpoints ECN.S1 mapped (`reference/ecn/PROVENANCE.md`):
+Three indicators, from the endpoints ECN.S1 mapped (`reference/ecn/PROVENANCE.md`):
 
-  ELECTION_VOTES_PR   proportional-representation votes per party
-                      · national, and for each of the 77 districts
-  ELECTION_SEATS      first-past-the-post seats per party, national
+  ELECTION_VOTES_PR     proportional-representation votes per party
+                        · national, and for each of the 77 districts
+  ELECTION_SEATS        first-past-the-post seats per party, national
+  ELECTION_LOCAL_SEATS  local-government seats per party, per office
 
-for the elections of **2082 BS (polled 5 March 2026)** and
-**2079 BS (polled 20 November 2022)**.
+for the House of Representatives elections of **2082 BS (polled 5 March 2026)**
+and **2079 BS (polled 20 November 2022)**, plus the **local-level election of
+2079 BS (polled 13 May 2022)** — all 35,221 mayor, chair, ward-chair and member
+seats across Nepal's 753 local governments.
 
 WHAT DELIBERATELY DOES NOT GO IN
 --------------------------------
@@ -88,6 +91,32 @@ SEATS_INDICATOR = "ELECTION_SEATS"
 VOTES_UNIT = "VOTES"
 SEATS_UNIT = "SEATS"
 NATIONAL_GEO = "NP"
+
+LOCAL_INDICATOR = "ELECTION_LOCAL_SEATS"
+
+# The local election of 2079 BS. Polling date from the Commission's own sealed
+# election programme (published 2022-03-24, row 9 "मतदान" = २०७९/०१/३०),
+# converted with this project's BS calendar: 2079-01-30 BS = Friday 13 May 2022.
+# It shares calendar year 2022 with the House of Representatives election of
+# 20 November 2022 — harmless, because they are different indicators.
+LOCAL_ELECTION = ("2079", "2022", "2022-05-13", "2079-01-30")
+
+# The eight offices contested, keyed by the Commission's own file suffix — which
+# is where the English name comes from, rather than from a translation of ours.
+# `seats` is the number of seats the office has, as printed by the Commission's
+# own summary page (LocalChartResult.aspx). Seats WON can be lower: some seats
+# were never filled, which is a real published outcome and is reported, not
+# smoothed away.
+LOCAL_POSTS: tuple[tuple[str, str, int], ...] = (
+    ("Mayor", "Mayor (municipality)", 293),
+    ("ChairPerson", "Chair (rural municipality)", 460),
+    ("DeputyMayor", "Deputy mayor", 293),
+    ("DeputyChairPerson", "Deputy chair", 460),
+    ("WardChairPerson", "Ward chair", 6743),
+    ("WomenMem", "Woman member", 6743),
+    ("DalitWomenMem", "Dalit woman member", 6743),
+    ("Member", "Member", 13486),
+)
 
 SEED_CSV = Path("db/seeds/indicators_election.csv")
 DISTRICT_CSV = Path("db/seeds/ecn_district_codes.csv")
@@ -236,6 +265,79 @@ def harvest(client: EcnClient, cycle: str, raw: list[tuple[str, bytes, str]]) ->
     return CycleFacts(cycle, pr_national, pr_by_district, dict(seats))
 
 
+@dataclass
+class LocalFacts:
+    """The 2079 local election: seats won per party, per office."""
+
+    # post name in Nepali (as published) -> {party: seats won}
+    by_post: dict[str, dict[str, int]]
+    # post name in Nepali -> (English label, seats the office has)
+    posts: dict[str, tuple[str, int]]
+
+
+def harvest_local(client: EcnClient, raw: list[tuple[str, bytes, str]]) -> LocalFacts:
+    """Read the local-election summary: eight files, one per office.
+
+    WHAT THE SOURCE GIVES, AND WHAT IT WITHHOLDS
+    --------------------------------------------
+    Each file is `TopFivePartyPostWise<Office>.json` and lives up to its name:
+    the four largest parties for that office, plus one combined **अन्य** row
+    (rank 50) holding everyone else. The totals are therefore complete, but the
+    party detail is not — individual small parties and independents cannot be
+    separated at local level, and the panel says so. There is no fuller variant:
+    `PartyPostWise…`, `AllPartyPostWise…` and `TopTenPartyPostWise…` all 404.
+    """
+    by_post: dict[str, dict[str, int]] = {}
+    posts: dict[str, tuple[str, int]] = {}
+    for suffix, english, seats in LOCAL_POSTS:
+        path = f"JSONFiles/Election2079/Local/TopFivePartyPostWise{suffix}.json"
+        got = client.fetch(path)
+        if not got.is_json:
+            raise EcnLoadError(
+                f"{path}: the portal returned HTTP {got.status_code}. Refusing to "
+                f"load a partial local election."
+            )
+        raw.append((path, got.content, got.url))
+        rows = decode_json(got.content)
+        post_ne = rows[0]["PostNameNep"].strip()
+        per_party: dict[str, int] = {}
+        for r in rows:
+            party = r["PoliticalPartyNep"].strip()
+            if party in per_party:
+                raise EcnLoadError(f"{path}: party {party!r} appears twice.")
+            per_party[party] = int(r["Win"])
+        by_post[post_ne] = per_party
+        posts[post_ne] = (english, seats)
+    return LocalFacts(by_post=by_post, posts=posts)
+
+
+def check_local(facts: LocalFacts) -> list[str]:
+    """Refuse impossible local results; REPORT merely surprising ones.
+
+    Seats won below the number of seats available is not an error — 123 Dalit
+    woman member seats and 1 woman member seat genuinely went unfilled in 2079,
+    and flattening that would erase a real finding about the election. Seats won
+    ABOVE the seats available is impossible and blocks the load.
+    """
+    if len(facts.by_post) != len(LOCAL_POSTS):
+        raise EcnLoadError(
+            f"read {len(facts.by_post)} of {len(LOCAL_POSTS)} local offices — "
+            f"refusing to load a partial local election."
+        )
+    notes: list[str] = []
+    for post_ne, per_party in facts.by_post.items():
+        english, available = facts.posts[post_ne]
+        won = sum(per_party.values())
+        if won > available:
+            raise EcnLoadError(
+                f"{english}: {won:,} seats won but the office has only "
+                f"{available:,}. Refusing to load."
+            )
+        if won < available:
+            notes.append(f"{english}: {available - won:,} of {available:,} seats not filled")
+    return notes
+
+
 def check(facts: CycleFacts) -> None:
     """Refuse the load unless the source agrees with itself. Blocking, by design."""
     cycle = facts.cycle
@@ -306,20 +408,28 @@ def write_party_reference(all_parties: set[str], ecn_english: dict[str, str]) ->
     # ECN published gets relabelled "curated by hand" on the second run — which
     # is a false claim that a human checked it. Rewriting this file must never
     # upgrade the standing of a name.
+    # EVERY recorded party is read back, including those still awaiting an
+    # English name — they are exactly the ones a narrower run would otherwise
+    # forget, and a party with no translation yet is still a party that stood.
     existing: dict[str, tuple[str, str]] = {}
     if PARTY_CSV.exists():
         with PARTY_CSV.open(encoding="utf-8", newline="") as fh:
             for row in csv.DictReader(fh):
-                if row.get("name_en"):
-                    existing[row["name_ne"]] = (
-                        row["name_en"],
-                        row.get("source_of_english", "") or ECN_PUBLISHED,
-                    )
+                english = row.get("name_en") or ""
+                source = row.get("source_of_english", "") or (ECN_PUBLISHED if english else "")
+                existing[row["name_ne"]] = (english, source)
+
+    # Union with what is already recorded, never replace it. A run limited to one
+    # election (`--cycle 2079`) knows only that election's parties, and rewriting
+    # the file from that set alone silently deleted 36 parties — including
+    # curation a human may have added. A party that stood in ANY loaded election
+    # belongs in this file; a narrower run must not be able to forget it.
+    known = set(all_parties) | set(existing)
 
     with PARTY_CSV.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.writer(fh)
         writer.writerow(["name_ne", "name_en", "source_of_english"])
-        for name in sorted(all_parties):
+        for name in sorted(known):
             if name in ecn_english:
                 # The source itself published it; that always wins and is
                 # re-asserted on every run. Surrounding whitespace is trimmed —
@@ -334,10 +444,11 @@ def write_party_reference(all_parties: set[str], ecn_english: dict[str, str]) ->
                 english, source = "", ""
             writer.writerow([name, english, source])
 
-    with_english = sum(1 for n in all_parties if n in ecn_english or n in existing)
+    with_english = sum(1 for n in known if n in ecn_english or existing.get(n, ("", ""))[0])
     print(
-        f"Party reference written to {PARTY_CSV}: {len(all_parties)} parties, "
-        f"{with_english} with an English name, {len(all_parties) - with_english} awaiting curation"
+        f"Party reference written to {PARTY_CSV}: {len(known)} parties "
+        f"({len(all_parties)} seen this run), {with_english} with an English name, "
+        f"{len(known) - with_english} awaiting curation"
     )
 
 
@@ -481,7 +592,7 @@ def build_rows(
     return out
 
 
-def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
+def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool, with_local: bool = True) -> int:
     load_dotenv()
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
@@ -505,8 +616,21 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
         check(facts)
         facts_by_cycle[cycle] = facts
 
+    local: LocalFacts | None = None
+    if with_local:
+        print("\nReading the local-level election of 2079 BS ...")
+        local = harvest_local(client, raw)
+        unfilled = check_local(local)
+        total_won = sum(sum(p.values()) for p in local.by_post.values())
+        total_seats = sum(seats for _, _, seats in LOCAL_POSTS)
+        print(f"  {len(local.by_post)} offices, {total_won:,} of {total_seats:,} seats won")
+        for note in unfilled:
+            print(f"  NOT FILLED — {note}")
+
     all_parties = {p for f in facts_by_cycle.values() for p in f.pr_national}
     all_parties |= {p for f in facts_by_cycle.values() for p in f.seats_fptp}
+    if local:
+        all_parties |= {p for per in local.by_post.values() for p in per}
 
     # English names the Commission itself publishes, from its by-election feed.
     ecn_english: dict[str, str] = {}
@@ -537,7 +661,7 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
 
         cur.execute(
             "SELECT code, id FROM indicators WHERE code = ANY(%s)",
-            ([VOTES_INDICATOR, SEATS_INDICATOR],),
+            ([VOTES_INDICATOR, SEATS_INDICATOR, LOCAL_INDICATOR],),
         )
         indicator_ids = {c: i for c, i in cur.fetchall()}
 
@@ -564,6 +688,30 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
             to_insert.extend(
                 build_rows(facts, period_id, geo_ids, district_map, indicator_ids, unit_ids)
             )
+
+        if local:
+            cycle, year, poll_date, poll_bs = LOCAL_ELECTION
+            cur.execute(
+                "SELECT id FROM time_periods WHERE period_type = 'year' AND gregorian_label = %s",
+                (year,),
+            )
+            local_period = _scalar(cur)
+            if local_period is None:
+                raise EcnLoadError(f"no calendar-year period for {year} — run `make seed`.")
+            print(f"  local {cycle} BS: polled {poll_date} ({poll_bs} BS) -> calendar year {year}")
+            local_iid = indicator_ids[LOCAL_INDICATOR]
+            for post_ne, per_party in local.by_post.items():
+                for party, seats in per_party.items():
+                    to_insert.append(
+                        (
+                            local_iid,
+                            geo_ids[NATIONAL_GEO],
+                            local_period,
+                            Decimal(seats),
+                            unit_ids[SEATS_UNIT],
+                            json.dumps({"party": party, "post": post_ne}, ensure_ascii=False),
+                        )
+                    )
 
         # Skip cells already carrying the same value, so a re-run writes nothing.
         cur.execute(
@@ -683,12 +831,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run", action="store_true", help="write nothing")
     parser.add_argument("--no-raw", action="store_true", help="skip the raw-lake archive")
     parser.add_argument("--cycle", action="append", help="limit to one election (repeatable)")
+    parser.add_argument("--no-local", action="store_true", help="skip the 2079 local-level results")
     args = parser.parse_args(argv)
 
     cycles = tuple(args.cycle) if args.cycle else tuple(ELECTIONS)
     print("ECN.S3 — loading House of Representatives election results")
     print("=" * 62)
-    load(cycles, dry_run=args.dry_run, write_raw=not args.no_raw)
+    load(
+        cycles,
+        dry_run=args.dry_run,
+        write_raw=not args.no_raw,
+        with_local=not args.no_local,
+    )
     return 0
 
 
