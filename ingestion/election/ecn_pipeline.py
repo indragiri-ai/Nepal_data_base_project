@@ -322,8 +322,12 @@ def write_party_reference(all_parties: set[str], ecn_english: dict[str, str]) ->
         for name in sorted(all_parties):
             if name in ecn_english:
                 # The source itself published it; that always wins and is
-                # re-asserted on every run.
-                english, source = ecn_english[name], ECN_PUBLISHED
+                # re-asserted on every run. Surrounding whitespace is trimmed —
+                # the ECN ships "Independent " with a trailing space, which is
+                # not content, and which would silently defeat any later match
+                # on the name. The Nepali name in `name_ne` is NOT touched: it
+                # is the key these rows join to the warehouse on.
+                english, source = ecn_english[name].strip(), ECN_PUBLISHED
             elif name in existing:
                 english, source = existing[name]
             else:
@@ -595,15 +599,35 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
             conn.rollback()
             return 0
 
+        raw_refs: list[str] = []
         if write_raw and raw:
             try:
                 lake = RawLake.from_env()
                 stored = lake.store_snapshot(DATASET_CODE, raw, snapshot_filename="load.json")
+                raw_refs = [stored.payload_path]
                 print(f"Raw archived: {stored.payload_path} ({stored.size_bytes:,} bytes)")
             except RawLakeError as exc:
+                cur.execute(
+                    "INSERT INTO ingestion_log"
+                    " (dataset_id, status, finished_at, rows_in, rows_loaded, error_note)"
+                    " VALUES (%s, 'failed', now(), %s, 0, %s)",
+                    (dataset_id, len(to_insert), f"raw archive failed: {exc}"[:1000]),
+                )
+                conn.commit()
                 raise EcnLoadError(f"raw archive failed, so nothing was loaded: {exc}") from exc
 
+        # A run that changed nothing is still a successful run, and the portal's
+        # "data updated" line should say so. Recording it only when rows change
+        # would make a healthy re-run look like the source had gone stale.
         if not fresh:
+            cur.execute(
+                "INSERT INTO ingestion_log"
+                " (dataset_id, status, finished_at, rows_in, rows_loaded, rows_rejected,"
+                "  raw_file_refs)"
+                " VALUES (%s, 'success', now(), %s, 0, 0, %s::jsonb)",
+                (dataset_id, len(to_insert), json.dumps(raw_refs)),
+            )
+            conn.commit()
             print("Nothing to load; the warehouse already matches the source.")
             return 0
 
@@ -613,6 +637,14 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
             (dataset_id,),
         )
         release_id = _scalar(cur)
+        cur.execute(
+            "INSERT INTO ingestion_log (dataset_id, release_id, status, raw_file_refs)"
+            " VALUES (%s, %s, 'running', %s::jsonb) RETURNING id",
+            (dataset_id, release_id, json.dumps(raw_refs)),
+        )
+        log_id = _scalar(cur)
+        conn.commit()
+
         for start in range(0, len(fresh), BATCH):
             chunk = fresh[start : start + BATCH]
             cur.executemany(
@@ -628,6 +660,19 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool) -> int:
             )
             conn.commit()
             print(f"  committed {min(start + BATCH, len(fresh)):>6,} / {len(fresh):,}")
+
+        # Close the log. Without this the portal's freshness line never learns
+        # the load happened: `/v1/meta` reads `ingestion_log`, not `observations`,
+        # so the site kept showing an older date and omitted this source entirely
+        # from its dataset list. Required by the onboarding runbook.
+        cur.execute(
+            "UPDATE ingestion_log"
+            " SET status = 'success', finished_at = now(), rows_in = %s,"
+            "     rows_loaded = %s, rows_rejected = 0"
+            " WHERE id = %s",
+            (len(to_insert), len(fresh), log_id),
+        )
+        conn.commit()
         print(f"\nLoaded {len(fresh):,} observations under release {release_id}.")
         return len(fresh)
 

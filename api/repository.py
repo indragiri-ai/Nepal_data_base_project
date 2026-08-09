@@ -688,16 +688,24 @@ class PostgresRepository:
     def get_meta(self) -> list[DatasetMetaRow]:
         """Per-dataset freshness: the date of the latest SUCCESSFUL ingestion
         run and the most recent release date. Only datasets that have loaded
-        at least once appear. Powers the site's 'Data updated' line."""
+        at least once appear. Powers the site's 'Data updated' line.
+
+        The release date is taken from `releases` DIRECTLY, not through the log
+        row that happened to create it. A run that finds nothing to load is a
+        success with no release of its own, and joining through it reported the
+        dataset's latest release as "none" — while a release plainly existed.
+        The newest release of a dataset is a fact about the dataset, whichever
+        run made it.
+        """
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
                 "SELECT d.name_en, s.name_en,"
                 " MAX(il.finished_at) FILTER (WHERE il.status = 'success') AS last_success,"
-                " MAX(r.release_date) FILTER (WHERE il.status = 'success') AS latest_release"
+                " (SELECT MAX(r.release_date) FROM releases r WHERE r.dataset_id = d.id)"
+                "   AS latest_release"
                 " FROM datasets d"
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN ingestion_log il ON il.dataset_id = d.id"
-                " LEFT JOIN releases r ON r.id = il.release_id"
                 " GROUP BY d.id, d.name_en, s.name_en"
                 " HAVING MAX(il.finished_at) FILTER (WHERE il.status = 'success') IS NOT NULL"
                 " ORDER BY last_success DESC"
