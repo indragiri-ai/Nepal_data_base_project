@@ -44,6 +44,11 @@ const MarketPricesPanel = dynamic(() => import("@/components/MarketPricesPanel")
   loading: () => <p className="state">Loading market prices…</p>,
 });
 
+const SeasonalityPanel = dynamic(() => import("@/components/SeasonalityPanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading seasonal averages…</p>,
+});
+
 // Preferred display order. Any source NOT listed here still appears — sorted
 // after these, alphabetically. The list used to be exhaustive, which meant a
 // new publisher's indicators silently vanished from the page: the Kalimati
@@ -212,6 +217,9 @@ export default function SectorDashboard({ slug }: { slug: string }) {
 
       {/* Food prices have their own sector: this panel IS the page. */}
       {sector.slug === "food-prices" && <MarketPricesPanel />}
+
+      {/* The question a price chart cannot answer: when is each one cheap? */}
+      {sector.slug === "food-prices" && <SeasonalityPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

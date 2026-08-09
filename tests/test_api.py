@@ -17,6 +17,7 @@ from api.repository import (
     IndicatorSparkRow,
     ObservationRow,
     SearchHitRow,
+    SeasonalityRow,
     SeriesResult,
     escape_like,
     latest_period_rows,
@@ -186,6 +187,17 @@ class FakeRepository:
             latest_release_date="2026-07-19",
             values=values,
         )
+
+    def get_seasonality(
+        self, indicator_code: str, geography_code: str, breakdown_key: str
+    ) -> list[SeasonalityRow]:
+        if indicator_code != "GDP_GROWTH" or breakdown_key != "variant":
+            return []
+        return [
+            SeasonalityRow("a", 1, Decimal("10.5"), 400),
+            SeasonalityRow("a", 7, Decimal("22.0"), 380),
+            SeasonalityRow("b", 1, Decimal("31.25"), 5),
+        ]
 
     def get_meta(self) -> list[DatasetMetaRow]:
         return [
@@ -558,3 +570,64 @@ def test_a_breakdown_that_matches_nothing_404s_with_the_filter_named(
     )
     assert resp.status_code == 404
     assert "variant='nope'" in resp.json()["detail"]
+
+
+# --- seasonality: every January collapsed into one number ---------------------
+
+
+def test_seasonality_returns_a_month_average_per_breakdown_value(
+    client: TestClient,
+) -> None:
+    resp = client.get(
+        "/v1/data/seasonality",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_key": "variant"},
+    )
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["breakdown_key"] == "variant"
+    assert [(p["breakdown_value"], p["month"], p["mean_value"]) for p in body["points"]] == [
+        ("a", 1, 10.5),
+        ("a", 7, 22.0),
+        ("b", 1, 31.25),
+    ]
+
+
+def test_seasonality_carries_the_day_count_behind_each_average(
+    client: TestClient,
+) -> None:
+    """An average built from 5 days is not the claim an average from 400 is.
+
+    Shipping the count with the number lets the chart grey out or footnote the
+    thin months instead of drawing them with equal confidence.
+    """
+    resp = client.get(
+        "/v1/data/seasonality",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_key": "variant"},
+    )
+    days = {(p["breakdown_value"], p["month"]): p["days"] for p in resp.json()["points"]}
+    assert days[("a", 1)] == 400
+    assert days[("b", 1)] == 5
+
+
+def test_seasonality_always_carries_its_provenance(client: TestClient) -> None:
+    # A derived statistic must not appear without the source it came from.
+    body = client.get(
+        "/v1/data/seasonality",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_key": "variant"},
+    ).json()
+    assert body["provenance"]["source"] == "World Bank"
+    assert body["provenance"]["dataset"] == "World Development Indicators"
+
+
+def test_seasonality_404s_for_a_breakdown_that_does_not_exist(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data/seasonality",
+        params={"indicator": "GDP_GROWTH", "geo": "NP", "breakdown_key": "nope"},
+    )
+    assert resp.status_code == 404
+    assert "nope" in resp.json()["detail"]
+
+
+def test_seasonality_404s_for_an_unknown_indicator(client: TestClient) -> None:
+    resp = client.get("/v1/data/seasonality", params={"indicator": "NOPE", "geo": "NP"})
+    assert resp.status_code == 404

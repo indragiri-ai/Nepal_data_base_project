@@ -27,6 +27,8 @@ from api.models import (
     Provenance,
     SearchHit,
     SearchResponse,
+    SeasonalityPoint,
+    SeasonalityResponse,
 )
 from api.repository import PostgresRepository, Repository
 
@@ -229,6 +231,64 @@ def get_geo_data(
         values=[
             GeoValue(geo_code=v.geo_code, name=v.name_en, name_ne=v.name_ne, value=float(v.value))
             for v in result.values
+        ],
+    )
+
+
+@app.get("/v1/data/seasonality", response_model=SeasonalityResponse)
+def get_seasonality(
+    repo: Annotated[Repository, Depends(get_repository)],
+    indicator: Annotated[str, Query(description="Indicator code, e.g. KALIMATI_PRICE_AVG")],
+    geo: Annotated[str, Query(description="Geography code")] = "NP",
+    breakdown_key: Annotated[
+        str, Query(description="Breakdown dimension to group by, e.g. 'commodity'")
+    ] = "commodity",
+) -> SeasonalityResponse:
+    """Average by calendar month, per breakdown value — the shape a seasonality
+    chart or a month-by-commodity grid consumes in ONE request.
+
+    Without it the browser would fetch every commodity's full daily series —
+    around 100,000 observations — to draw a 25x12 grid.
+    """
+    indicator_row = repo.get_indicator(indicator)
+    if indicator_row is None:
+        raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
+    points = repo.get_seasonality(indicator, geo, breakdown_key)
+    # Provenance comes from the series itself, so a seasonal average is never
+    # shown without the source that produced it. If the series is missing then
+    # so are the averages, so one check covers both.
+    series = repo.get_series(indicator, geo)
+    if not points or series is None:
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"No data for indicator '{indicator}' in geography '{geo}' "
+                f"broken down by '{breakdown_key}'"
+            ),
+        )
+    return SeasonalityResponse(
+        indicator=IndicatorSummary(
+            code=indicator_row.code, name=indicator_row.name_en,
+            topic=indicator_row.topic, unit=indicator_row.unit_code,
+        ),
+        geography_code=geo,
+        unit_code=series.unit_code,
+        unit_name=series.unit_name,
+        breakdown_key=breakdown_key,
+        provenance=Provenance(
+            source=series.source_name,
+            dataset=series.dataset_name,
+            license=series.license,
+            latest_release_date=series.latest_release_date,
+        ),
+        points=[
+            SeasonalityPoint(
+                breakdown_value=p.breakdown_value,
+                month=p.month,
+                mean_value=float(p.mean_value),
+                days=p.days,
+            )
+            for p in points
         ],
     )
 

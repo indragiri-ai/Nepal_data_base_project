@@ -38,6 +38,14 @@ const MAX_CODE = "KALIMATI_PRICE_MAX";
 // two differ on 46% of the days where both exist.
 const AVG_CODE = "KALIMATI_PRICE_AVG";
 
+// The whole archive as one file — every commodity and every unit, not just the
+// 25 charted here. The market board's own site offers no export of any kind,
+// so this is the part of the page that most clearly earns its place.
+const BULK_BASE =
+  "https://ptjqugriilhpxerwmuxx.supabase.co/storage/v1/object/public/downloads/kalimati";
+const BULK_CSV = `${BULK_BASE}/kalimati-daily-prices.csv`;
+const BULK_README = `${BULK_BASE}/README.txt`;
+
 // The portal's validated categorical palette (globals.css). Produce gets
 // series-1; the band is the same hue at low opacity, not a second colour.
 const PRODUCE = "#008300";
@@ -356,6 +364,26 @@ export default function MarketPricesPanel() {
         two commodities the board publishes no average for, where it is the
         midpoint of the band and the chart says so.
       </p>
+
+      <div className="bulk-download">
+        <div>
+          <h3>Take the whole dataset</h3>
+          <p>
+            Every commodity and every trading day — <strong>264,822 rows,
+            135 commodities, 2013 to 2026</strong> — not just the 25 charted
+            here. One CSV, 10.5&nbsp;MB. The market board publishes no export of
+            its own.
+          </p>
+        </div>
+        <div className="bulk-actions">
+          <a className="btn primary" href={BULK_CSV} download>
+            Download CSV
+          </a>
+          <a className="btn ghost small" href={BULK_README} target="_blank" rel="noreferrer">
+            Read the notes first
+          </a>
+        </div>
+      </div>
 
       <div className="controls">
         <label className="field">

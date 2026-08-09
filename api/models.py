@@ -78,6 +78,32 @@ class GeoValue(BaseModel):
     value: float
 
 
+class SeasonalityPoint(BaseModel):
+    """One breakdown value's average for one month of the YEAR (1-12)."""
+
+    breakdown_value: str
+    month: int
+    mean_value: float
+    days: int
+
+
+class SeasonalityResponse(BaseModel):
+    """Every January collapsed into one number, per breakdown value.
+
+    Answers "when is this cheapest?" — a question a time series cannot show
+    and that the market board's own site does not attempt. `days` travels with
+    each average so a reader can weigh what it rests on.
+    """
+
+    indicator: IndicatorSummary
+    geography_code: str
+    unit_code: str
+    unit_name: str
+    breakdown_key: str
+    provenance: Provenance
+    points: list[SeasonalityPoint]
+
+
 class GeoDataResponse(BaseModel):
     """One indicator's latest value for every geography at a level — the shape
     a choropleth map consumes in a single request."""

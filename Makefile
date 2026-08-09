@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial wb-fiscal-watch wb-fiscal-watch-update odn-probe kalimati-acquire kalimati-acquire-dry kalimati-official kalimati-official-dry nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial wb-fiscal-watch wb-fiscal-watch-update odn-probe kalimati-acquire kalimati-acquire-dry kalimati-official kalimati-official-dry kalimati-export kalimati-export-dry nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -144,6 +144,12 @@ kalimati-official:  ## Kalimati: the market board's OWN average price, 2013 to t
 
 kalimati-official-dry:  ## Same, but write nothing
 	$(PY) -m ingestion.kalimati.price_history --dry-run
+
+kalimati-export:  ## Publish the WHOLE Kalimati dataset as public CSV downloads
+	$(PY) scripts/kalimati_export.py
+
+kalimati-export-dry:  ## Same, but build the file and upload nothing
+	$(PY) scripts/kalimati_export.py --dry-run
 
 nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
 	$(PY) -m ingestion.nrb.bfs_acquire

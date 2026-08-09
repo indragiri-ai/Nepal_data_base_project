@@ -139,8 +139,27 @@ class Repository(Protocol):
     def get_geo_values(
         self, indicator_code: str, level: str, parent_code: str | None = None
     ) -> GeoValuesResult | None: ...
+    def get_seasonality(
+        self, indicator_code: str, geography_code: str, breakdown_key: str
+    ) -> list[SeasonalityRow]: ...
     def get_meta(self) -> list[DatasetMetaRow]: ...
     def search(self, term: str, limit: int = 20) -> list[SearchHitRow]: ...
+
+
+@dataclass(frozen=True)
+class SeasonalityRow:
+    """One breakdown value's average for one month OF THE YEAR (1-12).
+
+    Not a month in a particular year — every January in the series collapsed
+    into one number. That is what answers "when is cauliflower cheap?", which
+    a time-series chart cannot show and the market board's own site does not
+    attempt.
+    """
+
+    breakdown_value: str
+    month: int
+    mean_value: Decimal
+    days: int
 
 
 def escape_like(term: str) -> str:
@@ -405,6 +424,39 @@ class PostgresRepository:
                 for r in rows
             ],
         )
+
+    def get_seasonality(
+        self, indicator_code: str, geography_code: str, breakdown_key: str
+    ) -> list[SeasonalityRow]:
+        """Average by calendar month, per breakdown value, in one query.
+
+        The alternative is the browser fetching every commodity's full daily
+        series — about 100,000 observations to draw a 25x12 grid — and
+        aggregating them itself. This returns 300 rows.
+
+        `days` travels with each average so a reader can see what it rests on:
+        a January built from 400 trading days is not the same claim as one
+        built from 5.
+        """
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT o.breakdowns->>%s AS bv,"
+                "       EXTRACT(MONTH FROM t.gregorian_start)::int AS m,"
+                "       avg(o.value), count(*)"
+                " FROM observations o"
+                " JOIN indicators i ON i.id = o.indicator_id"
+                " JOIN geographies g ON g.id = o.geography_id"
+                " JOIN time_periods t ON t.id = o.time_period_id"
+                " WHERE i.code = %s AND g.code = %s AND o.is_latest"
+                "   AND o.breakdowns ? %s"
+                " GROUP BY bv, m"
+                " ORDER BY bv, m",
+                (breakdown_key, indicator_code, geography_code, breakdown_key),
+            )
+            return [
+                SeasonalityRow(breakdown_value=bv, month=m, mean_value=mean, days=n)
+                for bv, m, mean, n in cur.fetchall()
+            ]
 
     def search(self, term: str, limit: int = 20) -> list[SearchHitRow]:
         """Find indicators and geographies whose text matches `term` (SRCH.S1).

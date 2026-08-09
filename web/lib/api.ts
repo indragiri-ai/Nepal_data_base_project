@@ -162,6 +162,38 @@ export function fetchSeriesSlice(
   return getJson<DataResponse>(`/v1/data?${params.toString()}`);
 }
 
+export interface SeasonalityPoint {
+  breakdown_value: string;
+  month: number;
+  mean_value: number;
+  days: number;
+}
+
+export interface SeasonalityResponse {
+  indicator: IndicatorSummary;
+  geography_code: string;
+  unit_code: string;
+  unit_name: string;
+  breakdown_key: string;
+  provenance: Provenance;
+  points: SeasonalityPoint[];
+}
+
+/** Every January collapsed into one number, per breakdown value — the whole
+ *  seasonal grid in ONE request instead of ~100,000 observations. */
+export function fetchSeasonality(
+  indicatorCode: string,
+  geo: string,
+  breakdownKey: string,
+): Promise<SeasonalityResponse> {
+  const params = new URLSearchParams({
+    indicator: indicatorCode,
+    geo,
+    breakdown_key: breakdownKey,
+  });
+  return getJson<SeasonalityResponse>(`/v1/data/seasonality?${params.toString()}`);
+}
+
 export interface DatasetMeta {
   dataset: string;
   source: string;

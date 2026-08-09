@@ -1984,3 +1984,67 @@ a.featured-card:hover {
   border-radius: 999px;
   padding: 2px 8px;
 }
+
+/* Bulk-download block on the food prices page. The point of the portal for
+   anyone who wants the data rather than a picture of it, so it is given real
+   weight rather than a link buried in a footnote. */
+.bulk-download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background: var(--wash);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 22px;
+}
+
+.bulk-download h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.bulk-download p {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+/* Seasonal grid: a real table whose cells carry a sequential shade AND the
+   number, so meaning never rests on colour alone. */
+.season-grid td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.season-grid th[scope="col"] {
+  text-align: right;
+}
+
+.season-grid th[scope="row"] {
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background: var(--card);
+}
+
+.season-grid .thin {
+  color: var(--ink-3);
+  margin-left: 2px;
+}
+
+.grid-head {
+  margin: 28px 0 4px;
+  font-size: 1.05rem;
+}
