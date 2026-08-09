@@ -158,7 +158,32 @@ figure; idempotent; gates green.
 
 ---
 
-### ECN.S3 — Party results (PR votes + seats)
+### ECN.S3 — Party results (PR votes + seats) — **DONE 2026-08-09**
+
+> **Delivered:** `ELECTION_VOTES_PR` (national + all 77 districts, breakdown
+> `{party}`) and `ELECTION_SEATS` (national, breakdown `{party, system:'fptp'}`)
+> for both elections, via `make ecn-load`. The load **refuses to run** unless the
+> source reconciles: 77/77 districts read, district votes summing to the national
+> figure in total and party by party, and seats totalling 165.
+>
+> **Two deliberate omissions, both recorded rather than fudged:**
+> 1. **The 110 proportional seats are not loaded.** The Commission allocates them
+>    in a separate published notice (12–13 March 2026 for the 2082 election), not
+>    through the results portal. A party's figure under `ELECTION_SEATS` is
+>    therefore its **constituency seats only** — never its total in the
+>    275-member house. Loading the PR seats needs that notice and a human review.
+> 2. **English party names are mostly blank** in `reference/ecn/party_names.csv`.
+>    The Commission publishes an English name for only 6 of the 85 parties (in
+>    its by-election feed); the rest are left empty for curation rather than
+>    transliterated by us, which would invent official-looking names no source
+>    published.
+>
+> **The polling dates were established first** — the portal gives BS years only.
+> See `reference/ecn/PROVENANCE.md`: 5 March 2026 (2082 BS) from the ECN's
+> observer notice, 20 November 2022 (2079-08-04 BS) from its official election
+> programme.
+
+### ECN.S3 — original text
 
 **GOAL:** The headline democratic data: party vote shares and seats per
 election.

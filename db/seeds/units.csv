@@ -37,3 +37,5 @@ LITRES_PER_CAPITA,Litres per capita,,"Total alcohol consumption (litres of pure 
 MILLION_TON_KM,Million tonne-kilometres,,"Air transport freight volume"
 NPR_MILLION,Nepali rupees (millions),,"Fiscal figures as published by the WB Nepal Fiscal Dashboard, whose own Local Unit column states NPR Million"
 NPR_PER_KG,Nepali rupees per kilogram,,"Wholesale price per kilogram as published by the Kalimati Fruits and Vegetable Market Development Board; only rows the source itself marks Kg are stored under this unit"
+VOTES,Votes,मत,"A count of valid votes as published by the Election Commission of Nepal. Distinct from COUNT so a votes axis is never mislabelled, and so a vote total is never mistaken for a count of people: one voter casts more than one ballot in a Nepali general election (a first-past-the-post ballot and a proportional one)."
+SEATS,Seats,सिट,"A count of seats won in an elected body. Distinct from COUNT because the denominator is fixed and constitutional (the House of Representatives has 165 first-past-the-post seats and 110 proportional seats), which is what makes a seat total checkable."

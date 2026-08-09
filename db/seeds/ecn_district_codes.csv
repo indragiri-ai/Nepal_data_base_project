@@ -1,0 +1,78 @@
+ecn_district_cd,geo_code,name_en,ecn_name_ne_2082,ecn_name_ne_2079,how_matched
+1,NP0101,Taplejung,ताप्लेजुंग,ताप्लेजुंग,exact name match within the province
+2,NP0102,Panchthar,पाँचथर,पाँचथर,exact name match within the province
+3,NP0103,Ilam,इलाम,इलाम,exact name match within the province
+4,NP0104,Jhapa,झापा,झापा,exact name match within the province
+5,NP0109,Sankhuwasabha,संखुवासभा,संखुवासभा,exact name match within the province
+6,NP0108,Terhathum,तेर्हथुम,तेर्हथुम,"ECN spells it तेर्हथुम, our seed तेह्रथुम — र्ह/ह्र transposed"
+7,NP0110,Bhojpur,भोजपुर,भोजपुर,exact name match within the province
+8,NP0107,Dhankuta,धनकुटा,धनकुटा,exact name match within the province
+9,NP0105,Morang,मोरङ्ग,मोरङ्ग,exact name match within the province
+10,NP0106,Sunsari,सुनसरी,सुनसरी,exact name match within the province
+11,NP0111,Solukhumbu,सोलुखुम्बु,सोलुखुम्बु,exact name match within the province
+12,NP0112,Khotang,खोटाङ्ग,खोटाङ्ग,exact name match within the province
+13,NP0113,Okhaldhunga,ओखलढुंगा,ओखलढुंगा,exact name match within the province
+14,NP0114,Udayapur,उदयपुर,उदयपुर,exact name match within the province
+15,NP0215,Saptari,सप्तरी,सप्तरी,exact name match within the province
+16,NP0216,Siraha,सिराहा,सिराहा,exact name match within the province
+17,NP0322,Dolakha,दोलखा,दोलखा,exact name match within the province
+18,NP0321,Ramechhap,रामेछाप,रामेछाप,exact name match within the province
+19,NP0320,Sindhuli,सिन्धुली,सिन्धुली,exact name match within the province
+20,NP0217,Dhanusha,धनुषा,धनुषा,exact name match within the province
+21,NP0218,Mahottari,महोत्तरी,महोत्तरी,exact name match within the province
+22,NP0219,Sarlahi,सर्लाही,सर्लाही,exact name match within the province
+23,NP0329,Rasuwa,रसुवा,रसुवा,exact name match within the province
+24,NP0330,Dhading,धादिङ्ग,धादिङ्ग,exact name match within the province
+25,NP0328,Nuwakot,नुवाकोट,नुवाकोट,exact name match within the province
+26,NP0327,Kathmandu,काठमाडौं,काठमाडौं,exact name match within the province
+27,NP0326,Bhaktapur,भक्तपुर,भक्तपुर,exact name match within the province
+28,NP0325,Lalitpur,ललितपुर,ललितपुर,exact name match within the province
+29,NP0324,Kabhrepalanchok,काभ्रेपलाञ्चोक,काभ्रेपलाञ्चोक,exact name match within the province
+30,NP0323,Sindhupalchok,सिन्धुपाल्चोक,सिन्धुपाल्चोक,exact name match within the province
+31,NP0331,Makawanpur,मकवानपुर,मकवानपुर,exact name match within the province
+32,NP0232,Rautahat,रौतहट,रौतहट,exact name match within the province
+33,NP0233,Bara,बारा,बारा,exact name match within the province
+34,NP0234,Parsa,पर्सा,पर्सा,exact name match within the province
+35,NP0335,Chitawan,चितवन,चितवन,exact name match within the province
+36,NP0436,Gorkha,गोरखा,गोरखा,exact name match within the province
+37,NP0438,Manang,मनाङ्ग,मनाङ्ग,exact name match within the province
+38,NP0437,Lamjung,लमजुंग,लमजुंग,exact name match within the province
+39,NP0439,Kaski,कास्की,कास्की,exact name match within the province
+40,NP0440,Tanahu,तनहुँ,तनहुँ,exact name match within the province
+41,NP0441,Syangja,स्याङ्जा,स्याङ्जा,exact name match within the province
+42,NP0551,Gulmi,गुल्मी,गुल्मी,exact name match within the province
+43,NP0546,Palpa,पाल्पा,पाल्पा,exact name match within the province
+44,NP0550,Arghakhanchi,अर्घाखांची,अर्घाखांची,exact name match within the province
+45,NP0447,Nawalparasi East,नवलपरासी (बर्दघाट सुस्ता पूर्व),नवलपरासी (बर्दघाट सुस्ता पूर्व),"ECN बर्दघाट, our seed वर्दघाट — ब/व variant of the same name"
+46,NP0548,Rupandehi,रुपन्देही,रुपन्देही,exact name match within the province
+47,NP0549,Kapilbastu,कपिलवस्तु,कपिलवस्तु,"ECN कपिलवस्तु, our seed कपिलबस्तु — व/ब variant"
+48,NP0445,Mustang,मुस्तांग,मुस्तांग,exact name match within the province
+49,NP0444,Myagdi,म्याग्दी,म्याग्दी,exact name match within the province
+50,NP0443,Baglung,बागलुङ,बागलुङ,"ECN बागलुङ, our seed बाग्लुङ्ग — halant placement"
+51,NP0442,Parbat,पर्वत,पर्वत,exact name match within the province
+52,NP0552,Rukum East,रुकुम पूर्व,रुकुम पूर्व,exact name match within the province
+53,NP0554,Rolpa,रोल्पा,रोल्पा,exact name match within the province
+54,NP0555,Pyuthan,प्यूठान,प्यूठान,exact name match within the province
+55,NP0653,Salyan,सल्यान,सल्यान,exact name match within the province
+56,NP0556,Dang,दाङ,दाङ,"ECN दाङ, our seed दाङ्ग — halant placement"
+57,NP0662,Dolpa,डोल्पा,डोल्पा,exact name match within the province
+58,NP0665,Mugu,मुगु,मुगु,exact name match within the province
+59,NP0663,Jumla,जुम्ला,जुम्ला,exact name match within the province
+60,NP0664,Kalikot,कालिकोट,कालिकोट,exact name match within the province
+61,NP0666,Humla,हुम्ला,हुम्ला,exact name match within the province
+62,NP0660,Jajarkot,जाजरकोट,जाजरकोट,exact name match within the province
+63,NP0661,Dailekh,दैलेख,दैलेख,exact name match within the province
+64,NP0659,Surkhet,सुर्खेत,सुर्खेत,exact name match within the province
+65,NP0557,Banke,बाँके,बाँके,exact name match within the province
+66,NP0558,Bardiya,बर्दिया,बर्दिया,exact name match within the province
+67,NP0768,Bajura,बाजुरा,बाजुरा,exact name match within the province
+68,NP0769,Achham,अछाम,अछाम,exact name match within the province
+69,NP0767,Bajhang,बझाङ्ग,बझाङ्ग,exact name match within the province
+70,NP0770,Doti,डोटी,डोटी,exact name match within the province
+71,NP0771,Kailali,कैलाली,कैलाली,exact name match within the province
+72,NP0775,Darchula,दार्चुला,दार्चुला,exact name match within the province
+73,NP0774,Baitadi,बैतडी,बैतडी,exact name match within the province
+74,NP0773,Dadeldhura,डडेलधुरा,डडेलधुरा,exact name match within the province
+75,NP0772,Kanchanpur,कन्चनपुर,कन्चनपुर,exact name match within the province
+77,NP0547,Nawalparasi West,नवलपरासी (बर्दघाट सुस्ता पश्चिम),नवलपरासी (बर्दघाट सुस्ता पश्चिम),exact name match within the province
+78,NP0652,Rukum West,रुकुम पश्चिम,रुकुम पश्चिम,exact name match within the province

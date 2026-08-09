@@ -1,12 +1,16 @@
 # Election Commission of Nepal — provenance and channel notes
 
-Source recon from **ECN.S1** (`docs/steps/onboard-election-commission.md`).
-Everything below was verified live on **2026-08-09** with `make ecn-probe`.
-Anything not verified is marked as such — and there is a section for it, because
-the most useful finding of this spike is what the portal does *not* serve.
+Covers **ECN.S1** (channel recon) and **ECN.S3** (the load) —
+`docs/steps/onboard-election-commission.md`. Everything below was verified live
+on **2026-08-09**. Anything not verified is marked as such — and there is a
+section for it, because the most useful finding of the spike is what the portal
+does *not* serve.
+
+    make ecn-probe   re-run the recon, regenerate reference/ecn/inventory.json
+    make ecn-load    load the results (idempotent; a re-run writes nothing)
 
 Machine-readable companion: `reference/ecn/inventory.json` (every path probed,
-its HTTP status, size and row count). Regenerate with `make ecn-probe`.
+its HTTP status, size and row count).
 
 ## What this source is
 
@@ -130,7 +134,26 @@ published voter statistics or its post-election report. Until such a channel is
 verified, the honest district-level measure this portal *can* support is
 **valid PR votes cast per district**, which is a real published number and
 should be labelled as such — never as "turnout", which it is not, because the
-denominator is missing.
+denominator is missing. **Founder's decision 2026-08-09: S2 deferred; the
+dashboard uses votes cast.**
+
+### A lead for whenever turnout is picked up again
+
+Found while establishing the election dates, and recorded here so the search
+does not start from nothing. The main site's notice feed
+(`https://election.gov.np/admin/public/api/resources/notice?page=N`, 30 pages,
+298 notices, plain JSON) carries this for the **2079** election:
+
+    2022-09-17  मतदाता, मतदान स्थल र मतदान केन्द्र संख्या
+                (प्रदेश / जिल्ला / प्रतिनिधि सभा नि.क्षे. / प्रदेश सभा नि.क्षे. अनुसार)
+    -> .../storage/HoR/Notice/अन्तिम नामावली सम्बन्धी विवरण.pdf
+
+i.e. **voters, polling places and polling-centre counts by province, district
+and constituency** — the registered-voter denominator, published a month before
+polling. It is a **PDF**, so it needs the staging + human review route, and it
+is registration at that date rather than a turnout numerator. No equivalent was
+located for 2082. **Not verified, not opened, not ingested** — it is a lead, not
+a fact.
 
 ---
 
@@ -250,13 +273,32 @@ is the source's own, and it must travel with the data: any chart built from this
 should say it shows the Election Commission's published count, and should not
 claim to be the certified result.
 
-### Dates are NOT yet established
+### The polling dates — established from ECN documents (ECN.S3)
 
-The portal names its elections by **BS year only** (`निर्वाचन, २०८२`). The exact
-polling date of each is not stated anywhere in the data we read, and is not
-guessed here. **Before either cycle is loaded, the polling date must be verified
-from an ECN publication** and recorded in the indicator definition — a period
-row must map to real Gregorian dates, never to a bare year (Blueprint §5.1).
+The results portal names its elections by **BS year only** (`निर्वाचन, २०८२`) and
+states no polling date anywhere in the data. Rather than guess, both dates were
+taken from the Commission's own publications and converted with this project's
+BS calendar (`ingestion/common/bs_calendar.py`), which is itself authoritative
+reference data:
+
+| Election | The document | What it says | Gregorian |
+|---|---|---|---|
+| **2082 BS** | Call for international observers, published 28/10/2025 (`storage/Observer2082/ObserverNotice_Int.jpeg`, on ECN letterhead with its seal) | *"House of Representatives Election, 2026" of Nepal **being held on 5th March, 2026***  | **Thu 5 March 2026** = 2082-11-21 BS |
+| **2079 BS** | Official election programme (`storage/HoR/Notice/FPTP निर्वाचन कार्यक्रम.xlsx`) — the FPTP sheet and the PR sheet agree | मतदान (polling) = **2079-08-04 BS** | **Sun 20 November 2022** |
+
+Two notes worth keeping:
+
+- The main site's navigation labels the 2082 election **"Federal Election 2025"**,
+  which contradicts the Commission's own notice calling it the *House of
+  Representatives Election, 2026*. The dated notice is the better evidence and is
+  what we use; the menu label appears to be an error on their site.
+- The surrounding notices corroborate March 2026 independently: polling-centre
+  lists on 25 February 2026, PR seat allocation on 12–13 March 2026, and the
+  declaration of elected PR candidates on 16 March 2026.
+
+These dates are pinned by a test and live in `ELECTIONS` in
+`ingestion/election/ecn_pipeline.py`. The calendar year of each is what separates
+the two elections in the warehouse.
 
 ---
 
@@ -291,6 +333,87 @@ The full machine-readable record — 171 paths probed, 166 served — is in
 bytes, sha256 `8bc5a9826483931e…`).
 
 ---
+
+## What ECN.S3 actually loaded (2026-08-09)
+
+Two indicators, both under topic `governance`, loaded by `make ecn-load`
+(`ingestion/election/ecn_pipeline.py`):
+
+| Indicator | Geography | Breakdowns | Unit |
+|---|---|---|---|
+| `ELECTION_VOTES_PR` | national + all **77 districts** | `{party}` | VOTES |
+| `ELECTION_SEATS` | national | `{party, system:'fptp'}` | SEATS |
+
+for both elections, keyed to the calendar year of polling (2026 and 2022).
+
+**8,132 observations loaded** under release 51 on 2026-08-09, and verified by
+querying the warehouse afterwards rather than trusting the loader's own report:
+
+| Indicator | Year | Level | Rows | Sum |
+|---|---|---|---:|---:|
+| `ELECTION_VOTES_PR` | 2026 | country | 57 | 10,835,025 |
+| `ELECTION_VOTES_PR` | 2026 | district | 4,389 | **10,835,025** |
+| `ELECTION_VOTES_PR` | 2022 | country | 47 | 10,560,082 |
+| `ELECTION_VOTES_PR` | 2022 | district | 3,619 | **10,560,082** |
+| `ELECTION_SEATS` | 2026 | country | 7 | 165 |
+| `ELECTION_SEATS` | 2022 | country | 13 | 165 |
+
+The district rows sum to the national figure **exactly, in the warehouse**, for
+both elections — the check is not only a pre-flight assertion. Raw archive of
+the load: `ecn/results/2026-08-09T105114_001251Z/load.json` (3,545,453 bytes).
+
+**Idempotent, proven by re-running it**: the second run rebuilt all 8,132
+observations, found all 8,132 unchanged, and wrote **nothing**.
+
+**The load refuses to run unless the source reconciles.** These are not warnings
+— each raises and nothing is written: 77/77 district files read; district votes
+summing to the national total, in total *and* party by party; FPTP seats
+totalling 165; no duplicate party in the national PR file. The coverage check
+comes first, so a truncated read can never be reported as a source that fails to
+add up (the mistake ECN.S1's first run made).
+
+### Two deliberate gaps — say these out loud rather than paper over them
+
+1. **`ELECTION_SEATS` holds constituency seats only.** The 110 proportional
+   seats are allocated in a separate ECN notice (for 2082: the notices of
+   12–13 March 2026), not through the results portal. A party's number here is
+   its **FPTP seats**, never its total in the 275-member house. Any chart must
+   say so, or it will understate every large party.
+2. **English party names are mostly blank** in `party_names.csv`. Of the **91**
+   party names across both elections, the Commission itself publishes an English
+   name for only **7**, in its by-election feed (`PoliticalPartyNameEng`); **84**
+   await curation. We do not transliterate: an invented English name for a
+   political party looks official and is not.
+
+   Every English name carries `source_of_english` saying where it came from.
+   That column is **preserved, never re-derived** on a rewrite — an early
+   version of the loader recomputed it and so relabelled all seven
+   ECN-published names as "curated by hand" on the second run, asserting a human
+   check that had never happened. Pinned by a test.
+
+### New units
+
+`VOTES` and `SEATS` were added to `db/seeds/units.csv` rather than reusing
+`COUNT`. A vote total is not a count of people — one voter casts both an FPTP
+and a PR ballot — and a seat total has a fixed constitutional denominator, which
+is what makes it checkable.
+
+### District mapping — curated, not computed
+
+`db/seeds/ecn_district_codes.csv` maps the ECN's district codes to our
+geography codes, one row per district, each carrying its evidence:
+
+- **72** matched the Commission's Devanagari district name **exactly**, within
+  the correct province;
+- **5** were resolved by a human and say why in the `how_matched` column. All
+  five differ only in spelling, not identity: तेर्हथुम/तेह्रथुम (र्ह↔ह्र),
+  बर्दघाट/वर्दघाट and कपिलवस्तु/कपिलबस्तु (ब↔व), बागलुङ/बाग्लुङ्ग and
+  दाङ/दाङ्ग (halant placement).
+
+The ECN's numbering does **not** line up with our codes (their 45 is Nawalparasi
+East = `NP0447`, their 50 is Baglung = `NP0443`), so there is no numeric
+shortcut and none is attempted. A district code absent from this file raises
+rather than being skipped — a silently dropped district is a hole in the map.
 
 ## Binding policies for this source
 

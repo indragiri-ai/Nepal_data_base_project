@@ -247,6 +247,8 @@ export const SECTORS: SectorDef[] = [
 export function sourceForCode(code: string): string {
   if (code.startsWith("NRB_BFS_")) return "Nepal Rastra Bank";
   if (code.startsWith("CENSUS_")) return "National Statistics Office";
+  if (code.startsWith("KALIMATI_")) return "Kalimati Fruits and Vegetable Market Development Board";
+  if (code.startsWith("ELECTION_")) return "Election Commission of Nepal";
   return "World Bank";
 }
 
