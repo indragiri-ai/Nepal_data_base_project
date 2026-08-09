@@ -162,6 +162,49 @@ export function fetchSeriesSlice(
   return getJson<DataResponse>(`/v1/data?${params.toString()}`);
 }
 
+/** One geography's value for one breakdown value — e.g. one party's votes in
+ *  one district. `geo` is the P-code; `key` is the breakdown value. */
+export interface GeoBreakdownCell {
+  geo: string;
+  key: string;
+  value: number;
+}
+
+export interface GeoBreakdownResponse {
+  indicator: IndicatorSummary;
+  level: string;
+  period: string;
+  breakdown_key: string;
+  unit_code: string;
+  unit_name: string;
+  provenance: Provenance;
+  /** `value` here is the geography's TOTAL across the breakdown. */
+  geographies: GeoValue[];
+  cells: GeoBreakdownCell[];
+}
+
+/** A broken-down choropleth in one request: every breakdown value for every
+ *  geography, for ONE period, plus each geography's total.
+ *
+ *  `fetchGeoValues` cannot serve election data — it returns only headline rows
+ *  (no breakdowns), and every election observation carries a party. Always pass
+ *  `period` when a source holds more than one, or the map will draw one period
+ *  under another's label. */
+export function fetchGeoBreakdown(
+  indicatorCode: string,
+  level: GeoLevel,
+  breakdownKey: string,
+  period?: string,
+): Promise<GeoBreakdownResponse> {
+  const params = new URLSearchParams({
+    indicator: indicatorCode,
+    level,
+    breakdown_key: breakdownKey,
+  });
+  if (period) params.set("period", period);
+  return getJson<GeoBreakdownResponse>(`/v1/data/geo/breakdown?${params.toString()}`);
+}
+
 export interface SeasonalityPoint {
   breakdown_value: string;
   month: number;

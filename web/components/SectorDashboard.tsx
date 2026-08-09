@@ -49,6 +49,11 @@ const SeasonalityPanel = dynamic(() => import("@/components/SeasonalityPanel"), 
   loading: () => <p className="state">Loading seasonal averages…</p>,
 });
 
+const GovernancePanel = dynamic(() => import("@/components/GovernancePanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading election results…</p>,
+});
+
 // Preferred display order. Any source NOT listed here still appears — sorted
 // after these, alphabetically. The list used to be exhaustive, which meant a
 // new publisher's indicators silently vanished from the page: the Kalimati
@@ -220,6 +225,10 @@ export default function SectorDashboard({ slug }: { slug: string }) {
 
       {/* The question a price chart cannot answer: when is each one cheap? */}
       {sector.slug === "food-prices" && <SeasonalityPanel />}
+
+      {/* Election results (ECN.S4). The Governance page was empty before this;
+          the results are also the sector's whole reason to exist. */}
+      {sector.slug === "governance" && <GovernancePanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

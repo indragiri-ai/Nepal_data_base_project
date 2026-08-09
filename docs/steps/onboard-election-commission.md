@@ -209,7 +209,38 @@ result books.
 
 ---
 
-### ECN.S4 — Governance sector goes live
+### ECN.S4 — Governance sector goes live — **DONE 2026-08-09**
+
+> **Delivered:** `web/components/GovernancePanel.tsx` on `/governance` —
+> election picker (2082 / 2079), proportional votes by party (horizontal bars,
+> top 8 + "All other parties"), constituency seats by party, and a **district
+> choropleth of the selected party's share of that district's proportional
+> vote**, plus full tables and a CSV. Verified in a real browser against the
+> live API: three charts render, no console errors, both elections switch
+> cleanly.
+>
+> **New API capability:** `/v1/data/geo/breakdown`. The existing `/v1/data/geo`
+> serves only headline rows (`breakdowns = {}`), and election data has no
+> headline row at all — every observation carries a party — so a party map
+> needed its own endpoint. It returns every breakdown value per geography for
+> ONE explicit period, plus each geography's total so a share can be drawn
+> without storing a derived total.
+>
+> **Two defects found and fixed while building it**, both of the "quietly wrong
+> number" kind this portal exists to avoid:
+> 1. The sector cards promoted an arbitrary breakdown row to "the national
+>    figure" whenever an indicator had no headline row — the Governance page
+>    showed *"Seats won in the House of Representatives — 125"*, which is one
+>    party's seats. The spark query now requires a genuine headline slice; an
+>    indicator without one gets a card with no number. Audited against the live
+>    warehouse: 1,483 indicators keep their value, only the two election ones
+>    lose a number they never legitimately had.
+> 2. Votes and seats were joined on the party name — see PROVENANCE.md. The
+>    Commission names the same party differently in its two files, so the join
+>    reported 0 seats for a party that won 44. The panel now shows the two
+>    measures separately and explains why on the page.
+
+### ECN.S4 — original text
 
 **GOAL:** The empty Governance page becomes real.
 

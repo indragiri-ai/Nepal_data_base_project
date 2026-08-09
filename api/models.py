@@ -117,6 +117,37 @@ class GeoDataResponse(BaseModel):
     values: list[GeoValue]
 
 
+class GeoBreakdownCell(BaseModel):
+    """One geography's value for one breakdown value — one party's votes in one
+    district. `geo` is the P-code; `key` is the breakdown value."""
+
+    geo: str
+    key: str
+    value: float
+
+
+class GeoBreakdownResponse(BaseModel):
+    """A broken-down choropleth in one request: every breakdown value for every
+    geography at a level, for ONE period, plus each geography's total.
+
+    The plain `/v1/data/geo` cannot serve this — it returns only headline rows
+    (no breakdowns), and data like election results has no headline row at all.
+    The totals are supplied so a share can be drawn without the caller summing
+    thousands of cells, and without a derived total being stored as if the
+    source had published it.
+    """
+
+    indicator: IndicatorSummary
+    level: str
+    period: str
+    breakdown_key: str
+    unit_code: str
+    unit_name: str
+    provenance: Provenance
+    geographies: list[GeoValue]  # `value` is that geography's total
+    cells: list[GeoBreakdownCell]
+
+
 class DatasetMeta(BaseModel):
     """Freshness of one dataset: when its pipeline last succeeded and the date
     of its most recent data release."""

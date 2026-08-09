@@ -11,6 +11,8 @@ from fastapi.testclient import TestClient
 from api.main import app, get_repository
 from api.repository import (
     DatasetMetaRow,
+    GeoBreakdownCell,
+    GeoBreakdownResult,
     GeoValueRow,
     GeoValuesResult,
     IndicatorRow,
@@ -82,12 +84,33 @@ _CENSUS_LITERACY = IndicatorRow(
 # What the fake search ranges over: the indicators above plus a few places.
 # (kind, code, name_en, name_ne, detail, unit_code, definition)
 _SEARCHABLE: list[tuple[str, str, str, str | None, str, str | None, str | None]] = [
-    ("indicator", _GDP.code, _GDP.name_en, _GDP.name_ne, _GDP.topic, _GDP.unit_code,
-     _GDP.definition_en),
-    ("indicator", _CENSUS_POP.code, _CENSUS_POP.name_en, _CENSUS_POP.name_ne,
-     _CENSUS_POP.topic, _CENSUS_POP.unit_code, _CENSUS_POP.definition_en),
-    ("indicator", _CENSUS_LITERACY.code, _CENSUS_LITERACY.name_en, _CENSUS_LITERACY.name_ne,
-     _CENSUS_LITERACY.topic, _CENSUS_LITERACY.unit_code, _CENSUS_LITERACY.definition_en),
+    (
+        "indicator",
+        _GDP.code,
+        _GDP.name_en,
+        _GDP.name_ne,
+        _GDP.topic,
+        _GDP.unit_code,
+        _GDP.definition_en,
+    ),
+    (
+        "indicator",
+        _CENSUS_POP.code,
+        _CENSUS_POP.name_en,
+        _CENSUS_POP.name_ne,
+        _CENSUS_POP.topic,
+        _CENSUS_POP.unit_code,
+        _CENSUS_POP.definition_en,
+    ),
+    (
+        "indicator",
+        _CENSUS_LITERACY.code,
+        _CENSUS_LITERACY.name_en,
+        _CENSUS_LITERACY.name_ne,
+        _CENSUS_LITERACY.topic,
+        _CENSUS_LITERACY.unit_code,
+        _CENSUS_LITERACY.definition_en,
+    ),
     ("geography", "NP", "Nepal", "नेपाल", "country", None, None),
     ("geography", "NP0321", "Sarlahi", "सर्लाही", "district", None, None),
     ("geography", "NP03", "Bagmati", "बागमती", "province", None, None),
@@ -128,8 +151,12 @@ class FakeRepository:
             if any(t in h.lower() for h in haystacks):
                 hits.append(
                     SearchHitRow(
-                        kind=kind, code=code, name_en=name_en, name_ne=name_ne,
-                        detail=detail, unit_code=unit,
+                        kind=kind,
+                        code=code,
+                        name_en=name_en,
+                        name_ne=name_ne,
+                        detail=detail,
+                        unit_code=unit,
                         score=_fake_score(term, code, name_en, name_ne),
                     )
                 )
@@ -188,6 +215,48 @@ class FakeRepository:
             values=values,
         )
 
+    def get_geo_breakdown(
+        self,
+        indicator_code: str,
+        level: str,
+        breakdown_key: str,
+        period: str | None = None,
+    ) -> GeoBreakdownResult | None:
+        if indicator_code != "CENSUS_POP_TOTAL" or breakdown_key != "sex":
+            return None
+        if level != "district":
+            return None
+        # Two periods, so a caller that omits `period` must still get exactly
+        # one — and the newest.
+        if period not in (None, "2021", "2011"):
+            return None
+        chosen = period or "2021"
+        scale = 1 if chosen == "2021" else 2
+        cells = [
+            GeoBreakdownCell("NP0101", "female", Decimal(60 * scale)),
+            GeoBreakdownCell("NP0101", "male", Decimal(40 * scale)),
+            GeoBreakdownCell("NP0102", "female", Decimal(10 * scale)),
+            GeoBreakdownCell("NP0102", "male", Decimal(30 * scale)),
+        ]
+        return GeoBreakdownResult(
+            indicator_code=indicator_code,
+            indicator_name="Population (Census 2021)",
+            level=level,
+            period=chosen,
+            breakdown_key=breakdown_key,
+            unit_code="PERSONS",
+            unit_name="Persons",
+            source_name="National Statistics Office",
+            dataset_name="National Population and Housing Census 2021",
+            license=None,
+            latest_release_date="2026-07-19",
+            geographies=[
+                GeoValueRow("NP0101", "Taplejung", "ताप्लेजुङ्ग", Decimal(100 * scale)),
+                GeoValueRow("NP0102", "Panchthar", "पाँचथर", Decimal(40 * scale)),
+            ],
+            cells=cells,
+        )
+
     def get_seasonality(
         self, indicator_code: str, geography_code: str, breakdown_key: str
     ) -> list[SeasonalityRow]:
@@ -225,10 +294,12 @@ class FakeRepository:
         if indicator_code != "GDP_GROWTH" or geography_code != "NP":
             return None
         observations = [
-            ObservationRow("2019", 2019, Decimal("6.66"), "final", None, "2026-06-13",
-                           {"variant": "a"}),
-            ObservationRow("2020", 2020, Decimal("-2.37"), "final", None, "2026-06-13",
-                           {"variant": "b"}),
+            ObservationRow(
+                "2019", 2019, Decimal("6.66"), "final", None, "2026-06-13", {"variant": "a"}
+            ),
+            ObservationRow(
+                "2020", 2020, Decimal("-2.37"), "final", None, "2026-06-13", {"variant": "b"}
+            ),
         ]
         if breakdown_key is not None:
             observations = [
@@ -464,9 +535,19 @@ def test_meta_reports_freshness_per_dataset(client: TestClient) -> None:
 
 def _geo_row(code: str, value: str, label: str, sort_key: int) -> tuple[object, ...]:
     return (
-        code, code, None, Decimal(value), label, "Provincial expenditure (budget)",
-        "NPR_MILLION", "Nepali rupees (millions)", "World Bank",
-        "Nepal Fiscal Dashboard", None, "2026-08-06", sort_key,
+        code,
+        code,
+        None,
+        Decimal(value),
+        label,
+        "Provincial expenditure (budget)",
+        "NPR_MILLION",
+        "Nepali rupees (millions)",
+        "World Bank",
+        "Nepal Fiscal Dashboard",
+        None,
+        "2026-08-06",
+        sort_key,
     )
 
 
@@ -529,8 +610,10 @@ def test_data_filtered_by_a_breakdown_returns_only_that_slice(client: TestClient
     resp = client.get(
         "/v1/data",
         params={
-            "indicator": "GDP_GROWTH", "geo": "NP",
-            "breakdown_key": "variant", "breakdown_value": "a",
+            "indicator": "GDP_GROWTH",
+            "geo": "NP",
+            "breakdown_key": "variant",
+            "breakdown_value": "a",
         },
     )
     assert resp.status_code == 200
@@ -564,8 +647,10 @@ def test_a_breakdown_that_matches_nothing_404s_with_the_filter_named(
     resp = client.get(
         "/v1/data",
         params={
-            "indicator": "GDP_GROWTH", "geo": "NP",
-            "breakdown_key": "variant", "breakdown_value": "nope",
+            "indicator": "GDP_GROWTH",
+            "geo": "NP",
+            "breakdown_key": "variant",
+            "breakdown_value": "nope",
         },
     )
     assert resp.status_code == 404
@@ -631,3 +716,90 @@ def test_seasonality_404s_for_a_breakdown_that_does_not_exist(client: TestClient
 def test_seasonality_404s_for_an_unknown_indicator(client: TestClient) -> None:
     resp = client.get("/v1/data/seasonality", params={"indicator": "NOPE", "geo": "NP"})
     assert resp.status_code == 404
+
+
+# --- /v1/data/geo/breakdown (ECN.S4) -----------------------------------------
+
+
+def test_geo_breakdown_returns_cells_and_each_geographys_total(client: TestClient) -> None:
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={
+            "indicator": "CENSUS_POP_TOTAL",
+            "level": "district",
+            "breakdown_key": "sex",
+            "period": "2021",
+        },
+    ).json()
+    assert body["period"] == "2021"
+    assert body["breakdown_key"] == "sex"
+    assert len(body["cells"]) == 4
+    totals = {g["geo_code"]: g["value"] for g in body["geographies"]}
+    # The totals must equal the cells they came from — that is the whole point
+    # of shipping them, since a share is drawn against them.
+    summed: dict[str, float] = {}
+    for cell in body["cells"]:
+        summed[cell["geo"]] = summed.get(cell["geo"], 0) + cell["value"]
+    assert totals == summed
+
+
+def test_geo_breakdown_defaults_to_a_single_newest_period(client: TestClient) -> None:
+    """Omitting `period` must still yield ONE period, not two mixed together.
+
+    Mixing them is the failure this endpoint's docstring warns about: a map
+    would show one election's numbers under another election's label.
+    """
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "district", "breakdown_key": "sex"},
+    ).json()
+    assert body["period"] == "2021"
+    totals = {g["geo_code"]: g["value"] for g in body["geographies"]}
+    assert totals == {"NP0101": 100.0, "NP0102": 40.0}
+
+
+def test_geo_breakdown_serves_an_older_period_when_asked(client: TestClient) -> None:
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={
+            "indicator": "CENSUS_POP_TOTAL",
+            "level": "district",
+            "breakdown_key": "sex",
+            "period": "2011",
+        },
+    ).json()
+    assert body["period"] == "2011"
+    assert {g["value"] for g in body["geographies"]} == {200.0, 80.0}
+
+
+def test_geo_breakdown_carries_provenance(client: TestClient) -> None:
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "district", "breakdown_key": "sex"},
+    ).json()
+    assert body["provenance"]["source"] == "National Statistics Office"
+
+
+def test_geo_breakdown_rejects_a_bad_level(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "ward", "breakdown_key": "sex"},
+    )
+    assert resp.status_code == 422
+
+
+def test_geo_breakdown_404s_for_an_unknown_indicator(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "NOPE", "level": "district", "breakdown_key": "sex"},
+    )
+    assert resp.status_code == 404
+
+
+def test_geo_breakdown_404s_when_the_breakdown_does_not_exist(client: TestClient) -> None:
+    resp = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "district", "breakdown_key": "nope"},
+    )
+    assert resp.status_code == 404
+    assert "nope" in resp.json()["detail"]

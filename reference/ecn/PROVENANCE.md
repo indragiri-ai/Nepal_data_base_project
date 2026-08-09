@@ -391,6 +391,28 @@ add up (the mistake ECN.S1's first run made).
    ECN-published names as "curated by hand" on the second run, asserting a human
    check that had never happened. Pinned by a test.
 
+### The two result files name the same party differently — do NOT join them
+
+Found while building ECN.S4, and it is the sharpest trap in this source. The
+Commission publishes the seat table and the proportional-vote table with
+**different names for the same party**:
+
+    seats  (2079)   नेपाल कम्युनिष्ट पार्टी (एमाले)
+    votes  (2079)   नेपाल कम्युनिष्ट पार्टी (एकीकृत मार्क्सवादी लेनिनवादी)
+
+Joining the two on the party name therefore produced **"0 seats" for a party
+that won 44** — a wrong number, which is worse than an absent one. Some seat
+names also carry trailing whitespace.
+
+**And it cannot be repaired by tidying the strings.** In 2079 two parties
+contested the proportional ballot under a single joint symbol and are published
+as one row; no seat figure belongs to it. The relationship the source supports
+is "here are the votes" and "here are the seats", not "this party's votes and
+seats". The portal shows them as two separate charts and two separate tables,
+says why on the page, and joins neither. A future step that wants the join needs
+a curated party-identity mapping, reviewed by a human — the same treatment
+`party_names.csv` gets.
+
 ### New units
 
 `VOTES` and `SEATS` were added to `db/seeds/units.csv` rather than reusing

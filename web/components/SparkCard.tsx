@@ -65,7 +65,14 @@ export default function SparkCard({
           <Sparkline points={spark.points} />
         </>
       ) : (
-        <span className="spark-val muted">No data yet</span>
+        // Deliberately not "No data yet". A card reaches this branch for two
+        // different reasons — the indicator has no observations at all, or it
+        // has plenty but no single national figure (election results are
+        // per-party; there is no one number for "seats won"). Claiming the data
+        // is missing would be false in the second case, and the card cannot
+        // tell the two apart. So it makes no claim about the data, and points
+        // at the page that shows it properly.
+        <span className="spark-val muted">See the series</span>
       )}
       {alt ? (
         <span className="badge alt" title={`Headline source for this measure: ${ind.preferred_source}`}>

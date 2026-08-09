@@ -98,6 +98,40 @@ class GeoValuesResult:
 
 
 @dataclass(frozen=True)
+class GeoBreakdownCell:
+    """One geography's value for ONE breakdown value — e.g. one party's votes in
+    one district."""
+
+    geo_code: str
+    breakdown_value: str
+    value: Decimal
+
+
+@dataclass(frozen=True)
+class GeoBreakdownResult:
+    """Every breakdown value, for every geography at a level, in one period.
+
+    What a broken-down choropleth needs. A map of "party X's share of district
+    Y" cannot be assembled from the headline geo endpoint, because election data
+    has no headline row at all: every observation carries a party.
+    """
+
+    indicator_code: str
+    indicator_name: str
+    level: str
+    period: str
+    breakdown_key: str
+    unit_code: str
+    unit_name: str
+    source_name: str
+    dataset_name: str
+    license: str | None
+    latest_release_date: str
+    geographies: list[GeoValueRow]  # value here is the geography's TOTAL
+    cells: list[GeoBreakdownCell]
+
+
+@dataclass(frozen=True)
 class DatasetMetaRow:
     dataset: str
     source: str
@@ -139,6 +173,13 @@ class Repository(Protocol):
     def get_geo_values(
         self, indicator_code: str, level: str, parent_code: str | None = None
     ) -> GeoValuesResult | None: ...
+    def get_geo_breakdown(
+        self,
+        indicator_code: str,
+        level: str,
+        breakdown_key: str,
+        period: str | None = None,
+    ) -> GeoBreakdownResult | None: ...
     def get_seasonality(
         self, indicator_code: str, geography_code: str, breakdown_key: str
     ) -> list[SeasonalityRow]: ...
@@ -237,9 +278,16 @@ class PostgresRepository:
             )
             return [
                 IndicatorRow(
-                    code=r[0], name_en=r[1], name_ne=r[2], definition_en=r[3],
-                    topic=r[4], unit_code=r[5], unit_name=r[6], source_concept=r[7],
-                    source=r[8], preferred_source=r[9],
+                    code=r[0],
+                    name_en=r[1],
+                    name_ne=r[2],
+                    definition_en=r[3],
+                    topic=r[4],
+                    unit_code=r[5],
+                    unit_name=r[6],
+                    source_concept=r[7],
+                    source=r[8],
+                    preferred_source=r[9],
                 )
                 for r in cur.fetchall()
             ]
@@ -258,6 +306,18 @@ class PostgresRepository:
         NRB bank class (overall, then commercial_banks) — the same headline slice
         the charts use, done server-side so the page makes one request, not one
         per indicator.
+
+        AN INDICATOR WITH NO HEADLINE SLICE GETS NO CARD, ON PURPOSE.
+        This used to fall through to `ELSE 3` — any breakdown row, ordered by id
+        — which meant an indicator that has *only* broken-down rows had one of
+        them promoted to "the national figure". The election data made the
+        damage plain: the Governance page showed "Seats won in the House of
+        Representatives — 125", which is one party's constituency seats, and
+        "Votes cast under proportional representation — 5,183,493", one party's
+        votes, both reading as national totals. Some measures genuinely have no
+        single national number, and the honest answer is to show none rather
+        than to elect one arbitrarily. `SparkCard` already renders a card with
+        no value, so such indicators stay listed and findable.
         """
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
@@ -270,12 +330,14 @@ class PostgresRepository:
                 "        WHEN o.breakdowns = '{}'::jsonb THEN 0"
                 "        WHEN o.breakdowns->>'bfi_class' = 'overall' THEN 1"
                 "        WHEN o.breakdowns->>'bfi_class' = 'commercial_banks' THEN 2"
-                "        ELSE 3 END, o.id"
+                "        END, o.id"
                 "    ) AS rn"
                 "  FROM observations o"
                 "  JOIN geographies g ON g.id = o.geography_id"
                 "  JOIN time_periods t ON t.id = o.time_period_id"
                 "  WHERE g.code = 'NP' AND o.is_latest"
+                "    AND (o.breakdowns = '{}'::jsonb"
+                "         OR o.breakdowns->>'bfi_class' IN ('overall', 'commercial_banks'))"
                 ")"
                 " SELECT i.code, p.period, p.value"
                 " FROM picked p JOIN indicators i ON i.id = p.indicator_id"
@@ -341,8 +403,13 @@ class PostgresRepository:
             return None
         observations = [
             ObservationRow(
-                period=row[0], sort_key=row[1], value=row[2], status=row[3],
-                footnote=row[4], release_date=str(row[5]), breakdowns=row[13] or {},
+                period=row[0],
+                sort_key=row[1],
+                value=row[2],
+                status=row[3],
+                footnote=row[4],
+                release_date=str(row[5]),
+                breakdowns=row[13] or {},
             )
             for row in rows
         ]
@@ -399,8 +466,7 @@ class PostgresRepository:
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.level = %s AND o.is_latest"
-                "   AND o.breakdowns = '{}'::jsonb" + parent_filter +
-                " ORDER BY g.code",
+                "   AND o.breakdowns = '{}'::jsonb" + parent_filter + " ORDER BY g.code",
                 tuple(params),
             )
             all_rows = cur.fetchall()
@@ -420,9 +486,95 @@ class PostgresRepository:
             license=first[10],
             latest_release_date=max(str(row[11]) for row in rows),
             values=[
-                GeoValueRow(geo_code=r[0], name_en=r[1], name_ne=r[2], value=r[3])
-                for r in rows
+                GeoValueRow(geo_code=r[0], name_en=r[1], name_ne=r[2], value=r[3]) for r in rows
             ],
+        )
+
+    def get_geo_breakdown(
+        self,
+        indicator_code: str,
+        level: str,
+        breakdown_key: str,
+        period: str | None = None,
+    ) -> GeoBreakdownResult | None:
+        """Every breakdown value for every geography at a level, one period.
+
+        WHY THIS EXISTS, next to `get_geo_values`
+        -----------------------------------------
+        `get_geo_values` insists on `breakdowns = '{}'` — the headline row. Some
+        data has no headline row at all: every election observation carries a
+        party, so asking that endpoint for election votes correctly returns
+        nothing. This serves the shape a party map needs instead.
+
+        `period` is explicit rather than implied, because a source can hold
+        several and the caller must choose. Two elections sit in this table, and
+        a map that silently drew whichever period sorted last would label 2022's
+        results as 2026 — the trap `get_geo_values` documents.
+
+        Each geography's TOTAL across the breakdown travels with the response,
+        so a share can be computed without the caller summing thousands of rows,
+        and without us storing a derived total in the warehouse as though the
+        source had published it.
+        """
+        params: list[Any] = [breakdown_key, indicator_code, level, breakdown_key]
+        period_filter = ""
+        if period is not None:
+            period_filter = " AND t.gregorian_label = %s"
+            params.append(period)
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT g.code, g.name_en, g.name_ne, o.breakdowns->>%s, o.value,"
+                " t.gregorian_label, i.name_en, u.code, u.name_en,"
+                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key"
+                " FROM observations o"
+                " JOIN indicators i ON i.id = o.indicator_id"
+                " JOIN geographies g ON g.id = o.geography_id"
+                " JOIN time_periods t ON t.id = o.time_period_id"
+                " JOIN units u ON u.id = o.unit_id"
+                " JOIN datasets d ON d.id = o.dataset_id"
+                " JOIN sources s ON s.id = d.source_id"
+                " JOIN releases r ON r.id = o.release_id"
+                " WHERE i.code = %s AND g.level = %s AND o.is_latest"
+                "   AND o.breakdowns ? %s" + period_filter + " ORDER BY g.code",
+                tuple(params),
+            )
+            all_rows = cur.fetchall()
+        if not all_rows:
+            return None
+        if period is None:
+            newest = max(row[13] for row in all_rows)
+            all_rows = [row for row in all_rows if row[13] == newest]
+        first = all_rows[0]
+
+        totals: dict[str, Decimal] = {}
+        names: dict[str, tuple[str, str | None]] = {}
+        cells: list[GeoBreakdownCell] = []
+        for row in all_rows:
+            code, name_en, name_ne, bvalue, value = row[0], row[1], row[2], row[3], row[4]
+            if bvalue is None:
+                continue
+            totals[code] = totals.get(code, Decimal(0)) + value
+            names[code] = (name_en, name_ne)
+            cells.append(GeoBreakdownCell(geo_code=code, breakdown_value=bvalue, value=value))
+        return GeoBreakdownResult(
+            indicator_code=indicator_code,
+            indicator_name=first[6],
+            level=level,
+            period=first[5],
+            breakdown_key=breakdown_key,
+            unit_code=first[7],
+            unit_name=first[8],
+            source_name=first[9],
+            dataset_name=first[10],
+            license=first[11],
+            latest_release_date=max(str(row[12]) for row in all_rows),
+            geographies=[
+                GeoValueRow(
+                    geo_code=code, name_en=names[code][0], name_ne=names[code][1], value=total
+                )
+                for code, total in sorted(totals.items())
+            ],
+            cells=cells,
         )
 
     def get_seasonality(
@@ -522,8 +674,13 @@ class PostgresRepository:
             rows = cur.fetchall()
         return [
             SearchHitRow(
-                kind=r[0], code=r[1], name_en=r[2], name_ne=r[3],
-                detail=r[4], unit_code=r[5], score=r[6],
+                kind=r[0],
+                code=r[1],
+                name_en=r[2],
+                name_ne=r[3],
+                detail=r[4],
+                unit_code=r[5],
+                score=r[6],
             )
             for r in rows
         ]

@@ -17,6 +17,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.models import (
     DataResponse,
     DatasetMeta,
+    GeoBreakdownCell,
+    GeoBreakdownResponse,
     GeoDataResponse,
     GeoValue,
     IndicatorDetail,
@@ -85,8 +87,12 @@ def list_indicators(
 ) -> list[IndicatorSummary]:
     return [
         IndicatorSummary(
-            code=r.code, name=r.name_en, topic=r.topic, unit=r.unit_code,
-            source=r.source, preferred_source=r.preferred_source,
+            code=r.code,
+            name=r.name_en,
+            topic=r.topic,
+            unit=r.unit_code,
+            source=r.source,
+            preferred_source=r.preferred_source,
         )
         for r in repo.list_indicators()
     ]
@@ -155,8 +161,13 @@ _MIN_QUERY_LEN = 2
 @app.get("/v1/search", response_model=SearchResponse)
 def search(
     repo: Annotated[Repository, Depends(get_repository)],
-    q: Annotated[str, Query(description="Free text: an indicator name, a code, or a place."
-                                        " English or Nepali (Devanagari).")],
+    q: Annotated[
+        str,
+        Query(
+            description="Free text: an indicator name, a code, or a place."
+            " English or Nepali (Devanagari)."
+        ),
+    ],
     limit: Annotated[int, Query(ge=1, le=50, description="Maximum hits to return.")] = 20,
 ) -> SearchResponse:
     """Search every indicator and geography in the warehouse from one box.
@@ -177,8 +188,12 @@ def search(
         total=len(hits),
         results=[
             SearchHit(
-                kind=h.kind, code=h.code, name=h.name_en, name_ne=h.name_ne,
-                detail=h.detail, unit=h.unit_code,
+                kind=h.kind,
+                code=h.code,
+                name=h.name_en,
+                name_ne=h.name_ne,
+                detail=h.detail,
+                unit=h.unit_code,
             )
             for h in hits
         ],
@@ -192,8 +207,10 @@ def get_geo_data(
     level: Annotated[str, Query(description="Geography level: province, district, or local_unit")],
     parent: Annotated[
         str | None,
-        Query(description="Restrict to children of this geography (e.g. a district"
-              " P-code) — used to drill from a district to its local units"),
+        Query(
+            description="Restrict to children of this geography (e.g. a district"
+            " P-code) — used to drill from a district to its local units"
+        ),
     ] = None,
 ) -> GeoDataResponse:
     """Latest value of one indicator for EVERY geography at a level — the
@@ -215,8 +232,10 @@ def get_geo_data(
         )
     return GeoDataResponse(
         indicator=IndicatorSummary(
-            code=indicator_row.code, name=indicator_row.name_en,
-            topic=indicator_row.topic, unit=indicator_row.unit_code,
+            code=indicator_row.code,
+            name=indicator_row.name_en,
+            topic=indicator_row.topic,
+            unit=indicator_row.unit_code,
         ),
         level=result.level,
         period=result.period,
@@ -231,6 +250,72 @@ def get_geo_data(
         values=[
             GeoValue(geo_code=v.geo_code, name=v.name_en, name_ne=v.name_ne, value=float(v.value))
             for v in result.values
+        ],
+    )
+
+
+@app.get("/v1/data/geo/breakdown", response_model=GeoBreakdownResponse)
+def get_geo_breakdown(
+    repo: Annotated[Repository, Depends(get_repository)],
+    indicator: Annotated[str, Query(description="Indicator code, e.g. ELECTION_VOTES_PR")],
+    level: Annotated[str, Query(description="Geography level: province, district, or local_unit")],
+    breakdown_key: Annotated[str, Query(description="Breakdown dimension, e.g. 'party'")],
+    period: Annotated[
+        str | None,
+        Query(
+            description="Period label, e.g. '2026'. Omit for the most recent period"
+            " present — but pass it whenever a source holds several, or the map"
+            " will draw one period under another's label."
+        ),
+    ] = None,
+) -> GeoBreakdownResponse:
+    """A broken-down choropleth in ONE request.
+
+    `/v1/data/geo` serves only headline rows (`breakdowns = {}`). Election data
+    has no headline row — every observation carries a party — so a party map
+    needs this instead. Each geography's total across the breakdown is included
+    so a share can be drawn client-side.
+    """
+    if level not in ("province", "district", "local_unit"):
+        raise HTTPException(
+            status_code=422, detail="level must be 'province', 'district', or 'local_unit'"
+        )
+    indicator_row = repo.get_indicator(indicator)
+    if indicator_row is None:
+        raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
+    result = repo.get_geo_breakdown(indicator, level, breakdown_key, period)
+    if result is None:
+        when = f" for period '{period}'" if period else ""
+        raise HTTPException(
+            status_code=404,
+            detail=f"No {level}-level data broken down by '{breakdown_key}'"
+            f" for indicator '{indicator}'{when}",
+        )
+    return GeoBreakdownResponse(
+        indicator=IndicatorSummary(
+            code=indicator_row.code,
+            name=indicator_row.name_en,
+            topic=indicator_row.topic,
+            unit=indicator_row.unit_code,
+        ),
+        level=result.level,
+        period=result.period,
+        breakdown_key=result.breakdown_key,
+        unit_code=result.unit_code,
+        unit_name=result.unit_name,
+        provenance=Provenance(
+            source=result.source_name,
+            dataset=result.dataset_name,
+            license=result.license,
+            latest_release_date=result.latest_release_date,
+        ),
+        geographies=[
+            GeoValue(geo_code=g.geo_code, name=g.name_en, name_ne=g.name_ne, value=float(g.value))
+            for g in result.geographies
+        ],
+        cells=[
+            GeoBreakdownCell(geo=c.geo_code, key=c.breakdown_value, value=float(c.value))
+            for c in result.cells
         ],
     )
 
@@ -268,8 +353,10 @@ def get_seasonality(
         )
     return SeasonalityResponse(
         indicator=IndicatorSummary(
-            code=indicator_row.code, name=indicator_row.name_en,
-            topic=indicator_row.topic, unit=indicator_row.unit_code,
+            code=indicator_row.code,
+            name=indicator_row.name_en,
+            topic=indicator_row.topic,
+            unit=indicator_row.unit_code,
         ),
         geography_code=geo,
         unit_code=series.unit_code,
@@ -320,19 +407,17 @@ def get_data(
         raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
     series = repo.get_series(indicator, geo, breakdown_key, breakdown_value)
     if series is None:
-        where = (
-            f" with {breakdown_key}='{breakdown_value}'"
-            if breakdown_key is not None
-            else ""
-        )
+        where = f" with {breakdown_key}='{breakdown_value}'" if breakdown_key is not None else ""
         raise HTTPException(
             status_code=404,
             detail=f"No data for indicator '{indicator}' in geography '{geo}'{where}",
         )
     return DataResponse(
         indicator=IndicatorSummary(
-            code=indicator_row.code, name=indicator_row.name_en,
-            topic=indicator_row.topic, unit=indicator_row.unit_code,
+            code=indicator_row.code,
+            name=indicator_row.name_en,
+            topic=indicator_row.topic,
+            unit=indicator_row.unit_code,
         ),
         geography_code=series.geography_code,
         geography_name=series.geography_name,
@@ -346,8 +431,11 @@ def get_data(
         ),
         observations=[
             Observation(
-                period=o.period, value=float(o.value), status=o.status,
-                footnote=o.footnote, release_date=o.release_date,
+                period=o.period,
+                value=float(o.value),
+                status=o.status,
+                footnote=o.footnote,
+                release_date=o.release_date,
                 breakdowns=o.breakdowns,
             )
             for o in series.observations
