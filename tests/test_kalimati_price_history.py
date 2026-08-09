@@ -163,3 +163,20 @@ def test_the_request_pause_stays_generous() -> None:
     connection dropped.
     """
     assert REQUEST_PAUSE_S >= 10
+
+
+def test_the_capped_value_is_named_so_the_artefact_stays_visible() -> None:
+    """The board's average tops out at 999.99.
+
+    For 16 days of Lime in 2018 it reports exactly 999.99 while the board's own
+    low and high those days were 1,000-1,500. An average cannot sit below the
+    minimum, so that is a field width, not a price. The harvest counts these on
+    every run and says so, which is how a known artefact stays known — and how
+    a change in its size gets noticed instead of absorbed.
+    """
+    from ingestion.kalimati.price_history import CAP_VALUE
+
+    assert CAP_VALUE == Decimal("999.99")
+    # It is inside the accepted band on purpose: these are the board's own
+    # published figures and are loaded as such, flagged rather than dropped.
+    assert Decimal("0") < CAP_VALUE <= MAX_PRICE

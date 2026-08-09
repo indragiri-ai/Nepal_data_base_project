@@ -232,11 +232,24 @@ almost every day of a decade.
    flagged here. Three further days (French Bean 2021-04-26, Mushroom(Kanya)
    2021-06-15, Cauli Local 2021-06-21) sit a little under the day's low, which
    is a smaller and unexplained discrepancy.
-2. **"Chilli Green" returns no data** from the board, though it appears in
-   their own dropdown — so 23 commodities carry the average series where 25
-   carry the low/high pair. And **"Potato Red"** is no longer offered at all
-   (the board now lists "Potato Red(Long)" and "Potato Red(Indian)"), so it is
-   absent rather than mapped onto a near-neighbour.
+2. **Two commodities have no board average.** "Chilli Green" (code 303) is in
+   the board's own dropdown and the API accepts it — it returns the right
+   commodity name — but with an empty price list. "Potato Red" is no longer
+   offered at all (the board now lists "Potato Red(Long)" and "Potato
+   Red(Indian)"), and mapping our historical series onto either would invent a
+   continuity the sources do not support. So **25 commodities carry the
+   low/high pair and 23 carry the average**:
+
+   | Commodity | low/high days | board average days |
+   |---|---|---|
+   | Potato Red | 3,083 | **none** |
+   | Chilli Green | 3,069 | **none** |
+   | (the other 23) | ~3,030–3,090 | ~4,300–4,650 |
+
+   Both still have a decade of real prices, so the chart falls back to the
+   midpoint of their band and **says on the page** that the board publishes no
+   average for them. An earlier version of the panel required the average and
+   showed those two an error instead of their own data; that is fixed.
 
 ### Being a good guest
 

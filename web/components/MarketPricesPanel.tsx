@@ -124,39 +124,55 @@ export default function MarketPricesPanel() {
   const [meta, setMeta] = useState<DataResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showTable, setShowTable] = useState(false);
+  // False for the two commodities the board publishes no average for.
+  const [hasBoardAverage, setHasBoardAverage] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
     setRaw(null);
     setError(null);
+    // Every series is optional. Two of the twenty-five commodities have a
+    // decade of low/high but NO board average — the board's own API returns
+    // nothing for Chilli Green, and no longer lists Potato Red at all. An
+    // earlier version demanded the average and showed those two an error
+    // instead of the 3,000 days of prices we actually hold.
     Promise.all([
-      fetchSeriesSlice(AVG_CODE, GEO, "commodity", commodity),
+      fetchSeriesSlice(AVG_CODE, GEO, "commodity", commodity).catch(() => null),
       fetchSeriesSlice(MIN_CODE, GEO, "commodity", commodity).catch(() => null),
       fetchSeriesSlice(MAX_CODE, GEO, "commodity", commodity).catch(() => null),
     ])
       .then(([avgs, lows, highs]) => {
         if (cancelled) return;
-        // The AVERAGE drives the timeline: it is the longest series, running to
-        // today. Low/high are attached where they exist and left null after
-        // April 2022 — the band simply stops rather than being extended with a
-        // number nobody published. (Low/high are optional: a commodity the
-        // board still trades may have no re-published history at all.)
+        const avgByDay = new Map((avgs?.observations ?? []).map((o) => [o.period, o.value]));
         const lowByDay = new Map((lows?.observations ?? []).map((o) => [o.period, o.value]));
         const highByDay = new Map((highs?.observations ?? []).map((o) => [o.period, o.value]));
-        const points: Point[] = avgs.observations.map((o) => {
-          const low = lowByDay.get(o.period);
-          const high = highByDay.get(o.period);
+
+        // The board's average drives the timeline when it exists — it is the
+        // longest series and runs to today. Without it, the low/high pair does.
+        const spine = avgByDay.size > 0 ? avgByDay : lowByDay;
+        if (spine.size === 0) {
+          setError("No prices are published for this commodity.");
+          return;
+        }
+
+        const points: Point[] = [...spine.keys()].sort().map((day) => {
+          const low = lowByDay.get(day);
+          const high = highByDay.get(day);
           // A low without its high is half a band; take neither.
           const paired = low !== undefined && high !== undefined;
+          const boardAvg = avgByDay.get(day);
           return {
-            label: o.period,
+            label: day,
             low: paired ? low : null,
             high: paired ? high : null,
-            mid: o.value,
+            // The board's own figure where it exists; otherwise the midpoint of
+            // the day's low and high, which the labels below name as such.
+            mid: boardAvg ?? (paired ? (low! + high!) / 2 : Number.NaN),
           };
         });
-        setRaw(points);
-        setMeta(avgs);
+        setHasBoardAverage(avgByDay.size > 0);
+        setRaw(points.filter((p) => Number.isFinite(p.mid)));
+        setMeta(avgs ?? lows);
       })
       .catch((e: unknown) => {
         if (!cancelled) {
@@ -188,7 +204,9 @@ export default function MarketPricesPanel() {
   const rangeLabel = grain === "monthly" ? "Cheapest to dearest in the month" : "Low to high";
   // Always the market board's own figure, so it is named after them rather
   // than described vaguely as "average" — the word the source misuses.
-  const midLabel = "Market board average";
+  const midLabel = hasBoardAverage
+    ? "Market board average"
+    : "Midpoint of low and high";
 
   const option: ChartOption | null = useMemo(() => {
     if (points.length === 0) return null;
@@ -331,11 +349,12 @@ export default function MarketPricesPanel() {
 
       <p className="sub">
         Wholesale prices at the Kalimati Fruits and Vegetable Market in
-        Kathmandu — Nepal&rsquo;s largest wholesale produce market. The line is
-        the market board&rsquo;s own average, published daily and current. The
-        shaded band is the day&rsquo;s lowest and highest price, which comes
-        from a re-published copy that <strong>stops on 18 April 2022</strong> —
-        so the band ends there while the line continues.
+        Kathmandu — Nepal&rsquo;s largest wholesale produce market. The shaded
+        band is the day&rsquo;s lowest and highest price, from a re-published
+        copy that <strong>stops on 18 April 2022</strong>. The line is the
+        market board&rsquo;s own average and runs to the present — except for
+        two commodities the board publishes no average for, where it is the
+        midpoint of the band and the chart says so.
       </p>
 
       <div className="controls">
@@ -401,8 +420,11 @@ export default function MarketPricesPanel() {
               <p>
                 {grain === "monthly" ? (
                   <>
-                    The line is the market board&rsquo;s own average for each
-                    month; the shaded band, where it appears, spans the cheapest
+                    The line is{" "}
+                    {hasBoardAverage
+                      ? "the market board’s own average for each month"
+                      : "the midpoint between each month’s cheapest and dearest price — the board publishes no average for this commodity"}
+                    ; the shaded band, where it appears, spans the cheapest
                     and dearest price recorded that month. Over these{" "}
                     {points.length.toLocaleString()} months the average ranged{" "}
                     <strong>
@@ -413,8 +435,11 @@ export default function MarketPricesPanel() {
                   </>
                 ) : (
                   <>
-                    The line is the market board&rsquo;s published average for
-                    each trading day; the shaded band, where it appears, is that
+                    The line is{" "}
+                    {hasBoardAverage
+                      ? "the market board’s published average for each trading day"
+                      : "the midpoint between the day’s low and high — the board publishes no average for this commodity"}
+                    ; the shaded band, where it appears, is that
                     day&rsquo;s low to high. {points.length.toLocaleString()}{" "}
                     trading days shown.
                   </>
@@ -482,9 +507,20 @@ export default function MarketPricesPanel() {
           <p className="fiscal-provenance">
             <strong>Source:</strong> Kalimati Fruits and Vegetable Market
             Development Board (kalimatimarket.gov.np), the market that records
-            these prices. The <strong>average line</strong> is the board&rsquo;s
-            own published figure, taken directly from them, and runs to the
-            present. The <strong>low/high band</strong> comes from the board&rsquo;s
+            these prices.{" "}
+            {hasBoardAverage ? (
+              <>
+                The <strong>average line</strong> is the board&rsquo;s own
+                published figure, taken directly from them, and runs to the
+                present.
+              </>
+            ) : (
+              <>
+                The board publishes <strong>no average</strong> for this
+                commodity, so the line here is the midpoint between the day&rsquo;s
+                low and high — a figure derived by this portal, not by the market.
+              </>
+            )} The <strong>low/high band</strong> comes from the board&rsquo;s
             data as re-published by <strong>Open Data Nepal</strong> under
             CC BY 4.0, which ends 18 April 2022. The two are kept apart on
             purpose: the board&rsquo;s average is a real average, not the

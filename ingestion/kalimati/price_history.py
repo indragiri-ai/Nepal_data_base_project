@@ -94,6 +94,9 @@ GEO_CODE = "NP0327101"
 UNIT_CODE = "NPR_PER_KG"
 INDICATOR = "KALIMATI_PRICE_AVG"
 
+# Values exactly equal to this are suspect: the board reports it where the
+# true price exceeded it (Lime, 2018), so it reads as a field-width cap.
+CAP_VALUE = Decimal("999.99")
 MIN_PRICE = Decimal("0")
 MAX_PRICE = Decimal("10000")
 BATCH = 5000
@@ -257,6 +260,7 @@ def harvest(limit: int | None = None) -> tuple[list[AvgRow], list[tuple[str, byt
     token = ""
     rows: list[AvgRow] = []
     members: list[tuple[str, bytes, str]] = []
+    empty: list[str] = []
 
     for i, (commodity, code) in enumerate(codes, start=1):
         path = CACHE_DIR / f"{code}.json"
@@ -276,9 +280,33 @@ def harvest(limit: int | None = None) -> tuple[list[AvgRow], list[tuple[str, byt
             source = "fetched"
         rows.extend(got)
         members.append((f"{code}.json", raw, url))
+        if not got:
+            empty.append(commodity)
         span = f"{got[0].day} → {got[-1].day}" if got else "no rows"
         print(f"  {i:>2}/{len(codes)}  {commodity:<24} {len(got):>5,} days   "
               f"{span}  ({source})")
+
+    if empty:
+        print(
+            f"\n  NOTE: the board returned no history for {len(empty)} "
+            f"commodity/ies it lists: {', '.join(empty)}. Their low/high "
+            "series (via Open Data Nepal) is unaffected."
+        )
+
+    # The board's average appears to be capped: for 16 days of Lime in 2018 it
+    # reports exactly 999.99 while its own low and high those days were
+    # 1,000-1,500. An average cannot sit below the minimum, so this is a field
+    # width, not a price. Counted on every run so the artefact is caught rather
+    # than remembered — and so a change in its size is noticed.
+    capped = [r for r in rows if r.average == CAP_VALUE]
+    if capped:
+        who = sorted({r.commodity for r in capped})
+        print(
+            f"\n  NOTE: {len(capped)} value(s) are exactly {CAP_VALUE}, which "
+            f"looks like a field-width cap rather than a price ({', '.join(who)}). "
+            "Loaded as the board publishes them; see "
+            "reference/opendatanepal/PROVENANCE.md."
+        )
     return rows, members
 
 
