@@ -58,7 +58,17 @@ Representatives election, 2082 BS / 2026-03-…, ECN final results"). One
 
 ---
 
-### ECN.S1 — Channel spike: map the results portal's data endpoints
+### ECN.S1 — Channel spike: map the results portal's data endpoints — **DONE 2026-08-09**
+
+> **Outcome:** the portal is fully machine-readable through one JSON handler;
+> no browser needed. **Two general elections** are served in full (2082 and
+> 2079 BS), plus provincial assemblies 2079, by-elections and National
+> Assembly 2080. The 2074 general election is **not** available here. Both
+> cycles reconcile exactly: district PR votes sum to the national total with a
+> difference of zero, and 165 elected candidates match the 165-seat chart.
+> Findings, defects, absences and the binding policies: `reference/ecn/PROVENANCE.md`.
+> Machine-readable inventory: `reference/ecn/inventory.json`. Re-run: `make ecn-probe`.
+> The STOP condition (image/PDF-only) did **not** trigger.
 
 **GOAL:** A verified inventory of which elections are served and the exact
 endpoints that return structured data — before any modeling.
@@ -93,6 +103,30 @@ with plausible totals (sum of party votes ≤ registered voters); raw archived.
 ---
 
 ### ECN.S2 — Voter registration & turnout by district
+
+> **UPDATE 2026-08-09 — READ THIS BEFORE STARTING S2. Its premise is broken.**
+>
+> S1 ran and mapped the portal in full (`reference/ecn/PROVENANCE.md`). The
+> results portal **does not publish registered voters or turnout for either
+> general election**. This was searched properly, not assumed: `TotalVoters`
+> and `CastedVote` are `0` in every candidate row of both cycles; the voter
+> fields the portal's own map code expects (`MVoters`/`FVoters`/`TVoters`/
+> `ValidVote`/`InvalidVote`) are absent from every general-election file; they
+> are populated only in `JSONFiles/BIElection/VoteCountHORPA.txt`, which covers
+> **four by-election constituencies**. Every plausible general-election path was
+> probed and 404s (listed in `reference/ecn/inventory.json`).
+>
+> So S2 cannot be done from this channel. Two options, founder's call:
+> **(a)** find and verify another ECN channel (its published voter statistics or
+> post-election report) — unscoped, may be PDF; or **(b)** skip the turnout
+> indicators for now and go straight to S3/S4, which are fully unblocked, using
+> **valid PR votes cast per district** as the district-level map measure. That
+> is a real published number and reconciles exactly to the national total — but
+> it is NOT turnout and must never be labelled as such, because the denominator
+> (registered voters) is the very thing that is missing.
+>
+> Option (b) is the recommendation: it puts a real governance dashboard on the
+> site without waiting on a source that may not exist in machine-readable form.
 
 **GOAL:** Registered voters and turnout, per district and national, for every
 available cycle.

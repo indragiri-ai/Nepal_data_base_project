@@ -1,0 +1,1623 @@
+{
+  "probed_at": "2026-08-09T08:08:33.196661+00:00",
+  "portal": "https://result.election.gov.np",
+  "handler": "/Handlers/SecureJson.ashx?file=<path>",
+  "cycles_served": [
+    "2082",
+    "2079"
+  ],
+  "raw_archive": "ecn/results/2026-08-09T080828_193057Z/probe.json",
+  "checks": [
+    {
+      "check": "2082: a PR file was read for every district",
+      "passed": true,
+      "detail": "77 of 77 districts read"
+    },
+    {
+      "check": "2082: district PR votes sum to the national total",
+      "passed": true,
+      "detail": "national 10,835,025 vs sum of 77 districts 10,835,025 (difference +0)"
+    },
+    {
+      "check": "2082: every party's district votes sum to its national figure",
+      "passed": true,
+      "detail": "all parties agree"
+    },
+    {
+      "check": "2082: elected candidates match the seat chart's total",
+      "passed": true,
+      "detail": "165 candidates marked Elected vs 165 seats in the chart"
+    },
+    {
+      "check": "2082: FPTP seats total 165",
+      "passed": true,
+      "detail": "chart totals 165"
+    },
+    {
+      "check": "2082: constituency lookup has one row per district",
+      "passed": false,
+      "detail": "district code(s) [77] appear twice — their seats would be double-counted"
+    },
+    {
+      "check": "2082: constituency lookup sums to 165 seats over unique districts",
+      "passed": true,
+      "detail": "77 districts, 165 seats"
+    },
+    {
+      "check": "2079: a PR file was read for every district",
+      "passed": true,
+      "detail": "77 of 77 districts read"
+    },
+    {
+      "check": "2079: district PR votes sum to the national total",
+      "passed": true,
+      "detail": "national 10,560,082 vs sum of 77 districts 10,560,082 (difference +0)"
+    },
+    {
+      "check": "2079: every party's district votes sum to its national figure",
+      "passed": true,
+      "detail": "all parties agree"
+    },
+    {
+      "check": "2079: elected candidates match the seat chart's total",
+      "passed": true,
+      "detail": "165 candidates marked Elected vs 165 seats in the chart"
+    },
+    {
+      "check": "2079: FPTP seats total 165",
+      "passed": true,
+      "detail": "chart totals 165"
+    },
+    {
+      "check": "2079: constituency lookup has one row per district",
+      "passed": false,
+      "detail": "district code(s) [77] appear twice — their seats would be double-counted"
+    },
+    {
+      "check": "2079: constituency lookup sums to 165 seats over unique districts",
+      "passed": true,
+      "detail": "77 districts, 165 seats"
+    }
+  ],
+  "probes": [
+    {
+      "label": "province lookup",
+      "file": "JSONFiles/Election2082/Local/Lookup/states.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 408,
+      "rows": 7,
+      "note": "7 provinces; not yet used downstream"
+    },
+    {
+      "label": "district lookup",
+      "file": "JSONFiles/Election2082/Local/Lookup/districts.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 4295,
+      "rows": 79,
+      "note": ""
+    },
+    {
+      "label": "HoR constituency lookup",
+      "file": "JSONFiles/Election2082/HOR/Lookup/constituencies.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 1944,
+      "rows": 78,
+      "note": ""
+    },
+    {
+      "label": "PR party votes, national",
+      "file": "JSONFiles/Election2082/Common/PRHoRPartyTop5.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 34277,
+      "rows": 57,
+      "note": "the headline result"
+    },
+    {
+      "label": "FPTP seats by party",
+      "file": "JSONFiles/Election2082/Common/HoRPartyTop5.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 1153,
+      "rows": 7,
+      "note": "the portal's seat chart"
+    },
+    {
+      "label": "candidate-level FPTP results",
+      "file": "JSONFiles/ElectionResultCentral2082.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 3392328,
+      "rows": 3405,
+      "note": "every candidate in every constituency, in one file"
+    },
+    {
+      "label": "PR votes, district 1",
+      "file": "JSONFiles/Election2082/HOR/PR/District/1.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17841,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 2",
+      "file": "JSONFiles/Election2082/HOR/PR/District/2.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17887,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 3",
+      "file": "JSONFiles/Election2082/HOR/PR/District/3.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17941,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 4",
+      "file": "JSONFiles/Election2082/HOR/PR/District/4.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17963,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 5",
+      "file": "JSONFiles/Election2082/HOR/PR/District/5.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17923,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 6",
+      "file": "JSONFiles/Election2082/HOR/PR/District/6.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17905,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 7",
+      "file": "JSONFiles/Election2082/HOR/PR/District/7.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17922,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 8",
+      "file": "JSONFiles/Election2082/HOR/PR/District/8.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17934,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 9",
+      "file": "JSONFiles/Election2082/HOR/PR/District/9.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17979,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 10",
+      "file": "JSONFiles/Election2082/HOR/PR/District/10.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18026,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 11",
+      "file": "JSONFiles/Election2082/HOR/PR/District/11.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17967,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 12",
+      "file": "JSONFiles/Election2082/HOR/PR/District/12.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17973,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 13",
+      "file": "JSONFiles/Election2082/HOR/PR/District/13.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17979,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 14",
+      "file": "JSONFiles/Election2082/HOR/PR/District/14.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18005,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 15",
+      "file": "JSONFiles/Election2082/HOR/PR/District/15.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18021,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 16",
+      "file": "JSONFiles/Election2082/HOR/PR/District/16.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18016,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 17",
+      "file": "JSONFiles/Election2082/HOR/PR/District/17.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18033,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 18",
+      "file": "JSONFiles/Election2082/HOR/PR/District/18.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18051,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 19",
+      "file": "JSONFiles/Election2082/HOR/PR/District/19.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18051,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 20",
+      "file": "JSONFiles/Election2082/HOR/PR/District/20.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18012,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 21",
+      "file": "JSONFiles/Election2082/HOR/PR/District/21.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18045,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 22",
+      "file": "JSONFiles/Election2082/HOR/PR/District/22.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18075,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 23",
+      "file": "JSONFiles/Election2082/HOR/PR/District/23.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18007,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 24",
+      "file": "JSONFiles/Election2082/HOR/PR/District/24.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18050,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 25",
+      "file": "JSONFiles/Election2082/HOR/PR/District/25.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18047,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 26",
+      "file": "JSONFiles/Election2082/HOR/PR/District/26.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18075,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 27",
+      "file": "JSONFiles/Election2082/HOR/PR/District/27.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18042,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 28",
+      "file": "JSONFiles/Election2082/HOR/PR/District/28.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18056,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 29",
+      "file": "JSONFiles/Election2082/HOR/PR/District/29.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18059,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 30",
+      "file": "JSONFiles/Election2082/HOR/PR/District/30.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18055,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 31",
+      "file": "JSONFiles/Election2082/HOR/PR/District/31.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18055,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 32",
+      "file": "JSONFiles/Election2082/HOR/PR/District/32.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18074,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 33",
+      "file": "JSONFiles/Election2082/HOR/PR/District/33.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18073,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 34",
+      "file": "JSONFiles/Election2082/HOR/PR/District/34.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18067,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 35",
+      "file": "JSONFiles/Election2082/HOR/PR/District/35.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18058,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 36",
+      "file": "JSONFiles/Election2082/HOR/PR/District/36.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18048,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 37",
+      "file": "JSONFiles/Election2082/HOR/PR/District/37.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17986,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 38",
+      "file": "JSONFiles/Election2082/HOR/PR/District/38.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18024,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 39",
+      "file": "JSONFiles/Election2082/HOR/PR/District/39.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18046,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 40",
+      "file": "JSONFiles/Election2082/HOR/PR/District/40.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18040,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 41",
+      "file": "JSONFiles/Election2082/HOR/PR/District/41.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18033,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 42",
+      "file": "JSONFiles/Election2082/HOR/PR/District/42.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18028,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 43",
+      "file": "JSONFiles/Election2082/HOR/PR/District/43.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18030,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 44",
+      "file": "JSONFiles/Election2082/HOR/PR/District/44.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18021,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 45",
+      "file": "JSONFiles/Election2082/HOR/PR/District/45.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18035,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 46",
+      "file": "JSONFiles/Election2082/HOR/PR/District/46.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18079,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 47",
+      "file": "JSONFiles/Election2082/HOR/PR/District/47.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18069,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 48",
+      "file": "JSONFiles/Election2082/HOR/PR/District/48.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17990,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 49",
+      "file": "JSONFiles/Election2082/HOR/PR/District/49.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18023,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 50",
+      "file": "JSONFiles/Election2082/HOR/PR/District/50.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18033,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 51",
+      "file": "JSONFiles/Election2082/HOR/PR/District/51.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18012,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 52",
+      "file": "JSONFiles/Election2082/HOR/PR/District/52.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18003,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 53",
+      "file": "JSONFiles/Election2082/HOR/PR/District/53.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18049,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 54",
+      "file": "JSONFiles/Election2082/HOR/PR/District/54.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18025,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 55",
+      "file": "JSONFiles/Election2082/HOR/PR/District/55.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18044,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 56",
+      "file": "JSONFiles/Election2082/HOR/PR/District/56.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18062,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 57",
+      "file": "JSONFiles/Election2082/HOR/PR/District/57.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17991,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 58",
+      "file": "JSONFiles/Election2082/HOR/PR/District/58.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18000,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 59",
+      "file": "JSONFiles/Election2082/HOR/PR/District/59.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18016,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 60",
+      "file": "JSONFiles/Election2082/HOR/PR/District/60.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18019,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 61",
+      "file": "JSONFiles/Election2082/HOR/PR/District/61.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 17997,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 62",
+      "file": "JSONFiles/Election2082/HOR/PR/District/62.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18029,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 63",
+      "file": "JSONFiles/Election2082/HOR/PR/District/63.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18032,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 64",
+      "file": "JSONFiles/Election2082/HOR/PR/District/64.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18039,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 65",
+      "file": "JSONFiles/Election2082/HOR/PR/District/65.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18062,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 66",
+      "file": "JSONFiles/Election2082/HOR/PR/District/66.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18064,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 67",
+      "file": "JSONFiles/Election2082/HOR/PR/District/67.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18015,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 68",
+      "file": "JSONFiles/Election2082/HOR/PR/District/68.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18026,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 69",
+      "file": "JSONFiles/Election2082/HOR/PR/District/69.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18032,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 70",
+      "file": "JSONFiles/Election2082/HOR/PR/District/70.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18030,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 71",
+      "file": "JSONFiles/Election2082/HOR/PR/District/71.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18073,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 72",
+      "file": "JSONFiles/Election2082/HOR/PR/District/72.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18021,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 73",
+      "file": "JSONFiles/Election2082/HOR/PR/District/73.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18039,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 74",
+      "file": "JSONFiles/Election2082/HOR/PR/District/74.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18026,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 75",
+      "file": "JSONFiles/Election2082/HOR/PR/District/75.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18064,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 77",
+      "file": "JSONFiles/Election2082/HOR/PR/District/77.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18060,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 78",
+      "file": "JSONFiles/Election2082/HOR/PR/District/78.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 18033,
+      "rows": 57,
+      "note": ""
+    },
+    {
+      "label": "province lookup",
+      "file": "JSONFiles/Election2079/Local/Lookup/states.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 408,
+      "rows": 7,
+      "note": "7 provinces; not yet used downstream"
+    },
+    {
+      "label": "district lookup",
+      "file": "JSONFiles/Election2079/Local/Lookup/districts.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 4295,
+      "rows": 79,
+      "note": ""
+    },
+    {
+      "label": "HoR constituency lookup",
+      "file": "JSONFiles/Election2079/HOR/Lookup/constituencies.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 1944,
+      "rows": 78,
+      "note": ""
+    },
+    {
+      "label": "PR party votes, national",
+      "file": "JSONFiles/Election2079/Common/PRHoRPartyTop5.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 28617,
+      "rows": 47,
+      "note": "the headline result"
+    },
+    {
+      "label": "FPTP seats by party",
+      "file": "JSONFiles/Election2079/Common/HoRPartyTop5.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 2121,
+      "rows": 13,
+      "note": "the portal's seat chart"
+    },
+    {
+      "label": "candidate-level FPTP results",
+      "file": "JSONFiles/ElectionResultCentral2079.txt",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 2382081,
+      "rows": 2411,
+      "note": "every candidate in every constituency, in one file"
+    },
+    {
+      "label": "PR votes, district 1",
+      "file": "JSONFiles/Election2079/HOR/PR/District/1.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14924,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 2",
+      "file": "JSONFiles/Election2079/HOR/PR/District/2.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14948,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 3",
+      "file": "JSONFiles/Election2079/HOR/PR/District/3.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15007,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 4",
+      "file": "JSONFiles/Election2079/HOR/PR/District/4.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15041,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 5",
+      "file": "JSONFiles/Election2079/HOR/PR/District/5.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14981,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 6",
+      "file": "JSONFiles/Election2079/HOR/PR/District/6.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14984,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 7",
+      "file": "JSONFiles/Election2079/HOR/PR/District/7.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14990,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 8",
+      "file": "JSONFiles/Election2079/HOR/PR/District/8.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 14995,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 9",
+      "file": "JSONFiles/Election2079/HOR/PR/District/9.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15045,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 10",
+      "file": "JSONFiles/Election2079/HOR/PR/District/10.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15089,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 11",
+      "file": "JSONFiles/Election2079/HOR/PR/District/11.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15028,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 12",
+      "file": "JSONFiles/Election2079/HOR/PR/District/12.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15041,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 13",
+      "file": "JSONFiles/Election2079/HOR/PR/District/13.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15033,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 14",
+      "file": "JSONFiles/Election2079/HOR/PR/District/14.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15063,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 15",
+      "file": "JSONFiles/Election2079/HOR/PR/District/15.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15085,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 16",
+      "file": "JSONFiles/Election2079/HOR/PR/District/16.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15080,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 17",
+      "file": "JSONFiles/Election2079/HOR/PR/District/17.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15091,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 18",
+      "file": "JSONFiles/Election2079/HOR/PR/District/18.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15100,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 19",
+      "file": "JSONFiles/Election2079/HOR/PR/District/19.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15100,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 20",
+      "file": "JSONFiles/Election2079/HOR/PR/District/20.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15084,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 21",
+      "file": "JSONFiles/Election2079/HOR/PR/District/21.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15096,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 22",
+      "file": "JSONFiles/Election2079/HOR/PR/District/22.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15097,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 23",
+      "file": "JSONFiles/Election2079/HOR/PR/District/23.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15063,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 24",
+      "file": "JSONFiles/Election2079/HOR/PR/District/24.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15104,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 25",
+      "file": "JSONFiles/Election2079/HOR/PR/District/25.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15103,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 26",
+      "file": "JSONFiles/Election2079/HOR/PR/District/26.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15143,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 27",
+      "file": "JSONFiles/Election2079/HOR/PR/District/27.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15107,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 28",
+      "file": "JSONFiles/Election2079/HOR/PR/District/28.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15121,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 29",
+      "file": "JSONFiles/Election2079/HOR/PR/District/29.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15111,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 30",
+      "file": "JSONFiles/Election2079/HOR/PR/District/30.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15103,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 31",
+      "file": "JSONFiles/Election2079/HOR/PR/District/31.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15108,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 32",
+      "file": "JSONFiles/Election2079/HOR/PR/District/32.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15094,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 33",
+      "file": "JSONFiles/Election2079/HOR/PR/District/33.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15094,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 34",
+      "file": "JSONFiles/Election2079/HOR/PR/District/34.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15124,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 35",
+      "file": "JSONFiles/Election2079/HOR/PR/District/35.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15120,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 36",
+      "file": "JSONFiles/Election2079/HOR/PR/District/36.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15101,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 37",
+      "file": "JSONFiles/Election2079/HOR/PR/District/37.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15049,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 38",
+      "file": "JSONFiles/Election2079/HOR/PR/District/38.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15075,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 39",
+      "file": "JSONFiles/Election2079/HOR/PR/District/39.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15103,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 40",
+      "file": "JSONFiles/Election2079/HOR/PR/District/40.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15100,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 41",
+      "file": "JSONFiles/Election2079/HOR/PR/District/41.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15088,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 42",
+      "file": "JSONFiles/Election2079/HOR/PR/District/42.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15090,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 43",
+      "file": "JSONFiles/Election2079/HOR/PR/District/43.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15092,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 44",
+      "file": "JSONFiles/Election2079/HOR/PR/District/44.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15072,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 45",
+      "file": "JSONFiles/Election2079/HOR/PR/District/45.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15104,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 46",
+      "file": "JSONFiles/Election2079/HOR/PR/District/46.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15142,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 47",
+      "file": "JSONFiles/Election2079/HOR/PR/District/47.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15128,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 48",
+      "file": "JSONFiles/Election2079/HOR/PR/District/48.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15052,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 49",
+      "file": "JSONFiles/Election2079/HOR/PR/District/49.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15073,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 50",
+      "file": "JSONFiles/Election2079/HOR/PR/District/50.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15087,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 51",
+      "file": "JSONFiles/Election2079/HOR/PR/District/51.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15084,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 52",
+      "file": "JSONFiles/Election2079/HOR/PR/District/52.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15075,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 53",
+      "file": "JSONFiles/Election2079/HOR/PR/District/53.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15095,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 54",
+      "file": "JSONFiles/Election2079/HOR/PR/District/54.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15084,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 55",
+      "file": "JSONFiles/Election2079/HOR/PR/District/55.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15095,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 56",
+      "file": "JSONFiles/Election2079/HOR/PR/District/56.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15115,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 57",
+      "file": "JSONFiles/Election2079/HOR/PR/District/57.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15058,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 58",
+      "file": "JSONFiles/Election2079/HOR/PR/District/58.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15062,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 59",
+      "file": "JSONFiles/Election2079/HOR/PR/District/59.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15087,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 60",
+      "file": "JSONFiles/Election2079/HOR/PR/District/60.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15085,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 61",
+      "file": "JSONFiles/Election2079/HOR/PR/District/61.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15061,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 62",
+      "file": "JSONFiles/Election2079/HOR/PR/District/62.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15082,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 63",
+      "file": "JSONFiles/Election2079/HOR/PR/District/63.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15083,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 64",
+      "file": "JSONFiles/Election2079/HOR/PR/District/64.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15093,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 65",
+      "file": "JSONFiles/Election2079/HOR/PR/District/65.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15124,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 66",
+      "file": "JSONFiles/Election2079/HOR/PR/District/66.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15117,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 67",
+      "file": "JSONFiles/Election2079/HOR/PR/District/67.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15061,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 68",
+      "file": "JSONFiles/Election2079/HOR/PR/District/68.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15079,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 69",
+      "file": "JSONFiles/Election2079/HOR/PR/District/69.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15088,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 70",
+      "file": "JSONFiles/Election2079/HOR/PR/District/70.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15088,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 71",
+      "file": "JSONFiles/Election2079/HOR/PR/District/71.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15126,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 72",
+      "file": "JSONFiles/Election2079/HOR/PR/District/72.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15078,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 73",
+      "file": "JSONFiles/Election2079/HOR/PR/District/73.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15100,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 74",
+      "file": "JSONFiles/Election2079/HOR/PR/District/74.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15094,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 75",
+      "file": "JSONFiles/Election2079/HOR/PR/District/75.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15117,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 77",
+      "file": "JSONFiles/Election2079/HOR/PR/District/77.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15119,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "PR votes, district 78",
+      "file": "JSONFiles/Election2079/HOR/PR/District/78.json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15084,
+      "rows": 47,
+      "note": ""
+    },
+    {
+      "label": "absent (recorded so it is not re-searched)",
+      "file": "JSONFiles/Election2074/Common/PRHoRPartyTop5.txt",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1245,
+      "rows": null,
+      "note": "not served by the portal"
+    },
+    {
+      "label": "absent (recorded so it is not re-searched)",
+      "file": "JSONFiles/Election2081/Common/PRHoRPartyTop5.txt",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1245,
+      "rows": null,
+      "note": "not served by the portal"
+    },
+    {
+      "label": "absent (recorded so it is not re-searched)",
+      "file": "JSONFiles/Election2082/Common/VoteCountHORPA.txt",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1245,
+      "rows": null,
+      "note": "not served by the portal"
+    },
+    {
+      "label": "absent (recorded so it is not re-searched)",
+      "file": "JSONFiles/Election2082/HOR/VoteCount/HOR-1-1.json",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1245,
+      "rows": null,
+      "note": "not served by the portal"
+    },
+    {
+      "label": "absent (recorded so it is not re-searched)",
+      "file": "JSONFiles/Election2079/Common/VoteCountHORPA.txt",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1245,
+      "rows": null,
+      "note": "not served by the portal"
+    }
+  ]
+}
