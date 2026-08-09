@@ -127,6 +127,12 @@ with plausible totals (sum of party votes ≤ registered voters); raw archived.
 >
 > Option (b) is the recommendation: it puts a real governance dashboard on the
 > site without waiting on a source that may not exist in machine-readable form.
+>
+> **FOUNDER'S DECISION, 2026-08-09: option (b). S2 is deferred — go straight to
+> S3 then S4.** The district-level map measure is **valid PR votes cast per
+> district**, labelled as votes cast. The words "turnout" and "turnout rate"
+> must not appear on any chart built from this data, because we do not have the
+> registered-voter denominator they require.
 
 **GOAL:** Registered voters and turnout, per district and national, for every
 available cycle.
