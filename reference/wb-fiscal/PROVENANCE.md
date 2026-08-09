@@ -31,10 +31,39 @@ the page found no "Creative Commons", no "CC BY", and no "licence"/"license"
 sentence anywhere. World Bank content is generally CC BY 4.0, but that was not
 confirmed *for this page*.
 
-Per the step file, the licence is therefore recorded as
-**`CC BY 4.0 (assumed, WB terms — verify)`** and must be carried in that exact
-form until someone confirms it — ideally by asking Infonepal@WorldBank.org.
-Attribution is given regardless.
+### SETTLED, but not the way we expected (2026-08-09)
+
+The founder asked the Nepal Fiscal Dashboard team directly. Their reply:
+
+> **Reuse terms:** The citation can be "Nepal Fiscal Dashboard (World Bank,
+> 2026)." If you would like to cite the underlying data, we recommend
+> referring to the original data sources and verifying the appropriate
+> citation requirements.
+
+**Read that carefully: they did not name a licence.** Asked about reuse terms,
+the publisher answered with a CITATION and pointed us at the original sources
+for anything deeper. So `CC BY 4.0 (assumed)` is now *less* defensible than
+before, not more — we put the question to the people who would know, and CC BY
+was not what came back.
+
+The recorded licence is therefore no longer a guess dressed as a fact:
+
+    Cite as "Nepal Fiscal Dashboard (World Bank, 2026)." No licence stated by
+    the publisher, who supplied this citation instead when asked about reuse
+    terms (email, 2026-08-09).
+
+That is what the portal now displays. Their citation is used verbatim.
+
+**Also in the reply — a channel worth knowing about.** They confirmed the
+dashboard has a download button offering CSV and other formats directly. Our
+Tableau `.csv` channel works and is verified, so nothing changes today, but a
+publisher-blessed export is the better long-term route and may expose fields
+the rendered view does not.
+
+**Still unanswered: the aggregate question.** The email also asked what the
+aggregate row represents — the one thing that would unlock the withheld
+revenue category breakdowns. The reply does not address it. So the categories
+stay withheld, and that remains the open item worth a follow-up.
 
 The page also carries no crawlable "last updated" string; the recon's
 "Last updated: Feb 12, 2026" could not be re-confirmed from the page text.

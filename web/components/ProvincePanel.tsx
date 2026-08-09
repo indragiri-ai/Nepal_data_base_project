@@ -294,8 +294,8 @@ export default function ProvincePanel() {
             two provinces&rsquo; own announced budgets for FY 2023/24 — Bagmati and
             Koshi both reconcile, the small residual being each province&rsquo;s
             financial-management line, which the source keeps in a separate sheet.
-            Stored in NPR million as published; shown here in NPR billion. Licence:{" "}
-            {data.provenance.license ?? "not stated"}.
+            Stored in NPR million as published; shown here in NPR billion.{" "}
+            <strong>Reuse:</strong> {data.provenance.license ?? "no terms stated"}
           </p>
         </>
       )}

@@ -475,7 +475,8 @@ export default function FiscalPanel() {
         Finance, the Financial Comptroller General Office and Nepal Rastra Bank.
         Verified against the FCGO Consolidated Financial Statements for FY 2018/19 and
         FY 2022/23 (within 0.4% on revenue). Stored in NPR million as published;
-        shown here in NPR billion. Licence: {view.provenance.license ?? "not stated"}.
+        shown here in NPR billion. <strong>Reuse:</strong>{" "}
+        {view.provenance.license ?? "no terms stated"}
         Revenue category breakdowns are not published here — the source&rsquo;s
         components do not reconcile to its own total, and the reason is under query
         with the World Bank.
