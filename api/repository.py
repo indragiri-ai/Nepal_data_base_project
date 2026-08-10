@@ -242,8 +242,11 @@ def latest_period_rows(rows: Sequence[Any]) -> list[Any]:
 
 _INDICATOR_COLUMNS = (
     "i.code, i.name_en, i.name_ne, i.definition_en, i.topic,"
-    " u.code, u.name_en, i.source_concept"
+    " u.code, u.name_en, i.source_concept,"
+    " os.name_en AS origin_source, ps.name_en AS preferred_source"
     " FROM indicators i JOIN units u ON u.id = i.unit_id"
+    " LEFT JOIN sources os ON os.id = i.origin_source_id"
+    " LEFT JOIN sources ps ON ps.id = i.preferred_source_id"
 )
 
 
