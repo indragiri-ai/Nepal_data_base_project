@@ -221,7 +221,11 @@ def analyse(rows: list[PriceRow], basket_size: int = 25) -> Analysis:
     )
 
 
-def acquire(limit_pages: int | None, write_raw: bool) -> list[PriceRow]:
+def acquire(
+    limit_pages: int | None,
+    write_raw: bool,
+    raw_refs: list[str] | None = None,
+) -> list[PriceRow]:
     package, package_raw = fetch_package(DATASET_SLUG)
     print(summarise(package))
     licence = package.get("license_id")
@@ -247,6 +251,8 @@ def acquire(limit_pages: int | None, write_raw: bool) -> list[PriceRow]:
                 lake, DATASET_SLUG, result, package_raw,
                 f"https://api.opendatanepal.com/api/3/action/package_show?id={DATASET_SLUG}",
             )
+            if raw_refs is not None:
+                raw_refs.append(stored.payload_path)
             print(f"  raw -> {stored.payload_path} ({stored.size_bytes:,} bytes)")
         parsed = parse_rows(result.rows, fields)
         print(f"  parsed {len(parsed):,} rows")
