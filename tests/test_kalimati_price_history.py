@@ -11,6 +11,7 @@ import csv
 import json
 from datetime import date
 from decimal import Decimal
+from typing import Any
 
 import pytest
 
@@ -18,7 +19,9 @@ from ingestion.kalimati.price_history import (
     CODES_CSV,
     MAX_PRICE,
     REQUEST_PAUSE_S,
+    RETRY_BACKOFF_S,
     SERIES_START,
+    AvgRow,
     KalimatiOfficialError,
     parse_payload,
     read_codes,
@@ -165,6 +168,10 @@ def test_the_request_pause_stays_generous() -> None:
     assert REQUEST_PAUSE_S >= 10
 
 
+def test_dropped_connections_keep_the_existing_courteous_backoff() -> None:
+    assert RETRY_BACKOFF_S == (60.0, 180.0)
+
+
 def test_the_capped_value_is_named_so_the_artefact_stays_visible() -> None:
     """The board's average tops out at 999.99.
 
@@ -180,3 +187,129 @@ def test_the_capped_value_is_named_so_the_artefact_stays_visible() -> None:
     # It is inside the accepted band on purpose: these are the board's own
     # published figures and are loaded as such, flagged rather than dropped.
     assert Decimal("0") < CAP_VALUE <= MAX_PRICE
+
+
+# --- every official-market run is visible to /v1/meta -----------------------
+
+
+class _LogCursor:
+    def __init__(self, latest: list[tuple[int, str, Decimal]] | None = None) -> None:
+        self.latest = latest or []
+        self.calls: list[tuple[str, Any]] = []
+        self._one: tuple[int] | None = None
+        self._many: list[tuple[Any, ...]] = []
+
+    def __enter__(self) -> _LogCursor:
+        return self
+
+    def __exit__(self, *_args: object) -> None:
+        return None
+
+    def execute(self, sql: str, params: Any = None) -> None:
+        compact = " ".join(sql.split())
+        self.calls.append((compact, params))
+        self._one = None
+        self._many = []
+        if compact.startswith("SELECT id FROM sources"):
+            self._one = (10,)
+        elif compact.startswith("INSERT INTO datasets"):
+            self._one = (20,)
+        elif compact.startswith("SELECT id FROM units"):
+            self._one = (30,)
+        elif compact.startswith("SELECT id FROM geographies"):
+            self._one = (40,)
+        elif compact.startswith("SELECT id FROM indicators"):
+            self._one = (50,)
+        elif compact.startswith("SELECT gregorian_start, id FROM time_periods"):
+            self._many = [(date(2026, 8, 10), 60)]
+        elif compact.startswith("SELECT o.time_period_id"):
+            self._many = list(self.latest)
+        elif compact.startswith("INSERT INTO releases"):
+            self._one = (70,)
+        elif compact.startswith("INSERT INTO ingestion_log") and "RETURNING id" in compact:
+            self._one = (80,)
+
+    def executemany(self, sql: str, params: Any) -> None:
+        self.calls.append((" ".join(sql.split()), list(params)))
+
+    def fetchone(self) -> tuple[int] | None:
+        return self._one
+
+    def fetchall(self) -> list[tuple[Any, ...]]:
+        return self._many
+
+
+class _LogConnection:
+    def __init__(self, cursor: _LogCursor) -> None:
+        self._cursor = cursor
+        self.commits = 0
+
+    def __enter__(self) -> _LogConnection:
+        return self
+
+    def __exit__(self, *_args: object) -> None:
+        return None
+
+    def cursor(self) -> _LogCursor:
+        return self._cursor
+
+    def commit(self) -> None:
+        self.commits += 1
+
+    def rollback(self) -> None:
+        return None
+
+
+def _use_fake_database(
+    monkeypatch: pytest.MonkeyPatch,
+    latest: list[tuple[int, str, Decimal]] | None = None,
+) -> tuple[_LogCursor, _LogConnection]:
+    import ingestion.kalimati.price_history as pipeline
+
+    cursor = _LogCursor(latest)
+    connection = _LogConnection(cursor)
+    monkeypatch.setenv("DATABASE_URL", "postgresql://offline-test")
+    monkeypatch.setattr(pipeline.psycopg, "connect", lambda _dsn: connection)
+    return cursor, connection
+
+
+def _matching_calls(cursor: _LogCursor, phrase: str) -> list[tuple[str, Any]]:
+    return [call for call in cursor.calls if phrase in call[0]]
+
+
+def _today_row() -> AvgRow:
+    return AvgRow("Tomato Big(Nepali)", date(2026, 8, 10), Decimal("65"))
+
+
+def test_an_official_market_load_records_running_then_success(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import ingestion.kalimati.price_history as pipeline
+
+    cursor, connection = _use_fake_database(monkeypatch)
+    loaded = pipeline.load(
+        [_today_row()], dry_run=False, raw_refs=["raw/official-snapshot.json"]
+    )
+
+    assert loaded == 1
+    running = _matching_calls(cursor, "VALUES (%s, %s, 'running'")
+    assert running and running[0][1] == (20, 70, '["raw/official-snapshot.json"]')
+    success = _matching_calls(cursor, "UPDATE ingestion_log SET status = 'success'")
+    assert success and success[0][1] == (1, 1, 80)
+    assert connection.commits >= 3
+
+
+def test_an_official_market_noop_still_records_success(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import ingestion.kalimati.price_history as pipeline
+
+    cursor, _connection = _use_fake_database(
+        monkeypatch, [(60, "Tomato Big(Nepali)", Decimal("65"))]
+    )
+    loaded = pipeline.load([_today_row()], dry_run=False, raw_refs=["raw/noop.json"])
+
+    assert loaded == 0
+    success = _matching_calls(cursor, "VALUES (%s, 'success', now(), %s, 0, 0")
+    assert success and success[0][1] == (20, 1, '["raw/noop.json"]')
+    assert not _matching_calls(cursor, "INSERT INTO releases")

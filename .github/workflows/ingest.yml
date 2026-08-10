@@ -1,5 +1,5 @@
 # Scheduled ingestion — keeps the warehouse fresh without anyone running a
-# pipeline by hand (P2B.S2). Two independent schedules:
+# pipeline by hand (P2B.S2). Three independent schedules:
 #
 #   world-bank : weekly (Sundays) — World Bank WDI is a clean API, safe to load
 #                directly and idempotently.
@@ -9,6 +9,8 @@
 #                review before they reach the warehouse (project rule 3). The
 #                job prints how many rows were staged so a person knows to
 #                review + promote locally.
+#   kalimati   : weekly (Tuesdays) — refreshes the market board's own daily
+#                average-price history with its existing courteous pacing.
 #
 # Census has no schedule — it is decennial.
 #
@@ -28,12 +30,14 @@ on:
   schedule:
     - cron: "0 3 * * 0"    # weekly, Sundays 03:00 UTC (~08:45 Nepal) — World Bank
     - cron: "0 3 20 * *"   # monthly, the 20th 03:00 UTC — NRB BFS
+    # Off the top of the hour, when GitHub's scheduled queue is less congested.
+    - cron: "17 2 * * 2"   # weekly, Tuesdays 02:17 UTC (~08:02 Nepal) — Kalimati
   workflow_dispatch:
     inputs:
       job:
         description: "Which pipeline to run now"
         type: choice
-        options: [both, world-bank, nrb-bfs]
+        options: [both, world-bank, nrb-bfs, kalimati]
         default: both
 
 # Every pipeline reads these; set them once for the whole workflow.
@@ -116,3 +120,156 @@ jobs:
               echo "already acquired). Nothing to review."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+  kalimati:
+    name: Kalimati — weekly official-market refresh
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '17 2 * * 2') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'kalimati')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: weekly-kalimati-refresh
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install the project
+        run: pip install -e .
+
+      - name: Read portal freshness before the refresh
+        id: before
+        run: |
+          meta=$(curl --fail --silent --show-error --retry 3 \
+            https://nepal-data-base-project.vercel.app/v1/meta || true)
+          if [ -n "$meta" ]; then
+            portal=$(jq -r '.data_updated // "unavailable"' <<< "$meta")
+            kalimati=$(jq -r '[.datasets[] | select(.dataset == "Kalimati daily price history (market board)") | .last_updated][0] // "not-listed"' <<< "$meta")
+          else
+            portal=unavailable
+            kalimati=unavailable
+          fi
+          echo "portal_date=$portal" >> "$GITHUB_OUTPUT"
+          echo "kalimati_date=$kalimati" >> "$GITHUB_OUTPUT"
+
+      - name: Refresh the market board's daily averages
+        id: refresh
+        run: |
+          set +e
+          started=$(date +%s)
+          make kalimati-official PY=python 2>&1 | tee /tmp/kalimati-refresh.log
+          code=${PIPESTATUS[0]}
+          elapsed=$(($(date +%s) - started))
+          loaded=$(sed -nE 's/^Loaded ([0-9,]+) observations.*/\1/p' \
+            /tmp/kalimati-refresh.log | tail -1)
+          if grep -q '^Nothing to load;' /tmp/kalimati-refresh.log; then
+            loaded=0
+          fi
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          echo "runtime_seconds=$elapsed" >> "$GITHUB_OUTPUT"
+          echo "rows_loaded=${loaded:-unknown}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Read portal freshness after the refresh
+        id: after
+        if: always()
+        run: |
+          meta=$(curl --fail --silent --show-error --retry 3 \
+            https://nepal-data-base-project.vercel.app/v1/meta || true)
+          if [ -n "$meta" ]; then
+            portal=$(jq -r '.data_updated // "unavailable"' <<< "$meta")
+            kalimati=$(jq -r '[.datasets[] | select(.dataset == "Kalimati daily price history (market board)") | .last_updated][0] // "not-listed"' <<< "$meta")
+          else
+            portal=unavailable
+            kalimati=unavailable
+          fi
+          echo "portal_date=$portal" >> "$GITHUB_OUTPUT"
+          echo "kalimati_date=$kalimati" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update an issue if the refresh failed
+        if: steps.refresh.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const label = 'kalimati-refresh';
+            const title = 'Weekly Kalimati price refresh failed';
+            const detail = fs.readFileSync('/tmp/kalimati-refresh.log', 'utf8').slice(-12000);
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+              });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'B60205',
+                description: 'The weekly Kalimati market refresh needs attention',
+              });
+            }
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+            });
+            const body = [
+              'The scheduled refresh of the Kalimati market board price history failed.',
+              '',
+              'The loader is resumable and deliberately waits between requests; do not',
+              'shorten its pacing or retry delays when investigating.',
+              '',
+              '```',
+              detail.trim(),
+              '```',
+              '',
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].join('\n');
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: [label],
+              });
+            }
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Weekly Kalimati price refresh"
+            echo "- Rows loaded: ${{ steps.refresh.outputs.rows_loaded || 'unknown' }}"
+            echo "- Runtime: ${{ steps.refresh.outputs.runtime_seconds || 'unknown' }} seconds"
+            echo "- Portal data date: ${{ steps.before.outputs.portal_date || 'unavailable' }} → ${{ steps.after.outputs.portal_date || 'unavailable' }}"
+            echo "- Official Kalimati check date: ${{ steps.before.outputs.kalimati_date || 'unavailable' }} → ${{ steps.after.outputs.kalimati_date || 'unavailable' }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report the outcome
+        if: always()
+        run: |
+          if [ "${{ steps.refresh.outputs.exit_code }}" = "0" ]; then
+            echo "Kalimati refresh succeeded."
+          else
+            echo "::error::Kalimati refresh failed; an issue has been opened or updated."
+            exit 1
+          fi
