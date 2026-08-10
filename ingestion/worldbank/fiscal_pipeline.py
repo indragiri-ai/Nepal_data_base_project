@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
 import sys
 import time
@@ -43,7 +44,9 @@ from dotenv import load_dotenv
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from ingestion.common.io_utf8 import configure_stdout_utf8  # noqa: E402
+from ingestion.common.raw_lake import RawLake, RawLakeError  # noqa: E402
 from ingestion.worldbank.fiscal_acquire import (  # noqa: E402
+    DATASET_CODE,
     REQUEST_PAUSE_S,
     fetch_sheet,
     open_session,
@@ -97,7 +100,7 @@ def _scalar(cur: psycopg.Cursor[Any]) -> Any:
     return None if row is None else row[0]
 
 
-def harvest() -> list[Row]:
+def harvest(raw_members: list[tuple[str, bytes, str]] | None = None) -> list[Row]:
     """Fetch every aggregate series named in SERIES."""
     session = open_session()
     time.sleep(REQUEST_PAUSE_S)
@@ -108,6 +111,14 @@ def harvest() -> list[Row]:
             if code is None:
                 continue
             payload = fetch_sheet(session, spec.sheet, {"Type1": measure_type})
+            if raw_members is not None:
+                raw_members.append(
+                    (
+                        f"{payload.view}_{measure_type.lower()}.csv",
+                        payload.content,
+                        payload.source_url,
+                    )
+                )
             rows = payload.rows
             header, body = rows[0], rows[1:]
             if not body:
@@ -174,7 +185,11 @@ def seed_indicators(cur: psycopg.Cursor[Any], source_id: int) -> int:
     return len(rows)
 
 
-def load(rows: list[Row], dry_run: bool) -> None:
+def load(
+    rows: list[Row],
+    dry_run: bool,
+    raw_members: list[tuple[str, bytes, str]] | None = None,
+) -> None:
     load_dotenv()
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
@@ -240,7 +255,41 @@ def load(rows: list[Row], dry_run: bool) -> None:
             print("\nDRY RUN — nothing written.")
             conn.rollback()
             return
+
+        raw_refs: list[str] = []
+        if raw_members:
+            try:
+                stored = RawLake.from_env().store_snapshot(
+                    DATASET_CODE,
+                    raw_members,
+                    snapshot_filename="federal-headlines.json",
+                )
+                raw_refs = [stored.payload_path]
+                print(f"Raw archived: {stored.payload_path} ({stored.size_bytes:,} bytes)")
+            except RawLakeError as exc:
+                cur.execute(
+                    "INSERT INTO ingestion_log"
+                    " (dataset_id, status, finished_at, rows_in, rows_loaded, error_note)"
+                    " VALUES (%s, 'failed', now(), %s, 0, %s)",
+                    (dataset_id, len(rows), f"raw archive failed: {exc}"[:1000]),
+                )
+                conn.commit()
+                raise FiscalLoadError(
+                    f"raw archive failed, so nothing was loaded: {exc}"
+                ) from exc
+
+        # A run that changed nothing is still a successful run, and the portal's
+        # "data updated" line should say so. Recording it only when rows change
+        # would make a healthy re-run look like the source had gone stale.
         if not to_insert:
+            cur.execute(
+                "INSERT INTO ingestion_log"
+                " (dataset_id, status, finished_at, rows_in, rows_loaded, rows_rejected,"
+                "  raw_file_refs)"
+                " VALUES (%s, 'success', now(), %s, 0, 0, %s::jsonb)",
+                (dataset_id, len(rows), json.dumps(raw_refs)),
+            )
+            conn.commit()
             print("Nothing to load; the warehouse already matches the source.")
             return
 
@@ -250,12 +299,27 @@ def load(rows: list[Row], dry_run: bool) -> None:
             (dataset_id,),
         )
         release_id = _scalar(cur)
+        cur.execute(
+            "INSERT INTO ingestion_log (dataset_id, release_id, status, raw_file_refs)"
+            " VALUES (%s, %s, 'running', %s::jsonb) RETURNING id",
+            (dataset_id, release_id, json.dumps(raw_refs)),
+        )
+        log_id = _scalar(cur)
+        conn.commit()
         cur.executemany(
             "INSERT INTO observations"
             " (indicator_id, geography_id, time_period_id, dataset_id,"
             "  release_id, value, unit_id, status)"
             " VALUES (%s, %s, %s, %s, " + str(release_id) + ", %s, %s, 'final')",
             to_insert,
+        )
+        conn.commit()
+        cur.execute(
+            "UPDATE ingestion_log"
+            " SET status = 'success', finished_at = now(), rows_in = %s,"
+            "     rows_loaded = %s, rows_rejected = 0"
+            " WHERE id = %s",
+            (len(rows), len(to_insert), log_id),
         )
         conn.commit()
         print(f"Loaded {len(to_insert)} observations under release {release_id}.")
@@ -268,9 +332,10 @@ def main() -> None:
     args = parser.parse_args()
 
     print("Harvesting the verified federal headline series:")
-    rows = harvest()
+    raw_members: list[tuple[str, bytes, str]] = []
+    rows = harvest(raw_members)
     print(f"\nHarvested {len(rows)} observations.")
-    load(rows, args.dry_run)
+    load(rows, args.dry_run, raw_members)
 
 
 if __name__ == "__main__":
