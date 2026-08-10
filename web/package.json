@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test": "playwright test tests",
     "start": "next start"
   },
   "dependencies": {

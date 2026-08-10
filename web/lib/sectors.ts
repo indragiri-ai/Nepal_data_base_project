@@ -33,9 +33,10 @@ export interface SectorDef {
  *  want — which defeats browsing. Themes cut the wall into shelves a person can
  *  scan.
  *
- *  `match` is a list of lowercase substrings tested against the indicator's
- *  NAME, first theme wins, and anything unmatched falls to a visible "Other"
- *  group rather than being hidden. This is OUR navigation aid and nothing more:
+ *  `match` is a list of lowercase terms tested at word starts against the
+ *  indicator's NAME, first theme wins, and anything unmatched falls to a
+ *  visible "Other" group rather than being hidden. This is OUR navigation aid
+ *  and nothing more:
  *  it deliberately does not claim to reproduce the World Bank's own taxonomy,
  *  which the warehouse does not store per indicator. Keeping the rule here as
  *  data means a human can read it, argue with it and fix it in one place —
@@ -52,7 +53,7 @@ export interface ThemeDef {
 // swallow trade, credit and remittances alike on the strength of their
 // denominator. (It did, on first render: 106 indicators, most of them not
 // national accounts at all.)
-const ECONOMY_THEMES: ThemeDef[] = [
+export const ECONOMY_THEMES: ThemeDef[] = [
   // No "cpi" here: it is a prefix of CPIA, the World Bank's policy RATINGS, and
   // it earned nothing anyway — "price" already catches both the consumer price
   // index and inflation.
@@ -61,12 +62,16 @@ const ECONOMY_THEMES: ThemeDef[] = [
     label: "Government finance",
     match: [
       "tax", "government", "fiscal", "public", "debt", "revenue", "expense",
-      "grant", "budget", "subsidies", "military expenditure",
+      "grant", "budget", "subsidies", "military expenditure", "federal",
+      "provincial",
     ],
   },
   {
     label: "Trade",
-    match: ["export", "import", "trade", "tariff", "merchandise", "customs"],
+    match: [
+      "export", "import", "trade", "tariff", "merchandise", "customs",
+      "binding coverage", "bound rate",
+    ],
   },
   {
     label: "External & remittances",
@@ -83,31 +88,70 @@ const ECONOMY_THEMES: ThemeDef[] = [
       "oda",
       "aid",
       "portfolio",
+      "charges for the use of intellectual property",
+      "net capital account",
+      "net errors and omissions",
+      "net financial account",
+      "net financial flows",
+      "net foreign assets",
+      "net primary income",
+      "primary income",
+      "net secondary income",
+      "secondary income",
+      "personal transfers",
     ],
   },
   {
     label: "Money, credit & interest",
     match: [
       "money", "credit", "interest", "lending", "deposit", "monetary",
-      "bank", "financial sector",
+      "bank", "financial sector", "automated teller machine", "claims on",
     ],
   },
   {
     label: "Poverty & inequality",
-    match: ["poverty", "gini", "income share", "inequality", "consumption per capita"],
+    match: [
+      "poverty", "gini", "income share", "inequality", "consumption per capita",
+      "below 50 percent of median income", "living in slums",
+    ],
   },
   {
     label: "Business & investment",
     match: [
       "business", "firms", "investment", "enterprise", "startup", "industry",
-      "manufacturing", "services", "value chain",
+      "manufacturing", "services", "value chain", "b-ready", "bribery",
+      "management practices", "operating license",
     ],
+  },
+  {
+    label: "Tourism & transport",
+    match: ["air transport", "international tourism", "logistics performance"],
+  },
+  {
+    label: "Digital connectivity",
+    match: [
+      "broadband", "telephone subscription", "individuals using the internet",
+      "mobile cellular", "secure internet server",
+    ],
+  },
+  {
+    label: "Research & innovation",
+    match: [
+      "research and development", "researchers in r&d", "technicians in r&d",
+      "patent application", "industrial design application",
+      "scientific and technical journal",
+    ],
+  },
+  {
+    label: "Policy & institutions",
+    match: ["cpia", "ida resource allocation index", "statistical performance indicator"],
   },
   {
     label: "Growth & national accounts",
     match: [
       "gdp", "gross domestic", "gross national", "value added", "gross capital",
-      "gross savings", "final consumption", "national income",
+      "gross fixed capital", "gross savings", "final consumption", "national income",
+      "gni", "adjusted net savings", "adjusted savings", "changes in inventories",
     ],
   },
 ];
