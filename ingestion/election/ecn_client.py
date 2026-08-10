@@ -36,10 +36,15 @@ this is not a live feed and nothing here should ever be polled during an
 election count (see the sensitivity policy in
 `docs/steps/onboard-election-commission.md`).
 
-The portal enforces this itself. At a 0.8s pause the first reconnaissance run
-was throttled after ~70 requests: fifteen consecutive `429 Too Many Requests`,
-then service resumed. That is the source telling us the rate, so the pause was
-raised and a backoff added.
+The portal enforces this itself, in two different ways, and both are handled:
+
+* At a 0.8s pause the first reconnaissance run was throttled after ~70
+  requests: fifteen consecutive `429 Too Many Requests`, then service resumed.
+  That is the source telling us the rate, so the pause was raised.
+* Over a long enumeration it simply **hangs up**. Reading the 753 municipality
+  files, the server closed the connection without a response at request ~650
+  and an unhandled drop threw away a 25-minute run. A dropped connection is now
+  retried on the same backoff ladder as a 429.
 
 The damage a 429 does is worse than a delay, which is why it is handled here
 and not left to callers: a throttled response looks exactly like a missing
@@ -104,6 +109,13 @@ class EcnThrottled(EcnError):
     Deliberately its own type: a caller enumerating files must be able to tell
     "the portal would not answer" from "this file does not exist", because
     treating the first as the second silently deletes real data.
+    """
+
+
+class EcnUnavailable(EcnError):
+    """The connection kept failing — the portal dropped us and did not come back.
+
+    Same reasoning as `EcnThrottled`: not an absence, a refusal to answer.
     """
 
 
@@ -172,14 +184,24 @@ class EcnClient:
         url = f"{self.base_url}{HANDLER_PATH}?file={file_path}"
         headers = {"X-CSRF-Token": token, "Referer": referer or (self.base_url + "/")}
 
+        dropped: Exception | None = None
         for attempt, backoff in enumerate((0.0, *THROTTLE_BACKOFF_S)):
             if backoff:
-                print(
-                    f"  throttled by the portal (429) — waiting {backoff:.0f}s "
-                    f"before retry {attempt} of {len(THROTTLE_BACKOFF_S)}: {file_path}"
-                )
                 time.sleep(backoff)
-            resp = self._session.get(url, headers=headers, timeout=REQUEST_TIMEOUT_S)
+            try:
+                resp = self._session.get(url, headers=headers, timeout=REQUEST_TIMEOUT_S)
+            except requests.RequestException as exc:
+                # The portal simply hangs up when it has had enough — over a long
+                # enumeration (753 municipality files) this WILL happen, and an
+                # unhandled drop throws away the whole run. Treated exactly like a
+                # 429: stop asking for a while, then try again.
+                dropped = exc
+                print(
+                    f"  connection dropped by the portal — waiting "
+                    f"{THROTTLE_BACKOFF_S[min(attempt, len(THROTTLE_BACKOFF_S) - 1)]:.0f}s "
+                    f"before retrying: {file_path}"
+                )
+                continue
             time.sleep(self.pause_s)
             if resp.status_code != HTTP_TOO_MANY_REQUESTS:
                 return Fetched(
@@ -189,7 +211,17 @@ class EcnClient:
                     content_type=resp.headers.get("Content-Type", ""),
                     content=resp.content,
                 )
+            print(
+                f"  throttled by the portal (429) — backing off before retry "
+                f"{attempt + 1} of {len(THROTTLE_BACKOFF_S)}: {file_path}"
+            )
 
+        if dropped is not None:
+            raise EcnUnavailable(
+                f"{file_path}: the portal kept dropping the connection through all "
+                f"{len(THROTTLE_BACKOFF_S)} backoffs ({dropped}). Stopping rather than "
+                f"recording this file as missing — re-run later."
+            )
         raise EcnThrottled(
             f"{file_path}: the portal returned 429 through all "
             f"{len(THROTTLE_BACKOFF_S)} backoffs. Stopping rather than recording "

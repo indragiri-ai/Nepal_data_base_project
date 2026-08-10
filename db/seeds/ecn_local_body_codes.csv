@@ -1,0 +1,754 @@
+ecn_local_cd,geo_code,name_en,ecn_name_en,ecn_name_ne,ecn_district,how_matched
+5001,NP0101406,Aatharai Tribeni,Aathrai Tribeni,आठराई त्रिवेणी गाउँपालिका,Taplejung,geometry: interior point inside exactly one municipality
+5002,NP0101401,Phaktanlung,Phaktanglung,फक्ताङलुङ गाउँपालिका,Taplejung,geometry: interior point inside exactly one municipality
+5003,NP0101301,Phungling,Phungling,फुङलिङ नगरपालिका,Taplejung,English name within the district (geometry agreed)
+5004,NP0101402,Mikwakhola,Mikwakhola,मिक्वाखोला गाउँपालिका,Taplejung,English name within the district (geometry agreed)
+5005,NP0101404,Meringden,Meringden,मेरिङदेन गाउँपालिका,Taplejung,English name within the district (geometry agreed)
+5006,NP0101405,Maiwakhola,Maiwakhola,मैवाखोला गाउँपालिका,Taplejung,English name within the district (geometry agreed)
+5007,NP0101407,Pathivara Yangwarak,Pathivara Yangwarak,पाथीभरा याङवरक गाउँपालिका,Taplejung,English name within the district (geometry agreed)
+5008,NP0101408,Sidingba,Sidingba,सिदिङ्वा गाउँपालिका,Taplejung,English name within the district (geometry agreed)
+5009,NP0101403,Sirijanga,Sirijangha,सिरीजङ्घा गाउँपालिका,Taplejung,geometry: interior point inside exactly one municipality
+5010,NP0102404,Kummayak,Kummayak,कुम्मायक गाउँपालिका,Panchthar,English name within the district (geometry agreed)
+5011,NP0102406,Tumbewa,Tumbewa,तुम्वेवा गाउँपालिका,Panchthar,English name within the district (geometry agreed)
+5012,NP0102403,Falelung,Falelung,फालेलुङ गाउँपालिका,Panchthar,English name within the district (geometry agreed)
+5013,NP0102405,Falgunanda,Falgunanda,फाल्गुनन्द गाउँपालिका,Panchthar,English name within the district (geometry agreed)
+5014,NP0102301,Phidim,Phidim,फिदिम नगरपालिका,Panchthar,English name within the district (geometry agreed)
+5015,NP0102407,Miklajung,Miklajung,मिक्लाजुङ गाउँपालिका,Panchthar,English name within the district (geometry agreed)
+5016,NP0102402,Yangbarak,Yangwarak,याङवरक गाउँपालिका,Panchthar,geometry: interior point inside exactly one municipality
+5017,NP0102401,Hilihan,Hilihang,हिलिहाङ गाउँपालिका,Panchthar,geometry: interior point inside exactly one municipality
+5018,NP0103302,Illam,Illam,इलाम नगरपालिका,Ilam,English name within the district (geometry agreed)
+5019,NP0103404,Chulachuli,Chulachuli,चुलाचुली गाउँपालिका,Ilam,English name within the district (geometry put it in a neighbour)
+5020,NP0103301,Deumai,Deumai,देउमाई नगरपालिका,Ilam,English name within the district (geometry agreed)
+5021,NP0103401,Fakfokathum,Fakphokthum,फाकफोकथुम गाउँपालिका,Ilam,geometry: interior point inside exactly one municipality
+5022,NP0103304,Mai,Mai,माई नगरपालिका,Ilam,English name within the district (geometry agreed)
+5023,NP0103403,Mai Jogmai,Maijogmai,माईजोगमाई गाउँपालिका,Ilam,English name within the district (geometry agreed)
+5024,NP0103405,Mangsebung,Mangsebung,माङसेबुङ गाउँपालिका,Ilam,English name within the district (geometry agreed)
+5025,NP0103406,Rong,Rong,रोङ गाउँपालिका,Ilam,English name within the district (geometry agreed)
+5026,NP0103402,Sandakpur,Sandakpur,सन्दकपुर गाउँपालिका,Ilam,English name within the district (geometry agreed)
+5027,NP0103303,Suryodaya,Suryodaya,सूर्योदय नगरपालिका,Ilam,English name within the district (geometry agreed)
+5028,NP0104304,Arjundhara,Arjundhara,अर्जुनधारा नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5029,NP0104407,Kachanakawal,Kachankawal,कचनकवल गाउँपालिका,Jhapa,geometry: interior point inside exactly one municipality
+5030,NP0104303,Kankai,Kankai,कन्काई नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5031,NP0104401,Kamal,Kamal,कमल गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5032,NP0104306,Gauradaha,Gauradhaha,गौरादह नगरपालिका,Jhapa,geometry: interior point inside exactly one municipality
+5033,NP0104403,Gauriganj,Gauriganj,गौरीगंज गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5034,NP0104404,Jhapa,Jhapa,झापा गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5035,NP0104301,Damak,Damak,दमक नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5036,NP0104405,Barhadashi,Barhadashi,बाह्रदशी गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5037,NP0104402,Buddhashanti,Buddhashanti,बुद्धशान्ति गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5038,NP0104308,Bhadrapur,Bhadrapur,भद्रपुर नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5039,NP0104305,Mechinagar,Mechinagar,मेची नगर नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5040,NP0104307,Birtamod,Birtamod,विर्तामोड नगरपालिका,Jhapa,English name within the district (geometry agreed)
+5041,NP0104302,Shivasatakshi,Shivasataxi,शिवसताक्षि नगरपालिका,Jhapa,geometry: interior point inside exactly one municipality
+5042,NP0104406,Haldibari,Haldibari,हल्दीवारी गाउँपालिका,Jhapa,English name within the district (geometry agreed)
+5043,NP0109301,Khandabari,Khandbari,खाँदवारी नगरपालिका,Sankhuwasabha,geometry: interior point inside exactly one municipality
+5044,NP0109404,Chichila,Chichila,चिचिला गाउँपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5045,NP0109303,Chainapur,Chainpur,चैनपुर नगरपालिका,Sankhuwasabha,geometry: interior point inside exactly one municipality
+5046,NP0109304,Dharmadevi,Dharmadevi,धर्मदेवी नगरपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5047,NP0109302,Panchakhapan,Panchakhapan,पाँचखपन नगरपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5048,NP0109402,Bhotkhola,Bhotkhola,भोटखोला गाउँपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5049,NP0109401,Makalu,Makalu,मकालु गाउँपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5050,NP0109305,Madi,Madi,मादी नगरपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5051,NP0109405,Sabhapokhari,Sabhapokhari,सभापोखरी गाउँपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5052,NP0109403,Silichong,Silichong,सिलीचोङ गाउँपालिका,Sankhuwasabha,English name within the district (geometry agreed)
+5053,NP0108403,Aatharai,Aathrai,आठराई  गाउँपालिका,Terhathum,geometry: interior point inside exactly one municipality
+5054,NP0108404,Chhathar,Chhathar,छथर गाउँपालिका,Terhathum,English name within the district (geometry agreed)
+5055,NP0108402,Phedap,Phedap,फेदाप  गाउँपालिका,Terhathum,English name within the district (geometry agreed)
+5056,NP0108401,Menchhayayem,Menchayam,मेन्छयायेम गाउँपालिका,Terhathum,geometry: interior point inside exactly one municipality
+5057,NP0108302,Myanglung,Myanglung,म्याङलुङ नगरपालिका,Terhathum,English name within the district (geometry agreed)
+5058,NP0108301,Laligurans,Laligurans,लालिगुँरास नगरपालिका,Terhathum,English name within the district (geometry agreed)
+5059,NP0110403,Arun,Arun,अरुण गाउँपालिका,Bhojpur,English name within the district (geometry agreed)
+5060,NP0110406,Aamchowk,Aamchowk,आमचोक गाउँपालिका,Bhojpur,English name within the district (geometry agreed)
+5061,NP0110402,Temkemaiyum,Temkemaiyung,टेम्केमैयुङ गाउँपालिका,Bhojpur,geometry: interior point inside exactly one municipality
+5062,NP0110405,Pauwa Dunma,Pauwadungma,पौवादुङमा गाउँपालिका,Bhojpur,geometry: interior point inside exactly one municipality
+5063,NP0110302,Bhojpur,Bhojpur,भोजपुर नगरपालिका,Bhojpur,English name within the district (geometry agreed)
+5064,NP0110404,Ramprasad Rai,Ramprasad Rai,रामप्रसाद राई गाउँपालिका,Bhojpur,English name within the district (geometry agreed)
+5065,NP0110301,Shadananda,Shadananda,षडानन्द नगरपालिका,Bhojpur,English name within the district (geometry agreed)
+5066,NP0110401,Salpa Silichho,Salpasilichho,साल्पासिलिछो गाउँपालिका,Bhojpur,English name within the district (geometry agreed)
+5067,NP0110407,Hatuwagadhi,Hatuwagadhi,हतुवागढी गाउँपालिका,Bhojpur,English name within the district (geometry agreed)
+5068,NP0107401,Shahidbhumi,Shahidbhumi,सहिदभूमि गाउँपालिका,Dhankuta,English name within the district (geometry agreed)
+5069,NP0107404,Chaubise,Chaubise,चौविसे गाउँपालिका,Dhankuta,English name within the district (geometry agreed)
+5070,NP0107402,Chhathar Jorpati,Chhathar Jorpati,छथर जोरपाटी गाउँपालिका,Dhankuta,English name within the district (geometry agreed)
+5071,NP0107303,Dhankuta,Dhankuta,धनकुटा नगरपालिका,Dhankuta,English name within the district (geometry agreed)
+5072,NP0107302,Pakhribas,Pakhribas,पाख्रिवास नगरपालिका,Dhankuta,English name within the district (geometry agreed)
+5073,NP0107301,Mahalaxmi,Mahalaxmi,महालक्ष्मी नगरपालिका,Dhankuta,English name within the district (geometry agreed)
+5074,NP0107403,Sangurigadhi,Sangurigadhi,सागुरीगढी गाउँपालिका,Dhankuta,English name within the district (geometry agreed)
+5075,NP0105305,Urlabari,Uralabari,उर्लावारी नगरपालिका,Morang,geometry: interior point inside exactly one municipality
+5076,NP0105406,Katahari,Katahari,कटहरी गाउँपालिका,Morang,English name within the district (geometry agreed)
+5077,NP0105403,Kanepokhari,Kanepokhari,कानेपोखरी गाउँपालिका,Morang,English name within the district (geometry agreed)
+5078,NP0105401,Kerabari,Kerabari,केरावारी गाउँपालिका,Morang,English name within the district (geometry agreed)
+5079,NP0105405,Gramthan,Gramthan,ग्रामथान गाउँपालिका,Morang,English name within the district (geometry agreed)
+5080,NP0105407,Jahada,Jahada,जहदा गाउँपालिका,Morang,English name within the district (geometry agreed)
+5081,NP0105408,Dhanapalthan,Dhanpalthan,धनपालथान गाउँपालिका,Morang,geometry: interior point inside exactly one municipality
+5082,NP0105304,Pathari Shanishchare,Patahrishanishchare,पथरी शनिश्चरे नगरपालिका,Morang,geometry: interior point inside exactly one municipality
+5083,NP0105404,Budhiganga,Budhiganga,बुढीगंगा गाउँपालिका,Morang,English name within the district (geometry agreed)
+5084,NP0105303,Belbari,Belbari,बेलवारी नगरपालिका,Morang,English name within the district (geometry agreed)
+5085,NP0105402,Miklajung,Miklajung,मिक्लाजुङ गाउँपालिका,Morang,English name within the district (geometry agreed)
+5086,NP0105306,Rangeli,Rangeli,रंगेली नगरपालिका,Morang,English name within the district (geometry agreed)
+5087,NP0105308,Ratuwamai,Ratuwamai,रतुवामाई नगरपालिका,Morang,English name within the district (geometry agreed)
+5088,NP0105301,Letang,Letang,लेटाङ नगरपालिका,Morang,English name within the district (geometry agreed)
+5089,NP0105101,Biratnagar,Biratnagar,विराटनगर महानगरपालिका,Morang,English name within the district (geometry agreed)
+5090,NP0105307,Sunwarshi,Sunwarshi,सुनवर्षी नगरपालिका,Morang,English name within the district (geometry agreed)
+5091,NP0105302,Sundarharaicha,Sundarharaicha,सुन्दरहरैंचा नगरपालिका,Morang,English name within the district (geometry agreed)
+5092,NP0106202,Itahari,Itahari,ईटहरी उपमहानगरपालिका,Sunsari,English name within the district (geometry agreed)
+5093,NP0106303,Inaruwa,Inaruwa,ईनरुवा नगरपालिका,Sunsari,English name within the district (geometry agreed)
+5094,NP0106401,Koshi,Koshi,कोशी गाउँपालिका,Sunsari,English name within the district (geometry agreed)
+5095,NP0106403,Gadhi,Gadhi,गढी गाउँपालिका,Sunsari,English name within the district (geometry agreed)
+5096,NP0106304,Duhabi,Duhabi,दुहवी नगरपालिका,Sunsari,English name within the district (geometry agreed)
+5097,NP0106405,Dewangunj,Dewanganj,देवानगन्ज गाउँपालिका,Sunsari,geometry: interior point inside exactly one municipality
+5098,NP0106201,Dharan,Dharan,धरान उपमहानगरपालिका,Sunsari,English name within the district (geometry agreed)
+5099,NP0106301,Barahachhetra,Barahchhetra,बराहक्षेत्र नगरपालिका,Sunsari,geometry: interior point inside exactly one municipality
+5100,NP0106406,Barju,Barju,बर्जु गाउँपालिका,Sunsari,English name within the district (geometry agreed)
+5101,NP0106402,Bhokraha Narsingh,Bhokraha Narsing,भोक्राहा नरसिंह गाउँपालिका,Sunsari,geometry: interior point inside exactly one municipality
+5102,NP0106302,Ramdhuni,Ramdhuni,रामधुनी नगरपालिका,Sunsari,English name within the district (geometry agreed)
+5103,NP0106404,Harinagar,Harinagar,हरिनगर गाउँपालिका,Sunsari,English name within the district (geometry agreed)
+5104,NP0111401,Khumbu Pasanglhamu,Khumbupasanglahmu,खुम्वु पासाङल्हमु गाउँपालिका,Solukhumbu,geometry: interior point inside exactly one municipality
+5105,NP0111404,Mapya Dudhkoshi,Maapya Dudhkoshi,माप्य दुधकोशी गाउँपालिका,Solukhumbu,geometry: interior point inside exactly one municipality
+5106,NP0111406,Thulung Dudhkoshi,Thulung Dudhkoshi,थुलुङ दुधकोशी गाउँपालिका,Solukhumbu,English name within the district (geometry agreed)
+5107,NP0111405,Necha Salyan,Nechasalyan,नेचासल्यान गाउँपालिका,Solukhumbu,English name within the district (geometry agreed)
+5108,NP0111402,Mahakulung,Mahakulung,महाकुलुङ गाउँपालिका,Solukhumbu,English name within the district (geometry agreed)
+5109,NP0111403,Likhu Pike,Likhupike,लिखु पिके गाउँपालिका,Solukhumbu,English name within the district (geometry agreed)
+5110,NP0111407,Sotang,Sotang,सोताङ गाउँपालिका,Solukhumbu,English name within the district (geometry agreed)
+5111,NP0111301,Solu Dhudhakunda,Solududhakunda,सोलु दुधकुण्ड नगरपालिका,Solukhumbu,geometry: interior point inside exactly one municipality
+5112,NP0112401,Aiselukharka,Ainselukhark,ऐसेलुखर्क गाउँपालिका,Khotang,geometry: interior point inside exactly one municipality
+5113,NP0112402,Kepilasgadhi,Kepilasagadhi,केपिलासगढी गाउँपालिका,Khotang,geometry: interior point inside exactly one municipality
+5114,NP0112406,Khotehang,Khotehang,खोटेहाङ गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5115,NP0112408,Jante Dhunga,Jantedhunga,जन्तेढुंगा गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5116,NP0112404,Diprung Chuichumma,Diprung Chuichumma,दिप्रुङ चुइचुम्मा गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5117,NP0112407,Baraha Pokhari,Barahapokhari,बराहपोखरी गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5118,NP0112302,Diktel Rupakot Majhuwagadhi,Diktel Rupakot Majhuwagadhi,दिक्तेल रुपाकोट मजुवागढी नगरपालिका,Khotang,English name within the district (geometry agreed)
+5119,NP0112403,Rawa Besi,Rawa Besi,रावा बेसी गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5120,NP0112405,Sakela,Sakela,साकेला गाउँपालिका,Khotang,English name within the district (geometry agreed)
+5121,NP0112301,Halesi Tuwachung,Halesi Tuwachung,हलेसी तुवाचुङ नगरपालिका,Khotang,English name within the district (geometry agreed)
+5122,NP0113401,Khiji Demba,Khijidemba,खिजिदेम्वा गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5123,NP0113404,Champadevi,Champadevi,चम्पादेवी  गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5124,NP0113406,Chishankhu Gadhi,Chisankhugadhi,चिशंखुगढी गाउँपालिका,Okhaldhunga,geometry: interior point inside exactly one municipality
+5125,NP0113407,Manebhanjyang,Manebhanjyang,मानेभञ्ज्याङ गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5126,NP0113403,Molung,Molung,मोलुङ गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5127,NP0113402,Likhu,Likhu,लिखु  गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5128,NP0113301,Siddhicharan,Siddhicharan,सिद्दिचरण नगरपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5129,NP0113405,Sunkoshi,Sunkoshi,सुनकोशी गाउँपालिका,Okhaldhunga,English name within the district (geometry agreed)
+5130,NP0114403,Udayapurgadhi,Udayapurgadhi,उदयपुरगढी गाउँपालिका,Udayapur,English name within the district (geometry agreed)
+5131,NP0114301,Katari,Katari,कटारी  नगरपालिका,Udayapur,English name within the district (geometry agreed)
+5132,NP0114303,Chaudandigadhi,Chaudandigadhi,चौदण्डीगढी नगरपालिका,Udayapur,English name within the district (geometry agreed)
+5133,NP0114401,Tapli,Tapli,ताप्ली गाउँपालिका,Udayapur,English name within the district (geometry agreed)
+5134,NP0114302,Triyuga,Triyuga,त्रियुगा नगरपालिका,Udayapur,English name within the district (geometry agreed)
+5135,NP0114404,Rautamai,Rautamai,रौतामाई गाउँपालिका,Udayapur,English name within the district (geometry agreed)
+5136,NP0114304,Belaka,Belaka,वेलका  नगरपालिका,Udayapur,English name within the district (geometry agreed)
+5137,NP0114402,Limchunbung,Limchungbung,लिम्चुङ्बुङ गाउँपालिका,Udayapur,geometry: interior point inside exactly one municipality
+5155,NP0216403,Arnama,Arnama,अर्नमा गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5156,NP0216404,Aurahi,Aurahi,औरही गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5158,NP0216306,Kalyanpur,Kalyanpur,कल्याणपुर नगरपालिका,Siraha,English name within the district (geometry agreed)
+5159,NP0216303,Golbazar,Golbazar,गोलबजार नगरपालिका,Siraha,English name within the district (geometry agreed)
+5160,NP0216304,Dhangadhimai,Dhangadhimai,धनगढीमाई नगरपालिका,Siraha,English name within the district (geometry agreed)
+5161,NP0216401,Naraha,Naraha,नरहा गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5162,NP0216407,Nawarajpur,Nawarajpur,नवराजपुर गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5163,NP0216405,Bariyarpatti,Bariyarpatti,बरियारपट्टी गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5164,NP0216409,Bhagawanpur,Bhagawanpur,भगवानपुर गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5165,NP0216302,Mirchaiya,Mirchaiya,मिर्चैया नगरपालिका,Siraha,English name within the district (geometry agreed)
+5166,NP0216406,Laxmipur Patari,Laxmipur Patari,लक्ष्मीपुर पतारी गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5167,NP0216305,Lahan,Lahan,लहान नगरपालिका,Siraha,English name within the district (geometry agreed)
+5168,NP0216402,Bishnupur,Bishnupur,विष्णुपुर गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5169,NP0216408,Sakhuwa Nankarkatti,Sakhuwanankarkatti,सखुवानान्कारकट्टी गाउँपालिका,Siraha,English name within the district (geometry agreed)
+5170,NP0216308,Siraha,Siraha,सिराहा नगरपालिका,Siraha,English name within the district (geometry agreed)
+5171,NP0216307,Sukhipur,Sukhipur,सुखीपुर नगरपालिका,Siraha,English name within the district (geometry agreed)
+5172,NP0322403,Kalinchowk,Kalinchok,कालिन्चोक  गाउँपालिका,Dolakha,geometry: interior point inside exactly one municipality
+5173,NP0322402,Gaurishankar,Gaurishankar,गौरिशंकर  गाउँपालिका,Dolakha,English name within the district (geometry agreed)
+5174,NP0322302,Jiri,Jiri,जिरी  नगरपालिका,Dolakha,English name within the district (geometry agreed)
+5175,NP0322407,Tamakoshi,Tamakoshi,तामाकोशी  गाउँपालिका,Dolakha,English name within the district (geometry agreed)
+5176,NP0322301,Bhimeshwor,Bhimeshwor,भिमेश्वर  नगरपालिका,Dolakha,English name within the district (geometry agreed)
+5177,NP0322406,Melung,Melung,मेलुङ  गाउँपालिका,Dolakha,English name within the district (geometry agreed)
+5178,NP0322401,Bigu,Bigu,विगु गाउँपालिका,Dolakha,English name within the district (geometry agreed)
+5179,NP0322404,Baiteshwor,Baiteshwor,वैतेश्वर  गाउँपालिका,Dolakha,English name within the district (geometry agreed)
+5180,NP0322405,Shailung,Sailung,शैलुङ  गाउँपालिका,Dolakha,geometry: interior point inside exactly one municipality
+5181,NP0321404,Umakunda,Umakunda,उमाकुण्ड गाउँपालिका,Ramechhap,English name within the district (geometry agreed)
+5182,NP0321405,Khandadevi,Khadadevi,खाँडादेवी गाउँपालिका,Ramechhap,geometry: interior point inside exactly one municipality
+5183,NP0321403,Gokulganga,Gokulganga,गोकुलगङ्गा गाउँपालिका,Ramechhap,English name within the district (geometry agreed)
+5184,NP0321402,Doramba,Doramba Shailung,दोरम्वा शैलुङ्ग गाउँपालिका,Ramechhap,geometry: interior point inside exactly one municipality
+5185,NP0321301,Manthali,Manthali,मन्थली नगरपालिका,Ramechhap,English name within the district (geometry agreed)
+5186,NP0321302,Ramechhap,Ramechhap,रामेछाप नगरपालिका,Ramechhap,English name within the district (geometry agreed)
+5187,NP0321406,Likhu Tamakoshi,Likhu Tamakoshi,लिखु तामाकोशी गाउँपालिका,Ramechhap,English name within the district (geometry agreed)
+5188,NP0321401,Sunapati,Sunapati,सुनापती गाउँपालिका,Ramechhap,English name within the district (geometry agreed)
+5189,NP0320301,Kamalamai,Kamalamai,कमलामाई नगरपालिका,Sindhuli,English name within the district (geometry agreed)
+5190,NP0320405,Golanjor,Golanjor,गोलन्जोर गाउँपालिका,Sindhuli,English name within the district (geometry agreed)
+5191,NP0320403,Ghyanglekha,Ghanglekh,घ्याङलेख गाउँपालिका,Sindhuli,geometry: interior point inside exactly one municipality
+5192,NP0320406,Tinpatan,Tinpatan,तिनपाटन गाउँपालिका,Sindhuli,English name within the district (geometry agreed)
+5193,NP0320302,Dudhouli,Dudhouli,दुधौली नगरपालिका,Sindhuli,English name within the district (geometry agreed)
+5194,NP0320407,Phikkal,Phikkal,फिक्कल गाउँपालिका,Sindhuli,English name within the district (geometry agreed)
+5195,NP0320402,Marin,Marin,मरिण गाउँपालिका,Sindhuli,English name within the district (geometry agreed)
+5196,NP0320404,Sunkoshi,Sunkoshi,सुनकोशी गाउँपालिका,Sindhuli,English name within the district (geometry agreed)
+5197,NP0320401,Hariharpurgaghi,Hariharpurgadhi,हरिहरपुरगढी गाउँपालिका,Sindhuli,geometry: interior point inside exactly one municipality
+5217,NP0218302,Gaushala,Gaushala,गौशाला नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5218,NP0218309,Jaleshwor,Jaleswor,जलेश्वर नगरपालिका,Mahottari,geometry: interior point inside exactly one municipality
+5219,NP0218405,Pipara,Pipra,पिपरा गाउँपालिका,Mahottari,geometry: interior point inside exactly one municipality
+5225,NP0218404,Mahottari,Mahottari,महोत्तरी गाउँपालिका,Mahottari,English name within the district (geometry agreed)
+5228,NP0218402,Samsi,Samsi,साम्सी गाउँपालिका,Mahottari,English name within the district (geometry put it in a neighbour)
+5229,NP0218401,Sonama,Sonama,सोनमा गाउँपालिका,Mahottari,English name within the district (geometry agreed)
+5230,NP0219306,Ishworpur,Ishworpur,ईश्वरपुर नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5234,NP0219402,Chandranagar,Chandranagar,चन्द्रनगर गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5236,NP0219304,Barahathawa,Barahathawa,बरहथवा नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5238,NP0219301,Bagmati,Bagmati,बागमती नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5240,NP0219309,Malangawa,Malangawa,मलंगवा नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5242,NP0219303,Lalbandi,Lalbandi,लालबन्दी नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5246,NP0219302,Hariwan,Hariwan,हरिवन नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5247,NP0329403,Uttargaya,Uttargaya,उत्तरगया गाउँपालिका,Rasuwa,English name within the district (geometry agreed)
+5248,NP0329404,Kalika,Kalika,कालिका गाउँपालिका,Rasuwa,English name within the district (geometry agreed)
+5249,NP0329402,Gosaikunda,Gosaikunda,गोसाईकुण्ड गाउँपालिका,Rasuwa,English name within the district (geometry agreed)
+5250,NP0329405,Naukunda,Naukunda,नौकुण्ड गाउँपालिका,Rasuwa,English name within the district (geometry agreed)
+5251,NP0329401,Aamachhodingmo,Amachodingmo,आमाछोदिङमो गाउँपालिका,Rasuwa,geometry: interior point inside exactly one municipality
+5252,NP0330403,Khaniyabas,Khaniyabash,खनियाबास गाउँपालिका,Dhading,geometry: interior point inside exactly one municipality
+5253,NP0330402,Ganga Jamuna,Gangajamuna,गङ्गाजमुना गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5254,NP0330409,Gajuri,Gajuri,गजुरी गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5255,NP0330410,Galchhi,Galchi,गल्छी गाउँपालिका,Dhading,geometry: interior point inside exactly one municipality
+5256,NP0330406,Jwalamukhi,Jwalamukhi,ज्वालामूखी गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5257,NP0330404,Tripurasundari,Tripura Sundari,त्रिपुरासुन्दरी गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5258,NP0330411,Thakre,Thakre,थाक्रे गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5259,NP0330302,Dhunibenshi,Dhunibesi,धुनीबेंशी नगरपालिका,Dhading,geometry: interior point inside exactly one municipality
+5260,NP0330301,Nilkhantha,Nilakantha,निलकण्ठ नगरपालिका,Dhading,geometry: interior point inside exactly one municipality
+5261,NP0330405,Netrawati Dabjong,Netrawati Dabjong,नेत्रावती डबजोङ गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5262,NP0330408,Benighat Rorang,Benighat Rorang,बेनीघाट रोराङ्ग गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5263,NP0330401,Rubi Valley,Rubi Valley,रुवी भ्याली गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5264,NP0330407,Siddhalek,Siddhalek,सिद्धलेक गाउँपालिका,Dhading,English name within the district (geometry agreed)
+5265,NP0328409,Kakani,Kakani,ककनी गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5266,NP0328402,Kispang,Kispang,किस्पाङ गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5267,NP0328405,Tadi,Tadi,तादी गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5268,NP0328403,Tarakeshwor,Tarkeshwar,तारकेश्वर गाउँपालिका,Nuwakot,geometry: interior point inside exactly one municipality
+5269,NP0328408,Dupcheshwor,Dupcheshwar,दुप्चेश्वर गाउँपालिका,Nuwakot,geometry: interior point inside exactly one municipality
+5270,NP0328407,Panchakanya,Panchakanya,पञ्चकन्या गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5271,NP0328302,Belkotgadhi,Belkotgadhi,बेलकोटगढी नगरपालिका,Nuwakot,English name within the district (geometry agreed)
+5272,NP0328401,Myagang,Myagang,म्यागङ गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5273,NP0328406,Likhu,Likhu,लिखु गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5274,NP0328301,Bidur,Bidur,विदुर नगरपालिका,Nuwakot,English name within the district (geometry agreed)
+5275,NP0328410,Shivapuri,Shivapuri,शिवपुरी गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5276,NP0328404,Suryagadhi,Suryagadhi,सुर्यगढी गाउँपालिका,Nuwakot,English name within the district (geometry agreed)
+5277,NP0327306,Kageshwori Manahara,Kageshwori Manahora,कागेश्वरी मनोहरा नगरपालिका,Kathmandu,geometry: interior point inside exactly one municipality
+5278,NP0327101,Kathmandu,Kathmandu,काठमाण्डौ महानगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5279,NP0327309,Kirtipur,Kirtipur,किर्तिपुर नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5280,NP0327304,Gokarneshwor,Gokarneshwor,गोकर्णेश्वर नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5281,NP0327308,Chandragiri,Chandragiri,चन्द्रागिरी नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5282,NP0327302,Tokha,Tokha,टोखा नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5283,NP0327301,Tarakeshwor,Tarakeshwor,तारकेश्वर नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5284,NP0327310,Dakshinkali,Dakshinkali,दक्षिणकाली नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5285,NP0327305,Nagarjun,Nagarjun,नागार्जुन नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5286,NP0327303,Budhanilkhantha,Budhanilakantha,बुढानिलकण्ठ नगरपालिका,Kathmandu,geometry: interior point inside exactly one municipality
+5287,NP0327307,Shankharapur,Shankharapur,शङ्खरापुर नगरपालिका,Kathmandu,English name within the district (geometry agreed)
+5288,NP0326302,Changunarayan,Changunarayan,चाँगुनारायण नगरपालिका,Bhaktapur,English name within the district (geometry agreed)
+5289,NP0326303,Bhaktapur,Bhaktapur,भक्तपुर नगरपालिका,Bhaktapur,English name within the district (geometry agreed)
+5290,NP0326301,Madhyapur Thimi,Madhyapur Thimi,मध्यपुर थिमी नगरपालिका,Bhaktapur,English name within the district (geometry agreed)
+5291,NP0326304,Suryabinayak,Suryabinayak,सूर्यविनायक नगरपालिका,Bhaktapur,English name within the district (geometry agreed)
+5292,NP0325402,Konjyosom,Konjyosom,कोन्ज्योसोम गाउँपालिका,Lalitpur,English name within the district (geometry agreed)
+5293,NP0325301,Godawari,Godawari,गोदावरी नगरपालिका,Lalitpur,English name within the district (geometry agreed)
+5294,NP0325401,Bagmati,Bagmati,बाग्मती गाउँपालिका,Lalitpur,English name within the district (geometry agreed)
+5295,NP0325403,Mahankal,Mahankal,महाङ्काल गाउँपालिका,Lalitpur,English name within the district (geometry agreed)
+5296,NP0325302,Mahalaxmi,Mahalaxmi,महालक्ष्मी नगरपालिका,Lalitpur,English name within the district (geometry agreed)
+5297,NP0325101,Lalitpur,Lalitpur,ललितपुर महानगरपालिका,Lalitpur,English name within the district (geometry agreed)
+5298,NP0324406,Khanikhola,Khanikhola,खानीखोला गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5299,NP0324402,Chauri Deurali,Chaurideurali,चौंरीदेउराली गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5300,NP0324405,Temal,Temal,तेमाल गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5301,NP0324303,Dhulikhel,Dhulikhel,धुलिखेल नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5302,NP0324306,Namobuddha,Namobuddha,नमोबुद्ध नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5303,NP0324305,Panauti,Panauti,पनौती नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5304,NP0324304,Panchkhal,Panchkhal,पाँचखाल नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5305,NP0324302,Banepa,Banepa,बनेपा नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5306,NP0324403,Bethanchowk,Bethanchowk,बेथानचोक गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5307,NP0324401,Bhumlu,Bhumlu,भुम्लु गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5308,NP0324301,Mandan Deupur,Mandandeupur,मण्डनदेउपुर नगरपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5309,NP0324407,Mahabharat,Mahabharat,महाभारत गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5310,NP0324404,Roshi,Roshi,रोशी गाउँपालिका,Kabhrepalanchok,English name within the district (geometry agreed)
+5311,NP0323302,Choutara Sangachowkgadhi,Chautara SangachokGadhi,चौतारा साँगाचोकगढी नगरपालिका,Sindhupalchok,geometry: interior point inside exactly one municipality
+5312,NP0323403,Jugal,Jugal,जुगल गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5313,NP0323408,Tripurasundari,Tripurasundari,त्रिपुरासुन्दरी गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5314,NP0323402,Panchpokhari Thangpal,Panchpokhari Thangpal,पाँचपोखरी थाङपाल  गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5315,NP0323406,Balephi,Balefi,बलेफी गाउँपालिका,Sindhupalchok,geometry: interior point inside exactly one municipality
+5316,NP0323404,Bhotekoshi,Bhotekoshi,भोटेकोशी गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5317,NP0323301,Melamchi,Melamchi,मेलम्ची नगरपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5318,NP0323405,Indrawoti,Indrawati,ईन्द्रावती गाउँपालिका,Sindhupalchok,geometry: interior point inside exactly one municipality
+5319,NP0323409,Lisankhu Pakhar,Lisangkhu Pakhar,लिसंखु पाखर गाउँपालिका,Sindhupalchok,geometry: interior point inside exactly one municipality
+5320,NP0323303,Bahrabise,Barhabise,वाह्रविसे नगरपालिका,Sindhupalchok,geometry: interior point inside exactly one municipality
+5321,NP0323407,Sunkoshi,Sunkoshi,सुनकोशी गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5322,NP0323401,Helambu,Helambu,हेलम्बु  गाउँपालिका,Sindhupalchok,English name within the district (geometry agreed)
+5323,NP0331405,Indrasarowar,Indrasarowar,ईन्द्र सरोवर गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5324,NP0331403,Kailash,Kailash,कैलाश गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5325,NP0331301,Thaha,Thaha,थाहा नगरपालिका,Makawanpur,English name within the district (geometry agreed)
+5326,NP0331407,Bakaiya,Bakaiya,बकैया गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5327,NP0331408,Bagmati,Bagmati,बाग्मती गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5328,NP0331404,Bhimphedi,Bhimphedi,भीमफेदी गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5329,NP0331406,Makawanpurgadhi,Makawanpurgadhi,मकवानपुरगढी गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5330,NP0331401,Manahari,Manahari,मनहरी गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5331,NP0331402,Raksirang,Raksirang,राक्सिराङ्ग गाउँपालिका,Makawanpur,English name within the district (geometry agreed)
+5332,NP0331201,Hetauda,Hetauda,हेटौडा उपमहानगरपालिका,Makawanpur,English name within the district (geometry agreed)
+5336,NP0232308,Garuda,Garuda,गरुडा नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5339,NP0232302,Chandrapur,Chandrapur,चन्द्रपुर नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5349,NP0233409,Aadarsha Kotwal,Adarshkotwal,आदर्श कोटवाल गाउँपालिका,Bara,geometry: interior point inside exactly one municipality
+5350,NP0233403,Karaiyamai,Karaiyamai,करैयामाई गाउँपालिका,Bara,English name within the district (geometry agreed)
+5351,NP0233202,Kalaiya,Kalaiya,कलैया उपमहानगरपालिका,Bara,English name within the district (geometry agreed)
+5352,NP0233302,Kolhabi,Kolhabi,कोल्हवी नगरपालिका,Bara,English name within the district (geometry agreed)
+5353,NP0233201,Jitpur Simara,Jitpur Simara,जीतपुरसिमरा उपमहानगरपालिका,Bara,English name within the district (geometry agreed)
+5354,NP0233407,Devtal,Devtal,देवताल गाउँपालिका,Bara,English name within the district (geometry agreed)
+5355,NP0233301,Nijagadh,Nijgadh,निजगढ नगरपालिका,Bara,geometry: interior point inside exactly one municipality
+5360,NP0233406,Baragadhi,Baragadhi,बारागढी गाउँपालिका,Bara,English name within the district (geometry agreed)
+5361,NP0233303,Mahagadhimai,Mahagadhimai,महागढीमाई नगरपालिका,Bara,English name within the district (geometry agreed)
+5362,NP0233305,Simroungadh,Simraungadh,सिम्रौनगढ नगरपालिका,Bara,geometry: interior point inside exactly one municipality
+5363,NP0233408,Subarna,Suwarna,सुवर्ण गाउँपालिका,Bara,geometry: interior point inside exactly one municipality
+5364,NP0234407,Chhipaharmai,Chhipaharmai,छिपहरमाई गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5365,NP0234405,Jagarnathpur,Jagarnathpur,जगरनाथपुर गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5366,NP0234406,Dhobini,Dhobini,धोबीनी गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5367,NP0234409,Pakaha Mainpur,Pakahamainpur,पकाहा मैनपुर गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5372,NP0234410,Bindabasini,Bindabasini,बिन्दबासिनी गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5375,NP0234404,Sakhuwa Prasauni,SakhuwaPrasauni,सखुवा प्रसौनी गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5377,NP0335401,Ichchha Kamana,Ichchhyakamana,इच्छाकामना गाउँपालिका,Chitawan,geometry: interior point inside exactly one municipality
+5378,NP0335301,Kalika,Kalika,कालिका नगरपालिका,Chitawan,English name within the district (geometry agreed)
+5379,NP0335303,Khairahani,Khairahani,खैरहनी नगरपालिका,Chitawan,English name within the district (geometry agreed)
+5380,NP0335101,Bharatpur,Bharatpur,भरतपुर महानगरपालिका,Chitawan,English name within the district (geometry agreed)
+5381,NP0335305,Madi,Madi,माडी नगरपालिका,Chitawan,English name within the district (geometry agreed)
+5382,NP0335302,Ratnanagar,Ratnanagar,रत्ननगर नगरपालिका,Chitawan,English name within the district (geometry agreed)
+5383,NP0335304,Rapti,Rapti,राप्ती नगरपालिका,Chitawan,English name within the district (geometry agreed)
+5384,NP0436402,Ajirkot,Ajirkot,अजिरकोट गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5385,NP0436406,Aarughat,Aarughat,आरूघाट गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5386,NP0436409,Gandaki,Gandaki,गण्डकी गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5387,NP0436302,Gorkha,Gorkha,गोरखा नगरपालिका,Gorkha,English name within the district (geometry agreed)
+5388,NP0436401,Chumanubri,Chum Nubri,चुम नुव्री गाउँपालिका,Gorkha,geometry: interior point inside exactly one municipality
+5389,NP0436404,Dharche,Dharche,धार्चे गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5390,NP0436301,Palungtar,Palungtar,पालुङटार नगरपालिका,Gorkha,English name within the district (geometry agreed)
+5391,NP0436407,Bhimsenthapa,Bhimsenthapa,भिमसेनथापा गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5392,NP0436408,Shahid Lakhan,Sahid Lakhan,शहिद लखन गाउँपालिका,Gorkha,geometry: interior point inside exactly one municipality
+5393,NP0436405,Siranchowk,Siranchok,सिरानचोक गाउँपालिका,Gorkha,geometry: interior point inside exactly one municipality
+5394,NP0436403,Barpak Sulikot,Barpak Sulikot,बारपाक सुलीकोट गाउँपालिका,Gorkha,English name within the district (geometry agreed)
+5395,NP0438403,Chame,Chame,चामे गाउँपालिका,Manang,English name within the district (geometry agreed)
+5396,NP0438402,Narpa Bhumi,Narpa Bhumi,नार्पा भूमि गाउँपालिका,Manang,English name within the district (geometry agreed)
+5397,NP0438404,Nason,Narshon,नासोँ गाउँपालिका,Manang,geometry: interior point inside exactly one municipality
+5398,NP0438401,Ngisyang,Manang Ingshyang,मनाङ ङिस्याङ गाउँपालिका,Manang,geometry: interior point inside exactly one municipality
+5399,NP0437401,Kwhola Sothar,Kwholasothar,क्व्होलासोथार गाउँपालिका,Lamjung,English name within the district (geometry agreed)
+5400,NP0437404,Dudhapokhari,Dudhpokhari,दूधपोखरी गाउँपालिका,Lamjung,geometry: interior point inside exactly one municipality
+5401,NP0437403,Dordi,Dordi,दोर्दी गाउँपालिका,Lamjung,English name within the district (geometry agreed)
+5402,NP0437302,Bensishahar,Besishahar,बेसीशहर नगरपालिका,Lamjung,geometry: interior point inside exactly one municipality
+5403,NP0437301,Madhya Nepal,MadhyaNepal,मध्यनेपाल नगरपालिका,Lamjung,English name within the district (geometry agreed)
+5404,NP0437402,Marshyangdi,Marsyangdi,मर्स्याङदी गाउँपालिका,Lamjung,geometry: interior point inside exactly one municipality
+5405,NP0437304,Rainas,Rainas,रार्इनास नगरपालिका,Lamjung,English name within the district (geometry agreed)
+5406,NP0437303,Sundarbazar,Sundarbazar,सुन्दरबजार नगरपालिका,Lamjung,English name within the district (geometry agreed)
+5407,NP0439401,Annapurna,Annapurna,अन्नपुर्ण गाउँपालिका,Kaski,English name within the district (geometry agreed)
+5408,NP0439101,Pokhara,Pokhara,पोखरा महानगरपालिका,Kaski,English name within the district (geometry agreed)
+5409,NP0439402,Machhapuchchhre,Machhapuchchhre,माछापुछ्रे गाउँपालिका,Kaski,English name within the district (geometry agreed)
+5410,NP0439403,Madi,Madi,मादी गाउँपालिका,Kaski,English name within the district (geometry agreed)
+5411,NP0439404,Rupa,Rupa,रूपा गाउँपालिका,Kaski,English name within the district (geometry agreed)
+5412,NP0440405,Aanbu Khaireni,Anbukhaireni,आँबुखैरेनी गाउँपालिका,Tanahu,geometry: interior point inside exactly one municipality
+5413,NP0440403,Rhishing,Rhishing,ऋषिङ्ग गाउँपालिका,Tanahu,English name within the district (geometry agreed)
+5414,NP0440402,Ghiring,Ghiring,घिरिङ गाउँपालिका,Tanahu,English name within the district (geometry agreed)
+5415,NP0440406,Devghat,Devghat,देवघाट गाउँपालिका,Tanahu,English name within the district (geometry agreed)
+5416,NP0440404,Bandipur,Bandipur,बन्दिपुर गाउँपालिका,Tanahu,English name within the district (geometry agreed)
+5417,NP0440303,Bhanu,Bhanu,भानु नगरपालिका,Tanahu,English name within the district (geometry agreed)
+5418,NP0440304,Bhimad,Bhimad,भिमाद नगरपालिका,Tanahu,English name within the district (geometry agreed)
+5419,NP0440401,Myagde,Myagde,म्याग्दे गाउँपालिका,Tanahu,English name within the district (geometry agreed)
+5420,NP0440302,Byas,Byas,व्यास नगरपालिका,Tanahu,English name within the district (geometry agreed)
+5421,NP0440301,Shuklagandaki,Shuklagandaki,शुक्लागण्डकी नगरपालिका,Tanahu,English name within the district (geometry agreed)
+5422,NP0441403,Arjun Choupari,Arjunchaupari,अर्जुन चौपारी गाउँपालिका,Syangja,geometry: interior point inside exactly one municipality
+5423,NP0441401,Aandhikhola,Aandhikhola,आँधीखोला गाउँपालिका,Syangja,English name within the district (geometry agreed)
+5424,NP0441406,Kaligandaki,Kaligandagi,कालीगण्डकी गाउँपालिका,Syangja,geometry: interior point inside exactly one municipality
+5425,NP0441303,Galyang,Galyang,गल्याङ नगरपालिका,Syangja,English name within the district (geometry agreed)
+5426,NP0441305,Chapakot,Chapakot,चापाकोट नगरपालिका,Syangja,English name within the district (geometry agreed)
+5427,NP0441301,Putalibazar,Putalibazar,पुतलीबजार नगरपालिका,Syangja,English name within the district (geometry agreed)
+5428,NP0441402,Phedikhola,Phedikhola,फेदीखोला गाउँपालिका,Syangja,English name within the district (geometry agreed)
+5429,NP0441302,Bhirkot,Bhirkot,भिरकोट नगरपालिका,Syangja,English name within the district (geometry agreed)
+5430,NP0441304,Walling,Waling,वालिङ नगरपालिका,Syangja,geometry: interior point inside exactly one municipality
+5431,NP0441404,Biruwa,Biruwa,विरुवा गाउँपालिका,Syangja,English name within the district (geometry agreed)
+5432,NP0441405,Harinas,Harinas,हरीनास गाउँपालिका,Syangja,English name within the district (geometry agreed)
+5433,NP0551404,Isma,Isma,ईस्मा गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5434,NP0551410,Kali Gandaki,Kaligandaki,कालीगण्डकी गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5435,NP0551405,Gulmi Durbar,Gulmidarbar,गुल्मीदरवार गाउँपालिका,Gulmi,geometry: interior point inside exactly one municipality
+5436,NP0551406,Chandrakot,Chandrakot,चन्द्रकोट गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5437,NP0551407,Chhatrakot,Chatrakot,छत्रकोट गाउँपालिका,Gulmi,geometry: interior point inside exactly one municipality
+5438,NP0551403,Dhurkot,Dhurkot,धुर्कोट गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5439,NP0551401,Madane,Madane,मदाने गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5440,NP0551402,Malika,Malika,मालिका गाउँपालिका,Gulmi,English name within the district (geometry agreed)
+5441,NP0551301,Musikot,Musikot,मुसिकोट नगरपालिका,Gulmi,English name within the district (geometry agreed)
+5442,NP0551408,Ruruchhetra,Rurukshretra,रुरुक्षेत्र गाउँपालिका,Gulmi,geometry: interior point inside exactly one municipality
+5443,NP0551302,Resunga,Resunga,रेसुङ्गा नगरपालिका,Gulmi,English name within the district (geometry agreed)
+5444,NP0551409,Satyawoti,Satyawati,सत्यवती गाउँपालिका,Gulmi,geometry: interior point inside exactly one municipality
+5445,NP0546301,Tansen,Tansen,तानसेन नगरपालिका,Palpa,English name within the district (geometry agreed)
+5446,NP0546402,Tinau,Tinau,तिनाउ गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5447,NP0546408,Nisdi,Nisdi,निस्दी गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5448,NP0546406,Purbakhola,Purbakhola,पूर्वखोला गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5449,NP0546405,Baganaskali,Bagnaskali,बगनासकाली गाउँपालिका,Palpa,geometry: interior point inside exactly one municipality
+5450,NP0546404,Mathagadhi,Mathagadhi,माथागढी गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5451,NP0546407,Rambha,Rambha,रम्भा गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5452,NP0546302,Rampur,Rampur,रामपुर नगरपालिका,Palpa,English name within the district (geometry agreed)
+5453,NP0546403,Ribdikot,Ribdikot,रिब्दिकोट गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5454,NP0546401,Rainadevi Chhahara,Rainadevi Chhahara,रैनादेवी छहरा गाउँपालिका,Palpa,English name within the district (geometry agreed)
+5455,NP0550402,Chhatradev,Chhatradev,छत्रदेव गाउँपालिका,Arghakhanchi,English name within the district (geometry agreed)
+5456,NP0550403,Panini,Panini,पाणिनी गाउँपालिका,Arghakhanchi,English name within the district (geometry agreed)
+5457,NP0550301,Bhumikasthan,Bhumekasthan,भूमिकास्थान नगरपालिका,Arghakhanchi,geometry: interior point inside exactly one municipality
+5458,NP0550401,Malarani,Malarani,मालारानी गाउँपालिका,Arghakhanchi,English name within the district (geometry agreed)
+5459,NP0550302,Sandhikharka,Sandhikharka,सन्धिखर्क नगरपालिका,Arghakhanchi,English name within the district (geometry agreed)
+5460,NP0550303,Shitaganga,Sitganga,सितगंगा नगरपालिका,Arghakhanchi,geometry: interior point inside exactly one municipality
+5461,NP0447302,Kawasoti,Kawasoti,कावासोती नगरपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5462,NP0447304,Gaidakot,Gaidakot,गैडाकोट नगरपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5463,NP0547404,Susta,Susta,सुस्ता गाउँपालिका,Nawalparasi_W,English name within the district (geometry agreed)
+5464,NP0447303,Devchuli,Devchuli,देवचुली नगरपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5465,NP0547401,Palhinandan,Palhi Nandan,पाल्हीनन्दन गाउँपालिका,Nawalparasi_W,English name within the district (geometry agreed)
+5466,NP0547403,Pratapapur,Pratappur,प्रतापपुर गाउँपालिका,Nawalparasi_W,geometry: interior point inside exactly one municipality
+5467,NP0547302,Bardaghat,Bardaghat,बर्दघाट नगरपालिका,Nawalparasi_W,English name within the district (geometry agreed)
+5468,NP0447401,Baudikali,Baudeekali,बौदीकाली गाउँपालिका,Nawalparasi_E,geometry: interior point inside exactly one municipality
+5469,NP0447402,Bulingtar,Bulingtar,बुलिङटार गाउँपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5470,NP0447301,Madhya Bindu,Madhyabindu,मध्यविन्दु नगरपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5471,NP0547303,Ramgram,Ramgram,रामग्राम नगरपालिका,Nawalparasi_W,English name within the district (geometry agreed)
+5472,NP0447404,Binayi Tribeni,Binayee Tribeni,विनयी त्रिवेणी गाउँपालिका,Nawalparasi_E,geometry: interior point inside exactly one municipality
+5473,NP0547402,Sarawal,Sarawal,सरावल गाउँपालिका,Nawalparasi_W,English name within the district (geometry agreed)
+5474,NP0547301,Sunawal,Sunwal,सुनवल नगरपालिका,Nawalparasi_W,geometry: interior point inside exactly one municipality
+5475,NP0447403,Hupsekot,Hupsekot,हुप्सेकोट गाउँपालिका,Nawalparasi_E,English name within the district (geometry agreed)
+5476,NP0548406,Om Satiya,Omsatiya,ओमसतिया गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5477,NP0548401,Kanchan,Kanchan,कंचन गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5478,NP0548408,Kotahimai,Kotahimai,कोटहीमाई गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5479,NP0548403,Gaidahawa,Gaidahawa,गैडहवा गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5480,NP0548303,Tilottama,Tillotama,तिलोत्तमा नगरपालिका,Rupandehi,geometry: interior point inside exactly one municipality
+5481,NP0548302,Devdaha,Devdaha,देवदह नगरपालिका,Rupandehi,English name within the district (geometry agreed)
+5482,NP0548201,Butwal,Butwal,बुटवल उपमहानगरपालिका,Rupandehi,English name within the district (geometry agreed)
+5483,NP0548410,Marchawari,Marchawari,मर्चवारी गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5484,NP0548405,Mayadevi,Mayadevi,मायादेवी गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5485,NP0548407,Rohini,Rohini,रोहिणी गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5486,NP0548304,Lumbini Sanskritik,Lumbini Sanskritik,लुम्बिनी सांस्कृतिक नगरपालिका,Rupandehi,English name within the district (geometry agreed)
+5487,NP0548402,Suddhodhan,Sudhdhodhan,शुद्धोधन गाउँपालिका,Rupandehi,geometry: interior point inside exactly one municipality
+5488,NP0548409,Sammarimai,Sammarimai,सम्मरीमाई गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5489,NP0548305,Siddharthanagar,Siddharthanagar,सिद्धार्थनगर नगरपालिका,Rupandehi,English name within the district (geometry agreed)
+5490,NP0548404,Siyari,Siyari,सियारी गाउँपालिका,Rupandehi,English name within the district (geometry agreed)
+5491,NP0548301,Sainamaina,Sainamaina,सैनामैना नगरपालिका,Rupandehi,English name within the district (geometry agreed)
+5492,NP0549306,Kapilbastu,Kapilbastu,कपिलवस्तु नगरपालिका,Kapilbastu,English name within the district (geometry agreed)
+5493,NP0549304,Krishnanagar,Krishnanagar,कृष्णनगर नगरपालिका,Kapilbastu,English name within the district (geometry agreed)
+5494,NP0549303,Banganga,Banganga,बाणगंगा नगरपालिका,Kapilbastu,English name within the district (geometry agreed)
+5495,NP0549302,Buddhabhumi,Buddhabhumi,बुद्धभूमी नगरपालिका,Kapilbastu,English name within the district (geometry agreed)
+5496,NP0549305,Maharajganj,Maharajgunj,महाराजगंज नगरपालिका,Kapilbastu,geometry: interior point inside exactly one municipality
+5497,NP0549403,Mayadevi,Mayadevi,मायादेवी गाउँपालिका,Kapilbastu,English name within the district (geometry agreed)
+5498,NP0549402,Yasodhara,Yashodhara,यसोधरा गाउँपालिका,Kapilbastu,geometry: interior point inside exactly one municipality
+5499,NP0549401,Bijayanagar,Bijayanagar,विजयनगर गाउँपालिका,Kapilbastu,English name within the district (geometry agreed)
+5500,NP0549301,Shivaraj,Shivaraj,शिवराज नगरपालिका,Kapilbastu,English name within the district (geometry agreed)
+5501,NP0549404,Shuddhodhan,Suddhodhan,शुद्धोधन गाउँपालिका,Kapilbastu,geometry: interior point inside exactly one municipality
+5502,NP0445404,Gharpajhong,Gharapjhong,घरपझोङ गाउँपालिका,Mustang,geometry: interior point inside exactly one municipality
+5503,NP0445405,Thasang,Thasang,थासाङ गाउँपालिका,Mustang,English name within the district (geometry agreed)
+5504,NP0445402,Lo Ghekar Damodarkunda,Lo-Ghekar Damodarkunda,लो-घेकर दामोदरकुण्ड गाउँपालिका,Mustang,English name within the district (geometry agreed)
+5505,NP0445403,Varagung Muktichhetra,Waragung Muktikhsetra,वारागुङ मुक्तिक्षेत्र गाउँपालिका,Mustang,geometry: interior point inside exactly one municipality
+5506,NP0445401,Lomanthang,Lomanthang,लोमन्थाङ गाउँपालिका,Mustang,English name within the district (geometry agreed)
+5507,NP0444403,Annapurna,Annapurna,अन्नपूर्ण गाउँपालिका,Myagdi,English name within the district (geometry agreed)
+5508,NP0444401,Dhawalagiri,Dhaulagiri,धवलागिरी गाउँपालिका,Myagdi,geometry: interior point inside exactly one municipality
+5509,NP0444301,Beni,Beni,बेनी  नगरपालिका,Myagdi,English name within the district (geometry agreed)
+5510,NP0444405,Mangala,Mangala,मंगला गाउँपालिका,Myagdi,English name within the district (geometry agreed)
+5511,NP0444404,Malika,Malika,मालिका गाउँपालिका,Myagdi,English name within the district (geometry agreed)
+5512,NP0444402,Raghuganga,Raghuganga,रघुगंगा गाउँपालिका,Myagdi,English name within the district (geometry agreed)
+5513,NP0443405,Kathekhola,Kanthekhola,काठेखोला गाउँपालिका,Baglung,geometry: interior point inside exactly one municipality
+5514,NP0443302,Galkot,Galkot,गल्कोट नगरपालिका,Baglung,English name within the district (geometry agreed)
+5515,NP0443304,Jaimuni,Jaimuni,जैमुनी नगरपालिका,Baglung,English name within the district (geometry agreed)
+5516,NP0443301,Dhorpatan,Dhorpatan,ढोरपाटन नगरपालिका,Baglung,English name within the district (geometry agreed)
+5517,NP0443402,Tamankhola,Taman Khola,तमानखोला गाउँपालिका,Baglung,English name within the district (geometry agreed)
+5518,NP0443404,Tarakhola,Tara Khola,ताराखोला गाउँपालिका,Baglung,English name within the district (geometry agreed)
+5519,NP0443401,Nisikhola,Nisikhola,निसीखोला गाउँपालिका,Baglung,English name within the district (geometry agreed)
+5520,NP0443303,Baglung,Baglung,बागलुङ नगरपालिका,Baglung,English name within the district (geometry agreed)
+5521,NP0443403,Badigad,Badigad,वडिगाड गाउँपालिका,Baglung,English name within the district (geometry agreed)
+5522,NP0443406,Bareng,Bareng,वरेङ गाउँपालिका,Baglung,English name within the district (geometry agreed)
+5523,NP0442301,Kushma,Kushma,कुश्मा नगरपालिका,Parbat,English name within the district (geometry agreed)
+5524,NP0442401,Jaljala,Jaljala,जलजला गाउँपालिका,Parbat,English name within the district (geometry agreed)
+5525,NP0442405,Paiyu,Painyu,पैयूं गाउँपालिका,Parbat,geometry: interior point inside exactly one municipality
+5526,NP0442302,Phalebas,Phalebas,फलेवास नगरपालिका,Parbat,English name within the district (geometry agreed)
+5527,NP0442404,Mahashila,Mahashila,महाशिला गाउँपालिका,Parbat,English name within the district (geometry agreed)
+5528,NP0442402,Modi,Modi,मोदी गाउँपालिका,Parbat,English name within the district (geometry agreed)
+5529,NP0442403,Bihadi,Bihadi,विहादी गाउँपालिका,Parbat,English name within the district (geometry agreed)
+5530,NP0652301,Aathabisakot,Aathbiskot,आठबिसकोट नगरपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5531,NP0652302,Chaurjahari,Chaurjahari,चौरजहारी नगरपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5532,NP0652403,Tribeni,Tribeni,त्रिवेणी गाउँपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5533,NP0552402,Putha Uttanganga,Putha Uttarganga,पुथा उत्तरगंगा गाउँपालिका,Rukum_E,geometry: interior point inside exactly one municipality
+5534,NP0652402,Banphikot,Banfikot,बाँफिकोट गाउँपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5535,NP0552403,Bhoome,Bhume,भूमे गाउँपालिका,Rukum_E,geometry: interior point inside exactly one municipality
+5536,NP0652303,Musikot,Musikot,मुसिकोट नगरपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5537,NP0652401,Sanibheri,Sani Bheri,सानीभेरी गाउँपालिका,Rukum_W,geometry: interior point inside exactly one municipality
+5538,NP0552401,Sisne,Sisne,सिस्ने गाउँपालिका,Rukum_E,English name within the district (geometry agreed)
+5539,NP0554406,Tribeni,Tribeni,त्रिवेणी गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5540,NP0554403,Thawang,Thawang,थवाङ गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5541,NP0554402,Pariwartan,Pariwartan,परिवर्तन गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5542,NP0554404,Madi,Madi,माडी गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5543,NP0554409,Runtigadhi,Runtigadi,रुन्टीगढी गाउँपालिका,Rolpa,geometry: interior point inside exactly one municipality
+5544,NP0554301,Rolpa,Rolpa,रोल्पा नगरपालिका,Rolpa,English name within the district (geometry agreed)
+5545,NP0554408,Lungri,Lungri,लुङग्री गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5546,NP0554401,Gangadev,Gangadev,गंगादेव गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5547,NP0554405,Sunchhahari,Sunchhahari,सुनछहरी गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5548,NP0554407,Sunil Smriti,Sunil Smriti,सुनिल स्मृति गाउँपालिका,Rolpa,English name within the district (geometry agreed)
+5549,NP0555407,Aairawati,Ayirabati,ऐरावती गाउँपालिका,Pyuthan,geometry: interior point inside exactly one municipality
+5550,NP0555402,Gaumukhi,Gaumukhi,गौमुखी गाउँपालिका,Pyuthan,English name within the district (geometry agreed)
+5551,NP0555403,Jhimaruk,Jhimruk,झिमरुक गाउँपालिका,Pyuthan,geometry: interior point inside exactly one municipality
+5552,NP0555401,Naubahini,Naubahini,नौवहिनी गाउँपालिका,Pyuthan,English name within the district (geometry agreed)
+5553,NP0555302,Pyuthan,Pyuthan,प्यूठान नगरपालिका,Pyuthan,English name within the district (geometry agreed)
+5554,NP0555405,Mallarani,Mallarani,मल्लरानी गाउँपालिका,Pyuthan,English name within the district (geometry agreed)
+5555,NP0555404,Mandavi,Mandavi,माण्डवी गाउँपालिका,Pyuthan,English name within the district (geometry agreed)
+5556,NP0555406,Sarumarani,Sarumarani,सरुमारानी गाउँपालिका,Pyuthan,English name within the district (geometry agreed)
+5557,NP0555301,Sworgadwari,Sworgadwary,स्वर्गद्वारी नगरपालिका,Pyuthan,geometry: interior point inside exactly one municipality
+5558,NP0653407,Kapurkot,Kapurkot,कपुरकोट गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5559,NP0653404,Kalimati,Kalimati,कालीमाटी गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5560,NP0653401,Kumakh,Kumakh,कुमाख गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5561,NP0653405,Chhatreshwori,Chhatreshwori,छत्रेश्वरी गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5562,NP0653403,Siddha Kumakh,Siddha Kumakh,सिद्ध कुमाख गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5563,NP0653406,Tribeni,Tribeni,त्रिवेणी गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5564,NP0653402,Darma,Darma,दार्मा गाउँपालिका,Salyan,English name within the district (geometry agreed)
+5565,NP0653301,Banagad Kupinde,Bangad Kupinde,बनगाड कुपिण्डे नगरपालिका,Salyan,geometry: interior point inside exactly one municipality
+5566,NP0653302,Bagachour,Bagchaur,बागचौर नगरपालिका,Salyan,geometry: interior point inside exactly one municipality
+5567,NP0653303,Sharada,Sharada,शारदा नगरपालिका,Salyan,English name within the district (geometry agreed)
+5568,NP0556406,Gadhawa,Gadhawa,गढवा गाउँपालिका,Dang,English name within the district (geometry agreed)
+5569,NP0556202,Ghorahi,Ghorahi,घोराही उपमहानगरपालिका,Dang,English name within the district (geometry agreed)
+5570,NP0556201,Tulsipur,Tulsipur,तुल्सिपुर उपमहानगरपालिका,Dang,English name within the district (geometry agreed)
+5571,NP0556402,Dangisharan,Dangisharan,दंगीशरण गाउँपालिका,Dang,English name within the district (geometry agreed)
+5572,NP0556405,Bangalachuli,Banglachuli,बंगलाचुली गाउँपालिका,Dang,geometry: interior point inside exactly one municipality
+5573,NP0556401,Babai,Babai,बबई गाउँपालिका,Dang,English name within the district (geometry agreed)
+5574,NP0556404,Rajpur,Rajpur,राजपुर गाउँपालिका,Dang,English name within the district (geometry agreed)
+5575,NP0556407,Rapti,Rapti,राप्ती गाउँपालिका,Dang,English name within the district (geometry agreed)
+5576,NP0556301,Lamahi,Lamahi,लमही नगरपालिका,Dang,English name within the district (geometry agreed)
+5577,NP0556403,Shantinagar,Shantinagar,शान्तिनगर गाउँपालिका,Dang,English name within the district (geometry agreed)
+5578,NP0662405,Kaike,Kaike,काईके गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5579,NP0662406,Chharka Tangsong,Chharka Tangsong,छार्का ताङसोङ गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5580,NP0662402,Jagadulla,Jagadulla,जगदुल्ला गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5581,NP0662302,Thulibheri,Thuli Bheri,ठूली भेरी नगरपालिका,Dolpa,English name within the district (geometry agreed)
+5582,NP0662403,Dolpo Buddha,Dolpo Buddha,डोल्पो बुद्ध गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5583,NP0662301,Tripurasundari,Tripurasundari,त्रिपुरासुन्दरी नगरपालिका,Dolpa,English name within the district (geometry agreed)
+5584,NP0662404,Mudkechula,Mudkechula,मुड्केचुला गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5585,NP0662401,Shey Phoksundo,Shey Phoksundo,शे फोक्सुन्डो गाउँपालिका,Dolpa,English name within the district (geometry agreed)
+5586,NP0665401,Khatyad,Khatyad,खत्याड गाउँपालिका,Mugu,English name within the district (geometry agreed)
+5587,NP0665301,Chhayanath Rara,Chhayanath Rara,छायाँनाथ रारा नगरपालिका,Mugu,English name within the district (geometry agreed)
+5588,NP0665403,Mugumakarmarog,Mugum Karmarong,मुगुम कार्मारोंग गाउँपालिका,Mugu,geometry: interior point inside exactly one municipality
+5589,NP0665402,Soru,Soru,सोरु गाउँपालिका,Mugu,English name within the district (geometry agreed)
+5590,NP0663401,Kanaka Sundari,Kanakasundari,कनकासुन्दरी गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5591,NP0663407,Guthichaur,Guthichaur,गुठिचौर गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5592,NP0663301,Chandannath,Chandannath,चन्दननाथ नगरपालिका,Jumla,English name within the district (geometry agreed)
+5593,NP0663406,Tatopani,Tatopani,तातोपानी गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5594,NP0663405,Tila,Tila,तिला गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5595,NP0663403,Patarasi,Patrasi,पातारासी गाउँपालिका,Jumla,geometry: interior point inside exactly one municipality
+5596,NP0663402,Sinja,Sinja,सिंजा गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5597,NP0663404,Hima,Hima,हिमा गाउँपालिका,Jumla,English name within the district (geometry agreed)
+5598,NP0664405,Shuva Kalika,Subha Kalika,शुभ कालीका गाउँपालिका,Kalikot,geometry: interior point inside exactly one municipality
+5599,NP0664302,Khandachakra,Khandachakra,खाँडाचक्र नगरपालिका,Kalikot,English name within the district (geometry agreed)
+5600,NP0664303,Tilagupha,Tilagufa,तिलागुफा नगरपालिका,Kalikot,geometry: interior point inside exactly one municipality
+5601,NP0664401,Naraharinath,Naraharinath,नरहरिनाथ गाउँपालिका,Kalikot,English name within the district (geometry agreed)
+5602,NP0664403,Pachal Jharana,Pachaljharana,पचालझरना गाउँपालिका,Kalikot,English name within the district (geometry agreed)
+5603,NP0664404,Palata,Palata,पलाता गाउँपालिका,Kalikot,English name within the district (geometry agreed)
+5604,NP0664406,Mahawai,Mahawai,महावै गाउँपालिका,Kalikot,English name within the district (geometry agreed)
+5605,NP0664301,Raskot,Raskot,रास्कोट नगरपालिका,Kalikot,English name within the district (geometry agreed)
+5606,NP0664402,Sanni Tribeni,Sanni Tribeni,सान्नी त्रिवेणी गाउँपालिका,Kalikot,English name within the district (geometry agreed)
+5607,NP0666407,Adanchuli,Adanchuli,अदानचुली गाउँपालिका,Humla,English name within the district (geometry agreed)
+5608,NP0666403,Kharpunath,Kharpunath,खार्पुनाथ गाउँपालिका,Humla,English name within the district (geometry agreed)
+5609,NP0666405,Chankheli,Chankheli,चंखेली गाउँपालिका,Humla,English name within the district (geometry agreed)
+5610,NP0666406,Tanjakot,Tanjakot,ताँजाकोट गाउँपालिका,Humla,English name within the district (geometry agreed)
+5611,NP0666401,Namkha,Namkha,नाम्खा गाउँपालिका,Humla,English name within the district (geometry agreed)
+5612,NP0666404,Sarkegad,Sarkegad,सर्केगाड गाउँपालिका,Humla,English name within the district (geometry agreed)
+5613,NP0666402,Simkot,Simkot,सिमकोट गाउँपालिका,Humla,English name within the district (geometry agreed)
+5614,NP0660402,Kuse,Kuse,कुसे गाउँपालिका,Jajarkot,English name within the district (geometry agreed)
+5615,NP0660301,Chhedagad,Chhedagad,छेडागाड नगरपालिका,Jajarkot,English name within the district (geometry agreed)
+5616,NP0660401,Junichande,Junichande,जुनीचाँदे गाउँपालिका,Jajarkot,English name within the district (geometry agreed)
+5617,NP0660303,Nalgad,Nalagad,नलगाड नगरपालिका,Jajarkot,geometry: interior point inside exactly one municipality
+5618,NP0660403,Barekot,Barekot,बारेकोट गाउँपालिका,Jajarkot,English name within the district (geometry agreed)
+5619,NP0660302,Bheri Malika,Bheri,भेरी नगरपालिका,Jajarkot,geometry: interior point inside exactly one municipality
+5620,NP0660404,Shivalaya,Shiwalaya,शिवालय गाउँपालिका,Jajarkot,geometry: interior point inside exactly one municipality
+5621,NP0661301,Aathbis,Aathabis,आठबीस नगरपालिका,Dailekh,geometry: interior point inside exactly one municipality
+5622,NP0661405,Gurans,Gurans,गुराँस गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5623,NP0661302,Chamunda Bindrasaini,Chamunda Bindrasaini,चामुण्डा विन्द्रासैनी नगरपालिका,Dailekh,English name within the district (geometry agreed)
+5624,NP0661401,Thantikandh,Thantikandh,ठाँटीकाँध गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5625,NP0661406,Dungeshwor,Dungeshwor,डुंगेश्वर गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5626,NP0661303,Dullu,Dullu,दुल्लु नगरपालिका,Dailekh,English name within the district (geometry agreed)
+5627,NP0661304,Narayan,Narayan,नारायण नगरपालिका,Dailekh,English name within the district (geometry agreed)
+5628,NP0661404,Naumule,Naumule,नौमुले गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5629,NP0661407,Bhagawatimai,Bhagawatimai,भगवतीमाई गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5630,NP0661402,Bhairabi,Bhairabi,भैरवी गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5631,NP0661403,Mahabu,Mahabu,महावु गाउँपालिका,Dailekh,English name within the district (geometry agreed)
+5632,NP0659305,Gurbhakot,Gurbhakot,गुर्भाकोट नगरपालिका,Surkhet,English name within the district (geometry agreed)
+5633,NP0659403,Chingad,Chingad,चिङ्गाड गाउँपालिका,Surkhet,English name within the district (geometry agreed)
+5634,NP0659401,Chaukune,Chaukune,चौकुने गाउँपालिका,Surkhet,English name within the district (geometry agreed)
+5635,NP0659301,Panchapuri,Panchpuri,पञ्चपुरी नगरपालिका,Surkhet,geometry: interior point inside exactly one municipality
+5636,NP0659402,Barahatal,Barahtal,बराहताल गाउँपालिका,Surkhet,geometry: interior point inside exactly one municipality
+5637,NP0659303,Birendranagar,Birendranagar,बीरेन्द्रनगर नगरपालिका,Surkhet,English name within the district (geometry agreed)
+5638,NP0659302,Bheriganga,Bheriganga,भेरीगंगा नगरपालिका,Surkhet,English name within the district (geometry agreed)
+5639,NP0659304,Lekabeshi,Lekbeshi,लेकबेशी नगरपालिका,Surkhet,geometry: interior point inside exactly one municipality
+5640,NP0659404,Simta,Simta,सिम्ता गाउँपालिका,Surkhet,English name within the district (geometry agreed)
+5641,NP0557301,Kohalpur,Kohalpur,कोहलपुर नगरपालिका,Banke,English name within the district (geometry agreed)
+5642,NP0557401,Khajura,Khajura,खजुरा गाउँपालिका,Banke,English name within the district (geometry agreed)
+5643,NP0557403,Janaki,Janki,जानकी गाउँपालिका,Banke,geometry: interior point inside exactly one municipality
+5644,NP0557404,Duduwa,Duduwa,डुडुवा गाउँपालिका,Banke,English name within the district (geometry agreed)
+5645,NP0557406,Narainapur,Narainapur,नरैनापुर गाउँपालिका,Banke,English name within the district (geometry agreed)
+5646,NP0557201,Nepalganj,Nepalgunj,नेपालगंज उपमहानगरपालिका,Banke,geometry: interior point inside exactly one municipality
+5647,NP0557402,Baijanath,Baijanath,बैजनाथ गाउँपालिका,Banke,English name within the district (geometry agreed)
+5648,NP0557405,Rapti Sonari,Rapti Sonari,राप्ती सोनारी गाउँपालिका,Banke,English name within the district (geometry agreed)
+5649,NP0558304,Gulariya,Gulariya,गुलरिया नगरपालिका,Bardiya,English name within the district (geometry agreed)
+5650,NP0558401,Geruwa,Geruwa,गेरुवा गाउँपालिका,Bardiya,English name within the district (geometry agreed)
+5651,NP0558303,Thakurbaba,Thakurbaba,ठाकुरबाबा नगरपालिका,Bardiya,English name within the district (geometry agreed)
+5652,NP0558402,Badhaiyatal,Badhaiyatal,बढैयाताल गाउँपालिका,Bardiya,English name within the district (geometry agreed)
+5653,NP0558305,Barbardiya,Barbardiya,बारबर्दिया नगरपालिका,Bardiya,English name within the district (geometry agreed)
+5654,NP0558306,Bansgadhi,Bansagadhi,बासगढी नगरपालिका,Bardiya,geometry: interior point inside exactly one municipality
+5655,NP0558302,Madhuwan,Madhuwan,मधुवन नगरपालिका,Bardiya,English name within the district (geometry agreed)
+5656,NP0558301,Rajapur,Rajapur,राजापुर नगरपालिका,Bardiya,English name within the district (geometry agreed)
+5657,NP0768402,Gaumul,Gaumul,गौमुल गाउँपालिका,Bajura,English name within the district (geometry agreed)
+5658,NP0768403,Khaptad Chhededaha,Khaptad Chhededaha,खप्तड छेडेदह गाउँपालिका,Bajura,English name within the district (geometry agreed)
+5659,NP0768304,Tribeni,Tribeni,त्रिवेणी नगरपालिका,Bajura,English name within the district (geometry agreed)
+5660,NP0768404,Jagannath,Jagannath,जगन्नाथ गाउँपालिका,Bajura,English name within the district (geometry agreed)
+5661,NP0768302,Badimalika,Badimalika,बडीमालिका नगरपालिका,Bajura,English name within the district (geometry agreed)
+5662,NP0768303,Budhiganga,Budhiganga,बुढीगंगा नगरपालिका,Bajura,English name within the district (geometry agreed)
+5663,NP0768301,Budhinanda,Budhinanda,बुढीनन्दा नगरपालिका,Bajura,English name within the district (geometry agreed)
+5664,NP0768405,Swamikartik Khapar,Swami Kartik Khaapar,स्वामीकार्तिक खापर गाउँपालिका,Bajura,geometry: interior point inside exactly one municipality
+5665,NP0768401,Himali,Himali,हिमाली गाउँपालिका,Bajura,English name within the district (geometry agreed)
+5666,NP0769303,Kamal bazar,Kamalbazar,कमलबजार नगरपालिका,Achham,English name within the district (geometry agreed)
+5667,NP0769401,Chaurpati,Chaurpati,चौरपाटी गाउँपालिका,Achham,English name within the district (geometry agreed)
+5668,NP0769405,Dhakari,Dhakari,ढकारी गाउँपालिका,Achham,English name within the district (geometry agreed)
+5669,NP0769406,Turmakhand,Turmakhad,तुर्माखाँद गाउँपालिका,Achham,ECN 'Turmakhad' = our 'Turmakhand' — romanisation; its centroid fell across the district border
+5670,NP0769304,Panchdebal Binayak,Panchadewal Binayak,पञ्चदेवल विनायक नगरपालिका,Achham,geometry: interior point inside exactly one municipality
+5671,NP0769403,Bannigadhi Jayagadh,Bannigadhi Jayagadh,बान्नीगढी जयगढ गाउँपालिका,Achham,English name within the district (geometry agreed)
+5672,NP0769302,Mangalsen,Mangalsen,मंगलसेन नगरपालिका,Achham,English name within the district (geometry agreed)
+5673,NP0769402,Mellekh,Mellekh,मेल्लेख गाउँपालिका,Achham,English name within the district (geometry agreed)
+5674,NP0769404,Ramaroshan,Ramaroshan,रामारोशन गाउँपालिका,Achham,English name within the district (geometry agreed)
+5675,NP0769301,Sanphebagar,Sanphebagar,साफेबगर नगरपालिका,Achham,English name within the district (geometry agreed)
+5676,NP0767401,Saipal,SaiPaal,साइपाल गाउँपालिका,Bajhang,geometry: interior point inside exactly one municipality
+5677,NP0767405,Kedarsyun,Kedarseu,केदारस्युँ गाउँपालिका,Bajhang,geometry: interior point inside exactly one municipality
+5678,NP0767410,Khaptad Chhanna,Khaptadchhanna,खप्तडछान्ना गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5679,NP0767407,Chhabis Pathibhara,Chabispathivera,छबिसपाथिभेरा गाउँपालिका,Bajhang,geometry: interior point inside exactly one municipality
+5680,NP0767302,Jayaprithbi,JayaPrithivi,जयपृथ्वी नगरपालिका,Bajhang,geometry: interior point inside exactly one municipality
+5681,NP0767403,Talkot,Talkot,तलकोट गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5682,NP0767409,Thalara,Thalara,थलारा गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5683,NP0767406,Durgathali,Durgathali,दुर्गाथली गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5684,NP0767301,Bungal,Bungal,बुंगल नगरपालिका,Bajhang,English name within the district (geometry agreed)
+5685,NP0767408,Masta,Masta,मष्टा गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5686,NP0767404,Bitthadchir,Bithadchir,वित्थडचिर गाउँपालिका,Bajhang,geometry: interior point inside exactly one municipality
+5687,NP0767402,Surma,Surma,सूर्मा गाउँपालिका,Bajhang,English name within the district (geometry agreed)
+5688,NP0770401,Aadarsha,Adharsha,आदर्श गाउँपालिका,Doti,geometry: interior point inside exactly one municipality
+5689,NP0770405,K.I. Singh,K I Singh,के.आई.सिं. गाउँपालिका,Doti,English name within the district (geometry agreed)
+5690,NP0770404,Jorayal,Jorayal,जोरायल गाउँपालिका,Doti,English name within the district (geometry agreed)
+5691,NP0770302,Dipayal Silgadhi,Dipayal Silgadi,दिपायल सिलगढी नगरपालिका,Doti,geometry: interior point inside exactly one municipality
+5692,NP0770403,Purbichouki,Purbichauki,पूर्वीचौकी गाउँपालिका,Doti,geometry: interior point inside exactly one municipality
+5693,NP0770406,Badi Kedar,Badikedar,बडीकेदार गाउँपालिका,Doti,English name within the district (geometry agreed)
+5694,NP0770407,Bogatan Phudsil,Bogtan Foodsil,बोगटान फुड्सिल गाउँपालिका,Doti,geometry: interior point inside exactly one municipality
+5695,NP0770301,Shikhar,Shikhar,शिखर नगरपालिका,Doti,English name within the district (geometry agreed)
+5696,NP0770402,Sayal,Sayal,सायल गाउँपालिका,Doti,English name within the district (geometry agreed)
+5697,NP0771402,Kailari,Kailari,कैलारी गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5698,NP0771301,Godawari,Godawari,गोदावरी नगरपालिका,Kailali,English name within the district (geometry agreed)
+5699,NP0771302,Gauriganga,Gauriganga,गौरीगंगा नगरपालिका,Kailali,English name within the district (geometry agreed)
+5700,NP0771303,Ghodaghodi,Ghodaghodi,घोडाघोडी नगरपालिका,Kailali,English name within the district (geometry agreed)
+5701,NP0771401,Chure,Chure,चुरे गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5702,NP0771406,Janaki,Janaki,जानकी गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5703,NP0771404,Joshipur,Joshipur,जोशीपुर गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5704,NP0771305,Tikapur,Tikapur,टिकापुर नगरपालिका,Kailali,English name within the district (geometry agreed)
+5705,NP0771201,Dhangadhi,Dhangadhi,धनगढी उपमहानगरपालिका,Kailali,English name within the district (geometry agreed)
+5706,NP0771405,Bardagoriya,Bardagoriya,बर्दगोरीया गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5707,NP0771304,Bhajani,Bhajani,भजनी नगरपालिका,Kailali,English name within the district (geometry agreed)
+5708,NP0771403,Mohanyal,Mohanyal,मोहन्याल गाउँपालिका,Kailali,English name within the district (geometry agreed)
+5709,NP0771306,Lamki Chuha,Lamkichuha,लम्की चुहा नगरपालिका,Kailali,English name within the district (geometry agreed)
+5710,NP0775403,Apihimal,Apihimal,अपिहिमाल गाउँपालिका,Darchula,English name within the district (geometry agreed)
+5711,NP0775402,Duhun,Dunhu,दुहुँ गाउँपालिका,Darchula,geometry: interior point inside exactly one municipality
+5712,NP0775405,Naugad,Naugad,नौगाड गाउँपालिका,Darchula,English name within the district (geometry agreed)
+5713,NP0775401,Byas,Byas,ब्यास गाउँपालिका,Darchula,English name within the district (geometry agreed)
+5714,NP0775301,Mahakali,Mahakali,महाकाली नगरपालिका,Darchula,English name within the district (geometry agreed)
+5715,NP0775407,Marma,Marma,मार्मा गाउँपालिका,Darchula,English name within the district (geometry agreed)
+5716,NP0775404,Malikarjun,Malikaarjun,मालिकार्जुन गाउँपालिका,Darchula,geometry: interior point inside exactly one municipality
+5717,NP0775406,Lekam,Lekam,लेकम गाउँपालिका,Darchula,English name within the district (geometry agreed)
+5718,NP0775302,Shailyashikhar,Shailyashikhar,शैल्यशिखर नगरपालिका,Darchula,English name within the district (geometry agreed)
+5719,NP0774401,Dilasaini,Dilasaini,डीलासैनी गाउँपालिका,Baitadi,English name within the district (geometry agreed)
+5720,NP0774301,Dasharathchand,Dasharathchanda,दशरथचन्द नगरपालिका,Baitadi,geometry: interior point inside exactly one municipality
+5721,NP0774402,Dogada Kedar,Dogadakedar,दोगडाकेदार गाउँपालिका,Baitadi,English name within the district (geometry agreed)
+5722,NP0774404,Pancheshwor,Pancheshwar,पन्चेश्वर गाउँपालिका,Baitadi,geometry: interior point inside exactly one municipality
+5723,NP0774304,Patan,Patan,पाटन नगरपालिका,Baitadi,English name within the district (geometry agreed)
+5724,NP0774302,Puchaundi,Purchaudi,पुर्चौडी नगरपालिका,Baitadi,geometry: interior point inside exactly one municipality
+5725,NP0774303,Melauli,Melauli,मेलौली नगरपालिका,Baitadi,English name within the district (geometry agreed)
+5726,NP0774405,Shivanath,Shivanath,शिवनाथ गाउँपालिका,Baitadi,English name within the district (geometry agreed)
+5727,NP0774406,Sigas,Sigas,सिगास गाउँपालिका,Baitadi,English name within the district (geometry agreed)
+5728,NP0774403,Surnaya,Surnaya,सुर्नया गाउँपालिका,Baitadi,English name within the district (geometry agreed)
+5729,NP0773402,Ajayameru,Ajaymeru,अजयमेरु गाउँपालिका,Dadeldhura,geometry: interior point inside exactly one municipality
+5730,NP0773302,Amargadhi,Amargadhi,अमरगढी नगरपालिका,Dadeldhura,English name within the district (geometry agreed)
+5731,NP0773404,Aalital,Alital,आलिताल गाउँपालिका,Dadeldhura,geometry: interior point inside exactly one municipality
+5732,NP0773405,Ganyapdhura,Ganayapdhura,गन्यापधुरा गाउँपालिका,Dadeldhura,geometry: interior point inside exactly one municipality
+5733,NP0773403,Nawadurga,Nawadurga,नवदुर्गा गाउँपालिका,Dadeldhura,English name within the district (geometry agreed)
+5734,NP0773301,Parashuram,Parashuram,परशुराम नगरपालिका,Dadeldhura,English name within the district (geometry agreed)
+5735,NP0773401,Bhageshwor,Bhageshwar,भागेश्वर गाउँपालिका,Dadeldhura,geometry: interior point inside exactly one municipality
+5736,NP0772305,Krishnapur,Krishnapur,कृष्णपुर नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5737,NP0772307,Punarbas,Punarbas,पुनर्वास नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5738,NP0772401,Beldandi,Beldandi,बेलडाडी गाउँपालिका,Kanchanpur,English name within the district (geometry agreed)
+5739,NP0772306,Belouri,Belauri,बेलौरी नगरपालिका,Kanchanpur,geometry: interior point inside exactly one municipality
+5740,NP0772302,Bhimdatta,Bhimdatta,भीमदत्त नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5741,NP0772301,Dodhara Chandani,Dodhara Chandani,दोधारा चाँदनी नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5742,NP0772402,Laljhadi,Laljhadi,लालझाँडी गाउँपालिका,Kanchanpur,English name within the district (geometry agreed)
+5743,NP0772303,Bedkot,Bedkot,वेदकोट नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5744,NP0772304,Shuklaphanta,Shuklaphanta,सुक्लाफाँटा नगरपालिका,Kanchanpur,English name within the district (geometry agreed)
+5801,NP0215402,Agnisair Krishna Sabaran,Agnisair Krishna Savaran,अग्नीसाइर कृष्णासवरन गाउँपालिका,Saptari,geometry: interior point inside exactly one municipality
+5802,NP0215305,Kanchanrup,Kanchanrup,कञ्चनरुप नगरपालिका,Saptari,English name within the district (geometry agreed)
+5803,NP0215302,Khadak,Khadak,खडक नगरपालिका,Saptari,English name within the district (geometry agreed)
+5804,NP0215408,Chhinnamasta,Chhinnamasta,छिन्नमस्ता गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5805,NP0215307,Dakneshwori,Dakneshwori,डाक्नेश्वरी नगरपालिका,Saptari,English name within the district (geometry agreed)
+5806,NP0215403,Tirahut,Tirahut,तिरहुत गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5807,NP0215409,Tilathi Koiladi,Tilathi Koiladi,तिलाठी कोईलाडी गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5808,NP0215406,Rajgadh,Rajgadh,राजगढ गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5809,NP0215306,Bode Barsain,Bode Barsain,बोदे बरसाइन नगरपालिका,Saptari,English name within the district (geometry agreed)
+5810,NP0215405,Mahadewa,Mahadeva,महादेवा गाउँपालिका,Saptari,geometry: interior point inside exactly one municipality
+5811,NP0215308,Rajbiraj,Rajbiraj,राजविराज नगरपालिका,Saptari,English name within the district (geometry agreed)
+5812,NP0215401,Rupani,Rupani,रुपनी गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5813,NP0215404,Balan-Bihul,Balan Bihul,वलान-विहुल गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5814,NP0215407,Bishnupur,Bishnupur,विष्णुपुर गाउँपालिका,Saptari,English name within the district (geometry agreed)
+5815,NP0215303,Shambhunath,Shambhunath,शम्भुनाथ  नगरपालिका,Saptari,English name within the district (geometry agreed)
+5816,NP0215304,Saptakoshi,Saptakoshi,सप्तकोशी नगरपालिका,Saptari,English name within the district (geometry agreed)
+5817,NP0215301,Surunga,Surunga,सुरुङ्गा नगरपालिका,Saptari,English name within the district (geometry agreed)
+5818,NP0215309,Hanumannagar Kankalini,Hanumannagar Kankalini,हनुमाननगर कङ्कालिनी नगरपालिका,Saptari,English name within the district (geometry agreed)
+5819,NP0216301,Karjanha,Karjanha,कर्जन्हा नगरपालिका,Siraha,English name within the district (geometry agreed)
+5820,NP0217403,Aurahi,Aaurahi,औरही  गाउँपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5821,NP0217311,Kamala,Kamala,कमला नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5822,NP0217303,Chhireshwornath,Chhireshwornath,क्षिरेश्वरनाथ नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5823,NP0217302,Ganeshman Charnath,Ganeshman Charnath,गणेशमान चारनाथ नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5824,NP0217406,Janak Nandini,Janaknandani,जनकनन्दिनी गाउँपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5825,NP0217201,Janakpurdham,Janakpurdham,जनकपुरधाम उपमहानगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5826,NP0217304,Dhanushadham,Dhanusadham,धनुषाधाम नगरपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5827,NP0217404,Dhanauji,Dhanauji,धनौजी गाउँपालिका,Dhanusha,English name within the district (geometry agreed)
+5828,NP0217309,Nagarain,Nagarain,नगराइन नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5829,NP0217401,Bateshwor,Bateshwor,बटेश्वर गाउँपालिका,Dhanusha,English name within the district (geometry agreed)
+5830,NP0217301,Mithila,Mithila,मिथिला नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5831,NP0217305,Mithila Bihari,Mithila Bihari,मिथिला बिहारी नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5832,NP0217405,Mukhiyapatti Musaharmiya,Mukhiyapatti Musarmiya,मुखियापट्टी मुसहरमिया गाउँपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5833,NP0217402,Laxminiya,Lakshminiya,लक्ष्मीनिया गाउँपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5834,NP0217310,Bideha,Bideha,विदेह नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5835,NP0217308,Shahidnagar,Sahidnagar,शहीदनगर नगरपालिका,Dhanusha,geometry: interior point inside exactly one municipality
+5836,NP0217306,Sabaila,Sabaila,सबैला नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5837,NP0217307,Hansapur,Hansapur,हंसपुर नगरपालिका,Dhanusha,English name within the district (geometry agreed)
+5838,NP0218403,Ekadara,Ekdanra,एकडारा गाउँपालिका,Mahottari,geometry: interior point inside exactly one municipality
+5839,NP0218303,Aurahi,Aurahi,औरही नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5840,NP0218301,Bardibas,Bardibas,बर्दिबास नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5841,NP0218307,Balawa,Balwa,बलवा नगरपालिका,Mahottari,geometry: interior point inside exactly one municipality
+5842,NP0218304,Bhangaha,Bhangaha,भँगाहा नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5843,NP0218310,Matihani,Matihani,मटिहानी नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5844,NP0218306,Manara Shisawa,Manra Siswa,मनरा शिसवा नगरपालिका,Mahottari,geometry: interior point inside exactly one municipality
+5845,NP0218305,Ram Gopalpur,Ramgopalpur,रामगोपालपुर नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5846,NP0218308,Loharpatti,Loharpatti,लोहरपट्टी नगरपालिका,Mahottari,English name within the district (geometry agreed)
+5847,NP0219307,Kabilashi,Kabilasi,कविलासी नगरपालिका,Sarlahi,geometry: interior point inside exactly one municipality
+5848,NP0219406,Kaudena,Kaudena,कौडेना गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5849,NP0219308,Godaita,Godaita,गोडैटा  नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5850,NP0219404,Chakraghatta,Chakraghatta,चक्रघट्टा  गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5851,NP0219403,Dhanakaul,Dhankaul,धनकौल गाउँपालिका,Sarlahi,geometry: interior point inside exactly one municipality
+5852,NP0219409,Parsa,Parsa,पर्सा गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5853,NP0219311,Balara,Balara,बलरा नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5854,NP0219401,Basbariya,Basbariya,बसबरिया गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5855,NP0219407,Brahmapuri,Bramhapuri,ब्रह्मपुरी  गाउँपालिका,Sarlahi,geometry: interior point inside exactly one municipality
+5856,NP0219405,Ramnagar,Ramnagar,रामनगर गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5857,NP0219408,Bishnu,Bishnu,विष्णु गाउँपालिका,Sarlahi,English name within the district (geometry agreed)
+5858,NP0219305,Haripur,Haripur,हरिपुर नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5859,NP0219310,Haripurwa,Haripurwa,हरिपुर्वा नगरपालिका,Sarlahi,English name within the district (geometry agreed)
+5860,NP0232313,Ishanath,Ishanath,ईशनाथ नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5861,NP0232304,Katahariya,Katahariya,कटहरिया नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5862,NP0232309,Gadhimai,Gadhimai,गढीमाई नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5863,NP0232301,Gujara,Gujara,गुजरा नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5864,NP0232315,Gaur,Gaur,गौर नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5865,NP0232402,Durga Bhagawati,Durga Bhagwati,दुर्गा भगवती गाउँपालिका,Rautahat,geometry: interior point inside exactly one municipality
+5866,NP0232307,Dewahi Gonahi,Dewahhi Gonahi,देवाही गोनाही   नगरपालिका,Rautahat,geometry: interior point inside exactly one municipality
+5867,NP0232312,Paroha,Paroha,परोहा नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5868,NP0232303,Phatuwa Bijayapur,Phatuwa Bijayapur,फतुवा बिजयपुर नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5869,NP0232310,Boudhimai,Baudhimai,बौधीमाई नगरपालिका,Rautahat,geometry: interior point inside exactly one municipality
+5870,NP0232311,Madhav Narayan,Madhav Narayan,माधव नारायण नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5871,NP0232306,Maulapur,Maulapur,मौलापुर नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5872,NP0232401,Yamunamai,Yemunamai,यमुनामाई  गाउँपालिका,Rautahat,ECN 'Yemunamai' = our 'Yamunamai' — romanisation; its centroid fell into the neighbouring unit
+5873,NP0232316,Rajdevi,Rajdevi,राजदेवी नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5874,NP0232314,Rajpur,Rajpur,राजपुर नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5875,NP0232305,Brindaban,Brindaban,वृन्दावन नगरपालिका,Rautahat,English name within the district (geometry agreed)
+5876,NP0233304,Pacharauta,Pacharauta,पचरौता नगरपालिका,Bara,English name within the district (geometry agreed)
+5877,NP0233401,Parawanipur,Parwanipur,परवानीपुर गाउँपालिका,Bara,geometry: interior point inside exactly one municipality
+5878,NP0233402,Prasauni,Prasauni,प्रसौनी गाउँपालिक,Bara,English name within the district (geometry agreed)
+5879,NP0233405,Pheta,Pheta,फेटा गाउँपालिका,Bara,English name within the district (geometry agreed)
+5880,NP0233404,Bishrampur,Bishrampur,विश्रामपुर गाउँपालिका,Bara,English name within the district (geometry agreed)
+5881,NP0234408,Kalikamai,Kalikamai,कालिकामाई गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5882,NP0234402,Jirabhawani,Jirabhawani,जिराभवानी गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5883,NP0234401,Thori,Thori,ठोरी गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5884,NP0234403,Paterwa Sugauli,Paterwasugauli,पटेर्वा सुगौली गाउँपालिका,Parsa,English name within the district (geometry agreed)
+5885,NP0234303,Parsagadhi,Parsagadhi,पर्सागढी नगरपालिका,Parsa,English name within the district (geometry agreed)
+5886,NP0234301,Pokhariya,Pokhariya,पोखरिया नगरपालिका,Parsa,English name within the district (geometry agreed)
+5887,NP0234302,Bahudarmai,Bahudaramai,बहुदरमाई नगरपालिका,Parsa,geometry: interior point inside exactly one municipality
+5888,NP0234101,Birgunj,Birgunj,बिरगंज महानगरपालिका,Parsa,English name within the district (geometry agreed)

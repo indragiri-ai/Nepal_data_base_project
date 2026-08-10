@@ -421,6 +421,70 @@ member seat. That is a real published outcome about Nepali local democracy, so
 the loader reports it and the page states it. Seats won *below* seats available
 is therefore not an error; seats won *above* is impossible and blocks the load.
 
+## Municipality-level results — all 753 local governments
+
+`ELECTION_LOCAL_VOTES_HEAD` holds the vote for the **head** of each local
+government — the mayor (प्रमुख) of a municipality or the chair (अध्यक्ष) of a
+rural municipality — for every one of Nepal's 753, from one file each:
+
+    JSONFiles/Election2079/Local/<GN_CODE>.json
+
+**4,710 observations; 753 of 753 local governments returned a head race;
+11,236,861 votes.** Only the result is stored — party, votes, and whether
+elected. The same files carry every candidate's name, age, gender and symbol,
+and the deputy, ward-chair and member races; none of that is loaded.
+
+### The municipality code map — built two independent ways
+
+This was the hard part, and the reason it is worth writing down. Our 753
+municipalities carry **English names only**; the election files carry **Nepali
+only**. Transliterating between them would be guessing. What made it possible is
+that the Commission's own local-body map
+(`JSONFiles/JSONMap/geojson/LL/DCODE_<district>.json`) publishes `GN_CODE`
+together with **both** names and the English district.
+
+`db/seeds/ecn_local_body_codes.csv` was then built by two methods, and every row
+records which one settled it:
+
+| How | Rows |
+|---|---:|
+| Exact English name within the district, **and geometry agreed** | 592 |
+| Geometry only — the two registers romanise the name differently | 157 |
+| Name won, geometry had put it in the neighbour | 2 |
+| Hand-resolved romanisation (Yemunamai→Yamunamai, Turmakhad→Turmakhand) | 2 |
+
+Name matching alone reached only **597 of 753 (79%)**: the Commission writes
+*Phaktanglung*, *Sirijangha*, *Tribeni* where our register writes *Phaktanlung*,
+*Sirijanga*, *Triveni*. Geometry — an interior point of each ECN unit tested
+against our polygons — does not care how a name is spelled, and matched 760 with
+**zero ambiguity**. The two methods **agreed on 592 of the 594** units where both
+answered; the two exceptions were centroids drifting across a shared border, and
+the exact English name wins those.
+
+The geometry pass also correctly rejected **17 polygons that are not local
+governments** — national parks and wildlife reserves, which the Commission ships
+under the placeholder code `5999`. Dropping that sentinel leaves exactly 753
+local bodies and 753 distinct codes.
+
+### The municipality data cross-checks the office summary — and is richer
+
+Two different ECN products, compared: the eight-office summary's mayor + chair
+rows against the 753 individual files. They reconcile exactly.
+
+    summary   NC 329 · UML 206 · Maoist 121 · JSP 21 · Unified Socialist 12 · अन्य 64  = 753
+    per-body  750 declared winners + 3 with no declared winner                          = 753
+
+Every apparent difference is the **अन्य lump being itemised**: JSP shows 21 in the
+summary (chairs only — its mayors sat inside अन्य) against 30 per municipality;
+Unified Socialist 12 (mayors only) against 18. UML's 206 against 205 is the one
+seat inside a local government with no declared winner. In total the
+per-municipality data names **46 heads of local government** won by parties and
+independents the summary cannot separate at all.
+
+**Three local governments have no declared winner** in the Commission's data —
+**Shey Phoksundo, Kaike and Chharka Tangsong, all in Dolpa**. Reported on the
+page rather than quietly leaving 750 to look like the whole.
+
 ### Two limits of the local data — both stated on the page
 
 **1. Only four parties per office, plus "अन्य".** The files live up to the name

@@ -25,7 +25,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import EChart, { CHART_INK, TOOLTIP_STYLE, type ChartOption } from "@/components/EChart";
-import { ApiError, fetchSeries, type DataResponse } from "@/lib/api";
+import ChoroplethMap, { type RegionDatum } from "@/components/ChoroplethMap";
+import {
+  ApiError,
+  fetchGeoBreakdown,
+  fetchSeries,
+  type DataResponse,
+  type GeoBreakdownResponse,
+} from "@/lib/api";
 import { downloadCsv } from "@/lib/csv";
 
 const LOCAL_HUE = "#008300"; // --series-1 green: the local-government measure
@@ -59,6 +66,10 @@ export default function LocalElectionPanel() {
   const [office, setOffice] = useState<string>(OFFICES[0].ne);
   const [error, setError] = useState<string | null>(null);
   const [showTable, setShowTable] = useState(false);
+  // The municipality map: head-of-government votes for all 753 local governments.
+  const [muni, setMuni] = useState<GeoBreakdownResponse | null>(null);
+  const [muniParty, setMuniParty] = useState<string | null>(null);
+  const [muniMissing, setMuniMissing] = useState(false);
 
   useEffect(() => {
     let live = true;
@@ -72,6 +83,22 @@ export default function LocalElectionPanel() {
             e instanceof ApiError ? e.message : "Could not load the local election results.",
           );
         }
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  // The municipality-level race, in one request. Absence is not an error: the
+  // rest of the panel is useful without it, so the map simply does not appear.
+  useEffect(() => {
+    let live = true;
+    fetchGeoBreakdown("ELECTION_LOCAL_VOTES_HEAD", "local_unit", "party", "2022")
+      .then((g) => {
+        if (live) setMuni(g);
+      })
+      .catch(() => {
+        if (live) setMuniMissing(true);
       });
     return () => {
       live = false;
@@ -133,6 +160,46 @@ export default function LocalElectionPanel() {
   }, [byOffice]);
 
   const totalWon = overall.reduce((sum, r) => sum + r.seats, 0);
+
+  /** Parties in the municipality head races, biggest total first. Separate from
+   *  the eight-office summary above: this comes from the per-municipality files,
+   *  which name every party that stood rather than a top four plus "Other". */
+  const muniParties = useMemo(() => {
+    if (!muni) return [];
+    const totals = new Map<string, number>();
+    for (const c of muni.cells) totals.set(c.key, (totals.get(c.key) ?? 0) + c.value);
+    return [...totals.entries()]
+      .map(([party, seats]) => ({ party, seats }))
+      .sort((a, b) => b.seats - a.seats);
+  }, [muni]);
+
+  const selectedMuniParty =
+    muniParty && muniParties.some((p) => p.party === muniParty)
+      ? muniParty
+      : (muniParties[0]?.party ?? null);
+
+  /** The selected party's share of each municipality's head-of-government vote. */
+  const muniMap = useMemo<RegionDatum[]>(() => {
+    if (!muni || !selectedMuniParty) return [];
+    const totals = new Map(muni.geographies.map((g) => [g.geo_code, g.value]));
+    const places = new Map(muni.geographies.map((g) => [g.geo_code, g]));
+    const out: RegionDatum[] = [];
+    for (const cell of muni.cells) {
+      if (cell.key !== selectedMuniParty) continue;
+      const total = totals.get(cell.geo) ?? 0;
+      const place = places.get(cell.geo);
+      if (!place || total <= 0) continue;
+      out.push({
+        code: cell.geo,
+        name: place.name,
+        nameNe: place.name_ne,
+        value: (cell.value / total) * 100,
+      });
+    }
+    return out;
+  }, [muni, selectedMuniParty]);
+
+  const muniRanked = useMemo(() => [...muniMap].sort((a, b) => b.value - a.value), [muniMap]);
 
   const option = useMemo<ChartOption | null>(() => {
     if (rows.length === 0) return null;
@@ -285,6 +352,70 @@ export default function LocalElectionPanel() {
                   them. Use the office picker above to see them where they are listed.
                 </>
               )}
+            </p>
+          )}
+
+          {/* The municipality map. One local government at a time is what people
+              actually want to know — "who runs mine?" — and 753 of them only
+              become legible as a map. */}
+          {muni && muniParties.length > 0 && selectedMuniParty && (
+            <figure className="panel">
+              <figcaption>
+                <h3>Where each party won the local government, 2022</h3>
+                <p>
+                  All <strong>753 local governments</strong>, each shaded by the selected
+                  party&rsquo;s share of the vote for its <strong>head</strong> — the mayor
+                  of a municipality, or the chair of a rural municipality. A share, not a
+                  vote count: a count would simply shade the biggest towns darkest for
+                  every party. Blank means the party did not stand there.
+                </p>
+              </figcaption>
+
+              <div className="controls">
+                <label className="field">
+                  <span>Party</span>
+                  <select
+                    value={selectedMuniParty}
+                    onChange={(e) => setMuniParty(e.target.value)}
+                    aria-label="Party to map across municipalities"
+                  >
+                    {muniParties.map((p) => (
+                      <option key={p.party} value={p.party}>
+                        {p.party}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <ChoroplethMap
+                level="local_unit"
+                data={muniMap}
+                unitCode="PCT"
+                onError={(message) => setError(message)}
+              />
+
+              {muniRanked.length > 0 && (
+                <p className="fiscal-provenance">
+                  Strongest in {muniRanked[0].name} ({pct.format(muniRanked[0].value)}% of
+                  the vote for its head of local government); it stood in{" "}
+                  {nf.format(muniRanked.length)} of the 753 local governments.{" "}
+                  <strong>This map names every party that stood</strong> — unlike the
+                  eight-office summary above, which the Commission publishes as a top four
+                  plus &ldquo;Other&rdquo;. It shows 46 heads of local government won by
+                  parties and independents that summary cannot separate out.{" "}
+                  <strong>Three local governments have no declared winner</strong> in the
+                  Commission&rsquo;s data — Shey Phoksundo, Kaike and Chharka Tangsong,
+                  all in Dolpa — so 750 of the 753 heads are named.
+                </p>
+              )}
+            </figure>
+          )}
+
+          {muniMissing && (
+            <p className="fiscal-provenance">
+              The municipality-by-municipality map is not loaded yet. The eight offices
+              above are complete and unaffected.
             </p>
           )}
 

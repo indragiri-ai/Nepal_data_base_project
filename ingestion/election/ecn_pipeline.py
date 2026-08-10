@@ -57,6 +57,7 @@ import csv
 import json
 import os
 import sys
+import time
 from collections import defaultdict
 from dataclasses import dataclass
 from decimal import Decimal
@@ -118,8 +119,19 @@ LOCAL_POSTS: tuple[tuple[str, str, int], ...] = (
     ("Member", "Member", 13486),
 )
 
+HEAD_INDICATOR = "ELECTION_LOCAL_VOTES_HEAD"
+
+# The two offices that head a local government: a municipality has a प्रमुख
+# (mayor), a rural municipality an अध्यक्ष (chair). Post ids are the
+# Commission's own, from its VdcPost.json.
+HEAD_POST_IDS = (1, 3)  # 1 = अध्यक्ष (chair), 3 = प्रमुख (mayor)
+
+# Seconds to pause every hundred municipality files. See harvest_head_races.
+BREATHER_S = 15.0
+
 SEED_CSV = Path("db/seeds/indicators_election.csv")
 DISTRICT_CSV = Path("db/seeds/ecn_district_codes.csv")
+LOCAL_BODY_CSV = Path("db/seeds/ecn_local_body_codes.csv")
 PARTY_CSV = Path("reference/ecn/party_names.csv")
 
 # Provenance label for an English party name the Commission itself published
@@ -309,6 +321,86 @@ def harvest_local(client: EcnClient, raw: list[tuple[str, bytes, str]]) -> Local
         by_post[post_ne] = per_party
         posts[post_ne] = (english, seats)
     return LocalFacts(by_post=by_post, posts=posts)
+
+
+def read_local_body_map() -> dict[int, str]:
+    """ECN local-body code -> our local_unit P-code, from the curated seed.
+
+    Built once by matching the Commission's OWN English municipality name inside
+    the district it belongs to — an English-to-English match, never a
+    transliteration. The Commission's local-body map (`JSONMap/geojson/LL/`)
+    publishes `GN_CODE` alongside both the English and Nepali names, which is
+    what makes this possible at all: our 753 municipalities carry English names
+    only, and the election files carry Nepali only.
+    """
+    if not LOCAL_BODY_CSV.exists():
+        raise EcnLoadError(
+            f"{LOCAL_BODY_CSV} is missing — it is curated reference data. "
+            f"Rebuild it before loading municipality results."
+        )
+    with LOCAL_BODY_CSV.open(encoding="utf-8", newline="") as fh:
+        rows = list(csv.DictReader(fh))
+    mapping = {int(r["ecn_local_cd"]): r["geo_code"] for r in rows}
+    if len(mapping) != 753:
+        raise EcnLoadError(f"{LOCAL_BODY_CSV}: expected 753 local bodies, found {len(mapping)}")
+    if len(set(mapping.values())) != 753:
+        raise EcnLoadError(f"{LOCAL_BODY_CSV}: two ECN codes point at the same municipality")
+    return mapping
+
+
+@dataclass
+class HeadRaceFacts:
+    """The head-of-government race in every local body: {ecn_code: {party: votes}}
+    plus which party won each one."""
+
+    votes: dict[int, dict[str, int]]
+    winner: dict[int, str]
+    missing: list[int]
+
+
+def harvest_head_races(
+    client: EcnClient, codes: list[int], raw: list[tuple[str, bytes, str]]
+) -> HeadRaceFacts:
+    """Read the mayor/chair race for every local body — one file each.
+
+    753 requests at the portal's required pace, so this is the slow part of the
+    load and is skipped unless asked for. Only the head race is kept: the same
+    files also carry deputy, ward-chair and member races, and every candidate's
+    name, age and gender, none of which we store.
+    """
+    votes: dict[int, dict[str, int]] = {}
+    winner: dict[int, str] = {}
+    missing: list[int] = []
+    for index, code in enumerate(codes, start=1):
+        path = f"JSONFiles/Election2079/Local/{code}.json"
+        got = client.fetch(path)
+        if not got.is_json:
+            # A 404 here is a fact about that local body, not a failure of the
+            # run — recorded and reported rather than silently skipped.
+            missing.append(code)
+            continue
+        raw.append((path, got.content, got.url))
+        per_party: dict[str, int] = defaultdict(int)
+        for row in decode_json(got.content):
+            if int(row.get("PostId") or 0) not in HEAD_POST_IDS:
+                continue
+            party = (row.get("PoliticalPartyName") or "").strip()
+            if not party:
+                continue
+            per_party[party] += int(row.get("TotalVoteReceived") or 0)
+            if (row.get("RemarksEng") or "").strip() == "Elected":
+                winner[code] = party
+        if per_party:
+            votes[code] = dict(per_party)
+        if index % 50 == 0:
+            print(f"    {index}/{len(codes)} local bodies read", flush=True)
+        # A breather every hundred. The portal hung up on us at request ~650 of
+        # this very enumeration; the client retries now, but the better
+        # behaviour is to give a government server an occasional rest rather
+        # than lean on it for 25 unbroken minutes.
+        if index % 100 == 0 and index < len(codes):
+            time.sleep(BREATHER_S)
+    return HeadRaceFacts(votes=votes, winner=winner, missing=missing)
 
 
 def check_local(facts: LocalFacts) -> list[str]:
@@ -592,7 +684,13 @@ def build_rows(
     return out
 
 
-def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool, with_local: bool = True) -> int:
+def load(
+    cycles: tuple[str, ...],
+    dry_run: bool,
+    write_raw: bool,
+    with_local: bool = True,
+    with_municipal: bool = False,
+) -> int:
     load_dotenv()
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
@@ -627,10 +725,33 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool, with_local: bo
         for note in unfilled:
             print(f"  NOT FILLED — {note}")
 
+    head: HeadRaceFacts | None = None
+    local_body_map: dict[int, str] = {}
+    if with_municipal:
+        local_body_map = read_local_body_map()
+        print(
+            f"\nReading the head-of-government race in {len(local_body_map)} "
+            f"local governments (one request each — this is the slow part) ..."
+        )
+        head = harvest_head_races(client, sorted(local_body_map), raw)
+        print(
+            f"  {len(head.votes)} local governments returned a head race; "
+            f"{len(head.winner)} name a winner"
+        )
+        if head.missing:
+            print(f"  NO FILE for {len(head.missing)} local bodies: {head.missing[:10]}")
+        if len(head.votes) < len(local_body_map) * 0.95:
+            raise EcnLoadError(
+                f"only {len(head.votes)} of {len(local_body_map)} local governments "
+                f"returned a head race — too few to load as a national map."
+            )
+
     all_parties = {p for f in facts_by_cycle.values() for p in f.pr_national}
     all_parties |= {p for f in facts_by_cycle.values() for p in f.seats_fptp}
     if local:
         all_parties |= {p for per in local.by_post.values() for p in per}
+    if head:
+        all_parties |= {p for per in head.votes.values() for p in per}
 
     # English names the Commission itself publishes, from its by-election feed.
     ecn_english: dict[str, str] = {}
@@ -661,11 +782,11 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool, with_local: bo
 
         cur.execute(
             "SELECT code, id FROM indicators WHERE code = ANY(%s)",
-            ([VOTES_INDICATOR, SEATS_INDICATOR, LOCAL_INDICATOR],),
+            ([VOTES_INDICATOR, SEATS_INDICATOR, LOCAL_INDICATOR, HEAD_INDICATOR],),
         )
         indicator_ids = {c: i for c, i in cur.fetchall()}
 
-        wanted_geo = {NATIONAL_GEO} | set(district_map.values())
+        wanted_geo = {NATIONAL_GEO} | set(district_map.values()) | set(local_body_map.values())
         cur.execute("SELECT code, id FROM geographies WHERE code = ANY(%s)", (sorted(wanted_geo),))
         geo_ids = {c: i for c, i in cur.fetchall()}
         missing_geo = wanted_geo - set(geo_ids)
@@ -710,6 +831,47 @@ def load(cycles: tuple[str, ...], dry_run: bool, write_raw: bool, with_local: bo
                             Decimal(seats),
                             unit_ids[SEATS_UNIT],
                             json.dumps({"party": party, "post": post_ne}, ensure_ascii=False),
+                        )
+                    )
+
+        if head:
+            _, year, poll_date, poll_bs = LOCAL_ELECTION
+            cur.execute(
+                "SELECT id FROM time_periods WHERE period_type = 'year' AND gregorian_label = %s",
+                (year,),
+            )
+            head_period = _scalar(cur)
+            if head_period is None:
+                raise EcnLoadError(f"no calendar-year period for {year} — run `make seed`.")
+            head_iid = indicator_ids[HEAD_INDICATOR]
+            print(
+                f"  head-of-government race in {len(head.votes)} local governments"
+                f" -> calendar year {year}"
+            )
+            for ecn_code, per_party in head.votes.items():
+                geo_code = local_body_map.get(ecn_code)
+                if geo_code is None:
+                    raise EcnLoadError(
+                        f"local body {ecn_code} is not in {LOCAL_BODY_CSV} — add it by hand "
+                        f"rather than letting a municipality drop off the map."
+                    )
+                gid = geo_ids[geo_code]
+                won_by = head.winner.get(ecn_code)
+                for party, votes in per_party.items():
+                    to_insert.append(
+                        (
+                            head_iid,
+                            gid,
+                            head_period,
+                            Decimal(votes),
+                            unit_ids[VOTES_UNIT],
+                            json.dumps(
+                                {
+                                    "party": party,
+                                    "elected": "yes" if party == won_by else "no",
+                                },
+                                ensure_ascii=False,
+                            ),
                         )
                     )
 
@@ -832,6 +994,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--no-raw", action="store_true", help="skip the raw-lake archive")
     parser.add_argument("--cycle", action="append", help="limit to one election (repeatable)")
     parser.add_argument("--no-local", action="store_true", help="skip the 2079 local-level results")
+    parser.add_argument(
+        "--municipal",
+        action="store_true",
+        help="also load the head-of-government race in all 753 local governments"
+        " (753 requests — several minutes)",
+    )
     args = parser.parse_args(argv)
 
     cycles = tuple(args.cycle) if args.cycle else tuple(ELECTIONS)
@@ -842,6 +1010,7 @@ def main(argv: list[str] | None = None) -> int:
         dry_run=args.dry_run,
         write_raw=not args.no_raw,
         with_local=not args.no_local,
+        with_municipal=args.municipal,
     )
     return 0
 
