@@ -124,22 +124,51 @@ def read_codes() -> list[tuple[str, str]]:
 
 
 def open_session() -> tuple[requests.Session, str]:
-    """A session carrying the CSRF token the board's own form sends."""
-    session = requests.Session()
-    session.headers.update({
-        "User-Agent": "Mozilla/5.0 (compatible; NepalDataPortal/1.0)",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": FORM_URL,
-    })
-    page = session.get(FORM_URL, timeout=TIMEOUT_S).text
-    match = re.search(r'id="csrf"[^>]*value="([^"]+)"', page) or re.search(
-        r'name="_token" value="([^"]+)"', page
-    )
-    if match is None:
-        raise KalimatiOfficialError(
-            "no CSRF token on the price-history page — the form changed."
+    """Open the board's form and carry its CSRF token into API requests.
+
+    A rate-limit/interstitial page can return HTTP 200 without the form. That
+    is transient in exactly the same way as a dropped connection, so it keeps
+    the established long backoff rather than failing immediately or retrying
+    aggressively.
+    """
+    last_problem = "the form did not contain a CSRF token"
+    for attempt in range(len(RETRY_BACKOFF_S) + 1):
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (compatible; NepalDataPortal/1.0)",
+            "Accept": "text/html,application/xhtml+xml",
+            "Accept-Language": "en-US,en;q=0.9",
+            "X-Requested-With": "XMLHttpRequest",
+            "Referer": FORM_URL,
+        })
+        try:
+            response = session.get(FORM_URL, timeout=TIMEOUT_S)
+            response.raise_for_status()
+            page = response.text
+            match = re.search(r'id="csrf"[^>]*value="([^"]+)"', page) or re.search(
+                r'name="_token" value="([^"]+)"', page
+            )
+            if match is not None:
+                return session, match.group(1)
+            last_problem = (
+                f"HTTP {response.status_code} from {response.url} contained no CSRF token"
+            )
+        except requests.RequestException as exc:
+            last_problem = f"{type(exc).__name__}: {exc}"
+
+        if attempt == len(RETRY_BACKOFF_S):
+            break
+        wait = RETRY_BACKOFF_S[attempt]
+        print(
+            f"      price-history form unavailable ({last_problem}); "
+            f"waiting {wait:.0f}s before reopening"
         )
-    return session, match.group(1)
+        time.sleep(wait)
+
+    raise KalimatiOfficialError(
+        f"could not open a price-history session after "
+        f"{len(RETRY_BACKOFF_S) + 1} attempts ({last_problem})."
+    )
 
 
 def _post_with_backoff(

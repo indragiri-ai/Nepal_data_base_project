@@ -172,6 +172,69 @@ def test_dropped_connections_keep_the_existing_courteous_backoff() -> None:
     assert RETRY_BACKOFF_S == (60.0, 180.0)
 
 
+class _FormResponse:
+    def __init__(self, text: str) -> None:
+        self.text = text
+        self.status_code = 200
+        self.url = "https://kalimatimarket.gov.np/price-history"
+
+    def raise_for_status(self) -> None:
+        return None
+
+
+class _FormSession:
+    def __init__(self, response: _FormResponse) -> None:
+        self.response = response
+        self.headers: dict[str, str] = {}
+
+    def get(self, _url: str, timeout: int) -> _FormResponse:
+        assert timeout > 0
+        return self.response
+
+
+def test_a_tokenless_interstitial_retries_on_the_courteous_ladder(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import ingestion.kalimati.price_history as pipeline
+
+    sessions = iter([
+        _FormSession(_FormResponse("<title>Please wait</title>")),
+        _FormSession(_FormResponse("<title>Please wait</title>")),
+        _FormSession(_FormResponse('<input id="csrf" value="fresh-token">')),
+    ])
+    waits: list[float] = []
+    monkeypatch.setattr(pipeline.requests, "Session", lambda: next(sessions))
+    monkeypatch.setattr(pipeline.time, "sleep", waits.append)
+
+    _session, token = pipeline.open_session()
+
+    assert token == "fresh-token"
+    assert waits == [60.0, 180.0]
+
+
+def test_a_persistently_tokenless_form_fails_after_three_attempts(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import ingestion.kalimati.price_history as pipeline
+
+    made = 0
+
+    def session() -> _FormSession:
+        nonlocal made
+        made += 1
+        return _FormSession(_FormResponse("<title>Please wait</title>"))
+
+    waits: list[float] = []
+    monkeypatch.setattr(pipeline.requests, "Session", session)
+    monkeypatch.setattr(pipeline.time, "sleep", waits.append)
+
+    with pytest.raises(KalimatiOfficialError, match="after 3 attempts"):
+        pipeline.open_session()
+
+    assert made == 3
+    assert waits == [60.0, 180.0]
+
+
 def test_the_capped_value_is_named_so_the_artefact_stays_visible() -> None:
     """The board's average tops out at 999.99.
 
