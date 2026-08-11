@@ -124,22 +124,51 @@ def read_codes() -> list[tuple[str, str]]:
 
 
 def open_session() -> tuple[requests.Session, str]:
-    """A session carrying the CSRF token the board's own form sends."""
-    session = requests.Session()
-    session.headers.update({
-        "User-Agent": "Mozilla/5.0 (compatible; NepalDataPortal/1.0)",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": FORM_URL,
-    })
-    page = session.get(FORM_URL, timeout=TIMEOUT_S).text
-    match = re.search(r'id="csrf"[^>]*value="([^"]+)"', page) or re.search(
-        r'name="_token" value="([^"]+)"', page
-    )
-    if match is None:
-        raise KalimatiOfficialError(
-            "no CSRF token on the price-history page — the form changed."
+    """Open the board's form and carry its CSRF token into API requests.
+
+    A rate-limit/interstitial page can return HTTP 200 without the form. That
+    is transient in exactly the same way as a dropped connection, so it keeps
+    the established long backoff rather than failing immediately or retrying
+    aggressively.
+    """
+    last_problem = "the form did not contain a CSRF token"
+    for attempt in range(len(RETRY_BACKOFF_S) + 1):
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (compatible; NepalDataPortal/1.0)",
+            "Accept": "text/html,application/xhtml+xml",
+            "Accept-Language": "en-US,en;q=0.9",
+            "X-Requested-With": "XMLHttpRequest",
+            "Referer": FORM_URL,
+        })
+        try:
+            response = session.get(FORM_URL, timeout=TIMEOUT_S)
+            response.raise_for_status()
+            page = response.text
+            match = re.search(r'id="csrf"[^>]*value="([^"]+)"', page) or re.search(
+                r'name="_token" value="([^"]+)"', page
+            )
+            if match is not None:
+                return session, match.group(1)
+            last_problem = (
+                f"HTTP {response.status_code} from {response.url} contained no CSRF token"
+            )
+        except requests.RequestException as exc:
+            last_problem = f"{type(exc).__name__}: {exc}"
+
+        if attempt == len(RETRY_BACKOFF_S):
+            break
+        wait = RETRY_BACKOFF_S[attempt]
+        print(
+            f"      price-history form unavailable ({last_problem}); "
+            f"waiting {wait:.0f}s before reopening"
         )
-    return session, match.group(1)
+        time.sleep(wait)
+
+    raise KalimatiOfficialError(
+        f"could not open a price-history session after "
+        f"{len(RETRY_BACKOFF_S) + 1} attempts ({last_problem})."
+    )
 
 
 def _post_with_backoff(
@@ -315,7 +344,11 @@ def _scalar(cur: psycopg.Cursor[Any]) -> Any:
     return None if row is None else row[0]
 
 
-def load(rows: list[AvgRow], dry_run: bool) -> int:
+def load(
+    rows: list[AvgRow],
+    dry_run: bool,
+    raw_refs: list[str] | None = None,
+) -> int:
     load_dotenv()
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
@@ -407,7 +440,21 @@ def load(rows: list[AvgRow], dry_run: bool) -> int:
             print("\nDRY RUN — nothing written.")
             conn.rollback()
             return 0
+        refs = raw_refs or []
+        rows_in = len(rows)
+
+        # A source check that finds no new values is still a successful run.
+        # `/v1/meta` reads ingestion_log rather than observations, so omitting
+        # this row would make a healthy weekly refresh look stale.
         if not to_insert:
+            cur.execute(
+                "INSERT INTO ingestion_log"
+                " (dataset_id, status, finished_at, rows_in, rows_loaded, rows_rejected,"
+                "  raw_file_refs)"
+                " VALUES (%s, 'success', now(), %s, 0, 0, %s::jsonb)",
+                (dataset_id, rows_in, json.dumps(refs)),
+            )
+            conn.commit()
             print("Nothing to load; the warehouse already matches the board.")
             return 0
 
@@ -417,6 +464,13 @@ def load(rows: list[AvgRow], dry_run: bool) -> int:
             (dataset_id,),
         )
         release_id = _scalar(cur)
+        cur.execute(
+            "INSERT INTO ingestion_log (dataset_id, release_id, status, raw_file_refs)"
+            " VALUES (%s, %s, 'running', %s::jsonb) RETURNING id",
+            (dataset_id, release_id, json.dumps(refs)),
+        )
+        log_id = _scalar(cur)
+        conn.commit()
         for start in range(0, len(to_insert), BATCH):
             chunk = to_insert[start : start + BATCH]
             cur.executemany(
@@ -428,6 +482,14 @@ def load(rows: list[AvgRow], dry_run: bool) -> int:
             )
             conn.commit()
             print(f"  committed {min(start + BATCH, len(to_insert)):>7,} / {len(to_insert):,}")
+        cur.execute(
+            "UPDATE ingestion_log"
+            " SET status = 'success', finished_at = now(), rows_in = %s,"
+            "     rows_loaded = %s, rows_rejected = 0"
+            " WHERE id = %s",
+            (rows_in, len(to_insert), log_id),
+        )
+        conn.commit()
         print(f"Loaded {len(to_insert):,} observations under release {release_id}.")
         return len(to_insert)
 
@@ -442,10 +504,12 @@ def main() -> int:
 
     rows, members = harvest(args.limit)
     print(f"\nHarvested {len(rows):,} commodity-days.")
+    raw_refs: list[str] = []
     if not args.no_raw and not args.dry_run:
         stored = RawLake.from_env().store_snapshot(DATASET_CODE, members)
+        raw_refs.append(stored.payload_path)
         print(f"Raw -> {stored.payload_path} ({stored.size_bytes:,} bytes)")
-    load(rows, args.dry_run)
+    load(rows, args.dry_run, raw_refs=raw_refs)
     return 0
 
 

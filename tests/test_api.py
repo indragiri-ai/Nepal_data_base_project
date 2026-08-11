@@ -34,6 +34,21 @@ _GDP = IndicatorRow(
     unit_code="PCT",
     unit_name="Percent",
     source_concept="NY.GDP.MKTP.KD.ZG",
+    source="World Bank",
+    preferred_source="World Bank",
+)
+
+_FISCAL_REVENUE = IndicatorRow(
+    code="FISCAL_REVENUE_ACTUAL",
+    name_en="Federal revenue, actual",
+    name_ne=None,
+    definition_en="Actual federal revenue reported by the Nepal Fiscal Dashboard.",
+    topic="economy",
+    unit_code="NPR_MILLION",
+    unit_name="NPR million",
+    source_concept="Federal Revenue|Actual",
+    source="World Bank",
+    preferred_source="World Bank",
 )
 
 _CENSUS_POP = IndicatorRow(
@@ -134,7 +149,7 @@ def _fake_score(term: str, code: str, name_en: str, name_ne: str | None) -> int:
 
 class FakeRepository:
     def list_indicators(self) -> list[IndicatorRow]:
-        return [_GDP, _CENSUS_POP, _WB_POP, _CENSUS_LITERACY]
+        return [_GDP, _FISCAL_REVENUE, _CENSUS_POP, _WB_POP, _CENSUS_LITERACY]
 
     def search(self, term: str, limit: int = 20) -> list[SearchHitRow]:
         """Literal (non-wildcard) case-insensitive substring match.
@@ -180,7 +195,12 @@ class FakeRepository:
         ]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
-        by_code = {"GDP_GROWTH": _GDP, "CENSUS_POP_TOTAL": _CENSUS_POP, "POP_TOTAL": _WB_POP}
+        by_code = {
+            "GDP_GROWTH": _GDP,
+            "FISCAL_REVENUE_ACTUAL": _FISCAL_REVENUE,
+            "CENSUS_POP_TOTAL": _CENSUS_POP,
+            "POP_TOTAL": _WB_POP,
+        }
         return by_code.get(code)
 
     def get_geo_values(
@@ -291,6 +311,29 @@ class FakeRepository:
         breakdown_key: str | None = None,
         breakdown_value: str | None = None,
     ) -> SeriesResult | None:
+        if indicator_code == "FISCAL_REVENUE_ACTUAL" and geography_code == "NP":
+            return SeriesResult(
+                indicator_code=indicator_code,
+                indicator_name="Federal revenue, actual",
+                geography_code="NP",
+                geography_name="Nepal",
+                unit_code="NPR_MILLION",
+                unit_name="NPR million",
+                source_name="World Bank",
+                dataset_name="Nepal Fiscal Dashboard",
+                license=None,
+                latest_release_date="2026-08-01",
+                observations=[
+                    ObservationRow(
+                        "FY 2023/24",
+                        2024,
+                        Decimal("1050000"),
+                        "final",
+                        None,
+                        "2026-08-01",
+                    )
+                ],
+            )
         if indicator_code != "GDP_GROWTH" or geography_code != "NP":
             return None
         observations = [
@@ -454,9 +497,21 @@ def test_get_data_includes_provenance(client: TestClient) -> None:
     assert resp.status_code == 200
     body = resp.json()
     assert body["provenance"]["source"] == "World Bank"
+    assert body["indicator"]["source"] == "World Bank"
     assert body["unit_code"] == "PCT"
     assert len(body["observations"]) == 2
     assert body["observations"][1]["value"] == -2.37  # 2020 COVID contraction
+
+
+def test_fiscal_data_exposes_the_indicators_origin_source(client: TestClient) -> None:
+    body = client.get(
+        "/v1/data",
+        params={"indicator": "FISCAL_REVENUE_ACTUAL", "geo": "NP"},
+    ).json()
+
+    assert body["indicator"]["source"] == "World Bank"
+    assert body["indicator"]["preferred_source"] == "World Bank"
+    assert body["provenance"]["dataset"] == "Nepal Fiscal Dashboard"
 
 
 def test_unknown_indicator_returns_clean_404(client: TestClient) -> None:

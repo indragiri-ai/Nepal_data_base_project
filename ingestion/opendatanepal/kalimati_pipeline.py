@@ -44,6 +44,7 @@ from dotenv import load_dotenv
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from ingestion.common.io_utf8 import configure_stdout_utf8  # noqa: E402
+from ingestion.common.raw_lake import RawLakeError  # noqa: E402
 from ingestion.opendatanepal.kalimati_acquire import (  # noqa: E402
     KalimatiError,
     PriceRow,
@@ -211,7 +212,43 @@ def deduplicate(rows: list[PriceRow]) -> tuple[list[PriceRow], int, list[str]]:
     return list(chosen.values()), overlaps, conflicts
 
 
-def load(rows: list[PriceRow], basket: list[str], dry_run: bool) -> int:
+def record_raw_archive_failure(raw_refs: list[str], exc: RawLakeError) -> None:
+    """Record a raw-first stop that happens before ``load`` can begin.
+
+    Acquisition owns the archive because it still has the untouched CKAN
+    payloads. If that archive fails, there are deliberately no observations or
+    release to write, but the failed check must still be visible to `/v1/meta`.
+    """
+    load_dotenv()
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if not dsn:
+        raise KalimatiError(
+            f"raw archive failed and DATABASE_URL is not set, so the failure "
+            f"could not be logged: {exc}"
+        ) from exc
+
+    with psycopg.connect(dsn) as conn, conn.cursor() as cur:
+        dataset_id = ensure_source_and_dataset(cur)
+        cur.execute(
+            "INSERT INTO ingestion_log"
+            " (dataset_id, status, finished_at, rows_in, rows_loaded, rows_rejected,"
+            "  raw_file_refs, error_note)"
+            " VALUES (%s, 'failed', now(), 0, 0, 0, %s::jsonb, %s)",
+            (
+                dataset_id,
+                json.dumps(raw_refs),
+                f"raw archive failed, so nothing was loaded: {exc}"[:1000],
+            ),
+        )
+        conn.commit()
+
+
+def load(
+    rows: list[PriceRow],
+    basket: list[str],
+    dry_run: bool,
+    raw_refs: list[str] | None = None,
+) -> int:
     load_dotenv()
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
@@ -291,7 +328,21 @@ def load(rows: list[PriceRow], basket: list[str], dry_run: bool) -> int:
             print("\nDRY RUN — nothing written.")
             conn.rollback()
             return 0
+        refs = raw_refs or []
+        rows_in = len(kg_basket) * 2
+
+        # A run that changed nothing is still a successful run, and the portal's
+        # "data updated" line should say so. Recording it only when rows change
+        # would make a healthy re-run look like the source had gone stale.
         if not to_insert:
+            cur.execute(
+                "INSERT INTO ingestion_log"
+                " (dataset_id, status, finished_at, rows_in, rows_loaded, rows_rejected,"
+                "  raw_file_refs)"
+                " VALUES (%s, 'success', now(), %s, 0, 0, %s::jsonb)",
+                (dataset_id, rows_in, json.dumps(refs)),
+            )
+            conn.commit()
             print("Nothing to load; the warehouse already matches the source.")
             return 0
 
@@ -301,6 +352,13 @@ def load(rows: list[PriceRow], basket: list[str], dry_run: bool) -> int:
             (dataset_id,),
         )
         release_id = _scalar(cur)
+        cur.execute(
+            "INSERT INTO ingestion_log (dataset_id, release_id, status, raw_file_refs)"
+            " VALUES (%s, %s, 'running', %s::jsonb) RETURNING id",
+            (dataset_id, release_id, json.dumps(refs)),
+        )
+        log_id = _scalar(cur)
+        conn.commit()
         for start in range(0, len(to_insert), BATCH):
             chunk = to_insert[start : start + BATCH]
             cur.executemany(
@@ -312,6 +370,17 @@ def load(rows: list[PriceRow], basket: list[str], dry_run: bool) -> int:
             )
             conn.commit()
             print(f"  committed {min(start + BATCH, len(to_insert)):>7,} / {len(to_insert):,}")
+
+        # Close the log. `/v1/meta` reads this table, not observations, so a
+        # successful load without this update remains invisible to the portal.
+        cur.execute(
+            "UPDATE ingestion_log"
+            " SET status = 'success', finished_at = now(), rows_in = %s,"
+            "     rows_loaded = %s, rows_rejected = 0"
+            " WHERE id = %s",
+            (rows_in, len(to_insert), log_id),
+        )
+        conn.commit()
         print(f"Loaded {len(to_insert):,} observations under release {release_id}.")
         return len(to_insert)
 
@@ -326,8 +395,17 @@ def main() -> int:
     basket = read_basket(args.basket)
     print(f"Basket: {len(basket)} commodities from {BASKET_CSV}")
 
-    rows = acquire(limit_pages=None, write_raw=False)
-    load(rows, basket, args.dry_run)
+    raw_refs: list[str] = []
+    try:
+        rows = acquire(
+            limit_pages=None,
+            write_raw=not args.dry_run,
+            raw_refs=raw_refs,
+        )
+    except RawLakeError as exc:
+        record_raw_archive_failure(raw_refs, exc)
+        raise KalimatiError(f"raw archive failed, so nothing was loaded: {exc}") from exc
+    load(rows, basket, args.dry_run, raw_refs=raw_refs)
     return 0
 
 
