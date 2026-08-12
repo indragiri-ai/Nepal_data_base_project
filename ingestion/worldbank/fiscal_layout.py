@@ -54,8 +54,31 @@ FEDERAL_GEO_CODE = "NP"
 # against the MoF Red Book must confirm it before any figure is published, and
 # the derivation is recorded in each indicator's definition so it stays
 # auditable.
+# FY2025 (Nepal's FY 2024/25, BS 2081/82) was added by the source and admitted
+# on 2026-08-12 after the same kind of check that admitted the original window
+# — the dashboard's BUDGET figures were matched against Nepal's own published
+# FY 2081/82 budget, using the definition already verified for FY 2018/19:
+#
+#   expenditure = recurrent 1,140.66bn + capital 352.35bn = 1,493.01bn
+#                 vs dashboard 1,493,018.5 NPR million        -> 0.0006%
+#   revenue     = tax 1,260.30bn + foreign grants 52.33bn  = 1,312.63bn
+#                 vs dashboard 1,312,312.7 NPR million        -> 0.02%
+#
+# That fixes the label (FY2025 really is FY 2024/25), the unit, and the series
+# definitions in one check. Structure is unchanged too: all four revenue
+# categories are present and the known aggregate-vs-parts gap continues its
+# trend (+126,866.9 FY2024 -> +142,827.5 FY2025).
+#
+# STILL OPEN, deliberately: the ACTUAL-side check against FCGO's "non-financing
+# receipt" line could not be completed — FCGO has submitted its FY 2024/25
+# statement but that line is not yet public. FY2025 actuals are therefore
+# expected to be provisional. That is safe here only because revisions never
+# overwrite (rule 5): a restated figure enters as a new release. See
+# reference/wb-fiscal/PROVENANCE.md.
+#
+# Note the source did NOT extend Federal Debt Stock, which still ends at FY2024.
 FIRST_DASHBOARD_YEAR = 2018
-LAST_DASHBOARD_YEAR = 2024
+LAST_DASHBOARD_YEAR = 2025
 
 
 def dashboard_year_to_period_label(dashboard_year: str) -> str:

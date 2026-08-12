@@ -48,11 +48,15 @@ def test_dashboard_year_maps_to_the_fiscal_year_it_ends_in() -> None:
     assert dashboard_year_to_period_label("FY2018") == "FY 2017/18"
     assert dashboard_year_to_period_label("FY2024") == "FY 2023/24"
     assert dashboard_year_to_period_label("FY 2024") == "FY 2023/24"
+    # FY2025 was admitted on 2026-08-12 against Nepal's own FY 2081/82 budget.
+    assert dashboard_year_to_period_label("FY2025") == "FY 2024/25"
 
 
 def test_dashboard_year_rejects_years_the_source_never_published() -> None:
     # Inventing a period for an unpublished label is exactly rule 1's failure.
-    for bad in ("FY2017", "FY2025", "2018", "FYxxxx", ""):
+    # FY2026 is the live edge: the next year the source adds must be reviewed
+    # against Nepal's own accounts before it can load, never admitted silently.
+    for bad in ("FY2017", "FY2026", "2018", "FYxxxx", ""):
         with pytest.raises(ValueError):
             dashboard_year_to_period_label(bad)
 
