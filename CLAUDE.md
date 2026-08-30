@@ -22,7 +22,7 @@ Python 3.12 in `.venv`; commands run through `make` (see README for the list).
 ## Orientation shortcut (optional)
 
 `graphify-out/` (gitignored, built locally) holds a knowledge graph of this repo:
-2,156 nodes across code, docs and decisions (rebuilt 2026-08-12). For **"where is X handled?" /
+2,269 nodes across code, docs and decisions (rebuilt 2026-08-30). For **"where is X handled?" /
 "what depends on Y?"** questions, `/graphify query "<question>"` is cheaper and
 more accurate than grepping blind. It is **not** a substitute for reading the
 files you are about to edit, and it goes stale as code changes — rebuild with
