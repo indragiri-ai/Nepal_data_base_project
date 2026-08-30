@@ -180,6 +180,51 @@ Magnitudes are consistent with Nepal's published federal accounts (order of
 NPR 0.7–1.0 trillion), which supports the `NPR Million` reading — but
 consistency is not verification.
 
+## FY2025 admitted (2026-08-12) — the source added Nepal's FY 2024/25
+
+The dashboard extended **8 of its 9 federal series** to `FY2025`. **Federal Debt
+Stock was NOT extended** and still ends at FY2024, so that one series stays a
+year behind on the portal. That is the source's choice, not a load failure.
+
+`FY2025` was not admitted on the strength of the label. It was checked against
+Nepal's own published FY 2081/82 budget, using the definition already verified
+for FY 2018/19 (expenditure = recurrent + capital):
+
+| Check | Nepal's own budget | Dashboard FY2025 | Gap |
+|---|---|---|---|
+| Expenditure budget | 1,493.01bn (recurrent 1,140.66 + capital 352.35) | 1,493,018.5 | **0.0006%** |
+| Revenue budget | 1,312.63bn (tax 1,260.30 + foreign grants 52.33) | 1,312,312.7 | **0.02%** |
+
+One check fixes three things: the year label really is FY 2024/25 (BS 2081/82),
+the unit is still NPR million, and the series definitions have not changed.
+
+Structure is unchanged as well — all four revenue categories are present for
+FY2025, and the long-standing aggregate-vs-parts gap continues its trend rather
+than jumping: `+126,866.9` (FY2024) → `+142,827.5` (FY2025).
+
+### Still open on FY2025 — the actual-side check
+
+The ACTUAL-side check used for earlier years (dashboard aggregate vs FCGO's
+**non-financing receipt** line) **could not be completed**. FCGO has submitted
+its FY 2024/25 statement, but that line is not yet published. Press reports
+full-year revenue near NPR 1,178.8bn against the dashboard's 1,080.5bn — an
+8.3% gap that is *consistent with* the same revenue-sharing offset seen in every
+loaded year, but consistency is not verification, and it is recorded here as
+unfinished rather than treated as done.
+
+Two things make loading the actuals acceptable anyway:
+
+1. The loaded years already rest on spot-checks of **two** years, not all seven
+   — the check verifies the SERIES, and the budget match above confirms FY2025
+   belongs to that same series.
+2. FY2025 actuals are expected to be **provisional**. Under rule 5 a restated
+   figure enters as a new release and never overwrites, so a later revision is
+   picked up safely by a re-run.
+
+**To close this:** when FCGO publishes the FY 2024/25 consolidated financial
+statement, compare its non-financing receipt against 1,080,528.7 and record the
+gap in the table below.
+
 ## RESOLVED FOR LOADING — the aggregate row disagrees with its own parts
 
 **Status (2026-08-04): settled well enough to publish the aggregates, and only
