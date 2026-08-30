@@ -54,6 +54,7 @@ from ingestion.worldbank.fiscal_acquire import (  # noqa: E402
 from ingestion.worldbank.fiscal_layout import (  # noqa: E402
     FEDERAL_GEO_CODE,
     FEDERAL_SHEETS,
+    LAST_DASHBOARD_YEAR,
     SOURCE_UNIT_LABEL,
     UNIT_CODE,
     dashboard_year_to_period_label,
@@ -86,6 +87,21 @@ MAX_ABS = Decimal("5000000")
 
 class FiscalLoadError(Exception):
     """Refuse to load rather than publish something unverified."""
+
+
+# The newest published fiscal year's ACTUAL figures (never Budget, which is a
+# plan rather than an audited outturn) have not yet been checked against
+# FCGO's own statement — see docs/PROJECT_LOG.md 2026-08-30. Older years keep
+# 'final' because they were already cross-checked against Nepal's own
+# accounts (see the module docstring above and PROVENANCE.md).
+NEWEST_PERIOD_LABEL = dashboard_year_to_period_label(f"FY{LAST_DASHBOARD_YEAR}")
+
+
+def status_for(indicator_code: str, period_label: str) -> str:
+    """'provisional' for the newest year's unaudited actuals, else 'final'."""
+    if indicator_code.endswith("_ACTUAL") and period_label == NEWEST_PERIOD_LABEL:
+        return "provisional"
+    return "final"
 
 
 @dataclass(frozen=True)
@@ -248,7 +264,8 @@ def load(
             if latest.get((iid, pid)) == r.value:
                 unchanged += 1
                 continue
-            to_insert.append((iid, geography_id, pid, dataset_id, r.value, unit_id))
+            status = status_for(r.indicator_code, r.period_label)
+            to_insert.append((iid, geography_id, pid, dataset_id, r.value, unit_id, status))
 
         print(f"To load: {len(to_insert)}   unchanged (skipped): {unchanged}")
         if dry_run:
@@ -310,7 +327,7 @@ def load(
             "INSERT INTO observations"
             " (indicator_id, geography_id, time_period_id, dataset_id,"
             "  release_id, value, unit_id, status)"
-            " VALUES (%s, %s, %s, %s, " + str(release_id) + ", %s, %s, 'final')",
+            " VALUES (%s, %s, %s, %s, " + str(release_id) + ", %s, %s, %s)",
             to_insert,
         )
         conn.commit()

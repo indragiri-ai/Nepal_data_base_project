@@ -68,6 +68,7 @@ from ingestion.worldbank.fiscal_pipeline import (  # noqa: E402
     FiscalLoadError,
     _scalar,
     seed_indicators,
+    status_for,
 )
 
 # (sheet, indicator prefix). Financing and Fiscal Indicators are left for a
@@ -266,8 +267,9 @@ def load(
             if latest.get(key) == r.value:
                 unchanged += 1
                 continue
+            status = status_for(r.indicator_code, r.period_label)
             to_insert.append(
-                (iid, gid, pid, dataset_id, r.value, unit_id, json.dumps(breakdowns))
+                (iid, gid, pid, dataset_id, r.value, unit_id, json.dumps(breakdowns), status)
             )
 
         print(f"To load: {len(to_insert)}   unchanged (skipped): {unchanged}")
@@ -330,7 +332,7 @@ def load(
             "INSERT INTO observations"
             " (indicator_id, geography_id, time_period_id, dataset_id,"
             "  release_id, value, unit_id, breakdowns, status)"
-            " VALUES (%s, %s, %s, %s, " + str(release_id) + ", %s, %s, %s, 'final')",
+            " VALUES (%s, %s, %s, %s, " + str(release_id) + ", %s, %s, %s, %s)",
             to_insert,
         )
         conn.commit()
