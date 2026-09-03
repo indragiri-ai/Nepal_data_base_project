@@ -19,7 +19,7 @@ RUFF  := $(PY) -m ruff
 MYPY  := $(PY) -m mypy
 PYTEST := $(PY) -m pytest
 
-.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial wb-fiscal-watch wb-fiscal-watch-update odn-probe kalimati-acquire kalimati-acquire-dry kalimati-official kalimati-official-dry kalimati-export kalimati-export-dry ecn-probe ecn-probe-dry ecn-load ecn-load-dry nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote api web web-setup help
+.PHONY: setup test lint fmt check-db migrate migrate-status migrate-rollback seed load-calendar seed-periods-ne wb-catalog ingest-wb ingest-wb-dry geoportal-harvest seed-nrb seed-census census-bulk-manifest ingest-census-bulk-dry ingest-census-bulk-balanced ingest-census ingest-census-local ingest-census-drinking-water ingest-census-floor-material wb-fiscal-acquire wb-fiscal-acquire-dry wb-fiscal-harvest ingest-wb-fiscal ingest-wb-fiscal-dry ingest-wb-fiscal-provincial wb-fiscal-watch wb-fiscal-watch-update odn-probe kalimati-acquire kalimati-acquire-dry kalimati-official kalimati-official-dry kalimati-export kalimati-export-dry ecn-probe ecn-probe-dry ecn-load ecn-load-dry nrb-bfs-acquire nrb-bfs-extract nrb-bfs-status nrb-bfs-promote mof-acquire mof-acquire-dry api web web-setup help
 
 help:  ## Show the available commands
 	@echo Nepal Data Portal — available commands:
@@ -177,6 +177,12 @@ nrb-bfs-promote:  ## Promote APPROVED staging rows into observations (quality-ga
 # approve/reject take arguments — run directly, e.g.:
 #   .venv/Scripts/python scripts/nrb_bfs.py approve --month 2083-01   (or --all)
 #   .venv/Scripts/python scripts/nrb_bfs.py reject  --month 2083-01 --note "why"
+
+mof-acquire:  ## MOF.S1: mirror new Ministry of Finance publications into the raw lake (idempotent)
+	$(PY) -m ingestion.mof.acquire
+
+mof-acquire-dry:  ## Same, but list what would be downloaded without downloading it
+	$(PY) -m ingestion.mof.acquire --dry-run
 
 api:  ## Run the read-only API locally at http://localhost:8000 (docs at /docs)
 	$(PY) -m uvicorn api.main:app --reload --port 8000

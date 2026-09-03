@@ -10,6 +10,8 @@ requires-python = ">=3.12"
 # library can never silently change behaviour under us. See P1.S1 in the step file.
 dependencies = [
     "requests~=2.32",          # HTTP client for talking to data-source APIs (World Bank, IMF, ...)
+    "certifi>=2026.6",         # CA bundle; imported directly to merge in a pinned intermediate for
+                               # mof.gov.np's misconfigured chain (reference/mof/PROVENANCE.md)
     "psycopg[binary]~=3.2",    # PostgreSQL driver — how Python talks to our Supabase database
     "python-dotenv~=1.0",      # loads secrets from the local .env file (never committed)
     "yoyo-migrations~=9.0",    # applies numbered SQL migrations from db/migrations/

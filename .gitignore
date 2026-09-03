@@ -104,6 +104,10 @@ pnpm-debug.log*
 lerna-debug.log*
 .DS_Store
 *.pem
+# Exception: a PUBLIC CA certificate (no secret material — fetched from
+# DigiCert's own repository), committed so the MoF harvester's TLS fix works
+# on every machine. See reference/mof/PROVENANCE.md.
+!reference/mof/geotrust_tls_rsa_ca_g1.pem
 .vercel
 .netlify
 
