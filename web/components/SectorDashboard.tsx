@@ -25,6 +25,10 @@ import {
 import HeadlineChart from "@/components/HeadlineChart";
 import SparkCard from "@/components/SparkCard";
 
+// How many indicators one sparkline request may cover. Must not exceed the
+// API's own cap (MAX_SPARK_CODES in api/policy.py) — the server refuses more.
+const SPARK_BATCH = 120;
+
 // Loaded on demand: FiscalPanel pulls in ECharts, and a static import put the
 // whole charting bundle on EVERY sector page (5.7 kB -> 183 kB). Only Economy
 // renders it, so only Economy should pay for it.
@@ -89,25 +93,37 @@ export default function SectorDashboard({ slug }: { slug: string }) {
   useEffect(() => {
     let cancelled = false;
     fetchIndicators()
-      .then((all) => {
+      .then(async (all) => {
         if (cancelled) return;
         setIndicators(all);
         if (process.env.NODE_ENV !== "production") {
           const w = assignmentWarnings(all);
           if (w.length) console.warn("[sectors] assignment issues:", w);
         }
+        // Sparklines for the indicators THIS SECTOR shows, in batches the API
+        // will accept. This used to be one call for every indicator in the
+        // warehouse — a query over everything, on every sector page, to draw a
+        // few hundred cards (security review 2026-09-06, finding 1). Each
+        // batch paints as it lands, and a failed batch costs only its own
+        // cards, which fall back to name + source badge.
+        const codes = indicatorsForSector(sector, all).map((i) => i.code);
+        for (let from = 0; from < codes.length; from += SPARK_BATCH) {
+          if (cancelled) return;
+          const rows = await fetchIndicatorSparks(
+            codes.slice(from, from + SPARK_BATCH),
+          ).catch(() => [] as IndicatorSpark[]);
+          if (cancelled) return;
+          if (rows.length) {
+            setSparks((prev) => {
+              const next = new Map(prev);
+              for (const row of rows) next.set(row.code, row);
+              return next;
+            });
+          }
+        }
       })
       .catch((e: unknown) => {
         if (!cancelled) setError(e instanceof ApiError ? e.message : "Could not load indicators.");
-      });
-    // Sparklines load in parallel; if they fail the cards still render (value-less),
-    // so a spark outage never blocks the page.
-    fetchIndicatorSparks()
-      .then((rows) => {
-        if (!cancelled) setSparks(new Map(rows.map((r) => [r.code, r])));
-      })
-      .catch(() => {
-        /* cards fall back to name + source badge */
       });
     return () => {
       cancelled = true;

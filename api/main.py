@@ -8,12 +8,16 @@ auto-generated at /docs.
 from __future__ import annotations
 
 import os
+from datetime import date
 from typing import Annotated
 
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
+from api.access import AccessMiddleware
+from api.database import serving_dsn
 from api.models import (
     DataResponse,
     DatasetMeta,
@@ -32,7 +36,16 @@ from api.models import (
     SeasonalityPoint,
     SeasonalityResponse,
 )
+from api.policy import (
+    MAX_SEASONALITY_ROWS,
+    MAX_SPARK_CODES,
+    QueryTooBroad,
+    bounded,
+    validate_window,
+)
 from api.repository import PostgresRepository, Repository
+
+load_dotenv()
 
 app = FastAPI(
     title="Nepal Data Portal API",
@@ -50,6 +63,7 @@ _cors_origins = [
     for o in os.environ.get("CORS_ALLOW_ORIGINS", _DEFAULT_ORIGINS).split(",")
     if o.strip()
 ]
+app.add_middleware(AccessMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
@@ -61,10 +75,12 @@ app.add_middleware(
 def get_repository() -> Repository:
     """Provide the production repository. Overridden in tests with a fake."""
     load_dotenv()
-    dsn = os.environ.get("DATABASE_URL", "").strip()
-    if not dsn:
-        raise RuntimeError("DATABASE_URL is not set")
-    return PostgresRepository(dsn)
+    return PostgresRepository(serving_dsn())
+
+
+@app.exception_handler(QueryTooBroad)
+async def query_too_broad(_request: object, exc: QueryTooBroad) -> JSONResponse:
+    return JSONResponse(status_code=422, content={"detail": str(exc)})
 
 
 @app.get("/health", include_in_schema=False)
@@ -101,10 +117,23 @@ def list_indicators(
 @app.get("/v1/indicators/spark", response_model=list[IndicatorSpark])
 def list_indicator_sparks(
     repo: Annotated[Repository, Depends(get_repository)],
+    codes: Annotated[
+        list[str],
+        Query(
+            min_length=1,
+            max_length=MAX_SPARK_CODES,
+            description="Indicator codes to draw, repeated: ?codes=GDP_GROWTH&codes=CPI_YOY",
+        ),
+    ],
 ) -> list[IndicatorSpark]:
-    """Every indicator's latest value + a short recent trend, in one call — the
-    data behind the sector-page cards (avoids one request per indicator).
-    Declared before /v1/indicators/{code} so 'spark' isn't read as a code."""
+    """The named indicators' latest value + a short recent trend, in one call —
+    the data behind the sector-page cards (avoids one request per indicator).
+    Declared before /v1/indicators/{code} so 'spark' isn't read as a code.
+
+    The caller must name the codes: asking for every indicator's trend is a
+    query over the whole warehouse, which is what the 2026-09-06 review found
+    the browser doing on every sector page.
+    """
     return [
         IndicatorSpark(
             code=r.code,
@@ -112,7 +141,7 @@ def list_indicator_sparks(
             latest_value=float(r.latest_value),
             points=[float(p) for p in r.points],
         )
-        for r in repo.get_spark_series()
+        for r in repo.get_spark_series(list(dict.fromkeys(codes)))
     ]
 
 
@@ -270,6 +299,13 @@ def get_geo_breakdown(
             " will draw one period under another's label."
         ),
     ] = None,
+    breakdown_value: Annotated[
+        str | None,
+        Query(
+            description="Draw only this value of the breakdown (e.g. one party)."
+            " Omit for every value, which is what a stacked or share map needs."
+        ),
+    ] = None,
 ) -> GeoBreakdownResponse:
     """A broken-down choropleth in ONE request.
 
@@ -285,7 +321,7 @@ def get_geo_breakdown(
     indicator_row = repo.get_indicator(indicator)
     if indicator_row is None:
         raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
-    result = repo.get_geo_breakdown(indicator, level, breakdown_key, period)
+    result = repo.get_geo_breakdown(indicator, level, breakdown_key, period, breakdown_value)
     if result is None:
         when = f" for period '{period}'" if period else ""
         raise HTTPException(
@@ -346,7 +382,7 @@ def get_seasonality(
     # Provenance comes from the series itself, so a seasonal average is never
     # shown without the source that produced it. If the series is missing then
     # so are the averages, so one check covers both.
-    series = repo.get_series(indicator, geo)
+    series = repo.get_series(indicator, geo, metadata_only=True)
     if not points or series is None:
         raise HTTPException(
             status_code=404,
@@ -381,7 +417,7 @@ def get_seasonality(
                 mean_value=float(p.mean_value),
                 days=p.days,
             )
-            for p in points
+            for p in bounded(points, MAX_SEASONALITY_ROWS)
         ],
     )
 
@@ -399,19 +435,26 @@ def get_data(
         str | None,
         Query(description="Value of that dimension, e.g. 'Tomato Small(Local)'"),
     ] = None,
+    start: Annotated[
+        date | None, Query(description="Earliest period to return (YYYY-MM-DD), with `end`")
+    ] = None,
+    end: Annotated[
+        date | None, Query(description="Latest period to return (YYYY-MM-DD), with `start`")
+    ] = None,
 ) -> DataResponse:
     # Both or neither: a key without a value would silently return the whole
-    # series, which for the daily price data is 76,747 observations where the
+    # series, which for the daily price data is 106,236 observations where the
     # caller asked for one commodity.
     if (breakdown_key is None) != (breakdown_value is None):
         raise HTTPException(
             status_code=422,
             detail="breakdown_key and breakdown_value must be given together",
         )
+    validate_window(breakdown_key, breakdown_value, start, end)
     indicator_row = repo.get_indicator(indicator)
     if indicator_row is None:
         raise HTTPException(status_code=404, detail=f"Unknown indicator code: {indicator}")
-    series = repo.get_series(indicator, geo, breakdown_key, breakdown_value)
+    series = repo.get_series(indicator, geo, breakdown_key, breakdown_value, start, end)
     if series is None:
         where = f" with {breakdown_key}='{breakdown_value}'" if breakdown_key is not None else ""
         raise HTTPException(
@@ -446,6 +489,6 @@ def get_data(
                 release_date=o.release_date,
                 breakdowns=o.breakdowns,
             )
-            for o in series.observations
+            for o in bounded(series.observations)
         ],
     )

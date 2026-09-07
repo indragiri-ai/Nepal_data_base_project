@@ -11,10 +11,25 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from dataclasses import dataclass, field
+from datetime import date
 from decimal import Decimal
 from typing import Any, Protocol
 
 import psycopg
+
+from api.database import connect
+from api.policy import (
+    MAX_BREAKDOWN_ROWS,
+    MAX_GEO_ROWS,
+    MAX_INDICATOR_ROWS,
+    MAX_META_ROWS,
+    MAX_ROWS,
+    MAX_SEASONALITY_ROWS,
+    MAX_SPARK_CODES,
+    MAX_SPARK_POINTS,
+    bounded,
+    validate_window,
+)
 
 
 @dataclass(frozen=True)
@@ -161,7 +176,7 @@ class SearchHitRow:
 
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
-    def get_spark_series(self) -> list[IndicatorSparkRow]: ...
+    def get_spark_series(self, codes: list[str]) -> list[IndicatorSparkRow]: ...
     def get_indicator(self, code: str) -> IndicatorRow | None: ...
     def get_series(
         self,
@@ -169,6 +184,9 @@ class Repository(Protocol):
         geography_code: str,
         breakdown_key: str | None = None,
         breakdown_value: str | None = None,
+        start: date | None = None,
+        end: date | None = None,
+        metadata_only: bool = False,
     ) -> SeriesResult | None: ...
     def get_geo_values(
         self, indicator_code: str, level: str, parent_code: str | None = None
@@ -179,6 +197,7 @@ class Repository(Protocol):
         level: str,
         breakdown_key: str,
         period: str | None = None,
+        breakdown_value: str | None = None,
     ) -> GeoBreakdownResult | None: ...
     def get_seasonality(
         self, indicator_code: str, geography_code: str, breakdown_key: str
@@ -255,7 +274,7 @@ class PostgresRepository:
         self._dsn = dsn
 
     def _connect(self) -> psycopg.Connection[Any]:
-        return psycopg.connect(self._dsn)
+        return connect(self._dsn)
 
     def list_indicators(self) -> list[IndicatorRow]:
         """Every indicator that actually has at least one observation.
@@ -277,7 +296,9 @@ class PostgresRepository:
                 " LEFT JOIN sources os ON os.id = i.origin_source_id"
                 " LEFT JOIN sources ps ON ps.id = i.preferred_source_id"
                 " WHERE EXISTS (SELECT 1 FROM observations o WHERE o.indicator_id = i.id)"
-                " ORDER BY i.topic, i.code"
+                # One row past the cap: enough to know the answer overflowed,
+                # without building the overflow.
+                f" ORDER BY i.topic, i.code LIMIT {MAX_INDICATOR_ROWS + 1}"
             )
             return [
                 IndicatorRow(
@@ -292,7 +313,7 @@ class PostgresRepository:
                     source=r[8],
                     preferred_source=r[9],
                 )
-                for r in cur.fetchall()
+                for r in bounded(cur.fetchall(), MAX_INDICATOR_ROWS)
             ]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
@@ -301,8 +322,10 @@ class PostgresRepository:
             row = cur.fetchone()
         return IndicatorRow(*row) if row is not None else None
 
-    def get_spark_series(self, max_points: int = 16) -> list[IndicatorSparkRow]:
-        """Every indicator's national trend in ONE query, for the sector cards.
+    def get_spark_series(
+        self, codes: list[str], max_points: int = MAX_SPARK_POINTS
+    ) -> list[IndicatorSparkRow]:
+        """The named indicators' national trends in ONE query, for sector cards.
 
         Picks a single headline series per indicator+period: the empty-breakdown
         row (country-level WB, census all-sexes) if present, else the aggregate
@@ -339,15 +362,19 @@ class PostgresRepository:
                 "  JOIN geographies g ON g.id = o.geography_id"
                 "  JOIN time_periods t ON t.id = o.time_period_id"
                 "  WHERE g.code = 'NP' AND o.is_latest"
+                "    AND o.indicator_id IN (SELECT id FROM indicators WHERE code = ANY(%s))"
                 "    AND (o.breakdowns = '{}'::jsonb"
                 "         OR o.breakdowns->>'bfi_class' IN ('overall', 'commercial_banks'))"
-                ")"
+                "), recent AS ("
+                " SELECT *, row_number() OVER (PARTITION BY indicator_id"
+                " ORDER BY sort_key DESC) AS recency FROM picked WHERE rn = 1)"
                 " SELECT i.code, p.period, p.value"
-                " FROM picked p JOIN indicators i ON i.id = p.indicator_id"
-                " WHERE p.rn = 1"
-                " ORDER BY i.code, p.sort_key",
+                " FROM recent p JOIN indicators i ON i.id = p.indicator_id"
+                " WHERE p.recency <= %s ORDER BY i.code, p.sort_key"
+                f" LIMIT {MAX_SPARK_CODES * MAX_SPARK_POINTS + 1}",
+                (codes, max_points),
             )
-            rows = cur.fetchall()
+            rows = bounded(cur.fetchall(), MAX_SPARK_CODES * MAX_SPARK_POINTS)
         by_code: dict[str, list[tuple[str, Decimal]]] = {}
         for code, period, value in rows:
             by_code.setdefault(code, []).append((period, value))
@@ -370,19 +397,39 @@ class PostgresRepository:
         geography_code: str,
         breakdown_key: str | None = None,
         breakdown_value: str | None = None,
+        start: date | None = None,
+        end: date | None = None,
+        metadata_only: bool = False,
     ) -> SeriesResult | None:
         """One indicator's series for one geography, optionally ONE breakdown.
 
         The breakdown filter exists because some series are enormous when taken
-        whole: the Kalimati daily prices are 76,747 observations per indicator
-        across 25 commodities, so a chart of one vegetable would otherwise mean
-        sending every vegetable to the browser and throwing 24/25 of it away.
+        whole: the Kalimati daily prices are 106,236 observations for one
+        indicator across 25 commodities, so a chart of one vegetable would
+        otherwise mean sending every vegetable to the browser and throwing
+        24/25 of it away. `bounded` refuses whatever is left over the cap
+        rather than serving it.
+
+        `metadata_only` answers "where did this series come from?" with one
+        row — the provenance the seasonality endpoint needs, without paying for
+        the observations it then throws away.
         """
+        validate_window(breakdown_key, breakdown_value, start, end)
         breakdown_filter = ""
-        params: list[str] = [indicator_code, geography_code]
+        params: list[Any] = [indicator_code, geography_code]
         if breakdown_key is not None and breakdown_value is not None:
             breakdown_filter = " AND o.breakdowns->>%s = %s"
             params += [breakdown_key, breakdown_value]
+        if start is not None and end is not None:
+            breakdown_filter += " AND t.gregorian_start BETWEEN %s AND %s"
+            params += [start, end]
+        # Newest release first when only provenance is wanted, so the single
+        # row carries the same release date the full series would report.
+        order = (
+            " ORDER BY r.release_date DESC LIMIT 1"
+            if metadata_only
+            else f" ORDER BY t.sort_key DESC, o.id LIMIT {MAX_ROWS + 1}"
+        )
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
                 "SELECT t.gregorian_label, t.sort_key, o.value, o.status, o.footnote,"
@@ -398,10 +445,13 @@ class PostgresRepository:
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.code = %s AND o.is_latest"
                 + breakdown_filter
-                + " ORDER BY t.sort_key",
+                + order,
                 tuple(params),
             )
-            rows = cur.fetchall()
+            rows = bounded(cur.fetchall())
+        # Newest-first above so the cap keeps the most recent data; the API
+        # contract is oldest-first.
+        rows.reverse()
         if not rows:
             return None
         observations = [
@@ -428,7 +478,7 @@ class PostgresRepository:
             dataset_name=first[11],
             license=first[12],
             latest_release_date=max(str(row[5]) for row in rows),
-            observations=observations,
+            observations=[] if metadata_only else observations,
         )
 
     def get_geo_values(
@@ -457,9 +507,13 @@ class PostgresRepository:
             params.append(parent_code)
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
-                "SELECT g.code, g.name_en, g.name_ne, o.value,"
+                # `g.code` is aliased because `u.code` (the unit) is in the same
+                # select list: an unqualified ORDER BY code is ambiguous, and
+                # Postgres rejects the whole query.
+                "WITH candidates AS (SELECT g.code AS geo_code, g.name_en, g.name_ne, o.value,"
                 " t.gregorian_label, i.name_en, u.code, u.name_en,"
-                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key"
+                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key,"
+                " dense_rank() OVER (ORDER BY t.sort_key DESC) AS recency"
                 " FROM observations o"
                 " JOIN indicators i ON i.id = o.indicator_id"
                 " JOIN geographies g ON g.id = o.geography_id"
@@ -469,10 +523,14 @@ class PostgresRepository:
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.level = %s AND o.is_latest"
-                "   AND o.breakdowns = '{}'::jsonb" + parent_filter + " ORDER BY g.code",
+                "   AND o.breakdowns = '{}'::jsonb" + parent_filter
+                + ") SELECT * FROM candidates WHERE recency = 1 ORDER BY geo_code"
+                # 753 local units is the widest map Nepal has; the cap sits
+                # just above it so no honest map is refused.
+                f" LIMIT {MAX_GEO_ROWS + 1}",
                 tuple(params),
             )
-            all_rows = cur.fetchall()
+            all_rows = bounded(cur.fetchall(), MAX_GEO_ROWS)
         rows = latest_period_rows(all_rows)
         if not rows:
             return None
@@ -499,6 +557,7 @@ class PostgresRepository:
         level: str,
         breakdown_key: str,
         period: str | None = None,
+        breakdown_value: str | None = None,
     ) -> GeoBreakdownResult | None:
         """Every breakdown value for every geography at a level, one period.
 
@@ -524,11 +583,23 @@ class PostgresRepository:
         if period is not None:
             period_filter = " AND t.gregorian_label = %s"
             params.append(period)
+        # Optional: one value of the breakdown (one party's map). The total per
+        # geography is computed BEFORE this filter, so a single-party map still
+        # carries the denominator its share needs.
+        value_filter = ""
+        if breakdown_value is not None:
+            value_filter = " AND breakdown_value = %s"
+            params.append(breakdown_value)
         with self._connect() as conn, conn.cursor() as cur:
             cur.execute(
-                "SELECT g.code, g.name_en, g.name_ne, o.breakdowns->>%s, o.value,"
+                # Aliased for the same reason as `get_geo_values`: `u.code` is
+                # also selected, so a bare ORDER BY code is ambiguous.
+                "WITH candidates AS (SELECT g.code AS geo_code, g.name_en, g.name_ne,"
+                " o.breakdowns->>%s AS breakdown_value, o.value,"
                 " t.gregorian_label, i.name_en, u.code, u.name_en,"
-                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key"
+                " s.name_en, d.name_en, d.license, r.release_date, t.sort_key,"
+                " sum(o.value) OVER (PARTITION BY g.id, t.id) AS geo_total,"
+                " dense_rank() OVER (ORDER BY t.sort_key DESC) AS recency"
                 " FROM observations o"
                 " JOIN indicators i ON i.id = o.indicator_id"
                 " JOIN geographies g ON g.id = o.geography_id"
@@ -538,10 +609,15 @@ class PostgresRepository:
                 " JOIN sources s ON s.id = d.source_id"
                 " JOIN releases r ON r.id = o.release_id"
                 " WHERE i.code = %s AND g.level = %s AND o.is_latest"
-                "   AND o.breakdowns ? %s" + period_filter + " ORDER BY g.code",
+                "   AND o.breakdowns ? %s" + period_filter
+                + ") SELECT * FROM candidates WHERE recency = 1"
+                + value_filter
+                + " ORDER BY geo_code"
+                # 6,777 cells (drinking water by local unit) is today's widest.
+                f" LIMIT {MAX_BREAKDOWN_ROWS + 1}",
                 tuple(params),
             )
-            all_rows = cur.fetchall()
+            all_rows = bounded(cur.fetchall(), MAX_BREAKDOWN_ROWS)
         if not all_rows:
             return None
         if period is None:
@@ -556,7 +632,7 @@ class PostgresRepository:
             code, name_en, name_ne, bvalue, value = row[0], row[1], row[2], row[3], row[4]
             if bvalue is None:
                 continue
-            totals[code] = totals.get(code, Decimal(0)) + value
+            totals[code] = row[14]
             names[code] = (name_en, name_ne)
             cells.append(GeoBreakdownCell(geo_code=code, breakdown_value=bvalue, value=value))
         return GeoBreakdownResult(
@@ -605,12 +681,12 @@ class PostgresRepository:
                 " WHERE i.code = %s AND g.code = %s AND o.is_latest"
                 "   AND o.breakdowns ? %s"
                 " GROUP BY bv, m"
-                " ORDER BY bv, m",
+                f" ORDER BY bv, m LIMIT {MAX_SEASONALITY_ROWS + 1}",
                 (breakdown_key, indicator_code, geography_code, breakdown_key),
             )
             return [
                 SeasonalityRow(breakdown_value=bv, month=m, mean_value=mean, days=n)
-                for bv, m, mean, n in cur.fetchall()
+                for bv, m, mean, n in bounded(cur.fetchall(), MAX_SEASONALITY_ROWS)
             ]
 
     def search(self, term: str, limit: int = 20) -> list[SearchHitRow]:
@@ -711,9 +787,9 @@ class PostgresRepository:
                 " JOIN ingestion_log il ON il.dataset_id = d.id"
                 " GROUP BY d.id, d.name_en, s.name_en"
                 " HAVING MAX(il.finished_at) FILTER (WHERE il.status = 'success') IS NOT NULL"
-                " ORDER BY last_success DESC"
+                f" ORDER BY last_success DESC LIMIT {MAX_META_ROWS + 1}"
             )
-            rows = cur.fetchall()
+            rows = bounded(cur.fetchall(), MAX_META_ROWS)
         return [
             DatasetMetaRow(
                 dataset=row[0],

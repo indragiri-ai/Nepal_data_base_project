@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
+from datetime import date
 from decimal import Decimal
 
 import pytest
 from fastapi.testclient import TestClient
 
 from api.main import app, get_repository
+from api.policy import MAX_SPARK_CODES
 from api.repository import (
     DatasetMetaRow,
     GeoBreakdownCell,
@@ -178,8 +180,8 @@ class FakeRepository:
         hits.sort(key=lambda h: (-h.score, h.name_en))
         return hits[:limit]
 
-    def get_spark_series(self) -> list[IndicatorSparkRow]:
-        return [
+    def get_spark_series(self, codes: list[str]) -> list[IndicatorSparkRow]:
+        available = [
             IndicatorSparkRow(
                 code="GDP_GROWTH",
                 latest_period="2020",
@@ -193,6 +195,7 @@ class FakeRepository:
                 points=[Decimal("29164578")],
             ),
         ]
+        return [row for row in available if row.code in codes]
 
     def get_indicator(self, code: str) -> IndicatorRow | None:
         by_code = {
@@ -241,10 +244,13 @@ class FakeRepository:
         level: str,
         breakdown_key: str,
         period: str | None = None,
+        breakdown_value: str | None = None,
     ) -> GeoBreakdownResult | None:
         if indicator_code != "CENSUS_POP_TOTAL" or breakdown_key != "sex":
             return None
         if level != "district":
+            return None
+        if breakdown_value is not None and breakdown_value not in ("female", "male"):
             return None
         # Two periods, so a caller that omits `period` must still get exactly
         # one — and the newest.
@@ -258,6 +264,10 @@ class FakeRepository:
             GeoBreakdownCell("NP0102", "female", Decimal(10 * scale)),
             GeoBreakdownCell("NP0102", "male", Decimal(30 * scale)),
         ]
+        # One value asked for: the cells narrow, the per-geography totals do
+        # not — that is what the real query's window sum guarantees.
+        if breakdown_value is not None:
+            cells = [c for c in cells if c.breakdown_value == breakdown_value]
         return GeoBreakdownResult(
             indicator_code=indicator_code,
             indicator_name="Population (Census 2021)",
@@ -310,6 +320,9 @@ class FakeRepository:
         geography_code: str,
         breakdown_key: str | None = None,
         breakdown_value: str | None = None,
+        start: date | None = None,
+        end: date | None = None,
+        metadata_only: bool = False,
     ) -> SeriesResult | None:
         if indicator_code == "FISCAL_REVENUE_ACTUAL" and geography_code == "NP":
             return SeriesResult(
@@ -481,7 +494,9 @@ def test_list_indicators_exposes_headline_badge_fields(client: TestClient) -> No
 def test_indicator_sparks(client: TestClient) -> None:
     """/v1/indicators/spark returns latest value + a short trend per indicator,
     and is matched before /v1/indicators/{code} (so 'spark' is not a code)."""
-    resp = client.get("/v1/indicators/spark")
+    resp = client.get(
+        "/v1/indicators/spark", params={"codes": ["GDP_GROWTH", "CENSUS_POP_TOTAL"]}
+    )
     assert resp.status_code == 200
     by_code = {r["code"]: r for r in resp.json()}
     gdp = by_code["GDP_GROWTH"]
@@ -490,6 +505,21 @@ def test_indicator_sparks(client: TestClient) -> None:
     assert gdp["points"] == [7.62, 6.66, -2.37]
     # a single-year census fact has a one-point series
     assert by_code["CENSUS_POP_TOTAL"]["points"] == [29164578.0]
+
+
+def test_indicator_sparks_serves_only_the_codes_asked_for(client: TestClient) -> None:
+    """The endpoint used to answer "every indicator" — a query over the whole
+    warehouse on every sector page (security review 2026-09-06, finding 1)."""
+    resp = client.get("/v1/indicators/spark", params={"codes": "GDP_GROWTH"})
+    assert resp.status_code == 200
+    assert [r["code"] for r in resp.json()] == ["GDP_GROWTH"]
+
+
+def test_indicator_sparks_refuses_an_unbounded_request(client: TestClient) -> None:
+    """No codes at all, and more codes than the cap, are both refused."""
+    assert client.get("/v1/indicators/spark").status_code == 422
+    too_many = [f"CODE_{n}" for n in range(MAX_SPARK_CODES + 1)]
+    assert client.get("/v1/indicators/spark", params={"codes": too_many}).status_code == 422
 
 
 def test_get_data_includes_provenance(client: TestClient) -> None:
@@ -833,6 +863,56 @@ def test_geo_breakdown_carries_provenance(client: TestClient) -> None:
         params={"indicator": "CENSUS_POP_TOTAL", "level": "district", "breakdown_key": "sex"},
     ).json()
     assert body["provenance"]["source"] == "National Statistics Office"
+
+
+def test_geo_breakdown_can_narrow_to_one_value_without_losing_the_total(
+    client: TestClient,
+) -> None:
+    """One party's map, drawn as a share: the cells narrow to that party, but
+    each geography's total across ALL parties still travels with it, or the
+    share has no denominator."""
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={
+            "indicator": "CENSUS_POP_TOTAL",
+            "level": "district",
+            "breakdown_key": "sex",
+            "period": "2021",
+            "breakdown_value": "female",
+        },
+    ).json()
+    assert {c["key"] for c in body["cells"]} == {"female"}
+    totals = {g["geo_code"]: g["value"] for g in body["geographies"]}
+    assert totals == {"NP0101": 100.0, "NP0102": 40.0}
+
+
+def test_geo_breakdown_still_serves_every_value_when_none_is_named(
+    client: TestClient,
+) -> None:
+    """`breakdown_value` is optional. Requiring it would have taken the whole
+    stacked election map away."""
+    body = client.get(
+        "/v1/data/geo/breakdown",
+        params={"indicator": "CENSUS_POP_TOTAL", "level": "district", "breakdown_key": "sex"},
+    ).json()
+    assert {c["key"] for c in body["cells"]} == {"female", "male"}
+
+
+def test_geo_breakdown_still_accepts_local_units(client: TestClient) -> None:
+    """753 municipalities is a legitimate map — the local election panel draws
+    exactly that one. Refusing the level is a lost feature, not a fixed risk;
+    the row cap is what keeps it bounded."""
+    resp = client.get(
+        "/v1/data/geo/breakdown",
+        params={
+            "indicator": "CENSUS_POP_TOTAL",
+            "level": "local_unit",
+            "breakdown_key": "sex",
+        },
+    )
+    # The fake holds no local-unit rows, so 404 is the honest answer — what
+    # matters is that the level itself is not rejected as invalid.
+    assert resp.status_code == 404
 
 
 def test_geo_breakdown_rejects_a_bad_level(client: TestClient) -> None:

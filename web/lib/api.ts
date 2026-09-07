@@ -68,14 +68,45 @@ export class ApiError extends Error {
   }
 }
 
+// Deduplicate React mounts and queue charts so normal page loads stay within
+// the server's simultaneous-request allowance. No automatic retry/pagination.
+const pending = new Map<string, Promise<unknown>>();
+const cached = new Map<string, { expires: number; value: unknown }>();
+const waiting: Array<() => void> = [];
+let active = 0;
+
 async function getJson<T>(path: string): Promise<T> {
+  const hit = cached.get(path);
+  if (hit && hit.expires > Date.now()) return hit.value as T;
+  const running = pending.get(path);
+  if (running) return running as Promise<T>;
+  const request = (async () => {
+    if (active >= 3) await new Promise<void>((resolve) => waiting.push(resolve));
+    else active += 1;
+    try {
+      const value = await requestJson<T>(path);
+      if (cached.size >= 150) cached.delete(cached.keys().next().value!);
+      cached.set(path, { expires: Date.now() + 60_000, value });
+      return value;
+    } finally {
+      const next = waiting.shift();
+      if (next) next();
+      else active -= 1;
+    }
+  })();
+  pending.set(path, request);
+  try { return await request; }
+  finally { pending.delete(path); }
+}
+
+async function requestJson<T>(path: string): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
+    res = await fetch(`${API_BASE}${path}`, { cache: "no-store", signal: AbortSignal.timeout(25_000) });
   } catch {
     // Network-level failure: API not running, CORS, DNS, offline.
     throw new ApiError(
-      `Couldn't reach the data service at ${API_BASE}. Is the API running (make api)?`,
+      "The data service could not be reached. Please try again shortly.",
       0,
     );
   }
@@ -87,6 +118,7 @@ async function getJson<T>(path: string): Promise<T> {
     } catch {
       /* response had no JSON body; keep the generic message */
     }
+    if (res.status === 429) detail += ` Try again in ${res.headers.get("Retry-After") ?? "a few"} seconds.`;
     throw new ApiError(detail, res.status);
   }
   return (await res.json()) as T;
@@ -123,8 +155,10 @@ export interface IndicatorSpark {
 
 /** Every indicator's latest value + sparkline points in a single request — the
  *  data behind the sector-page cards (avoids one fetch per indicator). */
-export function fetchIndicatorSparks(): Promise<IndicatorSpark[]> {
-  return getJson<IndicatorSpark[]>("/v1/indicators/spark");
+export function fetchIndicatorSparks(codes: string[]): Promise<IndicatorSpark[]> {
+  const params = new URLSearchParams();
+  codes.forEach((code) => params.append("codes", code));
+  return getJson<IndicatorSpark[]>(`/v1/indicators/spark?${params}`);
 }
 
 export type GeoLevel = "province" | "district" | "local_unit";
@@ -152,6 +186,8 @@ export function fetchSeriesSlice(
   geo: string,
   breakdownKey: string,
   breakdownValue: string,
+  start?: string,
+  end?: string,
 ): Promise<DataResponse> {
   const params = new URLSearchParams({
     indicator: indicatorCode,
@@ -159,6 +195,8 @@ export function fetchSeriesSlice(
     breakdown_key: breakdownKey,
     breakdown_value: breakdownValue,
   });
+  if (start) params.set("start", start);
+  if (end) params.set("end", end);
   return getJson<DataResponse>(`/v1/data?${params.toString()}`);
 }
 
@@ -195,6 +233,9 @@ export function fetchGeoBreakdown(
   level: GeoLevel,
   breakdownKey: string,
   period?: string,
+  /** One value of the breakdown (a single party's map). Omit for every value,
+   *  which is what a stacked or share map needs. */
+  breakdownValue?: string,
 ): Promise<GeoBreakdownResponse> {
   const params = new URLSearchParams({
     indicator: indicatorCode,
@@ -202,6 +243,7 @@ export function fetchGeoBreakdown(
     breakdown_key: breakdownKey,
   });
   if (period) params.set("period", period);
+  if (breakdownValue) params.set("breakdown_value", breakdownValue);
   return getJson<GeoBreakdownResponse>(`/v1/data/geo/breakdown?${params.toString()}`);
 }
 
