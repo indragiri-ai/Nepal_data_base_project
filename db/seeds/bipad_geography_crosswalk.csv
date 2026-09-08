@@ -1,0 +1,831 @@
+bipad_level,bipad_id,bipad_code,bipad_title_en,geography_code,geography_name_en,evidence
+district,1,taplejung,Taplejung,NP0101,Taplejung,both
+district,2,panchthar,Panchthar,NP0102,Panchthar,both
+district,3,ilam,Ilam,NP0103,Ilam,both
+district,4,jhapa,Jhapa,NP0104,Jhapa,both
+district,5,morang,Morang,NP0105,Morang,both
+district,6,sunsari,Sunsari,NP0106,Sunsari,both
+district,7,dhankuta,Dhankuta,NP0107,Dhankuta,both
+district,8,tehrathum,Terhathum,NP0108,Terhathum,both
+district,10,sankhuwasabha,Sankhuwasabha,NP0109,Sankhuwasabha,both
+district,9,bhojpur,Bhojpur,NP0110,Bhojpur,both
+district,11,solukhumbu,Solukhumbu,NP0111,Solukhumbu,both
+district,12,khotang,Khotang,NP0112,Khotang,both
+district,13,okhaldhunga,Okhaldhunga,NP0113,Okhaldhunga,both
+district,14,udayapur,Udayapur,NP0114,Udayapur,both
+district,16,saptari,Saptari,NP0215,Saptari,both
+district,15,siraha,Siraha,NP0216,Siraha,both
+district,17,dhanusha,Dhanusa,NP0217,Dhanusha,boundary
+district,18,mahottari,Mahottari,NP0218,Mahottari,both
+district,19,sarlahi,Sarlahi,NP0219,Sarlahi,both
+district,32,rautahat,Rautahat,NP0232,Rautahat,both
+district,33,bara,Bara,NP0233,Bara,both
+district,34,parsa,Parsa,NP0234,Parsa,both
+district,20,sindhuli,Sindhuli,NP0320,Sindhuli,both
+district,21,ramechhap,Ramechhap,NP0321,Ramechhap,both
+district,22,dolakha,Dolakha,NP0322,Dolakha,both
+district,24,sindhupalchowk,Sindhupalchok,NP0323,Sindhupalchok,both
+district,30,kavre,Kavrepalanchok,NP0324,Kabhrepalanchok,boundary
+district,28,lalitpur,Lalitpur,NP0325,Lalitpur,both
+district,29,bhaktapur,Bhaktapur,NP0326,Bhaktapur,both
+district,27,ktm,Kathmandu,NP0327,Kathmandu,both
+district,25,nuwakot,Nuwakot,NP0328,Nuwakot,both
+district,23,rasuwa,Rasuwa,NP0329,Rasuwa,both
+district,26,dhading,Dhading,NP0330,Dhading,both
+district,31,makwanpur,Makwanpur,NP0331,Makawanpur,boundary
+district,35,chitwan,Chitwan,NP0335,Chitawan,boundary
+district,44,gorkha,Gorkha,NP0436,Gorkha,both
+district,45,lamjung,Lamjung,NP0437,Lamjung,both
+district,47,manang,Manang,NP0438,Manang,both
+district,46,kaski,Kaski,NP0439,Kaski,both
+district,43,tanahun,Tanahu,NP0440,Tanahu,both
+district,42,syangja,Syangja,NP0441,Syangja,both
+district,51,parbat,Parbat,NP0442,Parbat,both
+district,50,baglung,Baglung,NP0443,Baglung,both
+district,49,myagdi,Myagdi,NP0444,Myagdi,both
+district,48,mustang,Mustang,NP0445,Mustang,both
+district,481,nawalparasieast,Nawalparasi East,NP0447,Nawalparasi East,both
+district,39,palpa,Palpa,NP0546,Palpa,both
+district,482,nawalparasiwest,Nawalparasi West,NP0547,Nawalparasi West,both
+district,37,rupandehi,Rupandehi,NP0548,Rupandehi,both
+district,38,kapilvastu,Kapilbastu,NP0549,Kapilbastu,both
+district,40,arghakhanchi,Arghakhanchi,NP0550,Arghakhanchi,both
+district,41,gulmi,Gulmi,NP0551,Gulmi,both
+district,541,rukumeast,Rukum East,NP0552,Rukum East,both
+district,54,rolpa,Rolpa,NP0554,Rolpa,both
+district,53,pyuthan,Pyuthan,NP0555,Pyuthan,both
+district,52,dang,Dang,NP0556,Dang,both
+district,66,banke,Banke,NP0557,Banke,both
+district,65,bardiya,Bardiya,NP0558,Bardiya,both
+district,542,rukumwest,Rukum West,NP0652,Rukum West,both
+district,55,salyan,Salyan,NP0653,Salyan,both
+district,64,surkhet,Surkhet,NP0659,Surkhet,both
+district,62,jajarkot,Jajarkot,NP0660,Jajarkot,both
+district,63,dailekh,Dailekh,NP0661,Dailekh,both
+district,57,dolpa,Dolpa,NP0662,Dolpa,both
+district,60,jumla,Jumla,NP0663,Jumla,both
+district,61,kalikot,Kalikot,NP0664,Kalikot,both
+district,58,mugu,Mugu,NP0665,Mugu,both
+district,59,humla,Humla,NP0666,Humla,both
+district,71,bajhang,Bajhang,NP0767,Bajhang,both
+district,70,bajura,Bajura,NP0768,Bajura,both
+district,69,achham,Achham,NP0769,Achham,both
+district,68,doti,Doti,NP0770,Doti,both
+district,67,kailali,Kailali,NP0771,Kailali,both
+district,75,kanchanpur,Kanchanpur,NP0772,Kanchanpur,both
+district,74,dadeldhura,Dadeldhura,NP0773,Dadeldhura,both
+district,73,baitadi,Baitadi,NP0774,Baitadi,both
+district,72,darchula,Darchula,NP0775,Darchula,both
+municipality,1006,phunglingmun,Phungling,NP0101301,Phungling,both
+municipality,1005,phaktanglungmun,Phaktanglung,NP0101401,Phaktanlung,boundary
+municipality,1004,mikwakholamun,Mikwakhola,NP0101402,Mikwakhola,both
+municipality,1008,sirijanghamun,Sirijangha,NP0101403,Sirijanga,boundary
+municipality,1003,meringdenmun,Meringden,NP0101404,Meringden,both
+municipality,1002,maiwakholamun,Maiwakhola,NP0101405,Maiwakhola,both
+municipality,1001,aathraitribenimun,Aathrai Tribeni,NP0101406,Aatharai Tribeni,boundary
+municipality,1009,yangwarakmuntaplejung,Pathibhara Yangwarak,NP0101407,Pathivara Yangwarak,boundary
+municipality,1007,sidingbamun,Sidingba,NP0101408,Sidingba,both
+municipality,2006,phidimmun,Phidim,NP0102301,Phidim,both
+municipality,2003,hilihangmun,Hilihang,NP0102401,Hilihan,boundary
+municipality,2008,yangwarakmunpanchthar,Yangwarak,NP0102402,Yangbarak,boundary
+municipality,2001,phalelungmun,Falelung,NP0102403,Falelung,both
+municipality,2004,kummayakmun,Kummayak,NP0102404,Kummayak,both
+municipality,2002,phalgunandamun,Falgunanda,NP0102405,Falgunanda,both
+municipality,2007,tumwewamun,Tumbewa,NP0102406,Tumbewa,both
+municipality,2005,miklajungmunpanchthar,Miklajung,NP0102407,Miklajung,both
+municipality,3002,deumaimun,Deumai,NP0103301,Deumai,both
+municipality,3004,ilammun,Ilam,NP0103302,Illam,boundary
+municipality,3010,suryodayamun,Suryodaya,NP0103303,Suryodaya,both
+municipality,3005,maimun,Mai,NP0103304,Mai,both
+municipality,3003,phakphokthummun,Phakphokthum,NP0103401,Fakfokathum,boundary
+municipality,3009,sandakpurmun,Sandakpur,NP0103402,Sandakpur,both
+municipality,3006,maijogmaimun,Maijogmai,NP0103403,Mai Jogmai,both
+municipality,3001,chulachulimun,Chulachuli,NP0103404,Chulachuli,both
+municipality,3007,mansebungmun,Mangsebung,NP0103405,Mangsebung,both
+municipality,3008,rongmun,Rong,NP0103406,Rong,both
+municipality,4006,damakmun,Damak,NP0104301,Damak,both
+municipality,4015,shivasatakshimun,Shivasataxi,NP0104302,Shivasatakshi,boundary
+municipality,4013,kankaimun,Kankai,NP0104303,Kankai,both
+municipality,4001,arjundharamun,Arjundhara,NP0104304,Arjundhara,both
+municipality,4014,mechinagarmun,Mechinagar,NP0104305,Mechinagar,both
+municipality,4007,gauradahamun,Gauradhaha,NP0104306,Gauradaha,boundary
+municipality,4004,birtamodmun,Birtamode,NP0104307,Birtamod,boundary
+municipality,4003,bhadrapurmun,Bhadrapur,NP0104308,Bhadrapur,both
+municipality,4012,kamalmun,Kamal,NP0104401,Kamal,both
+municipality,4005,buddhashantimun,Buddhashanti,NP0104402,Buddhashanti,both
+municipality,4008,gaurigunjmun,Gauriganj,NP0104403,Gauriganj,both
+municipality,4010,jhapamun,Jhapa,NP0104404,Jhapa,both
+municipality,4002,bahradashimun,Barhadashi,NP0104405,Barhadashi,both
+municipality,4009,haldibarimun,Haldibari,NP0104406,Haldibari,both
+municipality,4011,kachankawalmun,Kachankawal,NP0104407,Kachanakawal,boundary
+municipality,5002,biratnagarmun,Biratnagar,NP0105101,Biratnagar,both
+municipality,5010,letangmun,Letang,NP0105301,Letang,both
+municipality,5015,sundarharaichamun,Sundarharaicha,NP0105302,Sundarharaicha,both
+municipality,5001,belbarimun,Belbari,NP0105303,Belbari,both
+municipality,5012,patharishanishcharemun,Patahrishanishchare,NP0105304,Pathari Shanishchare,boundary
+municipality,5017,urlabarimun,Uralabari,NP0105305,Urlabari,boundary
+municipality,5013,rangelimun,Rangeli,NP0105306,Rangeli,both
+municipality,5016,sunawarshimun,Sunwarshi,NP0105307,Sunwarshi,both
+municipality,5014,ratuwamaimun,Ratuwamai,NP0105308,Ratuwamai,both
+municipality,5009,kerabarimun,Kerabari,NP0105401,Kerabari,both
+municipality,5011,miklajungmunmorang,Miklajung,NP0105402,Miklajung,both
+municipality,5007,kanepokharimun,Kanepokhari,NP0105403,Kanepokhari,both
+municipality,5003,budhigangamunmorang,Budhiganga,NP0105404,Budhiganga,both
+municipality,5005,gramthanmun,Gramthan,NP0105405,Gramthan,both
+municipality,5008,kataharimun,Katahari,NP0105406,Katahari,both
+municipality,5006,jahadamun,Jahada,NP0105407,Jahada,both
+municipality,5004,dhanapalthanmun,Dhanpalthan,NP0105408,Dhanapalthan,boundary
+municipality,6005,dharan,Dharan,NP0106201,Dharan,both
+municipality,6010,itaharimun,Itahari,NP0106202,Itahari,both
+municipality,6001,barahamun,Barah,NP0106301,Barahachhetra,boundary
+municipality,6012,ramdhunimun,Ramdhuni,NP0106302,Ramdhuni,both
+municipality,6009,inaruwamun,Inaruwa,NP0106303,Inaruwa,both
+municipality,6006,duhabimun,Duhabi,NP0106304,Duhabi,both
+municipality,6011,koshimun,Koshi,NP0106401,Koshi,both
+municipality,6003,bhokrahamun,Bhokraha Narsingh,NP0106402,Bhokraha Narsingh,both
+municipality,6007,gadhimun,Gadhi,NP0106403,Gadhi,both
+municipality,6008,harinagaramun,Harinagar,NP0106404,Harinagar,both
+municipality,6004,dewanganjmun,Devangunj,NP0106405,Dewangunj,boundary
+municipality,6002,barjumun,Barju,NP0106406,Barju,both
+municipality,7005,mahalaxmimundhankuta,Mahalaxmi,NP0107301,Mahalaxmi,both
+municipality,7006,pakhribasmun,Pakhribas,NP0107302,Pakhribas,both
+municipality,7003,dhankutamun,Dhankuta,NP0107303,Dhankuta,both
+municipality,7004,khalsachhintangshahidbhumimun,Shahidbhumi,NP0107401,Shahidbhumi,both
+municipality,7002,chhatharjorpatimun,Chhathar Jorpati,NP0107402,Chhathar Jorpati,both
+municipality,7007,sangurigadhimun,Sangurigadhi,NP0107403,Sangurigadhi,both
+municipality,7001,choubisemun,Chaubise,NP0107404,Chaubise,both
+municipality,8003,laliguransmun,Laligurans,NP0108301,Laligurans,both
+municipality,8005,myanglungmun,Myanglung,NP0108302,Myanglung,both
+municipality,8004,menchhayayemmun,Menchayam,NP0108401,Menchhayayem,boundary
+municipality,8006,phedapmun,Phedap,NP0108402,Phedap,both
+municipality,8001,aathraimun,Aathrai,NP0108403,Aatharai,boundary
+municipality,8002,chhatharmun,Chhathar,NP0108404,Chhathar,both
+municipality,9005,khandbarimun,Khandbari,NP0109301,Khandabari,boundary
+municipality,9008,panchkhapanmun,Panchakhapan,NP0109302,Panchakhapan,both
+municipality,9002,chainpurmun,Chainpur,NP0109303,Chainapur,boundary
+municipality,9004,dharmadevimun,Dharmadevi,NP0109304,Dharmadevi,both
+municipality,9006,madimunsankhuwasabha,Madi,NP0109305,Madi,both
+municipality,9007,makalumun,Makalu,NP0109401,Makalu,both
+municipality,9001,bhotkholamun,Bhotkhola,NP0109402,Bhotkhola,both
+municipality,9010,silichongmun,Silichong,NP0109403,Silichong,both
+municipality,9003,chichilamun,Chichila,NP0109404,Chichila,both
+municipality,9009,savapokharimun,Savapokhari,NP0109405,Sabhapokhari,boundary
+municipality,10008,shadanandamun,Shadananda,NP0110301,Shadananda,both
+municipality,10003,bhojpurmun,Bhojpur,NP0110302,Bhojpur,both
+municipality,10007,salpasilichhomun,Salpasilichho,NP0110401,Salpa Silichho,both
+municipality,10009,tyamkemaiyummun,Temkemaiyung,NP0110402,Temkemaiyum,boundary
+municipality,10002,arunmun,Arun,NP0110403,Arun,both
+municipality,10006,ramprasadraimun,Ramprasadrai,NP0110404,Ramprasad Rai,both
+municipality,10005,pauwadungmamun,Pauwadungma,NP0110405,Pauwa Dunma,boundary
+municipality,10001,aamchowkmun,Aamchowk,NP0110406,Aamchowk,both
+municipality,10004,hatuwagadhimun,Hatuwagadhi,NP0110407,Hatuwagadhi,both
+municipality,11007,solududhkundamun,Solududhkunda,NP0111301,Solu Dhudhakunda,boundary
+municipality,11003,khumbupasanglhamumun,Khumbu Pasanglhamu,NP0111401,Khumbu Pasanglhamu,both
+municipality,11005,mahakulungmun,Mahakulung,NP0111402,Mahakulung,both
+municipality,11004,likhupikemun,Likhu Pike,NP0111403,Likhu Pike,both
+municipality,11002,dudhkoshimun,Mapya Dudhkoshi,NP0111404,Mapya Dudhkoshi,both
+municipality,11006,nechasalyanmun,Nechasalyan,NP0111405,Necha Salyan,both
+municipality,11001,thulungdudhkoshimun,Thulung Dudhkoshi,NP0111406,Thulung Dudhkoshi,both
+municipality,11008,sotangmun,Sotang,NP0111407,Sotang,both
+municipality,13004,halesituwachungmun,Halesi Tuwachung,NP0112301,Halesi Tuwachung,both
+municipality,13009,rupakotmajhuwagadhimun,Diktel Rupakot Majhuwagadhi,NP0112302,Diktel Rupakot Majhuwagadhi,both
+municipality,13001,aiselukharkamun,Ainselukhark,NP0112401,Aiselukharka,boundary
+municipality,13006,kepilasgadhimun,Kepilasagadhi,NP0112402,Kepilasgadhi,boundary
+municipality,13008,lamidandamun,Rawa Besi,NP0112403,Rawa Besi,both
+municipality,13003,diprungmun,Diprung Chuichumma,NP0112404,Diprung Chuichumma,both
+municipality,13010,sakelamun,Sakela,NP0112405,Sakela,both
+municipality,13007,khotehangmun,Khotehang,NP0112406,Khotehang,both
+municipality,13002,barahapokharimun,Barahapokhari,NP0112407,Baraha Pokhari,both
+municipality,13005,jantedhungamun,Jantedhunga,NP0112408,Jante Dhunga,both
+municipality,12007,siddhicharanmun,Siddhicharan,NP0113301,Siddhicharan,both
+municipality,12003,khijidembamun,Khijidemba,NP0113401,Khiji Demba,both
+municipality,12004,likhumunokhaldhunga,Likhu,NP0113402,Likhu,both
+municipality,12006,molungmun,Molung,NP0113403,Molung,both
+municipality,12001,champadevimun,Champadevi,NP0113404,Champadevi,both
+municipality,12008,sunkoshimunokhaldhunga,Sunkoshi,NP0113405,Sunkoshi,both
+municipality,12002,chishankhugadhimun,Chisankhugadhi,NP0113406,Chishankhu Gadhi,boundary
+municipality,12005,manebhanjyangmun,Manebhanjyang,NP0113407,Manebhanjyang,both
+municipality,14003,katarimun,Katari,NP0114301,Katari,both
+municipality,14007,triyugamun,Triyuga,NP0114302,Triyuga,both
+municipality,14002,chaudandigadhimun,Chaudandigadhi,NP0114303,Chaudandigadhi,both
+municipality,14001,belakamun,Belaka,NP0114304,Belaka,both
+municipality,14006,taplimun,Tapli,NP0114401,Tapli,both
+municipality,14005,sunkoshimunudayapur,Limchunbung,NP0114402,Limchunbung,both
+municipality,14008,udayapurgadhimun,Udayapurgadhi,NP0114403,Udayapurgadhi,both
+municipality,14004,rautamaimun,Rautamai,NP0114404,Rautamai,both
+municipality,15016,surungamun,Surunga,NP0215301,Surunga,both
+municipality,15010,khadakmun,Khadak,NP0215302,Khadak,both
+municipality,15015,shambhunathmun,Shambhunath,NP0215303,Shambhunath,both
+municipality,15014,saptakoshimun,Saptakoshi,NP0215304,Saptakoshi,both
+municipality,15009,kanchanrupmun,Kanchanrup,NP0215305,Kanchanrup,both
+municipality,15005,bodebarsainmun,Bode Barsain,NP0215306,Bode Barsain,both
+municipality,15007,dakneshworimun,Dakneshwori,NP0215307,Dakneshwori,both
+municipality,15012,rajbirajmun,Rajbiraj,NP0215308,Rajbiraj,both
+municipality,15008,hanumannagarkankalinimun,Hanumannagar Kankalini,NP0215309,Hanumannagar Kankalini,both
+municipality,15013,rupanimun,Rupani,NP0215401,Rupani,both
+municipality,15001,agnisairkrishnasawaranmun,Agnisair Krishna Savaran,NP0215402,Agnisair Krishna Sabaran,boundary
+municipality,15018,tirahutmun,Tirahut,NP0215403,Tirahut,both
+municipality,15002,balanbihulmun,Balan Bihul,NP0215404,Balan-Bihul,both
+municipality,15011,mahadevamun,Mahadeva,NP0215405,Mahadewa,boundary
+municipality,15003,belhichapenamun,Rajgadh,NP0215406,Rajgadh,both
+municipality,15004,bishnupurmunsaptari,Bishnupur,NP0215407,Bishnupur,both
+municipality,15006,chhinnamastamun,Chhinnamasta,NP0215408,Chhinnamasta,both
+municipality,15017,tilathikoiladimun,Tilathi Koiladi,NP0215409,Tilathi Koiladi,both
+municipality,16009,karjanhamun,Karjanha,NP0216301,Karjanha,both
+municipality,16012,mirchaiyamun,Mirchaiya,NP0216302,Mirchaiya,both
+municipality,16007,golbazarmun,Golbazar,NP0216303,Golbazar,both
+municipality,16006,dhangadhimaimun,Dhangadhimai,NP0216304,Dhangadhimai,both
+municipality,16010,lahanmun,Lahan,NP0216305,Lahan,both
+municipality,16008,kalyanpurmun,Kalyanpur,NP0216306,Kalyanpur,both
+municipality,16017,sukhipurmun,Sukhipur,NP0216307,Sukhipur,both
+municipality,16016,sirahamun,Siraha,NP0216308,Siraha,both
+municipality,16013,narahamun,Naraha,NP0216401,Naraha,both
+municipality,16005,bishnupurmunsiraha,Bishnupur,NP0216402,Bishnupur,both
+municipality,16001,anarmamun,Arnama,NP0216403,Arnama,both
+municipality,16002,aurahimunsiraha,Aurahi,NP0216404,Aurahi,both
+municipality,16003,bariyapattimun,Bariyarpatti,NP0216405,Bariyarpatti,both
+municipality,16011,laxmipurpatarimun,Laxmipur Patari,NP0216406,Laxmipur Patari,both
+municipality,16014,nawarajpurmun,Nawarajpur,NP0216407,Nawarajpur,both
+municipality,16015,sakhuwanankarkattimun,Sakhuwanankarkatti,NP0216408,Sakhuwa Nankarkatti,both
+municipality,16004,bhagwanpurmun,Bhagawanpur,NP0216409,Bhagawanpur,both
+municipality,17010,janakpurmun,Janakpurdham,NP0217201,Janakpurdham,both
+municipality,17013,mithilamun,Mithila,NP0217301,Mithila,both
+municipality,17007,ganeshmancharnathmun,Ganeshman Charnath,NP0217302,Ganeshman Charnath,both
+municipality,17004,kshireshwornathmun,Kshireshwornath,NP0217303,Chhireshwornath,boundary
+municipality,17006,dhanushadhammun,Dhanusadham,NP0217304,Dhanushadham,boundary
+municipality,17014,mithilabiharimun,Mithila Bihari,NP0217305,Mithila Bihari,both
+municipality,17017,sabailamun,Sabaila,NP0217306,Sabaila,both
+municipality,17008,hansapurmun,Hansapur,NP0217307,Hansapur,both
+municipality,17018,shahidnagarmun,Sahidnagar,NP0217308,Shahidnagar,boundary
+municipality,17016,nagrainmun,Nagarain,NP0217309,Nagarain,both
+municipality,17003,bidehamun,Bideha,NP0217310,Bideha,both
+municipality,17011,kamalamun,Kamala,NP0217311,Kamala,both
+municipality,17002,bateshwormun,Bateshwor,NP0217401,Bateshwor,both
+municipality,17012,laxminiyamun,Lakshminiya,NP0217402,Laxminiya,boundary
+municipality,17001,aurahimundhanusha,Aaurahi,NP0217403,Aurahi,boundary
+municipality,17005,dhanaujimun,Dhanauji,NP0217404,Dhanauji,both
+municipality,17015,mukhiyapattimusaharmiyamun,Mukhiyapatti Musaharmiya,NP0217405,Mukhiyapatti Musaharmiya,both
+municipality,17009,janaknandinimun,Janaknandani,NP0217406,Janak Nandini,boundary
+municipality,18003,bardibasmun,Bardibas,NP0218301,Bardibas,both
+municipality,18006,gaushalamun,Gaushala,NP0218302,Gaushala,both
+municipality,18001,aurahimunmahottari,Aurahi,NP0218303,Aurahi,both
+municipality,18004,bhagahamun,Bhangaha,NP0218304,Bhangaha,both
+municipality,18013,ramgopalpurmun,Ramgopalpur,NP0218305,Ram Gopalpur,both
+municipality,18010,manarashiswamun,Manra Siswa,NP0218306,Manara Shisawa,boundary
+municipality,18002,balwamun,Balwa,NP0218307,Balawa,boundary
+municipality,18008,loharpattimun,Loharpatti,NP0218308,Loharpatti,both
+municipality,18007,jaleshwormun,Jaleswor,NP0218309,Jaleshwor,boundary
+municipality,18011,matihanimun,Matihani,NP0218310,Matihani,both
+municipality,18015,sonmamun,Sonama,NP0218401,Sonama,both
+municipality,18014,samsimun,Samsi,NP0218402,Samsi,both
+municipality,18005,ekdaramun,Ekdara,NP0218403,Ekadara,boundary
+municipality,18009,mahottarimun,Mahottari,NP0218404,Mahottari,both
+municipality,18012,pipramun,Pipra,NP0218405,Pipara,boundary
+municipality,19001,bagmatimunsarlahi,Bagmati,NP0219301,Bagmati,both
+municipality,19013,harionmun,Harion,NP0219302,Hariwan,boundary
+municipality,19017,lalbandimun,Lalbandi,NP0219303,Lalbandi,both
+municipality,19003,barhathwamun,Barahathawa,NP0219304,Barahathawa,both
+municipality,19011,haripurmun,Haripur,NP0219305,Haripur,both
+municipality,19014,ishworpurmun,Ishworpur,NP0219306,Ishworpur,both
+municipality,19015,kawilasimun,Kawilasi,NP0219307,Kabilashi,boundary
+municipality,19010,godaitamun,Godaita,NP0219308,Godaita,both
+municipality,19018,malangwamun,Malangwa,NP0219309,Malangawa,boundary
+municipality,19012,haripurwamun,Haripurwa,NP0219310,Haripurwa,both
+municipality,19002,balramun,Balara,NP0219311,Balara,both
+municipality,19004,basbariyamun,Basbariya,NP0219401,Basbariya,both
+municipality,19008,chandranagarmun,Chandranagar,NP0219402,Chandranagar,both
+municipality,19009,dhankaulmun,Dhankaul,NP0219403,Dhanakaul,boundary
+municipality,19007,chakraghattamun,Chakraghatta,NP0219404,Chakraghatta,both
+municipality,19020,ramnagarmun,Ramnagar,NP0219405,Ramnagar,both
+municipality,19016,kaudenamun,Kaudena,NP0219406,Kaudena,both
+municipality,19006,brahmapurimun,Brahmapuri,NP0219407,Brahmapuri,both
+municipality,19005,bishnumun,Bishnu,NP0219408,Bishnu,both
+municipality,19019,parsamun,Parsa,NP0219409,Parsa,both
+municipality,32009,gujaramun,Gujara,NP0232301,Gujara,both
+municipality,32003,chandrapurmun,Chandrapur,NP0232302,Chandrapur,both
+municipality,32015,phatuwabijaypurmun,Phatuwa Bijayapur,NP0232303,Phatuwa Bijayapur,both
+municipality,32011,katahariyamun,Katahariya,NP0232304,Katahariya,both
+municipality,32002,brindawanmun,Brindaban,NP0232305,Brindaban,both
+municipality,32013,maulapurmun,Maulapur,NP0232306,Maulapur,both
+municipality,32004,dewahigonahimun,Dewahhi Gonahi,NP0232307,Dewahi Gonahi,boundary
+municipality,32007,garudamun,Garuda,NP0232308,Garuda,both
+municipality,32006,gadhimaimun,Gadhimai,NP0232309,Gadhimai,both
+municipality,32001,baudhimaimun,Baudhimai,NP0232310,Boudhimai,boundary
+municipality,32012,madhavnarayanmun,Madhav Narayan,NP0232311,Madhav Narayan,both
+municipality,32014,parohamun,Paroha,NP0232312,Paroha,both
+municipality,32010,ishnathmun,Ishanath,NP0232313,Ishanath,both
+municipality,32017,rajpurmunrautahat,Rajpur,NP0232314,Rajpur,both
+municipality,32008,gaurmun,Gaur,NP0232315,Gaur,both
+municipality,32016,rajdevimun,Rajdevi,NP0232316,Rajdevi,both
+municipality,32018,,Yemunamai,NP0232401,Yamunamai,manual_review
+municipality,32005,,Durga Bhagwati,NP0232402,Durga Bhagawati,manual_review
+municipality,33005,jeetpursimaramun,Jitpur Simara,NP0233201,Jitpur Simara,both
+municipality,33006,kalaiyamun,Kalaiya,NP0233202,Kalaiya,both
+municipality,33010,nijgadhmun,Nijgadh,NP0233301,Nijagadh,boundary
+municipality,33008,kolhabimun,Kolhabi,NP0233302,Kolhabi,both
+municipality,33009,mahagadimaimun,Mahagadhimai,NP0233303,Mahagadhimai,both
+municipality,33011,pachrautamun,Pacharauta,NP0233304,Pacharauta,both
+municipality,33015,simraungadhmun,Simraungadh,NP0233305,Simroungadh,boundary
+municipality,33012,parwanipurmun,Parwanipur,NP0233401,Parawanipur,boundary
+municipality,33014,prasaunimun,Prasauni,NP0233402,Prasauni,both
+municipality,33007,karaiyamaimun,Karaiyamai,NP0233403,Karaiyamai,both
+municipality,33003,bishrampurmun,Bishrampur,NP0233404,Bishrampur,both
+municipality,33013,phetamun,Pheta,NP0233405,Pheta,both
+municipality,33002,baragadhimun,Baragadhi,NP0233406,Baragadhi,both
+municipality,33004,devtalmun,Devtal,NP0233407,Devtal,both
+municipality,33016,suwarnamun,Suwarna,NP0233408,Subarna,boundary
+municipality,33001,aadarshakotwalmun,Adarshkotwal,NP0233409,Aadarsha Kotwal,boundary
+municipality,34003,birgunjmun,Birgunj,NP0234101,Birgunj,both
+municipality,34012,pokhariyamun,Pokhariya,NP0234301,Pokhariya,both
+municipality,34001,bahudarmaimun,Bahudaramai,NP0234302,Bahudarmai,boundary
+municipality,34010,parsagadhimun,Parsagadhi,NP0234303,Parsagadhi,both
+municipality,34014,thorimun,Thori,NP0234401,Thori,both
+municipality,34007,jirabhawanimun,Jirabhawani,NP0234402,Jirabhawani,both
+municipality,34011,paterwasugaulimun,Paterwa Sugauli,NP0234403,Paterwa Sugauli,both
+municipality,34013,sakhuwaprasaunimun,Sakhuwa Prasauni,NP0234404,Sakhuwa Prasauni,both
+municipality,34006,jagarnathpurmun,Jagarnathpur,NP0234405,Jagarnathpur,both
+municipality,34005,dhobinimun,Dhobini,NP0234406,Dhobini,both
+municipality,34004,chhipaharmaimun,Chhipaharmai,NP0234407,Chhipaharmai,both
+municipality,34008,kalikamaimun,Kalikamai,NP0234408,Kalikamai,both
+municipality,34009,pakahamainpurmun,Pakaha Mainpur,NP0234409,Pakaha Mainpur,both
+municipality,34002,bindabasinimun,Bindabasini,NP0234410,Bindabasini,both
+municipality,20005,kamalamaimun,Kamalamai,NP0320301,Kamalamai,both
+municipality,20001,dudhaulimun,Dudhouli,NP0320302,Dudhouli,both
+municipality,20004,hariharpurgadhimun,Hariharpurgadhi,NP0320401,Hariharpurgaghi,boundary
+municipality,20006,marinmun,Marin,NP0320402,Marin,both
+municipality,20002,ghyanglekhmun,Ghyanglekh,NP0320403,Ghyanglekha,boundary
+municipality,20008,sunkoshimunsindhuli,Sunkoshi,NP0320404,Sunkoshi,both
+municipality,20003,golanjormun,Golanjor,NP0320405,Golanjor,both
+municipality,20009,tinpatanmun,Tinpatan,NP0320406,Tinpatan,both
+municipality,20007,phikkalmun,Phikkal,NP0320407,Phikkal,both
+municipality,21005,manthalimun,Manthali,NP0321301,Manthali,both
+municipality,21006,ramechhapmun,Ramechhap,NP0321302,Ramechhap,both
+municipality,21007,sunapatimun,Sunapati,NP0321401,Sunapati,both
+municipality,21001,dorambamun,Doramba,NP0321402,Doramba,both
+municipality,21002,gokulgangamun,Gokulganga,NP0321403,Gokulganga,both
+municipality,21008,umakundamun,Umakunda,NP0321404,Umakunda,both
+municipality,21003,khandadevimun,Khandadevi,NP0321405,Khandadevi,both
+municipality,21004,likhutamakoshimun,Likhu Tamakoshi,NP0321406,Likhu Tamakoshi,both
+municipality,22002,bhimeshwormun,Bhimeshwor,NP0322301,Bhimeshwor,both
+municipality,22005,jirimun,Jiri,NP0322302,Jiri,both
+municipality,22003,bigumun,Bigu,NP0322401,Bigu,both
+municipality,22004,gaurishankarmun,Gaurishankar,NP0322402,Gaurishankar,both
+municipality,22006,kalinchowkmun,Kalinchok,NP0322403,Kalinchowk,boundary
+municipality,22001,baiteshwormun,Baiteshwor,NP0322404,Baiteshwor,both
+municipality,22008,shailungmun,Sailung,NP0322405,Shailung,boundary
+municipality,22007,melungmun,Melung,NP0322406,Melung,both
+municipality,22009,tamakoshimun,Tamakoshi,NP0322407,Tamakoshi,both
+municipality,23009,melamchimun,Melamchi,NP0323301,Melamchi,both
+municipality,23004,chautarasangachowkgadhimun,Chautara Sangachokgadhi,NP0323302,Choutara Sangachowkgadhi,boundary
+municipality,23002,bahrabisemun,Barhabise,NP0323303,Bahrabise,boundary
+municipality,23005,helambumun,Helambu,NP0323401,Helambu,both
+municipality,23010,panchpokharithangpalmun,Panchpokhari Thangpal,NP0323402,Panchpokhari Thangpal,both
+municipality,23007,jugalmun,Jugal,NP0323403,Jugal,both
+municipality,23003,bhotekoshimun,Bhotekoshi,NP0323404,Bhotekoshi,both
+municipality,23006,indrawatimun,Indrawati,NP0323405,Indrawoti,boundary
+municipality,23001,balephimun,Balephi,NP0323406,Balephi,both
+municipality,23011,sunkoshimunsindhupalchowk,Sunkoshi,NP0323407,Sunkoshi,both
+municipality,23012,tripurasundarimunsindhupalchowk,Tripurasundari,NP0323408,Tripurasundari,both
+municipality,23008,lisankhupakharmun,Lisangkhu Pakhar,NP0323409,Lisankhu Pakhar,boundary
+municipality,24008,mandandeupurmun,Mandandeupur,NP0324301,Mandan Deupur,both
+municipality,24001,banepamun,Banepa,NP0324302,Banepa,both
+municipality,24005,dhulikhelmun,Dhulikhel,NP0324303,Dhulikhel,both
+municipality,24011,panchkhalmun,Panchkhal,NP0324304,Panchkhal,both
+municipality,24010,panautimun,Panauti,NP0324305,Panauti,both
+municipality,24009,namobuddhamun,Namobuddha,NP0324306,Namobuddha,both
+municipality,24003,bhumlumun,Bhumlu,NP0324401,Bhumlu,both
+municipality,24004,chaurideuralimun,Chaurideurali,NP0324402,Chauri Deurali,both
+municipality,24002,bethanchowkmun,Bethanchowk,NP0324403,Bethanchowk,both
+municipality,24012,roshimun,Roshi,NP0324404,Roshi,both
+municipality,24013,temalmun,Temal,NP0324405,Temal,both
+municipality,24006,khanikholamun,Khanikhola,NP0324406,Khanikhola,both
+municipality,24007,mahabharatmun,Mahabharat,NP0324407,Mahabharat,both
+municipality,25004,lalitpurmun,Lalitpur,NP0325101,Lalitpur,both
+municipality,25002,godawarimunlalitpur,Godawari,NP0325301,Godawari,both
+municipality,25005,mahalaxmimunlalitpur,Mahalaxmi,NP0325302,Mahalaxmi,both
+municipality,25001,bagmatimunlalitpur,Bagmati,NP0325401,Bagmati,both
+municipality,25003,konjyosommun,Konjyosom,NP0325402,Konjyosom,both
+municipality,25006,mahankalmun,Mahankal,NP0325403,Mahankal,both
+municipality,26003,madhyapurthimimun,Madhyapur Thimi,NP0326301,Madhyapur Thimi,both
+municipality,26002,changunarayanmun,Changunarayan,NP0326302,Changunarayan,both
+municipality,26001,bhaktapurmun,Bhaktapur,NP0326303,Bhaktapur,both
+municipality,26004,suryabinayakmun,Suryabinayak,NP0326304,Suryabinayak,both
+municipality,27006,kathmandu,Kathmandu,NP0327101,Kathmandu,both
+municipality,27010,tarakeshwormunkathmandu,Tarakeshwor,NP0327301,Tarakeshwor,both
+municipality,27011,tokhamun,Tokha,NP0327302,Tokha,both
+municipality,27001,budhanilkanthamun,Budhanilkantha,NP0327303,Budhanilkhantha,boundary
+municipality,27004,gokarneshwormun,Gokarneshwor,NP0327304,Gokarneshwor,both
+municipality,27008,nagarjunmun,Nagarjun,NP0327305,Nagarjun,both
+municipality,27005,kageshworimanoharamun,Kageshwori Manahora,NP0327306,Kageshwori Manahara,boundary
+municipality,27009,shankharapurmun,Shankharapur,NP0327307,Shankharapur,both
+municipality,27002,chandragirimun,Chandragiri,NP0327308,Chandragiri,both
+municipality,27007,kirtipurmun,Kirtipur,NP0327309,Kirtipur,both
+municipality,27003,dakshinkalimun,Dakshinkali,NP0327310,Dakshinkali,both
+municipality,28002,bidurmun,Bidur,NP0328301,Bidur,both
+municipality,28001,belkotgadhimun,Belkotgadhi,NP0328302,Belkotgadhi,both
+municipality,28007,meghangmun,Meghang,NP0328401,Myagang,boundary
+municipality,28005,kispangmun,Kispang,NP0328402,Kispang,both
+municipality,28012,tarakeshwormunnuwakot,Tarkeshwar,NP0328403,Tarakeshwor,boundary
+municipality,28010,suryagadhimun,Suryagadhi,NP0328404,Suryagadhi,both
+municipality,28011,tadimun,Tadi,NP0328405,Tadi,both
+municipality,28006,likhumunnuwakot,Likhu,NP0328406,Likhu,both
+municipality,28008,panchakanyamun,Panchakanya,NP0328407,Panchakanya,both
+municipality,28003,dupcheshwormun,Dupcheshwar,NP0328408,Dupcheshwor,boundary
+municipality,28004,kakanimun,Kakani,NP0328409,Kakani,both
+municipality,28009,shivapurimun,Shivapuri,NP0328410,Shivapuri,both
+municipality,29004,aamachhodingmomun,Aamachhodingmo,NP0329401,Aamachhodingmo,both
+municipality,29001,gosaikundamun,Gosaikunda,NP0329402,Gosaikunda,both
+municipality,29005,uttargayamun,Uttargaya,NP0329403,Uttargaya,both
+municipality,29002,kalikamunrasuwa,Kalika,NP0329404,Kalika,both
+municipality,29003,naukundamun,Naukunda,NP0329405,Naukunda,both
+municipality,30009,neelakanthamun,Neelakantha,NP0330301,Nilkhantha,boundary
+municipality,30002,dhunibeshimun,Dhunibeshi,NP0330302,Dhunibenshi,boundary
+municipality,30010,rubivalleymun,Ruby Valley,NP0330401,Rubi Valley,boundary
+municipality,30005,gangajamunamun,Gangajamuna,NP0330402,Ganga Jamuna,both
+municipality,30007,khaniyabasmun,Khaniyabash,NP0330403,Khaniyabas,boundary
+municipality,30013,tripurasundarimundhading,Tripurasundari,NP0330404,Tripurasundari,both
+municipality,30008,netrawatidabjongmun,Netrawati Dabjong,NP0330405,Netrawati Dabjong,both
+municipality,30006,jwalamukhimun,Jwalamukhi,NP0330406,Jwalamukhi,both
+municipality,30011,siddhalekmun,Siddhalek,NP0330407,Siddhalek,both
+municipality,30001,benighatrorangmun,Benighat Rorang,NP0330408,Benighat Rorang,both
+municipality,30003,gajurimun,Gajuri,NP0330409,Gajuri,both
+municipality,30004,galchhimun,Galchi,NP0330410,Galchhi,boundary
+municipality,30012,thakremun,Thakre,NP0330411,Thakre,both
+municipality,31004,hetaudamun,Hetauda,NP0331201,Hetauda,both
+municipality,31010,thahamun,Thaha,NP0331301,Thaha,both
+municipality,31008,manaharimun,Manahari,NP0331401,Manahari,both
+municipality,31009,raksirangmun,Raksirang,NP0331402,Raksirang,both
+municipality,31006,kailashmun,Kailash,NP0331403,Kailash,both
+municipality,31003,bhimphedimun,Bhimphedi,NP0331404,Bhimphedi,both
+municipality,31005,indrasarowarmun,Indrasarowar,NP0331405,Indrasarowar,both
+municipality,31007,makawanpurgadhimun,Makawanpurgadhi,NP0331406,Makawanpurgadhi,both
+municipality,31002,bakaiyamun,Bakaiya,NP0331407,Bakaiya,both
+municipality,31001,bagmatimunmakawanpur,Bagmati,NP0331408,Bagmati,both
+municipality,35001,bharatpurmun,Bharatpur,NP0335101,Bharatpur,both
+municipality,35003,kalikamunchitwan,Kalika,NP0335301,Kalika,both
+municipality,35007,ratnanagarmun,Ratnanagar,NP0335302,Ratnanagar,both
+municipality,35004,khairahanimun,Khairahani,NP0335303,Khairahani,both
+municipality,35006,raptimunchitwan,Rapti,NP0335304,Rapti,both
+municipality,35005,madimunchitwan,Madi,NP0335305,Madi,both
+municipality,35002,ichchhakamanamun,Ichchhakamana,NP0335401,Ichchha Kamana,both
+municipality,36008,palungtarmun,Palungtar,NP0436301,Palungtar,both
+municipality,36007,gorkhamun,Gorkha,NP0436302,Gorkha,both
+municipality,36004,chumanuwrimun,Chum Nubri,NP0436401,Chumanubri,boundary
+municipality,36002,ajirkotmun,Ajirkot,NP0436402,Ajirkot,both
+municipality,36011,sulikotmun,Barpak Sulikot,NP0436403,Barpak Sulikot,both
+municipality,36005,dharchemun,Dharche,NP0436404,Dharche,both
+municipality,36010,siranchowkmun,Siranchok,NP0436405,Siranchowk,boundary
+municipality,36001,aarughatmun,Aarughat,NP0436406,Aarughat,both
+municipality,36003,bhimsenmun,BhimsenThapa,NP0436407,Bhimsenthapa,both
+municipality,36009,shahidlakhanmun,Sahid Lakhan,NP0436408,Shahid Lakhan,boundary
+municipality,36006,gandakimun,Gandaki,NP0436409,Gandaki,both
+municipality,37005,madhyanepalmun,MadhyaNepal,NP0437301,Madhya Nepal,both
+municipality,37001,besishaharmun,Besishahar,NP0437302,Bensishahar,boundary
+municipality,37008,sundarbazarmun,Sundarbazar,NP0437303,Sundarbazar,both
+municipality,37007,rainasmun,Rainas,NP0437304,Rainas,both
+municipality,37004,kwholasotharmun,Kwholasothar,NP0437401,Kwhola Sothar,both
+municipality,37006,marsyangdimun,Marsyangdi,NP0437402,Marshyangdi,boundary
+municipality,37002,dordimun,Dordi,NP0437403,Dordi,both
+municipality,37003,dudhpokharimun,Dudhpokhari,NP0437404,Dudhapokhari,boundary
+municipality,41004,nesyangmun,Manang Ngisyang,NP0438401,Ngisyang,boundary
+municipality,41002,narpabhumimun,Narpa Bhoomi,NP0438402,Narpa Bhumi,boundary
+municipality,41001,chamemun,Chame,NP0438403,Chame,both
+municipality,41003,nashongmun,Nashong,NP0438404,Nason,boundary
+municipality,40004,pokharamun,Pokhara,NP0439101,Pokhara,both
+municipality,40001,annapurnamunkaski,Annapurna,NP0439401,Annapurna,both
+municipality,40002,machhapuchhremun,Machhapuchchhre,NP0439402,Machhapuchchhre,both
+municipality,40003,madimunkaski,Madi,NP0439403,Madi,both
+municipality,40005,rupamun,Rupa,NP0439404,Rupa,both
+municipality,38010,shuklagandakimun,Shuklagandaki,NP0440301,Shuklagandaki,both
+municipality,38005,vyasmun,Vyas,NP0440302,Byas,boundary
+municipality,38003,bhanumun,Bhanu,NP0440303,Bhanu,both
+municipality,38004,bhimadmun,Bhimad,NP0440304,Bhimad,both
+municipality,38008,myagdemun,Myagde,NP0440401,Myagde,both
+municipality,38007,ghiringmun,Ghiring,NP0440402,Ghiring,both
+municipality,38009,rishingmun,Rhishing,NP0440403,Rhishing,both
+municipality,38002,bandipurmun,Bandipur,NP0440404,Bandipur,both
+municipality,38001,aanbookhairenimun,Aanbookhaireni,NP0440405,Aanbu Khaireni,boundary
+municipality,38006,devghatmun,Devghat,NP0440406,Devghat,both
+municipality,39010,putalibazarmun,Putalibazar,NP0441301,Putalibazar,both
+municipality,39003,bheerkotmun,Bhirkot,NP0441302,Bhirkot,both
+municipality,39006,galyangmun,Galyang,NP0441303,Galyang,both
+municipality,39011,walingmun,Waling,NP0441304,Walling,boundary
+municipality,39005,chapakotmun,Chapakot,NP0441305,Chapakot,both
+municipality,39001,aandhikholamun,Aandhikhola,NP0441401,Aandhikhola,both
+municipality,39009,phedikholamun,Phedikhola,NP0441402,Phedikhola,both
+municipality,39002,arjunchauparimun,Arjunchaupari,NP0441403,Arjun Choupari,boundary
+municipality,39004,biruwamun,Biruwa,NP0441404,Biruwa,both
+municipality,39007,harinasmun,Harinas,NP0441405,Harinas,both
+municipality,39008,kaligandakimunsyangja,Kaligandagi,NP0441406,Kaligandaki,boundary
+municipality,44003,kushmamun,Kushma,NP0442301,Kushma,both
+municipality,44007,phalewasmun,Phalewas,NP0442302,Phalebas,boundary
+municipality,44002,jaljalamun,Jaljala,NP0442401,Jaljala,both
+municipality,44005,modimun,Modi,NP0442402,Modi,both
+municipality,44001,bihadimun,Bihadi,NP0442403,Bihadi,both
+municipality,44004,mahashilamun,Mahashila,NP0442404,Mahashila,both
+municipality,44006,paiyunmun,Painyu,NP0442405,Paiyu,boundary
+municipality,45004,dhorpatanmun,Dhorpatan,NP0443301,Dhorpatan,both
+municipality,45005,galkotmun,Galkot,NP0443302,Galkot,both
+municipality,45002,baglungmun,Baglung,NP0443303,Baglung,both
+municipality,45006,jaiminimun,Jaimini,NP0443304,Jaimuni,boundary
+municipality,45008,nisikholamun,Nisikhola,NP0443401,Nisikhola,both
+municipality,45009,tamankholamun,Taman Khola,NP0443402,Tamankhola,both
+municipality,45001,badigadmun,Badigad,NP0443403,Badigad,both
+municipality,45010,tarakholamun,Tara Khola,NP0443404,Tarakhola,both
+municipality,45007,kathekholamun,Kanthekhola,NP0443405,Kathekhola,boundary
+municipality,45003,barengmun,Bareng,NP0443406,Bareng,both
+municipality,43002,benimun,Beni,NP0444301,Beni,both
+municipality,43003,dhawalagirimun,Dhaulagiri,NP0444401,Dhawalagiri,boundary
+municipality,43006,raghugangamun,Raghuganga,NP0444402,Raghuganga,both
+municipality,43001,annapurnamunmyagdi,Annapurna,NP0444403,Annapurna,both
+municipality,43004,malikamunmyagdi,Malika,NP0444404,Malika,both
+municipality,43005,mangalamun,Mangala,NP0444405,Mangala,both
+municipality,42004,lomanthangmun,Lomanthang,NP0445401,Lomanthang,both
+municipality,42002,dalomemun,Lo Ghekar Damodarkunda,NP0445402,Lo Ghekar Damodarkunda,both
+municipality,42001,bahragaumuktichhetramun,Baragung Muktikhsetra,NP0445403,Varagung Muktichhetra,boundary
+municipality,42003,gharapjhongmun,Gharapjhong,NP0445404,Gharpajhong,boundary
+municipality,42005,thasangmun,Thasang,NP0445405,Thasang,both
+municipality,76008,madhyabindumun,Madhyabindu,NP0447301,Madhya Bindu,both
+municipality,76007,kawasotimun,Kawasoti,NP0447302,Kawasoti,both
+municipality,76004,devchulimun,Devchuli,NP0447303,Devchuli,both
+municipality,76005,gaindakotmun,Gaidakot,NP0447304,Gaidakot,both
+municipality,76003,baudikalimun,Baudikali,NP0447401,Baudikali,both
+municipality,76002,bulingtarmun,Bulingtar,NP0447402,Bulingtar,both
+municipality,76006,hupsekotmun,Hupsekot,NP0447403,Hupsekot,both
+municipality,76001,binayitribenimun,Binayee Tribeni,NP0447404,Binayi Tribeni,boundary
+municipality,47009,tansenmun,Tansen,NP0546301,Tansen,both
+municipality,47007,rampurmun,Rampur,NP0546302,Rampur,both
+municipality,47005,rainadevichhaharamun,Rainadevi Chhahara,NP0546401,Rainadevi Chhahara,both
+municipality,47010,tinaumun,Tinau,NP0546402,Tinau,both
+municipality,47008,ribdikotmun,Ribdikot,NP0546403,Ribdikot,both
+municipality,47002,mathagadhimun,Mathagadhi,NP0546404,Mathagadhi,both
+municipality,47001,baganaskalimun,Bagnaskali,NP0546405,Baganaskali,boundary
+municipality,47004,purbakholamun,Purbakhola,NP0546406,Purbakhola,both
+municipality,47006,rambhamun,Rambha,NP0546407,Rambha,both
+municipality,47003,nisdimun,Nisdi,NP0546408,Nisdi,both
+municipality,48006,sunwalmun,Sunwal,NP0547301,Sunawal,boundary
+municipality,48001,bardghatmun,Bardaghat,NP0547302,Bardaghat,both
+municipality,48004,ramgrammun,Ramgram,NP0547303,Ramgram,both
+municipality,48002,palhinandanmun,Palhi Nandan,NP0547401,Palhinandan,both
+municipality,48005,sarawalmun,Sarawal,NP0547402,Sarawal,both
+municipality,48003,pratappurmun,Pratappur,NP0547403,Pratapapur,boundary
+municipality,48007,sustamun,Susta,NP0547404,Susta,both
+municipality,49001,butwalmun,Butwal,NP0548201,Butwal,both
+municipality,49011,sainamainamun,Sainamaina,NP0548301,Sainamaina,both
+municipality,49002,devdahamun,Devdaha,NP0548302,Devdaha,both
+municipality,49016,tilottamamun,Tilottama,NP0548303,Tilottama,both
+municipality,49006,lumbinisanskritikmun,Lumbini Sanskritik,NP0548304,Lumbini Sanskritik,both
+municipality,49013,siddharthanagarmun,Siddharthanagar,NP0548305,Siddharthanagar,both
+municipality,49004,kanchanmun,Kanchan,NP0548401,Kanchan,both
+municipality,49015,shuddhodhanmunrupandehi,Shuddhodhan,NP0548402,Suddhodhan,boundary
+municipality,49003,gaidahawamun,Gaidahawa,NP0548403,Gaidahawa,both
+municipality,49014,siyarimun,Siyari,NP0548404,Siyari,both
+municipality,49008,mayadevimunrupandehi,Mayadevi,NP0548405,Mayadevi,both
+municipality,49009,omsatiyamun,Omsatiya,NP0548406,Om Satiya,both
+municipality,49010,rohinimun,Rohini,NP0548407,Rohini,both
+municipality,49005,kotahimaimun,Kotahimai,NP0548408,Kotahimai,both
+municipality,49012,sammarimaimun,Sammarimai,NP0548409,Sammarimai,both
+municipality,49007,marchawarimun,Marchawarimai,NP0548410,Marchawari,boundary
+municipality,50008,shivrajmun,Shivraj,NP0549301,Shivaraj,boundary
+municipality,50003,buddhabhumimun,Buddhabhumi,NP0549302,Buddhabhumi,both
+municipality,50001,bangangamun,Banganga,NP0549303,Banganga,both
+municipality,50005,krishnanagarmun,Krishnanagar,NP0549304,Krishnanagar,both
+municipality,50006,maharajgunjmun,Maharajgunj,NP0549305,Maharajganj,boundary
+municipality,50004,kapilvastumun,Kapilvastu,NP0549306,Kapilbastu,boundary
+municipality,50002,bijaynagarmun,Bijayanagar,NP0549401,Bijayanagar,both
+municipality,50010,yasodharamun,Yasodhara,NP0549402,Yasodhara,both
+municipality,50007,mayadevimunkapilvastu,Mayadevi,NP0549403,Mayadevi,both
+municipality,50009,shuddhodhanmunkapilvastu,Suddhodhan,NP0549404,Shuddhodhan,boundary
+municipality,51001,bhumikasthanmun,Bhumikasthan,NP0550301,Bhumikasthan,both
+municipality,51005,sandhikharkamun,Sandhikharka,NP0550302,Sandhikharka,both
+municipality,51006,shitagangamun,Sitganga,NP0550303,Shitaganga,boundary
+municipality,51003,malaranimun,Malarani,NP0550401,Malarani,both
+municipality,51002,chhatradevmun,Chhatradev,NP0550402,Chhatradev,both
+municipality,51004,paninimun,Panini,NP0550403,Panini,both
+municipality,46009,musikotmungulmi,Musikot,NP0551301,Musikot,both
+municipality,46010,resungamun,Resunga,NP0551302,Resunga,both
+municipality,46007,madanemun,Madane,NP0551401,Madane,both
+municipality,46008,malikamungulmi,Malika,NP0551402,Malika,both
+municipality,46003,dhurkotmun,Dhurkot,NP0551403,Dhurkot,both
+municipality,46005,ismamun,Isma,NP0551404,Isma,both
+municipality,46004,gulmidarbarmun,Gulmidarbar,NP0551405,Gulmi Durbar,boundary
+municipality,46001,chandrakotmun,Chandrakot,NP0551406,Chandrakot,both
+municipality,46002,chhatrakotmun,Chatrakot,NP0551407,Chhatrakot,boundary
+municipality,46011,rurumun,Rurukshetra,NP0551408,Ruruchhetra,boundary
+municipality,46012,satyawatimun,Satyawati,NP0551409,Satyawoti,boundary
+municipality,46006,kaligandakimungulmi,Kaligandaki,NP0551410,Kali Gandaki,both
+municipality,77003,sisnemun,Sisne,NP0552401,Sisne,both
+municipality,77002,puthauttargangamun,Putha Uttarganga,NP0552402,Putha Uttanganga,boundary
+municipality,77001,bhumemun,Bhume,NP0552403,Bhoome,boundary
+municipality,53004,rolpamun,Rolpa,NP0554301,Rolpa,both
+municipality,53006,sukidahamun,Sukidaha,NP0554401,Gangadev,boundary
+municipality,53001,duikholimun,Paribartan,NP0554402,Pariwartan,boundary
+municipality,53009,thabangmun,Thabang,NP0554403,Thawang,boundary
+municipality,53003,madimunrolpa,Madi,NP0554404,Madi,both
+municipality,53007,sunchhaharimun,Sunchhahari,NP0554405,Sunchhahari,both
+municipality,53010,trivenimunrolpa,Tribeni,NP0554406,Tribeni,both
+municipality,53008,suwarnawatimun,Sunil Smriti,NP0554407,Sunil Smriti,both
+municipality,53002,lungrimun,Lungri,NP0554408,Lungri,both
+municipality,53005,runtigadhimun,Runtigadhi,NP0554409,Runtigadhi,both
+municipality,52009,swargadwarimun,Sworgadwary,NP0555301,Sworgadwari,boundary
+municipality,52007,pyuthanmun,Pyuthan,NP0555302,Pyuthan,both
+municipality,52006,naubahinimun,Naubahini,NP0555401,Naubahini,both
+municipality,52002,gaumukhimun,Gaumukhi,NP0555402,Gaumukhi,both
+municipality,52003,jhimrukmun,Jhimruk,NP0555403,Jhimaruk,boundary
+municipality,52005,mandavimun,Mandavi,NP0555404,Mandavi,both
+municipality,52004,mallaranimun,Mallarani,NP0555405,Mallarani,both
+municipality,52008,sarumaranimun,Sarumarani,NP0555406,Sarumarani,both
+municipality,52001,airawatimun,Airawati,NP0555407,Aairawati,boundary
+municipality,56010,tulsipurmun,Tulsipur,NP0556201,Tulsipur,both
+municipality,56005,ghorahimun,Ghorahi,NP0556202,Ghorahi,both
+municipality,56006,lamahimun,Lamahi,NP0556301,Lamahi,both
+municipality,56001,babaimun,Babai,NP0556401,Babai,both
+municipality,56003,dangisharanmun,Dangisharan,NP0556402,Dangisharan,both
+municipality,56009,shantinagarmun,Shantinagar,NP0556403,Shantinagar,both
+municipality,56007,rajpurmundang,Rajpur,NP0556404,Rajpur,both
+municipality,56002,bangalachulimun,Banglachuli,NP0556405,Bangalachuli,boundary
+municipality,56004,gadhawamun,Gadhawa,NP0556406,Gadhawa,both
+municipality,56008,raptimundang,Rapti,NP0556407,Rapti,both
+municipality,57007,nepalgunjmun,Nepalgunj,NP0557201,Nepalganj,boundary
+municipality,57005,kohalpurmun,Kohalpur,NP0557301,Kohalpur,both
+municipality,57004,khajuramun,Khajura,NP0557401,Khajura,both
+municipality,57001,baijanathmun,Baijanath,NP0557402,Baijanath,both
+municipality,57003,janakimunbanke,Janki,NP0557403,Janaki,boundary
+municipality,57002,duduwamun,Duduwa,NP0557404,Duduwa,both
+municipality,57008,raptisonarimun,Rapti Sonari,NP0557405,Rapti Sonari,both
+municipality,57006,narainapurmun,Narainapur,NP0557406,Narainapur,both
+municipality,58007,rajapurmun,Rajapur,NP0558301,Rajapur,both
+municipality,58006,madhuwanmun,Madhuwan,NP0558302,Madhuwan,both
+municipality,58008,thakurbabamun,Thakurbaba,NP0558303,Thakurbaba,both
+municipality,58005,gulariyamun,Gulariya,NP0558304,Gulariya,both
+municipality,58003,barbardiyamun,Barbardiya,NP0558305,Barbardiya,both
+municipality,58002,bansgadhimun,Bansagadhi,NP0558306,Bansgadhi,boundary
+municipality,58004,geruwamun,Geruwa,NP0558401,Geruwa,both
+municipality,58001,badhaiyatalmun,Badhaiyatal,NP0558402,Badhaiyatal,both
+municipality,54001,aathbiskotmun,Aathbiskot,NP0652301,Aathabisakot,boundary
+municipality,54003,chaurjaharimun,Chaurjahari,NP0652302,Chaurjahari,both
+municipality,54004,musikotmunrukum,Musikot,NP0652303,Musikot,both
+municipality,54005,sanibherimun,Sanibheri,NP0652401,Sanibheri,both
+municipality,54002,banphikotmun,Banphikot,NP0652402,Banphikot,both
+municipality,54006,trivenimunrukum,Triveni,NP0652403,Tribeni,boundary
+municipality,55002,bangadkupindemun,Bangad Kupinde,NP0653301,Banagad Kupinde,boundary
+municipality,55001,bagchaurmun,Bagchaur,NP0653302,Bagachour,boundary
+municipality,55009,shaaradamun,Sharada,NP0653303,Sharada,both
+municipality,55008,kumakhmalikamun,Kumakh,NP0653401,Kumakh,both
+municipality,55004,darmamun,Darma,NP0653402,Darma,both
+municipality,55005,dhorchaurmun,Siddha Kumakh,NP0653403,Siddha Kumakh,both
+municipality,55006,kalimatimun,Kalimati,NP0653404,Kalimati,both
+municipality,55003,chhatreshworimun,Chhatreshwori,NP0653405,Chhatreshwori,both
+municipality,55010,trivenimunsalyan,Triveni,NP0653406,Tribeni,boundary
+municipality,55007,kapurkotmun,Kapurkot,NP0653407,Kapurkot,both
+municipality,59008,panchapurimun,Panchapuri,NP0659301,Panchapuri,both
+municipality,59002,bherigangamun,Bheriganga,NP0659302,Bheriganga,both
+municipality,59003,birendranagarmun,Birendranagar,NP0659303,Birendranagar,both
+municipality,59007,lekbeshimun,Lekbeshi,NP0659304,Lekabeshi,boundary
+municipality,59006,gurbhakotmun,Gurbhakot,NP0659305,Gurbhakot,both
+municipality,59004,chaukunemun,Chaukune,NP0659401,Chaukune,both
+municipality,59001,barahatalmun,Barahtal,NP0659402,Barahatal,boundary
+municipality,59005,chingadmun,Chingad,NP0659403,Chingad,both
+municipality,59009,simtamun,Simta,NP0659404,Simta,both
+municipality,61003,chhedagadmun,Chhedagad,NP0660301,Chhedagad,both
+municipality,61002,bherimun,Bheri,NP0660302,Bheri Malika,boundary
+municipality,61007,tribeninalgaadmun,Nalgaad,NP0660303,Nalgad,boundary
+municipality,61004,junichaandemun,Junichande,NP0660401,Junichande,both
+municipality,61005,kushemun,Kushe,NP0660402,Kuse,boundary
+municipality,61001,barekotmun,Barekot,NP0660403,Barekot,both
+municipality,61006,shibalayamun,Shiwalaya,NP0660404,Shivalaya,boundary
+municipality,60001,aathabismun,Aathabis,NP0661301,Aathbis,boundary
+municipality,60004,chamundabindrasainimun,Chamunda Bindrasaini,NP0661302,Chamunda Bindrasaini,both
+municipality,60005,dullumun,Dullu,NP0661303,Dullu,both
+municipality,60009,narayanmun,Narayan,NP0661304,Narayan,both
+municipality,60011,thantikandhmun,Thantikandh,NP0661401,Thantikandh,both
+municipality,60003,bhairabimun,Bhairabi,NP0661402,Bhairabi,both
+municipality,60008,mahabumun,Mahabu,NP0661403,Mahabu,both
+municipality,60010,naumulemun,Naumule,NP0661404,Naumule,both
+municipality,60007,guransmun,Gurans,NP0661405,Gurans,both
+municipality,60006,dungeshwormun,Dungeshwor,NP0661406,Dungeshwor,both
+municipality,60002,bhagawatimaimun,Bhagawatimai,NP0661407,Bhagawatimai,both
+municipality,62008,tripurasundarimundolpa,Tripurasundari,NP0662301,Tripurasundari,both
+municipality,62007,thulibherimun,Thuli Bheri,NP0662302,Thulibheri,both
+municipality,62006,shephoksundomun,Shey Phoksundo,NP0662401,Shey Phoksundo,both
+municipality,62003,jagdullamun,Jagadulla,NP0662402,Jagadulla,both
+municipality,62002,dolpobuddhamun,Dolpo Buddha,NP0662403,Dolpo Buddha,both
+municipality,62005,mudkechulamun,Mudkechula,NP0662404,Mudkechula,both
+municipality,62004,kaikemun,Kaike,NP0662405,Kaike,both
+municipality,62001,chharkatangsongmun,Chharka Tangsong,NP0662406,Chharka Tangsong,both
+municipality,63001,chandannathmun,Chandannath,NP0663301,Chandannath,both
+municipality,63004,kankasundarimun,Kanakasundari,NP0663401,Kanaka Sundari,both
+municipality,63006,sinjamun,Sinja,NP0663402,Sinja,both
+municipality,63005,patarasimun,Patrasi,NP0663403,Patarasi,boundary
+municipality,63003,himamun,Hima,NP0663404,Hima,both
+municipality,63008,tilamun,Tila,NP0663405,Tila,both
+municipality,63007,tatopanimun,Tatopani,NP0663406,Tatopani,both
+municipality,63002,guthichaurmun,Guthichaur,NP0663407,Guthichaur,both
+municipality,64007,raskotmun,Raskot,NP0664301,Raskot,both
+municipality,64002,khandachakramun,Khandachakra,NP0664302,Khandachakra,both
+municipality,64009,tilagufamun,Tilagufa,NP0664303,Tilagupha,boundary
+municipality,64004,narharinathmun,Naraharinath,NP0664401,Naraharinath,both
+municipality,64008,sannitrivenimun,Sanni Tribeni,NP0664402,Sanni Tribeni,both
+municipality,64005,pachaljharanamun,Pachaljharana,NP0664403,Pachal Jharana,both
+municipality,64006,palatamun,Palata,NP0664404,Palata,both
+municipality,64001,kalikamunkalikot,Shubhakalika,NP0664405,Shuva Kalika,boundary
+municipality,64003,mahawaimun,Mahawai,NP0664406,Mahawai,both
+municipality,65001,chhayanathraramun,Chhayanath Rara,NP0665301,Chhayanath Rara,both
+municipality,65002,khatyadmun,Khatyad,NP0665401,Khatyad,both
+municipality,65004,sorumun,Soru,NP0665402,Soru,both
+municipality,65003,mugumkarmarongmun,Mugum Karmarong,NP0665403,Mugumakarmarog,boundary
+municipality,66004,namkhamun,Namkha,NP0666401,Namkha,both
+municipality,66006,simkotmun,Simkot,NP0666402,Simkot,both
+municipality,66003,kharpunathmun,Kharpunath,NP0666403,Kharpunath,both
+municipality,66005,sarkegadmun,Sarkegad,NP0666404,Sarkegad,both
+municipality,66002,chankhelimun,Chankheli,NP0666405,Chankheli,both
+municipality,66007,tajakotmun,Tanjakot,NP0666406,Tanjakot,both
+municipality,66001,adanchulimun,Adanchuli,NP0666407,Adanchuli,both
+municipality,68002,bungalmun,Bungal,NP0767301,Bungal,both
+municipality,68005,jayaprithvimun,JayaPrithivi,NP0767302,Jayaprithbi,boundary
+municipality,68006,kandamun,Saipal,NP0767401,Saipal,both
+municipality,68010,surmamun,Surma,NP0767402,Surma,both
+municipality,68011,talkotmun,Talkot,NP0767403,Talkot,both
+municipality,68001,bitthadchirmun,Bitthadchir,NP0767404,Bitthadchir,both
+municipality,68007,kedarasyumun,Kedarseu,NP0767405,Kedarsyun,boundary
+municipality,68004,durgathalimun,Durgathali,NP0767406,Durgathali,both
+municipality,68003,chhabispathiveramun,Chabispathivera,NP0767407,Chhabis Pathibhara,boundary
+municipality,68009,mastamun,Masta,NP0767408,Masta,both
+municipality,68012,thalaramun,Thalara,NP0767409,Thalara,both
+municipality,68008,khaptadchhannamun,Khaptadchhanna,NP0767410,Khaptad Chhanna,both
+municipality,67003,budhinandamun,Budhinanda,NP0768301,Budhinanda,both
+municipality,67001,badimalikamun,Badimalika,NP0768302,Badimalika,both
+municipality,67002,budhigangamunbajura,Budhiganga,NP0768303,Budhiganga,both
+municipality,67009,trivenimunbajura,Tribeni,NP0768304,Tribeni,both
+municipality,67006,himalimun,Himali,NP0768401,Himali,both
+municipality,67005,gaumulmun,Gaumul,NP0768402,Gaumul,both
+municipality,67004,chhededahamun,Khaptad Chhededaha,NP0768403,Khaptad Chhededaha,both
+municipality,67007,pandavgufamun,Jagannath,NP0768404,Jagannath,both
+municipality,67008,swamikartikmun,Swami Kartik,NP0768405,Swamikartik Khapar,boundary
+municipality,69009,sanfebagarmun,Sanphebagar,NP0769301,Sanphebagar,both
+municipality,69005,mangalsenmun,Mangalsen,NP0769302,Mangalsen,both
+municipality,69004,kamalbazarmun,Kamalbazar,NP0769303,Kamal bazar,both
+municipality,69007,panchadewalbinayakmun,Panchadewal Binayak,NP0769304,Panchdebal Binayak,boundary
+municipality,69002,chaurpatimun,Chaurpati,NP0769401,Chaurpati,both
+municipality,69006,mellekhmun,Mellekh,NP0769402,Mellekh,both
+municipality,69001,bannigadhijaygadhmun,Bannigadhi Jayagadh,NP0769403,Bannigadhi Jayagadh,both
+municipality,69008,ramaroshanmun,Ramaroshan,NP0769404,Ramaroshan,both
+municipality,69003,dhakarimun,Dhakari,NP0769405,Dhakari,both
+municipality,69010,turmakhadmun,Turmakhad,NP0769406,Turmakhand,boundary
+municipality,70009,shikharmun,Shikhar,NP0770301,Shikhar,both
+municipality,70004,dipayalsilgadhimun,Dipayal Silgadi,NP0770302,Dipayal Silgadhi,boundary
+municipality,70001,aadarshamun,Aadarsha,NP0770401,Aadarsha,both
+municipality,70008,sayalmun,Sayal,NP0770402,Sayal,both
+municipality,70007,purbichaukimun,Purbichauki,NP0770403,Purbichouki,boundary
+municipality,70005,jorayalmun,Jorayal,NP0770404,Jorayal,both
+municipality,70006,kisinghmun,K I Singh,NP0770405,K.I. Singh,both
+municipality,70002,badikedarmun,Badikedar,NP0770406,Badi Kedar,both
+municipality,70003,bogatanmun,Bogtan,NP0770407,Bogatan Phudsil,boundary
+municipality,71004,dhangadhimun,Dhangadhi,NP0771201,Dhangadhi,both
+municipality,71007,godawarimunkailali,Godawari_Kailali,NP0771301,Godawari,boundary
+municipality,71005,gaurigangamun,Gauriganga,NP0771302,Gauriganga,both
+municipality,71006,ghodaghodimun,Ghodaghodi,NP0771303,Ghodaghodi,both
+municipality,71002,bhajanimun,Bhajani,NP0771304,Bhajani,both
+municipality,71013,tikapurmun,Tikapur,NP0771305,Tikapur,both
+municipality,71011,lamkichuhamun,Lamkichuha,NP0771306,Lamki Chuha,both
+municipality,71003,churemun,Chure,NP0771401,Chure,both
+municipality,71010,kailarimun,Kailari,NP0771402,Kailari,both
+municipality,71012,mohanyalmun,Mohanyal,NP0771403,Mohanyal,both
+municipality,71009,joshipurmun,Joshipur,NP0771404,Joshipur,both
+municipality,71001,bardgoriyamun,Bardagoriya,NP0771405,Bardagoriya,both
+municipality,71008,janakimunkailali,Janaki,NP0771406,Janaki,both
+municipality,72007,mahakalimunkanchanpur,Dodhara Chandani,NP0772301,Dodhara Chandani,both
+municipality,72004,bheemdattamun,Bhimdatta,NP0772302,Bhimdatta,both
+municipality,72001,bedkotmun,Bedkot,NP0772303,Bedkot,both
+municipality,72009,shuklaphantamun,Shuklaphanta,NP0772304,Shuklaphanta,both
+municipality,72005,krishnapurmun,Krishnapur,NP0772305,Krishnapur,both
+municipality,72002,belaurimun,Belauri,NP0772306,Belouri,boundary
+municipality,72008,punarbasmun,Punarbas,NP0772307,Punarbas,both
+municipality,72003,beldandimun,Beldandi,NP0772401,Beldandi,both
+municipality,72006,laljhadimun,Laljhadi,NP0772402,Laljhadi,both
+municipality,73007,parshurammun,Parashuram,NP0773301,Parashuram,both
+municipality,73003,amargadhimun,Amargadhi,NP0773302,Amargadhi,both
+municipality,73004,bhageshwormun,Bhageshwar,NP0773401,Bhageshwor,boundary
+municipality,73001,ajayamerumun,Ajaymeru,NP0773402,Ajayameru,boundary
+municipality,73006,navadurgamun,Nawadurga,NP0773403,Nawadurga,both
+municipality,73002,aalitalmun,Alital,NP0773404,Aalital,boundary
+municipality,73005,ganyapadhuramun,Ganayapdhura,NP0773405,Ganyapdhura,boundary
+municipality,74001,dasharathchandmun,Dasharathchanda,NP0774301,Dasharathchand,boundary
+municipality,74007,purchaudimun,Purchaudi,NP0774302,Puchaundi,boundary
+municipality,74004,melaulimun,Melauli,NP0774303,Melauli,both
+municipality,74006,patanmun,Patan,NP0774304,Patan,both
+municipality,74002,dilasainimun,Dilasaini,NP0774401,Dilasaini,both
+municipality,74003,dogdakedarmun,Dogadakedar,NP0774402,Dogada Kedar,both
+municipality,74010,sunaryamun,Surnaya,NP0774403,Surnaya,both
+municipality,74005,pancheshwormun,Pancheshwar,NP0774404,Pancheshwor,boundary
+municipality,74008,shivanathmun,Shivanath,NP0774405,Shivanath,both
+municipality,74009,sigasmun,Sigas,NP0774406,Sigas,both
+municipality,75005,mahakalimundarchula,Mahakali,NP0775301,Mahakali,both
+municipality,75009,shailyashikharmun,Shailyashikhar,NP0775302,Shailyashikhar,both
+municipality,75002,vyansmun,Byas,NP0775401,Byas,both
+municipality,75003,duhunmun,Dunhu,NP0775402,Duhun,boundary
+municipality,75001,apihimalmun,Apihimal,NP0775403,Apihimal,both
+municipality,75006,malikarjunmun,Malikaarjun,NP0775404,Malikarjun,boundary
+municipality,75008,naugadmun,Naugad,NP0775405,Naugad,both
+municipality,75004,lekammun,Lekam,NP0775406,Lekam,both
+municipality,75007,marmamun,Marma,NP0775407,Marma,both

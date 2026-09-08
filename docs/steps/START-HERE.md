@@ -41,6 +41,19 @@ file says otherwise.**
 | 15 | EDU.S1–S4 | `onboard-cehrd-education.md` | Education deep-dive: Flash Reports, NER/GER district maps (S1 shares the GIWMS harvester with #10) |
 | 16 | ODN.S3–S5, MOF.S2–S3, P2B.S9–S11, WBF.S4, NGP.S3, ECN follow-ups | respective files | The long tail — any order, founder's pick |
 
+**Founder's pick, 2026-09-07 — running ahead of the table above:**
+
+| # | Step(s) | File | What it delivers |
+|---|---------|------|------------------|
+| — | **DIS.S1 ✅ done** | `onboard-disaster-data.md` | Disaster foundations: tables, pre-2015 geography, place crosswalks |
+| — | **DIS.S2 ← next** | `onboard-disaster-data.md` | 63,151 BIPAD incidents + **the portal's first point map** |
+| — | DIS.S3 | `onboard-disaster-data.md` | DesInventar 1971–2013 (24,257 records) + disaster indicators |
+| — | DIS.S4–S5 | `onboard-disaster-data.md` | Live river/rain status; daily refresh |
+
+Why it jumped the queue: it is the only source that is event-level, precisely
+located, daily-updating and about human harm, so it is the only one that earns
+presentation the portal cannot already do. See that step file's opening section.
+
 Items 7–14 are largely independent of each other; reorder them freely by the
 founder's priorities. Items 1–5 are the foundation — keep their order. Item 6
 (search) is not a foundation lock, but every source onboarded before it is a

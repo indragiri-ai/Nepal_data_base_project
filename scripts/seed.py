@@ -133,8 +133,16 @@ def seed_datasets(cur: Cursor) -> int:
     return len(rows)
 
 
-def seed_geographies(cur: Cursor) -> int:
-    rows = _read_csv("geographies.csv")
+def seed_geographies(cur: Cursor, filename: str = "geographies.csv") -> int:
+    """Places, current or historical, from one curated file.
+
+    `geographies_old.csv` holds the pre-2015 structure — 5 development regions
+    and 75 districts — which lives alongside the current one rather than
+    replacing it (blueprint §5.2: data is stored against the boundaries it was
+    published in). Seed it AFTER the current file: its regions hang off the
+    country row, which that file creates.
+    """
+    rows = _read_csv(filename)
     for r in rows:
         parent_id = None
         parent_code = _none_if_blank(r.get("parent_code"))
@@ -162,6 +170,75 @@ def seed_geographies(cur: Cursor) -> int:
                 _none_if_blank(r.get("valid_from")),
                 _none_if_blank(r.get("valid_to")),
                 _none_if_blank(r.get("geometry_ref")),
+            ),
+        )
+    return len(rows)
+
+
+def _geography_id(cur: Cursor, code: str) -> int:
+    """A geography id, or a loud failure. A crosswalk that quietly skips a row
+    it cannot resolve is worse than one that refuses to load."""
+    cur.execute("SELECT id FROM geographies WHERE code = %s", (code,))
+    found = _scalar(cur)
+    if found is None:
+        raise SystemExit(f"FAILURE: crosswalk names geography {code!r}, which is not seeded")
+    return int(found)
+
+
+def seed_geography_crosswalk(cur: Cursor) -> int:
+    """Pre-2015 district -> current district, for comparison across the break.
+
+    Only districts whose boundary survived unchanged appear here, with the whole
+    share. Nawalparasi and Rukum were split in 2015 and nobody has published how
+    to divide their earlier records, so they are absent on purpose — their data
+    stays at the old district and is reported as such.
+    """
+    rows = _read_csv("geography_crosswalk.csv")
+    for r in rows:
+        cur.execute(
+            "INSERT INTO geography_crosswalk"
+            " (old_geography_id, new_geography_id, allocation_share, method, note)"
+            " VALUES (%s, %s, %s, %s, %s)"
+            " ON CONFLICT (old_geography_id, new_geography_id) DO UPDATE SET"
+            "   allocation_share = EXCLUDED.allocation_share,"
+            "   method = EXCLUDED.method,"
+            "   note = EXCLUDED.note",
+            (
+                _geography_id(cur, r["old_code"]),
+                _geography_id(cur, r["new_code"]),
+                r["allocation_share"],
+                r["method"],
+                _none_if_blank(r.get("note")),
+            ),
+        )
+    return len(rows)
+
+
+def seed_bipad_geography_crosswalk(cur: Cursor) -> int:
+    """BIPAD's own place ids -> our P-codes.
+
+    Built from evidence by `ingestion/bipad/draft_crosswalk.py`; `evidence`
+    records what resolved each row, so a reader can tell a measured match from
+    a reviewed judgement.
+    """
+    rows = _read_csv("bipad_geography_crosswalk.csv")
+    for r in rows:
+        cur.execute(
+            "INSERT INTO bipad_geography_crosswalk"
+            " (bipad_level, bipad_id, bipad_code, bipad_title_en, geography_id, evidence)"
+            " VALUES (%s, %s, %s, %s, %s, %s)"
+            " ON CONFLICT (bipad_level, bipad_id) DO UPDATE SET"
+            "   bipad_code = EXCLUDED.bipad_code,"
+            "   bipad_title_en = EXCLUDED.bipad_title_en,"
+            "   geography_id = EXCLUDED.geography_id,"
+            "   evidence = EXCLUDED.evidence",
+            (
+                r["bipad_level"],
+                int(r["bipad_id"]),
+                _none_if_blank(r.get("bipad_code")),
+                r["bipad_title_en"],
+                _geography_id(cur, r["geography_code"]),
+                r["evidence"],
             ),
         )
     return len(rows)
@@ -350,6 +427,9 @@ def main() -> int:
         source_id = _scalar(cur)
         seed_datasets(cur)
         seed_geographies(cur)
+        seed_geographies(cur, "geographies_old.csv")
+        seed_geography_crosswalk(cur)
+        seed_bipad_geography_crosswalk(cur)
         seed_time_periods(cur)
         loaded, failures = seed_indicators(cur, source_id)
         wb_loaded, wb_failures = seed_indicators_wb_full(cur, source_id)
@@ -360,7 +440,16 @@ def main() -> int:
         conn.commit()
 
         counts = {}
-        for table in ("units", "sources", "datasets", "geographies", "time_periods", "indicators"):
+        for table in (
+            "units",
+            "sources",
+            "datasets",
+            "geographies",
+            "geography_crosswalk",
+            "bipad_geography_crosswalk",
+            "time_periods",
+            "indicators",
+        ):
             cur.execute(f"SELECT count(*) FROM {table}")  # noqa: S608 — fixed table names
             counts[table] = _scalar(cur)
 
