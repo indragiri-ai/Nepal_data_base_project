@@ -46,8 +46,8 @@ file says otherwise.**
 | # | Step(s) | File | What it delivers |
 |---|---------|------|------------------|
 | — | **DIS.S1 ✅ done** | `onboard-disaster-data.md` | Disaster foundations: tables, pre-2015 geography, place crosswalks |
-| — | **DIS.S2 ← next** | `onboard-disaster-data.md` | 63,151 BIPAD incidents + **the portal's first point map** |
-| — | DIS.S3 | `onboard-disaster-data.md` | DesInventar 1971–2013 (24,257 records) + disaster indicators |
+| — | **DIS.S2 ✅ done** | `onboard-disaster-data.md` | 63,181 BIPAD incidents + the portal's first point map |
+| — | **DIS.S3 ← next** | `onboard-disaster-data.md` | DesInventar 1971–2013 (24,257 records) + disaster indicators |
 | — | DIS.S4–S5 | `onboard-disaster-data.md` | Live river/rain status; daily refresh |
 
 Why it jumped the queue: it is the only source that is event-level, precisely

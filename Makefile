@@ -163,6 +163,15 @@ ecn-load:  ## ECN.S3: load election party votes + seats for both HoR elections
 ecn-load-dry:  ## Same, but write nothing (rehearsal)
 	$(PY) -m ingestion.election.ecn_pipeline --dry-run --no-raw
 
+ingest-bipad:  ## DIS.S2: refresh BIPAD incidents since the last load (raw-first, idempotent)
+	$(PY) -m ingestion.bipad.pipeline
+
+ingest-bipad-full:  ## DIS.S2: re-read every BIPAD incident from 2011 (~5 min, ~90 MB raw)
+	$(PY) -m ingestion.bipad.pipeline --full
+
+ingest-bipad-dry:  ## Same fetch and placement, writing nothing (rehearsal)
+	$(PY) -m ingestion.bipad.pipeline --full --dry-run
+
 nrb-bfs-acquire:  ## Download new NRB BFS monthly Excel files into the raw lake (idempotent)
 	$(PY) -m ingestion.nrb.bfs_acquire
 

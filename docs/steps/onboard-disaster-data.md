@@ -254,6 +254,41 @@ a re-run inserts 0 new rows · rejected count is 0, or every rejection is
 explained · a `/v1/incidents` request with no filters is refused by
 `MAX_INCIDENT_ROWS` · the map draws points at real places · gates green.
 
+#### DIS.S2 ✅ DONE 2026-09-08
+
+**DELIVERED:** `ingestion/bipad/pipeline.py` (+ `make ingest-bipad`,
+`-full`, `-dry`) · `GET /v1/incidents`, `/v1/incidents/{id}`, `/v1/hazards`
+with `MAX_INCIDENT_ROWS = 2000` · `IncidentMap.tsx` (the third ECharts
+wrapper: scatter + geo), `IncidentFeed.tsx`, `TimeRangeControl.tsx`,
+`DisasterPanel.tsx`, the `disasters` sector.
+
+**LOADED:** 63,181 incidents, 2011-04-14 → today, 0 rejected. Every one placed
+by its own coordinate: 62,706 inside a local unit, 475 at district level (the
+national parks and reserves that lie outside every municipality).
+
+**PAGING, THE HARD WAY.** The first load used `ordering=incident_on` and lost
+422 records without saying so — a date is not a total ordering, so offset
+paging drifted, repeating as many rows as it skipped, and the upsert folded the
+repeats away silently. Harvests now page by `id` and `check_harvest_is_whole`
+FAILS the run if any id repeats. Never page this API by a non-unique column.
+
+**ONE DEPARTURE FROM THE ACTIONS ABOVE, made deliberately.** The cap does not
+refuse an over-wide request; it answers with the most recent rows and SAYS the
+answer was cut (`total_matching`, `total_shown`, `truncated`), which the page
+renders in words. The reason is arithmetic: Nepal recorded 7,896 incidents in
+2026 against a 2,000-row cap, so refusal would reject every window wider than
+about a month and the map would be unusable — while silent truncation would
+have drawn July–September under the caption "2026", hiding the spring fire
+season. Disclosure is the only option that is both usable and honest. A whole
+long span is properly served by aggregates, which is DIS.S3.
+
+**VERIFIED:** three named incidents match BIPAD live, field for field — the
+2015 Gorkha earthquake (3,570 dead, 89,884 houses destroyed), a snake bite
+recorded today, and a Shuklaphanta National Park landslide placed at Kanchanpur
+district rather than guessed into a municipality · an incremental re-run wrote
+1,292 rows and inserted 0 · the map draws points on real districts against the
+live API · `make lint` clean · `make test` 407 passed · `npm run build` green.
+
 ### DIS.S3 — The 55-year archive + the aggregate side
 
 **GOAL:** 1971 onward in the warehouse, and disaster figures behaving like every

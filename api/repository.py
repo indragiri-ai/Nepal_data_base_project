@@ -21,6 +21,7 @@ from api.database import connect
 from api.policy import (
     MAX_BREAKDOWN_ROWS,
     MAX_GEO_ROWS,
+    MAX_INCIDENT_ROWS,
     MAX_INDICATOR_ROWS,
     MAX_META_ROWS,
     MAX_ROWS,
@@ -174,6 +175,145 @@ class SearchHitRow:
     score: int
 
 
+@dataclass(frozen=True)
+class HazardRow:
+    """One hazard type, with how many incidents carry it."""
+
+    code: str
+    name_en: str
+    name_ne: str | None
+    hazard_type: str
+    color: str | None
+    incidents: int
+
+
+@dataclass(frozen=True)
+class IncidentRow:
+    """ONE recorded disaster, as stored.
+
+    Counts are `int | None` on purpose: None means the source published no
+    figure and 0 means it published a zero, and summing those as though they
+    were the same would invent facts. `lat`/`lon` are absent for the historical
+    archive, which records a district but never a coordinate.
+    """
+
+    id: int
+    hazard_code: str
+    hazard_name: str
+    title_en: str
+    title_ne: str | None
+    geo_code: str
+    geo_name: str
+    lat: float | None
+    lon: float | None
+    incident_on: str
+    deaths: int | None
+    missing: int | None
+    injured: int | None
+    affected_families: int | None
+    houses_destroyed: int | None
+    estimated_loss_npr: Decimal | None
+    verified: bool
+    source_name: str
+    dataset_name: str
+    license: str | None
+    latest_release_date: str
+
+
+@dataclass(frozen=True)
+class IncidentsResult:
+    """The rows a request may have, and how many it actually matched.
+
+    Two numbers, because they are two different facts. `rows` is what the
+    server is willing to build; `total_matching` is what the filters found. An
+    endpoint returning only the first would let a reader mistake a window for
+    the whole record.
+    """
+
+    rows: list[IncidentRow]
+    total_matching: int
+
+
+# Every incident query selects the same columns in the same order, so the one
+# reader below can turn any of their rows into an IncidentRow.
+_INCIDENT_SELECT = (
+    "SELECT i.id, h.code, h.name_en, i.title_en, i.title_ne,"
+    "       g.code, g.name_en, i.lat, i.lon, i.incident_on,"
+    "       i.deaths, i.missing, i.injured, i.affected_families,"
+    "       i.houses_destroyed, i.estimated_loss_npr, i.verified,"
+    "       s.name_en, d.name_en, d.license, r.release_date"
+    " FROM disaster_incidents i"
+    " JOIN disaster_hazards h ON h.id = i.hazard_id"
+    " JOIN geographies g ON g.id = i.geography_id"
+    " LEFT JOIN geographies parent ON parent.id = g.parent_id"
+    " JOIN datasets d ON d.id = i.dataset_id"
+    " JOIN sources s ON s.id = d.source_id"
+    " JOIN releases r ON r.id = i.last_seen_release_id"
+)
+
+
+def _incident_filters(
+    start: date | None,
+    end: date | None,
+    hazard: str | None,
+    geography_code: str | None,
+    bbox: tuple[float, float, float, float] | None,
+) -> tuple[str, list[Any]]:
+    """The WHERE clause and parameters shared by the listing and its count.
+
+    Built once so the two can never drift apart — a count taken under different
+    filters than the rows it describes would be worse than no count at all.
+    """
+    where = ["1 = 1"]
+    params: list[Any] = []
+    if start is not None:
+        where.append("i.incident_on >= %s")
+        params.append(start)
+    if end is not None:
+        where.append("i.incident_on <= %s")
+        params.append(end)
+    if hazard is not None:
+        where.append("h.code = %s")
+        params.append(hazard)
+    if geography_code is not None:
+        where.append(
+            "(g.code = %s OR parent.code = %s"
+            " OR EXISTS (SELECT 1 FROM geographies gp"
+            "            WHERE gp.id = parent.parent_id AND gp.code = %s))"
+        )
+        params += [geography_code, geography_code, geography_code]
+    if bbox is not None:
+        where.append("i.lon BETWEEN %s AND %s AND i.lat BETWEEN %s AND %s")
+        params += [bbox[0], bbox[2], bbox[1], bbox[3]]
+    return " AND ".join(where), params
+
+
+def _incident_row(row: tuple[Any, ...]) -> IncidentRow:
+    return IncidentRow(
+        id=int(row[0]),
+        hazard_code=row[1],
+        hazard_name=row[2],
+        title_en=row[3],
+        title_ne=row[4],
+        geo_code=row[5],
+        geo_name=row[6],
+        lat=float(row[7]) if row[7] is not None else None,
+        lon=float(row[8]) if row[8] is not None else None,
+        incident_on=str(row[9]),
+        deaths=row[10],
+        missing=row[11],
+        injured=row[12],
+        affected_families=row[13],
+        houses_destroyed=row[14],
+        estimated_loss_npr=row[15],
+        verified=bool(row[16]),
+        source_name=row[17],
+        dataset_name=row[18],
+        license=row[19],
+        latest_release_date=str(row[20]),
+    )
+
+
 class Repository(Protocol):
     def list_indicators(self) -> list[IndicatorRow]: ...
     def get_spark_series(self, codes: list[str]) -> list[IndicatorSparkRow]: ...
@@ -203,6 +343,17 @@ class Repository(Protocol):
         self, indicator_code: str, geography_code: str, breakdown_key: str
     ) -> list[SeasonalityRow]: ...
     def get_meta(self) -> list[DatasetMetaRow]: ...
+    def list_hazards(self) -> list[HazardRow]: ...
+    def list_incidents(
+        self,
+        start: date | None = None,
+        end: date | None = None,
+        hazard: str | None = None,
+        geography_code: str | None = None,
+        bbox: tuple[float, float, float, float] | None = None,
+        limit: int = MAX_INCIDENT_ROWS,
+    ) -> IncidentsResult: ...
+    def get_incident(self, incident_id: int) -> IncidentRow | None: ...
     def search(self, term: str, limit: int = 20) -> list[SearchHitRow]: ...
 
 
@@ -799,3 +950,91 @@ class PostgresRepository:
             )
             for row in rows
         ]
+    def list_hazards(self) -> list[HazardRow]:
+        """The hazard vocabulary, with how many incidents carry each.
+
+        The count is what lets a map legend show the hazards Nepal actually
+        records rather than all 47 the publisher defines, without the browser
+        having to count them itself.
+        """
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT h.code, h.name_en, h.name_ne, h.hazard_type, h.color,"
+                "       count(i.id) AS incidents"
+                " FROM disaster_hazards h"
+                " LEFT JOIN disaster_incidents i ON i.hazard_id = h.id"
+                " GROUP BY h.id, h.code, h.name_en, h.name_ne, h.hazard_type, h.color"
+                " HAVING count(i.id) > 0"
+                f" ORDER BY incidents DESC, h.name_en LIMIT {MAX_INDICATOR_ROWS + 1}"
+            )
+            return [
+                HazardRow(
+                    code=row[0],
+                    name_en=row[1],
+                    name_ne=row[2],
+                    hazard_type=row[3],
+                    color=row[4],
+                    incidents=int(row[5]),
+                )
+                for row in bounded(cur.fetchall(), MAX_INDICATOR_ROWS)
+            ]
+
+    def list_incidents(
+        self,
+        start: date | None = None,
+        end: date | None = None,
+        hazard: str | None = None,
+        geography_code: str | None = None,
+        bbox: tuple[float, float, float, float] | None = None,
+        limit: int = MAX_INCIDENT_ROWS,
+    ) -> IncidentsResult:
+        """A bounded window on the incident record, and the size of what it cut.
+
+        NEWEST FIRST and capped — but the match is COUNTED and returned, so a
+        cut answer can say it was cut. That pairing is the point. Nepal recorded
+        7,768 incidents in 2026 against a 2,000-row cap: the newest 2,000 of
+        them are the monsoon months, and the spring fire season is missing
+        entirely. Served as "2026" that picture lies about when and where
+        disasters happen. Served as "the 2,000 most recent of 7,768 in 2026" it
+        is a window the reader can judge, and narrow. The count is one indexed
+        aggregate over 63,000 rows — cheap enough to buy that on every request.
+
+        `geography_code` matches the incident's own geography OR any geography
+        beneath it, so asking for a district returns the incidents recorded
+        against its municipalities too.
+        """
+        clause, params = _incident_filters(start, end, hazard, geography_code, bbox)
+        capped = min(limit, MAX_INCIDENT_ROWS)
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                "SELECT count(*) FROM disaster_incidents i"
+                " JOIN disaster_hazards h ON h.id = i.hazard_id"
+                " JOIN geographies g ON g.id = i.geography_id"
+                " LEFT JOIN geographies parent ON parent.id = g.parent_id"
+                " WHERE " + clause,
+                tuple(params),
+            )
+            counted = cur.fetchone()
+            total = int(counted[0]) if counted is not None else 0
+            cur.execute(
+                _INCIDENT_SELECT
+                + " WHERE "
+                + clause
+                + " ORDER BY i.incident_on DESC, i.id DESC LIMIT %s",
+                (*params, capped),
+            )
+            rows = cur.fetchall()
+        return IncidentsResult(
+            rows=[_incident_row(row) for row in rows], total_matching=total
+        )
+
+    def get_incident(self, incident_id: int) -> IncidentRow | None:
+        """One incident by its id, or None if there is no such record.
+
+        This is what a permalink needs: the only way to point somebody at one
+        specific event rather than at a window that happens to contain it.
+        """
+        with self._connect() as conn, conn.cursor() as cur:
+            cur.execute(_INCIDENT_SELECT + " WHERE i.id = %s", (incident_id,))
+            row = cur.fetchone()
+        return _incident_row(row) if row is not None else None

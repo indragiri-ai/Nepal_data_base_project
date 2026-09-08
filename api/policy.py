@@ -22,6 +22,10 @@ MAX_BREAKDOWN_ROWS = 8_000
 MAX_INDICATOR_ROWS = 4_000
 MAX_META_ROWS = 100
 MAX_SEASONALITY_ROWS = 500
+# Deliberately tighter than MAX_ROWS: a map marker costs the browser far more
+# than a table row, and 2,000 points is already a dense picture of Nepal. The
+# answer to "I want them all" is a narrower date range, not a slower page.
+MAX_INCIDENT_ROWS = 2_000
 MAX_SPARK_CODES = 120
 MAX_SPARK_POINTS = 16
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024

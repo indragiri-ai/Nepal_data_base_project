@@ -17,6 +17,9 @@ from api.repository import (
     GeoBreakdownResult,
     GeoValueRow,
     GeoValuesResult,
+    HazardRow,
+    IncidentRow,
+    IncidentsResult,
     IndicatorRow,
     IndicatorSparkRow,
     ObservationRow,
@@ -150,6 +153,11 @@ def _fake_score(term: str, code: str, name_en: str, name_ne: str | None) -> int:
 
 
 class FakeRepository:
+    def __init__(self, incident_cap: int = 2000) -> None:
+        # The real cap is MAX_INCIDENT_ROWS; a test can shrink it to prove that
+        # a cut answer admits to being cut without inventing 2,000 fixtures.
+        self.incident_cap = incident_cap
+
     def list_indicators(self) -> list[IndicatorRow]:
         return [_GDP, _FISCAL_REVENUE, _CENSUS_POP, _WB_POP, _CENSUS_LITERACY]
 
@@ -297,6 +305,93 @@ class FakeRepository:
             SeasonalityRow("a", 7, Decimal("22.0"), 380),
             SeasonalityRow("b", 1, Decimal("31.25"), 5),
         ]
+
+    def list_hazards(self) -> list[HazardRow]:
+        return [
+            HazardRow("flood", "Flood", "बाढी", "natural", "#00008B", 3953),
+            HazardRow("landslide", "Landslide", "पहिरो", "natural", "#6D4C41", 3208),
+        ]
+
+    def list_incidents(
+        self,
+        start: date | None = None,
+        end: date | None = None,
+        hazard: str | None = None,
+        geography_code: str | None = None,
+        bbox: tuple[float, float, float, float] | None = None,
+        limit: int = 2000,
+    ) -> IncidentsResult:
+        rows = [
+            IncidentRow(
+                id=1,
+                hazard_code="flood",
+                hazard_name="Flood",
+                title_en="Flood at Jalbire, Jugal Rural Municipality-2",
+                title_ne="जुगल-२ मा बाढी",
+                geo_code="NP0323003",
+                geo_name="Jugal",
+                lat=27.90711,
+                lon=85.75568,
+                incident_on="2026-08-31",
+                deaths=2,
+                missing=0,
+                injured=None,
+                affected_families=3,
+                houses_destroyed=1,
+                estimated_loss_npr=Decimal("150000"),
+                verified=True,
+                source_name="National Disaster Risk Reduction and Management Authority",
+                dataset_name="BIPAD Portal — disaster incidents",
+                license=None,
+                latest_release_date="2026-09-07",
+            ),
+            IncidentRow(
+                id=2,
+                hazard_code="landslide",
+                hazard_name="Landslide",
+                title_en="Landslide at Barhabise",
+                title_ne=None,
+                geo_code="NP0323004",
+                geo_name="Barhabise",
+                lat=None,
+                lon=None,
+                incident_on="2019-07-12",
+                deaths=None,
+                missing=1,
+                injured=0,
+                affected_families=None,
+                houses_destroyed=None,
+                estimated_loss_npr=None,
+                verified=False,
+                source_name="National Disaster Risk Reduction and Management Authority",
+                dataset_name="BIPAD Portal — disaster incidents",
+                license=None,
+                latest_release_date="2026-09-07",
+            ),
+        ]
+        if hazard is not None:
+            rows = [r for r in rows if r.hazard_code == hazard]
+        if start is not None:
+            rows = [r for r in rows if r.incident_on >= start.isoformat()]
+        if end is not None:
+            rows = [r for r in rows if r.incident_on <= end.isoformat()]
+        if geography_code is not None:
+            rows = [r for r in rows if r.geo_code.startswith(geography_code)]
+        if bbox is not None:
+            rows = [
+                r
+                for r in rows
+                if r.lon is not None
+                and r.lat is not None
+                and bbox[0] <= r.lon <= bbox[2]
+                and bbox[1] <= r.lat <= bbox[3]
+            ]
+        capped = min(limit, self.incident_cap)
+        return IncidentsResult(rows=rows[:capped], total_matching=len(rows))
+
+    def get_incident(self, incident_id: int) -> IncidentRow | None:
+        found = [r for r in self.list_incidents().rows if r.id == incident_id]
+        return found[0] if found else None
 
     def get_meta(self) -> list[DatasetMetaRow]:
         return [
@@ -938,3 +1033,124 @@ def test_geo_breakdown_404s_when_the_breakdown_does_not_exist(client: TestClient
     )
     assert resp.status_code == 404
     assert "nope" in resp.json()["detail"]
+
+
+# --- /v1/hazards and /v1/incidents (DIS.S2) ----------------------------------
+
+
+def test_hazards_lists_what_nepal_actually_records(client: TestClient) -> None:
+    """The publisher defines 47 hazards; a legend should show the ones that have
+    happened, commonest first, with the publisher's own colour."""
+    body = client.get("/v1/hazards").json()
+    assert [h["code"] for h in body] == ["flood", "landslide"]
+    assert body[0]["incidents"] == 3953
+    assert body[0]["color"] == "#00008B"
+    assert body[0]["name_ne"] == "बाढी"
+
+
+def test_incidents_returns_events_with_their_provenance(client: TestClient) -> None:
+    resp = client.get("/v1/incidents")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["provenance"]["source"].startswith("National Disaster Risk")
+    assert body["total_shown"] == 2
+    assert body["total_matching"] == 2
+    assert body["truncated"] is False
+    first = body["incidents"][0]
+    assert first["hazard"] == "flood"
+    assert first["lat"] == 27.90711
+    assert first["deaths"] == 2
+    assert first["title_ne"] == "जुगल-२ मा बाढी"
+
+
+def test_an_incident_without_a_coordinate_is_still_served(client: TestClient) -> None:
+    """The 1971-2013 archive records a district but never a point. Those events
+    must still appear in the feed and the counts — just not on the map."""
+    body = client.get("/v1/incidents").json()
+    archived = [i for i in body["incidents"] if i["id"] == 2][0]
+    assert archived["lat"] is None and archived["lon"] is None
+    assert archived["geo_code"] == "NP0323004"
+
+
+def test_a_published_zero_survives_the_api(client: TestClient) -> None:
+    """`missing: 0` means none were missing; `deaths: null` means the source did
+    not say. The JSON must keep them apart, or a reader sums nulls as zeros."""
+    body = client.get("/v1/incidents").json()
+    archived = [i for i in body["incidents"] if i["id"] == 2][0]
+    assert archived["missing"] == 1
+    assert archived["injured"] == 0
+    assert archived["deaths"] is None
+
+
+def test_incidents_can_be_filtered_by_hazard(client: TestClient) -> None:
+    body = client.get("/v1/incidents", params={"hazard": "landslide"}).json()
+    assert [i["id"] for i in body["incidents"]] == [2]
+    assert body["filters"] == {"hazard": "landslide"}
+
+
+def test_incidents_can_be_filtered_by_date_window(client: TestClient) -> None:
+    body = client.get(
+        "/v1/incidents", params={"start": "2026-01-01", "end": "2026-12-31"}
+    ).json()
+    assert [i["id"] for i in body["incidents"]] == [1]
+
+
+def test_incidents_can_be_filtered_by_map_window(client: TestClient) -> None:
+    body = client.get("/v1/incidents", params={"bbox": "85.0,27.0,86.0,28.0"}).json()
+    assert [i["id"] for i in body["incidents"]] == [1]
+
+
+def test_a_malformed_bbox_is_refused_not_ignored(client: TestClient) -> None:
+    """Silently dropping an unparseable filter would show the whole country
+    where the reader asked for one valley."""
+    assert client.get("/v1/incidents", params={"bbox": "1,2,3"}).status_code == 422
+    assert client.get("/v1/incidents", params={"bbox": "a,b,c,d"}).status_code == 422
+    assert client.get("/v1/incidents", params={"bbox": "86,28,85,27"}).status_code == 422
+
+
+def test_a_filter_matching_nothing_is_a_404_with_a_plain_message(
+    client: TestClient,
+) -> None:
+    resp = client.get("/v1/incidents", params={"hazard": "avalanche"})
+    assert resp.status_code == 404
+    assert "No incidents" in resp.json()["detail"]
+
+
+def test_a_backwards_date_window_is_refused(client: TestClient) -> None:
+    resp = client.get("/v1/incidents", params={"start": "2026-12-31", "end": "2026-01-01"})
+    assert resp.status_code == 422
+
+
+def test_a_cut_answer_admits_that_it_was_cut(client: TestClient) -> None:
+    """The map's honesty rests on this. Nepal recorded 7,768 incidents in 2026
+    against a 2,000-row cap; the newest 2,000 are the monsoon months and none of
+    the spring fire season. Served as "2026" that is a false picture of when and
+    where disasters happen, so the response must carry the size of the match and
+    say the rows were cut."""
+    app.dependency_overrides[get_repository] = lambda: FakeRepository(incident_cap=1)
+    try:
+        body = client.get("/v1/incidents").json()
+    finally:
+        app.dependency_overrides[get_repository] = FakeRepository
+    assert body["total_matching"] == 2
+    assert body["total_shown"] == 1
+    assert body["truncated"] is True
+    # And the row kept is the most RECENT one, not an arbitrary one.
+    assert body["incidents"][0]["incident_on"] == "2026-08-31"
+
+
+def test_one_incident_can_be_addressed_by_its_own_id(client: TestClient) -> None:
+    """A window that moves as filters change is no address for a single event."""
+    resp = client.get("/v1/incidents/1")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["incident"]["id"] == 1
+    assert body["incident"]["title"].startswith("Flood at Jalbire")
+    assert body["provenance"]["source"].startswith("National Disaster Risk")
+
+
+def test_an_unknown_incident_id_is_a_404(client: TestClient) -> None:
+    resp = client.get("/v1/incidents/999999")
+    assert resp.status_code == 404
+    assert "999999" in resp.json()["detail"]
+

@@ -37,6 +37,13 @@ const FiscalPanel = dynamic(() => import("@/components/FiscalPanel"), {
   loading: () => <p className="state">Loading public finance…</p>,
 });
 
+// Same reasoning again: the disasters page registers a scatter and a geo
+// coordinate system that no other sector draws, so only this page loads them.
+const DisasterPanel = dynamic(() => import("@/components/DisasterPanel"), {
+  ssr: false,
+  loading: () => <p className="state">Loading disaster records…</p>,
+});
+
 // Same reasoning: ECharts stays off every sector page that does not draw one.
 const ProvincePanel = dynamic(() => import("@/components/ProvincePanel"), {
   ssr: false,
@@ -191,7 +198,7 @@ export default function SectorDashboard({ slug }: { slug: string }) {
         </p>
         <h1>{sector.title}</h1>
         <p className="sub">{sector.description}</p>
-        {indicators && (
+        {indicators && owned.length > 0 && (
           <p className="head-meta">
             {owned.length} indicator{owned.length === 1 ? "" : "s"}
             {sources.length > 0 && <> · sources: {sources.join(", ")}</>}
@@ -254,6 +261,9 @@ export default function SectorDashboard({ slug }: { slug: string }) {
       {/* The tier of government closest to people, and the hardest to find
           results for anywhere else. */}
       {sector.slug === "elections" && <LocalElectionPanel />}
+
+      {/* Disasters: the incident map and feed ARE this page (DIS.S2). */}
+      {sector.slug === "disasters" && <DisasterPanel />}
 
       {/* Full list */}
       <section aria-labelledby="all-list">

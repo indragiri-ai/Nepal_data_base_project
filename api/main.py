@@ -25,6 +25,10 @@ from api.models import (
     GeoBreakdownResponse,
     GeoDataResponse,
     GeoValue,
+    HazardSummary,
+    Incident,
+    IncidentDetail,
+    IncidentsResponse,
     IndicatorDetail,
     IndicatorSpark,
     IndicatorSummary,
@@ -43,7 +47,7 @@ from api.policy import (
     bounded,
     validate_window,
 )
-from api.repository import PostgresRepository, Repository
+from api.repository import IncidentRow, PostgresRepository, Repository
 
 load_dotenv()
 
@@ -492,3 +496,154 @@ def get_data(
             for o in bounded(series.observations)
         ],
     )
+
+
+def _incident_provenance(row: IncidentRow) -> Provenance:
+    """Where an incident came from. Identical for every row of one dataset, but
+    carried on the row so a single-incident response can state it too."""
+    return Provenance(
+        source=row.source_name,
+        dataset=row.dataset_name,
+        license=row.license,
+        latest_release_date=row.latest_release_date,
+    )
+
+
+def _incident(row: IncidentRow) -> Incident:
+    """One stored incident as the API publishes it.
+
+    The counts pass through untouched, nulls included: a null is the source
+    publishing no figure and a zero is the source counting none, and the JSON
+    must keep them apart.
+    """
+    return Incident(
+        id=row.id,
+        hazard=row.hazard_code,
+        hazard_name=row.hazard_name,
+        title=row.title_en,
+        title_ne=row.title_ne,
+        geo_code=row.geo_code,
+        geo_name=row.geo_name,
+        lat=row.lat,
+        lon=row.lon,
+        incident_on=row.incident_on,
+        deaths=row.deaths,
+        missing=row.missing,
+        injured=row.injured,
+        affected_families=row.affected_families,
+        houses_destroyed=row.houses_destroyed,
+        estimated_loss_npr=(
+            float(row.estimated_loss_npr) if row.estimated_loss_npr is not None else None
+        ),
+        verified=row.verified,
+    )
+
+
+@app.get("/v1/hazards", response_model=list[HazardSummary])
+def list_hazards(
+    repo: Annotated[Repository, Depends(get_repository)],
+) -> list[HazardSummary]:
+    """The hazard types Nepal actually records, commonest first.
+
+    Only hazards with at least one incident are returned: the publisher defines
+    47, and a map legend listing volcanic eruptions Nepal has never recorded
+    tells a reader nothing.
+    """
+    return [
+        HazardSummary(
+            code=h.code,
+            name_en=h.name_en,
+            name_ne=h.name_ne,
+            hazard_type=h.hazard_type,
+            color=h.color,
+            incidents=h.incidents,
+        )
+        for h in repo.list_hazards()
+    ]
+
+
+@app.get("/v1/incidents", response_model=IncidentsResponse)
+def list_incidents(
+    repo: Annotated[Repository, Depends(get_repository)],
+    start: Annotated[
+        date | None, Query(description="Earliest incident date (YYYY-MM-DD)")
+    ] = None,
+    end: Annotated[date | None, Query(description="Latest incident date (YYYY-MM-DD)")] = None,
+    hazard: Annotated[
+        str | None, Query(description="One hazard code, e.g. 'flood' (see /v1/hazards)")
+    ] = None,
+    geo: Annotated[
+        str | None,
+        Query(description="P-code; matches this geography and everything beneath it"),
+    ] = None,
+    bbox: Annotated[
+        str | None,
+        Query(description="Map window as min_lon,min_lat,max_lon,max_lat"),
+    ] = None,
+) -> IncidentsResponse:
+    """Individual recorded disasters — the data behind the incident map.
+
+    Unlike every other endpoint here, this returns EVENTS rather than
+    statistics: things that happened, at a place, on a day. The response is
+    capped at MAX_INCIDENT_ROWS and ordered newest first, so a caller with no
+    filters gets a real, recent window rather than a truncated arbitrary slice.
+    Narrow it with `start`/`end`, `hazard`, `geo` or `bbox`.
+    """
+    validate_window(None, None, start, end)
+    box: tuple[float, float, float, float] | None = None
+    if bbox is not None:
+        parts = bbox.split(",")
+        if len(parts) != 4:
+            raise HTTPException(
+                status_code=422, detail="bbox must be min_lon,min_lat,max_lon,max_lat"
+            )
+        try:
+            min_lon, min_lat, max_lon, max_lat = (float(p) for p in parts)
+        except ValueError:
+            raise HTTPException(status_code=422, detail="bbox values must be numbers") from None
+        if min_lon > max_lon or min_lat > max_lat:
+            raise HTTPException(status_code=422, detail="bbox is inside out")
+        box = (min_lon, min_lat, max_lon, max_lat)
+
+    found = repo.list_incidents(
+        start=start, end=end, hazard=hazard, geography_code=geo, bbox=box
+    )
+    if not found.rows:
+        raise HTTPException(status_code=404, detail="No incidents match that request")
+    first = found.rows[0]
+    filters = {
+        name: value
+        for name, value in (
+            ("start", str(start) if start else ""),
+            ("end", str(end) if end else ""),
+            ("hazard", hazard or ""),
+            ("geo", geo or ""),
+            ("bbox", bbox or ""),
+        )
+        if value
+    }
+    return IncidentsResponse(
+        provenance=_incident_provenance(first),
+        filters=filters,
+        total_matching=found.total_matching,
+        total_shown=len(found.rows),
+        truncated=found.total_matching > len(found.rows),
+        incidents=[_incident(r) for r in found.rows],
+    )
+
+
+@app.get("/v1/incidents/{incident_id}", response_model=IncidentDetail)
+def get_incident(
+    incident_id: int,
+    repo: Annotated[Repository, Depends(get_repository)],
+) -> IncidentDetail:
+    """One recorded disaster, by its id.
+
+    The listing is a window that moves as filters change, so it is no address
+    for a particular event. This is: what a link to a single incident resolves
+    to, and what a reader following one from elsewhere lands on.
+    """
+    row = repo.get_incident(incident_id)
+    if row is None:
+        raise HTTPException(status_code=404, detail=f"No incident {incident_id}")
+    return IncidentDetail(provenance=_incident_provenance(row), incident=_incident(row))

@@ -2048,3 +2048,183 @@ a.featured-card:hover {
   margin: 28px 0 4px;
   font-size: 1.05rem;
 }
+
+/* --- Disasters (DIS.S2) ---------------------------------------------------
+   The portal's first point map, time range and event feed. Restrained on
+   purpose: these records are deaths, so nothing here pulses, counts up or
+   ranks places by how badly they suffered. */
+
+.disaster-panel {
+  margin-top: 2.5rem;
+}
+
+.time-range {
+  border: 1px solid var(--line, #e5e2d9);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  margin: 1rem 0;
+  background: #fff;
+}
+
+.time-range-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.time-range-label {
+  font-weight: 650;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-range-presets {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.time-range-sliders {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+
+.time-range-sliders input[type="range"] {
+  width: 100%;
+  accent-color: #256abf;
+}
+
+.time-range-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #8a91a0;
+  font-variant-numeric: tabular-nums;
+}
+
+.hazard-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0 1.1rem;
+}
+
+.hazard-filter .btn.active,
+.time-range-presets .btn.active {
+  border-color: #256abf;
+  color: #184f95;
+  font-weight: 650;
+}
+
+.hazard-swatch {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  vertical-align: baseline;
+}
+
+.incident-map-canvas {
+  width: 100%;
+  /* Nepal's bounding box is roughly 1.8:1, so a box of that shape holds the
+     country without a band of empty white above and below it. */
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  max-height: 620px;
+  border: 1px solid var(--line, #e5e2d9);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.incident-map-note,
+.incident-more {
+  font-size: 0.85rem;
+  color: #545d6e;
+  margin-top: 0.55rem;
+}
+
+.incident-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #cde2fb;
+  background: #f5f9ff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.feed-head {
+  margin: 2rem 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.incident-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line, #e5e2d9);
+}
+
+.incident-row {
+  border-bottom: 1px solid var(--line, #e5e2d9);
+}
+
+.incident-row-button {
+  display: flex;
+  gap: 0.7rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0.75rem 0.4rem;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.incident-row-button:hover,
+.incident-row-button:focus-visible {
+  background: #faf9f6;
+}
+
+.incident-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin-top: 0.4rem;
+  flex: 0 0 auto;
+}
+
+.incident-body {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.incident-title {
+  font-weight: 600;
+}
+
+.incident-meta {
+  font-size: 0.83rem;
+  color: #545d6e;
+}
+
+.incident-unverified {
+  color: #8a91a0;
+  font-style: italic;
+}
+
+.incident-harm {
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 0.1rem;
+}

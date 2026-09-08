@@ -303,6 +303,22 @@ export const SECTORS: SectorDef[] = [
     // mistake the sector cards used to make.
     orbitNote: "results by party",
   },
+  {
+    slug: "disasters",
+    title: "Disasters",
+    titleShort: "Disasters",
+    description:
+      "Where and when disaster struck — every flood, landslide, fire and storm recorded by the National Disaster Risk Reduction and Management Authority since 2011, mapped at the place its own report gives, with what each one cost in lives and homes.",
+    topics: [],
+    // The disaster panel IS this page (DIS.S2); the indicators arrive in
+    // DIS.S3, and will be matched by this prefix the way Kalimati is.
+    includePrefixes: ["DISASTER_"],
+    headlineCodes: [],
+    // No orbit number, on purpose. Every other sector's node counts something
+    // that is good to have more of. A death toll is not that, and animating one
+    // upward on a landing page would be indecent.
+    orbitNote: "what happened, and where",
+  },
 ];
 
 /** Source badge from a code alone (used where only the code is known — the orbit,

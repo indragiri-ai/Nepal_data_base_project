@@ -193,3 +193,77 @@ class SearchResponse(BaseModel):
     query: str
     total: int
     results: list[SearchHit]
+
+
+class HazardSummary(BaseModel):
+    """One hazard type, as the publisher defines it — used for map legends and
+    filter controls. `color` is BIPAD's own colour for the hazard, so the
+    portal's legend matches the government's."""
+
+    code: str
+    name_en: str
+    name_ne: str | None
+    hazard_type: str  # 'natural' | 'non_natural'
+    color: str | None
+    incidents: int
+
+
+class Incident(BaseModel):
+    """ONE recorded disaster: a thing that happened, at a place, on a day.
+
+    Every other response in this API describes a statistic — a number about a
+    period and a place. This describes an event, which is why it carries a
+    point rather than only a geography, and why the counts may be null: a null
+    means the source published no figure, where 0 means it published a zero.
+
+    `lat`/`lon` can be absent even though the event is placed: the historical
+    archive records the district but never a coordinate.
+    """
+
+    id: int
+    hazard: str
+    hazard_name: str
+    title: str
+    title_ne: str | None
+    geo_code: str
+    geo_name: str
+    lat: float | None
+    lon: float | None
+    incident_on: str
+    deaths: int | None
+    missing: int | None
+    injured: int | None
+    affected_families: int | None
+    houses_destroyed: int | None
+    estimated_loss_npr: float | None
+    verified: bool
+
+
+class IncidentsResponse(BaseModel):
+    """A bounded window on the incident record, with its provenance.
+
+    THREE numbers, and they mean different things. `total_matching` is how many
+    incidents the filters found; `total_shown` is how many this response
+    carries; `truncated` says plainly whether the second is smaller than the
+    first. A client reading only `total_shown` and calling it a total would be
+    describing the server's row cap as a fact about Nepal — exactly the
+    misreading these three fields exist to prevent.
+
+    When `truncated` is true the rows are the MOST RECENT matches, not a sample.
+    Say so wherever they are drawn: the newest 2,000 of a year are that year's
+    late months and nothing else.
+    """
+
+    provenance: Provenance
+    filters: dict[str, str]
+    total_matching: int
+    total_shown: int
+    truncated: bool
+    incidents: list[Incident]
+
+
+class IncidentDetail(BaseModel):
+    """One incident, addressed by its own id — what a permalink resolves to."""
+
+    provenance: Provenance
+    incident: Incident

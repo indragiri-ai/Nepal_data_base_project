@@ -346,3 +346,74 @@ export function topicLabel(topic: string): string {
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
+
+// --- Disasters (DIS.S2) -------------------------------------------------------
+
+export interface Hazard {
+  code: string;
+  name_en: string;
+  name_ne: string | null;
+  hazard_type: "natural" | "non_natural";
+  color: string | null;
+  incidents: number;
+}
+
+/** ONE recorded disaster. Unlike every other type here this is an EVENT, not a
+ *  statistic — which is why it carries a point, and why the counts are nullable:
+ *  null means the source published no figure, 0 means it published a zero. */
+export interface Incident {
+  id: number;
+  hazard: string;
+  hazard_name: string;
+  title: string;
+  title_ne: string | null;
+  geo_code: string;
+  geo_name: string;
+  lat: number | null;
+  lon: number | null;
+  incident_on: string;
+  deaths: number | null;
+  missing: number | null;
+  injured: number | null;
+  affected_families: number | null;
+  houses_destroyed: number | null;
+  estimated_loss_npr: number | null;
+  verified: boolean;
+}
+
+export interface IncidentsResponse {
+  provenance: Provenance;
+  filters: Record<string, string>;
+  /** How many incidents the filters matched. */
+  total_matching: number;
+  /** How many this response carries. Smaller than total_matching when the
+   *  server's cap cut the answer — never present it as a total. */
+  total_shown: number;
+  /** True when the rows are the MOST RECENT matches rather than all of them.
+   *  Whatever draws them must say so: the newest 2,000 of a year are that
+   *  year's late months, so a map of them is not a map of the year. */
+  truncated: boolean;
+  incidents: Incident[];
+}
+
+/** The hazard types Nepal actually records, commonest first. */
+export function fetchHazards(): Promise<Hazard[]> {
+  return getJson<Hazard[]>("/v1/hazards");
+}
+
+/** Individual recorded disasters, newest first and server-capped. Narrow with
+ *  a date window, a hazard, a place, or a map window. */
+export function fetchIncidents(options: {
+  start?: string;
+  end?: string;
+  hazard?: string;
+  geo?: string;
+  bbox?: string;
+} = {}): Promise<IncidentsResponse> {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(options)) {
+    if (value) params.set(key, value);
+  }
+  const query = params.toString();
+  return getJson<IncidentsResponse>(`/v1/incidents${query ? `?${query}` : ""}`);
+}

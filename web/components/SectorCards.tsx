@@ -86,6 +86,16 @@ const icons: Record<string, ReactNode> = {
       strokeLinejoin="round"
     />
   ),
+  // A hillside giving way: landslide is the hazard Nepal records most after
+  // fire (6,080 against 34,445 in the loaded record).
+  disasters: (
+    <path
+      d="M3 19h18M5 19l6-11 4 6 2-3 4 8M9.5 9.5l1.5-3"
+      strokeWidth={S}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 };
 
 export default function SectorCards() {
